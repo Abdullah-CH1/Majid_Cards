@@ -223,9 +223,9 @@
     const rs = W * 0.0076, rb = W * 0.0185, rg = W * 0.0175, rf = W * 0.017;
     const n = v => v.toFixed(2);
     let s = `<defs>
-      <radialGradient id="pgBody" cx="36%" cy="28%" r="82%"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset=".42" stop-color="#ece6ee" stop-opacity=".12"/><stop offset=".78" stop-color="#8c7a8c" stop-opacity=".2"/><stop offset="1" stop-color="#3f2e42" stop-opacity=".55"/></radialGradient>
+      <radialGradient id="pgBody" cx="36%" cy="28%" r="82%"><stop offset="0" stop-color="#fff" stop-opacity=".42"/><stop offset=".42" stop-color="#ece6ee" stop-opacity=".2"/><stop offset=".8" stop-color="#9a8a9c" stop-opacity=".14"/><stop offset="1" stop-color="#3f2e42" stop-opacity=".42"/></radialGradient>
       <radialGradient id="pgSpec"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".5" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-      <linearGradient id="pgRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".45" stop-color="#7d6c7e" stop-opacity=".35"/><stop offset="1" stop-color="#33243a" stop-opacity=".8"/></linearGradient>
+      <linearGradient id="pgRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".45" stop-color="#7d6c7e" stop-opacity=".25"/><stop offset="1" stop-color="#33243a" stop-opacity=".62"/></linearGradient>
       <linearGradient id="pgPetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".62"/><stop offset="1" stop-color="#e3dbe6" stop-opacity=".32"/></linearGradient>
       <filter id="ps" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="${n(W * .0022)}" dy="${n(W * .004)}" stdDeviation="${n(W * .003)}" flood-color="#281b2c" flood-opacity=".55"/></filter></defs><g filter="url(#ps)">`;
     const bead = (x, y, R, big) => {

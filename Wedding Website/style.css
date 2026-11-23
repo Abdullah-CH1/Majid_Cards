@@ -82,13 +82,14 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
   box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 9px 12px -10px rgba(20,15,30,.55), inset 0 -1px 0 rgba(60,45,60,.25); }
 .pearl-frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .cameo {
-  position: absolute; left: 50.3%; top: 50.3%; width: 34.6%; aspect-ratio: 1 / 1.468; translate: -50% -50%;
+  position: absolute; left: 50.3%; top: 50.3%; width: 33.6%; aspect-ratio: 1 / 1.446; translate: -50% -50%;
   border-radius: 50%; overflow: hidden; background: #2b2630;
-  /* turned oval moulding, from the photo outwards: dark lip, two fine bright beads with a groove between, a broad grey-lilac band, outer edge */
-  box-shadow: 0 0 0 calc(var(--u) * .3) #8a8294, 0 0 0 calc(var(--u) * .6) #cfc8d8, 0 0 0 calc(var(--u) * .85) #786f81,
-              0 0 0 calc(var(--u) * 1.15) #c8c1d2, 0 0 0 calc(var(--u) * 1.4) #948c9e, 0 0 0 calc(var(--u) * 2.25) #a199ab,
-              0 0 0 calc(var(--u) * 2.48) #837a8c,
-              0 calc(var(--u) * .5) calc(var(--u) * 1.5) calc(var(--u) * 2.3) rgba(35,22,38,.38);
+  /* turned oval moulding, from the photo outwards: soft lip, narrow band, two fine bright beads with a groove between,
+     broad grey-lilac band, darker outer edge, soft shadow on the shell */
+  box-shadow: 0 0 0 calc(var(--u) * .14) #8c8496, 0 0 0 calc(var(--u) * .62) #a79fb1, 0 0 0 calc(var(--u) * .88) #cdc6d6,
+              0 0 0 calc(var(--u) * 1.1) #7a7183, 0 0 0 calc(var(--u) * 1.38) #c6bfd0, 0 0 0 calc(var(--u) * 1.6) #958d9f,
+              0 0 0 calc(var(--u) * 2.58) #a199ab, 0 0 0 calc(var(--u) * 2.8) #827a8b,
+              0 calc(var(--u) * .5) calc(var(--u) * 1.5) calc(var(--u) * 2.6) rgba(35,22,38,.38);
 }
 .cameo img { width: 100%; height: 100%; object-fit: cover; }
 .cameo canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; transition: opacity .9s ease; }

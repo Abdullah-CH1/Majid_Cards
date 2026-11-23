@@ -310,20 +310,20 @@ def nacre(S=1200, P=None):
     calm = 1 - smooth01((span - 45) / 80)                   # 1 where the shell is quiet (left, bottom)
     lively = 1 - calm
     edge = 1 - 0.10 * np.exp(-bf / 0.22) * (0.3 + calm)     # each scale is a touch darker under the lip of the next one
-    f = (P["w_iso"] * iso + P["w_cloud"] * cloud + (P["w_feather"] * feather + P["w_fine"] * fine) * (0.75 - 0.25 * lively)
+    f = (P["w_iso"] * iso + P["w_cloud"] * cloud + (P["w_feather"] * feather + P["w_fine"] * fine) * (0.4 + 0.4 * lively)
          + P["w_ring"] * rings * (0.2 + 0.7 * calm))
     z = (f - f.mean()) / f.std()
-    flame = smooth01((0.8 * iso + 0.45 * cloud + 0.5 * mott + 0.16 * feather + 0.05) / 1.25)   # silver flames, feathered along the barbs
+    flame = smooth01((0.75 * iso + 0.5 * cloud + 0.3 * mott + 0.36 * feather + 0.1 * fine + 0.9) / 2.6)   # silver flames, feathered along the barbs
     t = P["t0"] + P["t1"] * z + P["t2"] * z * np.abs(z) + P["flame"] * lively * flame
     glint = smooth01((feather + 0.7 * fine + 0.5 * mott - 1.5) / 0.9)       # small wet highlights
-    t = t + lively * (0.08 * mott + 0.09 * feather + 0.05 * fine)             # the flames are mottled and barbed, never flat
-    t = np.clip(t * edge + 0.5 * glint * (0.15 + lively), -0.25, 1.4)
+    t = t + lively * (0.10 * mott + 0.12 * feather + 0.06 * fine)             # the flames are mottled and barbed, never flat
+    t = np.clip(t * edge + 0.5 * glint * (0.15 + lively), -0.1, 1.4)
     col = lo + (hi - lo) * t[..., None]
     ice = (smooth01((col.mean(2) - 165) / 70) * 0.8)[..., None]              # the brightest nacre turns a cool blue-white
-    col = col * (1 - ice) + np.minimum(col, 255) * np.array([0.91, 0.945, 1.035], np.float32) * ice
+    col = col * (1 - ice) + np.minimum(col, 255) * np.array([0.945, 0.96, 1.02], np.float32) * ice
     # growth rings where the shell is calm: broad soft bands, a pale lip on each scale, a little fog
     lip = np.exp(-((bf - 0.06) / 0.05) ** 2) * (0.5 + 0.5 * np.sin(a0 * 3 + bi * 2.4))
-    col += ((rings * 3.0 + lip * 7.0 + iso * 3.0 + cloud * 2.0 + feather * 2.0) * (0.2 + calm))[..., None]
+    col += ((rings * 3.0 + lip * 5.0 + iso * 3.0 + cloud * 2.0 + feather * 1.0) * (0.2 + calm))[..., None]
     # keep the broad light/dark layout of the shell on the measured palette (clouds must not drift it)
     want = cv2.GaussianBlur(lo + (hi - lo) * 0.38, (0, 0), S / 7)
     have = cv2.GaussianBlur(col, (0, 0), S / 7)
@@ -334,8 +334,9 @@ def nacre(S=1200, P=None):
     emb = np.clip((-gx * 0.6 - gy * 0.8) * 10, -1, 1)
     col *= (1 + P["emboss"] * emb)[..., None]
     # slow iridescent drift: rose <-> sea-green
-    hue = (noise(S, S, S // 5, 3, 75) - 0.5) * 1.6
-    col *= np.dstack([1 + 0.06 * hue, 1 - 0.035 * hue, 1 - 0.05 * hue])
+    hue = (noise(S, S, S // 5, 3, 75) - 0.5) * 1.6 - 0.4 * lively          # the lively nacre runs cooler (silver-blue)
+    hue2 = (noise(S, S, S // 7, 2, 77) - 0.5) * 2.2 * calm                    # rose and blue-grey bloom in the calm shell
+    col *= np.dstack([1 + 0.04 * hue + 0.05 * hue2, 1 - 0.025 * hue - 0.02 * hue2, 1 - 0.035 * hue - 0.045 * hue2])
     col = cv2.GaussianBlur(col, (0, 0), P["blur"])
     return np.clip(col, 0, 255)
 
