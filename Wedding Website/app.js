@@ -117,7 +117,7 @@
     halfL.style.opacity = halfR.style.opacity = String(1 - clamp01((p - 0.86) / 0.14));
   }
   // ---- the envelope opening, timed frame by frame against the reference video (30 fps) ----
-  const flap = $("#flap"), flapFront = $(".flap-face.front"), seal = $("#seal"), pocket = $(".env-shadow");
+  const flap = $("#flap"), flapDim = $("#flapDim"), flapShadow = $("#flapShadow"), seal = $("#seal"), pocket = $(".env-shadow");
   function smoothCurve(pts) {                 // monotone cubic through [x, y] keys (no overshoot)
     const n = pts.length, xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
     const d = [], m = new Array(n).fill(0);
@@ -144,7 +144,7 @@
     [1.73, .09], [1.83, .04], [1.93, 0], [2.05, -.09]]);
   const SEAL_SQUASH = [[0, 1], [40, .95], [62, .77], [70, .56], [76, .4], [84, .27], [90, .16], [100, .06]];   // the seal reads thicker than the flat flap
   const SEAL_LIGHT = [[0, 1], [30, 1.3], [55, 1.5], [70, 1.3], [82, 1.0], [95, .85]];                        // catches the light as it tilts up
-  const FLAP_LIGHT = [[0, 1], [45, 1.06], [65, .92], [80, .78], [95, .6]];
+  const FLAP_DIM = [[0, 0], [45, 0], [65, .12], [80, .34], [95, .6]];                                         // flap turns away from the light
   const POCKET = [[0, 0], [.2, 1], [1.05, 1], [1.4, .58], [1.7, .22], [1.98, 0]];                           // shadow inside the envelope
   function flapAngle(r, L, P) {               // solve  cos(a) * P / (P - L sin a) = r   (perspective rotation about the top edge)
     let lo = 0, hi = 1.95;
@@ -162,7 +162,8 @@
       const T = t * DUR;
       const a = flapAngle(tipHeight(T), Lf, P), deg = a * 180 / Math.PI;
       flap.style.transform = `rotateX(${deg.toFixed(3)}deg)`;
-      flapFront.style.filter = `brightness(${lerpTab(FLAP_LIGHT, deg).toFixed(3)}) drop-shadow(0 2px 2px rgba(25,14,22,${(0.38 * (1 - clamp01(deg / 60))).toFixed(3)})) drop-shadow(0 9px 11px rgba(25,14,22,${(0.62 * (1 - clamp01(deg / 70))).toFixed(3)}))`;
+      flapDim.style.opacity = lerpTab(FLAP_DIM, deg).toFixed(3);
+      flapShadow.style.opacity = (1 - clamp01(deg / 65)).toFixed(3);
       const Z = Ls * Math.sin(a), m = P / (P - Z), dy = Ls * Math.cos(a) * m - Ls;
       const sq = lerpTab(SEAL_SQUASH, deg);
       seal.style.transform = `translate(-50%, -50%) translateY(${dy.toFixed(2)}px) scale(${m.toFixed(4)}, ${(m * sq).toFixed(4)})`;
@@ -184,15 +185,15 @@
     const envBox = $("#envBox"), slide = smoothCurve([[0, 0], [.1, .085], [.25, .29], [.5, .61], [.75, .86], [1, 1]]);
     await animate(480, t => { envBox.style.transform = `translateY(${(slide(t) * 104).toFixed(2)}%)`; });
     await lift;
-    await wait(1200);                          // the wrapped card rests a moment
+    await wait(800);                           // the wrapped card rests a moment
     await animate(1350, t => {                 // the bow is pulled undone: loops slip into the knot, tails draw out to the sides
       const i = Math.round(ease(t) * (BOW_FRAMES - 1));
       const src = bowSrc(i);
       if (!bowImg.src.endsWith(src)) bowImg.src = src;
     });
     animate(240, t => { bowImg.style.opacity = String(1 - t); });
-    setTimeout(() => body.classList.add("revealed"), 1300);   // wording fades in once the card is clear
-    await animate(1300, setDiamond);
+    setTimeout(() => body.classList.add("revealed"), 1650);   // wording fades in once the card is clear
+    await animate(1450, setDiamond);
     body.classList.remove("locked");
     window.scrollTo(0, 0);
     op.classList.add("gone");
@@ -212,41 +213,56 @@
   }
   tick(); setInterval(tick, 1000);
 
-  // ---------- pearl frame: a rectangle of small seed pearls, with a big pearl or a rhinestone flower every few beads ----------
+  // ---------- pearl frame: a square string of glass-clear seed pearls on the shell; a large pearl at each corner, and along
+  //            each side three larger pieces (cut crystals and six-petal flowers) with four seed pearls between them ----------
   const pf = $("#pearlFrame");
   function drawPearls() {
     const r = pf.getBoundingClientRect(); const W = r.width, H = r.height;
     if (!W) return;
-    const x0 = W * 0.085, x1 = W * 0.915, y0 = H * 0.095, y1 = H * 0.905;
-    const step = W * 0.028, small = W * 0.0074, big = W * 0.0165;
-    const pts = [];
-    const side = (ax, ay, bx, by) => {
-      const L = Math.hypot(bx - ax, by - ay), n = Math.max(1, Math.round(L / step));
-      for (let i = 0; i < n; i++) pts.push([ax + (bx - ax) * i / n, ay + (by - ay) * i / n, i]);
-    };
-    side(x0, y0, x1, y0); side(x1, y0, x1, y1); side(x1, y1, x0, y1); side(x0, y1, x0, y0);
+    const x0 = W * 0.101, x1 = W * 0.899, y0 = H * 0.105, y1 = H * 0.907;
+    const rs = W * 0.0076, rb = W * 0.0185, rg = W * 0.0175, rf = W * 0.017;
+    const n = v => v.toFixed(2);
     let s = `<defs>
-      <radialGradient id="pg" cx="34%" cy="30%" r="72%"><stop offset="0" stop-color="#fbf9fc"/><stop offset=".3" stop-color="#d9d2dc"/><stop offset=".75" stop-color="#968b9b"/><stop offset="1" stop-color="#5e5463"/></radialGradient>
-      <radialGradient id="bg" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#f1edf3"/><stop offset=".7" stop-color="#bdb3c0"/><stop offset="1" stop-color="#7a6f7f"/></radialGradient>
-      <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#d9d3dd"/><stop offset=".55" stop-color="#9a90a0"/><stop offset="1" stop-color="#f3eff5"/></linearGradient>
-      <filter id="ps" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="${(W * .002).toFixed(2)}" stdDeviation="${(W * .0022).toFixed(2)}" flood-color="#251c2a" flood-opacity=".55"/></filter></defs><g filter="url(#ps)">`;
-    const pearlAt = (x, y, rr, grad) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rr.toFixed(2)}" fill="url(#${grad})"/>`;
-    const crystal = (x, y, rr) => {                    // six-petal rhinestone flower with a pearl heart
+      <radialGradient id="pgBody" cx="36%" cy="28%" r="82%"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset=".42" stop-color="#ece6ee" stop-opacity=".12"/><stop offset=".78" stop-color="#8c7a8c" stop-opacity=".2"/><stop offset="1" stop-color="#3f2e42" stop-opacity=".55"/></radialGradient>
+      <radialGradient id="pgSpec"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".5" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+      <linearGradient id="pgRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".45" stop-color="#7d6c7e" stop-opacity=".35"/><stop offset="1" stop-color="#33243a" stop-opacity=".8"/></linearGradient>
+      <linearGradient id="pgPetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".62"/><stop offset="1" stop-color="#e3dbe6" stop-opacity=".32"/></linearGradient>
+      <filter id="ps" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="${n(W * .0022)}" dy="${n(W * .004)}" stdDeviation="${n(W * .003)}" flood-color="#281b2c" flood-opacity=".55"/></filter></defs><g filter="url(#ps)">`;
+    const bead = (x, y, R, big) => {
+      let g = `<circle cx="${n(x)}" cy="${n(y)}" r="${n(R)}" fill="url(#pgBody)" stroke="url(#pgRim)" stroke-width="${n(Math.max(.6, R * .15))}"/>`
+        + `<ellipse cx="${n(x - R * .2)}" cy="${n(y - R * .34)}" rx="${n(R * .42)}" ry="${n(R * .3)}" fill="url(#pgSpec)"/>`;
+      if (big) {                                       // light pooling low inside the dome, as in a drop of glass
+        const a0 = .25, a1 = 1.9, q = R * .62;
+        g += `<path d="M${n(x + Math.cos(a0) * q)} ${n(y + Math.sin(a0) * q)}A${n(q)} ${n(q)} 0 0 1 ${n(x + Math.cos(a1) * q)} ${n(y + Math.sin(a1) * q)}" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="${n(R * .18)}" stroke-linecap="round"/>`;
+      }
+      return g;
+    };
+    const gem = (x, y, R) => {                         // round cut crystal: dark girdle, bright table, a few facet lines
+      let g = bead(x, y, R, false) + `<circle cx="${n(x)}" cy="${n(y)}" r="${n(R * .9)}" fill="none" stroke="#3a2a40" stroke-opacity=".5" stroke-width="${n(R * .13)}"/>`;
+      for (let k = 0; k < 4; k++) {
+        const a = k * Math.PI / 4 + .3, c = Math.cos(a) * R * .74, d = Math.sin(a) * R * .74;
+        g += `<path d="M${n(x - c)} ${n(y - d)}L${n(x + c)} ${n(y + d)}" stroke="#fff" stroke-opacity=".38" stroke-width="${n(R * .12)}"/>`;
+      }
+      return g + `<circle cx="${n(x)}" cy="${n(y)}" r="${n(R * .34)}" fill="#fff" fill-opacity=".5"/>`;
+    };
+    const flower = (x, y, R) => {                      // six narrow white petals round a tiny pearl
       let g = "";
       for (let k = 0; k < 6; k++) {
-        const a = k * Math.PI / 3, px = x + Math.cos(a) * rr * .55, py = y + Math.sin(a) * rr * .55;
-        g += `<ellipse cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" rx="${(rr * .48).toFixed(2)}" ry="${(rr * .3).toFixed(2)}" transform="rotate(${k * 60} ${px.toFixed(1)} ${py.toFixed(1)})" fill="url(#cg)" stroke="#8b8191" stroke-width=".5"/>`;
+        const a = k * 60 + 30, px = x + Math.cos(a * Math.PI / 180) * R * .56, py = y + Math.sin(a * Math.PI / 180) * R * .56;
+        g += `<ellipse cx="${n(px)}" cy="${n(py)}" rx="${n(R * .46)}" ry="${n(R * .22)}" transform="rotate(${a} ${n(px)} ${n(py)})" fill="url(#pgPetal)" stroke="#4a3a50" stroke-opacity=".4" stroke-width=".5"/>`;
       }
-      return g + pearlAt(x, y, rr * .36, "bg");
+      return g + bead(x, y, R * .26, false);
     };
-    const cornerish = (x, y) => (Math.abs(x - x0) < 1 || Math.abs(x - x1) < 1) && (Math.abs(y - y0) < 1 || Math.abs(y - y1) < 1);
-    let k = 0;
-    pts.forEach(([x, y, i]) => {
-      if (cornerish(x, y)) { s += pearlAt(x, y, big * 1.05, "bg"); k = 0; return; }
-      k++;
-      if (k % 7 === 0) s += (k % 14 === 0) ? crystal(x, y, big * 1.25) : pearlAt(x, y, big, "bg");
-      else s += pearlAt(x, y, small, "pg");
-    });
+    const between = [.26, .42, .58, .74];              // the four seed pearls of each quarter
+    const side = (ax, ay, bx, by, mids) => {
+      for (let q = 0; q < 4; q++) {
+        const fx = t => ax + (bx - ax) * (q + t) / 4, fy = t => ay + (by - ay) * (q + t) / 4;
+        if (q === 0) s += bead(ax, ay, rb, true);
+        else s += mids[q - 1] === "f" ? flower(fx(0), fy(0), rf) : gem(fx(0), fy(0), rg);
+        between.forEach(t => { s += bead(fx(t), fy(t), rs, false); });
+      }
+    };
+    side(x0, y0, x1, y0, "fgf"); side(x1, y0, x1, y1, "gfg"); side(x1, y1, x0, y1, "fgf"); side(x0, y1, x0, y0, "gfg");
     s += "</g>";
     pf.setAttribute("viewBox", `0 0 ${W} ${H}`);
     pf.innerHTML = s;
@@ -264,20 +280,27 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const w = r.width, h = r.height;
     ctx.globalCompositeOperation = "source-over";
-    const g = ctx.createLinearGradient(0, 0, w * .6, h);
-    g.addColorStop(0, "#d9d4dd"); g.addColorStop(.5, "#cdc7d2"); g.addColorStop(1, "#c1bac7");
+    const g = ctx.createLinearGradient(0, 0, w * .5, h);              // flat, matt lilac-grey, a breath lighter at the top
+    g.addColorStop(0, "#d3ccde"); g.addColorStop(.5, "#cec7da"); g.addColorStop(1, "#c6bfd3");
     ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-    const sh = ctx.createRadialGradient(w * .38, h * .3, 2, w * .45, h * .4, w * .8);   // soft satin sheen
-    sh.addColorStop(0, "rgba(255,255,255,.35)"); sh.addColorStop(1, "rgba(255,255,255,0)");
+    const sh = ctx.createRadialGradient(w * .4, h * .3, 2, w * .45, h * .4, w * .9);
+    sh.addColorStop(0, "rgba(255,255,255,.14)"); sh.addColorStop(1, "rgba(255,255,255,0)");
     ctx.fillStyle = sh; ctx.fillRect(0, 0, w, h);
-    ctx.fillStyle = "#4b4452"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    [[.3, .2, .5, "255,255,255", .10], [.72, .36, .42, "196,188,214", .16], [.34, .68, .5, "224,214,230", .12], [.66, .82, .4, "190,184,208", .14], [.5, .5, .3, "236,228,240", .08]]
+      .forEach(([x, y, rr, c, a]) => {                               // faint cloudiness, like brushed foil
+        const m = ctx.createRadialGradient(w * x, h * y, 0, w * x, h * y, w * rr);
+        m.addColorStop(0, `rgba(${c},${a})`); m.addColorStop(1, `rgba(${c},0)`);
+        ctx.fillStyle = m; ctx.fillRect(0, 0, w, h);
+      });
+    ctx.fillStyle = ctx.strokeStyle = "#2f2936"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     const words = (C.scratchText || "Scratch to reveal").split(" ");
     const l1 = words.slice(0, 1).join(" "), l2 = words.slice(1).join(" ");
     const font = '"Monsieur La Doulaise", "Pinyon Script", cursive';
-    ctx.font = `${Math.round(w * 0.2)}px ${font}`;
-    ctx.fillText(l1, w / 2, h * 0.455);
-    ctx.font = `${Math.round(w * 0.16)}px ${font}`;
-    ctx.fillText(l2, w / 2, h * 0.56);
+    ctx.font = `100px ${font}`;                                       // both lines one size; the first word spans ~half the oval
+    const fs = Math.min(w * 0.26, 100 * (w * 0.45) / Math.max(1, ctx.measureText(l1).width));
+    ctx.font = `${fs.toFixed(1)}px ${font}`;
+    ctx.lineWidth = Math.max(.4, fs * 0.012);                          // the hairline script reads a little firmer, as in print
+    [[l1, 0.448], [l2, 0.568]].forEach(([t, y]) => { ctx.fillText(t, w / 2, h * y); ctx.strokeText(t, w / 2, h * y); });
   }
   function scratchAt(e) {
     const r = cv.getBoundingClientRect();

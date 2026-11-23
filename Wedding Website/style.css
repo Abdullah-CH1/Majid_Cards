@@ -78,15 +78,17 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 .cd-soon { position: relative; font-family: "Monsieur La Doulaise", "Pinyon Script", cursive; font-size: calc(var(--u) * 7.9); line-height: 1.15; margin-top: calc(var(--u) * 1.8); color: #dcd7e0; text-shadow: 0 1px 1px rgba(25,20,40,.45); }
 
 /* ============ 3. pearl + scratch ============ */
-.pearl-sec { position: relative; width: 100%; aspect-ratio: 900 / 960; background: #8f8491 url(assets/pearl.jpg) center / cover; overflow: hidden;
-  box-shadow: inset 0 8px 12px -10px rgba(20,15,30,.6); }
+.pearl-sec { position: relative; width: 100%; aspect-ratio: 1 / 1; background: #988d99 url(assets/pearl.jpg) center / cover; overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 9px 12px -10px rgba(20,15,30,.55), inset 0 -1px 0 rgba(60,45,60,.25); }
 .pearl-frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .cameo {
-  position: absolute; left: 50%; top: 50%; width: 37.5%; aspect-ratio: 1 / 1.41; translate: -50% -50%;
+  position: absolute; left: 50.3%; top: 50.3%; width: 34.6%; aspect-ratio: 1 / 1.468; translate: -50% -50%;
   border-radius: 50%; overflow: hidden; background: #2b2630;
-  box-shadow: 0 0 0 calc(var(--u) * .35) #8d8490, 0 0 0 calc(var(--u) * .75) #e9e3e6, 0 0 0 calc(var(--u) * 1.05) #b3a9b0,
-              0 0 0 calc(var(--u) * 1.35) #ece6e9, 0 0 0 calc(var(--u) * 1.75) #d7cfd4, 0 0 0 calc(var(--u) * 2.05) #7f7683,
-              0 calc(var(--u) * 1.2) calc(var(--u) * 3.5) rgba(25,15,30,.5);
+  /* turned oval moulding, from the photo outwards: dark lip, two fine bright beads with a groove between, a broad grey-lilac band, outer edge */
+  box-shadow: 0 0 0 calc(var(--u) * .3) #8a8294, 0 0 0 calc(var(--u) * .6) #cfc8d8, 0 0 0 calc(var(--u) * .85) #786f81,
+              0 0 0 calc(var(--u) * 1.15) #c8c1d2, 0 0 0 calc(var(--u) * 1.4) #948c9e, 0 0 0 calc(var(--u) * 2.25) #a199ab,
+              0 0 0 calc(var(--u) * 2.48) #837a8c,
+              0 calc(var(--u) * .5) calc(var(--u) * 1.5) calc(var(--u) * 2.3) rgba(35,22,38,.38);
 }
 .cameo img { width: 100%; height: 100%; object-fit: cover; }
 .cameo canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; transition: opacity .9s ease; }
@@ -125,18 +127,18 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 .wrap.left { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
 .wrap.right { clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
 /* stretched folds fanning out from each pinch point while the fabric is pulled */
-.folds { position: absolute; top: 50%; width: 150%; aspect-ratio: 1; translate: -50% -50%; opacity: var(--g, 0); pointer-events: none;
-  background: repeating-conic-gradient(from 2deg, rgba(255,250,255,.50) 0deg 2.5deg, rgba(255,250,255,0) 2.5deg 7deg, rgba(85,55,80,.20) 7deg 9.5deg, rgba(255,250,255,0) 9.5deg 14deg);
+.folds { position: absolute; top: 50%; width: 150%; aspect-ratio: 1; translate: -50% -50%; opacity: calc(var(--g, 0) * .7); pointer-events: none;
+  background: repeating-conic-gradient(from 4deg, rgba(255,250,255,0) 0deg, rgba(255,250,255,.42) 5deg, rgba(255,250,255,0) 11deg, rgba(85,55,80,.18) 17deg, rgba(255,250,255,0) 24deg 31deg);
   -webkit-mask: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.55) 30%, transparent 75%); mask: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.55) 30%, transparent 75%); }
 .wrap.left .folds { left: calc(50% - var(--B, 0%)); }
 .wrap.right .folds { left: calc(50% + var(--B, 0%)); }
 /* the ribbon band: two halves, each stays gathered at its pinch point and is drawn aside with it */
 .band-half { position: absolute; top: 44.36%; height: 11.28%; width: 50%; background: url(assets/ribbon.webp) no-repeat; background-size: 200% 100%;
-  filter: contrast(1.4) saturate(1.5) brightness(.85); will-change: transform, opacity; }
+  filter: contrast(1.1) saturate(1.1); will-change: transform, opacity; }
 .band-half.left { left: 0; background-position: left center; transform-origin: 0% 50%; }
 .band-half.right { right: 0; background-position: right center; transform-origin: 100% 50%; }
 .bow { position: absolute; left: 0; width: 100%; top: 33.1%; aspect-ratio: 900 / 760; pointer-events: none; user-select: none;
-  filter: drop-shadow(0 3px 5px rgba(70,45,65,.3)) contrast(1.45) saturate(1.5) brightness(.84); will-change: opacity; }
+  filter: drop-shadow(0 3px 5px rgba(70,45,65,.3)) contrast(1.12) saturate(1.1); will-change: opacity; }
 
 /* envelope: fills the screen. The top flap runs from the sides (33.5% down) to its tip under the seal (53.5%);
    it lifts toward the viewer around its top edge (JS drives the angle frame by frame, measured from the video),
@@ -149,7 +151,12 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
   background: linear-gradient(180deg, rgba(30,19,28,.92), rgba(32,21,30,.80) 45%, rgba(36,24,34,.62) 80%, rgba(36,24,34,.55)); }
 .flap { position: absolute; left: 0; top: 0; width: 100%; height: 56%; transform-origin: 50% 0; transform-style: preserve-3d; z-index: 3; }
 .flap-face { position: absolute; inset: 0; background: center / 100% 100% no-repeat; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.flap-face.front { background-image: url(assets/envelope-flap.webp); filter: drop-shadow(0 2px 2px rgba(25,14,22,.38)) drop-shadow(0 9px 11px rgba(25,14,22,.62)); }
+.flap-face.front { background-image: url(assets/envelope-flap.webp); }
+/* the same flap, darkened: cross-fades in as the flap turns away from the light (opacity driven by JS) */
+.flap-face.dim { background-image: url(assets/envelope-flap-dim.webp); opacity: 0; }
+/* soft shadow the closed flap casts on the envelope (lies on the envelope, fades as the flap lifts) */
+.flap-shadow { position: absolute; left: 0; top: 0; width: 100%; height: 59.08%; pointer-events: none;
+  background: url(assets/envelope-flap-shadow.webp) center / 100% 100% no-repeat; }
 .flap-face.back { background-image: url(assets/envelope-flap-back.webp); transform: rotateX(180deg); }
 .seal {
   position: absolute; left: 50%; top: 51.3%; width: 40%; aspect-ratio: 600 / 660; transform: translate(-50%, -50%); z-index: 6;

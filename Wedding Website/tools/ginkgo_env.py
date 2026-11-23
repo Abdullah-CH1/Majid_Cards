@@ -114,7 +114,7 @@ def leaf_fields(cx, cy, R, ang, spread=55, seed=0, notch=0.06, veins=1.0, folds=
     h += 0.9 * vein
     # thin ruffled edge
     nearm = smooth01((rc - 0.78) / 0.22)
-    h += ruffle * nearm * (6.0 * np.sin(t * sp * R / 42.0 + ph[2] + 0.8) + 2.0 * np.sin(t * sp * R / 15.0 + ph[3] + 0.5))
+    h += ruffle * nearm * (8.0 * np.sin(t * sp * R / 42.0 + ph[2] + 0.8) + 2.0 * np.sin(t * sp * R / 15.0 + ph[3] + 0.5))
     h += ruffle * 4.0 * np.exp(-ds / 16.0) * smooth01((rc - 0.4) / 0.3) * np.sin(r / 40.0 + ph[4] + 3 * np.sign(t) + 0.8)   # wavy sides
     lipw = smooth01((rn - 0.18) / 0.25)
     h += 3.2 * np.exp(-(np.clip(dmin, 0, None) / 4.5) ** 2) * lipw          # rolled, up-turned edge
@@ -167,7 +167,7 @@ class Canvas:
         rim = np.clip((a - cv2.GaussianBlur(a, (0, 0), 3.4)) * 2.4, 0, 1)      # glossy up-turned edge catches the light
         col = col + 88 * rim[..., None]
         if gloss is not None:                                                     # veins read as fine bright lines
-            col = col + 95 * gloss[..., None]
+            col = col + 80 * gloss[..., None]
         col = np.clip(col, 0, 255)
         a2 = full[y0:y0 + hh, x0:x0 + ww][..., None]
         reg = self.rgb[y0:y0 + hh, x0:x0 + ww]
@@ -214,13 +214,13 @@ def build_body():
     bb = (W, H)
     left_clip = sides * smooth01((W / 2 + 4 - xx) / 2) ; right_clip = sides * smooth01((xx - W / 2 + 4) / 2)
     # leaves on the side flaps (they run on under the bottom flap)
-    for p in [dict(cx=330, cy=1180, R=560, ang=-128, spread=50, seed=100),
-              dict(cx=300, cy=1290, R=440, ang=-174, spread=44, seed=102, fold=-0.6),
-              dict(cx=300, cy=1075, R=420, ang=-160, spread=42, seed=101)]:
+    for p in [dict(cx=330, cy=1180, R=480, ang=-128, spread=50, seed=100),
+              dict(cx=300, cy=1290, R=390, ang=-174, spread=44, seed=102, fold=-0.6),
+              dict(cx=300, cy=1075, R=370, ang=-160, spread=42, seed=101)]:
         cv.layer(leaf_fields(**p, bbox=bb), left_clip)
-    for p in [dict(cx=600, cy=1180, R=560, ang=-52, spread=50, seed=110),
-              dict(cx=594, cy=1345, R=400, ang=-4, spread=42, seed=112),
-              dict(cx=560, cy=1131, R=460, ang=-16, spread=46, seed=111)]:
+    for p in [dict(cx=600, cy=1180, R=480, ang=-52, spread=50, seed=110),
+              dict(cx=594, cy=1345, R=360, ang=-4, spread=42, seed=112),
+              dict(cx=560, cy=1131, R=400, ang=-16, spread=46, seed=111)]:
         cv.layer(leaf_fields(**p, bbox=bb), right_clip)
     # bottom flap
     bline = H * (BOT_TIP_Y + (BOT_SIDE_Y - BOT_TIP_Y) * ax)
@@ -233,10 +233,10 @@ def build_body():
     # ginkgo sprig on the bottom flap: twig up the middle, leaves alternating, upper leaves on top
     twig = [(452 + 5 * math.sin(k / 9), H * 0.62 + k * (H * 0.40 / 40)) for k in range(41)]
     cv.layer(stem_fields(twig, 7, bb), bot)
-    sprig = [dict(cx=450, cy=2080, R=560, ang=-92, spread=62, seed=130),     # fills the very bottom
-             dict(cx=478, cy=1890, R=520, ang=-34, spread=50, seed=131),    # lower right
-             dict(cx=455, cy=1770, R=660, ang=-146, spread=50, seed=132),   # lower left
-             dict(cx=462, cy=1600, R=540, ang=-38, spread=50, seed=133),    # big right
+    sprig = [dict(cx=450, cy=2080, R=500, ang=-92, spread=62, seed=130),     # fills the very bottom
+             dict(cx=478, cy=1890, R=440, ang=-34, spread=50, seed=131),    # lower right
+             dict(cx=455, cy=1770, R=540, ang=-146, spread=50, seed=132),   # lower left
+             dict(cx=462, cy=1600, R=460, ang=-38, spread=50, seed=133),    # big right
              dict(cx=452, cy=1445, R=360, ang=-124, spread=46, seed=134)]   # upper left
     for p in sprig:
         cv.layer(leaf_fields(**p, bbox=bb), bot)
@@ -320,7 +320,7 @@ def build_seal(mono=("A", "L")):
     n = np.dstack([-gx, -gy, np.ones_like(h)]); n /= np.linalg.norm(n, axis=2, keepdims=True)
     nl = (n * LIGHT).sum(2); nh = np.clip((n * HALF).sum(2), 0, 1)
     diff = np.clip(nl, 0, 1); wrap = np.clip((nl + 0.4) / 1.4, 0, 1)
-    base = np.array([116, 104, 109], np.float32) * (0.96 + 0.08 * noise(SH, SW, 120, 3, 43))[..., None]
+    base = np.array([102, 90, 96], np.float32) * (0.96 + 0.08 * noise(SH, SW, 120, 3, 43))[..., None]
     lum = 0.20 + 0.42 * wrap + 0.36 * diff
     col = base * lum[..., None] + np.array([230, 222, 228], np.float32) * (0.55 * nh ** 22 + 0.14 * nh ** 5)[..., None]
     return np.clip(col, 0, 255), blob

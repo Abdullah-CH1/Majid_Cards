@@ -86,6 +86,15 @@ def envelope():
     rgb, a, frgb, fa = G.build_envelope()
     save_rgba("envelope-body.webp", rgb, a, 90)
     save_rgba("envelope-flap.webp", frgb, fa, 90)
+    # the same flap darkened (cross-faded in while it turns away from the light) -- no CSS masks: they fail on file://
+    save_rgba("envelope-flap-dim.webp", frgb * np.array([0.40, 0.36, 0.40], np.float32), fa, 86)
+    # soft shadow the closed flap casts on the envelope: contact + wide shadow, pre-blurred (900 x 1152)
+    fh = frgb.shape[0]; pad = 60
+    m = np.zeros((fh + pad, W), np.float32); m[:fh] = fa
+    sh1 = cv2.GaussianBlur(cv2.warpAffine(m, np.float32([[1, 0, 0], [0, 1, 5]]), (W, fh + pad)), (0, 0), 2.5)
+    sh2 = cv2.GaussianBlur(cv2.warpAffine(m, np.float32([[1, 0, 0], [0, 1, 21]]), (W, fh + pad)), (0, 0), 12)
+    sa = 1 - (1 - 0.38 * sh1) * (1 - 0.62 * sh2)
+    save_rgba("envelope-flap-shadow.webp", np.broadcast_to(np.array([25, 14, 22], np.float32), (fh + pad, W, 3)), sa, 86)
     # back of the flap (only seen edge-on while it lifts): plain paper of the same tone
     fh = frgb.shape[0]
     brgb = shade((noise(fh, W, 3, 2, 8) - 0.5) * 0.05, hexrgb("#8e7b88"), depth=10, amb=0.74, kd=0.28, ks=0.03)
@@ -220,51 +229,120 @@ def frame_path(x0, y0, x1, y1, peak=70, notch=34):
     return upper + lower[1:]
 
 # ---------------------------------------------------------------- mother of pearl
-def nacre(PW=900, PH=1000):
-    """polished mother-of-pearl: soft clouds of mauve and plum, faint growth rings round a point low on
-    the left, silvery flame streaks fanning out towards the upper right (blurred along the radius)"""
-    yy, xx = np.mgrid[0:PH, 0:PW].astype(np.float32)
-    cx, cy = PW * 0.44, PH * 0.50                                  # the shell's growth centre, off the lower left
-    D = int(math.hypot(PW, PH) * 0.8)
-    # streak field made in polar space (angle x radius), blurred along the radius, then unwrapped
-    NA, NR = 1440, 900
-    pn = noise(NA, NR, 3, 2, 51) * 0.6 + noise(NA, NR, 14, 2, 52) * 0.4
-    pn = cv2.GaussianBlur(pn, (0, 0), sigmaX=14, sigmaY=5.0)        # x = radius, y = angle
-    pn = (pn - pn.mean()) / (pn.std() + 1e-6)
-    ang = (np.degrees(np.arctan2(yy - cy, xx - cx)) % 360) / 360 * NA
-    rad = np.hypot(xx - cx, yy - cy) / D * NR
-    wob = (noise(PH, PW, 260, 3, 53) - 0.5) * 260 + np.hypot(xx - cx, yy - cy) * 0.55
-    streak = cv2.remap(pn, rad.astype(np.float32), ((ang + wob) % (NA - 1)).astype(np.float32), cv2.INTER_LINEAR)
-    r = np.hypot(xx - cx, yy - cy); th = np.arctan2(yy - cy, xx - cx)
-    rings = np.sin(r / 15.0 + 6 * noise(PH, PW, 260, 3, 54)) * 0.5 + 0.5
-    rings = rings * smooth01((r - 230) / 160) * smooth01((0.2 - np.cos(th + 0.8)) / 0.6)                 # rings show only near the centre (left side)
-    cloud = noise(PH, PW, 200, 4, 55)
-    cloud = np.clip((cloud - 0.5) * 1.8 + 0.5, 0, 1)
-    fan = smooth01((np.cos(th + 0.8) - 0.0) / 0.9)   # flames strongest to the upper right
-    flame = np.clip(streak * 0.5 + (cloud - 0.5) * 1.2, -2, 3)
-    flame = smooth01((flame - 0.2) / 1.1) * (0.15 + 0.9 * fan)
-    lum = 0.47 + 0.34 * (cloud - 0.5) + 0.22 * (rings - 0.5) * 1.0 + 0.08 * streak + 0.16 * (fan - 0.4)
-    lum = lum + 0.42 * flame
-    lum = cv2.GaussianBlur(lum.astype(np.float32), (0, 0), 1.8)
-    stops = [(0.0, "#3e3644"), (0.22, "#5b5062"), (0.42, "#7c6f7f"), (0.6, "#9d8f9c"), (0.76, "#c0b5c0"), (0.92, "#e2dde6"), (1.2, "#fbfaff")]
-    xs = np.array([s for s, _ in stops]); cs = np.array([hexrgb(c) for _, c in stops])
-    l = np.clip(lum, 0, 1.2)
-    col = np.dstack([np.interp(l, xs, cs[:, k]) for k in range(3)]).astype(np.float32)
-    # iridescence: slow drift between rose and steel blue
-    hue = noise(PH, PW, 260, 2, 56) - 0.5
-    hue2 = np.sin(r / 60.0 + th * 2) * 0.5
-    tint = np.dstack([1.03 + 0.12 * hue + 0.02 * hue2, 1 + 0.02 * hue - 0.02 * np.abs(hue), 0.99 - 0.07 * hue + 0.04 * hue2])
-    col *= tint
-    grey = col.mean(2, keepdims=True)
-    col = col * 0.8 + grey * 0.2                                     # silvery, less candy-purple
-    hm = cv2.GaussianBlur((lum * 0.5 + rings * 0.02).astype(np.float32), (0, 0), 2.5)
-    rgb = shade(hm, col, light=(-0.4, -0.6, 0.7), depth=24, amb=0.88, kd=0.18, ks=0.16, shin=26, spec_rgb=(255, 252, 255))
-    return np.clip(rgb, 0, 255)
+# colour statistics measured from the reference video (6 x 6 cells over the section, already corrected for the
+# camera's exposure): the darkest and the brightest nacre tone found in each cell. Only these 72 colours come
+# from the video; every streak, ring and cloud below is generated.
+NACRE_LO = """7b6f79 7c727c 8a828c 8d808a 8e828e 827883
+776e79 80747d 827984 8c818c 8c7e89 9d95a3
+776e79 736a75 7c737e 847883 74666f 897986
+6b6976 6a6573 716675 7d6d7b 857887 826f7f
+6d636f 675f70 7b6a7a 786878 827080 806474
+68606a 626070 646472 786a7a 896c80 836774"""
+NACRE_HI = """97909a aaa3b0 e2dee8 cfc3d0 ffffff ffffff
+9b909a aea5b0 f8f8ff dbd5e0 ffffff ffffff
+9a929c 978a95 b8b1bd eeebf9 e1e0f0 ffffff
+8d8993 7e7987 948694 c4b8c7 e4ddeb fff9ff
+8f8993 887889 9d8794 a99cab c8b8cb f1dbe6
+928c96 86828f 8f818f bba3b1 d5b8cb d3b4c4"""
+
+def _palette_map(txt, S):
+    g = np.array([[hexrgb(c) for c in row.split()] for row in txt.strip().splitlines()], np.float32)
+    n = g.shape[0]
+    g = np.pad(g, ((1, 1), (1, 1), (0, 0)), mode="edge")
+    big = cv2.resize(g, (S * (n + 2) // n, S * (n + 2) // n), interpolation=cv2.INTER_CUBIC)
+    o = S // n
+    big = big[o:o + S, o:o + S]
+    return cv2.GaussianBlur(big, (0, 0), S / n * 0.45)
+
+def _polar_noise(NA, NR, sa, sr, seed, octaves=3):
+    """noise on an (angle, log-radius) grid, periodic in angle; sa/sr = feature size in samples"""
+    K = NA // 6
+    n = noise(NA + K, NR, 4, 1, seed)                       # white-ish
+    out = np.zeros_like(n); amp = 1.0; tot = 0
+    for o in range(octaves):
+        out += cv2.GaussianBlur(n if o == 0 else noise(NA + K, NR, 4, 1, seed + 17 * o), (0, 0), sigmaX=sr / 2 ** o, sigmaY=sa / 2 ** o) * amp
+        tot += amp; amp *= 0.55
+    out /= tot
+    w = np.linspace(0, 1, K, dtype=np.float32)[:, None]
+    out[:K] = out[NA:NA + K] * (1 - w) + out[:K] * w         # cross-fade the seam
+    out = out[:NA]
+    return (out - out.mean()) / (out.std() + 1e-6)
+
+def _rank01(f):
+    """histogram-equalise to a uniform 0..1 field"""
+    flat = f.ravel(); order = np.argsort(flat, kind="stable")
+    r = np.empty_like(order, dtype=np.float32); r[order] = np.linspace(0, 1, flat.size, dtype=np.float32)
+    return r.reshape(f.shape)
+
+def nacre(S=1200, P=None):
+    """mother-of-pearl as in the reference video: foggy grey-mauve shell, soft clouds, broad growth rings round the
+    cameo, feathery streaks that zig-zag from ring to ring, silver-white flames towards the upper right, rose
+    towards the lower right. Square; the cameo sits on the centre."""
+    P = dict(swirl=0.12, zig=0.06, warp=0.8, cx=0.503, cy=0.503, w_iso=1.15, w_cloud=0.45, w_feather=0.3, w_fine=0.08, w_ring=0.26, flame=0.85,
+             t0=0.29, t1=0.25, t2=0.05, emboss=0.03, blur=1.6, **(P or {}))
+    yy, xx = np.mgrid[0:S, 0:S].astype(np.float32)
+    dx, dy = (xx / S - P["cx"]), (yy / S - P["cy"])
+    warp1 = (noise(S, S, int(S / 1.6), 2, 61) - 0.5) * 1.6; warp2 = (noise(S, S, S // 3, 3, 62) - 0.5)
+    r = np.hypot(dx, dy * 0.92) + 1e-4
+    th = np.arctan2(dy, dx)
+    rr = r + 0.085 * warp2 + 0.03 * warp1                                   # ring radius, gently wobbling
+    lam = 0.066                                             # ring spacing (of the section width)
+    band = rr / (2 * lam)                                   # one overlapping "scale" of nacre per two rings
+    bi = np.floor(band); bf = band - bi
+    tri = np.abs(((band * 0.5) % 1.0) * 2 - 1) * 2 - 1      # -1..1: the barbs lean one way, then the other (soft chevrons)
+    NA, NR = 2880, 1024
+    lr = np.log(r / 0.05) / np.log(1.0 / 0.05)
+    a0 = th + P["swirl"] * np.log(r / 0.3) + warp1 * P["warp"]
+    ri = np.clip((lr + warp2 * 0.05) * NR, 0, NR - 1).astype(np.float32)
+    def samp(pn, a):
+        ai = np.minimum((((a / (2 * np.pi)) % 1.0) * NA).astype(np.float32), NA - 1.001)
+        return cv2.remap(np.vstack([pn, pn[:1]]), ri, ai, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+    ab = a0 + P["zig"] * tri * 0.3 / np.maximum(r, 0.15)       # barbs lean one way, then the other
+    cloud = samp(_polar_noise(NA, NR, 70, 45, 71, 2), a0)       # broad flames
+    feather = samp(_polar_noise(NA, NR, 13, 22, 72, 2), ab)     # feather barbs
+    fine = samp(_polar_noise(NA, NR, 5, 14, 73, 2), ab)       # hair-fine striation
+    iso = noise(S, S, S // 4, 4, 74); iso = (iso - iso.mean()) / iso.std()
+    mott = noise(S, S, S // 13, 3, 76); mott = (mott - mott.mean()) / mott.std()      # small mottling inside the flames
+    ringp = rr / lam * 2 * np.pi
+    rings = np.sin(ringp) * (0.6 + 0.4 * np.sin(ringp * 0.37 + 1.0))
+    lo = _palette_map(NACRE_LO, S); hi = _palette_map(NACRE_HI, S)
+    span = hi.mean(2) - lo.mean(2)
+    calm = 1 - smooth01((span - 45) / 80)                   # 1 where the shell is quiet (left, bottom)
+    lively = 1 - calm
+    edge = 1 - 0.10 * np.exp(-bf / 0.22) * (0.3 + calm)     # each scale is a touch darker under the lip of the next one
+    f = (P["w_iso"] * iso + P["w_cloud"] * cloud + (P["w_feather"] * feather + P["w_fine"] * fine) * (0.75 - 0.25 * lively)
+         + P["w_ring"] * rings * (0.2 + 0.7 * calm))
+    z = (f - f.mean()) / f.std()
+    flame = smooth01((0.8 * iso + 0.45 * cloud + 0.5 * mott + 0.16 * feather + 0.05) / 1.25)   # silver flames, feathered along the barbs
+    t = P["t0"] + P["t1"] * z + P["t2"] * z * np.abs(z) + P["flame"] * lively * flame
+    glint = smooth01((feather + 0.7 * fine + 0.5 * mott - 1.5) / 0.9)       # small wet highlights
+    t = t + lively * (0.08 * mott + 0.09 * feather + 0.05 * fine)             # the flames are mottled and barbed, never flat
+    t = np.clip(t * edge + 0.5 * glint * (0.15 + lively), -0.25, 1.4)
+    col = lo + (hi - lo) * t[..., None]
+    ice = (smooth01((col.mean(2) - 165) / 70) * 0.8)[..., None]              # the brightest nacre turns a cool blue-white
+    col = col * (1 - ice) + np.minimum(col, 255) * np.array([0.91, 0.945, 1.035], np.float32) * ice
+    # growth rings where the shell is calm: broad soft bands, a pale lip on each scale, a little fog
+    lip = np.exp(-((bf - 0.06) / 0.05) ** 2) * (0.5 + 0.5 * np.sin(a0 * 3 + bi * 2.4))
+    col += ((rings * 3.0 + lip * 7.0 + iso * 3.0 + cloud * 2.0 + feather * 2.0) * (0.2 + calm))[..., None]
+    # keep the broad light/dark layout of the shell on the measured palette (clouds must not drift it)
+    want = cv2.GaussianBlur(lo + (hi - lo) * 0.38, (0, 0), S / 7)
+    have = cv2.GaussianBlur(col, (0, 0), S / 7)
+    col *= (want / np.maximum(have, 1)) ** 0.75
+    # gloss: light rakes across the relief from the upper left
+    hm = cv2.GaussianBlur(z, (0, 0), 2.5)
+    gy, gx = np.gradient(hm)
+    emb = np.clip((-gx * 0.6 - gy * 0.8) * 10, -1, 1)
+    col *= (1 + P["emboss"] * emb)[..., None]
+    # slow iridescent drift: rose <-> sea-green
+    hue = (noise(S, S, S // 5, 3, 75) - 0.5) * 1.6
+    col *= np.dstack([1 + 0.06 * hue, 1 - 0.035 * hue, 1 - 0.05 * hue])
+    col = cv2.GaussianBlur(col, (0, 0), P["blur"])
+    return np.clip(col, 0, 255)
 
 
 def pearl():
     print("pearl ...")
-    save_rgb("pearl.jpg", nacre(900, 1000), 88)
+    save_rgb("pearl.jpg", nacre(1200), 90)
 
 # ---------------------------------------------------------------- venue sketch + photo placeholder
 def venue_sketch():
@@ -317,7 +395,7 @@ def organza():
         cv2.line(k, (int(c - dx * c), int(c - dy * c)), (int(c + dx * c), int(c + dy * c)), 1.0, 1, cv2.LINE_AA)
         return cv2.filter2D(n, -1, k / k.sum(), borderType=cv2.BORDER_REFLECT)
     h = np.zeros((H, W), np.float32)
-    for k, (sc, amp, ang, ln) in enumerate(((260, 1.0, 62, 221), (150, 0.50, 56, 161), (90, 0.16, 68, 101), (200, 0.40, -35, 121))):
+    for k, (sc, amp, ang, ln) in enumerate(((260, 1.0, 62, 221), (140, 0.55, 56, 151), (70, 0.26, 64, 101), (200, 0.40, -35, 121))):
         n = noise(H, W, sc, 2, 70 + k)
         n = streak(n, ang, ln)
         n = (n - n.min()) / (n.max() - n.min() + 1e-6)
@@ -328,11 +406,11 @@ def organza():
     nrm = np.dstack([-gx, -gy, np.ones_like(h)]); nrm /= np.linalg.norm(nrm, axis=2, keepdims=True)
     l = np.array([-0.35, -0.7, 0.62]); l /= np.linalg.norm(l); hv = l + [0, 0, 1]; hv /= np.linalg.norm(hv)
     nl = (nrm * l).sum(2); nh = np.clip((nrm * hv).sum(2), 0, 1)
-    diff = np.clip(nl, 0, 1); spec = nh ** 30; sheen = nh ** 7
+    diff = np.clip(nl, 0, 1); spec = nh ** 24; sheen = nh ** 6
     fres = 1 - nrm[..., 2]
-    base = np.array([196, 170, 188], np.float32)
-    rgb = base * (0.36 + 0.55 * diff)[..., None] + np.array([236, 230, 255], np.float32) * (0.70 * spec + 0.15 * sheen)[..., None]
-    a = np.clip(0.14 + 1.1 * fres + 0.50 * spec + 0.08 * sheen + 0.20 * (1 - diff), 0, 0.82)
+    base = np.array([200, 168, 190], np.float32)
+    rgb = base * (0.30 + 0.55 * diff)[..., None] + np.array([236, 230, 255], np.float32) * (0.80 * spec + 0.12 * sheen)[..., None]
+    a = np.clip(0.08 + 1.0 * fres + 0.65 * spec + 0.08 * sheen + 0.18 * (1 - diff), 0, 0.85)
     save_rgba("organza.webp", np.clip(rgb, 0, 255), a, 86)
 
 def bow_frames(n=24):
