@@ -122,24 +122,21 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 .cover-box { position: absolute; left: 50%; top: 50%; width: max(100%, calc(100svh * 900 / 1950)); aspect-ratio: 900 / 1950; transform: translate(-50%, -50%); }
 
 /* sheer organza wrap: opens from the centre as a diamond, pinched at both sides by the ribbon */
-#wrapBox { filter: drop-shadow(0 0 5px rgba(60,38,58,.30)); }
 .wrap { position: absolute; inset: 0; will-change: clip-path, opacity; }
 .wrap .org { position: absolute; inset: 0; background: url(assets/organza.webp) center / 100% 100% no-repeat; }
 .wrap.left { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
 .wrap.right { clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
-/* stretched folds fanning out from each pinch point while the fabric is pulled */
-.folds { position: absolute; top: 50%; width: 150%; aspect-ratio: 1; translate: -50% -50%; opacity: calc(var(--g, 0) * .7); pointer-events: none;
-  background: repeating-conic-gradient(from 4deg, rgba(255,250,255,0) 0deg, rgba(255,250,255,.42) 5deg, rgba(255,250,255,0) 11deg, rgba(85,55,80,.18) 17deg, rgba(255,250,255,0) 24deg 31deg);
-  -webkit-mask: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.55) 30%, transparent 75%); mask: radial-gradient(closest-side, #000 0%, rgba(0,0,0,.55) 30%, transparent 75%); }
-.wrap.left .folds { left: calc(50% - var(--B, 0%)); }
-.wrap.right .folds { left: calc(50% + var(--B, 0%)); }
-/* the ribbon band: two halves, each stays gathered at its pinch point and is drawn aside with it */
-.band-half { position: absolute; top: 44.36%; height: 11.28%; width: 50%; background: url(assets/ribbon.webp) no-repeat; background-size: 200% 100%;
-  filter: contrast(1.1) saturate(1.1); will-change: transform, opacity; }
+.folds { display: none; }
+/* the rolled, gathered edge of the fabric along each side of the diamond (four strips, laid along the edges by app.js; transform only) */
+.fold-edge { position: absolute; left: 0; top: 0; width: 100px; height: 11.5%; transform-origin: 0 0; opacity: 0; pointer-events: none;
+  background: url(assets/fold.webp) center / 100% 100% no-repeat; will-change: transform, opacity; }
+/* the bow on its band: numbered frames of the untie (the knot sits at the centre of the card) */
+.bow { position: absolute; left: 0; width: 100%; top: 37.949%; aspect-ratio: 900 / 720; pointer-events: none; user-select: none; will-change: opacity; }
+/* once the knot lets go: the two gathered band halves, each drawn aside with its pinch point */
+.band-half { position: absolute; top: 43.333%; height: 13.334%; width: 50%; background: url(assets/ribbon.webp) no-repeat; background-size: 200% 100%;
+  opacity: 0; pointer-events: none; will-change: transform, opacity; }
 .band-half.left { left: 0; background-position: left center; transform-origin: 0% 50%; }
 .band-half.right { right: 0; background-position: right center; transform-origin: 100% 50%; }
-.bow { position: absolute; left: 0; width: 100%; top: 33.1%; aspect-ratio: 900 / 760; pointer-events: none; user-select: none;
-  filter: drop-shadow(0 3px 5px rgba(70,45,65,.3)) contrast(1.12) saturate(1.1); will-change: opacity; }
 
 /* envelope: fills the screen. The top flap runs from the sides (33.5% down) to its tip under the seal (53.5%);
    it lifts toward the viewer around its top edge (JS drives the angle frame by frame, measured from the video),

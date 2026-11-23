@@ -86,7 +86,7 @@
 
   // ---------- opening sequence ----------
   const op = $("#opening");
-  const BOW_FRAMES = 24;
+  const BOW_FRAMES = 34;
   const bowImg = $("#bowImg");
   const bowSrc = i => `assets/bow/bow-${String(i).padStart(2, "0")}.webp`;
   const bowCache = [];
@@ -103,18 +103,45 @@
     });
   }
   const bandL = $(".band-half.left"), bandR = $(".band-half.right");
-  const easeIn = t => t * t * t, easeOut = t => 1 - Math.pow(1 - t, 3);
+  // the four rolled fabric edges of the diamond: upper-left, lower-left, upper-right, lower-right
+  const foldEdges = [0, 1, 2, 3].map(() => { const d = document.createElement("div"); d.className = "fold-edge"; wrapBox.insertBefore(d, bandL); return d; });
+  function keyCurve(xs, ys) {                  // smooth curve through measured keys (cubic Hermite, finite-difference tangents)
+    const n = xs.length, m = xs.map((_, i) => i === 0 ? (ys[1] - ys[0]) / (xs[1] - xs[0]) : i === n - 1 ? (ys[i] - ys[i - 1]) / (xs[i] - xs[i - 1]) : (ys[i + 1] - ys[i - 1]) / (xs[i + 1] - xs[i - 1]));
+    return x => {
+      if (x <= xs[0]) return ys[0];
+      if (x >= xs[n - 1]) return ys[n - 1];
+      let i = 0; while (x > xs[i + 1]) i++;
+      const h = xs[i + 1] - xs[i], t = (x - xs[i]) / h, t2 = t * t, t3 = t2 * t;
+      return (2 * t3 - 3 * t2 + 1) * ys[i] + (t3 - 2 * t2 + t) * h * m[i] + (-2 * t3 + 3 * t2) * ys[i + 1] + (t3 - t2) * h * m[i + 1];
+    };
+  }
+  // the diamond measured from the video (frames after the knot lets go, 30 fps): half-width B and half-height A, % of the screen.
+  // A slit opens first (tall and thin), both grow steadily, then the fabric slips off past the sides and corners.
+  const DIA_FRAMES = 43.5;
+  const DIA_KEYS = [0, 2, 7, 14, 22, 27, 32, 37, 41.5, 43.5];
+  const diaB = keyCurve(DIA_KEYS, [0, 1.5, 11, 27, 46, 58, 69, 81, 97, 108]);
+  const diaA = keyCurve(DIA_KEYS, [0, 8, 17.5, 27, 41, 56, 74, 96, 122, 138]);
   function setDiamond(p) {                     // the knot lets go: the fabric opens from the centre as a diamond,
-    const e = easeOut(p) * 0.35 + ease(p) * 0.65;   // pinched left and right where the ribbon gathers pull it aside
-    const A = 96 * e, B = 66 * e;             // half-height / half-width of the diamond, % of the screen
+    const t = p * DIA_FRAMES;                  // pinched left and right where the ribbon gathers pull it aside
+    const B = Math.max(0, diaB(t)), A = Math.max(0, diaA(t));
     halfL.style.clipPath = `polygon(0 0, 50% 0, 50% ${50 - A}%, ${50 - B}% 50%, 50% ${50 + A}%, 50% 100%, 0 100%)`;
     halfR.style.clipPath = `polygon(100% 0, 50% 0, 50% ${50 - A}%, ${50 + B}% 50%, 50% ${50 + A}%, 50% 100%, 100% 100%)`;
-    wrapBox.style.setProperty("--B", `${B}%`);
-    wrapBox.style.setProperty("--g", String(Math.sin(Math.min(1, p * 1.15) * Math.PI) * 0.9));
-    const k = Math.max(0.02, 1 - B / 50);      // each band half stays gathered at its pinch point
-    bandL.style.transform = `scaleX(${k})`; bandR.style.transform = `scaleX(${k})`;
-    bandL.style.opacity = bandR.style.opacity = String(clamp01(k * 2.2));
-    halfL.style.opacity = halfR.style.opacity = String(1 - clamp01((p - 0.86) / 0.14));
+    // rolled edges: each strip runs from its pinch point to the diamond's tip, the bunched fabric on the outside
+    const bw = wrapBox.clientWidth, bh = wrapBox.clientHeight;
+    const px = B / 100 * bw, py = A / 100 * bh, len = Math.hypot(px, py), ang = Math.atan2(py, px);
+    const thick = Math.min(1, 0.06 + len / (0.6 * bw));
+    const eo = (clamp01(t / 2.5) * (1 - clamp01((t - 38) / 5))).toFixed(3);
+    const place = (el, sx, th, flip) => {
+      el.style.transform = `translate(${(bw / 2 + sx * px).toFixed(1)}px, ${(bh / 2).toFixed(1)}px) rotate(${th.toFixed(4)}rad) scale(${(len / 100).toFixed(4)}, ${(flip * thick).toFixed(3)}) translateY(-16%)`;
+      el.style.opacity = eo;
+    };
+    place(foldEdges[0], -1, -ang, -1); place(foldEdges[1], -1, ang, 1);
+    place(foldEdges[2], 1, ang - Math.PI, 1); place(foldEdges[3], 1, Math.PI - ang, -1);
+    // each band half stays gathered at its pinch point and is drawn off to its side
+    const k = Math.max(0.02, (50 - Math.max(B, 2.22)) / 47.78), ky = 0.3 + 0.7 * Math.pow(k, 0.6);
+    bandL.style.transform = bandR.style.transform = `scale(${k.toFixed(4)}, ${ky.toFixed(4)})`;
+    bandL.style.opacity = bandR.style.opacity = clamp01(k * 5).toFixed(3);
+    halfL.style.opacity = halfR.style.opacity = (1 - clamp01((t - 40) / 3.5)).toFixed(3);
   }
   // ---- the envelope opening, timed frame by frame against the reference video (30 fps) ----
   const flap = $("#flap"), flapDim = $("#flapDim"), flapShadow = $("#flapShadow"), seal = $("#seal"), pocket = $(".env-shadow");
@@ -185,13 +212,13 @@
     const envBox = $("#envBox"), slide = smoothCurve([[0, 0], [.1, .085], [.25, .29], [.5, .61], [.75, .86], [1, 1]]);
     await animate(480, t => { envBox.style.transform = `translateY(${(slide(t) * 104).toFixed(2)}%)`; });
     await lift;
-    await wait(800);                           // the wrapped card rests a moment
-    await animate(1350, t => {                 // the bow is pulled undone: loops slip into the knot, tails draw out to the sides
-      const i = Math.round(ease(t) * (BOW_FRAMES - 1));
-      const src = bowSrc(i);
+    await wait(500);                           // the wrapped card rests a moment (video: frames 135-150)
+    await animate(1600, t => {                 // the bow is pulled undone (frames follow the video): loops slip into the knot,
+      const src = bowSrc(Math.round(t * (BOW_FRAMES - 1)));   // the band is drawn tight, the last tail slides out, the knot lets go
       if (!bowImg.src.endsWith(src)) bowImg.src = src;
     });
-    animate(240, t => { bowImg.style.opacity = String(1 - t); });
+    bandL.style.opacity = bandR.style.opacity = "1";   // the last frame is exactly the two gathered band halves: swap to them
+    bowImg.style.opacity = "0";
     setTimeout(() => body.classList.add("revealed"), 1650);   // wording fades in once the card is clear
     await animate(1450, setDiamond);
     body.classList.remove("locked");

@@ -9,51 +9,60 @@ import numpy as np, cv2
 LIGHT = np.array([-0.45, -0.75, 0.55]); LIGHT /= np.linalg.norm(LIGHT)
 VIEW = np.array([0, 0, 1.0])
 HALF = (LIGHT + VIEW); HALF /= np.linalg.norm(HALF)
-BASE = np.array([200, 174, 190], np.float32)        # dusty mauve organza (RGB), like the ribbon in the video
+BASE = np.array([198, 168, 181], np.float32)        # dusty rose-grey organza (RGB), like the ribbon in the video
 
 def norm(v):
     return v / np.maximum(np.linalg.norm(v, axis=-1, keepdims=True), 1e-9)
 
-def strip(P, w, B, ns=15, weave=0.0, pleat=0.0):
-    """make quads for one ribbon piece. P: (N,3), w: (N,), B: (N,3)  -> list of (z, pts2d(4,2), rgb, alpha)"""
-    P = np.asarray(P, np.float32).copy(); B = norm(np.asarray(B, np.float32)); w = np.asarray(w, np.float32)
-    rr = np.random.default_rng(len(P) + int(abs(P[0, 0])) + int(abs(P[0, 1])))
-    def smooth_noise(n, k):
-        g = rr.standard_normal(max(4, n // k + 3)); return np.interp(np.linspace(0, len(g) - 1, n), np.arange(len(g)), g)
-    P[:, 2] += 3.0 * smooth_noise(len(P), 30)
-    B = norm(B + np.stack([np.zeros(len(P)), np.zeros(len(P)), 0.12 * smooth_noise(len(P), 28)], 1))
+def _smooth_rand(rr, n, k):
+    g = rr.standard_normal(max(4, n // k + 3)); return np.interp(np.linspace(0, len(g) - 1, n), np.arange(len(g)), g)
+
+def sheet(P, w, B, ns=24, disp=None, seed=0, opa=0.0, micro=1.0, tcut=None, lum=1.0):
+    """quads for one piece of sheer satin-organza ribbon.
+    P: (N,3) centre path, w: (N,) width, B: (N,3) cross direction, disp: (N,ns) offset along the normal (pleats, bulges).
+    tcut: (ns,) fraction of the length kept per cross position (slanted cut end).  -> list of (z, pts2d(4,2), rgb, alpha)"""
+    P = np.asarray(P, np.float32); w = np.asarray(w, np.float32); B = norm(np.asarray(B, np.float32))
+    N = len(P); rr = np.random.default_rng(seed)
     T = norm(np.gradient(P, axis=0))
-    # make B perpendicular to T
     B = norm(B - (B * T).sum(1, keepdims=True) * T)
-    N = norm(np.cross(T, B))
+    Nn = norm(np.cross(T, B))
     s = np.linspace(-1, 1, ns)
     V = P[:, None, :] + (s[None, :, None] * (w[:, None, None] / 2)) * B[:, None, :]
+    d = np.zeros((N, ns), np.float32) if disp is None else np.asarray(disp, np.float32).copy()
+    # fine lengthwise folds (the glossy streaks of the fabric) + a slow billow along the length
+    g = rr.standard_normal((max(3, N // 45 + 2), max(4, ns // 3 + 2))).astype(np.float32)
+    m = cv2.resize(g, (ns, N), interpolation=cv2.INTER_CUBIC)
+    d += micro * 0.55 * m * np.clip(w / 150.0, 0.15, 1.2)[:, None]
+    d += micro * 2.0 * _smooth_rand(rr, N, 26)[:, None] * (0.6 + 0.4 * np.sin(s * 2.1 + 1.0))[None, :]
+    V = V + d[..., None] * Nn[:, None, :]
+    if tcut is not None:                                   # slide each column back along the ribbon
+        ti = np.linspace(0, 1, N)
+        for j in range(ns):
+            tj = np.minimum(ti, tcut[j])
+            for c in range(3):
+                V[:, j, c] = np.interp(tj, ti, V[:, j, c])
+    dT = np.gradient(V, axis=0); dS = np.gradient(V, axis=1)
+    n = norm(np.cross(dT, dS))
+    n = np.where(n[..., 2:3] < 0, -n, n)
+    nv = n[..., 2]
+    nl = n @ LIGHT
+    diff = np.clip(nl, 0, 1) * 0.75 + 0.25 * np.abs(nl)
+    nh = np.clip(n @ HALF, 0, 1)
+    spec = nh ** 24; sheen = nh ** 6
+    fres = (1 - nv) ** 1.5
+    col = BASE[None, None, :] * ((0.60 + 0.44 * diff) * lum)[..., None] + np.array([252, 247, 255], np.float32) * (0.58 * spec + 0.10 * sheen)[..., None] + 26 * fres[..., None]
+    a = 0.27 + opa + 0.50 * fres + 0.42 * spec + 0.08 * sheen
+    a[:, 0] += 0.30; a[:, -1] += 0.30                      # hems: a denser woven edge
+    col[:, 0] = col[:, 0] * 0.84 + 8; col[:, -1] = col[:, -1] * 0.84 + 8
+    a = np.clip(a, 0, 0.95)
+    cq = np.clip((col[:-1, :-1] + col[1:, :-1] + col[:-1, 1:] + col[1:, 1:]) / 4, 0, 255)
+    aq = (a[:-1, :-1] + a[1:, :-1] + a[:-1, 1:] + a[1:, 1:]) / 4
+    zq = (V[:-1, :-1, 2] + V[1:, 1:, 2]) / 2
     quads = []
-    seglen = np.r_[0, np.cumsum(np.linalg.norm(np.diff(P, axis=0), axis=1))]
-    for i in range(len(P) - 1):
-        n = N[i]
-        nv = n @ VIEW
-        if nv < 0:
-            n = -n; nv = -nv
-        diff = max(0.0, float(n @ LIGHT)) * 0.55 + 0.45 * abs(float(n @ LIGHT))
-        spec = max(0.0, float(n @ HALF)) ** 14
-        fres = (1 - nv) ** 1.4
-        stripes = 1 + weave * math.sin(seglen[i] * 0.9)
-        pl = pleat[i] if hasattr(pleat, "__len__") else pleat
+    for i in range(N - 1):
         for j in range(ns - 1):
-            hem = 1.0 if (j == 0 or j == ns - 2) else 0.0
-            sj = (s[j] + s[j + 1]) / 2
-            nj = n + B[i] * (pl * math.cos(sj * math.pi * 3.0))
-            nj = nj / np.linalg.norm(nj)
-            diff = max(0.0, float(nj @ LIGHT)) * 0.55 + 0.45 * abs(float(nj @ LIGHT))
-            nh = max(0.0, float(nj @ HALF))
-            spec = nh ** 26; sheen = nh ** 6
-            col = BASE * (0.58 + 0.42 * diff) * stripes + np.array([250, 244, 255]) * (0.95 * spec + 0.18 * sheen) + 30 * fres
-            col = col * (1 + 0.04 * hem)
-            a = 0.22 + 0.48 * fres + 0.45 * spec + 0.08 * sheen + 0.22 * hem
             pts = np.array([V[i, j, :2], V[i, j + 1, :2], V[i + 1, j + 1, :2], V[i + 1, j, :2]], np.float32)
-            z = float((V[i, j, 2] + V[i + 1, j + 1, 2]) / 2)
-            quads.append((z, pts, np.clip(col, 0, 255), min(0.93, a)))
+            quads.append((float(zq[i, j]), pts, cq[i, j], float(aq[i, j])))
     return quads
 
 def _peel(quads, W, H, ss, gap=6.0):
@@ -104,80 +113,133 @@ def rasterize(groups, W, H, ss=2):
     rgbP = cv2.resize(rgbP, (W, H), interpolation=cv2.INTER_AREA)
     A = cv2.resize(A, (W, H), interpolation=cv2.INTER_AREA)
     rgb = rgbP / np.maximum(A[..., None], 1e-4)
-    rgb = cv2.GaussianBlur(rgb, (0, 0), 1.1)
+    rgb = cv2.GaussianBlur(rgb, (0, 0), 0.7)
     A = cv2.GaussianBlur(A, (0, 0), 0.5)
     return np.clip(rgb, 0, 255), np.clip(A, 0, 1)
 
 # ------------------------------------------------------------------ bow geometry
-def rot_z(v, cx, cy, ang):
-    c, s = math.cos(ang), math.sin(ang)
-    x, y = v[..., 0] - cx, v[..., 1] - cy
-    out = v.copy(); out[..., 0] = cx + c * x - s * y; out[..., 1] = cy + s * x + c * y
-    return out
+BW, BH, CX, CY = 900, 720, 450, 235            # canvas of every bow frame and of the band; the knot sits at (CX, CY)
+BAND_W = 236; BAND_HALF = 130
 
 def _sm(x):
     x = np.clip(x, 0.0, 1.0); return x * x * (3 - 2 * x)
 
-def bow_quads(u=0.0, cx=450, cy=330):
-    """u = 0 tied bow ... 1 untied: tails pulled out sideways into a straight band, loops slid out, knot open.
-    Returns one quad list per piece."""
-    q = []
-    lk = (1 - u) ** 1.35                      # loop size
-    # ---- loops (broad, puffy, gathered at the knot)
-    if lk > 0.04:
-        for sgn in (-1, 1):
-            n = 200
-            phi = np.linspace(0.02, 2 * math.pi - 0.02, n)
-            L = 12 + 330 * lk
-            Rz = 14 + 72 * lk
-            lift = 48 * lk
-            x = cx + sgn * (16 + (L / 2) * (1 - np.cos(phi)))
-            z = 16 + Rz * np.sin(phi)
-            y = cy - lift * ((1 - np.cos(phi)) / 2) ** 1.3 + 40 * np.sin(phi) * lk - 34 * lk * np.sin(phi / 2) ** 2
-            P = np.stack([x, y, z], 1)
-            P = rot_z(P, cx, cy, -sgn * math.radians(3 * lk))
-            wmax = 60 + 190 * lk
-            wv = 48 + (wmax - 48) * ((1 - np.cos(phi)) / 2) ** 0.55 * (1 - 0.2 * np.exp(-((phi - math.pi) / 0.35) ** 2))
-            alpha = (0.45 * np.sin(phi) + 0.5 * np.sin(phi / 2) ** 6) * lk
-            Bv = np.stack([np.zeros(n), np.cos(alpha), np.sin(alpha)], 1)
-            pleat = 0.55 * np.exp(-((phi - 0) / 0.9) ** 2) + 0.55 * np.exp(-((phi - 2 * math.pi) / 0.9) ** 2) + 0.18
-            q.append(strip(P, wv, Bv, weave=0.05, pleat=pleat))
-    # ---- tails: hang down at first, then swing out sideways and straighten as they are pulled
-    sw = _sm(u * 1.15)
-    for sgn in (-1, 1):
-        n = 150
-        t_ = np.linspace(0, 1, n)
-        ang = math.radians(62 * (1 - sw) + 2 * sw)               # below horizontal
-        Lt = 400 + 160 * sw
-        sag = 40 * (1 - sw)
-        x = cx + sgn * (18 + Lt * t_ * math.cos(ang))
-        y = cy + 14 * (1 - sw) + Lt * t_ * math.sin(ang) + sag * np.sin(math.pi * t_)
-        z = 6 - 14 * t_ * (1 - sw) + 8 * np.sin(t_ * 5) * (1 - sw) - 30 * sw
-        P = np.stack([x, y, z], 1)
-        d = np.gradient(P[:, :2], axis=0); d /= np.linalg.norm(d, axis=1, keepdims=True)
-        perp = np.stack([-d[:, 1], d[:, 0], np.zeros(n)], 1) * sgn
-        tw = (1.0 * np.sin(math.pi * t_ * 1.2 + (0.6 if sgn > 0 else 1.4))) * (1 - sw)
-        Bv = norm(perp * np.cos(tw)[:, None] + np.array([0, 0, 1.0]) * np.sin(tw)[:, None])
-        wv = (172 * (1 - sw) + 180 * sw) * (0.9 + 0.1 * np.cos(t_ * 7)) * (0.55 + 0.45 * _sm(t_ * 4))
-        q.append(strip(P, wv, Bv, weave=0.05, pleat=0.35 * (1 - t_) + 0.12))
-    # ---- knot: loosens, then opens
-    kw = (74 + 8 * u) * (1 - _sm((u - 0.62) / 0.33))
-    if kw > 3:
-        n = 70
-        phi = np.linspace(-math.pi * 0.95, math.pi * 0.95, n)
-        r = 31 + 10 * u
-        P = np.stack([cx + 5 * np.sin(phi * 2), cy + r * np.sin(phi), 34 + r * np.cos(phi)], 1)
-        Bv = np.stack([np.ones(n), np.zeros(n), 0.3 * np.sin(phi * 3)], 1)
-        q.append(strip(P, np.full(n, kw), Bv, weave=0.08, pleat=0.6))
+def _key(f, *kv):
+    return float(np.interp(f, [k for k, _ in kv], [v for _, v in kv]))
+
+def loop_piece(sgn, k, tilt, seed):
+    """one bow loop. k: size 1..0, tilt: degrees above the horizontal"""
+    n = 150; ns = 26
+    phi = np.linspace(0.0, 2 * math.pi, n)
+    L = 14 + 312 * k; Rz = 6 + 40 * k
+    a = 20 + (L / 2) * (1 - np.cos(phi))                                  # distance out from the knot
+    z = 14 + Rz * np.sin(phi) + 10 * k * np.sin(phi / 2) ** 2
+    lat = (28 - 74 * phi / (2 * math.pi)) * np.sin(phi / 2) ** 0.7 * k     # front layer sits lower, the back layer peeps out above
+    th = math.radians(tilt)
+    ax = np.array([sgn * math.cos(th), -math.sin(th)]); pp = np.array([sgn * math.sin(th), math.cos(th)])   # axis / lateral (down)
+    P = np.stack([CX + ax[0] * a + pp[0] * lat, CY + ax[1] * a + pp[1] * lat, z], 1)
+    wmax = 56 + 204 * k ** 0.75
+    wv = 44 + (wmax - 44) * np.sin(phi / 2) ** 0.5 * (1 - 0.34 * np.exp(-((phi - math.pi) / 0.55) ** 2))
+    al = 0.30 * np.sin(phi) * k + 0.04 * k                                  # the face leans back a little: catches the light
+    Bv = np.stack([np.full(n, pp[0]) * np.cos(al), np.full(n, pp[1]) * np.cos(al), np.sin(al)], 1)
+    s = np.linspace(-1, 1, ns)
+    amp = 9.0 * np.exp(-(a - 20) / 70.0) + 0.3
+    disp = amp[:, None] * np.cos(s[None, :] * math.pi * 3.2 + 0.7 * seed) + 15 * k * (1 - s[None, :] ** 2) * (np.sin(phi / 2) ** 2)[:, None]
+    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed)
+
+def tail_piece(sgn, ln, ang, wf, seed):
+    """a tail hanging from the knot. ln: length 1..0 (it slides up into the knot), ang: degrees below horizontal"""
+    n = 120; ns = 24
+    Lt = 600 * ln
+    t_ = np.linspace(0, 1, n); d = Lt * t_
+    a0 = math.radians(ang)
+    bend = 0.20 * np.sin(math.pi * t_) * ln                                 # gentle curve
+    x = CX + sgn * 10 + sgn * np.cumsum(np.cos(a0 + bend) * np.gradient(d))
+    y = CY + 12 + np.cumsum(np.sin(a0 + bend) * np.gradient(d))
+    z = 4 - 16 * _sm(d / 200) + 5 * np.sin(d / 55 + seed)
+    P = np.stack([x, y, z], 1)
+    g = np.gradient(P[:, :2], axis=0); g /= np.maximum(np.linalg.norm(g, axis=1, keepdims=True), 1e-6)
+    perp = np.stack([-g[:, 1], g[:, 0], np.zeros(n)], 1) * sgn
+    tw = 0.42 * np.sin(d / 130 + (0.4 if sgn > 0 else 1.9)) * min(1.0, ln * 1.5) + 0.30
+    Bv = perp * np.cos(tw)[:, None] + np.array([0, 0, 1.0]) * np.sin(tw)[:, None]
+    wv = (42 + (212 * wf - 42) * _sm(d / 190) ** 0.8)
+    s = np.linspace(-1, 1, ns)
+    amp = 8.0 * np.exp(-d / 90.0) + 0.4
+    disp = amp[:, None] * np.cos(s[None, :] * math.pi * 3.0 + seed) + 5 * np.sin(d / 90 + 2 * seed)[:, None] * s[None, :]
+    cut = 1 - (0.5 + 0.5 * s * sgn) * min(0.99, 110 / max(Lt, 1.0))         # slanted cut end
+    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, tcut=cut, micro=1.7, opa=0.05)
+
+def knot_pieces(ks):
+    """the tight little knot: three plump wraps side by side, slightly slanted"""
+    out = []
+    n = 26; ns = 9
+    phi = np.linspace(-math.pi * 0.62, math.pi * 0.62, n)
+    r = 43 * ks
+    for k, off in enumerate((-23, 0, 23)):
+        P = np.stack([CX + off * ks + 15 * ks * np.sin(phi), CY + 2 + r * np.sin(phi), 34 * ks + 8 + r * 0.55 * np.cos(phi)], 1)
+        Bv = np.stack([np.ones(n), np.zeros(n), np.zeros(n)], 1)
+        s = np.linspace(-1, 1, ns)
+        disp = (9 * ks * (1 - s ** 2))[None, :] * np.ones((n, 1))
+        out.append(sheet(P, np.full(n, 27.0 * ks), Bv, ns=ns, disp=disp, seed=90 + k, opa=0.5, micro=0.5, lum=0.97))
+    return out
+
+def band_piece(sgn, g, gap, seed):
+    """one half of the band. g: 0 lying relaxed ... 1 drawn tight (a fan of pleats from the knot); gap: tip distance from the centre"""
+    n = 150; ns = 30
+    d = np.linspace(0, 500, n)                                              # distance from the knot/tip
+    x = CX + sgn * (gap + d)
+    y = CY + 3 * np.sin(d / 120 + seed) * (1 - g) + np.zeros(n)
+    z = -34 + 4 * np.sin(d / 70 + seed)
+    P = np.stack([x, y, z], 1)
+    wk = 40 * (1 - 0.8 * _sm(gap / 12))
+    w_rest = wk + (BAND_W - wk) * _sm(d / 170) ** 0.8
+    w_taut = wk + (BAND_W - wk) * (d / 450) ** 0.9
+    wv = np.minimum(w_rest * (1 - g) + w_taut * g, BAND_W)
+    tw = 0.10 * np.sin(d / 90 + seed)
+    Bv = np.stack([np.zeros(n), np.cos(tw), np.sin(tw)], 1)
+    s = np.linspace(-1, 1, ns)
+    amp = (9 - 3 * g) * np.exp(-d / (110 + 90 * g)) + 0.15 + 0.30 * g
+    disp = amp[:, None] * np.cos(s[None, :] * math.pi * 4.5 + seed + 1.6 * np.sin(s[None, :] * 3 + seed))
+    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, opa=0.07, lum=0.97, micro=0.5)
+
+def bow_state(u):
+    """what every piece is doing at untie progress u (0 tied ... 1 the knot has let go); keyed on the reference video, frames 150-198"""
+    f = 150 + 48 * u
+    return dict(
+        kL=_key(f, (150, 1), (158, .86), (162, .72), (166, .46), (170, .16), (172, 0)),
+        kR=_key(f, (150, 1), (158, .88), (162, .78), (166, .62), (170, .44), (174, .12), (176, 0)),
+        tL=_key(f, (150, 14), (166, 6)), tR=_key(f, (150, 14), (162, 17), (166, 34), (170, 56), (174, 70)),
+        lnR=_key(f, (160, 1), (166, .62), (170, .22), (173, 0)), angR=_key(f, (160, 51), (170, 26)),
+        lnL=_key(f, (174, 1), (178, .86), (182, .66), (186, .5), (190, .26), (194, .07), (196, 0)),
+        angL=_key(f, (150, 51), (170, 55), (178, 60), (186, 53), (192, 42)), wfL=_key(f, (174, 1), (182, .74), (190, .6)),
+        ks=_key(f, (190, 1), (194, .6), (197, 0)),
+        g=_key(f, (150, 0), (160, .2), (170, .7), (177, 1)),
+        gap=_key(f, (193, 0), (198, 20)))
+
+def bow_quads(u=0.0, band=True, bow=True):
+    """every piece of the bow (+ band) at untie progress u, one quad list per piece"""
+    S = bow_state(u); q = []
+    if band:
+        q.append(band_piece(-1, S["g"], S["gap"], 3)); q.append(band_piece(1, S["g"], S["gap"], 8))
+    if bow:
+        if S["lnL"] > 0.02: q.append(tail_piece(-1, S["lnL"], S["angL"], S["wfL"], 1))
+        if S["lnR"] > 0.02: q.append(tail_piece(1, S["lnR"], S["angR"], 1.0, 2))
+        if S["kL"] > 0.03: q.append(loop_piece(-1, S["kL"], S["tL"], 5))
+        if S["kR"] > 0.03: q.append(loop_piece(1, S["kR"], S["tR"], 6))
+        if S["ks"] > 0.05: q += knot_pieces(S["ks"])
     return q
 
-def band_quads(W=900, cy=110, gather=0.32):
-    n = 320
-    x = np.linspace(-30, W + 30, n)
-    y = cy + 5 * np.sin(x / 85)
-    z = -40 + 6 * np.sin(x / 60)
-    P = np.stack([x, y, z], 1)
-    wv = 185 * (1 - gather * np.exp(-((x - W / 2) / 110) ** 2))
-    a = 0.22 * np.sin(x / 47) + 0.6 * np.exp(-((x - W / 2) / 70) ** 2) * np.sin(x / 9)
-    Bv = np.stack([np.zeros(n), np.cos(a), np.sin(a)], 1)
-    return strip(P, wv, Bv, weave=0.05, pleat=0.18 + 0.5 * np.exp(-((x - W / 2) / 110) ** 2))
+def render(u, band=True, bow=True):
+    """RGBA frame (rgb float 0..255, alpha 0..1) with a soft contact shadow baked in"""
+    rgb, a = rasterize(bow_quads(u, band, bow), BW, BH)
+    r = np.random.default_rng(5)                            # fine crinkle shimmer of the weave
+    gr = cv2.GaussianBlur(r.standard_normal((BH, BW)).astype(np.float32), (0, 0), 0.9)
+    gr = gr / gr.std()
+    lum = rgb.mean(2, keepdims=True) / 255.0
+    rgb = np.clip(rgb * (1 + 0.024 * gr[..., None]) + 16 * np.clip(gr[..., None] - 1.2, 0, 2) * lum, 0, 255)
+    sh = cv2.GaussianBlur(a, (0, 0), 7)
+    sh = np.roll(np.roll(sh, 7, 0), 3, 1) * 0.30
+    sh[:7] = 0; sh[:, :3] = 0                               # (no wrap-around from the roll)
+    A = a + sh * (1 - a)
+    out = (rgb * a[..., None] + np.array([72, 48, 64], np.float32) * (sh * (1 - a))[..., None]) / np.maximum(A[..., None], 1e-4)
+    return out, A

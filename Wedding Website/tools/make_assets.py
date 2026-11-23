@@ -387,45 +387,128 @@ def photo():
 
 # ================================================================ v2: sheer organza, 3D bow, rose card
 def organza():
-    """sheer, glossy organza lying over the card (RGBA): soft irregular wrinkles stretched along the drape,
-    satin highlights, slightly darker troughs, see-through on the flats -- like the fabric in the reference video"""
+    """sheer, glossy, crinkled organza film lying over the card (RGBA): it darkens and warms the card a little (the veil),
+    streaky angular highlights where the wrinkles and crumple facets catch the light, a few long straight folds of the sheet"""
     print("organza ...")
-    def streak(n, ang, length):                               # directional blur -> elongated wrinkles
-        k = np.zeros((length, length), np.float32)
-        c = length // 2; dx, dy = math.cos(math.radians(ang)), math.sin(math.radians(ang))
-        cv2.line(k, (int(c - dx * c), int(c - dy * c)), (int(c + dx * c), int(c + dy * c)), 1.0, 1, cv2.LINE_AA)
-        return cv2.filter2D(n, -1, k / k.sum(), borderType=cv2.BORDER_REFLECT)
-    h = np.zeros((H, W), np.float32)
-    for k, (sc, amp, ang, ln) in enumerate(((260, 1.0, 62, 221), (140, 0.55, 56, 151), (70, 0.26, 64, 101), (200, 0.40, -35, 121))):
-        n = noise(H, W, sc, 2, 70 + k)
-        n = streak(n, ang, ln)
+    r = np.random.default_rng(11)
+    yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
+    def aniso(scale, ang, stretch, seed, octaves=2):
+        """noise stretched `stretch` times along direction ang (degrees, image coords)"""
+        S = int(max(W, H) * 1.5)
+        n = noise(int(S / stretch) + 4, S, scale, octaves, seed)           # rows are compressed -> after resize, stretched vertically
+        n = cv2.resize(n, (S, S), interpolation=cv2.INTER_CUBIC)            # features long along y
+        M = cv2.getRotationMatrix2D((S / 2, S / 2), ang - 90, 1.0)
+        n = cv2.warpAffine(n, M, (S, S), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+        y0, x0 = (S - H) // 2, (S - W) // 2
+        return n[y0:y0 + H, x0:x0 + W]
+    def ridge(n, p=1.0):
         n = (n - n.min()) / (n.max() - n.min() + 1e-6)
-        h += amp * (1 - np.abs(2 * n - 1)) ** 2.2              # ridged: soft troughs, crisp crests
-    h += 0.8 * noise(H, W, 420, 2, 79)
-    h = cv2.GaussianBlur(h, (0, 0), 2.0)
-    gy, gx = np.gradient(h * 30)
+        return (1 - np.abs(2 * n - 1)) ** p
+    h = np.zeros((H, W), np.float32)
+    # long soft drape wrinkles running steeply down-right, a weaker set crossing them
+    h += 1.00 * ridge(aniso(190, 120, 2.4, 1), 1.5)
+    h += 0.55 * ridge(aniso(100, 127, 2.8, 2), 1.4)
+    h += 0.45 * ridge(aniso(140, 52, 2.4, 3), 1.6)
+    h += 0.16 * ridge(aniso(36, 116, 4.0, 4), 1.2)
+    h += 0.9 * noise(H, W, 380, 2, 5)
+    # crumple facets: stretched voronoi cells, each tilted its own way (angular cellophane glints)
+    S = 1400; nseed = 520
+    seeds = np.ones((S, S), np.uint8); pts = r.integers(0, S, (nseed, 2)); seeds[pts[:, 1] // 3 * 3 % S, pts[:, 0]] = 0
+    _, lab = cv2.distanceTransformWithLabels(seeds, cv2.DIST_L2, 5, labelType=cv2.DIST_LABEL_PIXEL)
+    tx = r.normal(0, 1, lab.max() + 1).astype(np.float32); ty = r.normal(0, 1, lab.max() + 1).astype(np.float32)
+    def facet_map(v):
+        m = v[lab]
+        m = cv2.resize(m, (S, int(S * 2.6)), interpolation=cv2.INTER_NEAREST)                   # stretch cells
+        Sy = m.shape[0]
+        M = cv2.getRotationMatrix2D((S / 2, Sy / 2), 60 - 90, 1.0)
+        m = cv2.warpAffine(m, M, (S, Sy), flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_REFLECT)
+        y0, x0 = (Sy - H) // 2, (S - W) // 2
+        return m[y0:y0 + H, x0:x0 + W]
+    fx, fy = facet_map(tx), facet_map(ty)
+    edge = (np.abs(cv2.Laplacian(fx, cv2.CV_32F)) > 1e-3).astype(np.float32)
+    edge = cv2.GaussianBlur(edge, (0, 0), 1.2)
+    fx = cv2.GaussianBlur(fx, (0, 0), 2.2); fy = cv2.GaussianBlur(fy, (0, 0), 2.2)
+    # big straight folds of the sheet (it is wrapped round the card): crease line + a second layer on one side
+    layer = np.zeros((H, W), np.float32); crease = np.zeros((H, W), np.float32)
+    for (x0, y0, ang, side, la) in ((0, 250, -38, -1, .55), (0, 1330, 24, 1, .5), (900, 1560, 150, -1, .45), (520, 0, 58, -1, .35), (0, 1650, -30, 1, .4)):
+        dx, dy = math.cos(math.radians(ang)), math.sin(math.radians(ang))
+        d = (xx - x0) * (-dy) + (yy - y0) * dx                      # signed distance to the line
+        d += 14 * (noise(H, W, 300, 2, int(abs(ang)) + 20) - 0.5)
+        layer += la * np.clip(side * d / 2.0, 0, 1)
+        crease += np.exp(-np.abs(d) / 2.2) * 0.9 + np.exp(-np.clip(side * d, 0, None) / 16) * (side * d > 0) * 0.25
+    gy, gx = np.gradient(cv2.GaussianBlur(h, (0, 0), 3.5) * 46)
+    gx += 0.11 * fx; gy += 0.11 * fy
+    grain = noise(H, W, 5, 2, 9) - 0.5
+    gx += 0.10 * grain; gy += 0.10 * np.roll(grain, 7, 0)
     nrm = np.dstack([-gx, -gy, np.ones_like(h)]); nrm /= np.linalg.norm(nrm, axis=2, keepdims=True)
-    l = np.array([-0.35, -0.7, 0.62]); l /= np.linalg.norm(l); hv = l + [0, 0, 1]; hv /= np.linalg.norm(hv)
-    nl = (nrm * l).sum(2); nh = np.clip((nrm * hv).sum(2), 0, 1)
-    diff = np.clip(nl, 0, 1); spec = nh ** 24; sheen = nh ** 6
-    fres = 1 - nrm[..., 2]
-    base = np.array([200, 168, 190], np.float32)
-    rgb = base * (0.30 + 0.55 * diff)[..., None] + np.array([236, 230, 255], np.float32) * (0.80 * spec + 0.12 * sheen)[..., None]
-    a = np.clip(0.08 + 1.0 * fres + 0.65 * spec + 0.08 * sheen + 0.18 * (1 - diff), 0, 0.85)
-    save_rgba("organza.webp", np.clip(rgb, 0, 255), a, 86)
+    l = np.array([-0.30, -0.62, 0.72]); l /= np.linalg.norm(l); hv = l + [0, 0, 1]; hv /= np.linalg.norm(hv)
+    nh = np.clip((nrm * hv).sum(2), 0, 1); diff = np.clip((nrm * l).sum(2), 0, 1)
+    sheen = nh ** 5
+    nq = nh * (0.90 + 0.2 * noise(H, W, 420, 2, 6))               # patchy: some areas quieter
+    lo, mid, hi = np.percentile(nq, [60, 88, 99.5])
+    hl = 0.45 * np.clip((nq - lo) / (mid - lo), 0, 1) ** 1.5 + 0.55 * np.clip((nq - mid) / (hi - mid), 0, 1) ** 1.3
+    hl = np.clip(hl * (1 + 0.5 * grain) + 0.5 * crease * (0.5 + hl) + 0.05 * edge * hl, 0, 1)
+    tint = noise(H, W, 160, 2, 8)[..., None]                       # faint pearly colour shift in the shine
+    c_hl = np.array([246, 236, 248], np.float32) * (1 - tint) + np.array([226, 230, 255], np.float32) * tint
+    c_veil = np.array([124, 100, 117], np.float32)                  # the film itself darkens and warms what is under it
+    shade = np.clip(1.0 - diff * 1.15, 0, 1)                       # troughs / sides turned from the light
+    a_veil = np.clip(0.20 + 0.20 * shade + 0.10 * sheen * 0 + 0.16 * layer, 0, 0.6)
+    a_hl = np.clip(0.80 * hl, 0, 0.82)
+    c_mid = np.array([214, 196, 212], np.float32)
+    # composite: veil first, shine over it
+    a = a_veil + a_hl * (1 - a_veil)
+    rgb = (c_veil * (a_veil * (1 - a_hl))[..., None] + (c_hl * hl[..., None] + c_mid * (1 - hl[..., None])) * a_hl[..., None]) / np.maximum(a[..., None], 1e-4)
+    save_rgba("organza.webp", np.clip(rgb, 0, 255), np.clip(a, 0, 0.94), 80)
+    _fold_strip()
 
-def bow_frames(n=24):
-    """3D organza bow + its untie animation as numbered frames, plus the band"""
+def _fold_strip():
+    """the gathered, rolled edge of the fabric along one side of the opening diamond (RGBA strip, laid along each edge by app.js):
+    x runs from the pinch point to the diamond's tip, y from just inside the opening (a soft shadow on the card) across the
+    rolled edge (y = 16 %) into the bunched fabric with its taut folds running along the edge"""
+    FW, FH = 640, 200
+    x = np.linspace(0, 1, FW, dtype=np.float32)[None, :] * np.ones((FH, 1), np.float32)
+    y = np.linspace(0, 1, FH, dtype=np.float32)[:, None] * np.ones((1, FW), np.float32)
+    e = 0.16
+    th = 1 - 0.55 * x                                             # the bunch thins toward the tip
+    v = (y - e) / ((1 - e) * th)
+    out_ = (v >= 0).astype(np.float32)
+    wob = 0.5 * noise(FH, FW, 90, 2, 31) - 0.25
+    sh = np.exp(-np.clip(e - y, 0, None) / 0.05) * (1 - out_) * 0.36
+    bunch = np.clip(1 - v, 0, 1) ** 1.2 * out_
+    roll = np.exp(-((v - 0.08) / 0.10) ** 2) * out_                # the soft bright rolled edge
+    trough = np.exp(-((v - 0.32) / 0.10) ** 2) * out_               # the shadowed valley behind it
+    st = np.exp(-((v - 0.50 - 0.25 * wob) / 0.05) ** 2) + 0.6 * np.exp(-((v - 0.76 + 0.2 * wob) / 0.04) ** 2)   # two fainter taut folds
+    hl = np.clip(0.80 * roll + 0.40 * bunch * st, 0, 1)
+    a_sh = sh
+    a_veil = bunch * (0.40 + 0.30 * trough)
+    a_hl = 0.68 * hl
+    c_v = np.array([186, 158, 174], np.float32)[None, None, :] * (1 - 0.42 * trough)[..., None]   # gathered layers: denser, rosier
+    a = a_veil + a_hl * (1 - a_veil)
+    rgb = (c_v * (a_veil * (1 - a_hl))[..., None] + np.array([244, 236, 248], np.float32) * a_hl[..., None]) / np.maximum(a[..., None], 1e-4)
+    A = a + a_sh * (1 - a)
+    rgb = (rgb * a[..., None] + np.array([58, 38, 54], np.float32) * (a_sh * (1 - a))[..., None]) / np.maximum(A[..., None], 1e-4)
+    fade = smooth01(x / 0.06) * smooth01((1 - x) / 0.10)
+    save_rgba("fold.webp", np.clip(rgb, 0, 255), A * fade, 88)
+
+def bow_frames(n=34):
+    """3D organza bow on its band + the untie animation as numbered frames (same canvas, knot at ribbon3d.CX/CY),
+    plus the two gathered band halves that stay once the knot has let go (ribbon.webp = the last frame's band rows)"""
     sys.path.insert(0, str(HERE))
     import ribbon3d as R
-    print("band ...")
-    rgb, a = R.rasterize(R.band_quads(), 900, 220)
-    save_rgba("ribbon.webp", rgb, a, 92)
     fdir = OUT / "bow"; fdir.mkdir(exist_ok=True)
+    for f in fdir.glob("bow-*.webp"):
+        f.unlink()
     for i in range(n):
         u = i / (n - 1)
-        rgb, a = R.rasterize(R.bow_quads(u), 900, 760)
-        save_rgba(f"bow/bow-{i:02d}.webp", rgb, a, 88)
+        rgb, a = R.render(u)
+        if i == 0:                                              # the tied bow rests on screen: full size
+            save_rgba("bow/bow-00.webp", rgb, a, 88)
+        else:                                                   # frames in motion: 80 % size keeps the download small
+            sz = (R.BW * 4 // 5, R.BH * 4 // 5)
+            save_rgba(f"bow/bow-{i:02d}.webp", cv2.resize(rgb, sz, interpolation=cv2.INTER_AREA), cv2.resize(a, sz, interpolation=cv2.INTER_AREA), 74)
+    print("band ...")
+    y0, y1 = R.CY - R.BAND_HALF, R.CY + R.BAND_HALF
+    save_rgba("ribbon.webp", rgb[y0:y1], a[y0:y1], 88)
 
 def _rose_relief(name, size, rot=0, flip=False, detail=1.0):
     im = cv2.imread(str(STUDIO_ASSETS / name), cv2.IMREAD_UNCHANGED).astype(np.float32)
