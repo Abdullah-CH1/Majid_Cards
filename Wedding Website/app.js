@@ -11,22 +11,62 @@
   dir.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(C.mapsQuery || C.venue || "");
   $("#photo").src = C.photo || "assets/photo.jpg";
 
-  // ---------- countdown ticket shape (scalloped ends) ----------
-  (function ticketShape() {
-    const w = 400, h = 100, r = 8, n = 5;           // n scallops on each end
-    let d = `M ${r} 0 H ${w - r}`;
-    for (let i = 0; i < n; i++) {                    // right end: bumps
-      const y0 = (i / n) * h, y1 = ((i + 1) / n) * h;
-      d += ` Q ${w + 2} ${(y0 + y1) / 2} ${w - r} ${y1}`;
-    }
-    d += ` H ${r}`;
-    for (let i = n; i > 0; i--) {                    // left end
-      const y0 = (i / n) * h, y1 = ((i - 1) / n) * h;
-      d += ` Q ${-2} ${(y0 + y1) / 2} ${r} ${y1}`;
-    }
+  // ---------- card: glossy "mirror" centre panel (same arch as the embossed frame in assets/card.jpg) ----------
+  (function cardSheen() {
+    const host = $(".card-sheen"); if (!host) return;
+    const cx = 450, ytop = 243, ybot = 1580, hw = 352, ky = 360 / 0.98;          // keep in step with card_relief() in tools/make_assets.py
+    const segs = [[[0, 0], [-0.05, 0.08], [-0.10, 0.17], [-0.18, 0.20]], [[-0.18, 0.20], [-0.26, 0.22], [-0.36, 0.22], [-0.43, 0.25]],
+      [[-0.43, 0.25], [-0.53, 0.27], [-0.585, 0.37], [-0.585, 0.50]], [[-0.585, 0.50], [-0.60, 0.555], [-0.65, 0.585], [-0.71, 0.585]],
+      [[-0.71, 0.585], [-0.90, 0.595], [-1.0, 0.76], [-1.0, 0.98]]];
+    const P = (x, y, sx, top) => [cx + sx * x * hw, top ? ytop + y * ky : ybot - y * ky];
+    const f = p => p[0].toFixed(1) + " " + p[1].toFixed(1);
+    let d = "M " + f(P(-1, 0.98, 1, true));
+    for (let i = segs.length - 1; i >= 0; i--) { const [a, b, c, e] = segs[i]; d += ` C ${f(P(...c, 1, true))} ${f(P(...b, 1, true))} ${f(P(...a, 1, true))}`; }
+    for (const [a, b, c, e] of segs) d += ` C ${f(P(...b, -1, true))} ${f(P(...c, -1, true))} ${f(P(...e, -1, true))}`;
+    d += " L " + f(P(-1, 0.98, -1, false));
+    for (let i = segs.length - 1; i >= 0; i--) { const [a, b, c, e] = segs[i]; d += ` C ${f(P(...c, -1, false))} ${f(P(...b, -1, false))} ${f(P(...a, -1, false))}`; }
+    for (const [a, b, c, e] of segs) d += ` C ${f(P(...b, 1, false))} ${f(P(...c, 1, false))} ${f(P(...e, 1, false))}`;
     d += " Z";
-    const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -2 ${w + 8} ${h + 4}' preserveAspectRatio='none'>` +
-      `<path d='${d}' fill='#f6f3f7'/><path d='${d}' fill='none' stroke='#cfc6d3' stroke-width='1' transform='translate(${w * 0.03} ${h * 0.09}) scale(.94 .82)'/></svg>`;
+    host.innerHTML = `<svg viewBox="0 0 900 1950" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <mask id="panelMask"><path d="${d}" fill="#fff" stroke="#000" stroke-width="54"/></mask>
+        <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0.42">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#fff8ff" stop-opacity=".34"/><stop offset=".55" stop-color="#fff" stop-opacity=".1"/>
+          <stop offset=".62" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          <animateTransform attributeName="gradientTransform" type="translate" values="-1.1 0; 1.1 0; 1.1 0" keyTimes="0; .6; 1" dur="9s" repeatCount="indefinite"/>
+        </linearGradient>
+        <radialGradient id="glow" cx=".42" cy=".34" r=".55"><stop offset="0" stop-color="#fffaff" stop-opacity=".26"/><stop offset="1" stop-color="#fffaff" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g mask="url(#panelMask)"><rect width="900" height="1950" fill="url(#glow)"/><rect width="900" height="1950" fill="url(#sweep)"/></g></svg>`;
+  })();
+
+  // ---------- countdown ticket shape (ivory label with scrolled ends and a small crest, as in the reference) ----------
+  (function ticketShape() {
+    const body = "M40 30 L232 30 C252 30 258 22 268 16 C279 10 290 8 300 8 C310 8 321 10 332 16 C342 22 348 30 368 30 L560 30 " +
+      "C571 30 581 27 585 36 C589 46 569 52 567 64 C565 76 581 84 589 90 C581 96 565 104 567 116 C569 128 589 134 585 144 C581 153 571 150 560 150 " +
+      "L368 150 C348 150 342 158 332 163 C321 169 310 171 300 171 C290 171 279 169 268 163 C258 158 252 150 232 150 L40 150 " +
+      "C29 150 19 153 15 144 C11 134 31 128 33 116 C35 104 19 96 11 90 C19 84 35 76 33 64 C31 52 11 46 15 36 C19 27 29 30 40 30 Z";
+    const curls = "M268 16 C262 10 252 12 254 19 C256 24 263 23 262 18 M332 16 C338 10 348 12 346 19 C344 24 337 23 338 18 " +
+      "M268 163 C262 169 252 167 254 160 C256 155 263 156 262 161 M332 163 C338 169 348 167 346 160 C344 155 337 156 338 161 " +
+      "M15 36 C9 30 2 36 7 41 C11 45 16 41 13 38 M585 36 C591 30 598 36 593 41 C589 45 584 41 587 38 " +
+      "M15 144 C9 150 2 144 7 139 C11 135 16 139 13 142 M585 144 C591 150 598 144 593 139 C589 135 584 139 587 142 " +
+      "M11 90 C5 86 3 94 8 95 M589 90 C595 86 597 94 592 95 M292 14 C296 10 304 10 308 14 M292 166 C296 170 304 170 308 166";
+    // stretch the body taller (the reference label is a deep panel with only a small crest)
+    const ty = y => y < 30 ? 17 - (30 - y) * 0.6 : y > 150 ? 183 + (y - 150) * 0.6 : 17 + (y - 30) * 1.383;
+    const tall = p => p.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${x} ${ty(+y).toFixed(1)}`);
+    const B = tall(body), K = tall(curls);
+    const crest = "M276 19 C268 7 252 9 250 16 C248 23 257 25 259 19 M324 19 C332 7 348 9 350 16 C352 23 343 25 341 19 " +
+      "M286 14 C290 5 310 5 314 14 M296 9 C298 4 302 4 304 9 M244 23 C236 23 230 20 226 16 M356 23 C364 23 370 20 374 16";
+    const crestB = crest.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${x} ${200 - +y}`);
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 200' preserveAspectRatio='none'>` +
+      `<defs><linearGradient id='p' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#f8f6f8'/><stop offset='.55' stop-color='#f0edf0'/><stop offset='1' stop-color='#e2dde3'/></linearGradient>` +
+      `<linearGradient id='m' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#8d8591'/><stop offset='.5' stop-color='#4f4854'/><stop offset='1' stop-color='#7a727e'/></linearGradient></defs>` +
+      `<path d='${B}' fill='url(#p)' stroke='url(#m)' stroke-width='10' stroke-linejoin='round'/>` +
+      `<path d='${B}' fill='none' stroke='#d9d3dc' stroke-width='1.4' transform='translate(300 100) scale(.985 .955) translate(-300 -100)'/>` +
+      `<path d='${B}' fill='none' stroke='#8a828e' stroke-width='1.2' transform='translate(300 100) scale(.955 .87) translate(-300 -100)'/>` +
+      `<g fill='none' stroke='#4f4854' stroke-width='4.2' stroke-linecap='round'><path d='${K}'/><path d='${tall(crest)}'/><path d='${tall(crestB)}'/></g>` +
+      `<g fill='none' stroke='#cfc8d2' stroke-width='1' stroke-linecap='round' transform='translate(-.8 -1)'><path d='${K}'/><path d='${tall(crest)}'/><path d='${tall(crestB)}'/></g></svg>`;
     $(".ticket").style.backgroundImage = `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
   })();
 
@@ -58,7 +98,7 @@
   function animate(ms, step) {                 // runs step(0..1) every frame for ms milliseconds
     return new Promise(res => {
       const t0 = performance.now();
-      const f = now => { const t = clamp01((now - t0) / ms); step(t); t < 1 ? requestAnimationFrame(f) : res(); };
+      const f = () => { const t = clamp01((performance.now() - t0) / ms); step(t); t < 1 ? requestAnimationFrame(f) : res(); };
       requestAnimationFrame(f);
     });
   }
@@ -67,8 +107,8 @@
   function setDiamond(p) {                     // the knot lets go: the fabric opens from the centre as a diamond,
     const e = easeOut(p) * 0.35 + ease(p) * 0.65;   // pinched left and right where the ribbon gathers pull it aside
     const A = 96 * e, B = 66 * e;             // half-height / half-width of the diamond, % of the screen
-    halfL.style.clipPath = `polygon(0 0, 50.1% 0, 50.1% ${50 - A}%, ${50 - B}% 50%, 50.1% ${50 + A}%, 50.1% 100%, 0 100%)`;
-    halfR.style.clipPath = `polygon(100% 0, 49.9% 0, 49.9% ${50 - A}%, ${50 + B}% 50%, 49.9% ${50 + A}%, 49.9% 100%, 100% 100%)`;
+    halfL.style.clipPath = `polygon(0 0, 50% 0, 50% ${50 - A}%, ${50 - B}% 50%, 50% ${50 + A}%, 50% 100%, 0 100%)`;
+    halfR.style.clipPath = `polygon(100% 0, 50% 0, 50% ${50 - A}%, ${50 + B}% 50%, 50% ${50 + A}%, 50% 100%, 100% 100%)`;
     wrapBox.style.setProperty("--B", `${B}%`);
     wrapBox.style.setProperty("--g", String(Math.sin(Math.min(1, p * 1.15) * Math.PI) * 0.9));
     const k = Math.max(0.02, 1 - B / 50);      // each band half stays gathered at its pinch point
@@ -76,22 +116,83 @@
     bandL.style.opacity = bandR.style.opacity = String(clamp01(k * 2.2));
     halfL.style.opacity = halfR.style.opacity = String(1 - clamp01((p - 0.86) / 0.14));
   }
+  // ---- the envelope opening, timed frame by frame against the reference video (30 fps) ----
+  const flap = $("#flap"), flapFront = $(".flap-face.front"), seal = $("#seal"), pocket = $(".env-shadow");
+  function smoothCurve(pts) {                 // monotone cubic through [x, y] keys (no overshoot)
+    const n = pts.length, xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+    const d = [], m = new Array(n).fill(0);
+    for (let i = 0; i < n - 1; i++) d.push((ys[i + 1] - ys[i]) / (xs[i + 1] - xs[i]));
+    m[0] = d[0]; m[n - 1] = d[n - 2];
+    for (let i = 1; i < n - 1; i++) m[i] = d[i - 1] * d[i] <= 0 ? 0 : 3 * (xs[i + 1] - xs[i - 1]) / ((2 * xs[i + 1] - xs[i] - xs[i - 1]) / d[i - 1] + (xs[i + 1] + xs[i] - 2 * xs[i - 1]) / d[i]);
+    return x => {
+      if (x <= xs[0]) return ys[0];
+      if (x >= xs[n - 1]) return ys[n - 1];
+      let i = 0; while (x > xs[i + 1]) i++;
+      const h = xs[i + 1] - xs[i], t = (x - xs[i]) / h, t2 = t * t, t3 = t2 * t;
+      return (2 * t3 - 3 * t2 + 1) * ys[i] + (t3 - 2 * t2 + t) * h * m[i] + (-2 * t3 + 3 * t2) * ys[i + 1] + (t3 - t2) * h * m[i + 1];
+    };
+  }
+  const lerpTab = (tab, x) => {
+    if (x <= tab[0][0]) return tab[0][1];
+    for (let i = 1; i < tab.length; i++) if (x <= tab[i][0]) { const [x0, y0] = tab[i - 1], [x1, y1] = tab[i]; return y0 + (y1 - y0) * (x - x0) / (x1 - x0); }
+    return tab[tab.length - 1][1];
+  };
+  // height of the flap tip on screen (1 = closed, 0 = edge-on at the top), measured from the video:
+  // a quick first lift that eases into a short hover about half way up, then it folds on over the top
+  const tipHeight = smoothCurve([[0, 1], [.13, .94], [.23, .865], [.33, .785], [.43, .73], [.53, .69], [.63, .65], [.73, .605],
+    [.83, .57], [.93, .548], [1.03, .528], [1.13, .5], [1.23, .43], [1.33, .355], [1.43, .29], [1.53, .225], [1.63, .15],
+    [1.73, .09], [1.83, .04], [1.93, 0], [2.05, -.09]]);
+  const SEAL_SQUASH = [[0, 1], [40, .95], [62, .77], [70, .56], [76, .4], [84, .27], [90, .16], [100, .06]];   // the seal reads thicker than the flat flap
+  const SEAL_LIGHT = [[0, 1], [30, 1.3], [55, 1.5], [70, 1.3], [82, 1.0], [95, .85]];                        // catches the light as it tilts up
+  const FLAP_LIGHT = [[0, 1], [45, 1.06], [65, .92], [80, .78], [95, .6]];
+  const POCKET = [[0, 0], [.2, 1], [1.05, 1], [1.4, .58], [1.7, .22], [1.98, 0]];                           // shadow inside the envelope
+  function flapAngle(r, L, P) {               // solve  cos(a) * P / (P - L sin a) = r   (perspective rotation about the top edge)
+    let lo = 0, hi = 1.95;
+    for (let k = 0; k < 28; k++) {
+      const a = (lo + hi) / 2, v = Math.cos(a) * P / (P - L * Math.sin(a));
+      if (v > r) lo = a; else hi = a;
+    }
+    return (lo + hi) / 2;
+  }
+  function liftFlap() {
+    const Hs = op.clientHeight, P = 3.55 * Hs;                     // = the CSS perspective (355svh)
+    const Lf = 0.535 * Hs, Ls = 0.513 * Hs;                         // flap tip / seal centre below the top edge
+    const DUR = 2.05;
+    return animate(DUR * 1000, t => {
+      const T = t * DUR;
+      const a = flapAngle(tipHeight(T), Lf, P), deg = a * 180 / Math.PI;
+      flap.style.transform = `rotateX(${deg.toFixed(3)}deg)`;
+      flapFront.style.filter = `brightness(${lerpTab(FLAP_LIGHT, deg).toFixed(3)}) drop-shadow(0 2px 2px rgba(25,14,22,${(0.38 * (1 - clamp01(deg / 60))).toFixed(3)})) drop-shadow(0 9px 11px rgba(25,14,22,${(0.62 * (1 - clamp01(deg / 70))).toFixed(3)}))`;
+      const Z = Ls * Math.sin(a), m = P / (P - Z), dy = Ls * Math.cos(a) * m - Ls;
+      const sq = lerpTab(SEAL_SQUASH, deg);
+      seal.style.transform = `translate(-50%, -50%) translateY(${dy.toFixed(2)}px) scale(${m.toFixed(4)}, ${(m * sq).toFixed(4)})`;
+      seal.style.filter = `brightness(${lerpTab(SEAL_LIGHT, deg).toFixed(3)}) drop-shadow(0 ${(6 + deg / 9).toFixed(1)}px ${(7 + deg / 12).toFixed(1)}px rgba(38,22,34,.5))`;
+      seal.style.opacity = String(1 - clamp01((deg - 92) / 6));
+      flap.style.opacity = deg > 94 ? "0" : "1";              // past vertical it would only show as a sliver
+      pocket.style.opacity = lerpTab(POCKET, T).toFixed(3);
+    });
+  }
   let started = false;
   async function openInvitation() {
     if (started) return; started = true;
     if (audio.src) audio.play().then(() => setMuted(false)).catch(() => {});
-    op.classList.add("open");                  // flap folds back, the seal goes with it
-    await wait(1150);
-    op.classList.add("drop");                  // envelope slides away: sheer organza + bow over the card
-    await wait(1650);
-    await animate(1650, t => {                 // the bow is pulled undone: loops slip into the knot, tails draw out to the sides
+    op.classList.add("open");
+    await wait(220);                           // (in the video the flap starts a beat after the tap)
+    const lift = liftFlap().then(() => { flap.style.visibility = seal.style.visibility = "hidden"; });
+    await wait(1930);                          // flap reaches the top edge ...
+    op.classList.add("drop");                  // ... and the lower envelope slides down off the screen (quick start, soft end)
+    const envBox = $("#envBox"), slide = smoothCurve([[0, 0], [.1, .085], [.25, .29], [.5, .61], [.75, .86], [1, 1]]);
+    await animate(480, t => { envBox.style.transform = `translateY(${(slide(t) * 104).toFixed(2)}%)`; });
+    await lift;
+    await wait(1200);                          // the wrapped card rests a moment
+    await animate(1350, t => {                 // the bow is pulled undone: loops slip into the knot, tails draw out to the sides
       const i = Math.round(ease(t) * (BOW_FRAMES - 1));
       const src = bowSrc(i);
       if (!bowImg.src.endsWith(src)) bowImg.src = src;
     });
-    animate(260, t => { bowImg.style.opacity = String(1 - t); });
-    setTimeout(() => body.classList.add("revealed"), 1250);   // wording fades in once the card is clear
-    await animate(1500, setDiamond);
+    animate(240, t => { bowImg.style.opacity = String(1 - t); });
+    setTimeout(() => body.classList.add("revealed"), 1300);   // wording fades in once the card is clear
+    await animate(1300, setDiamond);
     body.classList.remove("locked");
     window.scrollTo(0, 0);
     op.classList.add("gone");
@@ -111,42 +212,49 @@
   }
   tick(); setInterval(tick, 1000);
 
-  // ---------- pearl frame (row of pearls around the section) ----------
+  // ---------- pearl frame: a rectangle of small seed pearls, with a big pearl or a rhinestone flower every few beads ----------
   const pf = $("#pearlFrame");
   function drawPearls() {
     const r = pf.getBoundingClientRect(); const W = r.width, H = r.height;
     if (!W) return;
-    const m = W * 0.07, rad = W * 0.09, step = W * 0.034;
-    const x0 = m, y0 = m, x1 = W - m, y1 = H - m;
+    const x0 = W * 0.085, x1 = W * 0.915, y0 = H * 0.095, y1 = H * 0.905;
+    const step = W * 0.028, small = W * 0.0074, big = W * 0.0165;
     const pts = [];
-    const seg = (ax, ay, bx, by) => { const L = Math.hypot(bx - ax, by - ay); return { L, f: t => [ax + (bx - ax) * t, ay + (by - ay) * t] }; };
-    const arc = (cx, cy, a0, a1) => ({ L: Math.abs(a1 - a0) * rad, f: t => [cx + rad * Math.cos(a0 + (a1 - a0) * t), cy + rad * Math.sin(a0 + (a1 - a0) * t)] });
-    const parts = [
-      seg(x0 + rad, y0, x1 - rad, y0), arc(x1 - rad, y0 + rad, -Math.PI / 2, 0),
-      seg(x1, y0 + rad, x1, y1 - rad), arc(x1 - rad, y1 - rad, 0, Math.PI / 2),
-      seg(x1 - rad, y1, x0 + rad, y1), arc(x0 + rad, y1 - rad, Math.PI / 2, Math.PI),
-      seg(x0, y1 - rad, x0, y0 + rad), arc(x0 + rad, y0 + rad, Math.PI, Math.PI * 1.5)];
-    const total = parts.reduce((a, p) => a + p.L, 0);
-    const n = Math.round(total / step);
-    for (let i = 0; i < n; i++) {
-      let d = (i / n) * total, k = 0;
-      while (d > parts[k].L) { d -= parts[k].L; k++; }
-      pts.push(parts[k].f(d / parts[k].L));
-    }
-    const pr = W * 0.0105;
-    let s = `<defs><radialGradient id="pg" cx="35%" cy="32%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#f3eef4"/><stop offset=".75" stop-color="#c9bfcd"/><stop offset="1" stop-color="#8e8296"/></radialGradient></defs>`;
-    s += `<path d="M ${x0 + rad} ${y0 + W * .022} H ${x1 - rad}" stroke="none"/>`;
-    pts.forEach(([x, y], i) => {
-      const big = i % 4 === 0;
-      s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(big ? pr * 1.35 : pr).toFixed(2)}" fill="url(#pg)" style="filter:drop-shadow(0 1px 1.5px rgba(40,25,45,.45))"/>`;
+    const side = (ax, ay, bx, by) => {
+      const L = Math.hypot(bx - ax, by - ay), n = Math.max(1, Math.round(L / step));
+      for (let i = 0; i < n; i++) pts.push([ax + (bx - ax) * i / n, ay + (by - ay) * i / n, i]);
+    };
+    side(x0, y0, x1, y0); side(x1, y0, x1, y1); side(x1, y1, x0, y1); side(x0, y1, x0, y0);
+    let s = `<defs>
+      <radialGradient id="pg" cx="34%" cy="30%" r="72%"><stop offset="0" stop-color="#fbf9fc"/><stop offset=".3" stop-color="#d9d2dc"/><stop offset=".75" stop-color="#968b9b"/><stop offset="1" stop-color="#5e5463"/></radialGradient>
+      <radialGradient id="bg" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#f1edf3"/><stop offset=".7" stop-color="#bdb3c0"/><stop offset="1" stop-color="#7a6f7f"/></radialGradient>
+      <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#d9d3dd"/><stop offset=".55" stop-color="#9a90a0"/><stop offset="1" stop-color="#f3eff5"/></linearGradient>
+      <filter id="ps" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="${(W * .002).toFixed(2)}" stdDeviation="${(W * .0022).toFixed(2)}" flood-color="#251c2a" flood-opacity=".55"/></filter></defs><g filter="url(#ps)">`;
+    const pearlAt = (x, y, rr, grad) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rr.toFixed(2)}" fill="url(#${grad})"/>`;
+    const crystal = (x, y, rr) => {                    // six-petal rhinestone flower with a pearl heart
+      let g = "";
+      for (let k = 0; k < 6; k++) {
+        const a = k * Math.PI / 3, px = x + Math.cos(a) * rr * .55, py = y + Math.sin(a) * rr * .55;
+        g += `<ellipse cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" rx="${(rr * .48).toFixed(2)}" ry="${(rr * .3).toFixed(2)}" transform="rotate(${k * 60} ${px.toFixed(1)} ${py.toFixed(1)})" fill="url(#cg)" stroke="#8b8191" stroke-width=".5"/>`;
+      }
+      return g + pearlAt(x, y, rr * .36, "bg");
+    };
+    const cornerish = (x, y) => (Math.abs(x - x0) < 1 || Math.abs(x - x1) < 1) && (Math.abs(y - y0) < 1 || Math.abs(y - y1) < 1);
+    let k = 0;
+    pts.forEach(([x, y, i]) => {
+      if (cornerish(x, y)) { s += pearlAt(x, y, big * 1.05, "bg"); k = 0; return; }
+      k++;
+      if (k % 7 === 0) s += (k % 14 === 0) ? crystal(x, y, big * 1.25) : pearlAt(x, y, big, "bg");
+      else s += pearlAt(x, y, small, "pg");
     });
+    s += "</g>";
     pf.setAttribute("viewBox", `0 0 ${W} ${H}`);
     pf.innerHTML = s;
   }
 
   // ---------- scratch to reveal ----------
   const cv = $("#scratch"), ctx = cv.getContext("2d");
-  let scratched = false, moves = 0, coverW = 0, fontsDone = false;
+  let scratched = false, moves = 0, coverW = 0;
   function drawCover() {
     const r = cv.getBoundingClientRect(); const dpr = Math.min(2, window.devicePixelRatio || 1);
     if (!r.width || scratched) return;
@@ -155,19 +263,21 @@
     cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const w = r.width, h = r.height;
-    const g = ctx.createRadialGradient(w * .4, h * .35, 4, w * .5, h * .5, w * .75);
-    g.addColorStop(0, "#fbf8fb"); g.addColorStop(.6, "#ece4ee"); g.addColorStop(1, "#cdc1d1");
     ctx.globalCompositeOperation = "source-over";
+    const g = ctx.createLinearGradient(0, 0, w * .6, h);
+    g.addColorStop(0, "#d9d4dd"); g.addColorStop(.5, "#cdc7d2"); g.addColorStop(1, "#c1bac7");
     ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-    ctx.strokeStyle = "rgba(140,120,145,.55)"; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.ellipse(w / 2, h / 2, w / 2 - 9, h / 2 - 9, 0, 0, Math.PI * 2); ctx.stroke();
-    ctx.fillStyle = "#7d6c7c"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    const sh = ctx.createRadialGradient(w * .38, h * .3, 2, w * .45, h * .4, w * .8);   // soft satin sheen
+    sh.addColorStop(0, "rgba(255,255,255,.35)"); sh.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = sh; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = "#4b4452"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     const words = (C.scratchText || "Scratch to reveal").split(" ");
     const l1 = words.slice(0, 1).join(" "), l2 = words.slice(1).join(" ");
-    ctx.font = `${Math.round(w * 0.16)}px "Pinyon Script", cursive`;
-    ctx.fillText(l1, w / 2, h * 0.44);
-    ctx.font = `${Math.round(w * 0.12)}px "Pinyon Script", cursive`;
-    ctx.fillText(l2, w / 2, h * 0.58);
+    const font = '"Monsieur La Doulaise", "Pinyon Script", cursive';
+    ctx.font = `${Math.round(w * 0.2)}px ${font}`;
+    ctx.fillText(l1, w / 2, h * 0.455);
+    ctx.font = `${Math.round(w * 0.16)}px ${font}`;
+    ctx.fillText(l2, w / 2, h * 0.56);
   }
   function scratchAt(e) {
     const r = cv.getBoundingClientRect();

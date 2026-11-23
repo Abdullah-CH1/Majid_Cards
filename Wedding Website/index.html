@@ -7,7 +7,7 @@
 <title>Abdul Aleem & Laiba — Baraat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=Jost:wght@300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Monsieur+La+Doulaise&family=Pinyon+Script&family=Jost:wght@300;400&display=swap">
 <link rel="preload" as="image" href="assets/envelope-body.webp">
 <link rel="preload" as="image" href="assets/envelope-flap.webp">
 <link rel="preload" as="image" href="assets/seal.webp">
@@ -20,6 +20,7 @@
   <main id="page">
     <!-- 1. the card -->
     <section id="card" class="card-sec">
+      <div class="card-sheen" aria-hidden="true"></div>
       <div class="card-text">
         <p class="c-line c-together" data-k="together"></p>
         <p class="c-line c-name" data-k="name1"></p>
@@ -83,10 +84,11 @@
       <div class="flap" id="flap">
         <div class="flap-face front"></div>
         <div class="flap-face back"></div>
-        <button class="seal" id="seal" aria-label="Open the invitation"></button>
       </div>
       <p class="tap-hint" id="tapHint">Tap the seal to open</p>
     </div>
+    <!-- the wax seal rides on the flap tip (kept outside the 3D box so it always stays on top) -->
+    <button class="seal" id="seal" aria-label="Open the invitation"></button>
   </div>
 
   <button class="music" id="musicBtn" aria-label="Music on or off" hidden>

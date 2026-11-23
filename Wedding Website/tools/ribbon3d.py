@@ -9,7 +9,7 @@ import numpy as np, cv2
 LIGHT = np.array([-0.45, -0.75, 0.55]); LIGHT /= np.linalg.norm(LIGHT)
 VIEW = np.array([0, 0, 1.0])
 HALF = (LIGHT + VIEW); HALF /= np.linalg.norm(HALF)
-BASE = np.array([226, 206, 219], np.float32)        # dusty mauve-pink organza (RGB), same family as the wrap
+BASE = np.array([200, 174, 190], np.float32)        # dusty mauve organza (RGB), like the ribbon in the video
 
 def norm(v):
     return v / np.maximum(np.linalg.norm(v, axis=-1, keepdims=True), 1e-9)
@@ -46,10 +46,11 @@ def strip(P, w, B, ns=15, weave=0.0, pleat=0.0):
             nj = n + B[i] * (pl * math.cos(sj * math.pi * 3.0))
             nj = nj / np.linalg.norm(nj)
             diff = max(0.0, float(nj @ LIGHT)) * 0.55 + 0.45 * abs(float(nj @ LIGHT))
-            spec = max(0.0, float(nj @ HALF)) ** 14
-            col = BASE * (0.80 + 0.30 * diff) * stripes + 255 * (0.65 * spec) + 20 * fres
-            col = col * (1 + 0.05 * hem)
-            a = 0.30 + 0.50 * fres + 0.30 * spec + 0.30 * hem
+            nh = max(0.0, float(nj @ HALF))
+            spec = nh ** 26; sheen = nh ** 6
+            col = BASE * (0.58 + 0.42 * diff) * stripes + np.array([250, 244, 255]) * (0.95 * spec + 0.18 * sheen) + 30 * fres
+            col = col * (1 + 0.04 * hem)
+            a = 0.22 + 0.48 * fres + 0.45 * spec + 0.08 * sheen + 0.22 * hem
             pts = np.array([V[i, j, :2], V[i, j + 1, :2], V[i + 1, j + 1, :2], V[i + 1, j, :2]], np.float32)
             z = float((V[i, j, 2] + V[i + 1, j + 1, 2]) / 2)
             quads.append((z, pts, np.clip(col, 0, 255), min(0.93, a)))
@@ -129,12 +130,12 @@ def bow_quads(u=0.0, cx=450, cy=330):
             phi = np.linspace(0.02, 2 * math.pi - 0.02, n)
             L = 12 + 330 * lk
             Rz = 14 + 72 * lk
-            lift = 105 * lk
+            lift = 48 * lk
             x = cx + sgn * (16 + (L / 2) * (1 - np.cos(phi)))
             z = 16 + Rz * np.sin(phi)
             y = cy - lift * ((1 - np.cos(phi)) / 2) ** 1.3 + 40 * np.sin(phi) * lk - 34 * lk * np.sin(phi / 2) ** 2
             P = np.stack([x, y, z], 1)
-            P = rot_z(P, cx, cy, -sgn * math.radians(8 * lk))
+            P = rot_z(P, cx, cy, -sgn * math.radians(3 * lk))
             wmax = 60 + 190 * lk
             wv = 48 + (wmax - 48) * ((1 - np.cos(phi)) / 2) ** 0.55 * (1 - 0.2 * np.exp(-((phi - math.pi) / 0.35) ** 2))
             alpha = (0.45 * np.sin(phi) + 0.5 * np.sin(phi / 2) ** 6) * lk
@@ -157,14 +158,14 @@ def bow_quads(u=0.0, cx=450, cy=330):
         perp = np.stack([-d[:, 1], d[:, 0], np.zeros(n)], 1) * sgn
         tw = (1.0 * np.sin(math.pi * t_ * 1.2 + (0.6 if sgn > 0 else 1.4))) * (1 - sw)
         Bv = norm(perp * np.cos(tw)[:, None] + np.array([0, 0, 1.0]) * np.sin(tw)[:, None])
-        wv = (150 * (1 - sw) + 180 * sw) * (0.9 + 0.1 * np.cos(t_ * 7)) * (0.55 + 0.45 * _sm(t_ * 4))
+        wv = (172 * (1 - sw) + 180 * sw) * (0.9 + 0.1 * np.cos(t_ * 7)) * (0.55 + 0.45 * _sm(t_ * 4))
         q.append(strip(P, wv, Bv, weave=0.05, pleat=0.35 * (1 - t_) + 0.12))
     # ---- knot: loosens, then opens
-    kw = (56 + 10 * u) * (1 - _sm((u - 0.62) / 0.33))
+    kw = (74 + 8 * u) * (1 - _sm((u - 0.62) / 0.33))
     if kw > 3:
         n = 70
         phi = np.linspace(-math.pi * 0.95, math.pi * 0.95, n)
-        r = 24 + 12 * u
+        r = 31 + 10 * u
         P = np.stack([cx + 5 * np.sin(phi * 2), cy + r * np.sin(phi), 34 + r * np.cos(phi)], 1)
         Bv = np.stack([np.ones(n), np.zeros(n), 0.3 * np.sin(phi * 3)], 1)
         q.append(strip(P, np.full(n, kw), Bv, weave=0.08, pleat=0.6))
