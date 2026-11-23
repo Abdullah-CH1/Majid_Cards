@@ -1,0 +1,66 @@
+.ix-shalimar .sh-w{position:absolute;inset:0;z-index:3;opacity:0;overflow:hidden;pointer-events:none;
+  --wat:color-mix(in srgb,var(--lv) 55%,var(--ef));--wat2:color-mix(in srgb,var(--lv) 78%,var(--bg));
+  --sand:color-mix(in srgb,color-mix(in srgb,var(--bl) 62%,var(--acc)) 78%,#000);--foam:color-mix(in srgb,var(--ef) 45%,#fff)}
+.ix-shalimar .sh-sky{position:absolute;inset:0;background:radial-gradient(90% 30% at 50% 40%,color-mix(in srgb,var(--acc) 22%,transparent),transparent 70%),linear-gradient(180deg,color-mix(in srgb,var(--bg) 88%,var(--acc)) 0%,var(--bg) 42%,color-mix(in srgb,var(--bg) 80%,#000) 100%)}
+.ix-shalimar .sh-cy{position:absolute;bottom:57.6%;width:3.6cqw;margin-left:-1.8cqw;border-radius:50% 50% 45% 45%/85% 85% 15% 15%;background:linear-gradient(90deg,color-mix(in srgb,var(--lv) 75%,#000),color-mix(in srgb,var(--lv) 90%,#fff) 45%,color-mix(in srgb,var(--lv) 60%,#000))}
+.ix-shalimar .sh-terr{position:absolute;left:0;right:0;top:42.3%;height:5%;background:linear-gradient(180deg,color-mix(in srgb,var(--sand) 55%,var(--bg)),color-mix(in srgb,var(--sand) 80%,var(--bg)));border-top:1px solid color-mix(in srgb,var(--acc) 60%,transparent)}
+.ix-shalimar .sh-chadar{position:absolute;left:39%;right:39%;top:40.6%;height:6.8%;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%);background:var(--wat2);opacity:0}
+.ix-shalimar .sh-chadar i{position:absolute;inset:0;background:repeating-linear-gradient(165deg,transparent 0 1.2cqw,color-mix(in srgb,var(--foam) 70%,transparent) 1.2cqw 1.7cqw),repeating-linear-gradient(15deg,transparent 0 1.2cqw,color-mix(in srgb,var(--foam) 50%,transparent) 1.2cqw 1.6cqw);background-size:100% 6cqw}
+.ix-shalimar .sh-rim{position:absolute;left:2.5%;right:2.5%;top:45.6%;bottom:2.4%;clip-path:polygon(14% 0,86% 0,100% 100%,0 100%);background:linear-gradient(180deg,var(--sand),color-mix(in srgb,var(--sand) 85%,#fff))}
+.ix-shalimar .sh-water{position:absolute;left:6%;right:6%;top:47%;bottom:4%;clip-path:polygon(14.5% 0,85.5% 0,100% 100%,0 100%);background:radial-gradient(70% 40% at 50% 40%,color-mix(in srgb,var(--wat) 80%,#fff),transparent 70%),linear-gradient(180deg,var(--wat2),var(--wat) 55%,color-mix(in srgb,var(--wat) 85%,var(--lv)))}
+.ix-shalimar .sh-shine{position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.16) 48%,transparent 60%);background-size:250% 100%}
+.ix-shalimar .sh-rg{position:absolute;left:50%;top:66%;width:62cqw;height:20cqw;margin:-10cqw 0 0 -31cqw;border-radius:50%;border:.45cqw solid var(--foam);opacity:0}
+.ix-shalimar .sh-rg.rl{border-width:.3cqw}
+.ix-shalimar .sh-drop{position:absolute;left:50%;top:66%;width:1.8cqw;height:2.6cqw;margin:-2.6cqw 0 0 -.9cqw;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;background:radial-gradient(circle at 40% 60%,#fff,var(--foam));box-shadow:0 0 2cqw var(--foam);opacity:0}
+.ix-shalimar .sh-jet{position:absolute;width:calc(9cqw*var(--s));margin:calc(-13.5cqw*var(--s)) 0 0 calc(-4.5cqw*var(--s));transform-origin:50% 100%;overflow:visible;opacity:0;fill:none;stroke:var(--foam);stroke-width:1.7;stroke-linecap:round;filter:drop-shadow(0 0 .8cqw color-mix(in srgb,var(--foam) 60%,transparent))}
+.ix-shalimar .sh-jet circle{fill:var(--foam);stroke:none}
+.ix-shalimar .sh-jet .sh-spl{fill:color-mix(in srgb,var(--foam) 50%,transparent);stroke:none}
+.ix-shalimar .sh-n{font-family:var(--fs);font-size:12cqw;line-height:1.12;white-space:nowrap}
+.ix-shalimar .sh-am{font-family:var(--ft);font-size:6cqw;line-height:1;margin:.5cqw 0}
+.ix-shalimar .sh-nm,.ix-shalimar .sh-rf{position:absolute;left:4%;right:4%;height:36cqw;text-align:center}
+.ix-shalimar .sh-nm{top:17%;color:color-mix(in srgb,var(--acc) 80%,var(--it));opacity:0;text-shadow:0 .3cqw .8cqw rgba(0,0,0,.25)}
+.ix-shalimar .sh-nm .sh-am{color:var(--it)}
+.ix-shalimar .sh-rf{top:56.6%;transform:scaleY(-1);opacity:0;color:color-mix(in srgb,var(--acc) 70%,#000);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.35),#000 70%);mask-image:linear-gradient(180deg,rgba(0,0,0,.35),#000 70%)}
+.ix-shalimar .sh-top{position:absolute;left:6%;right:6%;top:5%;text-align:center}
+.ix-shalimar .sh-top>*{opacity:0}
+.ix-shalimar .sh-ia{font-family:var(--ft);font-size:4.6cqw;letter-spacing:.06em;color:color-mix(in srgb,var(--acc) 75%,var(--it))}
+.ix-shalimar .sh-ev{font-family:var(--fs);font-size:11cqw;line-height:1.25;color:var(--it);text-shadow:0 .3cqw .8cqw rgba(0,0,0,.2)}
+.ix-shalimar .sh-ln{display:block;width:34cqw;height:1px;margin:1.2cqw auto 0;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
+.ix-shalimar .sh-pt{position:absolute;margin:-1.5cqw 0 0 -1cqw;border-radius:50% 50% 50% 50%/70% 70% 30% 30%;background:linear-gradient(160deg,color-mix(in srgb,var(--bl) 60%,#fff),var(--bl) 60%,color-mix(in srgb,var(--bl) 75%,#000));opacity:0}
+
+.play.s-shalimar .sh-w{animation:shalimar-life 10s linear var(--o) both}
+.play.s-shalimar .sh-shine{animation:shalimar-shine 6s ease-in-out var(--o) infinite alternate}
+.play.s-shalimar .sh-drop{animation:shalimar-drop 1s cubic-bezier(.55,0,.9,.5) calc(var(--o) + .2s) both}
+.play.s-shalimar .sh-rg{animation:shalimar-ring 2.8s cubic-bezier(.2,.8,.3,1) calc(var(--o) + var(--rd)) both}
+.play.s-shalimar .r0{--rd:1.15s}.play.s-shalimar .r1{--rd:1.5s}.play.s-shalimar .r2{--rd:1.9s}.play.s-shalimar .r3{--rd:2.35s}
+.play.s-shalimar .sh-rg.rl{animation:shalimar-ring2 3.4s ease-out calc(var(--o) + var(--rd)) infinite backwards}
+.play.s-shalimar .rl1{--rd:5s}.play.s-shalimar .rl2{--rd:6.7s}
+.play.s-shalimar .sh-ia{animation:shalimar-up 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 1.5s) both}
+.play.s-shalimar .sh-ev{animation:shalimar-up 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 1.9s) both}
+.play.s-shalimar .sh-ln{animation:shalimar-line 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 2.4s) both}
+.play.s-shalimar .sh-chadar{animation:shalimar-on 1s ease-out calc(var(--o) + 2.7s) both}
+.play.s-shalimar .sh-chadar i{animation:shalimar-flow .9s linear calc(var(--o) + 2.7s) infinite}
+.play.s-shalimar .sh-jet{animation:shalimar-jet .8s cubic-bezier(.3,1.5,.5,1) calc(var(--o) + var(--jd)) both,shalimar-play 1.1s ease-in-out calc(var(--o) + var(--jd) + .8s) infinite alternate}
+.play.s-shalimar .j0{--jd:3.1s}.play.s-shalimar .j1{--jd:3.5s}.play.s-shalimar .j2{--jd:3.9s}.play.s-shalimar .j3{--jd:4.3s}
+.play.s-shalimar .sh-rf{animation:shalimar-rf 1.4s ease-out calc(var(--o) + 4.8s) both}
+.play.s-shalimar .sh-rfi{animation:shalimar-wave 1.8s ease-in-out calc(var(--o) + 4.8s) infinite alternate}
+.play.s-shalimar .sh-nm{animation:shalimar-rise 1.8s cubic-bezier(.3,.7,.2,1) calc(var(--o) + 6s) both}
+.play.s-shalimar .sh-pt{animation:shalimar-petal 2.5s cubic-bezier(.15,.7,.4,1) calc(var(--o) + var(--pd)) both}
+.play.s-shalimar .card{animation:shalimar-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 8.9s) both}
+
+@keyframes shalimar-life{0%,90%{opacity:1}100%{opacity:0}}
+@keyframes shalimar-on{0%{opacity:0}100%{opacity:1}}
+@keyframes shalimar-shine{0%{background-position:100% 0}100%{background-position:0 0}}
+@keyframes shalimar-drop{0%{opacity:0;transform:translateY(-80cqw) scale(.8)}12%{opacity:1}86%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(0) scale(1.6,.3)}}
+@keyframes shalimar-ring{0%{opacity:0;transform:scale(.04)}12%{opacity:.95}100%{opacity:0;transform:scale(1)}}
+@keyframes shalimar-ring2{0%{opacity:0;transform:scale(.25)}20%{opacity:.4}100%{opacity:0;transform:scale(1.05)}}
+@keyframes shalimar-up{0%{opacity:0;transform:translateY(6cqw)}100%{opacity:1;transform:none}}
+@keyframes shalimar-line{0%{opacity:0;transform:scaleX(0)}100%{opacity:1;transform:none}}
+@keyframes shalimar-flow{0%{background-position:0 0}100%{background-position:0 6cqw}}
+@keyframes shalimar-jet{0%{opacity:0;transform:scale(.6,0)}100%{opacity:.95;transform:none}}
+@keyframes shalimar-play{0%{transform:none}100%{transform:scale(1.04,.93)}}
+@keyframes shalimar-rf{0%{opacity:0}100%{opacity:.7}}
+@keyframes shalimar-wave{0%{transform:skewX(-5deg) scaleX(1.02) translateX(-.6cqw)}100%{transform:skewX(5deg) scaleX(.98) translateX(.6cqw)}}
+@keyframes shalimar-rise{0%{opacity:0;transform:perspective(220cqw) translateY(70.4cqw) rotateX(180deg)}25%{opacity:.6}100%{opacity:1;transform:perspective(220cqw) translateY(0) rotateX(0)}}
+@keyframes shalimar-petal{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.3)}10%{opacity:1}40%{transform:translate(calc(var(--dx)*.75),var(--dy)) rotate(calc(var(--r)*.4)) scale(1)}85%{opacity:1}100%{opacity:0;transform:translate(var(--dx),calc(var(--dy) + 34cqw)) rotate(var(--r)) scale(.9)}}
+@keyframes shalimar-card{0%{opacity:0;transform:translateY(4cqw) scale(.94)}100%{opacity:1;transform:none}}

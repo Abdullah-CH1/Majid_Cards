@@ -1,0 +1,483 @@
+(function(){
+'use strict';
+// Snapshot of the page exactly as loaded - used by "Export for client" to write a copy of this file.
+var INITIAL = '<!doctype html>\n' + document.documentElement.outerHTML;
+var WIS = window.WIS, REG = WIS.reg;
+function g(i){return document.getElementById(i)}
+var S = g('st'), W = g('w');
+function qa(sel, root){return Array.prototype.slice.call((root || S).querySelectorAll(sel))}
+function each(o, fn){Object.keys(o).forEach(function(k){fn(k, o[k])})}
+function clone(o){return JSON.parse(JSON.stringify(o))}
+
+/* ---------- data ---------- */
+var ROLES = ['bg', 'it', 'ef', 'cd', 'ink', 'ink2', 'acc', 'bl', 'lv'];
+var EV = {baraat: 'Baraat', walima: 'Walima'};
+var PAL = {
+  espresso: {name: 'Espresso and gold', bg: '#3B2A20', it: '#F3E6CC', ef: '#F4EAD8', cd: '#FBF4E6', ink: '#2E2018', ink2: '#7A5A24', acc: '#B8913F', bl: '#9E3B3B', lv: '#5E6B3A'},
+  taupe: {name: 'Taupe and rose gold', bg: '#6F5E52', it: '#FBF3E8', ef: '#FAF3EA', cd: '#FFFAF3', ink: '#3A2C25', ink2: '#8A5E4A', acc: '#A97C5F', bl: '#C27C80', lv: '#7D8B6A'},
+  midnight: {name: 'Midnight cocoa', bg: '#1F1A17', it: '#EFE3CC', ef: '#EFE6D6', cd: '#F8EFE0', ink: '#2A1D15', ink2: '#7B5A25', acc: '#C9A24E', bl: '#A8434F', lv: '#4E6B4F'},
+  mocha: {name: 'Mocha and champagne', bg: '#7A5C45', it: '#FFF5E6', ef: '#F7EEE2', cd: '#FFF9F0', ink: '#3B2A1E', ink2: '#8C6232', acc: '#B8894A', bl: '#B5615E', lv: '#6F7D52'},
+  ivory: {name: 'Light ivory', bg: '#E6D6BD', it: '#3E2E22', ef: '#FBF7F0', cd: '#FFFCF6', ink: '#3A2A1E', ink2: '#876433', acc: '#A8834E', bl: '#B86E6A', lv: '#7A875C'}
+};
+each(REG.palettes || {}, function(k, p){PAL[k] = p});
+var C = {baraat: clone(PAL.espresso), walima: clone(PAL.taupe)};
+var D = {baraat: {date: 'Saturday, 12 December 2026', time: '7:00 PM onwards', venue: 'Rose Garden Marquee, Lahore'},
+         walima: {date: 'Sunday, 13 December 2026', time: '8:00 PM onwards', venue: 'Rose Garden Marquee, Lahore'}};
+var cur = 'walima';   // the couple's main event opens first
+
+var INTROS = [
+  {id: 'env', name: 'Envelope', t0: 5.8, defaults: {sBorder: 'arch', sName: 'letter', sDet: 'wipe', sFall: 'petal', kLan: false, kSpk: true}},
+  {id: 'door', name: 'Palace doors', t0: 5.0, defaults: {sBorder: 'corner', sName: 'slide', sDet: 'up', sFall: 'dust', kLan: true, kSpk: false}},
+  {id: 'med', name: 'Golden medallion', t0: 4.9, defaults: {sBorder: 'garland', sName: 'hand', sDet: 'up', sFall: 'dust', kLan: false, kSpk: true}}
+].concat(REG.intros || []);
+var SCENES = (REG.scenes || []).map(function(s){return {id: s.id, name: s.name, dur: s.dur, ctl: 'kSc_' + s.id}});
+var BORDERS = [{id: 'arch', name: 'Mughal arch'}, {id: 'double', name: 'Double line'}, {id: 'single', name: 'Single line'}, {id: 'corner', name: 'Corner flourishes'}, {id: 'garland', name: 'Garlands'}]
+  .concat(REG.borders || []).concat([{id: 'none', name: 'No border'}]);
+var PATTERNS = [{id: 'dia', name: 'Diamonds'}, {id: 'dot', name: 'Dots'}].concat(REG.patterns || []).concat([{id: 'none', name: 'None'}]);
+var EFFECTS = [{id: 'petal', name: 'Petals'}, {id: 'dust', name: 'Gold dust'}].concat(REG.effects || []).concat([{id: 'none', name: 'None'}]);
+var ORNS = [{id: 'lan', name: 'Hanging lanterns', ctl: 'kLan', cls: 'lan'}, {id: 'spk', name: 'Twinkling sparkles', ctl: 'kSpk', cls: 'spk'}]
+  .concat((REG.ornaments || []).map(function(o){return {id: o.id, name: o.name, ctl: 'kO_' + o.id, cls: 'or-' + o.id}}));
+var FN = REG.fonts.names, FT = REG.fonts.text;
+var IMGS = [{id: 'none', name: 'None'}].concat(REG.images || []);
+var SAMPLES = REG.samples || [];
+function find(list, id){for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null}
+
+// Every design option a sample can set, with the value used when a sample does not mention it.
+function baseState(){
+  var b = {sStyle: 'env', sBorder: 'arch', sPat: 'dia', sImg: 'none', sImgOn: 'stg', rImg: 80, sFall: 'petal',
+           sName: 'letter', sDet: 'wipe', kFdi: true, kFdo: false, sFs: FN[0].css, sFt: FT[0].css};
+  ORNS.forEach(function(o){b[o.ctl] = o.id === 'spk'});
+  SCENES.forEach(function(s){b[s.ctl] = false});
+  return b;
+}
+var DESIGN_KEYS = Object.keys(baseState());
+
+/* ---------- build the editor's lists ---------- */
+function fill(id, list, valKey){
+  var el = g(id); el.innerHTML = '';
+  list.forEach(function(x){var o = document.createElement('option'); o.value = x[valKey || 'id']; o.textContent = x.name; el.appendChild(o)});
+}
+function checks(box, list){
+  var el = g(box); el.innerHTML = '';
+  list.forEach(function(x){
+    var l = document.createElement('label'); l.className = 'ck';
+    var i = document.createElement('input'); i.type = 'checkbox'; i.id = x.ctl; i.className = 'opt';
+    l.appendChild(i); l.appendChild(document.createTextNode(x.name)); el.appendChild(l);
+  });
+}
+fill('sSample', SAMPLES.map(function(s, i){return {id: String(i + 1), name: (i + 1) + ' · ' + s.name}}));
+fill('sStyle', INTROS); fill('sBorder', BORDERS); fill('sPat', PATTERNS); fill('sFall', EFFECTS); fill('sImg', IMGS);
+fill('sFs', FN, 'css'); fill('sFt', FT, 'css');
+fill('sPal', [{id: '', name: 'Pick a theme'}].concat(Object.keys(PAL).map(function(k){return {id: k, name: PAL[k].name}})));
+checks('scBox', SCENES); checks('ornBox', ORNS);
+if (!SCENES.length) g('scBox').previousElementSibling.style.display = g('scBox').style.display = 'none';
+
+/* ---------- state <-> controls ---------- */
+function ctlVal(k){var el = g(k); return el.type === 'checkbox' ? el.checked : (el.type === 'range' ? Number(el.value) : el.value)}
+function setCtl(k, v){var el = g(k); if (!el) return; if (el.type === 'checkbox') el.checked = !!v; else el.value = String(v)}
+function readState(){var s = {}; DESIGN_KEYS.forEach(function(k){s[k] = ctlVal(k)}); return s}
+function v(i, fb){var x = g(i).value.trim(); return x || fb}
+function introOf(st){return find(INTROS, st.sStyle) || INTROS[0]}
+function classesFor(st){
+  var c = ['st', 's-' + st.sStyle, 'bd-' + st.sBorder, 'pt-' + st.sPat, 'na-' + st.sName, 'dt-' + st.sDet, 'fx-' + st.sFall];
+  if (st.sImg && st.sImg !== 'none') {
+    c.push('bg-' + st.sImg);
+    if (st.sImgOn !== 'crd') c.push('bgs');
+    if (st.sImgOn !== 'stg') c.push('bgc');
+  }
+  ORNS.forEach(function(o){if (st[o.ctl]) c.push(o.cls)});
+  SCENES.forEach(function(s){if (st[s.ctl]) c.push('scn-' + s.id)});
+  if (st.kFdi) c.push('fdi');
+  if (st.kFdo) c.push('fdo');
+  return c.join(' ');
+}
+
+/* ---------- applying the design to the stage ---------- */
+function colors(){var c = C[cur]; ROLES.forEach(function(k){if (!c[k]) return; S.style.setProperty('--' + k, c[k]); var el = g('c_' + k); if (el) el.value = c[k]})}
+function cls(){
+  var st = readState();
+  S.className = classesFor(st);
+  S.style.setProperty('--fs', st.sFs);
+  S.style.setProperty('--ft', st.sFt);
+  S.style.setProperty('--bgo', (st.rImg / 100).toFixed(2));
+  S.style.setProperty('--skin', g('sSkin').value);
+}
+var timing = {o: 0, t: 5.8};
+function times(){
+  var st = readState(), o = 0;
+  SCENES.forEach(function(s){
+    var el = S.querySelector('.sc-' + s.id);
+    if (el) el.style.setProperty('--po', o.toFixed(2) + 's');
+    if (st[s.ctl]) o += s.dur;
+  });
+  var t = o + introOf(st).t0;
+  timing = {o: o, t: t};
+  S.style.setProperty('--o', o.toFixed(2) + 's');
+  S.style.setProperty('--t0', t.toFixed(2) + 's');
+  S.style.setProperty('--te', (t + 7.5).toFixed(2) + 's');
+  qa('[data-o]').forEach(function(el){el.style.setProperty('--d', (t + parseFloat(el.getAttribute('data-o'))).toFixed(2) + 's')});
+  qa('.sp').forEach(function(el, i){el.style.setProperty('--d', (t + 3 + i * .6).toFixed(2) + 's')});
+}
+function initial(s){var a = Array.from(s.trim()); return a.length ? a[0].toUpperCase() : ''}
+var MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+var WDAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+function parseDate(s){
+  var low = (s || '').toLowerCase(), r = {day: '', mon: '', mon3: '', year: '', wd: '', monIndex: -1};
+  var m = low.match(/\b(\d{1,2})(?:st|nd|rd|th)?\b/); if (m) r.day = String(parseInt(m[1], 10));
+  var y = low.match(/\b(19|20)\d{2}\b/); if (y) r.year = y[0];
+  MONTHS.forEach(function(n, i){if (r.mon) return; if (low.indexOf(n) >= 0 || new RegExp('\\b' + n.slice(0, 3) + '\\b').test(low)) {r.mon = n.charAt(0).toUpperCase() + n.slice(1); r.mon3 = r.mon.slice(0, 3); r.monIndex = i}});
+  WDAYS.forEach(function(n){if (!r.wd && (low.indexOf(n) >= 0 || new RegExp('\\b' + n.slice(0, 3) + '\\b').test(low))) r.wd = n.charAt(0).toUpperCase() + n.slice(1)});
+  return r;
+}
+function ctx(){
+  var b = v('inB', 'Bride'), gr = v('inG', 'Groom');
+  return {b: b, g: gr, ini: initial(b) + ' & ' + initial(gr), b1: initial(b), g1: initial(gr), ev: EV[cur], evKey: cur,
+          date: D[cur].date, time: D[cur].time, venue: D[cur].venue, cl: v('inC', ''), dp: parseDate(D[cur].date),
+          t0: timing.t, o: timing.o, rand: Math.random, S: S, state: readState()};
+}
+function txt(sel, s){qa(sel).forEach(function(e){e.textContent = s})}
+function nameEl(el, text, base){
+  var mode = g('sName').value;
+  el.innerHTML = ''; el.classList.remove('nf'); el.style.setProperty('--d', base.toFixed(2) + 's');
+  if (mode === 'hand') {
+    var ns = 'http://www.w3.org/2000/svg', sv = document.createElementNS(ns, 'svg');
+    sv.setAttribute('viewBox', '0 0 300 66'); sv.setAttribute('class', 'ns'); sv.setAttribute('aria-hidden', 'true');
+    var tx = document.createElementNS(ns, 'text');
+    tx.setAttribute('class', 'nt'); tx.setAttribute('x', '150'); tx.setAttribute('y', '50'); tx.setAttribute('text-anchor', 'middle');
+    tx.setAttribute('data-fit', '285'); tx.setAttribute('data-fs', '58');
+    tx.textContent = text; sv.appendChild(tx); el.appendChild(sv); return;
+  }
+  if (mode === 'letter') {
+    if (/[\u0600-\u06FF]/.test(text)) {el.textContent = text; el.classList.add('nf'); return}
+    var idx = 0;
+    text.split(/\s+/).forEach(function(w, wi){
+      if (wi > 0) el.appendChild(document.createTextNode(' '));
+      var ws = document.createElement('span'); ws.className = 'w2';
+      Array.from(w).forEach(function(ch){var l = document.createElement('span'); l.className = 'l'; l.textContent = ch; l.style.setProperty('--d', (base + idx * .06).toFixed(2) + 's'); idx++; ws.appendChild(l)});
+      el.appendChild(ws);
+    });
+    return;
+  }
+  el.textContent = text;
+}
+// Shrink SVG text that would overflow (handwriting names and any module text marked data-fit="maxWidth").
+function fit(){
+  qa('svg text[data-fit]').forEach(function(t){
+    var base = parseFloat(t.getAttribute('data-fs') || '58'), max = parseFloat(t.getAttribute('data-fit'));
+    t.style.fontSize = base + 'px';
+    try {var L = t.getComputedTextLength(); if (L > max) t.style.fontSize = (base * max / L).toFixed(1) + 'px'} catch (e) {}
+  });
+}
+function hooks(c){
+  var st = c.state;
+  [['ix', st.sStyle]].concat(SCENES.filter(function(s){return st[s.ctl]}).map(function(s){return ['sc', s.id]}))
+    .concat(ORNS.filter(function(o){return st[o.ctl]}).map(function(o){return ['orn', o.id]}))
+    .concat([['bd', st.sBorder], ['pt', st.sPat]])
+    .forEach(function(p){
+      var mod = WIS[p[0]] && WIS[p[0]][p[1]];
+      if (mod && mod.update) {try {mod.update(c)} catch (e) {console.error('module ' + p.join(':'), e)}}
+    });
+}
+function up(){
+  var c = ctx(), t = timing.t;
+  txt('.xev', c.ev); txt('.xnm', 'of ' + c.b + ' & ' + c.g); txt('.xin', c.ini); txt('.xm1', c.b1); txt('.xm2', c.g1);
+  txt('.xbn', c.b); txt('.xgn', c.g); txt('.xdt', c.date); txt('.xtm', c.time); txt('.xvn', c.venue); txt('.xcl', c.cl);
+  txt('.xday', c.dp.day); txt('.xmon', c.dp.mon); txt('.xmon3', c.dp.mon3); txt('.xyr', c.dp.year); txt('.xwd', c.dp.wd);
+  nameEl(g('bn'), c.b, t + .7);
+  nameEl(g('gn'), c.g, t + 1.6);
+  g('ev').textContent = c.ev;
+  g('dt').textContent = c.date; g('tm').textContent = c.time; g('vn').textContent = c.venue;
+  g('cl').textContent = c.cl;
+  g('bism').style.display = g('inBism').checked ? '' : 'none';
+  hooks(c);
+  fit();
+}
+function fall(){
+  var P = g('fall'); P.innerHTML = ''; var f = g('sFall').value; if (f === 'none') return; var t = timing.t;
+  if (f === 'petal' || f === 'dust') {
+    for (var i = 0; i < 14; i++) {
+      var e = document.createElement('span'), s;
+      if (f === 'petal') {e.className = 'pe' + (i % 2 ? ' alt' : ''); s = 6 + Math.random() * 6; e.style.width = s + 'px'; e.style.height = (s * 1.4) + 'px'; e.style.animationDuration = (6 + Math.random() * 4) + 's'}
+      else {e.className = 'du'; s = 2 + Math.random() * 3; e.style.width = s + 'px'; e.style.height = s + 'px'; e.style.animationDuration = (7 + Math.random() * 5) + 's'}
+      e.style.left = (4 + Math.random() * 90) + '%'; e.style.animationDelay = (t + .4 + Math.random() * 4).toFixed(2) + 's'; P.appendChild(e);
+    }
+    return;
+  }
+  var fx = WIS.fx && WIS.fx[f];
+  if (fx) {try {fx(P, {t0: t, o: timing.o, rand: Math.random, S: S})} catch (e) {console.error('effect ' + f, e)}}
+}
+function play(){S.classList.remove('play'); void S.offsetWidth; S.classList.add('play')}
+function all(){cls(); times(); up(); fall()}
+function defs(){var d = introOf(readState()).defaults || {}; each(d, setCtl)}
+function fillD(){['date', 'time', 'venue'].forEach(function(k){g('in_' + k).value = D[cur][k]})}
+
+/* ---------- samples ---------- */
+var curSample = 1, custom = false;
+function sampleState(smp){return Object.assign(baseState(), smp.set || {})}
+function samplePal(smp, ev){return Object.assign({}, ev === 'walima' ? PAL.taupe : PAL.espresso, (smp.pal && (smp.pal[ev] || smp.pal.baraat)) || {})}
+function applySample(n, quiet){
+  var smp = SAMPLES[n - 1]; if (!smp) return;
+  curSample = n; custom = false;
+  each(sampleState(smp), setCtl);
+  g('sSample').value = String(n);
+  C.baraat = samplePal(smp, 'baraat'); C.walima = samplePal(smp, 'walima');
+  g('sPal').value = '';
+  colors(); all(); if (!quiet) play();
+  markSel(); nav(); saveHash();
+}
+function introName(smp){var i = find(INTROS, sampleState(smp).sStyle); return i ? i.name : ''}
+function nav(){
+  var smp = SAMPLES[curSample - 1];
+  g('snN').textContent = SAMPLES.length ? 'Sample ' + curSample + ' of ' + SAMPLES.length : 'Custom design';
+  g('snName').textContent = smp ? smp.name + ' · ' + introName(smp) + (custom ? ' · customised' : '') : '';
+  var lk = g('likeLbl'); if (lk) lk.textContent = 'I like Sample ' + curSample;
+}
+function step(d){if (!SAMPLES.length) return; var n = ((curSample - 1 + d) % SAMPLES.length + SAMPLES.length) % SAMPLES.length + 1; pick(n)}
+function pick(n){g('sSample').value = String(n); g('sSample').dispatchEvent(new Event('change', {bubbles: true}))}
+function touched(){if (!custom) {custom = true; nav()}}
+function saveHash(){try {history.replaceState(null, '', '#sample-' + curSample)} catch (e) {}}
+
+/* ---------- gallery of live thumbnails (the finished card of every sample) ---------- */
+var DEF_TAGS = /^(pattern|lineargradient|radialgradient|clippath|mask|filter|symbol|marker)$/i;
+function thumbTemplate(){
+  var c = S.cloneNode(true);
+  qa('.ix,.sc,.env-l,.door-l,.med-l,.sl,.fall,.fd,.fo', c).forEach(function(n){n.remove()});
+  ['id', 'role', 'aria-label', 'style'].forEach(function(a){c.removeAttribute(a)});
+  c.setAttribute('aria-hidden', 'true');
+  qa('[id]', c).forEach(function(n){if (!DEF_TAGS.test(n.tagName)) n.removeAttribute('id')});
+  return c;
+}
+function uniqIds(root, sfx){
+  var map = {};
+  qa('[id]', root).forEach(function(n){map[n.id] = n.id + sfx; n.id = n.id + sfx});
+  if (!Object.keys(map).length) return;
+  qa('*', root).forEach(function(n){
+    Array.prototype.slice.call(n.attributes).forEach(function(a){
+      var val = a.value; if (val.indexOf('#') < 0) return;
+      var nv = val.replace(/url\(\s*['"]?#([^'")\s]+)['"]?\s*\)/g, function(m, id){return map[id] ? 'url(#' + map[id] + ')' : m});
+      if ((a.name === 'href' || a.name === 'xlink:href') && val.charAt(0) === '#' && map[val.slice(1)]) nv = '#' + map[val.slice(1)];
+      if (nv !== val) n.setAttribute(a.name, nv);
+    });
+  });
+}
+function thumbStage(tpl, smp, i){
+  var c = tpl.cloneNode(true), st = sampleState(smp), p = samplePal(smp, cur);
+  qa('.bdx,.ptx,.orx', c).forEach(function(n){
+    var keep = n.classList.contains('bdx-' + st.sBorder) || n.classList.contains('ptx-' + st.sPat) ||
+      ORNS.some(function(o){return st[o.ctl] && n.classList.contains('orx-' + o.id)});
+    if (!keep) n.remove();
+  });
+  c.setAttribute('class', classesFor(st) + ' tstage');
+  ROLES.forEach(function(r){if (p[r]) c.style.setProperty('--' + r, p[r])});
+  c.style.setProperty('--fs', st.sFs); c.style.setProperty('--ft', st.sFt); c.style.setProperty('--bgo', (st.rImg / 100).toFixed(2));
+  c.style.setProperty('--skin', g('sSkin').value);
+  uniqIds(c, '-t' + i);
+  return c;
+}
+var activeCat = 'All';
+function buildGallery(){
+  var grid = g('ggrid'); grid.innerHTML = '';
+  if (!SAMPLES.length) {g('gal').style.display = 'none'; return}
+  var tpl = thumbTemplate();
+  SAMPLES.forEach(function(smp, i){
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'th'; b.setAttribute('data-n', i + 1);
+    b.setAttribute('data-cat', smp.cat || ''); b.setAttribute('aria-label', 'Sample ' + (i + 1) + ': ' + smp.name);
+    if (smp.desc) b.title = smp.desc;
+    var box = document.createElement('div'); box.className = 'tbox';
+    box.appendChild(thumbStage(tpl, smp, i));
+    var num = document.createElement('span'); num.className = 'tnum'; num.textContent = i + 1; box.appendChild(num);
+    var ck = document.createElement('span'); ck.className = 'tck'; ck.textContent = '✓'; box.appendChild(ck);
+    var tn = document.createElement('span'); tn.className = 'tn';
+    var tb = document.createElement('b'); tb.textContent = smp.name; var ts = document.createElement('span'); ts.textContent = introName(smp);
+    tn.appendChild(tb); tn.appendChild(ts);
+    b.appendChild(box); b.appendChild(tn);
+    b.addEventListener('click', function(){pick(i + 1)});
+    grid.appendChild(b);
+  });
+  g('galCount').textContent = SAMPLES.length + ' designs';
+  filterCat(activeCat); scaleThumbs(); markSel();
+}
+function scaleThumbs(){
+  var box = g('ggrid').querySelector('.th:not([hidden]) .tbox'); if (!box) return;
+  var s = (box.clientWidth / 340).toFixed(4);
+  qa('.tbox', g('ggrid')).forEach(function(b){b.style.setProperty('--ts', s)});
+}
+function markSel(){qa('.th', g('ggrid')).forEach(function(b){b.classList.toggle('on', +b.getAttribute('data-n') === curSample)})}
+function buildChips(){
+  var cats = ['All']; SAMPLES.forEach(function(s){if (s.cat && cats.indexOf(s.cat) < 0) cats.push(s.cat)});
+  var box = g('chips'); box.innerHTML = '';
+  if (cats.length < 3) {box.style.display = 'none'; return}
+  cats.forEach(function(cat){
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = cat;
+    b.addEventListener('click', function(){filterCat(cat)}); box.appendChild(b);
+  });
+}
+function filterCat(cat){
+  activeCat = cat;
+  qa('.chip', g('chips')).forEach(function(b){b.classList.toggle('on', b.textContent === cat)});
+  qa('.th', g('ggrid')).forEach(function(b){b.hidden = !(cat === 'All' || b.getAttribute('data-cat') === cat)});
+  scaleThumbs();
+}
+var galTimer = 0;
+function galSoon(){clearTimeout(galTimer); galTimer = setTimeout(buildGallery, 350)}
+
+/* ---------- events ---------- */
+g('sSample').addEventListener('change', function(){applySample(parseInt(g('sSample').value, 10) || 1)});
+g('sStyle').addEventListener('change', function(){defs(); all(); play(); touched()});
+qa('.opt', document).forEach(function(el){
+  el.addEventListener('change', function(){
+    all(); play();
+    if (el.id === 'sSkin') galSoon(); else touched();
+    if (el.id === 'sFs') {setTimeout(fit, 400); setTimeout(fit, 1200)}
+  });
+  if (el.type === 'range') el.addEventListener('input', function(){cls()});
+});
+g('inE').addEventListener('change', function(){cur = g('inE').value; fillD(); colors(); all(); play(); evButtons(); galSoon()});
+qa('.ff', document).forEach(function(el){el.addEventListener('input', function(){var k = el.getAttribute('data-k'); if (k) D[cur][k] = el.value.trim(); S.classList.remove('play'); all(); galSoon()})});
+g('inBism').addEventListener('change', function(){S.classList.remove('play'); up(); galSoon()});
+qa('.cc', document).forEach(function(el){el.addEventListener('input', function(){var k = el.getAttribute('data-c'); C[cur][k] = el.value; S.style.setProperty('--' + k, el.value); touched()})});
+g('sPal').addEventListener('change', function(){var p = g('sPal').value; if (!p) return; C[cur] = Object.assign({}, PAL[p]); colors(); touched()});
+g('bReset').addEventListener('click', function(){var smp = SAMPLES[curSample - 1]; C[cur] = smp ? samplePal(smp, cur) : clone(cur === 'baraat' ? PAL.espresso : PAL.taupe); colors(); g('sPal').value = ''});
+S.addEventListener('click', play);
+g('bPlay').addEventListener('click', play);
+g('bPrev').addEventListener('click', function(){step(-1)});
+g('bNext').addEventListener('click', function(){step(1)});
+g('bHide').addEventListener('click', function(){var h = g('ctl').classList.toggle('hid'); W.classList.toggle('rec', h); g('hLbl').textContent = h ? 'Show editor' : 'Hide editor'; g('hIco').className = h ? 'ti ti-eye' : 'ti ti-eye-off'; setTimeout(scaleThumbs, 50)});
+document.addEventListener('keydown', function(e){
+  var t = e.target, tag = t && t.tagName;
+  if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA' || (t && t.isContentEditable) || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.key === 'ArrowRight') {step(1); e.preventDefault()}
+  else if (e.key === 'ArrowLeft') {step(-1); e.preventDefault()}
+});
+if (window.ResizeObserver) new ResizeObserver(scaleThumbs).observe(g('ggrid'));
+if (document.fonts) {
+  document.fonts.addEventListener('loadingdone', function(){fit()});
+  if (document.fonts.ready) document.fonts.ready.then(fit);
+}
+
+/* ---------- client view, event switch and "I like this one" ---------- */
+var PRE = {};
+try {PRE = JSON.parse(g('preset').textContent || '{}') || {}} catch (e) {PRE = {}}
+function evButtons(){
+  var box = g('evsw'); if (!box.children.length) {
+    Object.keys(EV).forEach(function(k){var b = document.createElement('button'); b.type = 'button'; b.className = 'evb'; b.setAttribute('data-ev', k); b.textContent = EV[k];
+      b.addEventListener('click', function(){g('inE').value = k; g('inE').dispatchEvent(new Event('change', {bubbles: true}))}); box.appendChild(b)});
+  }
+  qa('.evb', box).forEach(function(b){b.classList.toggle('on', b.getAttribute('data-ev') === cur)});
+}
+function toast(msg){var t = g('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast.tm); toast.tm = setTimeout(function(){t.classList.remove('on')}, 3200)}
+g('bLike').addEventListener('click', function(){
+  var smp = SAMPLES[curSample - 1];
+  var msg = 'Assalam o Alaikum! For the ' + EV[cur] + ' invitation of ' + v('inB', '') + ' & ' + v('inG', '') + ' I like Sample ' + curSample + (smp ? ' (' + smp.name + ')' : '') + '.';
+  if (PRE.wa) {window.open('https://wa.me/' + String(PRE.wa).replace(/[^0-9]/g, '') + '?text=' + encodeURIComponent(msg), '_blank'); return}
+  var done = function(){toast('Copied: "' + msg + '" - paste it in your chat to tell us.')};
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(msg).then(done, function(){prompt('Copy this message:', msg)});
+  else prompt('Copy this message:', msg);
+});
+/* ---------- "Download video": record the card in this browser tab (Chrome / Edge on a computer) ---------- */
+function animEnd(){
+  var end = 0;
+  S.getAnimations({subtree: true}).forEach(function(a){
+    var t = a.effect && a.effect.getComputedTiming ? a.effect.getComputedTiming() : null;
+    if (t && isFinite(t.endTime) && t.endTime > end) end = t.endTime;
+  });
+  return end / 1000;
+}
+function fileBase(){
+  var smp = SAMPLES[curSample - 1];
+  return (v('inB', 'Bride') + ' & ' + v('inG', 'Groom') + ' - ' + EV[cur] + (smp ? ' - ' + smp.name : '')).replace(/[\\/:*?"<>|]+/g, '');
+}
+g('bVideo').addEventListener('click', async function(){
+  var md = navigator.mediaDevices;
+  if (!md || !md.getDisplayMedia || !window.MediaRecorder || !window.CropTarget) {
+    toast('Video download works on a computer in Chrome or Edge. On a phone, tap "I like this design" and we will send you the video.');
+    return;
+  }
+  var btn = this, stream = null;
+  btn.disabled = true;
+  try {
+    toast('Choose "This tab" and press Share. Keep this window still until the video downloads.');
+    stream = await md.getDisplayMedia({video: {frameRate: 60}, audio: false,
+                                       preferCurrentTab: true, selfBrowserSurface: 'include', surfaceSwitching: 'exclude'});
+    document.documentElement.classList.add('recording');
+    var track = stream.getVideoTracks()[0];
+    await new Promise(function(r){setTimeout(r, 700)});
+    await track.cropTo(await CropTarget.fromElement(S));
+    var types = ['video/mp4;codecs=avc1.640033', 'video/mp4;codecs=avc1.4d0033', 'video/mp4;codecs=avc1', 'video/webm;codecs=vp9', 'video/webm'];
+    var type = types.filter(function(t){return MediaRecorder.isTypeSupported(t)})[0] || '';
+    var rec = new MediaRecorder(stream, {mimeType: type, videoBitsPerSecond: 16000000}), parts = [];
+    rec.ondataavailable = function(e){if (e.data && e.data.size) parts.push(e.data)};
+    var stopped = new Promise(function(r){rec.onstop = r});
+    rec.start(500);
+    await new Promise(function(r){setTimeout(r, 300)});
+    play();
+    await new Promise(function(r){requestAnimationFrame(function(){requestAnimationFrame(r)})});
+    var secs = Math.min(Math.max(animEnd(), 6) + 4, 60);
+    await new Promise(function(r){setTimeout(r, secs * 1000)});
+    rec.stop(); await stopped;
+    var ext = /avc1|h264/i.test(rec.mimeType) ? '.mp4' : '.webm';
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(parts, {type: rec.mimeType}));
+    a.download = fileBase() + ext; document.body.appendChild(a); a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href); a.remove()}, 3000);
+    toast('Video saved: ' + a.download);
+  } catch (e) {
+    toast(e && e.name === 'NotAllowedError' ? 'Recording cancelled.' : 'Could not record the video here: ' + (e && e.message || e));
+  } finally {
+    if (stream) stream.getTracks().forEach(function(t){t.stop()});
+    document.documentElement.classList.remove('recording');
+    btn.disabled = false;
+  }
+});
+
+function snapshot(){
+  var ctrls = {};
+  qa('input, select, textarea', g('ctl')).forEach(function(el){if (!el.id) return; ctrls[el.id] = el.type === 'checkbox' ? el.checked : el.value});
+  return {sample: curSample, custom: custom, cur: cur, C: C, D: D, ctrls: ctrls};
+}
+g('bExport').addEventListener('click', function(){var d = g('dlg'); if (d.showModal) d.showModal(); else d.setAttribute('open', '')});
+g('xGo').addEventListener('click', function(){
+  var pre = {client: g('xClient').checked, title: g('xTitle').value.trim(), wa: g('xWa').value.trim(), state: snapshot()};
+  var json = JSON.stringify(pre).replace(/</g, '\\u003c');
+  var html = INITIAL.replace(/(<script id="preset" type="application\/json">)[\s\S]*?(<\/script>)/, function(m, a, b){return a + json + b});
+  var name = 'Invitation designs - ' + (v('inB', 'Bride') + ' & ' + v('inG', 'Groom')).replace(/[\\/:*?"<>|]+/g, '') + '.html';
+  var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([html], {type: 'text/html'})); a.download = name;
+  document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href); a.remove()}, 1500);
+  g('dlg').close ? g('dlg').close() : g('dlg').removeAttribute('open');
+  toast('Saved "' + name + '" - send that file to your client.');
+});
+
+/* ---------- start ---------- */
+function restore(st){
+  each(st.ctrls || {}, function(k, val){setCtl(k, val)});
+  if (st.C) C = st.C; if (st.D) D = st.D; if (st.cur && EV[st.cur]) cur = st.cur;
+  g('inE').value = cur;
+  curSample = Math.min(Math.max(parseInt(st.sample, 10) || 1, 1), Math.max(SAMPLES.length, 1));
+  custom = !!st.custom;
+  colors(); all();
+}
+g('inE').value = cur; fillD();
+var hashN = (location.hash.match(/sample-(\d+)/) || [])[1];
+// "#sample-N&s=<base64url JSON of snapshot()>" re-opens a saved design with its names, details and colours.
+function hashState(){
+  var m = location.hash.match(/[#&]s=([A-Za-z0-9_-]+)/); if (!m) return null;
+  try {
+    var b = atob(m[1].replace(/-/g, '+').replace(/_/g, '/')), u = new Uint8Array(b.length);
+    for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i);
+    var st = JSON.parse(new TextDecoder().decode(u));
+    return st && typeof st === 'object' ? st : null;
+  } catch (e) {return null}
+}
+var HS = PRE.state ? null : hashState();
+if (PRE.state) restore(PRE.state);
+else if (HS) restore(HS);
+else if (SAMPLES.length) applySample(Math.min(parseInt(hashN, 10) || 1, SAMPLES.length), true);
+else {colors(); all()}
+if (PRE.client) {
+  document.documentElement.classList.add('client'); W.classList.add('rec'); g('ctl').classList.add('hid');
+  if (PRE.title) g('chTitle').textContent = PRE.title;
+  g('chSub').textContent = v('inB', '') + ' & ' + v('inG', '') + ' · tap a design to preview it';
+  document.title = (PRE.title || 'Choose your invitation design') + ' - ' + v('inB', '') + ' & ' + v('inG', '');
+}
+evButtons(); buildChips(); buildGallery(); nav(); play();
+})();
+

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lotus Arch Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link crossorigin="anonymous" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Noto+Nastaliq+Urdu:wght@500&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<style>
+  :root { --ui-bg:#1d1814; --ui-panel:#2a231d; --ui-ink:#f3e9d6; --ui-mute:#b9a98f; --ui-gold:#c9a45c; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:var(--ui-bg); color:var(--ui-ink); font:15px/1.4 system-ui,Segoe UI,Arial,sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; padding:10px 16px; background:var(--ui-panel); border-bottom:1px solid #3b3128; position:sticky; top:0; z-index:5; }
+  .bar b { color:var(--ui-gold); font-weight:600; margin-right:6px; }
+  .bar label { display:flex; align-items:center; gap:6px; color:var(--ui-mute); white-space:nowrap; }
+  .bar input[type=range] { width:110px; accent-color:var(--ui-gold); }
+  .btn { background:#3a3027; color:var(--ui-ink); border:1px solid #57483a; border-radius:8px; padding:7px 12px; cursor:pointer; font:inherit; }
+  .btn:hover { border-color:var(--ui-gold); }
+  .btn.gold { background:var(--ui-gold); color:#1d1814; border-color:var(--ui-gold); font-weight:600; }
+  .hint { padding:8px 16px; color:var(--ui-mute); font-size:13px; }
+  .stage { display:flex; justify-content:center; padding:8px 16px 40px; }
+  .wrap { position:relative; width:min(100%, 1122px); }
+  .wrap::before { content:""; display:block; padding-top:124.955%; } /* 1402 / 1122 */
+  /* ---------- the card: 1122 x 1402, same pixels as the original artwork ---------- */
+  #card { position:absolute; left:0; top:0; width:1122px; height:1402px; transform-origin:0 0; overflow:hidden;
+          background:#efe2c8 url("__IMG__") 0 0 / 1122px 1402px no-repeat; box-shadow:0 10px 40px rgba(0,0,0,.45); }
+  #card.blank .txt { display:none; }
+  .txt { position:absolute; left:236px; width:650px; top:var(--top,486px); height:var(--h,500px);
+         display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+         color:var(--ink,#6a4818); translate:0 var(--dy,0px); }
+  .in { width:100%; display:flex; flex-direction:column; align-items:center; transform-origin:50% 50%; }
+  .ln { outline:none; max-width:100%; border-radius:4px; }
+  .ln:hover, .ln:focus { box-shadow:0 0 0 2px rgba(201,164,92,.55); }
+  .exporting .ln:hover, .exporting .ln:focus { box-shadow:none; }
+  .ln.empty { min-width:180px; min-height:22px; box-shadow:0 0 0 1px dashed; opacity:0; transition:opacity .2s; }
+  #card:hover .ln.empty, .ln.empty:focus { opacity:.4; }
+  .ln.empty::before { content:attr(data-ph); font:italic 500 18px "Cormorant Garamond",serif; }
+  .exporting .ln.empty { display:none; }
+  .bism  { font:700 calc(46px*var(--s)) /1.5 "Amiri",serif; direction:rtl; margin-bottom:calc(6px*var(--s)); }
+  .host  { font:400 calc(46px*var(--s))/1.15 "Great Vibes",cursive; word-spacing:.14em; }
+  .inv   { font:400 calc(35px*var(--s))/1.2 "Great Vibes",cursive; word-spacing:.12em; }
+  .names { font:600 calc(54px*var(--s))/1.1 "Cormorant Garamond",serif; letter-spacing:.02em; margin-top:calc(16px*var(--s)); text-transform:uppercase; white-space:nowrap; }
+  .joiner{ font:italic 600 calc(38px*var(--s))/1 "Cormorant Garamond",serif; text-transform:none; letter-spacing:0; margin:0 .18em; }
+  .event { font:600 calc(26px*var(--s))/1.2 "Cormorant Garamond",serif; letter-spacing:.3em; text-indent:.3em; text-transform:uppercase; margin-top:calc(10px*var(--s)); }
+  .date  { font:400 calc(40px*var(--s))/1.2 "Great Vibes",cursive; word-spacing:.12em; margin-top:calc(12px*var(--s)); }
+  .venue { font:600 calc(29px*var(--s))/1.3 "Cormorant Garamond",serif; margin-top:calc(8px*var(--s)); }
+  .time  { font:600 calc(29px*var(--s))/1.3 "Cormorant Garamond",serif; margin-top:calc(6px*var(--s)); }
+  .urdu  { font:500 calc(24px*var(--s))/2 "Noto Nastaliq Urdu",serif; direction:rtl; margin-top:calc(8px*var(--s)); }
+  .nmrow { display:flex; align-items:baseline; justify-content:center; flex-wrap:nowrap; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <b>Lotus Arch Card</b>
+  <label><input type="checkbox" id="showText" checked> Show text</label>
+  <label>Text size <input type="range" id="size" min="70" max="125" value="100"></label>
+  <label>Move text <input type="range" id="move" min="-120" max="160" value="0"></label>
+  <label>Text colour <input type="color" id="ink" value="#6a4818"></label>
+  <button class="btn" id="reset">Reset wording</button>
+  <button class="btn" id="dl1">Download (WhatsApp)</button>
+  <button class="btn gold" id="dl2">Download (print, 2&times;)</button>
+</div>
+<div class="hint">Click any line on the card and type to change it. Empty a line to hide it (it shows as a faint box here and is left out of downloads). Untick "Show text" for the blank card. Your changes are remembered on this computer.</div>
+<div class="stage"><div class="wrap" id="wrap"><div id="card">
+  <div class="txt"><div class="in" id="in">
+    <div class="ln bism" contenteditable data-k="bism" data-ph="Bismillah"></div>
+    <div class="ln host" contenteditable data-k="host" data-ph="Hosts"></div>
+    <div class="ln inv" contenteditable data-k="inv1" data-ph="Invitation line 1"></div>
+    <div class="ln inv" contenteditable data-k="inv2" data-ph="Invitation line 2"></div>
+    <div class="names nmrow"><span class="ln" contenteditable data-k="groom" data-ph="Groom"></span><span class="ln joiner" contenteditable data-k="join" data-ph="and"></span><span class="ln" contenteditable data-k="bride" data-ph="Bride"></span></div>
+    <div class="ln event" contenteditable data-k="event" data-ph="Event (e.g. Baraat)"></div>
+    <div class="ln date" contenteditable data-k="date" data-ph="Date"></div>
+    <div class="ln venue" contenteditable data-k="venue" data-ph="Venue"></div>
+    <div class="ln time" contenteditable data-k="time" data-ph="Time"></div>
+    <div class="ln urdu" contenteditable data-k="urdu" data-ph="Urdu line (optional)"></div>
+  </div></div>
+</div></div></div>
+<script>
+const DEF = {
+  bism: "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
+  host: "Mr. & Mrs. Col Asim",
+  inv1: "cordially invite you to the",
+  inv2: "Baraat of their beloved son",
+  groom: "Abdul Aleem", join: "with", bride: "Laiba",
+  event: "",
+  date: "Thursday, 31st December 2026",
+  venue: "Noor Mahal Marquee, G.T Road, Islamabad",
+  time: "2:00 pm",
+  urdu: ""
+};
+const KEY = "lotus-arch-card-v1";
+const card = document.getElementById("card"), wrap = document.getElementById("wrap"), inner = document.getElementById("in");
+let S = { text: {...DEF}, show: true, size: 100, move: 0, ink: "#6a4818" };
+try { const v = JSON.parse(localStorage.getItem(KEY) || "null"); if (v) S = { ...S, ...v, text: { ...DEF, ...(v.text || {}) } }; } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+const lines = [...document.querySelectorAll(".ln")];
+
+function paint() {
+  lines.forEach(el => { if (document.activeElement !== el) el.textContent = S.text[el.dataset.k] || ""; el.classList.toggle("empty", !el.textContent.trim()); });
+  card.classList.toggle("blank", !S.show);
+  card.style.setProperty("--ink", S.ink);
+  card.style.setProperty("--dy", S.move + "px");
+  document.getElementById("showText").checked = S.show;
+  document.getElementById("size").value = S.size;
+  document.getElementById("move").value = S.move;
+  document.getElementById("ink").value = S.ink;
+  fit();
+}
+// shrink everything a little if the wording is too long for the space inside the arch
+function fit() {
+  let s = S.size / 100;
+  card.style.setProperty("--s", s);
+  const box = card.querySelector(".txt"), names = card.querySelector(".names");
+  for (let i = 0; i < 40; i++) {
+    const tooTall = inner.scrollHeight > box.clientHeight, tooWide = names.scrollWidth > box.clientWidth || inner.scrollWidth > box.clientWidth + 1;
+    if (!tooTall && !tooWide) break;
+    s *= 0.97; card.style.setProperty("--s", s);
+  }
+}
+function scale() { const k = wrap.clientWidth / 1122; card.style.transform = `scale(${k})`; }
+lines.forEach(el => {
+  el.addEventListener("input", () => { S.text[el.dataset.k] = el.textContent; el.classList.toggle("empty", !el.textContent.trim()); fit(); save(); });
+  el.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); el.blur(); } });
+  el.addEventListener("paste", e => { e.preventDefault(); document.execCommand("insertText", false, (e.clipboardData || window.clipboardData).getData("text").replace(/\s+/g, " ")); });
+});
+document.getElementById("showText").onchange = e => { S.show = e.target.checked; paint(); save(); };
+document.getElementById("size").oninput = e => { S.size = +e.target.value; fit(); save(); };
+document.getElementById("move").oninput = e => { S.move = +e.target.value; card.style.setProperty("--dy", S.move + "px"); save(); };
+document.getElementById("ink").oninput = e => { S.ink = e.target.value; card.style.setProperty("--ink", S.ink); save(); };
+document.getElementById("reset").onclick = () => { S.text = { ...DEF }; S.size = 100; S.move = 0; S.ink = "#6a4818"; document.activeElement && document.activeElement.blur(); paint(); save(); };
+
+async function download(ratio) {
+  if (!window.htmlToImage) { alert("The download helper needs an internet connection. Please connect and reload the page."); return; }
+  document.activeElement && document.activeElement.blur();
+  await document.fonts.ready;
+  const t = card.style.transform; card.style.transform = "none"; card.classList.add("exporting");
+  try {
+    const url = await htmlToImage.toPng(card, { width: 1122, height: 1402, pixelRatio: ratio, cacheBust: false });
+    const a = document.createElement("a");
+    a.href = url; a.download = `Lotus Arch Card${S.show ? "" : " (blank)"}${ratio > 1 ? " - print" : ""}.png`; a.click();
+  } catch (e) { alert("Download failed: " + e.message); }
+  finally { card.classList.remove("exporting"); card.style.transform = t; }
+}
+document.getElementById("dl1").onclick = () => download(1080 / 1122);
+document.getElementById("dl2").onclick = () => download(2);
+
+window.addEventListener("resize", scale);
+scale(); paint();
+document.fonts.ready.then(fit);
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+.ix-scroll .sr-bg{position:absolute;inset:0;z-index:7;opacity:0;background:radial-gradient(ellipse at 50% 45%,color-mix(in srgb,var(--bg) 82%,var(--acc)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 70%,#000) 100%)}
+.ix-scroll .sr-wrap{position:absolute;left:0;right:0;top:30cqw;height:112cqw;z-index:7;opacity:0;pointer-events:none}
+.ix-scroll .sr-drop{position:absolute;inset:0}
+.ix-scroll .sr-paper{position:absolute;left:12cqw;right:12cqw;top:1.6cqw;height:104cqw;clip-path:inset(0 0 100% 0);
+  background:radial-gradient(ellipse at 50% 50%,var(--ef) 55%,color-mix(in srgb,var(--ef) 82%,var(--acc)) 100%);
+  box-shadow:0 2cqw 5cqw rgba(0,0,0,.35)}
+.ix-scroll .sr-paper::before,.ix-scroll .sr-paper::after{content:"";position:absolute;top:0;bottom:0;width:2cqw;background:linear-gradient(90deg,rgba(0,0,0,.14),transparent)}
+.ix-scroll .sr-paper::before{left:0}.ix-scroll .sr-paper::after{right:0;transform:scaleX(-1)}
+.ix-scroll .sr-frame{position:absolute;inset:6cqw 4cqw;border:1px solid color-mix(in srgb,var(--acc) 75%,transparent);outline:1px solid color-mix(in srgb,var(--acc) 40%,transparent);outline-offset:1.2cqw;border-radius:30cqw 30cqw 1cqw 1cqw / 16cqw 16cqw 1cqw 1cqw}
+.ix-scroll .sr-txt{position:absolute;left:8cqw;right:8cqw;top:30cqw;text-align:center;color:var(--ink)}
+.ix-scroll .sr-txt>div{opacity:0}
+.ix-scroll .ia{font-family:var(--ft);font-size:4.4cqw;letter-spacing:.06em;line-height:1.4}
+.ix-scroll .ib{font-family:var(--fs);font-size:15cqw;line-height:1.25;color:var(--ink2);margin:2cqw 0 1cqw}
+.ix-scroll .ic{font-family:var(--ft);font-size:5cqw;letter-spacing:.04em}
+.ix-scroll .sr-orn{height:4cqw;margin:0 auto 5cqw;width:34cqw;background:
+  radial-gradient(circle,var(--acc) 0 .9cqw,transparent 1cqw) center/4cqw 4cqw no-repeat,
+  linear-gradient(90deg,transparent,var(--acc) 30%,transparent 46%,transparent 54%,var(--acc) 70%,transparent) center/100% 1px no-repeat}
+.ix-scroll .sr-orn.b{margin:6cqw auto 0}
+.ix-scroll .sr-rod{position:absolute;left:6cqw;right:6cqw;height:3.4cqw;border-radius:2cqw;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 50%,#fff) 0%,var(--acc) 45%,color-mix(in srgb,var(--acc) 55%,#000) 100%);
+  box-shadow:0 .8cqw 1.6cqw rgba(0,0,0,.35)}
+.ix-scroll .sr-rod.top{top:0}
+.ix-scroll .sr-rod::before,.ix-scroll .sr-rod::after{content:"";position:absolute;top:50%;width:5cqw;height:5cqw;margin-top:-2.5cqw;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--acc) 40%,#fff),var(--acc) 50%,color-mix(in srgb,var(--acc) 50%,#000))}
+.ix-scroll .sr-rod::before{left:-3.5cqw}.ix-scroll .sr-rod::after{right:-3.5cqw}
+.ix-scroll .sr-rod i{position:absolute;inset:0 2cqw;border-left:1px solid rgba(0,0,0,.25);border-right:1px solid rgba(0,0,0,.25)}
+.ix-scroll .sr-roll{position:absolute;left:0;right:0;top:2.4cqw;height:9cqw}
+.ix-scroll .sr-cyl{position:absolute;left:11cqw;right:11cqw;top:0;height:6.6cqw;border-radius:1.4cqw;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--ef) 70%,#000) 0%,var(--ef) 30%,color-mix(in srgb,var(--ef) 70%,#fff) 50%,var(--ef) 70%,color-mix(in srgb,var(--ef) 75%,#000) 100%)}
+.ix-scroll .sr-roll .sr-rod{top:5cqw}
+.ix-scroll .sr-rib{position:absolute;left:46cqw;width:8cqw;top:-1cqw;height:11cqw;background:linear-gradient(90deg,var(--bl),color-mix(in srgb,var(--bl) 70%,#fff) 50%,var(--bl))}
+.ix-scroll .sr-seal{position:absolute;left:50%;top:4cqw;width:13cqw;height:13cqw;margin:-6.5cqw 0 0 -6.5cqw;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 40% 35%,color-mix(in srgb,var(--bl) 70%,#fff),var(--bl) 55%,color-mix(in srgb,var(--bl) 60%,#000));
+  box-shadow:0 0 0 .7cqw color-mix(in srgb,var(--bl) 80%,#000),0 1cqw 2cqw rgba(0,0,0,.4);color:var(--acc);font-family:var(--fs);font-size:3.6cqw;white-space:nowrap}
+
+.play.s-scroll .sr-bg{animation:scroll-bg 5s ease-out var(--o) both}
+.play.s-scroll .sr-wrap{animation:scroll-wrap 5s ease-out var(--o) both}
+.play.s-scroll .sr-drop{animation:scroll-drop 1.4s cubic-bezier(.2,.8,.25,1.08) calc(var(--o) + .2s) both}
+.play.s-scroll .sr-seal{animation:scroll-seal .6s cubic-bezier(.3,1.4,.5,1) calc(var(--o) + 1.6s) both}
+.play.s-scroll .sr-rib{animation:scroll-rib .5s ease-out calc(var(--o) + 1.75s) both}
+.play.s-scroll .sr-roll{animation:scroll-roll 1.3s cubic-bezier(.45,.05,.25,1) calc(var(--o) + 2s) both}
+.play.s-scroll .sr-cyl{animation:scroll-cyl 1.3s ease-in calc(var(--o) + 2s) both}
+.play.s-scroll .sr-paper{animation:scroll-paper 1.3s cubic-bezier(.45,.05,.25,1) calc(var(--o) + 2s) both}
+.play.s-scroll .sr-txt>div{animation:scroll-up .8s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 2.7s) both}
+.play.s-scroll .sr-txt .ia{animation-delay:calc(var(--o) + 2.85s)}
+.play.s-scroll .sr-txt .ib{animation-delay:calc(var(--o) + 3.05s)}
+.play.s-scroll .sr-txt .ic{animation-delay:calc(var(--o) + 3.3s)}
+.play.s-scroll .sr-txt .sr-orn.b{animation-delay:calc(var(--o) + 3.45s)}
+.play.s-scroll .card{animation:scroll-card 1s ease-out calc(var(--o) + 4s) both}
+
+@keyframes scroll-bg{0%{opacity:0}8%,82%{opacity:1}100%{opacity:0}}
+@keyframes scroll-wrap{0%,3%{opacity:0}8%,82%{opacity:1}100%{opacity:0}}
+@keyframes scroll-drop{0%{transform:translateY(-80cqw)}100%{transform:none}}
+@keyframes scroll-seal{0%{transform:scale(1);opacity:1}35%{transform:scale(1.25);opacity:1}100%{transform:scale(.2) translateY(10cqw);opacity:0}}
+@keyframes scroll-rib{0%{opacity:1;transform:none}100%{opacity:0;transform:scaleY(.2)}}
+@keyframes scroll-roll{0%{transform:none}100%{transform:translateY(100cqw)}}
+@keyframes scroll-cyl{0%{transform:none}100%{transform:scaleY(.6)}}
+@keyframes scroll-paper{0%{clip-path:inset(0 0 100% 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes scroll-up{0%{opacity:0;transform:translateY(2cqw)}100%{opacity:1;transform:none}}
+@keyframes scroll-card{0%{opacity:0;transform:scale(.97)}100%{opacity:1;transform:none}}

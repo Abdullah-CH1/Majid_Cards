@@ -1,0 +1,1 @@
+{"name": "Dhol Drop", "desc": "Reel-style beat-synced typography: a giant dhol slams SHAADI PAKKI HAI!, the names drum-roll in letter by letter, then one last hit reveals the card.", "order": 60, "t0": 10, "defaults": {"sName": "fade", "sDet": "up", "kFdi": false}, "fonts": ["Anton"]}

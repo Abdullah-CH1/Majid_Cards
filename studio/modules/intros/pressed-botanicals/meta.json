@@ -1,0 +1,1 @@
+{"name": "Pressed Botanicals", "desc": "A herbarium page: pressed fern, roses, jasmine and eucalyptus are laid down and taped one by one, a typewritten specimen label slides in, then the card.", "order": 90, "t0": 9.1, "defaults": {"sName": "fade", "sDet": "up", "kLan": false, "kSpk": false, "kFdi": false}, "fonts": ["Courier+Prime:ital,wght@0,400;0,700;1,400"]}

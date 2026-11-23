@@ -1,0 +1,21 @@
+/* Fireflies - life cycle and rise (p), meandering drift (q), pulsing glow (r) */
+.fx-fireflies{--ffc:color-mix(in srgb,var(--acc) 18%,#fff);--ffm:color-mix(in srgb,var(--acc) 78%,#fff);--ffh:color-mix(in srgb,var(--acc) 40%,transparent)}
+.fx-fireflies .fireflies-w{--ffm:color-mix(in srgb,color-mix(in srgb,var(--acc) 75%,var(--bl)) 80%,#fff);--ffh:color-mix(in srgb,color-mix(in srgb,var(--acc) 75%,var(--bl)) 40%,transparent)}
+.fx-fireflies .fireflies-p{position:absolute;display:block;width:var(--g);height:var(--g);margin:calc(var(--g) * -.5) 0 0 calc(var(--g) * -.5);opacity:0}
+.fx-fireflies .fireflies-q,.fx-fireflies .fireflies-r{position:absolute;inset:0;display:block;border-radius:50%}
+.fx-fireflies .fireflies-r{background:radial-gradient(closest-side,var(--ffc) 0%,var(--ffc) 11%,var(--ffm) 19%,var(--ffh) 40%,transparent 100%)}
+.play.fx-fireflies .fireflies-p{animation:fireflies-life 10s cubic-bezier(.45,.05,.55,.95) infinite backwards}
+.play.fx-fireflies .fireflies-q{animation:fireflies-wander 3s ease-in-out infinite alternate}
+.play.fx-fireflies .fireflies-r{animation:fireflies-pulse 2s ease-in-out infinite alternate}
+@keyframes fireflies-life{
+  0%{transform:translate3d(0,0,0);opacity:0}
+  16%{opacity:var(--a)}
+  80%{opacity:var(--a)}
+  100%{transform:translate3d(var(--dx),var(--rise),0);opacity:0}
+}
+@keyframes fireflies-wander{
+  0%{transform:translate(calc(var(--wx) * -1),0)}
+  50%{transform:translate(0,var(--wy))}
+  100%{transform:translate(var(--wx),0)}
+}
+@keyframes fireflies-pulse{0%{opacity:.3;transform:scale(.7)}100%{opacity:1;transform:scale(1.06)}}

@@ -1,0 +1,20 @@
+/* Sky lanterns - rise and recede (p), gentle bob (q), flickering halo (h) behind the lantern svg */
+.fx-sky-lanterns .sky-lanterns-defs{position:absolute;width:0;height:0;overflow:hidden}
+.fx-sky-lanterns .sky-lanterns-p{position:absolute;top:0;display:block;width:var(--s);height:calc(var(--s) * 1.42);margin-left:calc(var(--s) * -.5);opacity:0;transform-origin:50% 60%}
+.fx-sky-lanterns .sky-lanterns-q{position:absolute;inset:0;display:block;transform-origin:50% 0}
+.fx-sky-lanterns .sky-lanterns-h{position:absolute;left:50%;top:70%;width:300%;height:212%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--acc) 48%,transparent) 0%,color-mix(in srgb,var(--acc) 18%,transparent) 50%,transparent 100%)}
+.fx-sky-lanterns .sky-lanterns-q svg{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible}
+.play.fx-sky-lanterns .sky-lanterns-p{animation:sky-lanterns-rise 14s cubic-bezier(.33,.33,.6,1) infinite backwards}
+.play.fx-sky-lanterns .sky-lanterns-q{animation:sky-lanterns-sway 4s ease-in-out infinite alternate}
+.play.fx-sky-lanterns .sky-lanterns-h{animation:sky-lanterns-flicker 2s linear infinite}
+@keyframes sky-lanterns-rise{
+  0%{transform:translate3d(0,184cqw,0) scale(1);opacity:0}
+  6%{opacity:var(--a)}
+  70%{opacity:var(--a)}
+  100%{transform:translate3d(var(--dx),var(--y1),0) scale(var(--sc));opacity:0}
+}
+@keyframes sky-lanterns-sway{
+  0%{transform:translateX(calc(var(--sw) * -1)) rotate(calc(var(--rz) * -1))}
+  100%{transform:translateX(var(--sw)) rotate(var(--rz))}
+}
+@keyframes sky-lanterns-flicker{0%{opacity:.78}18%{opacity:.95}32%{opacity:.72}55%{opacity:1}78%{opacity:.82}100%{opacity:.78}}

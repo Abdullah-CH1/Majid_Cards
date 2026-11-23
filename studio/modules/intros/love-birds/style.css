@@ -1,0 +1,40 @@
+.ix-love-birds .lb-sky{position:absolute;inset:0;z-index:7;opacity:0;background:radial-gradient(120% 70% at 50% 25%,color-mix(in srgb,var(--bg) 82%,var(--acc)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 80%,#000) 100%)}
+.ix-love-birds .lb-glow{position:absolute;left:20%;right:20%;top:8%;height:45cqw;z-index:7;opacity:0;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--acc) 35%,transparent),transparent)}
+.ix-love-birds .lb-heart{position:absolute;left:50%;top:13%;width:14cqw;margin-left:-7cqw;z-index:8;opacity:0;filter:drop-shadow(0 0 2.5cqw color-mix(in srgb,var(--bl) 60%,transparent))}
+.ix-love-birds .lb-rib{position:absolute;left:10%;top:31%;width:80cqw;z-index:8;opacity:0;overflow:visible;filter:drop-shadow(0 .8cqw 1.2cqw rgba(0,0,0,.3))}
+.ix-love-birds .lb-b{position:absolute;top:calc(31% - 15cqw);width:22cqw;height:18cqw;z-index:9;opacity:0}
+.ix-love-birds .lb-l{left:1%;--sx:1}
+.ix-love-birds .lb-r{right:1%;--sx:-1}
+.ix-love-birds .lb-bi{position:absolute;inset:0}
+.ix-love-birds .lb-bi svg{position:absolute;left:0;width:100%;filter:drop-shadow(0 .6cqw 1cqw rgba(0,0,0,.35))}
+.ix-love-birds .lb-r .lb-bi svg{transform:scaleX(-1)}
+.ix-love-birds .lb-up{top:0}
+.ix-love-birds .lb-gl{top:22%;opacity:0}
+.ix-love-birds .lb-txt{position:absolute;left:8%;right:8%;top:47%;z-index:8;text-align:center;color:var(--it)}
+.ix-love-birds .lb-txt>div{opacity:0}
+.ix-love-birds .lb-txt .ia{font-family:var(--ft);font-size:4.4cqw;letter-spacing:.06em}
+.ix-love-birds .lb-txt .ib{font-family:var(--fs);font-size:15cqw;color:var(--acc);line-height:1.25;margin:1cqw 0}
+.ix-love-birds .lb-txt .ic{font-family:var(--ft);font-size:4cqw;letter-spacing:.3em;text-transform:uppercase;color:var(--lt)}
+.play.s-love-birds .lb-sky{animation:love-birds-sk 5.3s ease-in-out var(--o) both}
+.play.s-love-birds .lb-glow{animation:love-birds-glow 3s ease-out calc(var(--o) + 1.8s) both}
+.play.s-love-birds .lb-b{animation:love-birds-away 1.3s cubic-bezier(.5,0,.8,.4) calc(var(--o) + 3.8s) both}
+.play.s-love-birds .lb-bi{animation:love-birds-in 2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .2s) both}
+.play.s-love-birds .lb-up{animation:love-birds-fa .36s steps(1) calc(var(--o) + .2s) 14 both}
+.play.s-love-birds .lb-gl{animation:love-birds-fb .36s steps(1) calc(var(--o) + .2s) 14 both}
+.play.s-love-birds .lb-rib{animation:love-birds-rib 3.2s ease-out calc(var(--o) + 1.4s) both}
+.play.s-love-birds .lb-heart{animation:love-birds-hb 2.3s ease-out calc(var(--o) + 2.1s) both}
+.play.s-love-birds .lb-txt>div{animation:love-birds-tx 2.3s ease-out calc(var(--o) + var(--d)) both}
+.play.s-love-birds .lb-txt .ia{--d:2.1s}.play.s-love-birds .lb-txt .ib{--d:2.4s;animation-duration:2.0s}.play.s-love-birds .lb-txt .ic{--d:2.7s;animation-duration:1.7s}
+.play.s-love-birds .card{animation:love-birds-card 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 4.1s) both}
+@keyframes love-birds-on{0%{opacity:0}100%{opacity:1}}
+@keyframes love-birds-off{0%{opacity:1}100%{opacity:0}}
+@keyframes love-birds-glow{0%{opacity:0;transform:scale(.6)}35%{opacity:1;transform:none}75%{opacity:1}100%{opacity:0}}
+@keyframes love-birds-in{0%{opacity:0;transform:translate(calc(var(--sx) * -34cqw),40cqw) rotate(calc(var(--sx) * -12deg))}15%{opacity:1}70%{transform:translate(calc(var(--sx) * 2cqw),-2cqw) rotate(calc(var(--sx) * 3deg))}100%{opacity:1;transform:none}}
+@keyframes love-birds-away{0%{opacity:1;transform:none}100%{opacity:0;transform:translate(calc(var(--sx) * 60cqw),-70cqw) scale(.55)}}
+@keyframes love-birds-fa{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+@keyframes love-birds-fb{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+@keyframes love-birds-card{0%{opacity:0;transform:scale(.94)}100%{opacity:1;transform:none}}
+@keyframes love-birds-sk{0%{opacity:0}15%,79%{opacity:1}100%{opacity:0}}
+@keyframes love-birds-rib{0%{opacity:0;clip-path:inset(0 50% 0 50%);transform:none}6%{opacity:1}31%{clip-path:inset(-20% -5% -20% -5%)}75%{opacity:1;transform:none;clip-path:inset(-20% -5% -20% -5%)}100%{opacity:0;transform:translateY(4cqw) scale(.96);clip-path:inset(-20% -5% -20% -5%)}}
+@keyframes love-birds-hb{0%{opacity:0;transform:scale(0) rotate(-10deg)}20%{opacity:1;transform:scale(1.15)}30%{transform:none}42%{transform:scale(1.1)}54%{transform:none}66%{transform:scale(1.08)}78%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8cqw) scale(.6)}}
+@keyframes love-birds-tx{0%{opacity:0;transform:translateY(3cqw)}30%{opacity:1;transform:none}78%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-2cqw)}}

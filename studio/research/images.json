@@ -1,0 +1,388 @@
+{
+ "images": [
+  {
+   "id": "red-rose-petals",
+   "theme": "deep red rose petals (desi gulab pattiyan pile)",
+   "page_url": "https://www.pexels.com/photo/vibrant-red-rose-petals-floral-pattern-33016934/",
+   "download_url": "https://images.pexels.com/photos/33016934/pexels-photo-33016934.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free' -> pexels.com/license: free to use, attribution not required)",
+   "author": "Dilpreetkaur Matta (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\red-rose-petals\\original.jpg",
+   "width": 2000,
+   "height": 2667,
+   "suggested_use": "both, mostly an opening-scene backdrop. A full-frame petal bed behind the envelope or door openings, or a 'petal shower' reveal, for Baraat (red and gold) and Mehndi. As a card texture, use only blurred or tinted at low opacity. Pair with a gold acc and ivory ink. Source is 3024x4032.",
+   "quality_check": "Sharp, evenly lit top-down pile of loose crimson and magenta rose petals plus a few whole blooms, filling the frame. A few brown dried petals and one small orange-gold fleck at the left edge (~x0-175, y625-855). No people, hands, text, logos or watermark.",
+   "dominant_colors": [
+    "#c81a38",
+    "#911424",
+    "#eb3162",
+    "#f65f97",
+    "#510b12",
+    "#fba9c4"
+   ]
+  },
+  {
+   "id": "red-roses-dark",
+   "theme": "red roses close-up (deep red, low-key)",
+   "page_url": "https://www.pexels.com/photo/red-roses-in-close-up-photography-10217681/",
+   "download_url": "https://images.pexels.com/photos/10217681/pexels-photo-10217681.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Amir Esrafili (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\red-roses-dark\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "Opening-scene backdrop for Baraat in deep red/maroon and gold. Also a dark card background behind gold or ivory text (mean luma 17). Source is 4000x6000.",
+   "quality_check": "Moody macro of velvety deep-red roses. The central bloom is sharp and the edges are softly out of focus. A small blown-out white patch sits in the extreme top-right corner (~x1755-2000, y0-150); crop or cover it. No people, text or watermark.",
+   "dominant_colors": [
+    "#110001",
+    "#2d0103",
+    "#490107",
+    "#7e0308",
+    "#b40409"
+   ]
+  },
+  {
+   "id": "white-roses-noir",
+   "theme": "white roses (on near-black)",
+   "page_url": "https://www.pexels.com/photo/close-up-of-white-roses-18310098/",
+   "download_url": "https://images.pexels.com/photos/18310098/pexels-photo-18310098.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Liudmyla Shalimova (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\white-roses-noir\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "Opening-scene backdrop for Nikah or Walima in black-white-gold or white-and-sage palettes. The top ~40% is empty near-black, with room for Bismillah and names. Also works as a dark card background. Source is 4640x6960.",
+   "quality_check": "Clean white roses with green leaves on a near-black background. The main bloom is crisp at 100% with only mild grain. Faint vertical texture at the far right edge. No people, text or watermark. Replaced two rejects: Pexels 7833785 (heavy film grain at 100%) and 11574960 (a housefly on one rose).",
+   "dominant_colors": [
+    "#020a0f",
+    "#111e19",
+    "#505639",
+    "#abb2a6",
+    "#c7cecc"
+   ]
+  },
+  {
+   "id": "motia-jasmine-buds",
+   "theme": "jasmine (motia / Jasminum sambac) flowers - gajra buds",
+   "page_url": "https://www.pexels.com/photo/close-up-of-fresh-white-jasmine-flowers-38784646/",
+   "download_url": "https://images.pexels.com/photos/38784646/pexels-photo-38784646.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Shobhit Kushwaha (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\motia-jasmine-buds\\original.jpg",
+   "width": 2000,
+   "height": 2667,
+   "suggested_use": "both. For Mehndi or Nikah white-and-green 'motia/gajra' designs: use it behind the openings with a dark-green or ivory overlay, or as a blurred band or frame on cards. A good colour source for the fl and lf roles. Source is 2448x3264 (the smallest source in the set).",
+   "quality_check": "Full-frame heap of cream-white motia buds with lime-green stems, sharp, natural daylight with warm white balance. A few buds have tiny natural brown blemishes. Busy texture, so it needs an overlay under text. No people, text or watermark.",
+   "dominant_colors": [
+    "#cab491",
+    "#b8a073",
+    "#d9c9b0",
+    "#a78f54",
+    "#806d0b",
+    "#5d4a03"
+   ]
+  },
+  {
+   "id": "marigold-garland-strings",
+   "theme": "marigold (genda) garland strings",
+   "page_url": "https://www.pexels.com/photo/marigold-garlands-12087682/",
+   "download_url": "https://images.pexels.com/photos/12087682/pexels-photo-12087682.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Stuti (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\marigold-garland-strings\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "Opening-scene backdrop for Mehndi or Mayun in yellow, orange and green palettes (a genda curtain). The vertical strands fit 9:16, and strips can be cropped for side borders on mehndi cards. Source is 2777x4165.",
+   "quality_check": "Vertical strands of orange and yellow marigold garlands. The centre strands are sharp and the outer ones soft. A dark navy background sliver with a thin wire sits in the top-left corner (~x0-450, y0-210); crop if needed. Checked at 100%: no people, signage, text, deity or temple imagery.",
+   "dominant_colors": [
+    "#e67b03",
+    "#c65403",
+    "#9b3602",
+    "#b89907",
+    "#6d2602",
+    "#350e02"
+   ]
+  },
+  {
+   "id": "fairy-lights-bokeh",
+   "theme": "warm fairy-lights bokeh",
+   "page_url": "https://www.pexels.com/photo/golden-bokeh-lights-abstract-background-34894234/",
+   "download_url": "https://images.pexels.com/photos/34894234/pexels-photo-34894234.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Davide Comunian (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\fairy-lights-bokeh\\original.jpg",
+   "width": 2000,
+   "height": 3528,
+   "suggested_use": "Opening-scene backdrop with a 'shaadi lighting' night mood for evening Baraat, Mehndi or Walima. The aspect ratio is 0.567, already about 9:16. The black band at the right suits text. Works behind gold text with slight blur. Source is 3401x6000.",
+   "quality_check": "Large, soft amber and gold bokeh discs cover the left ~75%, with a clean near-black band on the right. No visible bulbs, wires or noise. No people, text or watermark.",
+   "dominant_colors": [
+    "#120703",
+    "#e7821b",
+    "#f9a125",
+    "#c86310",
+    "#762b05",
+    "#febe38"
+   ]
+  },
+  {
+   "id": "gold-glitter-bokeh",
+   "theme": "golden glitter bokeh / gold sparkle",
+   "page_url": "https://www.pexels.com/photo/small-shininh-golden-pieces-5594992/",
+   "download_url": "https://images.pexels.com/photos/5594992/pexels-photo-5594992.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "mohamed abdelghaffar (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\gold-glitter-bokeh\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "both. A luxe gold backdrop for the medallion or envelope openings. Also a gold-foil fill for names and borders via background-clip:text, or a subtle card texture at 15-30% opacity on gold or ivory palettes. Source is 5504x8256.",
+   "quality_check": "Macro of gold glitter: a sharp diagonal glitter band runs from upper-left to lower-right, with sparkling bokeh elsewhere. A few tiny green and pink glitter specks. No people, text or watermark.",
+   "dominant_colors": [
+    "#bf752b",
+    "#a15a1b",
+    "#de963d",
+    "#81400a",
+    "#f5ba5c",
+    "#fcdb97"
+   ]
+  },
+  {
+   "id": "white-marble-gold",
+   "theme": "white marble with gold veins",
+   "page_url": "https://unsplash.com/photos/a-close-up-of-a-marble-surface-with-gold-paint-EzT0IP2ZZcY",
+   "download_url": "https://images.unsplash.com/photo-1690049089775-b915262c89d0?h=2000&fit=max&q=85&fm=jpg",
+   "license": "Unsplash License (page: 'Free to use under the Unsplash License'; commercial use allowed, no attribution required; not Unsplash+)",
+   "author": "Masud Merzaye (@ramen2022, Unsplash)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\white-marble-gold\\original.jpg",
+   "width": 3500,
+   "height": 2000,
+   "suggested_use": "both, mostly a card texture, for Walima or Nikah white-and-gold palettes. It is landscape (1.75:1), so crop 9:16 slices: the right third has the heavy gold vein, or use the centre. Also works as a light opening backdrop. Source is 8794x5025.",
+   "quality_check": "Clean, sharp white marble with kintsugi-like gold veins, gold flecks and grey-black veining at lower-left. It looks digitally made (an 'abstract background') rather than a photo of real stone. No text or watermark.",
+   "dominant_colors": [
+    "#eceeeb",
+    "#dfe0de",
+    "#d4cfc3",
+    "#cba251",
+    "#d9bf7f",
+    "#ada7a5"
+   ]
+  },
+  {
+   "id": "black-marble",
+   "theme": "black marble (white + bronze veins)",
+   "page_url": "https://www.pexels.com/photo/close-up-shot-of-a-marble-6788338/",
+   "download_url": "https://images.pexels.com/photos/6788338/pexels-photo-6788338.jpeg?auto=compress&cs=tinysrgb&h=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Polina Kovaleva (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\black-marble\\original.jpg",
+   "width": 2997,
+   "height": 2000,
+   "suggested_use": "both. For black-and-gold or black-and-ivory luxe designs (Baraat night, Walima). It is landscape, so crop to 9:16. Optionally tint the veins gold with a blend mode or overlay. No good real dark-green marble was found; Pexels green 'marble' results are acrylic-pour art. Source is 4592x3064.",
+   "quality_check": "Polished black marble (Nero Marquina/Portoro-like) with bright white veins and bronze-taupe secondary veins, sharp. Faint soft brown reflections and a grey smudge near the top centre (~x1600-2100, y0-700) are unidentifiable. No people, text or watermark.",
+   "dominant_colors": [
+    "#080f11",
+    "#141b1b",
+    "#292c2a",
+    "#5b5853",
+    "#d2d8d6"
+   ]
+  },
+  {
+   "id": "crimson-satin",
+   "theme": "red/maroon silk fabric folds",
+   "page_url": "https://www.pexels.com/photo/crimson-satin-background-14231864/",
+   "download_url": "https://images.pexels.com/photos/14231864/pexels-photo-14231864.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Kássia Melo (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\crimson-satin\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "both. A Baraat red bridal 'lehenga silk' backdrop behind the envelope or palace doors. Also a dark red card background with a gold acc. Source is 3068x4602.",
+   "quality_check": "Dramatically lit crimson satin/taffeta folds with bright red highlights and deep shadows; the weave is sharp. Two or three tiny dark specks on the fabric near the centre (~x945, y1478). No people, text or watermark.",
+   "dominant_colors": [
+    "#1b080b",
+    "#31040d",
+    "#490210",
+    "#830214",
+    "#c2071d",
+    "#de102a"
+   ]
+  },
+  {
+   "id": "emerald-velvet",
+   "theme": "emerald velvet (dark emerald textile)",
+   "page_url": "https://www.pexels.com/photo/green-textile-in-close-up-photography-7641221/",
+   "download_url": "https://images.pexels.com/photos/7641221/pexels-photo-7641221.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Eva Bronzini (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\emerald-velvet\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "both. For Mehndi or Nikah emerald-and-gold palettes, as a card background or opening backdrop. It is very dark (mean luma 21), so gold and ivory text stays legible. Source is 2848x4272.",
+   "quality_check": "Very dark emerald fabric with one diagonal sheen band and a fine weave visible in the lit area. It reads as velvet/satin; the Pexels title is 'Green Textile'. Clean. No people, text or watermark.",
+   "dominant_colors": [
+    "#0b0e0d",
+    "#081715",
+    "#05221d",
+    "#033029",
+    "#08453b",
+    "#16554b"
+   ]
+  },
+  {
+   "id": "ivory-satin",
+   "theme": "ivory silk satin",
+   "page_url": "https://www.pexels.com/photo/close-up-shot-of-a-satin-fabric-7946623/",
+   "download_url": "https://images.pexels.com/photos/7946623/pexels-photo-7946623.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Hanna Pad (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\ivory-satin\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "Mainly a subtle card texture for Walima or Nikah ivory, champagne and blush palettes. Also a soft light opening backdrop. Source is 4160x6240.",
+   "quality_check": "Warm ivory satin with soft diagonal folds, high-key, with faint slub lines. Shallow focus leaves the corners soft, which is fine for a texture. No people, text or watermark.",
+   "dominant_colors": [
+    "#d9d1c8",
+    "#d4c9bd",
+    "#cfc1b2",
+    "#e8e7e5",
+    "#c9b7a4",
+    "#c0a98d"
+   ]
+  },
+  {
+   "id": "starry-night-sky",
+   "theme": "night sky with stars",
+   "page_url": "https://www.pexels.com/photo/stunning-night-sky-filled-with-stars-33679044/",
+   "download_url": "https://images.pexels.com/photos/33679044/pexels-photo-33679044.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Alihan Küpeli (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\starry-night-sky\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "Opening-scene backdrop for night themes: Walima or Nikah evening, and the medallion, crescent or lantern scenes. Suits navy with gold or silver palettes. Pairs with the existing sparkles and lanterns. Source is 4480x6720.",
+   "quality_check": "Pure, dense star field on deep navy with a lighter haze at lower-left. No horizon, trees or buildings. Two thin satellite/meteor streaks in the lower middle (~x780, y1950-2100 and x885-1035, y2145-2220) plus faint ones at lower-left; they read as shooting stars, or can be cloned out. No people, text or watermark.",
+   "dominant_colors": [
+    "#06142b",
+    "#071936",
+    "#070f1f",
+    "#0b2040",
+    "#1e3453"
+   ]
+  },
+  {
+   "id": "crescent-moon-dusk",
+   "theme": "crescent moon at dusk",
+   "page_url": "https://www.pexels.com/photo/crescent-on-sky-at-sunset-18525841/",
+   "download_url": "https://images.pexels.com/photos/18525841/pexels-photo-18525841.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Achraf Alan (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\crescent-moon-dusk\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "Opening-scene backdrop for Nikah or Walima with an Islamic crescent ('chaand') mood. The crescent sits upper-centre (~x1000, y930), so names and date fit the lower half. Pairs with gold, peach and navy. Source is 2773x4160.",
+   "quality_check": "Smooth gradient from navy to plum to orange with a small, sharp waxing crescent. No silhouettes, clouds or buildings. Slight sensor grain, and one tiny reddish dot (~x780, y1275). No people, text or watermark.",
+   "dominant_colors": [
+    "#2c2e42",
+    "#4d3a4f",
+    "#754452",
+    "#a65252",
+    "#d7634c",
+    "#fd7d3b"
+   ]
+  },
+  {
+   "id": "mughal-jaali-arch",
+   "theme": "Mughal jaali / carved lattice (Humayun's Tomb, Delhi)",
+   "page_url": "https://www.pexels.com/photo/arched-window-12538624/",
+   "download_url": "https://images.pexels.com/photos/12538624/pexels-photo-12538624.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Swetabh Suman (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\mughal-jaali-arch\\original.jpg",
+   "width": 2000,
+   "height": 2866,
+   "suggested_use": "Opening-scene centrepiece or backdrop: a backlit arched jaali window for a Mughal palace or 'jharokha' opening (Baraat, Nikah). The pure-black surround (73% of pixels) blends into any dark background. It can also be screened as a lattice overlay on maroon, gold or ivory cards. Source is 3906x5597.",
+   "quality_check": "Crisp silhouette of a carved red-sandstone jaali in an arched window, with six-point stars, hexagons and squares. Fine bird-netting wires are visible inside the openings. The lower openings show blurred red-sandstone buildings and trees. Zoomed to 300%: no people, only a tiny bird silhouette. No text or watermark.",
+   "dominant_colors": [
+    "#020101",
+    "#281d1d",
+    "#faf8f9",
+    "#dbc7c5",
+    "#ba9890",
+    "#aa6157"
+   ]
+  },
+  {
+   "id": "textured-ivory-paper",
+   "theme": "handmade ivory paper texture",
+   "page_url": "https://www.pexels.com/photo/a-texture-of-a-white-paper-7598248/",
+   "download_url": "https://images.pexels.com/photos/7598248/pexels-photo-7598248.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Eva Bronzini (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\textured-ivory-paper\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "Mainly a subtle card texture for any light palette: multiply or overlay at 30-70% over the ivory/cream cd colour for a handmade cotton-paper feel. Source is 3712x5568.",
+   "quality_check": "Even, sharp cold-press/handmade paper grain with tiny tan fibre flecks and no edges. The tone is slightly grey-ivory with a mild vignette; warm it with a cream multiply. No text or watermark. Chosen over Pexels 5506216, which is titled 'White Painted Wall', so it is not real paper.",
+   "dominant_colors": [
+    "#d1d0c6",
+    "#c9c8be",
+    "#dad9cf",
+    "#c2c1b7",
+    "#b5b4aa"
+   ]
+  },
+  {
+   "id": "blush-peonies",
+   "theme": "pastel blush peonies",
+   "page_url": "https://www.pexels.com/photo/close-up-of-pink-flowers-4622994/",
+   "download_url": "https://images.pexels.com/photos/4622994/pexels-photo-4622994.jpeg?auto=compress&cs=tinysrgb&w=2000",
+   "license": "Pexels License (photo page label 'Free'; attribution not required)",
+   "author": "Karolina Grabowska / Kaboompics (Pexels)",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\blush-peonies\\original.jpg",
+   "width": 2000,
+   "height": 3000,
+   "suggested_use": "both. For Walima, Nikah or dholki blush-pink pastel palettes, as a soft opening backdrop or a blurred, low-opacity card texture. A good fl colour source. Source is 4480x6720.",
+   "quality_check": "Full-frame pale blush peonies. Focus is on the lower-centre bloom and the upper area is softly blurred. A tiny grey-green background shows in the top-right corner. No people, text or watermark.",
+   "dominant_colors": [
+    "#e8ceda",
+    "#efdfe9",
+    "#e0b9c8",
+    "#d8a1b1",
+    "#d87f94",
+    "#d5516a"
+   ]
+  },
+  {
+   "id": "vintage-floral-wallpaper",
+   "theme": "floral watercolour paper texture (1930s hand-printed wallpaper sample)",
+   "page_url": "https://unsplash.com/photos/Ya-w68JpBu4",
+   "download_url": "https://images.unsplash.com/photo-1770977883066-4dbee15c84d2?h=2600&fit=max&q=85&fm=jpg",
+   "license": "Unsplash License (page: 'Free to use under the Unsplash License'; commercial use allowed, no attribution required). Museum-released object photo.",
+   "author": "Museum of New Zealand Te Papa Tongarewa (@tepapa, Unsplash); wallpaper by Smith & Smith Ltd, 1930s",
+   "local_path": "C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\images_raw\\vintage-floral-wallpaper\\original.jpg",
+   "width": 2980,
+   "height": 2600,
+   "suggested_use": "Mainly a card texture for pastel floral 'garden' Walima or Mehndi designs, at 30-60% opacity over cream. The all-over pattern can be cropped or tiled anywhere, including 9:16 slices. Source is 4327x3775.",
+   "quality_check": "Even, flat scan of a watercolour-style floral pattern: peach, coral, lilac, mint and sage flowers on beige paper, filling the frame. Faint paper crackle along the top edge. No text, labels, colour chart or watermark visible.",
+   "dominant_colors": [
+    "#e2c9ac",
+    "#d9c0a1",
+    "#ceb48b",
+    "#e1b38d",
+    "#de9f77",
+    "#b9b07b"
+   ]
+  }
+ ],
+ "notes": [
+  "18 images downloaded, each opened with Read and checked at full size; detail areas were also checked at 100% (jaali openings, marigold corner, black-marble reflections, rose corners). Final contact sheet: C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\sheets\\final_18.jpg. Measured palettes (k-means, with shares): C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\img_tools\\analysis2.jsonl. Total size 12 MB.",
+  "Licences: 16 images are Pexels. Each photo page shows license 'Pexels' with the 'Free' label linking to pexels.com/license: 'All photos and videos on Pexels are free to use. Attribution is not required.' Not allowed: selling unaltered copies, redistributing on stock or wallpaper sites, implying endorsement. Invitations are a listed use case. 2 images are Unsplash; both pages say 'Free to use under the Unsplash License' (commercial use, no attribution; images can't be sold without significant modification). Neither is Unsplash+.",
+  "Resolution: these are CDN-resized copies with the long side 2600-3528 px (JPEG about q80 for Pexels, q85 for Unsplash). That is enough for 1080x1920 after a 9:16 crop. For 4K, fetch the full originals by dropping the size query, e.g. https://images.pexels.com/photos/<id>/pexels-photo-<id>.jpeg or https://images.unsplash.com/photo-<id>?fm=jpg&q=90. Each image's source size is given in its suggested_use.",
+  "Three images are landscape and need a 9:16 crop: white-marble-gold (1.75:1), black-marble (1.5:1) and vintage-floral-wallpaper (1.15:1). fairy-lights-bokeh is already about 9:16 (0.567). All the others are 2:3 or 3:4 portrait.",
+  "Embedding tip: before inlining, resize to 1080x1920 (or about 540px wide for gallery thumbnails) at JPEG q70-78, which is roughly 150-400 KB each. Use background-size: cover, and add a dark or colour overlay under the text on the busy images (petals, motia, marigold, glitter).",
+  "Cultural filtering: no Hindu religious symbols. The marigold image shows only garland strands, with no temple, deity or puja items. Skipped: Taj Mahal panels with Quranic calligraphy (text), champagne-glass bokeh (alcohol) and Christmas-ornament bokeh. The jaali is Mughal (Humayun's Tomb, Delhi). The Lahore Fort results on Pexels were mostly wide views or wooden/metal lattice windows; see alternates.",
+  "Rejected after inspection: Pexels 7833785, white roses with heavy film grain at 100%. Pexels 11574960, a white-rose wall with a housefly on one rose. Pexels 5506216, titled 'White Painted Wall', so it is not paper. Searches turned up no real dark-green marble (only acrylic-pour art), so black-marble covers that theme.",
+  "Alternates found but NOT downloaded or checked at full size (all Pexels unless noted): 9915687 champagne-cream bokeh circles 4000x6000; 754194 sparse gold bokeh on black 4000x6000; 34932170 bowl overflowing with open motia flowers 3072x3072; 17630536 Arabian jasmine (motia) on dark green leaves, shot in Kot Addu, Pakistan, 3024x4032; 12412163 Mughal pietra-dura floral inlay on a marble column, Delhi, 4672x7008; 30342296 sunlit marble jaali windows, 4000x6000 (has a railing); 19949956 lattice window inside Lahore Fort, 3456x5184; 4863038 maroon/plum satin folds 4480x6720; 35974685 brighter emerald velvet swirl 6192x4128; 16065663 pearl satin with strong sheen 3024x4032; 8068653 white marble with gold-leaf resin art 4480x6720; 12640196 sunset with crescent and palm silhouettes, 9:16, 4320x7680; 7599590 warmer ivory paper 4000x6000; Unsplash fpvrSKfC6s8 (photo-1700212028845-1121e1f4f651), an 1895 E. Nister pink-rose bouquet illustration, Public Domain plus Unsplash License (Europeana / British Library). Page URL pattern: https://www.pexels.com/photo/<id>/",
+  "Helper scripts (parsers, contact sheet, analysis) are in C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\img_tools and sit outside the image folders. Downloaded files were only decoded with Pillow under python -I and never executed."
+ ]
+}

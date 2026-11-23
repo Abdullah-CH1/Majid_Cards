@@ -1,0 +1,171 @@
+{
+ "name": "Wedding motifs",
+ "desc": "Shared decorative motifs: florals, Mughal architecture, lanterns and lights, crescent and stars, birds and keepsakes.",
+ "symbols": [
+  {
+   "id": "art-rose",
+   "viewBox": "0 0 100 100",
+   "desc": "Open rose seen from above: four rings of overlapping cupped petals with rolled rims around a spiral heart (--rose, default --bl)."
+  },
+  {
+   "id": "art-rosebud",
+   "viewBox": "0 0 48 96",
+   "desc": "Rosebud on a short stem with curling sepals and one leaf (--rose, --leaf)."
+  },
+  {
+   "id": "art-leaf",
+   "viewBox": "0 0 40 80",
+   "desc": "Single leaf, two-tone with veins, stalk at bottom centre, tip up (--leaf, default --lv)."
+  },
+  {
+   "id": "art-sprig",
+   "viewBox": "0 0 60 120",
+   "desc": "Curving stem with six leaves, base at bottom centre, tip at top (--leaf)."
+  },
+  {
+   "id": "art-jasmine",
+   "viewBox": "0 0 60 60",
+   "desc": "Motia (jasmine): five-petal ivory star flower with a soft gold-green centre (--jasmine, default --ef)."
+  },
+  {
+   "id": "art-marigold",
+   "viewBox": "0 0 60 60",
+   "desc": "Genda (marigold): dense ruffled orange-gold pom-pom seen from the front (--marigold)."
+  },
+  {
+   "id": "art-lotus",
+   "viewBox": "0 0 100 84",
+   "desc": "Mughal lotus, side view: symmetric fan of plump pointed petals with inlaid centres on a gold cup (--lotus, default --bl)."
+  },
+  {
+   "id": "art-jasmine-string",
+   "viewBox": "0 0 20 200",
+   "desc": "Motia lari: dense string of jasmine buds with two rose beads, hangs from the top centre (10,0) (--jasmine, --rose)."
+  },
+  {
+   "id": "art-marigold-string",
+   "viewBox": "0 0 28 220",
+   "desc": "Genda string: marigold heads alternating orange and yellow with small roses and gold beads, ends in a tassel; hangs from the top centre (14,0) (--marigold, --marigold2, --rose)."
+  },
+  {
+   "id": "art-dome-mosque",
+   "viewBox": "0 0 120 100",
+   "desc": "Mosque silhouette: central onion dome with crescent finial, arched portal and two minarets (--sil, default --acc)."
+  },
+  {
+   "id": "art-skyline",
+   "viewBox": "0 0 360 120",
+   "desc": "Lahore skyline silhouette: Badshahi-style mosque with three domes and four minarets, fort gate with bastions, Minar-e-Pakistan, trees (--sil, default --acc)."
+  },
+  {
+   "id": "art-jharokha",
+   "viewBox": "0 0 100 140",
+   "desc": "Jharokha: ornate balcony window with chhatri dome, chhajja eave, cusped open arch (see-through), jaali parapet and corbels; ivory body with gold line work (--jharokha, --metal)."
+  },
+  {
+   "id": "art-arch-frame",
+   "viewBox": "0 0 100 160",
+   "desc": "Cusped Mughal arch frame: outer pointed arch, inner multifoil line with cusp dots and apex finial; hairline strokes stay thin at any size (--frame, default --acc)."
+  },
+  {
+   "id": "art-jaali-tile",
+   "viewBox": "0 0 40 40",
+   "desc": "Jaali lattice tile (8-point star and cross, double-line bars), tiles seamlessly edge to edge (--jaali, default --acc)."
+  },
+  {
+   "id": "art-lantern",
+   "viewBox": "0 0 40 100",
+   "desc": "Mughal fanoos lantern with pierced arch windows over a warm glow, onion cap and tassel; hangs from the top centre (20,0) (--glow, --metal)."
+  },
+  {
+   "id": "art-lantern-round",
+   "viewBox": "0 0 40 66",
+   "desc": "Round paper lantern, ribbed, glowing from inside, gold caps and tassel; hangs from the top centre (20,0) (--paper, default --bl)."
+  },
+  {
+   "id": "art-fairy-bulb",
+   "viewBox": "0 0 24 36",
+   "desc": "Single warm fairy-light bulb with a soft glow halo and small socket; hangs from the top centre (12,0) (--glow)."
+  },
+  {
+   "id": "art-candle-glass",
+   "viewBox": "0 0 40 72",
+   "desc": "Pillar candle in a hurricane glass on a gold foot, warm flame with halo (--glow, --candle default --ef, --metal)."
+  },
+  {
+   "id": "art-chandelier",
+   "viewBox": "0 0 100 92",
+   "desc": "Crystal chandelier: gold scroll arms with candles and flames, beaded swags and teardrop crystals; hangs from the top centre (50,0) (--glow, --metal, --crystal)."
+  },
+  {
+   "id": "art-crescent",
+   "viewBox": "0 0 60 60",
+   "desc": "Crescent moon (hilal), horns to the upper right, with a bright rim (--moon, default --acc)."
+  },
+  {
+   "id": "art-star8",
+   "viewBox": "0 0 40 40",
+   "desc": "Faceted eight-point star (two interlaced squares) with light and dark facets and a jewel centre (--star, default --acc)."
+  },
+  {
+   "id": "art-sparkle",
+   "viewBox": "0 0 20 20",
+   "desc": "Four-point twinkle with a faint diagonal glint and bright core (--star, default --acc)."
+  },
+  {
+   "id": "art-crescent-star",
+   "viewBox": "0 0 60 60",
+   "desc": "Crescent moon with a five-point star in its opening (Islamic hilal and star) (--moon, --star)."
+  },
+  {
+   "id": "art-paisley",
+   "viewBox": "0 0 60 90",
+   "desc": "Kairi (paisley / boteh), tip curling to the upper right: jewel body with inlaid field, gold dotted border, central rosette and curl (--paisley, default --bl)."
+  },
+  {
+   "id": "art-peacock-feather",
+   "viewBox": "0 0 40 120",
+   "desc": "Peacock feather: fine barbs around a shaft, eye with gold ring, green band and dark heart; quill at the bottom centre (--feather, default --lv; --metal)."
+  },
+  {
+   "id": "art-dove",
+   "viewBox": "0 0 80 64",
+   "desc": "White dove in flight, wings raised, facing right (flip with scaleX(-1) to face left) (--dove, default --ef)."
+  },
+  {
+   "id": "art-dove-glide",
+   "viewBox": "0 0 100 50",
+   "desc": "White dove gliding with wings spread wide, facing right (flip with scaleX(-1) to face left) (--dove, default --ef)."
+  },
+  {
+   "id": "art-parrot",
+   "viewBox": "0 0 60 100",
+   "desc": "Truck-art ringneck parrot perched on a twig, facing right: green body, red hooked beak, neck ring, scalloped wing, long tail (--parrot, default --lv; --bl beak)."
+  },
+  {
+   "id": "art-heart",
+   "viewBox": "0 0 40 36",
+   "desc": "Elegant heart with an inner gold line and a soft highlight (--heart, default --bl)."
+  },
+  {
+   "id": "art-rings",
+   "viewBox": "0 0 80 60",
+   "desc": "Two interlocked gold wedding rings, the right one with a solitaire diamond (--metal, --gem)."
+  },
+  {
+   "id": "art-bow",
+   "viewBox": "0 0 80 60",
+   "desc": "Ribbon bow: two loops with inner folds, knot and two tails with V-cut ends (--ribbon, default --bl)."
+  },
+  {
+   "id": "art-tassel",
+   "viewBox": "0 0 24 72",
+   "desc": "Gold tassel with cord loop, rounded head, collar and fringe; hangs from the top centre (12,0) (--tassel, default --acc)."
+  },
+  {
+   "id": "art-bell",
+   "viewBox": "0 0 24 30",
+   "desc": "Ghungroo: small round brass bell with a ridge, bottom slit and loop; hangs from the top centre (12,0) (--bell, default --acc)."
+  }
+ ]
+}

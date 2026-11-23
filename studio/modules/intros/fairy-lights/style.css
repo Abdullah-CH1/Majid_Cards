@@ -1,0 +1,34 @@
+.ix-fairy-lights .fl-bg{position:absolute;inset:0;z-index:7;opacity:0;pointer-events:none;background:radial-gradient(120% 70% at 50% 40%,color-mix(in srgb,var(--bg) 82%,var(--acc)) 0%,color-mix(in srgb,var(--bg) 70%,#000) 100%)}
+.ix-fairy-lights .fl-str{position:absolute;inset:0;width:100%;height:100%;z-index:7;opacity:0;pointer-events:none;overflow:visible}
+.ix-fairy-lights .fl-wire{fill:none;stroke:color-mix(in srgb,var(--acc) 45%,#000);stroke-width:1}
+.ix-fairy-lights .fl-dr{stroke:color-mix(in srgb,var(--acc) 45%,#000);stroke-width:1}
+.ix-fairy-lights .fl-h{fill:color-mix(in srgb,var(--lt,var(--acc)) 70%,#ffb45a);opacity:0}
+.ix-fairy-lights .fl-c{fill:color-mix(in srgb,var(--acc) 40%,#000)}
+.ix-fairy-lights .fl-ch{position:absolute;left:31%;width:38%;top:0;z-index:7;opacity:0;pointer-events:none;transform:translateY(-100%)}
+.ix-fairy-lights .fl-chain{display:block;margin:0 auto;width:1px;height:14cqw;background:var(--acc)}
+.ix-fairy-lights .fl-ch svg{display:block;width:100%;filter:drop-shadow(0 0 3cqw color-mix(in srgb,var(--acc) 55%,transparent))}
+.ix-fairy-lights .fl-txt{position:absolute;left:8%;right:8%;top:56%;z-index:7;text-align:center;color:var(--it);pointer-events:none}
+.ix-fairy-lights .fl-txt>div{opacity:0}
+.ix-fairy-lights .fl-txt .ib{color:var(--acc);text-shadow:0 0 2.5cqw color-mix(in srgb,var(--acc) 70%,transparent)}
+.ix-fairy-lights .fl-bloom{position:absolute;inset:-20%;z-index:7;opacity:0;pointer-events:none;background:radial-gradient(closest-side at 50% 45%,color-mix(in srgb,var(--lt,var(--acc)) 85%,#fff) 0%,color-mix(in srgb,var(--acc) 60%,transparent) 45%,transparent 100%)}
+.play.s-fairy-lights .fl-bg{animation:fairy-lights-bg 5.4s linear var(--o) both}
+.play.s-fairy-lights .fl-str{animation:fairy-lights-on .6s ease-out var(--o) both,fairy-lights-out 1s ease-in calc(var(--o) + 4.3s) forwards}
+.play.s-fairy-lights .fl-row{animation:fairy-lights-drop 1.4s cubic-bezier(.3,1.35,.5,1) calc(var(--o) + var(--rd)) both}
+.play.s-fairy-lights .r1{--rd:.1s}.play.s-fairy-lights .r2{--rd:.4s}.play.s-fairy-lights .r3{--rd:.7s}
+.play.s-fairy-lights .fl-h{animation:fairy-lights-glow .5s ease-out calc(var(--o) + 1.4s + var(--i) * .07s) both,fairy-lights-tw 1.6s ease-in-out calc(var(--o) + 2.6s + var(--i) * .1s) infinite alternate}
+.play.s-fairy-lights .fl-c{animation:fairy-lights-core .5s ease-out calc(var(--o) + 1.4s + var(--i) * .07s) both}
+.play.s-fairy-lights .fl-ch{animation:fairy-lights-ch 2.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .9s) both,fairy-lights-out 1s ease-in calc(var(--o) + 4.3s) forwards}
+.play.s-fairy-lights .fl-txt>div{animation:fairy-lights-txt 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + var(--d)) both,fairy-lights-out .8s ease-in calc(var(--o) + 4.3s) forwards}
+.play.s-fairy-lights .fl-bloom{animation:fairy-lights-bloom 1.5s ease-in-out calc(var(--o) + 3.9s) both}
+.play.s-fairy-lights .card{animation:fairy-lights-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 4.2s) both}
+@keyframes fairy-lights-bg{0%{opacity:0}6%,78%{opacity:1}100%{opacity:0}}
+@keyframes fairy-lights-on{0%{opacity:0}100%{opacity:1}}
+@keyframes fairy-lights-out{0%{opacity:1}100%{opacity:0}}
+@keyframes fairy-lights-drop{0%{transform:translateY(-40%)}100%{transform:none}}
+@keyframes fairy-lights-glow{0%{opacity:0}60%{opacity:.95}100%{opacity:.7}}
+@keyframes fairy-lights-tw{0%{opacity:.7}100%{opacity:.4}}
+@keyframes fairy-lights-core{0%{fill:color-mix(in srgb,var(--acc) 40%,#000)}100%{fill:color-mix(in srgb,var(--lt,var(--acc)) 40%,#fff)}}
+@keyframes fairy-lights-ch{0%{opacity:0;transform:translateY(-100%)}30%{opacity:1}100%{opacity:1;transform:translateY(0)}}
+@keyframes fairy-lights-txt{0%{opacity:0;transform:translateY(2cqw);filter:blur(1px)}100%{opacity:1;transform:none;filter:none}}
+@keyframes fairy-lights-bloom{0%{opacity:0;transform:scale(.4)}45%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.3)}}
+@keyframes fairy-lights-card{0%{opacity:0;transform:scale(.96)}100%{opacity:1;transform:none}}

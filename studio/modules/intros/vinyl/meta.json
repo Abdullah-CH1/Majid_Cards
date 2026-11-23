@@ -1,0 +1,1 @@
+{"name": "Vinyl Record", "desc": "A record spins up on a turntable, the needle drops, then it slides from a sleeve printed with your names.", "order": 90, "t0": 8.0, "defaults": {"sName": "fade", "sDet": "up", "kFdi": false, "kLan": false, "kSpk": false}}

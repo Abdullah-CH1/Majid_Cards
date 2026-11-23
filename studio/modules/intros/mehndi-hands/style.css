@@ -1,0 +1,36 @@
+.ix-mehndi-hands{--hn:color-mix(in srgb,var(--bl) 35%,#5a1a08)}
+.ix-mehndi-hands .mh-bg{position:absolute;inset:0;z-index:3;opacity:0;background:radial-gradient(ellipse 80% 55% at 50% 30%,color-mix(in srgb,var(--bg) 82%,var(--acc)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 80%,#000) 100%)}
+.ix-mehndi-hands .mh-glow{position:absolute;left:10%;right:10%;top:12%;height:34%;z-index:3;opacity:0;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--acc) 22%,transparent),transparent)}
+.ix-mehndi-hands .mh-txt{position:absolute;left:6%;right:6%;top:15%;z-index:5;text-align:center;color:var(--it)}
+.ix-mehndi-hands .mh-txt .ib{color:var(--acc);margin:1.5cqw 0}
+.ix-mehndi-hands .mh-txt>div{opacity:0}
+.ix-mehndi-hands .mh-hand{position:absolute;bottom:-14cqw;width:52cqw;z-index:7;opacity:0}
+.ix-mehndi-hands .mh-hand.l{left:-3cqw}
+.ix-mehndi-hands .mh-hand.r{right:-3cqw}
+.ix-mehndi-hands .mh-svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 1.5cqw 3cqw rgba(0,0,0,.35))}
+.ix-mehndi-hands .mh-skin{fill:var(--skin)}
+.ix-mehndi-hands .mh-f{fill:none;stroke:var(--skin);stroke-width:18;stroke-linecap:round}
+.ix-mehndi-hands .mh-hn{fill:none;stroke:var(--hn);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ix-mehndi-hands .mh-tip{fill:var(--hn);stroke:none;opacity:0}
+.ix-mehndi-hands .mh-d{stroke-dasharray:1 1.2;stroke-dashoffset:1;opacity:0}
+.ix-mehndi-hands .mh-ini{font-family:var(--fs),Georgia,serif;font-size:22px;fill:var(--hn);opacity:0}
+.play.s-mehndi-hands .mh-bg{animation:mehndi-hands-on 1s ease-out var(--o) both,mehndi-hands-off .9s ease-in calc(var(--o) + 4.5s) forwards}
+.play.s-mehndi-hands .mh-glow{animation:mehndi-hands-on 1.6s ease-out calc(var(--o) + .4s) both,mehndi-hands-off .8s ease-in calc(var(--o) + 4.2s) forwards}
+.play.s-mehndi-hands .mh-txt>div{animation:up .9s ease-out calc(var(--o) + var(--d)) both,mehndi-hands-off .6s ease-in calc(var(--o) + 4.1s) forwards}
+.play.s-mehndi-hands .mh-hand.l{animation:mehndi-hands-riseL 1.5s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .2s) both,mehndi-hands-partL 1.3s cubic-bezier(.6,0,.3,1) calc(var(--o) + 4.2s) forwards}
+.play.s-mehndi-hands .mh-hand.r{animation:mehndi-hands-riseR 1.5s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .35s) both,mehndi-hands-partR 1.3s cubic-bezier(.6,0,.3,1) calc(var(--o) + 4.2s) forwards}
+.play.s-mehndi-hands .mh-d{animation:mehndi-hands-draw 1s ease-out calc(var(--o) + var(--hd)) both}
+.play.s-mehndi-hands .a1{--hd:1.5s}.play.s-mehndi-hands .a2{--hd:1.7s}.play.s-mehndi-hands .a3{--hd:1.9s}.play.s-mehndi-hands .a4{--hd:1.6s}
+.play.s-mehndi-hands .a5{--hd:1.8s}.play.s-mehndi-hands .a6{--hd:2.1s}.play.s-mehndi-hands .a7{--hd:2.0s}.play.s-mehndi-hands .a8{--hd:2.3s}
+.play.s-mehndi-hands .mh-tip{animation:mehndi-hands-on .9s ease-out calc(var(--o) + 1.6s) both}
+.play.s-mehndi-hands .mh-ini{animation:mehndi-hands-ini 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 2.7s) both}
+.play.s-mehndi-hands .card{animation:mehndi-hands-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 4.3s) both}
+@keyframes mehndi-hands-on{0%{opacity:0}100%{opacity:1}}
+@keyframes mehndi-hands-off{0%{opacity:1}100%{opacity:0}}
+@keyframes mehndi-hands-draw{0%{stroke-dashoffset:1;opacity:0}8%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+@keyframes mehndi-hands-ini{0%{opacity:0;transform:scale(.6);transform-origin:center;transform-box:fill-box}100%{opacity:1;transform:none;transform-box:fill-box;transform-origin:center}}
+@keyframes mehndi-hands-riseL{0%{opacity:0;transform:translateY(60cqw) rotate(-14deg)}100%{opacity:1;transform:rotate(-7deg)}}
+@keyframes mehndi-hands-riseR{0%{opacity:0;transform:translateY(60cqw) rotate(14deg)}100%{opacity:1;transform:rotate(7deg)}}
+@keyframes mehndi-hands-partL{0%{opacity:1;transform:rotate(-7deg)}100%{opacity:0;transform:translate(-55cqw,20cqw) rotate(-20deg)}}
+@keyframes mehndi-hands-partR{0%{opacity:1;transform:rotate(7deg)}100%{opacity:0;transform:translate(55cqw,20cqw) rotate(20deg)}}
+@keyframes mehndi-hands-card{0%{opacity:0;transform:scale(.94)}100%{opacity:1;transform:none}}

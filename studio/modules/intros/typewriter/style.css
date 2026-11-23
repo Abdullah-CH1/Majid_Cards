@@ -1,0 +1,108 @@
+.ix-typewriter .tw-all{position:absolute;inset:0;z-index:5;opacity:0;overflow:hidden;
+  --tb:color-mix(in srgb,var(--ink) 88%,var(--bg));--tb2:color-mix(in srgb,var(--tb) 85%,#fff);--tb3:color-mix(in srgb,var(--tb) 62%,#000);
+  --tk:color-mix(in srgb,var(--tb) 42%,#000);--pk:color-mix(in srgb,var(--ef) 13%,#000);--mono:'Courier Prime','Courier New',Courier,monospace}
+.ix-typewriter .tw-bg{position:absolute;inset:0;background:radial-gradient(120% 70% at 50% 40%,color-mix(in srgb,var(--bg) 88%,var(--acc)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 86%,#000) 100%)}
+.ix-typewriter .tw-kick{position:absolute;left:0;right:0;top:8cqw;text-align:center;font-family:var(--ft),Georgia,serif;font-size:3.3cqw;letter-spacing:.42em;text-transform:uppercase;color:color-mix(in srgb,var(--it) 80%,transparent)}
+.ix-typewriter .tw-kick span{margin-right:-.42em}
+.ix-typewriter .tw-kick b{display:block;width:12cqw;height:1px;margin:2.6cqw auto 0;background:color-mix(in srgb,var(--acc) 70%,transparent)}
+
+/* carriage: nested wrappers, one pair per typed line (a = move to line start, b = typing + return) */
+.ix-typewriter .tw-car,.ix-typewriter .tw-a,.ix-typewriter .tw-b,.ix-typewriter .tw-v,.ix-typewriter .tw-feed{position:absolute;inset:0}
+.ix-typewriter .tw-a,.ix-typewriter .tw-b{font-family:var(--mono);font-size:3.5cqw}
+.ix-typewriter .tw-a.a3,.ix-typewriter .tw-b.b3{font-size:4.8cqw;font-weight:700}
+.ix-typewriter .tw-a.a1{transform:translateX(calc(var(--n,22) * .5ch))}
+.ix-typewriter .tw-feed{clip-path:inset(-200cqw -200cqw 73.78cqw -200cqw)}
+.ix-typewriter .tw-v.v2{--dv:2}.ix-typewriter .tw-v.v3{--dv:1.5}.ix-typewriter .tw-v.v4{--dv:1.5}.ix-typewriter .tw-v.v5{--dv:1.5}.ix-typewriter .tw-v.v6{--dv:2}
+.ix-typewriter .tw-paper{position:absolute;left:17cqw;width:66cqw;top:72cqw;height:117cqw;border-radius:.4cqw;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--ef) 96%,#fff) 0,var(--ef) 40%,color-mix(in srgb,var(--ef) 97%,#000) 100%);
+  box-shadow:0 .5cqw 2.4cqw rgb(0 0 0 / .22),inset 0 0 0 1px color-mix(in srgb,var(--pk) 7%,transparent)}
+.ix-typewriter .tw-paper::after{content:"";position:absolute;inset:3cqw;border:1px solid color-mix(in srgb,var(--acc) 42%,transparent);border-radius:.3cqw;pointer-events:none}
+.ix-typewriter .tw-ph{position:absolute;left:0;right:0;top:7cqw;display:flex;align-items:center;justify-content:center;gap:3cqw;color:var(--acc)}
+.ix-typewriter .tw-ph b{display:block;width:8cqw;height:1px;background:color-mix(in srgb,var(--acc) 65%,transparent)}
+.ix-typewriter .tw-mono{font-family:var(--fs),Georgia,serif;font-size:6.6cqw;line-height:1;display:flex;align-items:baseline;gap:.8cqw}
+.ix-typewriter .tw-mono i{font-style:normal;font-family:var(--ft),Georgia,serif;font-size:3.4cqw;opacity:.8}
+.ix-typewriter .tw-tx{position:absolute;inset:0}
+.ix-typewriter .tw-l{position:absolute;left:calc(50% - var(--n,22) * .5ch);width:calc(var(--n,22) * 1ch);height:6cqw;line-height:6cqw;
+  white-space:pre;overflow:hidden;font-family:var(--mono);font-size:3.5cqw;color:var(--pk);text-shadow:0 0 .12cqw color-mix(in srgb,var(--pk) 45%,transparent)}
+.ix-typewriter .tw-l.l1{top:21cqw}.ix-typewriter .tw-l.l2{top:33cqw}.ix-typewriter .tw-l.l3{top:42cqw}
+.ix-typewriter .tw-l.l4{top:51cqw}.ix-typewriter .tw-l.l5{top:60cqw}.ix-typewriter .tw-l.l6{top:72cqw}
+.ix-typewriter .tw-l.l3{font-size:4.8cqw;font-weight:700;text-transform:uppercase;color:color-mix(in srgb,var(--ink2) 70%,var(--pk))}
+.ix-typewriter .tw-l.l3 span{text-transform:uppercase}
+
+/* platen (moves with the carriage) */
+.ix-typewriter .tw-plat,.ix-typewriter .tw-body,.ix-typewriter .tw-guide svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.ix-typewriter .tw-cf{fill:var(--tb3)}
+.ix-typewriter .tw-plh{stroke:rgb(255 255 255 / .2);stroke-width:.35}
+.ix-typewriter .tw-tick{stroke:color-mix(in srgb,var(--acc) 80%,transparent);stroke-width:.5;stroke-dasharray:.12 1.88}
+.ix-typewriter .tw-kn{fill:var(--tb);stroke:var(--acc);stroke-width:.3}
+.ix-typewriter .tw-rid{stroke:color-mix(in srgb,var(--acc) 55%,transparent);stroke-width:7.2;stroke-dasharray:.18 .62}
+.ix-typewriter .tw-lev{fill:none;stroke:var(--tb2);stroke-width:1.1;stroke-linecap:round}
+.ix-typewriter .tw-lev2{fill:none;stroke:var(--acc);stroke-width:1.7;stroke-linecap:round}
+
+/* body (fixed) */
+.ix-typewriter .tw-rail{fill:var(--tb3)}
+.ix-typewriter .tw-hl{stroke:color-mix(in srgb,var(--acc) 85%,transparent);stroke-width:.3}
+.ix-typewriter .tw-hl2{stroke:color-mix(in srgb,var(--acc) 45%,transparent);stroke-width:.25}
+.ix-typewriter .tw-deck{fill:var(--tb2);stroke:color-mix(in srgb,var(--acc) 60%,transparent);stroke-width:.3}
+.ix-typewriter .tw-bask{fill:var(--tk);stroke:var(--acc);stroke-width:.3}
+.ix-typewriter .tw-fan line{stroke:color-mix(in srgb,var(--acc) 75%,transparent);stroke-width:.32;stroke-linecap:round}
+.ix-typewriter .tw-sp{fill:var(--tb);stroke:var(--acc);stroke-width:.3}
+.ix-typewriter .tw-sp2{fill:var(--tk);stroke:color-mix(in srgb,var(--acc) 55%,transparent);stroke-width:.25}
+.ix-typewriter .tw-sp3{fill:var(--acc)}
+.ix-typewriter .tw-front{fill:var(--tb);stroke:color-mix(in srgb,var(--acc) 40%,transparent);stroke-width:.25}
+.ix-typewriter .tw-badge{fill:none;stroke:var(--acc);stroke-width:.25}
+.ix-typewriter .tw-bt{font-family:var(--mono);font-size:2.3px;letter-spacing:.3px;fill:var(--acc)}
+.ix-typewriter .tw-ks{fill:rgb(0 0 0 / .35)}
+.ix-typewriter .tw-kc{fill:var(--tk);stroke:var(--acc);stroke-width:.32}
+.ix-typewriter .tw-kr{fill:none;stroke:color-mix(in srgb,var(--ef) 30%,transparent);stroke-width:.15}
+.ix-typewriter .tw-kt{font-family:var(--mono);font-size:2.1px;font-weight:700;fill:color-mix(in srgb,var(--ef) 88%,transparent)}
+.ix-typewriter .tw-spc{fill:var(--tk);stroke:var(--acc);stroke-width:.3}
+
+/* type guide + ribbon at the printing point */
+.ix-typewriter .tw-guide{position:absolute;inset:0}
+.ix-typewriter .tw-gp{fill:var(--tb3);stroke:var(--acc);stroke-width:.25}
+.ix-typewriter .tw-rib{position:absolute;left:47.4cqw;top:99.9cqw;width:2.4cqw;height:1.5cqw;border-radius:.2cqw;
+  background:linear-gradient(180deg,var(--pk) 0 50%,color-mix(in srgb,var(--bl) 80%,#000) 50% 100%)}
+
+/* bell */
+.ix-typewriter .tw-dings{position:absolute;inset:0}
+.ix-typewriter .tw-dg{position:absolute;left:79cqw;top:86cqw;display:flex;align-items:center;gap:1cqw;opacity:0;color:var(--acc)}
+.ix-typewriter .tw-dg svg{width:4.2cqw;height:4.2cqw}
+.ix-typewriter .tw-dg path{fill:var(--acc)}
+.ix-typewriter .tw-dg span{font-family:var(--ft),Georgia,serif;font-style:italic;font-size:3.4cqw;letter-spacing:.06em;color:color-mix(in srgb,var(--acc) 70%,var(--it))}
+
+/* ---------- motion ---------- */
+.play.s-typewriter .tw-all{animation:typewriter-all 10.4s linear var(--o) both}
+.play.s-typewriter .tw-kick{animation:typewriter-out .6s ease-in calc(var(--o) + 7.5s) both}
+.play.s-typewriter .tw-a.a2,.play.s-typewriter .tw-a.a3,.play.s-typewriter .tw-a.a4,.play.s-typewriter .tw-a.a5,.play.s-typewriter .tw-a.a6{
+  animation:typewriter-ret .38s cubic-bezier(.55,0,.15,1) calc(var(--o) + var(--r)) both}
+.play.s-typewriter .tw-b{animation:typewriter-type calc(var(--n) * var(--dt)) steps(var(--n),end) calc(var(--o) + var(--s)) both,
+  typewriter-ret .38s cubic-bezier(.55,0,.15,1) calc(var(--o) + var(--e) + .03s) both}
+.play.s-typewriter .tw-v{animation:typewriter-adv .32s cubic-bezier(.3,.7,.2,1) calc(var(--o) + var(--r) + .06s) both}
+.play.s-typewriter .tw-l{animation:typewriter-w calc(var(--n) * var(--dt)) steps(var(--n),end) calc(var(--o) + var(--s)) both}
+.play.s-typewriter .tw-h{animation:typewriter-hit var(--dt) ease-out calc(var(--o) + var(--s)) var(--n) both}
+.play.s-typewriter .tw-dg{animation:typewriter-ding 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + var(--t)) both}
+.play.s-typewriter .tw-k{animation:typewriter-key var(--kp) ease-out calc(var(--o) + var(--kd)) var(--kc) both}
+.play.s-typewriter .tw-feed{animation:typewriter-open .01s steps(1,end) calc(var(--o) + 8.62s) both}
+.play.s-typewriter .tw-paper{animation:typewriter-pull 1.7s linear calc(var(--o) + 8s) both}
+.play.s-typewriter .tw-tx,.play.s-typewriter .tw-ph{animation:typewriter-out .4s ease-in calc(var(--o) + 8.95s) both}
+.play.s-typewriter .tw-plat,.play.s-typewriter .tw-body,.play.s-typewriter .tw-guide,.play.s-typewriter .tw-dings{animation:typewriter-away .8s cubic-bezier(.5,0,.7,1) calc(var(--o) + 8.05s) both}
+.play.s-typewriter .card{animation:typewriter-card .85s ease-out calc(var(--o) + 9.15s) both}
+
+@keyframes typewriter-all{0%,96%{opacity:1}100%{opacity:0}}
+@keyframes typewriter-out{0%{opacity:1}100%{opacity:0}}
+@keyframes typewriter-ret{0%{transform:none}100%{transform:translateX(calc(var(--n) * .5ch))}}
+@keyframes typewriter-type{0%{translate:0 0}100%{translate:calc(var(--n) * -1ch) 0}}
+@keyframes typewriter-adv{0%{transform:none}100%{transform:translateY(calc(var(--dv) * -6cqw))}}
+@keyframes typewriter-w{0%{width:0}100%{width:calc(var(--n) * 1ch)}}
+@keyframes typewriter-hit{0%{transform:none}35%{transform:translateY(-3.3cqw)}75%,100%{transform:none}}
+@keyframes typewriter-ding{0%{opacity:0;transform:scale(.5) rotate(-20deg)}22%{opacity:1;transform:scale(1.06)}100%{opacity:0;transform:translateY(-3.5cqw) scale(1)}}
+@keyframes typewriter-key{0%,45%,100%{transform:none}14%{transform:translateY(.7px)}}
+@keyframes typewriter-open{0%{clip-path:inset(-200cqw -200cqw 73.78cqw -200cqw)}100%{clip-path:inset(-200cqw)}}
+@keyframes typewriter-pull{
+  0%{transform:none;animation-timing-function:cubic-bezier(.45,0,.2,1)}
+  38%{transform:translateY(-31cqw) scale(.8);animation-timing-function:linear}
+  58%{transform:translateY(-31cqw) scale(.8);animation-timing-function:cubic-bezier(.55,0,.2,1)}
+  100%{transform:translateY(9.4cqw) scale(1.52)}}
+@keyframes typewriter-away{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(16cqw)}}
+@keyframes typewriter-card{0%{opacity:0}100%{opacity:1}}

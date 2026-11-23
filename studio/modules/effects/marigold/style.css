@@ -1,0 +1,30 @@
+/* Marigold flowers - orange (default) and golden-yellow (.marigold-y) blossoms mixed from --acc and --bl.
+   Browsers with relative colours get richer, marigold-bright shades of the same mix. */
+.fx-marigold .marigold-defs{position:absolute;width:0;height:0;overflow:hidden}
+.fx-marigold .marigold-p{--mgb:color-mix(in oklab,var(--acc) 68%,var(--bl));--mg0:color-mix(in oklab,var(--mgb) 55%,#fff);--mg1:color-mix(in oklab,var(--mgb) 78%,#fff);--mg2:color-mix(in oklab,var(--mgb) 92%,#fff);--mg3:var(--mgb);--mg4:color-mix(in oklab,var(--mgb) 88%,#000);--mg5:color-mix(in oklab,var(--mgb) 45%,#000);position:absolute;top:0;display:block;width:var(--s);height:var(--s);margin-left:calc(var(--s) * -.5);opacity:0;perspective:30cqw}
+.fx-marigold .marigold-p.marigold-y{--mgb:color-mix(in oklab,var(--acc) 90%,var(--bl))}
+@supports (color:oklch(from red l c h)){
+  .fx-marigold .marigold-p{--mg0:oklch(from var(--mgb) calc(l + .2) calc(c * .95 + .045) calc(h + 20));--mg1:oklch(from var(--mgb) calc(l + .13) calc(c * 1.25 + .045) calc(h + 10));--mg2:oklch(from var(--mgb) calc(l + .07) calc(c * 1.35 + .045) calc(h + 3));--mg3:oklch(from var(--mgb) calc(l + .01) calc(c * 1.30 + .045) calc(h - 4));--mg4:oklch(from var(--mgb) calc(l - .07) calc(c * 1.20 + .045) calc(h - 8));--mg5:oklch(from var(--mgb) calc(l - .3) calc(c * .80 + .045) calc(h - 12))}
+  .fx-marigold .marigold-p.marigold-y{--mg0:oklch(from var(--mgb) calc(l + .24) calc(c * .80 + .045) calc(h + 14));--mg1:oklch(from var(--mgb) calc(l + .18) calc(c * 1.15 + .045) calc(h + 10));--mg2:oklch(from var(--mgb) calc(l + .12) calc(c * 1.30 + .045) calc(h + 6));--mg3:oklch(from var(--mgb) calc(l + .06) calc(c * 1.30 + .045) h);--mg4:oklch(from var(--mgb) calc(l - .02) calc(c * 1.20 + .045) calc(h - 4));--mg5:oklch(from var(--mgb) calc(l - .28) calc(c * .80 + .045) calc(h - 8))}
+}
+.fx-marigold .marigold-q,.fx-marigold .marigold-r{position:absolute;inset:0;display:block}
+.fx-marigold .marigold-r svg,.fx-marigold .marigold-sh{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible}
+.play.fx-marigold .marigold-p{animation:marigold-fall 11s linear infinite backwards}
+.play.fx-marigold .marigold-q{animation:marigold-sway 3s ease-in-out infinite alternate}
+.play.fx-marigold .marigold-r{animation:marigold-spin 8s linear infinite}
+.play.fx-marigold .marigold-r.marigold-f{animation-name:marigold-flip}
+@keyframes marigold-fall{
+  0%{transform:translate3d(0,-12cqw,0);opacity:0}
+  4%{opacity:var(--a)}
+  95%{opacity:var(--a)}
+  100%{transform:translate3d(0,190cqw,0);opacity:0}
+}
+@keyframes marigold-sway{
+  0%{transform:translateX(calc(var(--sw) * -1)) rotateX(var(--tx)) rotateY(calc(var(--ty) * -1))}
+  100%{transform:translateX(var(--sw)) rotateX(calc(var(--tx) * -1)) rotateY(var(--ty))}
+}
+@keyframes marigold-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes marigold-flip{
+  0%{transform:rotate(var(--r0)) rotate3d(var(--ax),var(--ay),0,0deg)}
+  100%{transform:rotate(var(--r0)) rotate3d(var(--ax),var(--ay),0,360deg)}
+}

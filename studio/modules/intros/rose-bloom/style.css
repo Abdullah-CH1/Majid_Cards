@@ -1,0 +1,36 @@
+.ix-rose-bloom .rb-glow{position:absolute;inset:0;z-index:7;opacity:0;pointer-events:none;background:radial-gradient(60cqw 60cqw at 50% 34%,color-mix(in srgb,var(--bl) 22%,var(--bg)) 0%,var(--bg) 70%)}
+.ix-rose-bloom .rb-wrap{position:absolute;left:50%;top:34%;width:88cqw;height:88cqw;margin:-44cqw 0 0 -44cqw;z-index:7;opacity:0;pointer-events:none}
+.ix-rose-bloom .rb-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ix-rose-bloom .rb-pp{stroke:var(--acc);stroke-width:1.1;stroke-linejoin:round}
+.ix-rose-bloom .r1 .rb-pp{fill:color-mix(in srgb,var(--bl) 72%,#000)}
+.ix-rose-bloom .r2 .rb-pp{fill:var(--bl)}
+.ix-rose-bloom .r3 .rb-pp{fill:color-mix(in srgb,var(--bl) 78%,#fff)}
+.ix-rose-bloom .rb-pv{fill:none;stroke:color-mix(in srgb,var(--acc) 55%,transparent);stroke-width:.7;stroke-linecap:round}
+.ix-rose-bloom .rb-lp{fill:var(--lv);stroke:var(--acc);stroke-width:1}
+.ix-rose-bloom .rb-lv{fill:none;stroke:color-mix(in srgb,var(--acc) 70%,transparent);stroke-width:.8}
+.ix-rose-bloom .rb-core{fill:color-mix(in srgb,var(--bl) 50%,#000);stroke:var(--acc);stroke-width:1.4}
+.ix-rose-bloom .rb-core2{fill:none;stroke:color-mix(in srgb,var(--acc) 60%,transparent);stroke-width:.6}
+.ix-rose-bloom .rb-p,.ix-rose-bloom .rb-lf{transform-box:fill-box;transform-origin:50% 100%}
+.ix-rose-bloom .rb-mono{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:baseline;gap:.6cqw;font-family:var(--fs);font-size:8.5cqw;line-height:1;color:var(--acc);white-space:nowrap;opacity:0;text-shadow:0 .3cqw 1cqw rgba(0,0,0,.35)}
+.ix-rose-bloom .rb-mono i{font-style:normal;font-size:4.5cqw}
+.ix-rose-bloom .rb-txt{position:absolute;left:7%;right:7%;top:63%;z-index:7;text-align:center;color:var(--it);pointer-events:none}
+.ix-rose-bloom .rb-txt .ib{color:var(--acc)}
+.ix-rose-bloom .rb-txt>div{opacity:0}
+.play.s-rose-bloom .rb-glow{animation:rose-bloom-glow 5.2s ease-out var(--o) both}
+.play.s-rose-bloom .rb-wrap{animation:rose-bloom-wrap .6s ease-out var(--o) both}
+.play.s-rose-bloom .rb-p{animation:rose-bloom-open 1.1s cubic-bezier(.2,.8,.2,1.15) calc(var(--o) + var(--pd)) both}
+.play.s-rose-bloom .rb-lf{animation:rose-bloom-leaf 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + var(--ld)) both,rose-bloom-fade .7s ease-in calc(var(--o) + 3.95s) forwards}
+.play.s-rose-bloom .rb-s{animation:rose-bloom-scatter .95s cubic-bezier(.4,0,.6,1) calc(var(--o) + var(--sd) - .2s) forwards}
+.play.s-rose-bloom .rb-core,.play.s-rose-bloom .rb-core2{transform-box:fill-box;transform-origin:50% 50%;animation:rose-bloom-core 4.6s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .2s) both}
+.play.s-rose-bloom .rb-mono{animation:rose-bloom-mono 2.4s ease-out calc(var(--o) + 1.9s) both}
+.play.s-rose-bloom .rb-txt>div{animation:up .9s ease-out calc(var(--o) + var(--d)) both,rose-bloom-fade .6s ease-in calc(var(--o) + 4.1s) forwards}
+.play.s-rose-bloom .card{animation:rose-bloom-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 4s) both}
+@keyframes rose-bloom-glow{0%{opacity:0}10%,76%{opacity:1}100%{opacity:0}}
+@keyframes rose-bloom-wrap{0%{opacity:0}100%{opacity:1}}
+@keyframes rose-bloom-open{0%{opacity:0;transform:scale(.15,.1) rotate(-30deg)}40%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes rose-bloom-leaf{0%{opacity:0;transform:scale(.1,.3) rotate(-40deg)}100%{opacity:1;transform:none}}
+@keyframes rose-bloom-scatter{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-230px) rotate(var(--sr)) scale(1.4)}}
+@keyframes rose-bloom-fade{to{opacity:0}}
+@keyframes rose-bloom-core{0%{opacity:0;transform:scale(.3)}15%{opacity:1;transform:none}82%{opacity:1;transform:none}100%{opacity:0;transform:scale(.4)}}
+@keyframes rose-bloom-mono{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}25%,80%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.2)}}
+@keyframes rose-bloom-card{0%{opacity:0;transform:scale(.92)}100%{opacity:1;transform:none}}

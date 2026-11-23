@@ -1,0 +1,1581 @@
+{
+ "palettes": [
+  {
+   "name": "Shahi Maroon Baraat",
+   "family": "Shahi Maroon & Antique Gold",
+   "event": "baraat",
+   "roles": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "fl": "#C41E3A",
+    "lf": "#2E6B4F"
+   },
+   "contrast": {
+    "ink_on_cd": 15.91,
+    "ink2_on_cd": 8.52,
+    "it_on_bg": 11.49,
+    "acc_on_cd": 2.91,
+    "acc_on_bg": 4.56,
+    "fl_on_cd": 5.49,
+    "lf_on_cd": 5.92,
+    "fl_on_bg": 2.42,
+    "lf_on_bg": 2.24,
+    "ef_on_bg": 11.1,
+    "acc_on_ef": 2.43
+   },
+   "notes": "Classic Lahori Baraat: deep maroon scene, ivory card, antique-gold zardozi lines (2026 Baraat = deeper maroon / antique crimson). fl bridal crimson for lehenga, roses, rose-curtain; lf Mughal-emerald leaves. Suits envelope, palace doors, Mughal arch; crimson-petal or gold-dust fall."
+  },
+  {
+   "name": "Rosewood & Champagne Walima",
+   "family": "Shahi Maroon & Antique Gold",
+   "event": "walima",
+   "roles": {
+    "bg": "#7E3D45",
+    "it": "#FFF1EA",
+    "ef": "#FBEDE6",
+    "cd": "#FFF9F6",
+    "ink": "#4A1F27",
+    "ink2": "#9B4552",
+    "acc": "#CBA66C",
+    "fl": "#E08A98",
+    "lf": "#8FA68C"
+   },
+   "contrast": {
+    "ink_on_cd": 13.28,
+    "ink2_on_cd": 5.98,
+    "it_on_bg": 7.2,
+    "acc_on_cd": 2.19,
+    "acc_on_bg": 3.49,
+    "fl_on_cd": 2.44,
+    "lf_on_cd": 2.52,
+    "fl_on_bg": 3.13,
+    "lf_on_bg": 3.03,
+    "ef_on_bg": 6.95,
+    "acc_on_ef": 1.99
+   },
+   "notes": "Softened maroon: dusky rosewood scene, pearl-blush card, champagne gold, blush-rose fl, sage lf. Suits garland or corner borders with a light petal fall."
+  },
+  {
+   "name": "Emerald Mughal Baraat",
+   "family": "Emerald Mughal",
+   "event": "baraat",
+   "roles": {
+    "bg": "#0B3D2E",
+    "it": "#F3E9CF",
+    "ef": "#F2E8D2",
+    "cd": "#FFFAEE",
+    "ink": "#0E2E23",
+    "ink2": "#0F6B4A",
+    "acc": "#C9A046",
+    "fl": "#B0173A",
+    "lf": "#2FA37A"
+   },
+   "contrast": {
+    "ink_on_cd": 14.06,
+    "ink2_on_cd": 6.26,
+    "it_on_bg": 10.09,
+    "acc_on_cd": 2.34,
+    "acc_on_bg": 5,
+    "fl_on_cd": 6.65,
+    "lf_on_cd": 3.04,
+    "fl_on_bg": 1.76,
+    "lf_on_bg": 3.86,
+    "ef_on_bg": 10.02,
+    "acc_on_ef": 2.01
+   },
+   "notes": "Shah Jahan emerald with Mughal gold on ivory. Ruby fl and jade lf echo Mughal emerald-and-ruby jewellery. Suits jharokha or jaali screens, palace doors, Shalimar cypress motifs, hanging lanterns."
+  },
+  {
+   "name": "Pista & Gold Walima",
+   "family": "Emerald Mughal",
+   "event": "walima",
+   "roles": {
+    "bg": "#DCE8C4",
+    "it": "#1F3A22",
+    "ef": "#FFFEF6",
+    "cd": "#FFFEF8",
+    "ink": "#1B3424",
+    "ink2": "#2B6E4C",
+    "acc": "#9A7428",
+    "fl": "#D9828F",
+    "lf": "#5E9A50"
+   },
+   "contrast": {
+    "ink_on_cd": 13.3,
+    "ink2_on_cd": 6.05,
+    "it_on_bg": 9.71,
+    "acc_on_cd": 4.24,
+    "acc_on_bg": 3.34,
+    "fl_on_cd": 2.76,
+    "lf_on_cd": 3.34,
+    "fl_on_bg": 2.17,
+    "lf_on_bg": 2.64,
+    "ef_on_bg": 1.27,
+    "acc_on_ef": 4.23
+   },
+   "notes": "Pistachio (pista) green, a favourite Pakistani pastel, with warm antique gold, blush-rose fl and leaf-green lf. Light scene, so give the envelope or doors a soft shadow."
+  },
+  {
+   "name": "Chand Raat Navy & Gold Baraat",
+   "family": "Midnight Navy & Gold (Chand Raat)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#0A1230",
+    "it": "#F4E7C5",
+    "ef": "#EFE4CC",
+    "cd": "#16224A",
+    "ink": "#F6EBD0",
+    "ink2": "#E2BE6A",
+    "acc": "#C9A04A",
+    "fl": "#D2506A",
+    "lf": "#4FA3A0"
+   },
+   "contrast": {
+    "ink_on_cd": 13.01,
+    "ink2_on_cd": 8.67,
+    "it_on_bg": 14.96,
+    "acc_on_cd": 6.32,
+    "acc_on_bg": 7.54,
+    "fl_on_cd": 3.74,
+    "lf_on_cd": 5.2,
+    "fl_on_bg": 4.46,
+    "lf_on_bg": 6.2,
+    "ef_on_bg": 14.57,
+    "acc_on_ef": 1.93
+   },
+   "notes": "Dark-card luxe: midnight-navy scene AND navy card. Names in moon-cream, highlight text in gold foil. Suits night Baraat with crescent, stars, fanoos lanterns and gold-dust fall. Rose-red fl stands out on navy; teal lf."
+  },
+  {
+   "name": "Twilight Periwinkle Walima",
+   "family": "Midnight Navy & Gold (Chand Raat)",
+   "event": "walima",
+   "roles": {
+    "bg": "#3F5185",
+    "it": "#F7F3EA",
+    "ef": "#F4F1EA",
+    "cd": "#FBFAF6",
+    "ink": "#1D2647",
+    "ink2": "#4A5A96",
+    "acc": "#C8A55C",
+    "fl": "#D98AA3",
+    "lf": "#7FAFAC"
+   },
+   "contrast": {
+    "ink_on_cd": 14.16,
+    "ink2_on_cd": 6.3,
+    "it_on_bg": 6.95,
+    "acc_on_cd": 2.24,
+    "acc_on_bg": 3.3,
+    "fl_on_cd": 2.48,
+    "lf_on_cd": 2.33,
+    "fl_on_bg": 2.98,
+    "lf_on_bg": 3.16,
+    "ef_on_bg": 6.83,
+    "acc_on_ef": 2.07
+   },
+   "notes": "Twilight-periwinkle scene, warm-white card, soft gold, blush fl, sea-glass lf. Suits moon and stars, lanterns and sparkles."
+  },
+  {
+   "name": "Black & Gold Luxe Baraat",
+   "family": "Black & Gold Luxe",
+   "event": "baraat",
+   "roles": {
+    "bg": "#0B0A09",
+    "it": "#EFD9A6",
+    "ef": "#EDE0C4",
+    "cd": "#17140F",
+    "ink": "#F3E4C0",
+    "ink2": "#D8B25E",
+    "acc": "#C29A45",
+    "fl": "#B3263A",
+    "lf": "#2E7A5A"
+   },
+   "contrast": {
+    "ink_on_cd": 14.58,
+    "ink2_on_cd": 9.14,
+    "it_on_bg": 14.27,
+    "acc_on_cd": 7,
+    "acc_on_bg": 7.54,
+    "fl_on_cd": 2.85,
+    "lf_on_cd": 3.54,
+    "fl_on_bg": 3.07,
+    "lf_on_bg": 3.81,
+    "ef_on_bg": 15.13,
+    "acc_on_ef": 2.01
+   },
+   "notes": "Dark-card luxe: onyx scene, black card, gold-cream names, gold highlights. The ivory envelope gives contrast. Deep-red rose fl, emerald lf. Suits golden medallion, geometric Islamic star patterns, gold dust; pairs with a black-marble texture."
+  },
+  {
+   "name": "Ivory Black-Tie Walima",
+   "family": "Black & Gold Luxe",
+   "event": "walima",
+   "roles": {
+    "bg": "#2B2927",
+    "it": "#F4EEE3",
+    "ef": "#F6F1E7",
+    "cd": "#FFFDF8",
+    "ink": "#161412",
+    "ink2": "#6E5626",
+    "acc": "#B8975A",
+    "fl": "#C98F8F",
+    "lf": "#75836F"
+   },
+   "contrast": {
+    "ink_on_cd": 18.07,
+    "ink2_on_cd": 6.84,
+    "it_on_bg": 12.55,
+    "acc_on_cd": 2.71,
+    "acc_on_bg": 5.25,
+    "fl_on_cd": 2.65,
+    "lf_on_cd": 3.95,
+    "fl_on_bg": 5.39,
+    "lf_on_bg": 3.61,
+    "ef_on_bg": 12.87,
+    "acc_on_ef": 2.45
+   },
+   "notes": "Monochrome reception: soft-charcoal scene, ivory card, black ink, champagne gold. Nude-rose fl, olive-grey lf. Minimal and formal."
+  },
+  {
+   "name": "Rani Pink & Gota Baraat",
+   "family": "Rani Pink & Gota",
+   "event": "baraat",
+   "roles": {
+    "bg": "#74104A",
+    "it": "#FFE8F2",
+    "ef": "#FCE4EC",
+    "cd": "#FFF6F8",
+    "ink": "#3D0628",
+    "ink2": "#B0145F",
+    "acc": "#D4A23A",
+    "fl": "#E0287D",
+    "lf": "#3FA34D"
+   },
+   "contrast": {
+    "ink_on_cd": 15.77,
+    "ink2_on_cd": 6.36,
+    "it_on_bg": 9.44,
+    "acc_on_cd": 2.19,
+    "acc_on_bg": 4.71,
+    "fl_on_cd": 4.15,
+    "lf_on_cd": 3.02,
+    "fl_on_bg": 2.49,
+    "lf_on_bg": 3.42,
+    "ef_on_bg": 9.11,
+    "acc_on_ef": 1.93
+   },
+   "notes": "Rani (shocking) pink with gota-kinari gold and parrot green, the classic Pakistani pink-and-green pairing. Vibrant and festive. fl rani pink for lehenga, roses and hearts; lf parrot green."
+  },
+  {
+   "name": "Gulabi Candy-Pink Walima",
+   "family": "Rani Pink & Gota",
+   "event": "walima",
+   "roles": {
+    "bg": "#F9CADF",
+    "it": "#4A1235",
+    "ef": "#FFF8FA",
+    "cd": "#FFFBFC",
+    "ink": "#45122F",
+    "ink2": "#A8306E",
+    "acc": "#9A6A28",
+    "fl": "#E86FA6",
+    "lf": "#5DAE73"
+   },
+   "contrast": {
+    "ink_on_cd": 14.82,
+    "ink2_on_cd": 6.17,
+    "it_on_bg": 10.18,
+    "acc_on_cd": 4.58,
+    "acc_on_bg": 3.26,
+    "fl_on_cd": 2.82,
+    "lf_on_cd": 2.63,
+    "fl_on_bg": 2,
+    "lf_on_bg": 1.87,
+    "ef_on_bg": 1.38,
+    "acc_on_ef": 4.49
+   },
+   "notes": "Candy-pink pastel scene, pink-white card, warm antique gold (darkened so it shows on pastel), pink fl, mint-green lf."
+  },
+  {
+   "name": "Rosewood & Rose Gold Baraat",
+   "family": "Blush & Rose Gold",
+   "event": "baraat",
+   "roles": {
+    "bg": "#603A3A",
+    "it": "#FBE6E3",
+    "ef": "#F8E3DF",
+    "cd": "#FFF5F2",
+    "ink": "#3E1A20",
+    "ink2": "#A0475A",
+    "acc": "#C98A7C",
+    "fl": "#DE6A82",
+    "lf": "#86A383"
+   },
+   "contrast": {
+    "ink_on_cd": 14.27,
+    "ink2_on_cd": 5.53,
+    "it_on_bg": 8.1,
+    "acc_on_cd": 2.64,
+    "acc_on_bg": 3.42,
+    "fl_on_cd": 3.02,
+    "lf_on_cd": 2.59,
+    "fl_on_bg": 3,
+    "lf_on_bg": 3.5,
+    "ef_on_bg": 7.88,
+    "acc_on_ef": 2.3
+   },
+   "notes": "Romantic modern Baraat: rosewood-taupe scene, blush card, rose-gold metal, deep rose-pink fl, sage lf."
+  },
+  {
+   "name": "Blush & Rose Gold Walima",
+   "family": "Blush & Rose Gold",
+   "event": "walima",
+   "roles": {
+    "bg": "#F7DDD9",
+    "it": "#4E242B",
+    "ef": "#FFF8F6",
+    "cd": "#FFFCFB",
+    "ink": "#4A2229",
+    "ink2": "#A65163",
+    "acc": "#A86A60",
+    "fl": "#EA8890",
+    "lf": "#8FAF95"
+   },
+   "contrast": {
+    "ink_on_cd": 13.25,
+    "ink2_on_cd": 5.17,
+    "it_on_bg": 10.12,
+    "acc_on_cd": 4.2,
+    "acc_on_bg": 3.33,
+    "fl_on_cd": 2.44,
+    "lf_on_cd": 2.36,
+    "fl_on_bg": 1.94,
+    "lf_on_bg": 1.87,
+    "ef_on_bg": 1.23,
+    "acc_on_ef": 4.09
+   },
+   "notes": "Tea-pink or blush scene, white card, deep rose gold, peony fl, sage lf. Matches the dusty-pink and blush Walima trend."
+  },
+  {
+   "name": "Antique Champagne Baraat",
+   "family": "Ivory & Champagne (Nikah Whites)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#4D3A22",
+    "it": "#F7EBD0",
+    "ef": "#FBF4E4",
+    "cd": "#FFFCF4",
+    "ink": "#2F2416",
+    "ink2": "#7D6230",
+    "acc": "#C4A462",
+    "fl": "#C99B83",
+    "lf": "#9A9A6A"
+   },
+   "contrast": {
+    "ink_on_cd": 14.79,
+    "ink2_on_cd": 5.59,
+    "it_on_bg": 9.13,
+    "acc_on_cd": 2.32,
+    "acc_on_bg": 4.54,
+    "fl_on_cd": 2.41,
+    "lf_on_cd": 2.84,
+    "fl_on_bg": 4.37,
+    "lf_on_bg": 3.71,
+    "ef_on_bg": 9.86,
+    "acc_on_ef": 2.17
+   },
+   "notes": "Nikah-whites mood made richer for Baraat: antique bronze-brown scene, ivory card, champagne (tilla) gold, nude-rose fl, olive lf. Understated and elegant; pairs with ivory satin textures."
+  },
+  {
+   "name": "Ivory & Champagne Walima",
+   "family": "Ivory & Champagne (Nikah Whites)",
+   "event": "walima",
+   "roles": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "fl": "#CF9E88",
+    "lf": "#A3A57E"
+   },
+   "contrast": {
+    "ink_on_cd": 14.74,
+    "ink2_on_cd": 5.72,
+    "it_on_bg": 9.83,
+    "acc_on_cd": 3.99,
+    "acc_on_bg": 2.99,
+    "fl_on_cd": 2.34,
+    "lf_on_cd": 2.53,
+    "fl_on_bg": 1.76,
+    "lf_on_bg": 1.9,
+    "ef_on_bg": 1.32,
+    "acc_on_ef": 3.96
+   },
+   "notes": "Champagne-beige scene (a leading 2025 Walima shade), white card, antique gold, nude-rose fl, pale-olive lf."
+  },
+  {
+   "name": "Smoky Sage & Gold Baraat",
+   "family": "Sage & Gold",
+   "event": "baraat",
+   "roles": {
+    "bg": "#2F3A2E",
+    "it": "#F1EEDF",
+    "ef": "#F2EFE2",
+    "cd": "#FBFBF4",
+    "ink": "#1E2A1F",
+    "ink2": "#4F6B4A",
+    "acc": "#C2A15A",
+    "fl": "#C97B6B",
+    "lf": "#8FA584"
+   },
+   "contrast": {
+    "ink_on_cd": 14.37,
+    "ink2_on_cd": 5.72,
+    "it_on_bg": 10.22,
+    "acc_on_cd": 2.37,
+    "acc_on_bg": 4.84,
+    "fl_on_cd": 3.09,
+    "lf_on_cd": 2.56,
+    "fl_on_bg": 3.7,
+    "lf_on_bg": 4.47,
+    "ef_on_bg": 10.32,
+    "acc_on_ef": 2.13
+   },
+   "notes": "Smoky sage-green scene, ivory card, gold. Terracotta-rose fl with sage lf (sage with rose is a 2026 trend). Botanical or eucalyptus designs."
+  },
+  {
+   "name": "Soft Sage Walima",
+   "family": "Sage & Gold",
+   "event": "walima",
+   "roles": {
+    "bg": "#4C5A46",
+    "it": "#F6F6EC",
+    "ef": "#F2F3E8",
+    "cd": "#FBFBF4",
+    "ink": "#22301F",
+    "ink2": "#4E6748",
+    "acc": "#C6A762",
+    "fl": "#D9978A",
+    "lf": "#9DB592"
+   },
+   "contrast": {
+    "ink_on_cd": 13.38,
+    "ink2_on_cd": 6.02,
+    "it_on_bg": 6.76,
+    "acc_on_cd": 2.22,
+    "acc_on_bg": 3.19,
+    "fl_on_cd": 2.31,
+    "lf_on_cd": 2.14,
+    "fl_on_bg": 3.06,
+    "lf_on_bg": 3.31,
+    "ef_on_bg": 6.56,
+    "acc_on_ef": 2.06
+   },
+   "notes": "Dusky soft-sage scene, white card, gold, peach-rose fl, sage lf. Suits greenery garlands and corner flourishes."
+  },
+  {
+   "name": "Steel Blue & Silver Baraat",
+   "family": "Powder Blue & Silver",
+   "event": "baraat",
+   "roles": {
+    "bg": "#2B4058",
+    "it": "#EEF3F9",
+    "ef": "#EAF0F7",
+    "cd": "#F8FAFD",
+    "ink": "#14243A",
+    "ink2": "#3D5F8C",
+    "acc": "#9AA5B2",
+    "fl": "#6F9FDB",
+    "lf": "#8FB3A8"
+   },
+   "contrast": {
+    "ink_on_cd": 14.95,
+    "ink2_on_cd": 6.25,
+    "it_on_bg": 9.52,
+    "acc_on_cd": 2.39,
+    "acc_on_bg": 4.25,
+    "fl_on_cd": 2.62,
+    "lf_on_cd": 2.19,
+    "fl_on_bg": 3.87,
+    "lf_on_bg": 4.64,
+    "ef_on_bg": 9.26,
+    "acc_on_ef": 2.18
+   },
+   "notes": "Dusky steel-blue scene, icy-white card, silver lines. Powder-blue lehenga fl, silver-sage lf. Suits winter or evening Baraat, with snow-like sparkles."
+  },
+  {
+   "name": "Powder Blue & Silver Walima",
+   "family": "Powder Blue & Silver",
+   "event": "walima",
+   "roles": {
+    "bg": "#CFE0F5",
+    "it": "#1E2F48",
+    "ef": "#FBFCFE",
+    "cd": "#FFFFFF",
+    "ink": "#1A2A40",
+    "ink2": "#4D6A94",
+    "acc": "#76838F",
+    "fl": "#E3A3B5",
+    "lf": "#8EB0A6"
+   },
+   "contrast": {
+    "ink_on_cd": 14.49,
+    "ink2_on_cd": 5.52,
+    "it_on_bg": 10.05,
+    "acc_on_cd": 3.88,
+    "acc_on_bg": 2.89,
+    "fl_on_cd": 2.06,
+    "lf_on_cd": 2.36,
+    "fl_on_bg": 1.54,
+    "lf_on_bg": 1.75,
+    "ef_on_bg": 1.31,
+    "acc_on_ef": 3.78
+   },
+   "notes": "Powder blue (a top 2025 Walima pastel) with pewter-silver lines (darkened so they read on pastel), dusty-pink fl, sage lf. Pearl-drop details suit it."
+  },
+  {
+   "name": "Amethyst & Silver Baraat",
+   "family": "Lilac & Silver",
+   "event": "baraat",
+   "roles": {
+    "bg": "#524080",
+    "it": "#F4EEFC",
+    "ef": "#EFE7F8",
+    "cd": "#FBF8FE",
+    "ink": "#24173D",
+    "ink2": "#6A4A9E",
+    "acc": "#A59FB6",
+    "fl": "#C29BE3",
+    "lf": "#8FB8A0"
+   },
+   "contrast": {
+    "ink_on_cd": 15.78,
+    "ink2_on_cd": 6.47,
+    "it_on_bg": 7.69,
+    "acc_on_cd": 2.42,
+    "acc_on_bg": 3.43,
+    "fl_on_cd": 2.2,
+    "lf_on_cd": 2.09,
+    "fl_on_bg": 3.78,
+    "lf_on_bg": 3.97,
+    "ef_on_bg": 7.26,
+    "acc_on_ef": 2.12
+   },
+   "notes": "Amethyst-violet scene, lilac-white card, lilac silver, orchid fl, mint lf."
+  },
+  {
+   "name": "Lilac & Silver Walima",
+   "family": "Lilac & Silver",
+   "event": "walima",
+   "roles": {
+    "bg": "#E6DDF3",
+    "it": "#33244D",
+    "ef": "#FDFBFF",
+    "cd": "#FFFFFF",
+    "ink": "#2E2145",
+    "ink2": "#7253A3",
+    "acc": "#857D96",
+    "fl": "#C3A0E0",
+    "lf": "#84B29A"
+   },
+   "contrast": {
+    "ink_on_cd": 14.79,
+    "ink2_on_cd": 6.03,
+    "it_on_bg": 10.67,
+    "acc_on_cd": 3.91,
+    "acc_on_bg": 2.98,
+    "fl_on_cd": 2.23,
+    "lf_on_cd": 2.38,
+    "fl_on_bg": 1.7,
+    "lf_on_bg": 1.82,
+    "ef_on_bg": 1.28,
+    "acc_on_ef": 3.8
+   },
+   "notes": "Pale lilac or lavender scene (lavender with silver is a 2026 trend), white card, pewter-lilac silver, lavender fl, mint lf."
+  },
+  {
+   "name": "Coral Brick Baraat",
+   "family": "Peach & Coral",
+   "event": "baraat",
+   "roles": {
+    "bg": "#A8452F",
+    "it": "#FFF1E6",
+    "ef": "#FCE6D8",
+    "cd": "#FFF7F0",
+    "ink": "#3F1A12",
+    "ink2": "#A63A2E",
+    "acc": "#D3A055",
+    "fl": "#F0805F",
+    "lf": "#5FB8A4"
+   },
+   "contrast": {
+    "ink_on_cd": 14.49,
+    "ink2_on_cd": 6.07,
+    "it_on_bg": 5.33,
+    "acc_on_cd": 2.22,
+    "acc_on_bg": 2.51,
+    "fl_on_cd": 2.49,
+    "lf_on_cd": 2.23,
+    "fl_on_bg": 2.24,
+    "lf_on_bg": 2.5,
+    "ef_on_bg": 4.91,
+    "acc_on_ef": 1.95
+   },
+   "notes": "Warm coral-brick scene, peach-cream card, gold, coral fl, mint-teal lf (complementary colours). Suits a summer or daytime Baraat."
+  },
+  {
+   "name": "Peach & Coral Walima",
+   "family": "Peach & Coral",
+   "event": "walima",
+   "roles": {
+    "bg": "#FBCFB8",
+    "it": "#4A2618",
+    "ef": "#FFF9F4",
+    "cd": "#FFFCF9",
+    "ink": "#43231A",
+    "ink2": "#AD4E37",
+    "acc": "#A27639",
+    "fl": "#F2937A",
+    "lf": "#86B8A8"
+   },
+   "contrast": {
+    "ink_on_cd": 13.75,
+    "ink2_on_cd": 5.24,
+    "it_on_bg": 9.31,
+    "acc_on_cd": 3.96,
+    "acc_on_bg": 2.84,
+    "fl_on_cd": 2.23,
+    "lf_on_cd": 2.18,
+    "fl_on_bg": 1.59,
+    "lf_on_bg": 1.56,
+    "ef_on_bg": 1.37,
+    "acc_on_ef": 3.88
+   },
+   "notes": "Peach scene (warmer, richer peach for 2026), white card, antique gold, coral fl, mint lf."
+  },
+  {
+   "name": "Terracotta & Emerald Baraat",
+   "family": "Terracotta & Sand",
+   "event": "baraat",
+   "roles": {
+    "bg": "#45200F",
+    "it": "#F6E6D2",
+    "ef": "#F2E2CC",
+    "cd": "#FCF4E8",
+    "ink": "#3A1C12",
+    "ink2": "#A14A26",
+    "acc": "#C29350",
+    "fl": "#C8603A",
+    "lf": "#2F7A55"
+   },
+   "contrast": {
+    "ink_on_cd": 14.21,
+    "ink2_on_cd": 5.46,
+    "it_on_bg": 11.71,
+    "acc_on_cd": 2.54,
+    "acc_on_bg": 5.17,
+    "fl_on_cd": 3.71,
+    "lf_on_cd": 4.77,
+    "fl_on_bg": 3.54,
+    "lf_on_bg": 2.75,
+    "ef_on_bg": 11.27,
+    "acc_on_ef": 2.18
+   },
+   "notes": "Deep clay scene, sand card, brass lines, rust or terracotta fl with emerald lf (the rust-and-emerald couture pairing). Earthy; suits Mughal brick (tazakari) and boho designs."
+  },
+  {
+   "name": "Soft Terracotta Walima",
+   "family": "Terracotta & Sand",
+   "event": "walima",
+   "roles": {
+    "bg": "#874637",
+    "it": "#FFF3E6",
+    "ef": "#FBEBDD",
+    "cd": "#FFFAF3",
+    "ink": "#3E2418",
+    "ink2": "#9A5130",
+    "acc": "#CFA463",
+    "fl": "#DA8A68",
+    "lf": "#9AA36E"
+   },
+   "contrast": {
+    "ink_on_cd": 13.75,
+    "ink2_on_cd": 5.63,
+    "it_on_bg": 6.49,
+    "acc_on_cd": 2.21,
+    "acc_on_bg": 3.09,
+    "fl_on_cd": 2.59,
+    "lf_on_cd": 2.58,
+    "fl_on_bg": 2.64,
+    "lf_on_bg": 2.65,
+    "ef_on_bg": 6.09,
+    "acc_on_ef": 1.97
+   },
+   "notes": "Soft terracotta scene, cream card, warm gold, light-terracotta fl, olive lf."
+  },
+  {
+   "name": "Mor Peacock Baraat",
+   "family": "Teal Peacock (Mor)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#04404D",
+    "it": "#F2EBD3",
+    "ef": "#F1EBD8",
+    "cd": "#FFFBF1",
+    "ink": "#0A2E31",
+    "ink2": "#0B6A70",
+    "acc": "#D0A44C",
+    "fl": "#B8337A",
+    "lf": "#2E9C6E"
+   },
+   "contrast": {
+    "ink_on_cd": 14.03,
+    "ink2_on_cd": 6.14,
+    "it_on_bg": 9.54,
+    "acc_on_cd": 2.23,
+    "acc_on_bg": 4.93,
+    "fl_on_cd": 5.36,
+    "lf_on_cd": 3.33,
+    "fl_on_bg": 2.05,
+    "lf_on_bg": 3.3,
+    "ef_on_bg": 9.54,
+    "acc_on_ef": 1.94
+   },
+   "notes": "Peacock (mor) teal with gold on ivory. Magenta fl, peacock-green lf. Suits peacock-feather and jaali designs."
+  },
+  {
+   "name": "Soft Teal Walima",
+   "family": "Teal Peacock (Mor)",
+   "event": "walima",
+   "roles": {
+    "bg": "#2F6263",
+    "it": "#F4FBF8",
+    "ef": "#F0F7F4",
+    "cd": "#FCFFFD",
+    "ink": "#113A3D",
+    "ink2": "#23767A",
+    "acc": "#CBA862",
+    "fl": "#E28FB5",
+    "lf": "#6DB89A"
+   },
+   "contrast": {
+    "ink_on_cd": 12.3,
+    "ink2_on_cd": 5.29,
+    "it_on_bg": 6.56,
+    "acc_on_cd": 2.24,
+    "acc_on_bg": 3.06,
+    "fl_on_cd": 2.36,
+    "lf_on_cd": 2.32,
+    "fl_on_bg": 2.9,
+    "lf_on_bg": 2.94,
+    "ef_on_bg": 6.34,
+    "acc_on_ef": 2.07
+   },
+   "notes": "Soft teal scene, white card, gold, pink fl, jade lf."
+  },
+  {
+   "name": "Phool Patti Mustard Baraat",
+   "family": "Truck-Art Vivid (Phool Patti)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#F2B705",
+    "it": "#14205A",
+    "ef": "#FFFBEA",
+    "cd": "#FFFDF3",
+    "ink": "#14205A",
+    "ink2": "#C2122E",
+    "acc": "#8A5E00",
+    "fl": "#E8247A",
+    "lf": "#0E8A3A"
+   },
+   "contrast": {
+    "ink_on_cd": 14.88,
+    "ink2_on_cd": 6.02,
+    "it_on_bg": 8.35,
+    "acc_on_cd": 5.59,
+    "acc_on_bg": 3.14,
+    "fl_on_cd": 4.15,
+    "lf_on_cd": 4.37,
+    "fl_on_bg": 2.33,
+    "lf_on_bg": 2.45,
+    "ef_on_bg": 1.75,
+    "acc_on_ef": 5.5
+   },
+   "notes": "Truck-art phool patti: mustard-yellow scene with navy text, deep-brass lines, hot-pink fl, parrot-green lf, crimson highlights. Bold and fun; suits truck-art borders, chamak-patti sparkles and pop-up name sequences. Light scene, so the intro text is dark."
+  },
+  {
+   "name": "Truck-Art Firozi Walima",
+   "family": "Truck-Art Vivid (Phool Patti)",
+   "event": "walima",
+   "roles": {
+    "bg": "#A9DDEB",
+    "it": "#1A2550",
+    "ef": "#FFFDF2",
+    "cd": "#FFFDF4",
+    "ink": "#17225A",
+    "ink2": "#C2185B",
+    "acc": "#8F6400",
+    "fl": "#F25C9A",
+    "lf": "#2EAD6B"
+   },
+   "contrast": {
+    "ink_on_cd": 14.59,
+    "ink2_on_cd": 5.76,
+    "it_on_bg": 9.99,
+    "acc_on_cd": 5.16,
+    "acc_on_bg": 3.57,
+    "fl_on_cd": 3.04,
+    "lf_on_cd": 2.82,
+    "fl_on_bg": 2.1,
+    "lf_on_bg": 1.95,
+    "ef_on_bg": 1.45,
+    "acc_on_ef": 5.16
+   },
+   "notes": "Truck-art in a softer key: sky-turquoise (firozi) scene, cream card, ochre-brass lines, pink fl, green lf."
+  },
+  {
+   "name": "Mehndi Green & Gainda Baraat",
+   "family": "Marigold & Mehndi (Gainda Haldi)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#36380F",
+    "it": "#FFF1C2",
+    "ef": "#FFF3CF",
+    "cd": "#FFFAE6",
+    "ink": "#262B0C",
+    "ink2": "#B04A00",
+    "acc": "#D4A12A",
+    "fl": "#F28A0C",
+    "lf": "#7DA22A"
+   },
+   "contrast": {
+    "ink_on_cd": 14,
+    "ink2_on_cd": 5.25,
+    "it_on_bg": 10.76,
+    "acc_on_cd": 2.25,
+    "acc_on_bg": 5.16,
+    "fl_on_cd": 2.38,
+    "lf_on_cd": 2.84,
+    "fl_on_bg": 4.87,
+    "lf_on_bg": 4.09,
+    "ef_on_bg": 10.97,
+    "acc_on_ef": 2.12
+   },
+   "notes": "Mehndi-green scene, haldi-cream card, gold, marigold (gainda) fl, mehndi-leaf lf. Uses Mayun and Mehndi colours for a festive daytime Baraat; suits marigold garlands."
+  },
+  {
+   "name": "Haldi Butter-Yellow Walima",
+   "family": "Marigold & Mehndi (Gainda Haldi)",
+   "event": "walima",
+   "roles": {
+    "bg": "#F8E8A2",
+    "it": "#33360F",
+    "ef": "#FFFCEF",
+    "cd": "#FFFEF6",
+    "ink": "#2E300E",
+    "ink2": "#A84B08",
+    "acc": "#9C7826",
+    "fl": "#F59B2E",
+    "lf": "#86A83A"
+   },
+   "contrast": {
+    "ink_on_cd": 13.43,
+    "ink2_on_cd": 5.65,
+    "it_on_bg": 10.18,
+    "acc_on_cd": 4.05,
+    "acc_on_bg": 3.33,
+    "fl_on_cd": 2.16,
+    "lf_on_cd": 2.7,
+    "fl_on_bg": 1.77,
+    "lf_on_bg": 2.22,
+    "ef_on_bg": 1.2,
+    "acc_on_ef": 3.98
+   },
+   "notes": "Haldi butter-yellow scene, cream card, antique gold, marigold fl, leaf-green lf. The scene is very light: the envelope is only 1.2:1 against it, so add a shadow."
+  },
+  {
+   "name": "Mink & Platinum Baraat",
+   "family": "Pearl & Platinum (Cloud Dancer)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#48423E",
+    "it": "#F6F3EE",
+    "ef": "#F4F1EB",
+    "cd": "#FBF9F5",
+    "ink": "#26221F",
+    "ink2": "#5E5650",
+    "acc": "#ABA69E",
+    "fl": "#C99292",
+    "lf": "#94A69C"
+   },
+   "contrast": {
+    "ink_on_cd": 15,
+    "ink2_on_cd": 6.83,
+    "it_on_bg": 8.93,
+    "acc_on_cd": 2.3,
+    "acc_on_bg": 4.09,
+    "fl_on_cd": 2.49,
+    "lf_on_cd": 2.44,
+    "fl_on_bg": 3.77,
+    "lf_on_bg": 3.86,
+    "ef_on_bg": 8.77,
+    "acc_on_ef": 2.15
+   },
+   "notes": "Warm mink-grey scene, pearl card, platinum lines, rose-quartz fl, eucalyptus lf. Minimal and modern, built around Pantone 2026 Cloud Dancer white."
+  },
+  {
+   "name": "Pearl & Platinum Walima",
+   "family": "Pearl & Platinum (Cloud Dancer)",
+   "event": "walima",
+   "roles": {
+    "bg": "#E5E4E8",
+    "it": "#2E2A30",
+    "ef": "#FFFFFF",
+    "cd": "#FFFFFF",
+    "ink": "#2A2629",
+    "ink2": "#6B6366",
+    "acc": "#857F78",
+    "fl": "#D09E92",
+    "lf": "#9DB0A6"
+   },
+   "contrast": {
+    "ink_on_cd": 14.92,
+    "ink2_on_cd": 5.83,
+    "it_on_bg": 11.14,
+    "acc_on_cd": 3.96,
+    "acc_on_bg": 3.13,
+    "fl_on_cd": 2.34,
+    "lf_on_cd": 2.28,
+    "fl_on_bg": 1.85,
+    "lf_on_bg": 1.8,
+    "ef_on_bg": 1.27,
+    "acc_on_ef": 3.96
+   },
+   "notes": "Mother-of-pearl grey scene, white card, warm platinum-taupe lines, pearl-peach fl, eucalyptus lf. Suits pearl strings and minimal line art."
+  },
+  {
+   "name": "Royal Plum Baraat",
+   "family": "Plum & Gold",
+   "event": "baraat",
+   "roles": {
+    "bg": "#4A1A50",
+    "it": "#F8E7F1",
+    "ef": "#F5E6EE",
+    "cd": "#FFF8FB",
+    "ink": "#2E0B2A",
+    "ink2": "#7D2370",
+    "acc": "#CFA24B",
+    "fl": "#C04A9A",
+    "lf": "#8A9A3E"
+   },
+   "contrast": {
+    "ink_on_cd": 16.76,
+    "ink2_on_cd": 8.55,
+    "it_on_bg": 11.38,
+    "acc_on_cd": 2.25,
+    "acc_on_bg": 5.74,
+    "fl_on_cd": 4.28,
+    "lf_on_cd": 2.96,
+    "fl_on_bg": 3.01,
+    "lf_on_bg": 4.36,
+    "ef_on_bg": 11.21,
+    "acc_on_ef": 1.95
+   },
+   "notes": "Royal plum (deep purple trend) with gold, blush-white card, orchid-magenta fl, olive lf."
+  },
+  {
+   "name": "Mauve Plum Walima",
+   "family": "Plum & Gold",
+   "event": "walima",
+   "roles": {
+    "bg": "#744571",
+    "it": "#FFF4F9",
+    "ef": "#FBF0F5",
+    "cd": "#FFFAFC",
+    "ink": "#3D1A37",
+    "ink2": "#8E4A80",
+    "acc": "#CBA55B",
+    "fl": "#E39ACB",
+    "lf": "#A3B07A"
+   },
+   "contrast": {
+    "ink_on_cd": 14.51,
+    "ink2_on_cd": 5.91,
+    "it_on_bg": 6.91,
+    "acc_on_cd": 2.24,
+    "acc_on_bg": 3.2,
+    "fl_on_cd": 2.09,
+    "lf_on_cd": 2.25,
+    "fl_on_bg": 3.44,
+    "lf_on_bg": 3.19,
+    "ef_on_bg": 6.67,
+    "acc_on_ef": 2.08
+   },
+   "notes": "Mauve-plum scene, white card, soft gold, orchid-pink fl, pistachio lf."
+  },
+  {
+   "name": "Jade & Rose Gold Baraat",
+   "family": "Mint & Rose Gold",
+   "event": "baraat",
+   "roles": {
+    "bg": "#2B5953",
+    "it": "#F0FAF5",
+    "ef": "#EEF8F3",
+    "cd": "#F6FCF9",
+    "ink": "#143A33",
+    "ink2": "#2E7564",
+    "acc": "#CC8E7E",
+    "fl": "#E8799A",
+    "lf": "#6FBF9E"
+   },
+   "contrast": {
+    "ink_on_cd": 12.01,
+    "ink2_on_cd": 5.26,
+    "it_on_bg": 7.41,
+    "acc_on_cd": 2.61,
+    "acc_on_bg": 2.91,
+    "fl_on_cd": 2.65,
+    "lf_on_cd": 2.1,
+    "fl_on_bg": 2.87,
+    "lf_on_bg": 3.62,
+    "ef_on_bg": 7.29,
+    "acc_on_ef": 2.5
+   },
+   "notes": "Deep jade scene, mint-white card, rose gold (mint with rose-gold embroidery is a 2026 trend), rose-pink fl, mint lf."
+  },
+  {
+   "name": "Mint & Rose Gold Walima",
+   "family": "Mint & Rose Gold",
+   "event": "walima",
+   "roles": {
+    "bg": "#D3F0E2",
+    "it": "#163D33",
+    "ef": "#FFFFFF",
+    "cd": "#FCFFFD",
+    "ink": "#183F35",
+    "ink2": "#2F7A66",
+    "acc": "#B07664",
+    "fl": "#EA8296",
+    "lf": "#6CC09C"
+   },
+   "contrast": {
+    "ink_on_cd": 11.58,
+    "ink2_on_cd": 5.09,
+    "it_on_bg": 9.91,
+    "acc_on_cd": 3.71,
+    "acc_on_bg": 3.08,
+    "fl_on_cd": 2.57,
+    "lf_on_cd": 2.16,
+    "fl_on_bg": 2.13,
+    "lf_on_bg": 1.79,
+    "ef_on_bg": 1.21,
+    "acc_on_ef": 3.74
+   },
+   "notes": "Mint scene, white card, deep rose gold, rose-pink fl, mint-leaf lf."
+  },
+  {
+   "name": "Deep Mauve Baraat",
+   "family": "Dusty Rose & Antique Gold",
+   "event": "baraat",
+   "roles": {
+    "bg": "#4E2F44",
+    "it": "#F7E9EE",
+    "ef": "#F4E6EA",
+    "cd": "#FCF6F7",
+    "ink": "#3A1F2C",
+    "ink2": "#8E4A64",
+    "acc": "#BE9A5C",
+    "fl": "#C98597",
+    "lf": "#8E9C87"
+   },
+   "contrast": {
+    "ink_on_cd": 13.92,
+    "ink2_on_cd": 5.93,
+    "it_on_bg": 9.84,
+    "acc_on_cd": 2.47,
+    "acc_on_bg": 4.39,
+    "fl_on_cd": 2.7,
+    "lf_on_cd": 2.71,
+    "fl_on_bg": 4.02,
+    "lf_on_bg": 4,
+    "ef_on_bg": 9.57,
+    "acc_on_ef": 2.18
+   },
+   "notes": "Deep mauve scene, dusty-pink card, antique gold (dusty rose with antique-gold jewellery), dusty-rose fl, grey-sage lf."
+  },
+  {
+   "name": "Dusty Rose Walima",
+   "family": "Dusty Rose & Antique Gold",
+   "event": "walima",
+   "roles": {
+    "bg": "#D6C2CB",
+    "it": "#45252F",
+    "ef": "#FFF9FA",
+    "cd": "#FFFBFB",
+    "ink": "#3F222C",
+    "ink2": "#95506A",
+    "acc": "#8C6C3A",
+    "fl": "#C27E92",
+    "lf": "#889A92"
+   },
+   "contrast": {
+    "ink_on_cd": 13.85,
+    "ink2_on_cd": 5.63,
+    "it_on_bg": 7.98,
+    "acc_on_cd": 4.73,
+    "acc_on_bg": 2.88,
+    "fl_on_cd": 3.05,
+    "lf_on_cd": 2.89,
+    "fl_on_bg": 1.86,
+    "lf_on_bg": 1.76,
+    "ef_on_bg": 1.62,
+    "acc_on_ef": 4.67
+   },
+   "notes": "Dusty rose or mauve pastel scene, white card, antique gold, mauve-rose fl, eucalyptus lf."
+  },
+  {
+   "name": "Oxblood Velvet Baraat",
+   "family": "Oxblood Velvet & Bronze",
+   "event": "baraat",
+   "roles": {
+    "bg": "#2A0709",
+    "it": "#F3DFC6",
+    "ef": "#EAD7BE",
+    "cd": "#3A0B10",
+    "ink": "#F6E3C8",
+    "ink2": "#E0B27A",
+    "acc": "#B9824A",
+    "fl": "#D13A45",
+    "lf": "#3F7A55"
+   },
+   "contrast": {
+    "ink_on_cd": 13.55,
+    "ink2_on_cd": 8.76,
+    "it_on_bg": 14.28,
+    "acc_on_cd": 5.14,
+    "acc_on_bg": 5.61,
+    "fl_on_cd": 3.56,
+    "lf_on_cd": 3.34,
+    "fl_on_bg": 3.89,
+    "lf_on_bg": 3.64,
+    "ef_on_bg": 13.21,
+    "acc_on_ef": 2.35
+   },
+   "notes": "Dark-card luxe: oxblood scene AND velvet card (oxblood and burgundy trend), parchment-gold names, bronze lines, velvet-red fl, bottle-green lf. Pairs with red-velvet textures."
+  },
+  {
+   "name": "Mocha Rose & Bronze Walima",
+   "family": "Oxblood Velvet & Bronze",
+   "event": "walima",
+   "roles": {
+    "bg": "#6B4D48",
+    "it": "#FFF4EA",
+    "ef": "#FAEFE6",
+    "cd": "#FFF9F4",
+    "ink": "#3E1518",
+    "ink2": "#8E3A40",
+    "acc": "#C99A64",
+    "fl": "#C9636E",
+    "lf": "#8FA285"
+   },
+   "contrast": {
+    "ink_on_cd": 15.17,
+    "ink2_on_cd": 7.11,
+    "it_on_bg": 6.97,
+    "acc_on_cd": 2.43,
+    "acc_on_bg": 2.98,
+    "fl_on_cd": 3.66,
+    "lf_on_cd": 2.62,
+    "fl_on_bg": 1.98,
+    "lf_on_bg": 2.76,
+    "ef_on_bg": 6.67,
+    "acc_on_ef": 2.24
+   },
+   "notes": "Mocha-rose scene (in the spirit of Mocha Mousse), cream card, champagne bronze, burgundy-rose fl, sage lf."
+  },
+  {
+   "name": "Burnt Kesar Baraat",
+   "family": "Kashmiri Saffron (Zafran)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#8A3A06",
+    "it": "#FFEFD2",
+    "ef": "#FFF1D9",
+    "cd": "#FFF8EC",
+    "ink": "#3D1B05",
+    "ink2": "#B5480A",
+    "acc": "#D4A040",
+    "fl": "#E8780F",
+    "lf": "#72A23E"
+   },
+   "contrast": {
+    "ink_on_cd": 14.65,
+    "ink2_on_cd": 5.11,
+    "it_on_bg": 6.89,
+    "acc_on_cd": 2.23,
+    "acc_on_bg": 3.31,
+    "fl_on_cd": 2.79,
+    "lf_on_cd": 2.86,
+    "fl_on_bg": 2.65,
+    "lf_on_bg": 2.59,
+    "ef_on_bg": 7.01,
+    "acc_on_ef": 2.12
+   },
+   "notes": "Burnt saffron (kesar) scene, saffron-cream card, gold, saffron-orange fl, chinar-green lf. Optional tertiary accent: crocus violet #7B5BB6 for small blossoms."
+  },
+  {
+   "name": "Zafrani Apricot Walima",
+   "family": "Kashmiri Saffron (Zafran)",
+   "event": "walima",
+   "roles": {
+    "bg": "#FACB96",
+    "it": "#4A2508",
+    "ef": "#FFFAF2",
+    "cd": "#FFFCF7",
+    "ink": "#3F2008",
+    "ink2": "#B0480F",
+    "acc": "#9A6E25",
+    "fl": "#EE8A3A",
+    "lf": "#7FA35A"
+   },
+   "contrast": {
+    "ink_on_cd": 14.44,
+    "ink2_on_cd": 5.43,
+    "it_on_bg": 9.01,
+    "acc_on_cd": 4.43,
+    "acc_on_bg": 3.03,
+    "fl_on_cd": 2.46,
+    "lf_on_cd": 2.82,
+    "fl_on_bg": 1.69,
+    "lf_on_bg": 1.93,
+    "ef_on_bg": 1.44,
+    "acc_on_ef": 4.36
+   },
+   "notes": "Zafrani apricot scene, cream card, antique gold, saffron fl, green lf."
+  },
+  {
+   "name": "Badshahi Dusk Baraat",
+   "family": "Lahore Sunset (Badshahi Dusk)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#2B1E52",
+    "it": "#FFE9D6",
+    "ef": "#FCE7D9",
+    "cd": "#FFF6EE",
+    "ink": "#2A1636",
+    "ink2": "#B8402A",
+    "acc": "#D49A45",
+    "fl": "#F2735E",
+    "lf": "#3F7F6A"
+   },
+   "contrast": {
+    "ink_on_cd": 15.53,
+    "ink2_on_cd": 5.17,
+    "it_on_bg": 12.68,
+    "acc_on_cd": 2.31,
+    "acc_on_bg": 6.03,
+    "fl_on_cd": 2.66,
+    "lf_on_cd": 4.41,
+    "fl_on_bg": 5.24,
+    "lf_on_bg": 3.16,
+    "ef_on_bg": 12.46,
+    "acc_on_ef": 2.07
+   },
+   "notes": "Lahore dusk: indigo sky scene, peach card, sunset gold, coral fl, cypress-green lf, vermilion highlights. Suits minaret and skyline silhouettes (Badshahi Mosque), lanterns and kite shapes."
+  },
+  {
+   "name": "Violet Dusk Walima",
+   "family": "Lahore Sunset (Badshahi Dusk)",
+   "event": "walima",
+   "roles": {
+    "bg": "#574474",
+    "it": "#FFEFE4",
+    "ef": "#FCEDE6",
+    "cd": "#FFF8F2",
+    "ink": "#3A1F38",
+    "ink2": "#B8483A",
+    "acc": "#D2A562",
+    "fl": "#EF7F6E",
+    "lf": "#7FB09A"
+   },
+   "contrast": {
+    "ink_on_cd": 13.93,
+    "ink2_on_cd": 4.96,
+    "it_on_bg": 7.53,
+    "acc_on_cd": 2.15,
+    "acc_on_bg": 3.74,
+    "fl_on_cd": 2.52,
+    "lf_on_cd": 2.33,
+    "fl_on_bg": 3.19,
+    "lf_on_bg": 3.45,
+    "ef_on_bg": 7.4,
+    "acc_on_ef": 1.98
+   },
+   "notes": "Violet-dusk scene, peach-cream card, soft gold, coral fl, sea-green lf."
+  },
+  {
+   "name": "Chandni Graphite Baraat",
+   "family": "Moonlit Silver (Chandni)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#141A24",
+    "it": "#EEF1F6",
+    "ef": "#E9EDF3",
+    "cd": "#F4F6F9",
+    "ink": "#141B26",
+    "ink2": "#4A5568",
+    "acc": "#9BA2AC",
+    "fl": "#C9A3B6",
+    "lf": "#7E9A92"
+   },
+   "contrast": {
+    "ink_on_cd": 15.97,
+    "ink2_on_cd": 6.95,
+    "it_on_bg": 15.42,
+    "acc_on_cd": 2.38,
+    "acc_on_bg": 6.78,
+    "fl_on_cd": 2.06,
+    "lf_on_cd": 2.8,
+    "fl_on_bg": 7.81,
+    "lf_on_bg": 5.76,
+    "ef_on_bg": 14.86,
+    "acc_on_ef": 2.19
+   },
+   "notes": "Chandni (moonlight): graphite-night scene, silver-white card, silver lines, moonstone-mauve fl, silver-sage lf. Suits a silver crescent and twinkling stars."
+  },
+  {
+   "name": "Moonlit Slate Walima",
+   "family": "Moonlit Silver (Chandni)",
+   "event": "walima",
+   "roles": {
+    "bg": "#4C5566",
+    "it": "#F5F7FA",
+    "ef": "#F1F3F6",
+    "cd": "#FBFCFD",
+    "ink": "#1E2430",
+    "ink2": "#56627A",
+    "acc": "#A5ACB7",
+    "fl": "#D59FB6",
+    "lf": "#8FAEA4"
+   },
+   "contrast": {
+    "ink_on_cd": 15.14,
+    "ink2_on_cd": 5.97,
+    "it_on_bg": 6.99,
+    "acc_on_cd": 2.23,
+    "acc_on_bg": 3.28,
+    "fl_on_cd": 2.16,
+    "lf_on_cd": 2.33,
+    "fl_on_bg": 3.38,
+    "lf_on_bg": 3.13,
+    "ef_on_bg": 6.75,
+    "acc_on_ef": 2.06
+   },
+   "notes": "Moonlit slate scene, white card, silver, mauve-pink fl, sage lf."
+  },
+  {
+   "name": "Wine & Pearl Baraat",
+   "family": "Wine & Pearl",
+   "event": "baraat",
+   "roles": {
+    "bg": "#3E0726",
+    "it": "#F7EDF0",
+    "ef": "#F5ECEE",
+    "cd": "#FCF8F8",
+    "ink": "#2E0A18",
+    "ink2": "#8A1538",
+    "acc": "#A9A2A7",
+    "fl": "#C2185B",
+    "lf": "#6E8B7B"
+   },
+   "contrast": {
+    "ink_on_cd": 16.99,
+    "ink2_on_cd": 8.87,
+    "it_on_bg": 14.51,
+    "acc_on_cd": 2.37,
+    "acc_on_bg": 6.66,
+    "fl_on_cd": 5.57,
+    "lf_on_cd": 3.53,
+    "fl_on_bg": 2.83,
+    "lf_on_bg": 4.47,
+    "ef_on_bg": 14.34,
+    "acc_on_ef": 2.15
+   },
+   "notes": "Oxidised-wine scene, pearl card, silver-pearl lines (maroon with silver embellishment is a trend), raspberry-wine fl, grey-green lf. Suits pearl strings and drops."
+  },
+  {
+   "name": "Mulberry & Pearl Walima",
+   "family": "Wine & Pearl",
+   "event": "walima",
+   "roles": {
+    "bg": "#6C3852",
+    "it": "#FBF3F6",
+    "ef": "#F8F0F3",
+    "cd": "#FFFBFC",
+    "ink": "#3A1B2B",
+    "ink2": "#8E3E62",
+    "acc": "#B3A9AF",
+    "fl": "#D98BAE",
+    "lf": "#9FB3A7"
+   },
+   "contrast": {
+    "ink_on_cd": 14.91,
+    "ink2_on_cd": 6.78,
+    "it_on_bg": 8.28,
+    "acc_on_cd": 2.22,
+    "acc_on_bg": 3.96,
+    "fl_on_cd": 2.48,
+    "lf_on_cd": 2.16,
+    "fl_on_bg": 3.55,
+    "lf_on_bg": 4.08,
+    "ef_on_bg": 8.06,
+    "acc_on_ef": 2.04
+   },
+   "notes": "Mulberry scene, white card, pearl-silver, orchid-pink fl, sage lf."
+  },
+  {
+   "name": "Lajvard Cobalt Baraat",
+   "family": "Lajvard & Firozi (Wazir Khan Kashi)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#1D3E9A",
+    "it": "#F3F0E6",
+    "ef": "#F1EEE4",
+    "cd": "#FBFCFF",
+    "ink": "#0E1D4A",
+    "ink2": "#1E4BA8",
+    "acc": "#C99A2E",
+    "fl": "#D9442B",
+    "lf": "#1FA3B4"
+   },
+   "contrast": {
+    "ink_on_cd": 15.83,
+    "ink2_on_cd": 7.79,
+    "it_on_bg": 8.34,
+    "acc_on_cd": 2.51,
+    "acc_on_bg": 3.69,
+    "fl_on_cd": 4.25,
+    "lf_on_cd": 2.94,
+    "fl_on_bg": 2.18,
+    "lf_on_bg": 3.15,
+    "ef_on_bg": 8.19,
+    "acc_on_ef": 2.22
+   },
+   "notes": "Wazir Khan Mosque kashi-kari colours: lajvard cobalt scene, white card, Mughal gold, tomato-red fl, firozi (turquoise) lf, as in Multani blue pottery. Suits geometric tiles, star-and-cross patterns and arches."
+  },
+  {
+   "name": "Firozi Cerulean Walima",
+   "family": "Lajvard & Firozi (Wazir Khan Kashi)",
+   "event": "walima",
+   "roles": {
+    "bg": "#2F5F8A",
+    "it": "#F5FAFC",
+    "ef": "#F2F7FA",
+    "cd": "#FDFEFF",
+    "ink": "#14304F",
+    "ink2": "#2E6A9E",
+    "acc": "#CDA95E",
+    "fl": "#E8846E",
+    "lf": "#5CC1C9"
+   },
+   "contrast": {
+    "ink_on_cd": 13.29,
+    "ink2_on_cd": 5.66,
+    "it_on_bg": 6.39,
+    "acc_on_cd": 2.2,
+    "acc_on_bg": 3.02,
+    "fl_on_cd": 2.61,
+    "lf_on_cd": 2.1,
+    "fl_on_bg": 2.55,
+    "lf_on_bg": 3.18,
+    "ef_on_bg": 6.23,
+    "acc_on_ef": 2.06
+   },
+   "notes": "Cerulean scene, white card, soft gold, coral-tomato fl, turquoise lf."
+  },
+  {
+   "name": "Parchin Kari Marble Baraat",
+   "family": "Parchin Kari Marble (Pietra Dura)",
+   "event": "baraat",
+   "roles": {
+    "bg": "#D3CEC6",
+    "it": "#2A1A12",
+    "ef": "#FFFFFF",
+    "cd": "#FFFDF9",
+    "ink": "#1E1A2E",
+    "ink2": "#A3311C",
+    "acc": "#8E6B25",
+    "fl": "#B23A1E",
+    "lf": "#1E7B4F"
+   },
+   "contrast": {
+    "ink_on_cd": 16.64,
+    "ink2_on_cd": 6.86,
+    "it_on_bg": 10.69,
+    "acc_on_cd": 4.83,
+    "acc_on_bg": 3.13,
+    "fl_on_cd": 5.88,
+    "lf_on_cd": 5.17,
+    "fl_on_bg": 3.81,
+    "lf_on_bg": 3.35,
+    "ef_on_bg": 1.57,
+    "acc_on_ef": 4.91
+   },
+   "notes": "Pietra dura (parchin kari) on grey Makrana-style marble: light scene with dark text, white-marble card, antique gold, carnelian fl, malachite lf, lapis-navy ink. The only light-scene Baraat besides truck-art; suits daytime or minimal designs and marble textures."
+  },
+  {
+   "name": "White Marble Walima",
+   "family": "Parchin Kari Marble (Pietra Dura)",
+   "event": "walima",
+   "roles": {
+    "bg": "#F5F0E6",
+    "it": "#2C2622",
+    "ef": "#FFFFFF",
+    "cd": "#FFFFFF",
+    "ink": "#2B2530",
+    "ink2": "#9A4A52",
+    "acc": "#8F7334",
+    "fl": "#D98C9A",
+    "lf": "#5FA38A"
+   },
+   "contrast": {
+    "ink_on_cd": 14.89,
+    "ink2_on_cd": 6.04,
+    "it_on_bg": 13.14,
+    "acc_on_cd": 4.5,
+    "acc_on_bg": 3.96,
+    "fl_on_cd": 2.57,
+    "lf_on_cd": 2.96,
+    "fl_on_bg": 2.26,
+    "lf_on_bg": 2.61,
+    "ef_on_bg": 1.14,
+    "acc_on_ef": 4.5
+   },
+   "notes": "White-marble scene (close to Cloud Dancer), white card, antique gold, rose-quartz fl, jade lf. The lightest palette: the envelope is only 1.14:1 against the scene, so add soft shadows."
+  }
+ ],
+ "research_notes": [
+  "Trend research (WebSearch, Oct 2026). Retailer pages returned 429/403 to WebFetch, so these findings come from search-result summaries. Baraat 2026: red is still the staple but deeper: antique crimson, deep burgundy, oxidised wine, maroon, rust-red. Emerald, plum and rust-orange are rising. HSY 'Heirloom' uses velvety maroon with heavy zardozi; Aisha Imran shows traditional maroon; Sania Maskatiya, Ali Xeeshan and Faiza Saqlain show blue; Mohsin Naveed Ranjha pairs rust with emerald. Sources: https://www.sairashakira.com/blogs/news/barat-dress-ideas-for-brides-in-2026-colours-styles-trends ; https://www.brandsynario.com/lifestyle/fashion/this-season-bridal-couture-is-ditching-pastels-for-rich-colours-and-drama/",
+  "Walima: pastel gowns with delicate embellishment (powder blue, soft lavender, dusty pink, champagne beige) and shimmering silver with pearl accents; lighter and more modern after the heavy Baraat (https://theworldofhsy.com/blogs/hsy-gazette/top-walima-dress-ideas-for-pakistani-brides-in-2025). 2026 South-Asian guides add lavender with silver sequins, mint with rose-gold embroidery, powder blue with pearls, a warmer and richer peach, dusty rose with antique gold, and lilac for daytime events (https://www.azafashions.com/blog/fresh-bridal-lehenga-colours-trending-2026/).",
+  "Nikah: ivory or off-white, light gold, champagne and blush, with gold or silver work. Mehndi/Mayun: turmeric yellow, mehndi green, marigold orange, pink with orange. Bridal Couture Week also showed classic blue and timeless red. Invitation norms: deep red, gold and emerald with Mughal motifs; modern cards use pastels and bilingual Urdu/English layouts. Pantone 2026 Colour of the Year is Cloud Dancer (PANTONE 11-4201, a white; Dezeen), used in the Pearl & Platinum and White Marble palettes.",
+  "Pakistani craft colour sources: Wazir Khan Mosque kashi-kari (lajvard cobalt, firozi, white, green, orange, yellow, purple) plus deep-red tazakari brick (https://en.wikipedia.org/wiki/Wazir_Khan_Mosque , cyark.org); Multani blue pottery (cobalt, turquoise and white, sometimes tomato red); truck-art phool patti (crimson, mustard, peacock teal, fluorescents); Mughal miniature pigments (lapis, malachite, vermilion/cinnabar, burnished gold leaf); Sindhi ajrak (indigo, madder red, black, white; folded into the Lajvard and Oxblood families). No Hindu-specific symbolism is used.",
+  "Method: WCAG 2.x relative luminance (sRGB linearised; weights 0.2126/0.7152/0.0722), contrast (L1+0.05)/(L2+0.05). All values were re-checked with the WCAG 2.0 0.03928 threshold variant. All 52 pass with margin. Minimums: ink_on_cd 11.58, ink2_on_cd 4.96, it_on_bg 5.33, acc_on_cd 2.15, acc_on_bg 2.51. Soft targets also met: acc_on_bg >= 2.5, because the existing .pl .ib and .mintro .ib render the big event word in acc on bg; fl_on_cd >= 2.06; lf_on_cd >= 2.09; fl and lf >= 1.54 on bg; acc_on_ef (seal disc on envelope) >= 1.93. Each contrast object has extra keys: fl_on_cd, lf_on_cd, fl_on_bg, lf_on_bg, ef_on_bg, acc_on_ef.",
+  "Distinctness: CIEDE2000 between same-event scene bgs. Baraat minimum dE00 is 8.1 (Black & Gold vs Chandni Graphite, which differ hugely by card); Walima minimum is 7.4 (Pearl vs White Marble). Every Walima bg is lighter than its Baraat bg: L* rises by 7 to 68 and chroma is lower or equal for the pastels.",
+  "INTEGRATION BUG 1: the existing stage rule .st{--fl:color-mix(in srgb,var(--ef) 95%,#000)} (line ~2625) is the envelope FLAP shade used in @keyframes flapK (line ~2721). colors() sets every palette key inline on #st as --key, so adding the new role 'fl' will override it and turn the envelope flap into the floral colour. Rename the internal var (for example to --efl) in both places before adding fl.",
+  "INTEGRATION BUG 2: colors() runs g('c_'+k).value=c[k] for every key (line ~2919). Palettes with fl/lf throw a TypeError unless inputs c_fl and c_lf are added (or the lookup is null-guarded). The bReset and sPal handlers copy PAL entries too, so the old PAL entries also need fl/lf (see the extension note below). Also, .lf is already a CSS class (the left door leaf), so do not reuse .lf as a leaf class name.",
+  "Seal text: .eseal draws cd on acc, which is only 2.15-3:1 on light cards. Pick whichever of ink or cd contrasts more with acc (computed at apply time): the minimum across all 52 becomes 3.71. The door seal (.sl, bg text on acc) equals acc_on_bg (>= 2.51).",
+  "Light-scene palettes (dark it text, darker antique metal): Pista, Candy Pink, Blush, Ivory, Powder Blue, Lilac, Peach, Butter Yellow, Pearl, Mint, Dusty Rose, Apricot, Truck Firozi and White Marble Walima, plus Phool Patti Mustard and Parchin Kari Baraat. The envelope paper is only 1.14-1.75:1 against these bgs, so add a soft shadow to the envelope and doors (for example filter:drop-shadow(0 1cqw 3cqw rgba(0,0,0,.15))).",
+  "Dark-card luxe palettes: Chand Raat Navy & Gold, Black & Gold Luxe and Oxblood Velvet (all Baraat). ink is light, ink2 is gold, and the card is about 1.1:1 against the bg. That is fine because .card is full-bleed. fl petals and lf leaves still show at >= 2.85 on these cards.",
+  "fl/lf extension for the existing PAL entries, so the original 3 samples keep their look (each >= 2.0:1 on its own cd and bg): espresso fl #B95C5C lf #5E7F5A; taupe fl #D08A8A lf #8A9A6E; midnight fl #B5485A lf #5E7F5A; mocha fl #D08A8A lf #8A9A6E; ivory fl #A84A55 lf #5E7F5A.",
+  "Changes to the brief's example family list: Forest & Brass was folded into Emerald Mughal (dE too close); Coral Garden went into Peach & Coral; Burgundy Velvet became Oxblood Velvet & Bronze (dark card). Added Lajvard & Firozi (Wazir Khan kashi / Multani blue pottery) and Parchin Kari Marble (pietra dura), and gave Truck-Art a mustard scene so it stands apart from the reds.",
+  "Pairing hints (family -> design idea): Chand Raat / Moonlit Silver -> celestial crescent and stars, fanoos lanterns; Emerald Mughal / Lajvard -> jharokha, jaali, kashi geometric tiles, palace doors; Shahi Maroon / Oxblood / Wine -> rose curtain (phoolon ki chadar), sehra, envelope, velvet textures; Teal Peacock -> mor feathers; Truck-Art -> phool-patti borders and bold pop-up names; Marigold -> genda garlands; Lahore Sunset -> Badshahi minaret silhouette, kites; Parchin Kari / Pearl -> marble textures, minimal line art; Black & Gold -> golden medallion, Islamic star geometry. In couple pop-ups, fl fits the bride's lehenga, ef with acc trims the groom's sherwani, and acc the turban or sehra. Keep skin tones fixed, not palette-driven.",
+  "Files: palette data at C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\palette_agent\\pal_data.py ; checker at C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\palette_agent\\check.py ; final JSON at C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\palette_agent\\palettes_final.json ; paste-ready JS object SAMPLE_PAL (keys like 'shahi-maroon-baraat') at C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\palette_agent\\sample_palettes.js ; visual QA sheets (scene + card mock per palette) at C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\palette_agent\\shots\\sheet_00.png to sheet_06.png"
+ ]
+}

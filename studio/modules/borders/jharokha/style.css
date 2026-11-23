@@ -1,0 +1,39 @@
+/* Jharokha arch - cusped Mughal arch on slender pillars, jaali spandrels, chhajja eave and a chhatri finial.
+   One SVG, viewBox 360x640 = the 9:16 card. Lines: --acc. Fills: soft --acc tints on --cd. */
+.bdx-jharokha .jhk{position:absolute;inset:0;width:100%;height:100%;color:var(--acc)}
+.bdx-jharokha .jhk-d{fill:none;stroke:currentColor;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.bdx-jharokha .jhk-m{stroke-width:2}
+.bdx-jharokha .jhk-s{stroke-width:.9}
+.bdx-jharokha .jhk-se{stroke-width:1.3}
+.bdx-jharokha .jhk-sf{stroke-width:.55;opacity:.8}
+.bdx-jharokha .jhk-tint{fill:color-mix(in srgb,var(--acc) 18%,var(--cd))}
+.bdx-jharokha .jhk-band{fill:color-mix(in srgb,var(--acc) 26%,var(--cd))}
+.bdx-jharokha .jhk-jl{opacity:.72}
+.bdx-jharokha .jhk-cap path,.bdx-jharokha .jhk-gul path,.bdx-jharokha .jhk-cf{fill:color-mix(in srgb,var(--acc) 28%,var(--cd));stroke:currentColor;stroke-width:.9;stroke-linejoin:round}
+.bdx-jharokha .jhk-cap .jhk-det{fill:none;stroke-width:.6}
+.bdx-jharokha .jhk-cd{fill:color-mix(in srgb,var(--acc) 36%,var(--cd));stroke:currentColor;stroke-width:1.2;stroke-linejoin:round}
+.bdx-jharokha .jhk-op{fill:none;stroke:currentColor;stroke-width:.65}
+.bdx-jharokha .jhk-dot{fill:currentColor}
+.bdx-jharokha .jhk-dot,.bdx-jharokha .jhk-gul,.bdx-jharokha .jhk-ch,.bdx-jharokha .jhk-fin{transform-box:fill-box;transform-origin:50% 100%}
+.bdx-jharokha .jhk-dot{transform-origin:center}
+.bdx-jharokha .jhk-sht{transform-box:fill-box;transform-origin:50% 100%}
+.bd-jharokha .in{top:18%;bottom:9%}
+/* ---- animation, relative to --t0 (card fully revealed): pillars rise, the arch springs, the chhatri crowns it ---- */
+.play .bdx-jharokha .jhk-shafts .jhk-d{animation:jharokha-draw .9s cubic-bezier(.45,0,.25,1) calc(var(--t0) - .3s) both}
+.play .bdx-jharokha .jhk-sht{animation:jharokha-grow .9s cubic-bezier(.45,0,.25,1) calc(var(--t0) - .3s) both}
+.play .bdx-jharokha .jhk-cap{animation:jharokha-fade .7s ease-out calc(var(--t0) + .3s) both}
+.play .bdx-jharokha .jhk-par .jhk-d{animation:jharokha-draw .9s cubic-bezier(.45,0,.25,1) calc(var(--t0) + .1s) both}
+.play .bdx-jharokha .jhk-arch .jhk-m{animation:jharokha-draw 1.3s cubic-bezier(.45,0,.25,1) calc(var(--t0) + .35s) both}
+.play .bdx-jharokha .jhk-arch .jhk-s{animation:jharokha-draw 1.3s cubic-bezier(.45,0,.25,1) calc(var(--t0) + .5s) both}
+.play .bdx-jharokha .jhk-alf .jhk-d{animation:jharokha-draw 1.1s cubic-bezier(.45,0,.25,1) calc(var(--t0) + .5s) both}
+.play .bdx-jharokha .jhk-eav .jhk-d{animation:jharokha-draw .8s cubic-bezier(.45,0,.25,1) calc(var(--t0) + .95s) both}
+.play .bdx-jharokha .jhk-fills{animation:jharokha-fade 1.1s ease-out calc(var(--t0) + 1s) both}
+.play .bdx-jharokha .jhk-dot{animation:jharokha-pop .45s cubic-bezier(.2,.8,.2,1.3) calc(var(--t0) + .7s + var(--k) * .12s) both}
+.play .bdx-jharokha .jhk-gul{animation:jharokha-pop .6s cubic-bezier(.2,.8,.2,1.3) calc(var(--t0) + 1.35s) both}
+.play .bdx-jharokha .jhk-ch{animation:jharokha-rise .9s cubic-bezier(.2,.8,.2,1) calc(var(--t0) + 1.45s) both}
+.play .bdx-jharokha .jhk-fin{animation:jharokha-pop .55s cubic-bezier(.2,.8,.2,1.3) calc(var(--t0) + 2.05s) both}
+@keyframes jharokha-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes jharokha-fade{0%{opacity:0}100%{opacity:1}}
+@keyframes jharokha-grow{0%{transform:scaleY(0)}100%{transform:none}}
+@keyframes jharokha-pop{0%{opacity:0;transform:scale(0)}60%{opacity:1;transform:scale(1.2)}100%{opacity:1;transform:scale(1)}}
+@keyframes jharokha-rise{0%{opacity:0;transform:translateY(10px) scale(.55)}60%{opacity:1;transform:translateY(-1px) scale(1.05)}100%{opacity:1;transform:none}}

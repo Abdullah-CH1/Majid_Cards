@@ -1,0 +1,50 @@
+.ix-jharokha-window .jw-bg{position:absolute;inset:0;z-index:3;opacity:0;background:radial-gradient(70% 45% at 50% 40%,color-mix(in srgb,var(--bg) 82%,var(--acc)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 70%,#000) 100%)}
+.ix-jharokha-window .jw-cam{position:absolute;inset:0;z-index:5;opacity:0;transform-origin:50cqw 72cqw}
+.ix-jharokha-window .jw-glow{position:absolute;left:28cqw;top:48cqw;width:44cqw;height:44cqw;border-radius:50% 50% 8% 8%;background:radial-gradient(circle at 50% 55%,color-mix(in srgb,var(--acc) 40%,#fff) 0%,color-mix(in srgb,var(--acc) 85%,#ffb45a) 40%,color-mix(in srgb,var(--acc) 60%,var(--bg)) 100%)}
+.ix-jharokha-window .jw-win{position:absolute;left:10cqw;top:12cqw;width:80cqw;filter:drop-shadow(0 2cqw 4cqw rgba(0,0,0,.45))}
+.ix-jharokha-window .jw-sh{position:absolute;top:51.2cqw;width:17.6cqw;height:40.8cqw;overflow:visible;--jaali:color-mix(in srgb,var(--acc) 70%,#fff)}
+.ix-jharokha-window .jw-l{left:32.4cqw;transform-origin:0 50%}
+.ix-jharokha-window .jw-r{left:50cqw;transform-origin:100% 50%}
+.ix-jharokha-window .jw-pf{fill:color-mix(in srgb,color-mix(in srgb,var(--acc) 40%,var(--bg)) 80%,transparent)}
+.ix-jharokha-window .jw-fr{fill:none;stroke:var(--acc);stroke-width:.7}
+.ix-jharokha-window .jw-plq{position:absolute;left:12cqw;right:12cqw;top:118cqw;height:50cqw;transform-origin:50% 0}
+.ix-jharokha-window .jw-cd{position:absolute;top:0;width:1px;height:12cqw;background:var(--acc)}
+.ix-jharokha-window .c1{left:22%}.ix-jharokha-window .c2{right:22%}
+.ix-jharokha-window .jw-pb{position:absolute;left:0;right:0;top:12cqw;padding:5cqw 4cqw 5.5cqw;text-align:center;border-radius:2cqw;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 75%,#fff) 0%,var(--acc) 45%,color-mix(in srgb,var(--acc) 70%,#000) 100%);
+  box-shadow:0 2cqw 5cqw rgba(0,0,0,.45),inset 0 0 0 .8cqw color-mix(in srgb,var(--acc) 60%,#000),inset 0 0 0 1.2cqw color-mix(in srgb,var(--acc) 50%,#fff);
+  color:color-mix(in srgb,var(--acc) 15%,#000)}
+.ix-jharokha-window .jw-pb .ia{font-family:var(--ft);font-size:4.2cqw;font-weight:600;letter-spacing:.04em}
+.ix-jharokha-window .jw-pb .ib{font-family:var(--fs);font-size:13cqw;line-height:1.15;margin:1cqw 0}
+.ix-jharokha-window .jw-pb .ic{font-family:var(--ft);font-size:4.4cqw;font-style:italic}
+.ix-jharokha-window .jw-pb>div{opacity:0}
+.ix-jharokha-window .jw-burst{position:absolute;left:50cqw;top:72cqw;width:30cqw;height:30cqw;margin:-15cqw 0 0 -15cqw;border-radius:50%;z-index:7;opacity:0;pointer-events:none;
+  background:radial-gradient(circle,#fff 0%,color-mix(in srgb,var(--acc) 60%,#fff) 30%,color-mix(in srgb,var(--acc) 40%,transparent) 60%,transparent 72%)}
+.ix-jharokha-window .jw-pet{position:absolute;left:50cqw;top:72cqw;z-index:7;pointer-events:none}
+.ix-jharokha-window .jw-pet i{position:absolute;width:3.4cqw;height:2.2cqw;margin:-1.1cqw 0 0 -1.7cqw;border-radius:80% 0 80% 0;opacity:0;background:linear-gradient(135deg,color-mix(in srgb,var(--bl) 70%,#fff),var(--bl))}
+.ix-jharokha-window .jw-pet i:nth-child(3n){background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 60%,#fff),var(--acc));width:2.6cqw}
+
+.play.s-jharokha-window .jw-bg{animation:jharokha-window-on 1s ease-out var(--o) both,jharokha-window-off .8s ease-in calc(var(--o) + 4.4s) forwards}
+.play.s-jharokha-window .jw-cam{animation:jharokha-window-on 1s ease-out calc(var(--o) + .15s) both,jharokha-window-push 1.7s cubic-bezier(.55,0,.6,1) calc(var(--o) + 3.5s) forwards}
+.play.s-jharokha-window .jw-glow{animation:jharokha-window-pulse 1.4s ease-in-out calc(var(--o) + .4s) 2 alternate both}
+.play.s-jharokha-window .jw-plq{animation:jharokha-window-swing 2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .6s) both,jharokha-window-plqoff .6s ease-in calc(var(--o) + 3.2s) forwards}
+.play.s-jharokha-window .jw-pb>div{animation:up .9s ease-out calc(var(--o) + var(--d)) both}
+.play.s-jharokha-window .jw-pb .ia{--d:1.3s}.play.s-jharokha-window .jw-pb .ib{--d:1.7s}.play.s-jharokha-window .jw-pb .ic{--d:2.1s}
+.play.s-jharokha-window .jw-l{animation:jharokha-window-openl 1.3s cubic-bezier(.5,0,.2,1) calc(var(--o) + 3s) both}
+.play.s-jharokha-window .jw-r{animation:jharokha-window-openr 1.3s cubic-bezier(.5,0,.2,1) calc(var(--o) + 3s) both}
+.play.s-jharokha-window .jw-burst{animation:jharokha-window-burst 1.9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 3.2s) both}
+.play.s-jharokha-window .jw-pet i{animation:jharokha-window-petal 2.2s cubic-bezier(.15,.7,.3,1) calc(var(--o) + 3.3s) both}
+.play.s-jharokha-window .jw-pet i:nth-child(even){animation-delay:calc(var(--o) + 3.45s)}
+.play.s-jharokha-window .card{animation:jharokha-window-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 4.1s) both}
+
+@keyframes jharokha-window-on{0%{opacity:0}100%{opacity:1}}
+@keyframes jharokha-window-off{0%{opacity:1}100%{opacity:0}}
+@keyframes jharokha-window-pulse{0%{opacity:.75}100%{opacity:1}}
+@keyframes jharokha-window-swing{0%{opacity:0;transform:translateY(-8cqw) rotate(-6deg)}35%{opacity:1;transform:rotate(4deg)}60%{transform:rotate(-2deg)}80%{transform:rotate(1deg)}100%{opacity:1;transform:none}}
+@keyframes jharokha-window-plqoff{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6cqw)}}
+@keyframes jharokha-window-openl{0%{transform:perspective(60cqw) rotateY(0)}100%{transform:perspective(60cqw) rotateY(-105deg)}}
+@keyframes jharokha-window-openr{0%{transform:perspective(60cqw) rotateY(0)}100%{transform:perspective(60cqw) rotateY(105deg)}}
+@keyframes jharokha-window-push{0%{opacity:1;transform:none}70%{opacity:1}100%{opacity:0;transform:scale(4.2)}}
+@keyframes jharokha-window-burst{0%{opacity:0;transform:scale(.3)}30%{opacity:1}100%{opacity:0;transform:scale(6)}}
+@keyframes jharokha-window-petal{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.4)}12%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1.1)}}
+@keyframes jharokha-window-card{0%{opacity:0;transform:scale(.82)}100%{opacity:1;transform:none}}

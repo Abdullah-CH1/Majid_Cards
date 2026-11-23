@@ -1,0 +1,30 @@
+{
+  "names": [
+    {"name": "Great Vibes", "css": "'Great Vibes'", "g": "Great+Vibes"},
+    {"name": "Parisienne", "css": "'Parisienne'", "g": "Parisienne"},
+    {"name": "Alex Brush", "css": "'Alex Brush'", "g": "Alex+Brush"},
+    {"name": "Pinyon Script", "css": "'Pinyon Script'", "g": "Pinyon+Script"},
+    {"name": "Allura", "css": "'Allura'", "g": "Allura"},
+    {"name": "Italianno", "css": "'Italianno'", "g": "Italianno"},
+    {"name": "Petit Formal Script", "css": "'Petit Formal Script'", "g": "Petit+Formal+Script"},
+    {"name": "Imperial Script", "css": "'Imperial Script'", "g": "Imperial+Script"},
+    {"name": "MonteCarlo", "css": "'MonteCarlo'", "g": "MonteCarlo"},
+    {"name": "Beau Rivage", "css": "'Beau Rivage'", "g": "Beau+Rivage"},
+    {"name": "Vujahday Script", "css": "'Vujahday Script'", "g": "Vujahday+Script"},
+    {"name": "Style Script", "css": "'Style Script'", "g": "Style+Script"},
+    {"name": "Sacramento", "css": "'Sacramento'", "g": "Sacramento"}
+  ],
+  "text": [
+    {"name": "Cormorant", "css": "'Cormorant Garamond'", "g": "Cormorant+Garamond:ital,wght@0,400;0,500;1,500"},
+    {"name": "Playfair", "css": "'Playfair Display'", "g": "Playfair+Display:ital,wght@0,400;0,500;1,500"},
+    {"name": "EB Garamond", "css": "'EB Garamond'", "g": "EB+Garamond:ital,wght@0,400;0,500;1,500"},
+    {"name": "Lora", "css": "'Lora'", "g": "Lora:ital,wght@0,400;0,500;1,500"},
+    {"name": "Cinzel", "css": "'Cinzel'", "g": "Cinzel:wght@400;500"},
+    {"name": "Marcellus", "css": "'Marcellus'", "g": "Marcellus"},
+    {"name": "Bodoni Moda", "css": "'Bodoni Moda'", "g": "Bodoni+Moda:ital,wght@0,400;0,500;1,500"},
+    {"name": "Gilda Display", "css": "'Gilda Display'", "g": "Gilda+Display"},
+    {"name": "Josefin Sans", "css": "'Josefin Sans'", "g": "Josefin+Sans:ital,wght@0,400;0,500;1,400"},
+    {"name": "Tenor Sans", "css": "'Tenor Sans'", "g": "Tenor+Sans"}
+  ],
+  "extra": ["Amiri"]
+}

@@ -1,0 +1,51 @@
+.ix-departure-board{--db-brd:color-mix(in srgb,var(--bg) 90%,var(--it));--db-tile:color-mix(in srgb,var(--bg) 74%,var(--it));--db-th:6.6cqw;font-family:var(--ft),Georgia,serif}
+.ix-departure-board .db-bg{position:absolute;inset:0;z-index:7;opacity:0;background:radial-gradient(120% 70% at 50% 35%,color-mix(in srgb,var(--bg) 94%,var(--acc)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 88%,#000) 100%)}
+.ix-departure-board .db-board{position:absolute;left:6cqw;right:6cqw;top:18cqw;z-index:7;opacity:0;background:var(--db-brd);border-radius:1.6cqw;padding:3cqw 2.9cqw 3.4cqw;box-shadow:0 2.4cqw 6cqw rgb(0 0 0 / .22),inset 0 0 0 1px color-mix(in srgb,var(--acc) 40%,transparent)}
+.ix-departure-board .db-board::after{content:"";position:absolute;inset:1.1cqw;border:1px solid color-mix(in srgb,var(--acc) 22%,transparent);border-radius:1cqw;pointer-events:none}
+.ix-departure-board .db-head{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:2.4cqw;padding:0 .4cqw 2.6cqw;margin-bottom:1.4cqw;border-bottom:1px solid color-mix(in srgb,var(--acc) 45%,transparent)}
+.ix-departure-board .db-plane{grid-row:span 2;width:7cqw;height:7cqw;fill:var(--acc);transform:rotate(45deg)}
+.ix-departure-board .db-ttl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:5.6cqw;letter-spacing:.32em;text-transform:uppercase;color:var(--it);line-height:1.1}
+.ix-departure-board .db-sub{font-size:3.3cqw;font-style:italic;letter-spacing:.04em;color:color-mix(in srgb,var(--it) 70%,transparent);margin-top:.5cqw}
+.ix-departure-board .db-row{display:flex;gap:2.4cqw;margin-top:1cqw}
+.ix-departure-board .db-seg{width:calc(var(--w) * 5.4cqw + (var(--w) - 1) * .5cqw)}
+.ix-departure-board .db-lb{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:2.6cqw;letter-spacing:.28em;text-transform:uppercase;color:var(--acc);line-height:3.6cqw;margin-top:1.4cqw}
+.ix-departure-board .db-lb:empty{display:none}
+.ix-departure-board .db-tl{display:flex;gap:.5cqw}
+.ix-departure-board .db-t{position:relative;flex:0 0 5.4cqw;height:var(--db-th);overflow:hidden;border-radius:.6cqw;background:linear-gradient(180deg,color-mix(in srgb,var(--db-tile) 92%,#fff) 0%,var(--db-tile) 49.6%,color-mix(in srgb,var(--db-tile) 80%,#000) 49.6%,color-mix(in srgb,var(--db-tile) 80%,#000) 50.4%,var(--db-tile) 50.4%,color-mix(in srgb,var(--db-tile) 94%,#000) 100%);box-shadow:inset 0 0 0 1px rgb(0 0 0 / .08);perspective:20cqw;font-style:normal}
+.ix-departure-board .db-t b{display:flex;flex-direction:column;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:4.6cqw;color:var(--it)}
+.ix-departure-board .db-t span{display:block;flex:0 0 var(--db-th);height:var(--db-th);line-height:var(--db-th);text-align:center}
+.ix-departure-board .db-st .db-f{color:var(--acc);font-weight:600}
+.ix-departure-board .db-a::after{content:"";position:absolute;left:0;right:0;top:0;height:50%;background:color-mix(in srgb,var(--db-tile) 86%,#000);transform-origin:50% 100%;opacity:0}
+
+.ix-departure-board .db-pass{position:absolute;left:9cqw;right:9cqw;top:115cqw;z-index:7;opacity:0;display:flex;background:var(--ef);color:var(--ink);border-radius:2cqw;box-shadow:0 2.6cqw 6cqw rgb(0 0 0 / .28),inset 0 0 0 1px color-mix(in srgb,var(--acc) 55%,transparent)}
+.ix-departure-board .db-pm{flex:1;padding:4cqw 3.6cqw 3.6cqw 4.6cqw;min-width:0}
+.ix-departure-board .db-pl,.ix-departure-board .db-pf b,.ix-departure-board .db-pv b,.ix-departure-board .db-ps b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:2.4cqw;letter-spacing:.3em;text-transform:uppercase;color:var(--acc)}
+.ix-departure-board .db-pn{font-family:var(--fs),Georgia,serif;font-size:8.6cqw;line-height:1.25;color:var(--ink);margin-top:1.6cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ix-departure-board .db-pn i{font-style:normal;color:var(--acc);font-size:.8em}
+.ix-departure-board .db-pe{font-size:4cqw;letter-spacing:.34em;text-transform:uppercase;color:var(--ink2);margin:.6cqw 0 2.6cqw}
+.ix-departure-board .db-pf{display:flex;gap:5cqw;padding-top:2.4cqw;border-top:1px dashed color-mix(in srgb,var(--acc) 55%,transparent)}
+.ix-departure-board .db-pf span,.ix-departure-board .db-pv span{display:block;font-size:3.5cqw;margin-top:.7cqw;color:var(--ink)}
+.ix-departure-board .db-pv{margin-top:2cqw}
+.ix-departure-board .db-pv span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ix-departure-board .db-ps{position:relative;flex:0 0 19cqw;padding:4cqw 2.6cqw 3.6cqw 3.4cqw;border-left:1px dashed color-mix(in srgb,var(--acc) 60%,transparent)}
+.ix-departure-board .db-ps::before,.ix-departure-board .db-ps::after{content:"";position:absolute;left:-2cqw;width:4cqw;height:4cqw;border-radius:50%;background:var(--bg)}
+.ix-departure-board .db-ps::before{top:-2cqw}.ix-departure-board .db-ps::after{bottom:-2cqw}
+.ix-departure-board .db-ps span{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:4.6cqw;font-weight:500;color:var(--ink);margin:.6cqw 0 2.4cqw}
+.ix-departure-board .db-bar{display:block;height:9cqw;margin-top:1cqw;font-style:normal;background:repeating-linear-gradient(90deg,var(--ink) 0 .35cqw,transparent .35cqw .8cqw,var(--ink) .8cqw 1.5cqw,transparent 1.5cqw 1.9cqw,var(--ink) 1.9cqw 2.15cqw,transparent 2.15cqw 2.9cqw);opacity:.75}
+
+.play.s-departure-board .db-bg{animation:departure-board-bg 9s linear var(--o) both}
+.play.s-departure-board .db-board{animation:departure-board-in 1s cubic-bezier(.2,.8,.2,1) var(--o) both,departure-board-out 1s ease-in calc(var(--o) + 7.6s) forwards}
+.play.s-departure-board .db-a b{animation:departure-board-flip calc(var(--n) * .085s) steps(var(--n),end) calc(var(--o) + var(--d)) both}
+.play.s-departure-board .db-a::after{animation:departure-board-flap .085s ease-in calc(var(--o) + var(--d)) var(--n)}
+.play.s-departure-board .db-st .db-tl{animation:departure-board-blink .5s steps(1,end) calc(var(--o) + 4.9s) 6 alternate both}
+.play.s-departure-board .db-pass{animation:departure-board-pass 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 5.1s) both,departure-board-out 1s ease-in calc(var(--o) + 7.8s) forwards}
+.play.s-departure-board .card{animation:departure-board-card 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 7.7s) both}
+
+@keyframes departure-board-bg{0%,86%{opacity:1}100%{opacity:0}}
+@keyframes departure-board-in{0%{opacity:.75;transform:translateY(2cqw) scale(.985)}100%{opacity:1;transform:none}}
+@keyframes departure-board-out{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-4cqw) scale(.98)}}
+@keyframes departure-board-flip{0%{transform:translateY(0)}100%{transform:translateY(calc(var(--n) * -1 * var(--db-th)))}}
+@keyframes departure-board-flap{0%{opacity:.9;transform:rotateX(0)}100%{opacity:.15;transform:rotateX(-90deg)}}
+@keyframes departure-board-blink{0%{opacity:1}100%{opacity:.25}}
+@keyframes departure-board-pass{0%{opacity:0;transform:translateY(-14cqw) scale(.96);clip-path:inset(0 0 100% 0)}100%{opacity:1;transform:none;clip-path:inset(0 0 0 0)}}
+@keyframes departure-board-card{0%{opacity:0;transform:scale(.97)}100%{opacity:1;transform:none}}

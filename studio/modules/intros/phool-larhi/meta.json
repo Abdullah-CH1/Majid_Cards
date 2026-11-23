@@ -1,0 +1,1 @@
+{"name": "Flower strings", "desc": "Strings of jasmine and marigold drop like a floral curtain, sway, then part from the centre to reveal the card.", "order": 30, "t0": 5.0, "defaults": {"sBorder": "arch", "sName": "fade", "sDet": "up", "sFall": "petal", "kLan": false, "kSpk": true}}

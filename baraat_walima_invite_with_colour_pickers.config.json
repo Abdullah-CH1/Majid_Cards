@@ -1,0 +1,113 @@
+{
+  "_help": "Change any \"value\" below (for lists use one of the \"choices\" keys or its text), then run:  python html2mp4.py render baraat_walima_invite_with_colour_pickers.html",
+  "html": "baraat_walima_invite_with_colour_pickers.html",
+  "options": {
+    "inEvent": {
+      "label": "Event",
+      "type": "select",
+      "value": "baraat",
+      "choices": {
+        "baraat": "Baraat",
+        "walima": "Walima"
+      }
+    },
+    "c_bg": {
+      "label": "Background",
+      "type": "color",
+      "value": "#3b2a20"
+    },
+    "c_it": {
+      "label": "Intro text",
+      "type": "color",
+      "value": "#f3e6cc"
+    },
+    "c_ef": {
+      "label": "Envelope",
+      "type": "color",
+      "value": "#f4ead8"
+    },
+    "c_cd": {
+      "label": "Card",
+      "type": "color",
+      "value": "#fbf4e6"
+    },
+    "c_ink": {
+      "label": "Names and text",
+      "type": "color",
+      "value": "#2e2018"
+    },
+    "c_ink2": {
+      "label": "Highlight text",
+      "type": "color",
+      "value": "#7a5a24"
+    },
+    "c_acc": {
+      "label": "Lines, seal, petals",
+      "type": "color",
+      "value": "#b8913f"
+    },
+    "inBride": {
+      "label": "Bride's name",
+      "type": "text",
+      "value": "Ayesha"
+    },
+    "inGroom": {
+      "label": "Groom's name",
+      "type": "text",
+      "value": "Hamza"
+    },
+    "in_date": {
+      "label": "Date",
+      "type": "text",
+      "value": "Saturday, 12 December 2026"
+    },
+    "in_time": {
+      "label": "Time",
+      "type": "text",
+      "value": "7:00 PM onwards"
+    },
+    "in_venue": {
+      "label": "Venue",
+      "type": "text",
+      "value": "Rose Garden Marquee, Lahore"
+    },
+    "inClose": {
+      "label": "Closing line",
+      "type": "text",
+      "value": "Aap ki shirkat hamare liye baais-e-musarrat hogi"
+    },
+    "inBism": {
+      "label": "Show Bismillah",
+      "type": "checkbox",
+      "value": true
+    }
+  },
+  "video": {
+    "quality": "high",
+    "width": null,
+    "height": null,
+    "fps": null,
+    "crf": null,
+    "codec": null,
+    "preset": null,
+    "hold": 4.0,
+    "duration": null,
+    "start": 0.0,
+    "audio": null,
+    "audio_start": 0.0,
+    "audio_volume": 1.0,
+    "corners": "auto",
+    "background": null,
+    "poster": true,
+    "workers": 0,
+    "gpu": true,
+    "seed": 7,
+    "out": null
+  },
+  "page": {
+    "stage": null,
+    "replay": null,
+    "virtual_time": false,
+    "design_width": 360
+  }
+}

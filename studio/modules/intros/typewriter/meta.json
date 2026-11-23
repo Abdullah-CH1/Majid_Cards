@@ -1,0 +1,1 @@
+{"name": "Vintage Typewriter", "desc": "A vintage typewriter types your invitation line by line, the carriage dings and returns, then the letter is pulled out and becomes the card.", "order": 96, "t0": 10.0, "defaults": {"sName": "fade", "sDet": "up", "kLan": false, "kSpk": false, "kFdi": false}, "fonts": ["Courier+Prime:wght@400;700"]}

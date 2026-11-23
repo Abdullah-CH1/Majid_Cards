@@ -1,0 +1,55 @@
+.ix-badshahi-night{--bn-sky1:color-mix(in srgb,var(--bg) 74%,#0a1030);--bn-sky2:color-mix(in srgb,var(--bg) 92%,#0a1030);--bn-sky3:color-mix(in srgb,var(--bg) 78%,var(--lt));
+  --bn-pool:color-mix(in srgb,var(--bg) 80%,#0a1030);
+  --bn-sand:color-mix(in srgb,color-mix(in srgb,var(--bl) 62%,var(--bg)) 70%,#000);
+  --bn-sandL:color-mix(in srgb,var(--bl) 72%,var(--lt));
+  --bn-marb:color-mix(in srgb,var(--cd) 48%,var(--bg));
+  --bn-marbT:var(--cd);--bn-marbL:color-mix(in srgb,var(--cd) 62%,var(--lt));
+  --bn-rec:color-mix(in srgb,var(--bg) 55%,#000);--bn-rec2:color-mix(in srgb,var(--bg) 70%,#000);
+  --bn-gold:color-mix(in srgb,var(--dr) 55%,var(--it));--bn-win:color-mix(in srgb,var(--lt) 70%,var(--bl))}
+.ix-badshahi-night .bn-scene{position:absolute;inset:0;width:100%;height:100%;z-index:3;opacity:0;display:block}
+.ix-badshahi-night .bn-zoom{transform-origin:180px 334px}
+.ix-badshahi-night .bn-lit,.ix-badshahi-night .bn-gl{opacity:0}
+.ix-badshahi-night .bn-st{fill:color-mix(in srgb,var(--cd) 80%,#fff);opacity:0}
+.ix-badshahi-night .bn-rp{fill:var(--lt);opacity:0}
+.ix-badshahi-night .bn-ref{opacity:.42;transform-box:fill-box;transform-origin:50% 0}
+.ix-badshahi-night .bn-txt{position:absolute;left:8%;right:8%;top:6.5%;z-index:4;text-align:center;opacity:0}
+.ix-badshahi-night .bn-txt>div{opacity:0}
+.ix-badshahi-night .bn-l1{font-family:var(--ft);font-size:3.1cqw;letter-spacing:.24em;white-space:nowrap;text-transform:uppercase;color:var(--it);opacity:.85}
+.ix-badshahi-night .bn-ev{font-family:var(--ft);font-size:7.4cqw;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--bn-gold);margin-top:2.2cqw;line-height:1.1}
+.ix-badshahi-night .bn-div{display:flex;align-items:center;justify-content:center;gap:2cqw;margin:2.4cqw 0 1cqw}
+.ix-badshahi-night .bn-div i{display:block;width:16cqw;height:1px;background:var(--bn-gold);opacity:.7}
+.ix-badshahi-night .bn-div b{display:block;width:1.6cqw;height:1.6cqw;border:1px solid var(--bn-gold);transform:rotate(45deg)}
+.ix-badshahi-night .bn-nm{font-family:var(--fs);font-size:10.5cqw;line-height:1.25;color:var(--bn-gold);text-shadow:0 0 3cqw color-mix(in srgb,var(--lt) 45%,transparent)}
+
+.play.s-badshahi-night .bn-scene{animation:badshahi-night-on .01s linear var(--o) both,badshahi-night-out .6s ease-in calc(var(--o) + 8.4s) both}
+.play.s-badshahi-night .bn-main>g:not(.bn-lit){animation:badshahi-night-dim 1.4s ease-out var(--o) both}
+.play.s-badshahi-night .bn-st{animation:badshahi-night-star 1.4s ease-out calc(var(--o) + var(--sd)) both,badshahi-night-tw var(--tw) ease-in-out calc(var(--o) + var(--sd) + 1.4s) infinite alternate}
+.play.s-badshahi-night .bn-rp{animation:badshahi-night-rp var(--rt) ease-in-out calc(var(--o) + 3.6s + var(--rd)) infinite}
+.play.s-badshahi-night .bn-ref{animation:badshahi-night-shim 3.2s ease-in-out var(--o) infinite alternate}
+.play.s-badshahi-night .bn-lit,.play.s-badshahi-night .bn-gl{animation:badshahi-night-flood 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + var(--ld)) both}
+.ix-badshahi-night .bn-mo1{--ld:1s}.ix-badshahi-night .bn-mo2{--ld:1.35s}
+.ix-badshahi-night .bn-mi1{--ld:1.7s}.ix-badshahi-night .bn-mi2{--ld:2s}
+.ix-badshahi-night .bn-fa{--ld:2.35s}.ix-badshahi-night .bn-dl{--ld:2.7s}.ix-badshahi-night .bn-dr{--ld:3.05s}
+.ix-badshahi-night .bn-pi{--ld:3.4s}.ix-badshahi-night .bn-dc{--ld:3.85s}.ix-badshahi-night .bn-ar{--ld:4.3s}
+.play.s-badshahi-night .bn-txt{animation:badshahi-night-on .01s linear var(--o) both,badshahi-night-tout .7s ease-in calc(var(--o) + 5.7s) both}
+.play.s-badshahi-night .bn-l1{animation:badshahi-night-up 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 1.2s) both}
+.play.s-badshahi-night .bn-ev{animation:badshahi-night-up 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 1.7s) both}
+.play.s-badshahi-night .bn-div{animation:badshahi-night-line 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 2.2s) both}
+.play.s-badshahi-night .bn-nm{animation:badshahi-night-name 1.6s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 2.6s) both}
+.play.s-badshahi-night .bn-zoom{animation:badshahi-night-push 2.4s cubic-bezier(.62,0,.3,1) calc(var(--o) + 5.7s) both}
+.play.s-badshahi-night .card{animation:badshahi-night-card .9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 7.1s) both}
+
+@keyframes badshahi-night-on{0%,100%{opacity:1}}
+@keyframes badshahi-night-out{0%{opacity:1}100%{opacity:0}}
+@keyframes badshahi-night-dim{0%{opacity:.55}100%{opacity:1}}
+@keyframes badshahi-night-star{0%{opacity:0}100%{opacity:.9}}
+@keyframes badshahi-night-tw{0%{opacity:.9}100%{opacity:.3}}
+@keyframes badshahi-night-rp{0%,100%{opacity:0;transform:translateX(0)}50%{opacity:.55;transform:translateX(5px)}}
+@keyframes badshahi-night-shim{0%{transform:scaleY(1) skewX(0deg);opacity:.44}50%{opacity:.34}100%{transform:scaleY(.985) skewX(.6deg);opacity:.42}}
+@keyframes badshahi-night-flood{0%{opacity:0}35%{opacity:1}48%{opacity:.7}100%{opacity:1}}
+@keyframes badshahi-night-up{0%{opacity:0;transform:translateY(2.5cqw)}100%{opacity:1;transform:none}}
+@keyframes badshahi-night-line{0%{opacity:0;transform:scaleX(.2)}100%{opacity:1;transform:none}}
+@keyframes badshahi-night-name{0%{opacity:0;transform:translateY(2cqw);letter-spacing:.06em}100%{opacity:1;transform:none;letter-spacing:0}}
+@keyframes badshahi-night-tout{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-3cqw)}}
+@keyframes badshahi-night-push{0%{transform:scale(1)}100%{transform:scale(13)}}
+@keyframes badshahi-night-card{0%{opacity:0;transform:scale(1.04)}100%{opacity:1;transform:none}}

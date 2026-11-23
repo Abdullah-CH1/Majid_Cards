@@ -1,0 +1,1 @@
+{"name": "Fireworks night", "desc": "Golden fireworks burst over the night skyline as the names glow, then a flash reveals the card.", "order": 30, "t0": 5.6, "defaults": {"sBorder": "arch", "sName": "fade", "sDet": "up", "sFall": "fireflies", "kLan": false, "kSpk": true}}

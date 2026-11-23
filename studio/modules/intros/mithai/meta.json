@@ -1,0 +1,1 @@
+{"name": "Mithai ka Dabba", "desc": "A ribboned sweet box unties and opens: warq, jalebi and laddoos reveal the date, time and venue before the card.", "order": 40, "t0": 11.0, "defaults": {"sBorder": "arch", "sName": "fade", "sDet": "up", "sFall": "petal", "kLan": false, "kSpk": true, "kFdi": false}, "fonts": ["Rozha+One"]}

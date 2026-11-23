@@ -1,0 +1,13 @@
+{
+ "name": "Countdown Calendar Dart",
+ "desc": "Calendar pages tear away and a dart hits the wedding day: save the date!",
+ "order": 92,
+ "t0": 10.3,
+ "defaults": {
+  "sName": "fade",
+  "sDet": "up",
+  "kLan": false,
+  "kSpk": false,
+  "kFdi": false
+ }
+}

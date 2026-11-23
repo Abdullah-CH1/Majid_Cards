@@ -1,0 +1,2425 @@
+{
+ "insights": [
+  "Pacing that sells. Something has to move on frame 1. Chat apps usually build the video thumbnail from an early frame, so a fade-in from black gives a black thumbnail that looks broken. In a 4-6 s opening, the hero action should land at about 60-75% of the way through. Give the card a 0.3-0.5 s 'breath' when it lands. Then cascade the card text in reading order over 2.5-3.5 s: Bismillah, hosts, names, event, date, time and venue, closing line. Hold the finished card for at least 6 s with only ambient motion. Aim for 14-22 s in total, plus an optional prelude of 5 s or less. Marketplace templates (VideoHive, Etsy, Canva) run 25-60 s only because they chain many scenes. Use one strong reveal, not a separate animation for every word.",
+  "Hierarchy. Names are the biggest element (13-15cqw script). The event title comes second (8-9cqw spaced caps). The date comes third in size but gets the strongest contrast and the longest still hold, because many guests watch with the sound off. Keep key text inside the central safe area, since WhatsApp and Instagram status UI covers roughly the top 12-14% and bottom 15-20% of a 9:16 frame. Detail text should be at least 4cqw (about 43 px at 1080 wide). Never run moving effects (petals, sparkles, smoke) over the names, the date, the QR code or sacred text. Mask those bands out of the .fall layer.",
+  "Event colour rules. Baraat: deep ruby, maroon, red sandstone or night tones with gold (Royal Ruby, Shahi Maroon, Velvet Maroon, Red Sandstone, Dusk Lahore, Firework Night). Walima: lighter and calmer, such as ivory, champagne, blush, sage, lilac, pistachio, or black-tie onyx and emerald (Ivory Blush, Champagne Onyx, Emerald Darbar, Lilac Silver, Pistachio Walima, Cotton Foil, Kashi Blue). Nikah: white, ivory, sage or midnight with gold calligraphy (Sage Nikah, Marble Gold, Midnight Gold, Cosmic Navy). Mehndi, Mayun and Dholki: marigold, mehndi green, hot pink, turquoise and truck-art brights (Mehndi Marigold, Basant Sky, Bangle Carnival, Truck Art Pop, Ajrak Indigo, Lollywood). Give every sample both a Baraat palette and a Walima palette, and switch between them automatically with the Event select. Example: Phoolon ki Larri uses Royal Ruby for Baraat and Ivory Blush for Walima.",
+  "Palette library. Roles are in the order bg/it/ef/cd/ink/ink2/acc/fl/lf. All were contrast-checked with a WCAG script: ink on cd is at least 11:1, ink2 on cd at least 5.2:1, and it on bg at least 6.9:1. Gold acc on light cards is only 2-3:1, so use acc for lines and ornaments, never for small text. Royal Ruby #14060A/#F7E6CF/#F4E2CF/#FFF7F2/#3B0D16/#9C1530/#D2AC62/#B3122E/#2C5E3B · Shahi Maroon #2A0A12/#F6E3C3/#F3E3C8/#FFF8EE/#3A1016/#8C1D2C/#C9A04E/#B3203A/#2F6B4F · Velvet Maroon #3A0812/#F3DDB5/#F1E0C2/#FFF8EE/#3B0B16/#8C1A2E/#D4AC58/#5A0F1F/#2D5A3D · Oxblood Foil #4A0E1A/#F8F2EA/#F1E8DC/#F8F2EA/#3A0E18/#7E1B2D/#B8892F/#7E1B2D/#5E6E55 · Silver Mirror #3B0A16/#F6E6D9/#E6E9EE/#FFF8F3/#2E0E15/#9A1530/#9AA3AD/#A3162E/#4F6F5C · Red Sandstone #3C1D14/#F6E3C3/#F2E2CB/#FFF7EA/#3C1D14/#9A3D29/#D4A95C/#C8434F/#5E7A55 · Farman Night #0F1E2E/#F3E3C3/#E2CB9C/#F3E3C3/#3A2414/#7B1E1E/#A87A2A/#8E1B22/#4B5E3A · Farman Ivory #EDE3D1/#3A2A1A/#E6D5B5/#F7EEDC/#3A2A1A/#6B4E2A/#A88440/#9E3B3B/#6E7B58 · Emerald Darbar #062A22/#F1E6C8/#EFE3C6/#FBF6EA/#0D2B24/#0F6B55/#C59A3E/#A8323E/#1C7A5F · Peacock Jewel #06251F/#EFE6C8/#EDE4CC/#F7F3E6/#0B2B26/#0D6359/#C9A040/#7A2E8E/#0F7A6A · Peacock Pastel #E6F0EC/#1F3B36/#F2F7F4/#FFFFFB/#1F3B36/#1C6B62/#B8913F/#8E6BB0/#3E8E7E · Kashi Blue #0D2A4A/#F3EBD7/#EEF2F7/#FBF7EE/#0F2742/#1F4E99/#C99234/#C7452F/#1F9A9D · Turquoise Multan #E3F1F2/#0F3D4A/#F3FAFA/#FFFFFF/#0F3D4A/#0E6E7D/#2A9DB0/#D96C5F/#3E8E7E · Midnight Gold #0B1630/#EADFC4/#EFE6D2/#FBF6EC/#13213F/#6E5016/#C9A233/#9C2A4A/#1C9A97 · Cosmic Navy, dark card #070B1F/#E8E1FF/#EDE8DA/#0E1430/#F3E9D2/#F0CF85/#F0CF85/#E7A1C1/#7FB6B0 · Dusk Lahore #1A1440/#F5E8D4/#F1E3CF/#FBF6EC/#1E1938/#62386F/#C99A48/#C4577A/#2E5E5A · Night Lantern #0B0F2A/#FFE7C2/#FFF1D9/#FFF6E3/#2A1A12/#A44A1F/#C98E35/#E86B5A/#3F6C70 · Firework Night #05060F/#F7E7C1/#F7EEDA/#FFF8EA/#24142A/#9E2348/#CF9A2A/#FF4D6D/#1FA971 · Champagne Onyx #0E0E14/#EDE3CF/#F3EADB/#FFFCF5/#1C1A22/#7A5E2E/#C9A65C/#D29A95/#7C8C7A · Mirror Onyx #0A0A0F/#F2E6CF/#DDE6EE/#FFF9F0/#1A1612/#7F5F2C/#C9A45C/#D47A86/#6F8F86 · Marble Gold #2E2418/#F4EAD6/#F4F1EA/#FFFBF3/#2E2418/#7E5F26/#B8913F/#D9A3A3/#6E8F7A · Ivory Blush #F4E7E1/#4A2E33/#F9EFEA/#FFFDFB/#43282E/#9C4A5E/#B88A68/#E39AAA/#8FAA91 · Watercolour Blush #F3EDE4/#4A4040/#F7F2EA/#FFFDF9/#3D3A3A/#8C5B66/#B8924E/#E8A0A8/#9DB69A · Paper Garden #F9E4D4/#5A4844/#F4EDE2/#FFFBF6/#3F3532/#8A4757/#B98E4F/#E07A8A/#5E8C6A · Sage Nikah #E7EDE4/#2B352C/#F4F2EA/#FFFEF9/#26302A/#4F6B4C/#B08F4E/#D79F99/#7F9B7A · Pistachio Walima #DCE6CF/#2C3A26/#EEF3E6/#FBFCF6/#26331F/#5A7240/#B18A45/#E3A6A1/#7E9C5E · Mint Peach #EAF4EE/#2E3B36/#F6FBF8/#FFFDF9/#2A3631/#A94F3A/#B98E47/#EFA48A/#79B595 · Lilac Silver #E9E4F2/#2F2A45/#F4F1FA/#FFFFFF/#2A2540/#5F4B93/#8E95A8/#C3A1D6/#8FB3A8 · Cotton Foil #E9E2D6/#2C2A28/#F6F1E8/#F8F4EC/#2C2A28/#6B5634/#B8892F/#C9A2A0/#8B9A86 · Terrazzo Clear #EFE9E1/#2E2A27/#FFFFFF/#FBF9F6/#2E2A27/#8A5A44/#B8913F/#E4A99A/#93A88F · Mehndi Marigold #F49A26/#3A1A05/#FFE7B8/#FFF6DE/#3A1A05/#A8264E/#2E7D32/#E2426B/#3F8A3A · Basant Sky #FBE7A1/#3B2A0E/#FFF6D5/#FFFBEA/#3B2A0E/#B02D60/#C98A06/#E5487A/#2FA36B · Bangle Carnival #5B1A6E/#FFF1F7/#FFE3F1/#FFF7FB/#3A0F45/#B0186A/#D69500/#FF3E8A/#16A085 · Truck Art Pop #1B0F3A/#FFF4D6/#FFE9A8/#FFF4D6/#1B0F3A/#C4104F/#D99200/#FF2D6F/#00A86B · Ajrak Indigo #1C2E6B/#F4EFE6/#F4EFE6/#F7F2E8/#141414/#9E1428/#A3162B/#A3162B/#1C2E6B · Lollywood #120607/#FFE9B0/#F6E7C1/#F6E7C1/#1E1210/#A8182A/#B87F0E/#C21F33/#1F7A6B · Newsprint #2B2B2B/#F2EDE1/#F2EDE1/#F2EDE1/#1A1A1A/#B3202A/#B3202A/#B3202A/#4A5A4A · Sepia #3B2F25/#F1E4CC/#EFE2C8/#EFE2C8/#2A2118/#8A2C1F/#8A2C1F/#8A2C1F/#5B6B4B.",
+  "Cultural guardrails for Pakistani Muslim weddings. Open with Arabic Bismillah, optionally followed by the common card line نحمده ونصلي على رسوله الكريم. Ar-Rum 30:21 and the du'a for newlyweds (بارك الله لكما وبارك عليكما وجمع بينكما في خير) are the usual blessings. Treat sacred text respectfully: only fade or draw it in, never bounce or spin it, never run petals or sparkles over it, give it a still hold, and verify the Arabic against quran.com. Avoid Hindu-specific imagery: Ganesha, kalash, om or swastika, mandap and fire rituals, aarti diya, rangoli, varmala garland exchange, sindoor, mangalsutra and elephant processions. Welcome motifs: Mughal arches, jaali, cusped mehrab, girih geometry, calligraphy, crescent and stars, lanterns, roses and motia, marigold (normal at Pakistani mehndis), henna, dholki, bangles, gota, truck art, ajrak, phulkari, kashi tiles, Badshahi Mosque, Lahore Fort and Shalimar. Ship faceless figures by default, a 'No figures' switch (geometric/floral only) for conservative families, and a design that reads perfectly with no music, since some families prefer nasheed, duff only or silence.",
+  "Pakistani card etiquette to build in. The Baraat and Rukhsati are hosted by the bride's family, so the bride's parents, the bride's name and the word daughter come first. The Walima is hosted by the groom's family, so the order flips. The dulha/dulhan pop-up prelude should follow a 'Whose side?' option (bride first for Baraat, groom first for Walima). Common extras: RSVP names with phone numbers; 'Muntazir' (those awaiting) and 'Dua-go' lists of relatives; programme timings (Baraat arrival, Nikah, dinner, Rukhsati); a bilingual Urdu/English layout; a QR or map pin. Urdu must never be split into per-letter spans, because that breaks Nastaliq joining. Reveal Urdu and Arabic with right-to-left clip wipes. The studio already falls back to a fade for Arabic-script names.",
+  "Polish details that separate premium from template. (1) Gold must look like metal: use a multi-stop gradient (#8C6A2B → #E9CF7A → #FFF4C8 → #B8913F → #9A7432) plus a moving specular glint at the hero moment and every 4-6 s on the hold. (2) Add 3-6% static noise or texture (SVG feTurbulence, rendered once) to large gradients, velvet, paper and sky, or H.264 will band them. (3) Moving strokes should be at least 0.3cqw (static hairlines at least 0.15cqw), or they shimmer at 1080p. (4) Use 3-5 parallax layers and one consistent light direction for shadows. (5) Easing: ease-out for entrances, ease-in for exits; overshoot or spring only for playful Mehndi designs; slow fades and draws for Nikah. (6) Stagger 40-120 ms; never move more than two things at once in the centre. (7) Use idle micro-motion on the hold (sway, glints, a 1-3% camera push-in) but keep the text block itself still. (8) The final frame must work as a static invite, because people screenshot it and html2mp4 saves it as the poster.",
+  "How html2mp4 renders, and what that means for the build. It pauses every entry in document.getAnimations() and seeks currentTime frame by frame, so all motion must be CSS animations or the Web Animations API. SVG SMIL (animate, animateMotion), requestAnimationFrame and canvas loops are not captured. Timers only line up in --virtual-time mode. Avoid CSS transitions, GIFs and video for choreography. Math.random is replaced by a seeded PRNG (seed 7, --seed flag), so random layouts made at setup are identical in every worker. Video length = the end of the last finite animation + the hold (or +0.5 s when the last animation is a full-card opaque fade). Infinite loops don't count, so make ambient loops infinite and make every one-shot end by about t0+4 s. The renderer waits for document.fonts.ready and for <img> decode, but not for CSS background-image, so put photo backgrounds in <img>. The stage is laid out at 360 CSS px (design_width) and scaled by deviceScaleFactor. Every form control is scanned as an option, so a 'Sample design' <select> becomes renderable with --set \"Sample design=...\".",
+  "CSS techniques and traps for this codebase. (a) .st has container-type:inline-size, so cqh does not refer to the card. It falls back to viewport units, which looks right in the full-frame video but wrong in the preview. Use cqw only and derive heights from --H:177.78cqw (9:16). (b) When drop, sway and exit animations all touch transform they overwrite each other. Use the individual translate, rotate and scale properties, nested wrappers, or animation-composition:add (Chromium 112+). (c) For springy pops use linear() easing, e.g. linear(0, 1.12 45%, .96 65%, 1.02 82%, 1) (Chromium 113+). (d) Register @property custom properties (<percentage>, <angle>) to animate mask radii, conic countdown sweeps and gradient positions. (e) The CSS d property morphs SVG paths when both paths have the same commands, which suits garlands and veils. (f) For flight paths use offset-path: path() with px coordinates in the 360×640 design box, and for the 340 px preview scale that motion box with a JS-set --k. Or use the no-motion-path trick: an outer wrapper animates X and an inner wrapper animates Y, with different easings. (g) For radial bursts, use a gravity-translate group containing a statically rotated wrapper, containing a dot that translates outward. (h) To sample glyph points (for particle initials), draw to an offscreen canvas only after document.fonts.ready. (i) Keep live card text out of 3D transforms: unfold a blank paper stand-in, then cross-fade to the real .card. (j) Use filters (blur, drop-shadow, displacement) only on small static regions, never animate filter attributes, and never use backdrop-filter at 4K.",
+  "Name collision to fix before adding the new palette roles. The stage CSS already defines --fl inside .st{...} as color-mix(in srgb,var(--ef) 95%,#000), and flapK uses it for the envelope flap. Setting the new floral role as an inline --fl with setProperty would override it and turn the envelope flap rose-red. Rename the internal variable (for example to --efl) or call the new role --flo. Derive new opening materials the same way the studio derives --eb, --el, --dr, --lt and --p2: color-mix() from the roles, never hard-coded colours, so every sample recolours with the event palette.",
+  "Integrating preludes without breaking the three existing openings. Add a Prelude select and a --p0 variable (prelude length, 0s by default). Change every opening-layer delay to calc(var(--p0) + Xs), for example .play.s-env .flap{animation:flapK .8s ease-in-out calc(var(--p0) + 3.05s) both}. In JS, t0() becomes P0[pre] + T0[style], so --t0, --te and the data-o detail delays shift automatically. The prelude layer is an opaque full-stage layer (z ≥ 9) that fades out over its last 0.4 s. Opening layers with fill-mode both sit in their first keyframe underneath it, which is fine. Keep .fdi (fade in from black) at 0 s, or better, start on the prelude's composed first frame so the thumbnail looks good.",
+  "Gallery UX for the Samples column. Store each sample as data: {id, name, events:[...], opening, prelude, border, pattern, names, details, falling, lanterns, sparkles, fonts, ornaments, palettes:{baraat:{...}, walima:{...}}}. Render tiles as live mini-stages frozen on their final frame by calling el.getAnimations({subtree:true}).forEach(a=>{a.pause(); a.currentTime=END}), because 40 simultaneous live animations would choke phones. Play a tile only on tap or hover (IntersectionObserver plus replay). Use filter chips for Baraat, Walima, Nikah, Mehndi, Modern and Heritage. 'Use this design' applies the whole recipe but keeps the client's names, dates and venue. Support a deep link (#sample=larri-baraat) so the client can send a link to one sample. Add a 'Surprise me' shuffle. Because html2mp4 scans selects, the same recipe list can drive renders: --set \"Sample design=Phoolon ki Larri\".",
+  "Keep the gallery visibly varied. No two neighbouring tiles should share more than one of these axes: background value (dark, mid, light), dominant hue (ruby, emerald, blue, gold, pastel, neon), motif family (architecture, floral, textile/craft, sky/night, folk-pop, modern-luxury, story/characters), and motion grammar (swing, part/curtain, unroll, unbox, assemble, dissolve, bloom, fly-through, stamp, draw, burst, zoom-through). The new openings below were chosen to cover every combination, and none reuses the envelope, door-swing or ring-draw mechanics of the existing three.",
+  "Background photos, optional. All are verified HTTP 200 and under the Unsplash License (free commercial use, attribution not required). Load each with an <img>, object-fit:cover and a 45-65% bg-colour gradient overlay for text contrast. Append ?w=1080&q=70&fm=jpg (or w=2160 for 4K). Always keep the SVG/gradient version as a fallback, because rendering needs internet. Photos: Badshahi minaret under stars (portrait) https://images.unsplash.com/photo-1531804308561-b6438d25a810 · Badshahi Mosque at sunset https://images.unsplash.com/photo-1758714144057-aae0194dfde5 · Badshahi daytime https://images.unsplash.com/photo-1603491656337-3b491147917c · Lahore Fort Alamgiri Gate with reflecting pool (portrait) https://images.unsplash.com/photo-1792332446671-c0df49cecfcb · Naulakha pavilion and gardens https://images.unsplash.com/photo-1792332446550-af997d6c4974 · Mughal minaret with cypress hedge, Lahore https://images.unsplash.com/photo-1778093160182-a9e351fff111 · mehndi hands with marigold and roses on yellow (portrait) https://images.unsplash.com/photo-1771992226177-759e116e72f4 · bridal red-and-gold lehenga with mehndi and bangles https://images.unsplash.com/photo-1583878544826-8f8c418033ed · dark red roses (portrait) https://images.unsplash.com/photo-1518709779341-56cf4535e94b · colourful string-light bokeh https://images.unsplash.com/photo-1544438369-a34666f8ff77 · gold bokeh https://images.unsplash.com/photo-1512320265221-681a6d3d4628 · white marble https://images.unsplash.com/photo-1551554781-c46200ea959d · crescent moon over a dusk horizon (portrait) https://images.unsplash.com/photo-1572885972991-8eece633dae8 · crescent on black https://images.unsplash.com/photo-1593083014486-68f38e5e8d70 · candle chandelier on black (portrait) https://images.unsplash.com/photo-1792758152684-048cb95e1c39 · Pakistani truck-art bus front reading 'Masha Allah' (reference for motifs) https://images.unsplash.com/photo-1725352566730-6e4ce995aebc.",
+  "What buyers pay for, judging by Etsy, VideoHive and Fiverr listings: vertical 1080×1920 MP4s ready for WhatsApp; editable names, date, venue and RSVP; one design that covers Nikah, Walima and Mehndi variants; bilingual or Arabic fonts; gold-and-burgundy, floral, sage-green, turquoise and pink-and-gold styles; caricature or animated couples in their real outfit colours; RSVP, countdown and map extras. Prices run from about $5 to $50, so polish and personalisation are the differentiators. In WeddingWire India's 2024-25 survey, 57% of respondents announced their wedding on WhatsApp, and chat-style, caricature and minimal-initials invites are all named trends. Recommend sending as a Document on WhatsApp to avoid recompression.",
+  "Typography kit (all Google Fonts). Arabic Bismillah and verses: Amiri, Scheherazade New, Aref Ruqaa (decorative), Reem Kufi (geometric). Urdu: Noto Nastaliq Urdu or Gulzar, with line-height of at least 2 for Nastaliq descenders. Display Urdu for truck art and posters: Lalezar, Jomhuria, Rakkas. Latin scripts for names: Great Vibes, Pinyon Script, Parisienne, Alex Brush, Italianno. Serifs: Cormorant Garamond, Playfair Display, Cinzel, Marcellus, Italiana, Bodoni Moda. Fun: Rozha One and Abril Fatface (Lollywood), UnifrakturCook and Old Standard TT (newspaper), Space Mono with Libre Barcode 128 Text (boarding pass), Fredoka or Baloo 2 (cute icons), La Belle Aurore or Homemade Apple (handwritten letter). Load only the fonts the active sample needs, since a render fails if fonts fail.",
+  "Suggested 42-sample gallery. Keep the three originals as #1-3: 1 Envelope (original), 2 Palace Doors (original), 3 Golden Medallion (original). New samples: 4 Phoolon ki Larri with the Pop Story prelude (Baraat Royal Ruby / Walima Ivory Blush) · 5 Gulab Khilna with Gulab Pashi (Walima Ivory Blush) · 6 Shahi Farman with the Families letter (Baraat Farman Night) · 7 Mithai ka Dibba (Walima Emerald Darbar) · 8 Jaali ki Roshni with the Bismillah draw (Nikah Marble Gold) · 9 Kashi Kari with the Kashi border (Walima Kashi Blue) · 10 Girih Kaleidoscope with Ayah 30:21 (Nikah Midnight Gold) · 11 Mor Pankh with Jhumka drops (Mehndi Peacock Jewel) · 12 Badshahi Chaand with the Lahore skyline (Baraat Dusk Lahore) · 13 Shaadi Wala Ghar with Rishta chat (Dholki Night Lantern) · 14 Patang Bazi (Mehndi Basant Sky) · 15 Kabootar Paigham (Walima Sage Nikah) · 16 Dupatta Unveil with the Jharokha duet (Baraat Royal Ruby) · 17 Rang Bhari (Walima Watercolour Blush) · 18 Shalimar Bagh (Walima Paper Garden) · 19 Pop-up Kitaab with the Polaroid story (Baraat Velvet Maroon) · 20 Mehndi mein Naam with the Dhol countdown (Mehndi Marigold) · 21 Jhoomar with Bokeh (Walima Champagne Onyx) · 22 Lollywood Premiere (Mehndi Lollywood) · 23 Akhbar ki Surkhi (Dholki Newsprint) · 24 Aarsi Mushaf with Qubool Hai (Nikah Silver Mirror) · 25 Sone ki Mohar (Walima Cotton Foil) · 26 Fanoos Udaan with Jugnu (Mehndi Night Lantern) · 27 Aatish Baazi with the Ghori procession (Baraat Firework Night) · 28 Truck Art Tailgate with the Truck border (Mehndi Truck Art Pop) · 29 Ajrak Thappa with the Ajrak band (Mehndi Ajrak Indigo) · 30 Zardozi Silai with the Gota border (Baraat Velvet Maroon) · 31 Mehrab Corridor with lanterns (Baraat Red Sandstone) · 32 Sitaron ki Baraat (Nikah Cosmic Navy) · 33 Sheesh Mahal (Walima Mirror Onyx) · 34 Choori Portal with Genda rain (Mayun/Mehndi Bangle Carnival) · 35 Doli Aayi with the Baraat route map (Rukhsati Shahi Maroon) · 36 Sheesha Card (Walima Lilac Silver) · 37 Angoothi (Nikah/Mangni Royal Ruby) · 38 Shahi Dawat (Walima Emerald Darbar) · 39 Sunehri Qalam with the Dua ribbon (Nikah Sage Nikah) · 40 Split-screen couple with Golden Medallion (Walima Pistachio) · 41 Boarding pass with Envelope (destination Walima Terrazzo Clear) · 42 Calendar save-the-date with Gulab Khilna (save the date Ivory Blush)."
+ ],
+ "concepts": [
+  {
+   "name": "Phoolon ki Larri (Jasmine & Rose Strand Curtain)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.5s: Deep stage with a soft vignette; a warm glow starts building behind the centre (0→35%).",
+    "0.3-1.3s: 15 floral strands drop in from above the top edge, centre strand first and then outward (60 ms stagger). They alternate between chains of white motia buds and chains of red rose heads with tiny leaves, each ending in a gold bell or gota tassel. Springy landing with an 8% overshoot.",
+    "1.3-2.3s: The curtain breathes, each strand swaying ±2° on its own phase. A small velvet plaque hangs mid-curtain: 'We cordially invite you to the' / BARAAT (script) / 'of Ayesha & Hamza'.",
+    "2.3-2.6s: The plaque rises and fades; the backlight brightens until the card's arch silhouette shows through the gaps.",
+    "2.6-3.9s: The curtain is drawn aside from the middle. Strands slide outward (centre strands travel furthest), tilt 6-10° and bunch at both edges (scaleX .55). Two gold tie-back bows pop on at 3.5s.",
+    "3.9-4.6s: The card settles from scale .95 to 1 with a soft bloom; a few jasmine buds drop and fall; the bunched strands stay as side garlands framing the card.",
+    "4.6s: t0. The Bismillah, names and details cascade in."
+   ],
+   "motifs": [
+    "motia/jasmine bud strands (larri)",
+    "red rose heads",
+    "sehra-style floral curtain",
+    "gota tassels and brass bells",
+    "tie-back bows"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Baraat",
+    "Nikah"
+   ],
+   "why_it_wins": "Floral-strand curtains are the signature backdrop of Pakistani mehndi and baraat stages and echo the groom's sehra, so guests recognise them instantly. The soft, organic parting feels romantic and is clearly different from the rigid palace doors.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'larri', T0 4.6, DEF {b:'garland', n:'hand', d:'up', f:'petal', lan:false, spk:true}. Layer .larri-l (z 8) sits above .card. JS (setup only) creates 15 strands with --c = signed index from the centre (-7..7) and a seeded length of 58-78% of stage height (use --H:177.78cqw, since cqh is unreliable here). Each strand is three nested wrappers so no animation overwrites another: .sw-out (partK: translateX c*6.5cqw, rotate c*1.2deg, scaleX .55 at the edges), .sw-drop (dropK: translateY -110% → 0 with linear(0, 1.08 55%, .97 75%, 1)), and .sw-sway (swayK: rotate -2deg↔2deg, 1.7s ease-in-out infinite alternate, negative phase delay per strand). All use transform-origin 50% 0. Strand art: a 0.35cqw gold thread line plus <use href='#bud'>/<use href='#rose'> every 4.2cqw (symbols defined once). Compute delays in JS: drop = p0+.3+|c|*.06, part = p0+2.6+(7-|c|)*.03. The backlight is a radial-gradient div in color-mix(in srgb, var(--acc) 60%, #fff) with opacity keyframes. Tie-back bows use popK at 3.5s. The card gets fadeS at 3.9s. Roles: ef = jasmine buds, fl = roses, lf = leaves, acc = thread/bells/bows. About 200 <use> nodes, which is cheap at 4K.",
+   "palette_idea": "Baraat · Royal Ruby (bg/it/ef/cd/ink/ink2/acc/fl/lf) #14060A/#F7E6CF/#F4E2CF/#FFF7F2/#3B0D16/#9C1530/#D2AC62/#B3122E/#2C5E3B. Walima · Ivory Blush #F4E7E1/#4A2E33/#F9EFEA/#FFFDFB/#43282E/#9C4A5E/#B88A68/#E39AAA/#8FAA91 (blush roses with white jasmine). Mehndi · Marigold #F49A26/#3A1A05/#FFE7B8/#FFF6DE/#3A1A05/#A8264E/#2E7D32/#E2426B/#3F8A3A (swap the jasmine for marigold heads).",
+   "references": [
+    "https://en.wikipedia.org/wiki/Sehra_(headdress)",
+    "https://en.wikipedia.org/wiki/Baraat"
+   ]
+  },
+  {
+   "name": "Gulab Khilna (Rose Bloom Dive)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: Soft vignette. A closed rosebud rises from the bottom while its stem draws upward and two leaves unfurl from their bases.",
+    "0.8-2.3s: The bud opens in four rings of petals, inner to outer, 0.25 s apart. Each petal tilts outward from a closed pose (scaleY .5, rotate -15°) to full bloom, and the centre deepens in colour. A dew glint twinkles at 2.1s.",
+    "2.3-3.2s: The camera dives into the bloom: the rose scales ×1→×5 around its heart while the outer petals fly radially past the frame.",
+    "3.2-4.2s: The card opens from the rose's heart as a feathered circle (mask radius 0%→150%), while 8-10 loose petals tumble across it.",
+    "4.2s: t0. The names write in by hand; petals keep falling softly."
+   ],
+   "motifs": [
+    "blooming rose (gulab)",
+    "dew sparkle",
+    "falling rose petals (gulab pashi)"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Baraat"
+   ],
+   "why_it_wins": "Rose petals are showered on the baraat and decorate every stage. One rose opening into the invitation is universally romantic and makes a strong thumbnail, and the dive into the flower feels cinematic rather than templated.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'rose', T0 4.2, DEF {b:'corner', n:'hand', d:'up', f:'petal', lan:false, spk:true}. One SVG (viewBox 0 0 100 100) with 22 petal paths in 4 rings; JS sets --a (angle), --ring and a delay for each petal. Structure per petal: <g> rotated by var(--a) (transform-origin 50px 50px) > <g class='pf'> (flyK: translateY 0 → -60, which moves along the petal's own axis because it sits inside the rotated group) > <path class='pp'> (openK: scale(.35,.5) rotate(-15deg) → none; transform-box: fill-box; transform-origin: 50% 100%, the petal base). Petal fill is a linear-gradient from color-mix(in srgb, var(--fl) 75%, #000) at the base to color-mix(in srgb, var(--fl) 80%, #fff) at the lip, with a thin lighter rim stroke. Stem and leaves use pathLength=1 + drawK; leaves scale from their base. The dive is a wrapper scale 1→5 with cubic-bezier(.5,0,.9,.4). Card reveal: @property --m {syntax:'<percentage>'; inherits:false; initial-value:0%}; .card{mask-image: radial-gradient(circle at 50% 46%, #000 var(--m), transparent calc(var(--m) + 12%))}, also -webkit-mask-image, animating --m 0%→150%. Optional photo background: the Unsplash dark-roses photo-1518709779341 as an <img> at 35% under a vignette.",
+   "palette_idea": "Baraat · Royal Ruby #14060A/#F7E6CF/#F4E2CF/#FFF7F2/#3B0D16/#9C1530/#D2AC62/#B3122E/#2C5E3B (bg/it/ef/cd/ink/ink2/acc/fl/lf). Walima · Ivory Blush #F4E7E1/#4A2E33/#F9EFEA/#FFFDFB/#43282E/#9C4A5E/#B88A68/#E39AAA/#8FAA91 (blush rose on cream with rose-gold lines).",
+   "references": [
+    "https://unsplash.com/photos/red-roses-yPMJliKzyc4",
+    "https://www.etsy.com/listing/4344880285/animated-muslim-wedding-invitation-video"
+   ]
+  },
+  {
+   "name": "Shahi Farman (Royal Scroll Unroll)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.0s: A rolled parchment scroll with turned gold finials swings down from the top on a red silk cord and settles (pendulum ±8°→0).",
+    "1.0-1.6s: The red wax seal stamped with the couple's initials pulses, then cracks along a jagged line; its halves drop away with a spin and the cord slides off.",
+    "1.6-3.3s: The scroll unrolls downward. The top roller stays at 8% height while the bottom roller travels to 93%, spinning as it rolls. The parchment revealed behind it is the card itself, and its double border draws in as it appears.",
+    "3.3-3.8s: The bottom roller overshoots by 1% and settles; small puffs of gold dust come off both roller ends.",
+    "3.6-4.2s: t0 at 3.6s. Text fades up line by line in a formal cadence (Bismillah, hosts, names, event, date) while the border finishes drawing."
+   ],
+   "motifs": [
+    "farman scroll",
+    "wax seal (muhr) with initials",
+    "gold finials",
+    "red silk cord",
+    "parchment with deckled edges"
+   ],
+   "best_events": [
+    "Baraat",
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "Scroll cards ('farman') descend from royal Mughal announcements and are a much-loved premium print format. Because the card itself is what gets revealed, it reads clearly on a phone and feels regal without being busy.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'farman', T0 3.6, DEF {b:'double', n:'letter', d:'up', f:'dust', lan:false, spk:false}. The .card is the parchment. Animate its clip-path from inset(0 0 92% 0) to inset(0 0 7% 0) over 1.7s with cubic-bezier(.45,.05,.25,1), starting at p0+1.6s. The bottom roller div animates top 8%→93% with the same duration and easing, so the edge stays glued to it. Rollers: width 94%, height 4.5cqw, a gold linear-gradient (#8C6A2B, #E9CF7A, #B8913F) plus repeating-linear-gradient stripes. The spinning illusion is a background-position-y animation over the same 1.7s. Finials are circles at the roller ends. Pendulum: wrapper rotate keyframes 8deg→-5→3→0 with transform-origin 50% -40%. Seal: an SVG circle with a scalloped edge in var(--fl) plus the .xin initials. The crack is two clipPath halves animating translate and rotate with ease-in, for gravity. Parchment texture: a static SVG feTurbulence (baseFrequency .8, numOctaves 3) multiplied at 6-8%; never animate filters. Deckled left and right edges: a clip-path polygon generated in JS with seeded jitter. Roles: cd/ef = parchment and shading, fl = cord and seal, acc = finials and border.",
+   "palette_idea": "Baraat · Farman Night #0F1E2E/#F3E3C3/#E2CB9C/#F3E3C3/#3A2414/#7B1E1E/#A87A2A/#8E1B22/#4B5E3A (bg/it/ef/cd/ink/ink2/acc/fl/lf). Walima · Farman Ivory #EDE3D1/#3A2A1A/#E6D5B5/#F7EEDC/#3A2A1A/#6B4E2A/#A88440/#9E3B3B/#6E7B58.",
+   "references": [
+    "https://www.indianweddingcards.com/blog/fascinating-scroll-wedding-invitations",
+    "https://www.greenvelope.com/designs/invitations/wedding/magic-scroll",
+    "https://www.freelancer.de/projects/2d-animation/animated-royal-scroll-invitation"
+   ]
+  },
+  {
+   "name": "Mithai ka Dibba (Gifted Sweet-Box Unboxing)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: Top-down view of a cream tabletop. An ornate square box slides up into the centre with a soft shadow: velvet lid, gota-kinari border and a gold 'A & H' medallion. Two brass bells on the ribbon tails jingle.",
+    "0.8-1.5s: The gota ribbon bow unties. The loops shrink and spin away, and the crossing ribbons retract to the box edges.",
+    "1.5-2.4s: The lid lifts toward the camera (scale 1→1.18, its shadow spreading and softening), then glides off to the upper right with a 12° turn.",
+    "2.4-3.2s: Inside, a bed of rose petals and silver-vark sweets (diamond barfi, round ladoo) surrounds a folded card. A warm glow rises and the vark glints.",
+    "3.2-4.6s: The folded card lifts, its top flap swings open 180°, and it scales up to fill the frame as the box sinks away.",
+    "4.6s: t0."
+   ],
+   "motifs": [
+    "mithai box",
+    "gota-kinari ribbon and bow",
+    "silver-vark sweets",
+    "rose petals",
+    "brass bells",
+    "gold medallion"
+   ],
+   "best_events": [
+    "Walima",
+    "Mehndi",
+    "Baraat"
+   ],
+   "why_it_wins": "In Pakistan the card often arrives with a box of mithai or dry fruit, so an unboxing reveal mirrors the real ritual. Unboxing is satisfying to watch and gives a luxurious, gift-like first impression.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'dibba', T0 4.6, DEF {b:'corner', n:'slide', d:'up', f:'petal', lan:false, spk:true}. Shoot it top-down so no 3D box is needed: the lid lift is scale + translate + a box-shadow that grows and softens (0 1cqw 2cqw → 0 6cqw 9cqw rgba(0,0,0,.35)). Box: a div with a velvet radial-gradient (var(--fl) at the centre, color-mix(in srgb, var(--fl) 65%, #000) at the edges) and a gota border made of repeating-radial-gradient scallops in var(--acc). Ribbon: two crossing strips (scaleX/scaleY to 0 toward the edges) and a bow of two ellipses (scale 0 + rotate 90deg). Sweets: about 10 <use> symbols with a silver gradient (#E9EDF2→#B8C0CA) and a pistachio dot in var(--lf). Card unfold: a blank paper element inside a parent with perspective:140cqw; its top half rotates rotateX(-180deg→0) with backface-visibility:hidden. At p0+4.3s, cross-fade to the real .card so live text never sits inside a 3D transform and stays crisp. Roles: fl = velvet, acc = gota and medallion, ef = box interior and paper, lf = pistachio.",
+   "palette_idea": "Walima · Emerald Darbar #062A22/#F1E6C8/#EFE3C6/#FBF6EA/#0D2B24/#0F6B55/#C59A3E/#A8323E/#1C7A5F (bg/it/ef/cd/ink/ink2/acc/fl/lf), with lf as the velvet for an emerald box. Baraat · Shahi Maroon #2A0A12/#F6E3C3/#F3E3C8/#FFF8EE/#3A1016/#8C1D2C/#C9A04E/#B3203A/#2F6B4F. Tabletop: color-mix(in srgb, var(--ef) 80%, #fff).",
+   "references": [
+    "https://royalbindi.co.uk/blog/mithai-box-ideas",
+    "https://www.theknot.com/content/wedding-invitation-box",
+    "https://www.wedmegood.com/blog/unique-indian-wedding-invitation-boxes-that-wow/"
+   ]
+  },
+  {
+   "name": "Jaali ki Roshni (Marble Lattice Light Dissolve)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.0s: A full-screen white-marble jaali (hexagon-and-star lattice) stands in darkness. Light grows behind it: the holes glow from dim amber to bright gold and soft god-rays fall diagonally.",
+    "1.0-2.0s: The couple's initials glow through the central rosette like a stencil, with a one-line intro beneath.",
+    "2.0-3.6s: The lattice dissolves from the centre outward, ring after ring (60 ms per ring): each cell shrinks, turns 45° and fades, uncovering the card.",
+    "3.6-4.0s: The outermost ring of cells stays as a carved frame and softens to 40% opacity.",
+    "4.0s: t0. Text fades in with a slow, reverent rhythm."
+   ],
+   "motifs": [
+    "jaali (perforated marble screen)",
+    "light shafts",
+    "8-point stars and hexagons",
+    "stencilled initials"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "Jaali is the most recognisable detail of Mughal architecture, and light through stone feels serene and spiritual, which is ideal for a Nikah. The cell-by-cell dissolve is mesmerising and unlike any door or envelope.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'jaali', T0 4.0, DEF {b:'arch', n:'fade', d:'up', f:'dust', lan:false, spk:false}. JS lays out an 8×14 grid of <use href='#cell'> at 12.5cqw pitch. Each cell is a square with a star-shaped hole (fill-rule:evenodd) plus an inner bevel path in color-mix(in srgb, var(--ef) 85%, #000). For each cell compute ring = Chebyshev distance from the centre and set animation-delay = p0 + 2.0 + ring*0.06 s. Dissolve keyframes: scale 1→0, rotate 0→45deg, opacity 1→0, ease-in, with transform-box: fill-box and transform-origin: center. Cells with ring ≥ 6 skip the dissolve and become the frame. Light comes from two layers behind the jaali: a radial-gradient (acc→transparent) with an opacity ramp, and a conic-gradient ray layer at 25% opacity with mix-blend-mode: screen that rotates 4° over 4s. Stencil initials: an SVG <mask> with the initials as black text cuts the rosette, so the glow shows through. Roles: ef = marble, acc = glow and rays, bg = darkness.",
+   "palette_idea": "Nikah/Walima · Marble Gold #2E2418/#F4EAD6/#F4F1EA/#FFFBF3/#2E2418/#7E5F26/#B8913F/#D9A3A3/#6E8F7A (bg/it/ef/cd/ink/ink2/acc/fl/lf). Baraat · Red Sandstone #3C1D14/#F6E3C3/#F2E2CB/#FFF7EA/#3C1D14/#9A3D29/#D4A95C/#C8434F/#5E7A55, with ef set to #B5533C for a sandstone jaali.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Jali",
+    "https://en.wikipedia.org/wiki/File:Portion_of_Jali_Pattern_from_Humayun's_Tomb.svg",
+    "https://en.wikipedia.org/wiki/Islamic_geometric_patterns"
+   ]
+  },
+  {
+   "name": "Kashi Kari (Wazir Khan Tile Mosaic)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.8s: Glazed tiles flip into place in a diagonal wave from top-left to bottom-right, each landing with a tiny bounce, until a full-screen panel of cobalt, turquoise, ochre and white floral and geometric tiles is built.",
+    "1.8-2.5s: A glossy glaze highlight sweeps diagonally across the panel. A central cartouche reads 'Shaadi Mubarak' in Nastaliq, with the couple's names beneath.",
+    "2.5-3.8s: Starting from the centre, tiles flip away edge-on in an expanding diamond, uncovering the card. The outer two rows stay to frame it as a tile border.",
+    "3.8-4.2s: t0 at 3.8s. A glint runs along the remaining border tiles as the text begins."
+   ],
+   "motifs": [
+    "kashi-kari glazed tiles",
+    "guldasta (flower-vase) tiles",
+    "8-point star tiles",
+    "cypress",
+    "Nastaliq cartouche"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Mehndi"
+   ],
+   "why_it_wins": "This is pure Lahore heritage: the Wazir Khan Mosque's tile cladding is described as the most extensive of any Mughal building. The cobalt and turquoise palette stands out among maroon-and-gold invites, and the tile assembly is satisfying and rhythmic.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'kashi', T0 3.8, DEF {b:'kashi' (new tile border; fallback 'double'), n:'letter', d:'wipe', f:'none', lan:false, spk:true}. JS builds a 6×11 grid of .tile divs. Each tile picks (seeded) one of 4 designs drawn as small SVG data-URIs in palette colours: rosette, 8-point star, guldasta vase, cypress. Rebuild the data-URIs when the colours change. Parent perspective: 220cqw; tiles use backface-visibility hidden. Assembly: rotateY(180deg)→0 with delay (col+row)*45ms and a linear() overshoot. Exit: rotateY(0→-90deg) plus opacity, with delay (|col-cx|+|row-cy|)*55ms; rows 0 and 10 and columns 0 and 5 skip the exit. Gloss: a skewed linear-gradient band (rgba(255,255,255,.45)) translating -130%→130% with mix-blend-mode: soft-light. The cartouche is a separate centred element (Gulzar or Noto Nastaliq Urdu) that fades out at 2.5s. Roles: ink2 = cobalt, lf = turquoise, acc = ochre, ef = tile white, fl = terracotta accent.",
+   "palette_idea": "Walima/Nikah · Kashi Blue #0D2A4A/#F3EBD7/#EEF2F7/#FBF7EE/#0F2742/#1F4E99/#C99234/#C7452F/#1F9A9D (bg/it/ef/cd/ink/ink2/acc/fl/lf). Daytime Walima · Turquoise Multan #E3F1F2/#0F3D4A/#F3FAFA/#FFFFFF/#0F3D4A/#0E6E7D/#2A9DB0/#D96C5F/#3E8E7E.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Wazir_Khan_Mosque",
+    "https://en.wikipedia.org/wiki/Kashi_Kari",
+    "https://unsplash.com/s/photos/wazir-khan-mosque"
+   ]
+  },
+  {
+   "name": "Girih Kaleidoscope (Islamic Star Unfolding)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.2s: A lapis-night background. An 8-point star draws itself in gold at the centre, then rings of stars, crosses and hexagons draw outward in staggered strokes, forming a girih rosette that fills the screen.",
+    "1.2-2.4s: The rings counter-rotate slowly (inner clockwise, outer anticlockwise) as turquoise and lapis fills fade in, like a living kaleidoscope. The intro line sits inside the central star.",
+    "2.4-3.4s: The central star grows to fill the frame and its 8 kite-shaped petals fold outward like a flower, revealing the card through a star-shaped window.",
+    "3.4-4.0s: The star window expands past the edges; faint star outlines linger in the card corners.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "8-point star (khatam)",
+    "girih tiling",
+    "arabesque",
+    "kaleidoscope rotation"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "Islamic geometry signals faith and elegance without any figures, so it suits conservative families. The self-drawing pattern is hypnotic and, being pure vector, stays razor-sharp at 4K.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'girih', T0 4.0, DEF {b:'corner', n:'fade', d:'up', f:'dust', lan:false, spk:true}. Generate the geometry in JS at setup: {8/3} star points at radius r, and rings at r×[1, 2.2, 3.6, 5.2] with 8/16/24/32 repeats. Every path gets pathLength=1 and drawK with staggered --d. Rotation: each ring sits in <g class='rg'> with transform-box: view-box and transform-origin: 50% 50%; spin keyframes of ±12deg run over the scene and are finite. Fills: fill-opacity 0→.85 after each stroke completes. Star window: .card uses clip-path: polygon() with the 16 points of an 8-point star. Write two keyframe stops (scale .05 and 3; coordinates outside 0-100% are fine) into a <style> at setup. Polygon interpolation works because the point count is identical. Petal fold: 8 kite paths scaleY(1→0) with transform-origin at their outer tips (transform-box: fill-box). Roles: acc = gold lines, lf = turquoise, ink2/bg = lapis.",
+   "palette_idea": "Nikah/Walima · Midnight Gold #0B1630/#EADFC4/#EFE6D2/#FBF6EC/#13213F/#6E5016/#C9A233/#9C2A4A/#1C9A97 (bg/it/ef/cd/ink/ink2/acc/fl/lf). Baraat · Emerald Darbar #062A22/#F1E6C8/#EFE3C6/#FBF6EA/#0D2B24/#0F6B55/#C59A3E/#A8323E/#1C7A5F.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Islamic_geometric_patterns",
+    "https://scrapbox.io/craftyart1010/Create_Stunning_Muslim_Marriage_Invitation",
+    "https://videohive.net/category/after-effects-project-files?term=islamic"
+   ]
+  },
+  {
+   "name": "Mor Pankh (Peacock Fan Reveal)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: A stylised Mughal-miniature peacock steps in from the left to bottom-centre with a gentle head bob.",
+    "0.8-2.2s: Its train lifts and fans open. 24 feathers rotate from folded to their fan angles (−80°…80°), centre first, then outward. Each eyespot shimmers turquoise and gold as it settles, and the fan gives a quick quiver at 2.0s.",
+    "2.2-3.0s: The fan glows into a radiant halo, with the couple's initials appearing at its centre.",
+    "3.0-4.2s: The camera rises into the fan and the feathers sweep outward past the frame, revealing the card. The bird fades, and two feathers remain as corner ornaments.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "peacock (mor)",
+    "feather eyespots",
+    "Mughal miniature styling",
+    "jewel tones"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "Peacocks were favourites of Mughal painters and are one of the most common subjects in Pakistani truck art. The jewel-tone fan is a show-stopping, very shareable moment.",
+   "css_svg_feasibility": 3,
+   "build_notes": "key 'mor', T0 4.0, DEF {b:'corner', n:'slide', d:'up', f:'dust', lan:false, spk:true}. One feather <symbol> is reused by 24 <use> elements, each with a --a target angle and a delay. The symbol has a shaft path, a barb fan drawn as a gradient-filled teardrop with fine hairline strokes, and an eyespot of nested ellipses (lf, ink2-blue, an acc ring, a dark pupil). The group's transform-origin is the rump point in viewBox units (transform-box: view-box; transform-origin: 180px 520px). Opening: rotate var(--a0) (near 0) → var(--a) with cubic-bezier(.2,.8,.2,1). The quiver is a short rotate ±1.2deg keyframe at 2.0s on a separate inner group. Bird body: a flat stylised silhouette with a #1E5BA8 → lf neck gradient and a crest of 3 dots; the walk is translate plus a steps(4) head bob. Sweep-out: each feather goes to scale 3, rotates ±20deg and fades. Keep it flat in the miniature style, because realistic SVG peacocks look cheap.",
+   "palette_idea": "Baraat/Mehndi · Peacock Jewel #06251F/#EFE6C8/#EDE4CC/#F7F3E6/#0B2B26/#0D6359/#C9A040/#7A2E8E/#0F7A6A (bg/it/ef/cd/ink/ink2/acc/fl/lf); feather blue #1E5BA8. Walima · Peacock Pastel #E6F0EC/#1F3B36/#F2F7F4/#FFFFFB/#1F3B36/#1C6B62/#B8913F/#8E6BB0/#3E8E7E.",
+   "references": [
+    "https://www.npr.org/transcripts/1075168735",
+    "https://festival.si.edu/2002/the-silk-road/nomads-painted-truck/smithsonian",
+    "https://creativeboom.com/inspiration/shahina-ahmed"
+   ]
+  },
+  {
+   "name": "Badshahi Chaand (Moonrise over Badshahi Mosque)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.2s: A dusk sky gradient (indigo → plum → apricot horizon) above the silhouette of the Badshahi Mosque (three domes, four minarets) along the lower third. Stars twinkle in and tiny city lights flicker on.",
+    "1.2-2.4s: A thin crescent rises behind the central dome with a soft halo, and a flock of pigeons crosses the sky.",
+    "2.4-3.2s: The crescent fills into a full moon as its shadow slides away, a symbol of completion. 'With the blessings of Allah…' appears beneath it.",
+    "3.2-4.4s: The moon swells into a luminous circle that washes the screen with light, and the card appears inside the glow. The mosque silhouette sinks to become a skyline footer on the card.",
+    "4.3s: t0."
+   ],
+   "motifs": [
+    "Badshahi Mosque silhouette",
+    "crescent to full moon",
+    "stars",
+    "pigeons",
+    "Lahore skyline"
+   ],
+   "best_events": [
+    "Baraat",
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "A Lahore landmark plus the crescent is instantly local and unmistakably Muslim. It reads like a film poster and works beautifully for night baraats.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'chaand', T0 4.3, DEF {b:'arch', n:'hand', d:'up', f:'dust', lan:true, spk:true}. Silhouette: one SVG path (domes from arcs, minarets as rectangles with chhatri caps) filled with color-mix(in srgb, var(--bg) 70%, #000). Sky: a linear-gradient from var(--bg) through color-mix(in srgb, var(--bg) 60%, var(--fl)) to color-mix(in srgb, var(--acc) 70%, #fff), plus 4% static noise to prevent H.264 banding. Stars: 60 seeded dots with twK infinite (infinite loops don't lengthen the video). Moon: an SVG circle with a <mask> holding a black circle that translates away, turning the crescent into a full moon. The halo is a radial-gradient with mix-blend-mode: screen. Swell: the moon group scales 1→14 (transform-origin at the moon's centre) under a white-gold overlay opacity, and the card fades in beneath it. Birds: small V paths flapping via scaleY steps(2) infinite, flying via translate. Optional photo version: an <img> of Unsplash photo-1758714144057 (Badshahi at sunset) or photo-1531804308561 (minaret under stars, already portrait) with a 55% bg-colour gradient overlay. Use <img>, not a CSS background, so html2mp4 waits for it.",
+   "palette_idea": "Baraat · Dusk Lahore #1A1440/#F5E8D4/#F1E3CF/#FBF6EC/#1E1938/#62386F/#C99A48/#C4577A/#2E5E5A (bg/it/ef/cd/ink/ink2/acc/fl/lf). Walima · Midnight Gold #0B1630/#EADFC4/#EFE6D2/#FBF6EC/#13213F/#6E5016/#C9A233/#9C2A4A/#1C9A97. Nikah night with a dark card · Cosmic Navy #070B1F/#E8E1FF/#EDE8DA/#0E1430/#F3E9D2/#F0CF85/#F0CF85/#E7A1C1/#7FB6B0. Moon #FFF3D6.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Badshahi_mosque",
+    "https://unsplash.com/photos/badshahi-mosque-at-sunset-with-dramatic-sky-XkA0rziC9sc",
+    "https://unsplash.com/photos/badshahi-mosque-minaret-in-lahore-6Ppkk8rIhvk"
+   ]
+  },
+  {
+   "name": "Shaadi Wala Ghar (The Wedding House Lights Up)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: A night street with a flat-illustrated Lahori haveli facade (jharokha balconies, an arched gate, wooden shutters), all dark.",
+    "0.8-2.4s: Cascading strings of fairy lights switch on from the roof downward in waves, the way Pakistani families light up the shaadi house: warm white and gold with a few red and green bulbs. A 'Shaadi Mubarak' marquee over the gate lights up letter by letter.",
+    "2.4-3.2s: The central jharokha's shutters swing open, warm light floods out, and the intro line glows in the window.",
+    "3.2-4.6s: The camera dollies into the window (scene scale 1→5 around it). The window arch frames the card, which fills the screen, while the light strings stay behind as twinkling bokeh.",
+    "4.5s: t0."
+   ],
+   "motifs": [
+    "shaadi-house lighting",
+    "haveli and jharokha",
+    "marquee sign",
+    "fairy-light strings",
+    "bokeh"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki",
+    "Baraat"
+   ],
+   "why_it_wins": "Every Pakistani knows the lit-up 'shaadi wala ghar', so the scene is pure nostalgia and joy, perfect for dholki and mehndi nights. The push-in through the window is cinematic.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'ghar', T0 4.5, DEF {b:'double', n:'letter', d:'up', f:'dust', lan:true, spk:true}. Facade: flat SVG shapes in color-mix tints of bg; no gradients needed. Lights: draw about 20 vertical strings × 18 bulbs once as an SVG pattern of circles. Switch them on with a mask, linear-gradient(to bottom, #000 var(--y), transparent calc(var(--y) + 8%)), where @property --y animates 0%→100%; that is one animation instead of 360 elements. A second, sparse layer of seeded bulbs runs twK infinite for twinkle. Marquee: letters as spans with staggered opacity steps. Shutters: two small divs rotating ±105deg on Y, with perspective on the window. Dolly: wrap the scene in .ghar-sc with transform-origin at the window centre and scale 1→5 (ease-in, cubic-bezier(.6,0,.9,.5)). At 4.2s the .card starts at scale(.2) placed at the window and grows to 1, zoomK-style. Bulb colours: #FFE3A3, #FFF1C9, var(--fl), var(--lf). Optional photo: the Unsplash string-light bokeh photo-1544438369-a34666f8ff77, blurred behind the card.",
+   "palette_idea": "Mehndi/Baraat · Night Lantern #0B0F2A/#FFE7C2/#FFF1D9/#FFF6E3/#2A1A12/#A44A1F/#C98E35/#E86B5A/#3F6C70 (bg/it/ef/cd/ink/ink2/acc/fl/lf); facade #2C1E3A. Walima · Champagne Onyx #0E0E14/#EDE3CF/#F3EADB/#FFFCF5/#1C1A22/#7A5E2E/#C9A65C/#D29A95/#7C8C7A.",
+   "references": [
+    "https://www.stylemepretty.com/2024/03/22/this-custom-clear-tent-at-the-brides-family-home-was-adorned-with-26000-twinkle-lights/amp",
+    "https://www.markaz.app/shop/product/red-lantern-string-lights-for-weddings-festivals/656050",
+    "https://unsplash.com/photos/string-lights-with-bokeh-lights-background-5j7EenhzU2s"
+   ]
+  },
+  {
+   "name": "Patang Bazi (Basant Kite Delivery)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.0s: A bright spring sky (mustard-gold to sky blue) over old-Lahore rooftops along the bottom. Four kites in pink, green, purple and mustard bob and drift.",
+    "1.0-2.2s: One large kite carrying the couple's initials swoops toward the camera on a curved path, its tail ribbons fluttering, while the other kites drift aside.",
+    "2.2-3.0s: A playful 'bo-kata!' beat: the string snaps and retracts, and the kite tumbles once and flips to face the camera, filling the frame.",
+    "3.0-4.2s: The kite's diamond expands into the card (a diamond clip that grows past the edges). Its tail ribbons become ribbons on the card, and mustard-flower (sarson) petals drift down.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "patang (kites)",
+    "dor (string)",
+    "old Lahore rooftops",
+    "sarson yellow",
+    "tail bows"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki",
+    "Mayun"
+   ],
+   "why_it_wins": "Basant is Lahore's own festival, and it returned in February 2026 after a 19-year ban, so the kite is a fresh, joyful and very local hook. It is bright, playful and nothing like the usual gold-and-maroon invite. Keep it whimsical: the festival remains controversial because of kite-string injuries, so never show glass-coated string.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'patang', T0 4.0, DEF {b:'single', n:'slide', d:'slide', f:'petal' (petals recoloured sarson yellow), lan:false, spk:false}. Kite: an SVG diamond with cross spars and a tail of 3 bows; the bows swing with an infinite rotate. Swoop: either use offset-path: path('M -40 520 C 80 380, 300 420, 180 300') with offset-distance 0→100% and offset-rotate: auto 45deg, or the no-motion-path trick (an outer wrapper translates X with ease-in-out, an inner wrapper translates Y with ease-out, giving a smooth curve). The offset-path coordinates are in the 360×640 design space html2mp4 lays out at; for the 340px preview, scale a 360×640 motion box by a JS-set --k. String: a line from the kite to off-screen bottom; the snap is scaleY(1→0) toward the bottom. Diamond reveal: .card clip-path: polygon(50% a, b 50%, 50% c, d 50%) keyframes, from a small diamond to one far outside the box. Rooftops: flat silhouettes with water tanks and a minaret.",
+   "palette_idea": "Mehndi · Basant Sky #FBE7A1/#3B2A0E/#FFF6D5/#FFFBEA/#3B2A0E/#B02D60/#C98A06/#E5487A/#2FA36B (bg/it/ef/cd/ink/ink2/acc/fl/lf); sky gradient #FFE7A3→#9FD3F2; kites #F2C230, #E5487A, #2FA36B, #7B4FC9. Daytime Walima · Mint Peach #EAF4EE/#2E3B36/#F6FBF8/#FFFDF9/#2A3631/#A94F3A/#B98E47/#EFA48A/#79B595.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Basant_(festival)",
+    "https://en.wikipedia.org/wiki/Festivals_in_Lahore"
+   ]
+  },
+  {
+   "name": "Kabootar ka Paigham (Doves Bring the Garland)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.2s: Misty dawn. Two white doves fly in from left and right, carrying between their beaks a strand of jasmine and roses with a small gold heart locket at its centre.",
+    "1.2-2.0s: They meet at top-centre and hover; the garland sags into a gentle curve and the locket swings.",
+    "2.0-2.8s: The locket opens (its two halves swing apart) with a sparkle burst, and the initials glow inside.",
+    "2.8-4.0s: The doves rise and exit through the top corners. The garland drops and settles as the card's top border, while the card blooms out from the locket point in a soft radial reveal.",
+    "3.9s: t0."
+   ],
+   "motifs": [
+    "white doves / pigeons",
+    "jasmine-and-rose haar",
+    "heart locket",
+    "dawn mist"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "Gentle, pure and universal: messenger birds are a classic romantic image in Urdu poetry and film. Watching the garland fall into place as the border is a satisfying 'everything fits' moment.",
+   "css_svg_feasibility": 3,
+   "build_notes": "key 'kabootar', T0 3.9, DEF {b:'garland', n:'hand', d:'up', f:'petal', lan:false, spk:true}. Dove: three wing poses as separate <g> elements in one SVG, shown in turn by an opacity keyframe with steps(3) on a 0.36s infinite loop (no SMIL); the body bobs via translate. Flight paths: nested translate wrappers (as in 'patang') or offset-path. Garland: an SVG path whose shape morphs via the CSS d property from a taut line to a sag curve (Chromium animates d: path(...) when both paths have the same commands). Beads come from stroke-dasharray: 0 3.2 with stroke-linecap: round, in two offset layers (fl roses, ef jasmine). Locket: two heart halves rotating ±120deg on Y in a perspective parent. Finish: the garland path cross-fades into the existing .b-g garland border, so the border is the real one. Reveal: a radial mask from the locket position, using the same @property --m trick as 'rose'.",
+   "palette_idea": "Nikah/Walima · Sage Nikah #E7EDE4/#2B352C/#F4F2EA/#FFFEF9/#26302A/#4F6B4C/#B08F4E/#D79F99/#7F9B7A (bg/it/ef/cd/ink/ink2/acc/fl/lf); doves #FFFFFF with shadow #C9D3D6. Baraat · Shahi Maroon #2A0A12/#F6E3C3/#F3E3C8/#FFF8EE/#3A1016/#8C1D2C/#C9A04E/#B3203A/#2F6B4F (white doves glow on maroon).",
+   "references": [
+    "https://www.krikey.ai/digital-invitations/nikkah-invitation"
+   ]
+  },
+  {
+   "name": "Dupatta Unveil (Bridal Veil Lift)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.0s: The card sits blurred beneath a sheer red net dupatta with a gold gota border and scattered sequins that twinkle. The veil breathes with a slow wave.",
+    "1.0-2.0s: Intro text sits on the veil: 'Ek naya safar…' / 'We invite you to the Baraat'. Tassels (latkan) at the corners swing.",
+    "2.0-3.6s: The veil lifts from its bottom edge and floats off toward the top-right with a flowing ripple. The sequins catch the light as it moves, and the card's blur clears (6px → 0).",
+    "3.6-4.2s: The veil exits and a matching gota border draws onto the card.",
+    "3.8s: t0."
+   ],
+   "motifs": [
+    "red bridal dupatta",
+    "gota border",
+    "sequins (sitare)",
+    "latkan tassels"
+   ],
+   "best_events": [
+    "Baraat",
+    "Nikah"
+   ],
+   "why_it_wins": "The bride's red dupatta is the emotional heart of a Pakistani baraat. This reveal is literally an unveiling, tender and dramatic, and the sheer fabric looks luxurious in motion.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'dupatta', T0 3.8, DEF {b:'gota' (new) or 'double', n:'hand', d:'up', f:'dust', lan:false, spk:true}. Veil: a div with an SVG net pattern (tiny diamonds) in var(--fl) at 55% opacity, plus a gota edge (acc stripes from repeating-linear-gradient with a scalloped mask). Flowing bottom edge: an inner SVG with a sine-like path animated via the CSS d property (3 keyframes, same command count). Lift: keyframes on translate, rotate and skewX (e.g. 0 → translate(35%,-70%) rotate(12deg) skewX(-8deg) → off-screen) with cubic-bezier(.55,.05,.35,1). Sequins: 25 seeded dots inside the veil with twK. Card blur: filter: blur(1.6cqw) → 0 on the .card wrapper, only during 2.0-3.6s. Filters are costly at 4K, so keep that window short and never animate backdrop-filter. Tassels: a small SVG with the sw sway.",
+   "palette_idea": "Baraat · Royal Ruby #14060A/#F7E6CF/#F4E2CF/#FFF7F2/#3B0D16/#9C1530/#D2AC62/#B3122E/#2C5E3B (bg/it/ef/cd/ink/ink2/acc/fl/lf); veil #C0152F at 55%. Walima/Nikah · Ivory Blush #F4E7E1/#4A2E33/#F9EFEA/#FFFDFB/#43282E/#9C4A5E/#B88A68/#E39AAA/#8FAA91 (blush net, rose-gold gota).",
+   "references": [
+    "https://en.wikipedia.org/wiki/Dupatta",
+    "https://unsplash.com/photos/red-and-gold-floral-textile-riV3lfWZoOg"
+   ]
+  },
+  {
+   "name": "Rang Bhari (Watercolour Ink Bloom)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.6s: Cold-press watercolour paper texture with a faint pencil sketch of an arch.",
+    "0.6-2.4s: Drops of pigment (blush, sage, gold) fall and bloom outward with organic, darker-rimmed edges; the blooms overlap and mix.",
+    "2.4-3.6s: The blooms spread to cover the frame and a floral illustration emerges inside the colour. A final large wash of the card colour clears a calm centre for the text.",
+    "3.6-4.2s: Gold-leaf flecks shimmer on the blooms.",
+    "3.8s: t0."
+   ],
+   "motifs": [
+    "watercolour florals",
+    "gold leaf",
+    "paper texture",
+    "pencil sketch"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Mehndi"
+   ],
+   "why_it_wins": "Modern couples love a hand-painted look that is soft, artistic and calm. A bloom that seems to be painted live feels bespoke rather than templated.",
+   "css_svg_feasibility": 3,
+   "build_notes": "key 'bloom', T0 3.8, DEF {b:'single', n:'fade', d:'up', f:'none', lan:false, spk:true}. Each bloom is an SVG circle with a radial-gradient fill (lighter centre, darker rim, mimicking watercolour edge darkening). All blooms pass through ONE shared static filter (feTurbulence baseFrequency .02, numOctaves 2 → feDisplacementMap scale 18) for ragged edges. Animate r via CSS (r is a CSS property in Chromium) or transform scale, never the filter itself: CSS cannot keyframe filter attributes, and html2mp4 cannot seek SMIL. Use mix-blend-mode: multiply. Card reveal: an SVG <mask> reusing the same bloom group, so the card appears exactly where the colour spreads. For 4K speed, limit it to 8 blooms and set the filter region tightly (x/y/width/height). Gold flecks: 30 small polygons with a gold gradient and twK.",
+   "palette_idea": "Walima · Watercolour Blush #F3EDE4/#4A4040/#F7F2EA/#FFFDF9/#3D3A3A/#8C5B66/#B8924E/#E8A0A8/#9DB69A (bg/it/ef/cd/ink/ink2/acc/fl/lf). Mehndi · Basant Sky #FBE7A1/#3B2A0E/#FFF6D5/#FFFBEA/#3B2A0E/#B02D60/#C98A06/#E5487A/#2FA36B (hot-pink and mehndi-green pigments).",
+   "references": [
+    "https://weddingsutra.com/planning/looking-for-wedding-invitation-inspiration-turmeric-inks-innovative-digital-invites-will-leave-your-guests-in-awe"
+   ]
+  },
+  {
+   "name": "Shalimar Bagh (Paper-Cut Mughal Garden Fly-Through)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.2s: Layered paper-cut scenery pops up from the bottom like a pop-up book: a sky with sun, the marble pavilion with cusped arches, cypress trees left and right, the central water channel with fountains, and rose beds in front. Each layer casts a soft paper shadow.",
+    "1.2-2.4s: The fountains play (dashed water jets), petals drift, and the layers drift at different speeds as the camera slowly pushes in.",
+    "2.4-3.8s: The camera flies through the central arch. Foreground layers scale up fast and slide off the sides, and the arch grows to fill the screen with the card inside it.",
+    "3.8-4.4s: The arch outline remains as the card's arch border.",
+    "4.2s: t0."
+   ],
+   "motifs": [
+    "Shalimar Gardens / charbagh",
+    "cypress (sarv)",
+    "fountains and water channel",
+    "cusped arches",
+    "paper-cut layers"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Mehndi"
+   ],
+   "why_it_wins": "Lahore's Shalimar Gardens are a UNESCO-listed Mughal garden. Layered paper-cut depth looks handcrafted and premium, and the fly-through gives real cinematic depth on a phone.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'shalimar', T0 4.2, DEF {b:'arch', n:'hand', d:'up', f:'petal', lan:false, spk:false}. Six absolutely positioned SVG layers, back to front: sky, pavilion, back cypress, channel and fountains, front cypress, rose bed. Each has filter: drop-shadow(0 .6cqw .8cqw rgba(0,0,0,.22)); static drop-shadows are fine. Pop-up: rotateX(-90deg→0) with transform-origin bottom, parent perspective 260cqw, staggered 0.12s. Drift: translateX by depth (front ±3cqw). Fly-through: each layer scales from 1 to 1+depth*2.2 with transform-origin at the arch centre (50% 52%) and ease-in; the front layers also translate outward and fade. Fountains: vertical paths with stroke-dasharray and an infinite dashoffset loop. Make the final arch path identical to the .b-arch border path so the hand-off is seamless. Reference photo for colours and composition: the Unsplash Naulakha pavilion, photo-1792332446550.",
+   "palette_idea": "Walima · Paper Garden #F9E4D4/#5A4844/#F4EDE2/#FFFBF6/#3F3532/#8A4757/#B98E4F/#E07A8A/#5E8C6A (bg/it/ef/cd/ink/ink2/acc/fl/lf); paper tones #EBC8B8 and #D8A99B; water #8FC7D1. Baraat · Red Sandstone #3C1D14/#F6E3C3/#F2E2CB/#FFF7EA/#3C1D14/#9A3D29/#D4A95C/#C8434F/#5E7A55 (sunset-toned layers).",
+   "references": [
+    "https://weddingsutra.com/planning/looking-for-wedding-invitation-inspiration-turmeric-inks-innovative-digital-invites-will-leave-your-guests-in-awe",
+    "https://en.wikipedia.org/wiki/Shalimar_Gardens,_Lahore",
+    "https://unsplash.com/photos/B9IveywUm1A"
+   ]
+  },
+  {
+   "name": "Pop-up Kitaab (Mughal Storybook)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: A closed hardbound book rests on a dark table. Its tooled leather cover is maroon with gold tooling and a central medallion bearing the initials.",
+    "0.8-1.8s: The cover swings open on its left hinge, revealing the first spread.",
+    "1.8-3.0s: A pop-up scene rises from the gutter in three layers: a Mughal palace arch, then the groom on a white horse on the left page and the bride's doli on the right.",
+    "3.0-4.4s: The camera tilts and zooms into the pop-up arch; its opening frames the card, which expands to full screen.",
+    "4.3s: t0."
+   ],
+   "motifs": [
+    "tooled leather book",
+    "pop-up paper layers",
+    "palace arch",
+    "groom on horse",
+    "doli"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "Storybook romance with tactile 3D; 3D book invitations are a strong trend on template marketplaces. It tells the couple's story in one beat.",
+   "css_svg_feasibility": 3,
+   "build_notes": "key 'kitaab', T0 4.3, DEF {b:'arch', n:'letter', d:'up', f:'dust', lan:false, spk:true}. Book: the front cover has two faces (outside leather, inside endpaper) with backface-visibility hidden. It rotates rotateY(0→-180deg) around the left edge inside a parent with perspective:200cqw. Page shading is a linear-gradient overlay darkening toward the gutter. Pop-up layers: SVGs with transform-origin bottom center, rotateX(-90deg→0), staggered 0.25s. The figures are flat, faceless silhouettes: the groom with a sehra on a white horse, and a doli with curtains. Zoom: the scene scales 1→4.5 around the arch centre, then cross-fades to the flat .card; never leave live text inside 3D. Tooling: stroke patterns in var(--acc) on the cover; the medallion uses the .xin initials.",
+   "palette_idea": "Baraat · Velvet Maroon #3A0812/#F3DDB5/#F1E0C2/#FFF8EE/#3B0B16/#8C1A2E/#D4AC58/#5A0F1F/#2D5A3D (bg/it/ef/cd/ink/ink2/acc/fl/lf); pages #F5EBD6; sky #CFE3E8. Walima · Emerald Darbar #062A22/#F1E6C8/#EFE3C6/#FBF6EA/#0D2B24/#0F6B55/#C59A3E/#A8323E/#1C7A5F (emerald leather).",
+   "references": [
+    "https://videohive.net/item/popup-book/22289260",
+    "https://www.capcut.com/explore/3d-book-invitation",
+    "https://weddingsutra.com/planning/looking-for-wedding-invitation-inspiration-turmeric-inks-innovative-digital-invites-will-leave-your-guests-in-awe"
+   ]
+  },
+  {
+   "name": "Mehndi mein Naam (Henna Draws Itself, Find the Groom's Name)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.6s: A warm marigold background. Two open palms (flat, stylised) rise into frame side by side.",
+    "0.6-2.6s: Henna patterns draw themselves on both palms in henna-brown: vines, paisleys (buta), nets and fingertip caps, with dots popping at the ends of the strokes.",
+    "2.6-3.4s: A magnifying-glass circle glides over the right palm and stops. Inside the lens, the groom's name, hidden in the pattern, appears enlarged, with a playful sparkle and 'Mil gaya!'.",
+    "3.4-4.6s: The palms part to the sides like a book opening, and the card rises between them. Henna vines extend from the palms to form its border.",
+    "4.5s: t0."
+   ],
+   "motifs": [
+    "mehndi hands",
+    "paisley (buta)",
+    "hidden-name tradition",
+    "marigold",
+    "henna-cone dots"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki",
+    "Mayun"
+   ],
+   "why_it_wins": "Hiding the groom's name in the bride's henna is a much-loved mehndi game, so the invite becomes a little story guests enjoy. The bright marigold palette is exactly the mehndi mood.",
+   "css_svg_feasibility": 3,
+   "build_notes": "key 'mehndi', T0 4.5, DEF {b:'corner', n:'hand', d:'slide', f:'petal' (marigold petals), lan:false, spk:true}. Hands: one simplified palm-and-fingers path, mirrored for the left hand, filled with a warm neutral skin tone (#E3B48C, with 2 alternates in the UI). Henna: 40-60 short paths with pathLength=1 and drawK, staggered by JS via --d. Strokes use color-mix(in srgb, var(--ink) 70%, #7A2E12) with round caps; dots appear via popK. Hidden name: an SVG <text> in a script font (~1.6cqw) placed along the palm. The lens is a circular clipPath containing a <use> of the hand group scaled ×2.5 around the lens centre, plus a ring and handle; the lens group translates along 2 keyframes. Parting: each hand translates ±60cqw on X and rotates ±8deg (ease-in-out). Henna border: the existing corner flourishes, recoloured henna brown.",
+   "palette_idea": "Mehndi · Marigold #F49A26/#3A1A05/#FFE7B8/#FFF6DE/#3A1A05/#A8264E/#2E7D32/#E2426B/#3F8A3A (bg/it/ef/cd/ink/ink2/acc/fl/lf); henna #7A2E12. Dholki · Bangle Carnival #5B1A6E/#FFF1F7/#FFE3F1/#FFF7FB/#3A0F45/#B0186A/#D69500/#FF3E8A/#16A085.",
+   "references": [
+    "https://www.cathaypacific.com/cx/en_GB/inspiration/travel/look-indias-henna-tradition.html",
+    "https://unsplash.com/photos/hands-adorned-with-henna-and-marigold-garlands-ZVRwm75I4S8",
+    "https://aishafaisal.gumroad.com/l/bxaye"
+   ]
+  },
+  {
+   "name": "Jhoomar (Crystal Chandelier)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.4s: A dark ballroom with a faint damask wall. A crystal chandelier descends on its chain, swaying gently, its crystals catching points of light.",
+    "1.4-2.4s: The bulbs ignite tier by tier from the bottom; the warm glow expands with soft lens rays.",
+    "2.4-3.2s: The light swells into a white-gold bloom that fills the screen.",
+    "3.2-4.2s: The bloom recedes to reveal the card. The chandelier, now small, hangs at the top of the card as an ornament with a gentle crystal twinkle.",
+    "3.6s: t0."
+   ],
+   "motifs": [
+    "crystal chandelier (jhoomar)",
+    "ballroom damask",
+    "light bloom",
+    "crystal drops"
+   ],
+   "best_events": [
+    "Walima",
+    "Reception"
+   ],
+   "why_it_wins": "Most walimas are held in hotel ballrooms or marquees, and the chandelier is shorthand for luxury. The flash-to-card transition is clean and elegant.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'jhoomar', T0 3.6, DEF {b:'double', n:'fade', d:'up', f:'dust', lan:false, spk:true}. Chandelier SVG: 3 tiers of arcs with hanging crystal drops (one diamond <symbol> reused about 60 times). Candle bulbs are radial-gradient circles, which are cheaper and sharper than feGaussianBlur. Descent: translateY(-100%) → 0 with a spring linear(); sway: a damped rotate (3, -2, 1, 0 deg) around the chain top. Ignite: bulb opacity 0→1, staggered by tier. Bloom: a full-stage radial-gradient overlay (#FFF6E0 → transparent) with mix-blend-mode: screen, opacity 0→.92→0. After the bloom, the chandelier group scales to .32 and moves to the card's top centre, where it stays as the ornament with an infinite twinkle. Damask wall: a low-contrast SVG pattern in color-mix(in srgb, var(--bg) 94%, #fff). Optional photo background: Unsplash photo-1792758152684 (a candle chandelier on black), blurred under the card.",
+   "palette_idea": "Walima · Champagne Onyx #0E0E14/#EDE3CF/#F3EADB/#FFFCF5/#1C1A22/#7A5E2E/#C9A65C/#D29A95/#7C8C7A (bg/it/ef/cd/ink/ink2/acc/fl/lf). Baraat · Royal Ruby #14060A/#F7E6CF/#F4E2CF/#FFF7F2/#3B0D16/#9C1530/#D2AC62/#B3122E/#2C5E3B. Crystals #E8F1FF.",
+   "references": [
+    "https://www.harpersbazaararabia.com/?p=238203",
+    "https://unsplash.com/photos/sjYFLjWmpuo"
+   ]
+  },
+  {
+   "name": "Lollywood Premiere (Cinema Countdown & Hand-Painted Poster)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.6s: A film-leader countdown, 3-2-1, with a circular sweep, film grain, scratches and projector flicker.",
+    "1.6-2.4s: Red velvet curtains under a spotlight; marquee bulbs chase around a 'NOW SHOWING' sign.",
+    "2.4-3.6s: The curtains part and lift into swags, revealing a hand-painted retro film poster. The couple appear as faceless illustrated leads under the title 'Hamza weds Ayesha' in bold Urdu and English lettering, with the tagline 'A Love Story — Releasing 12.12.2026'.",
+    "3.6-4.6s: The poster settles into the card layout with credits-style details: 'Starring Hamza & Ayesha · Presented by both families · Venue …'.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "Lollywood hand-painted poster",
+    "film-leader countdown",
+    "marquee bulbs",
+    "velvet curtains",
+    "credits block"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki",
+    "Save the date"
+   ],
+   "why_it_wins": "Funny, nostalgic and highly shareable with younger guests. Lahore's hand-painted cinema posters are a proud local art form.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'cinema', T0 4.0, DEF {b:'single', n:'slide', d:'slide', f:'none', lan:false, spk:true}. Countdown: @property --a {syntax:'<angle>'}, and a circle with conic-gradient(from 0deg, rgba(255,255,255,.22) var(--a), transparent 0) sweeping 0→360deg once per number. The numbers 3/2/1 swap via opacity keyframes with steps. Grain: a static SVG noise tile whose background-position jumps with steps(8) infinite, for deterministic flicker; scratches are 2 thin lines with jumpy translate steps. Curtains: two divs with repeating-linear-gradient folds. Parting is scaleX(1→.28) from the outer edges, plus skewY(4deg) and translateY(-6%) for the swags. Marquee bulbs: dots with staggered blink steps. Poster: Rozha One or Abril Fatface for Latin, Lalezar or Gulzar for Urdu, using SVG text with paint-order: stroke fill and thick dark outlines for a sign-painter look. The final card is the 'poster' layout variant.",
+   "palette_idea": "Mehndi · Lollywood #120607/#FFE9B0/#F6E7C1/#F6E7C1/#1E1210/#A8182A/#B87F0E/#C21F33/#1F7A6B (bg/it/ef/cd/ink/ink2/acc/fl/lf); bulbs #FFE08A. Walima black-tie premiere · Champagne Onyx #0E0E14/#EDE3CF/#F3EADB/#FFFCF5/#1C1A22/#7A5E2E/#C9A65C/#D29A95/#7C8C7A.",
+   "references": [
+    "https://asiasociety.org/blog/asia/interview-lahores-last-lollywood-poster-artist-looks-back-50-year-career",
+    "https://homegrown.co.in/homegrown-creators/how-censorship-cemented-the-legacy-of-pakistans-most-iconic-film-posters"
+   ]
+  },
+  {
+   "name": "Akhbar ki Surkhi (Spinning Newspaper Headline)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.6s: In old-film style, a newspaper spins in from the distance, making three full turns while scaling 0.05→1, with ghost trails.",
+    "1.6-2.8s: It lands with a thump and a small bounce. The masthead reads 'The Lahore Shaadi Times', the headline 'BREAKING: Hamza & Ayesha to tie the knot!', with the date in the sub-head. A red 'EXCLUSIVE' stamp thuds on.",
+    "2.8-4.0s: The camera zooms into the boxed article, which expands to fill the screen as the card, in newspaper-style columns: Baraat, Venue, Time, RSVP.",
+    "3.8s: t0."
+   ],
+   "motifs": [
+    "spinning newspaper",
+    "masthead and headline",
+    "halftone couple illustration",
+    "rubber stamp"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Save the date",
+    "Walima"
+   ],
+   "why_it_wins": "A classic film gag that makes everyone smile. It is typography-led, so it stays readable, and the headline format puts the date front and centre.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'akhbar', T0 3.8, DEF {b:'single', n:'fade', d:'up', f:'none', lan:false, spk:false}. Spin: rotate 1080deg→0 plus scale .05→1 with cubic-bezier(.2,.7,.3,1); trails are 2 duplicate low-opacity copies with 60 and 120 ms extra delay. Landing: scale keyframes 1→1.04→1 plus a translateY bump. Fonts: UnifrakturCook or Playfair Display Black for the masthead, Old Standard TT or Playfair for headlines, Lora for body text. Halftone: a radial-gradient dot pattern masked by a simple couple silhouette. Stamp: popK from scale 1.6 and rotate(-14deg) to 1, with a short shake. Zoom: the page scales to 3.2 with transform-origin at the article box, then cross-fades to the newspaper-styled .card (cd = newsprint, thin column rules in ink).",
+   "palette_idea": "Fun · Newsprint #2B2B2B/#F2EDE1/#F2EDE1/#F2EDE1/#1A1A1A/#B3202A/#B3202A/#B3202A/#4A5A4A (bg/it/ef/cd/ink/ink2/acc/fl/lf). Vintage · Sepia #3B2F25/#F1E4CC/#EFE2C8/#EFE2C8/#2A2118/#8A2C1F/#8A2C1F/#8A2C1F/#5B6B4B.",
+   "references": [
+    "https://apracticalwedding.com/save-the-date-ideas",
+    "https://shortgenius.com/blog/save-the-date-videos"
+   ]
+  },
+  {
+   "name": "Aarsi Mushaf (The First-Glance Mirror)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.0s: An ornate silver hand-mirror with a filigree frame floats in against a draped red dupatta; its glass is fogged.",
+    "1.0-2.0s: A soft light sweep clears the fog, revealing the couple's names written mirror-reversed in the glass: the moment the couple first see each other in the mirror.",
+    "2.0-2.8s: The mirror turns around 180° so the names read correctly, with a sparkle along the filigree.",
+    "2.8-4.2s: The mirror's oval grows to fill the screen, revealing the card; the filigree becomes an oval frame around the names.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "Arsi Mushaf hand-mirror",
+    "silver filigree",
+    "red dupatta drape",
+    "mirror-reversed names"
+   ],
+   "best_events": [
+    "Nikah",
+    "Baraat"
+   ],
+   "why_it_wins": "A tender ritual specific to subcontinental Muslim weddings, famously re-used by the Bhutto-Zardari family. It tells a 'first glance' story, and its silver palette breaks away from the usual all-gold look.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'aarsi', T0 4.0, DEF {b:'double', n:'hand', d:'up', f:'dust', lan:false, spk:true}. Mirror: an SVG oval with a filigree ring (one small scroll motif repeated 24× around the ellipse via rotate) and a handle below. The glass is a silver linear-gradient (#E6E9EE→#9AA3AD). Fog: a white radial-gradient blob layer, cleared by a moving mask (@property --p animates the mask gradient position 0%→100%). Mirrored names: a text group with scaleX(-1). Turnaround: the mirror group rotates rotateY(0→180deg) in a perspective parent with two faces (front: mirrored names, back: correct names) and backface-visibility hidden. Expand: .card clip-path from ellipse(12% 16% at 50% 44%) to ellipse(120% 120% at 50% 50%). Show only the mirror and the dupatta; never depict the Quran (part of the real ritual) as imagery.",
+   "palette_idea": "Baraat/Nikah · Silver Mirror #3B0A16/#F6E6D9/#E6E9EE/#FFF8F3/#2E0E15/#9A1530/#9AA3AD/#A3162E/#4F6F5C (bg/it/ef/cd/ink/ink2/acc/fl/lf). Walima · Lilac Silver #E9E4F2/#2F2A45/#F4F1FA/#FFFFFF/#2A2540/#5F4B93/#8E95A8/#C3A1D6/#8FB3A8.",
+   "references": [
+    "https://ranasafvi.com/the-arsi-mushaf-ceremony/amp/",
+    "https://www.geo.tv/latest/333420-bakhtawar"
+   ]
+  },
+  {
+   "name": "Sone ki Mohar (Gold-Foil Letterpress)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: A macro view of thick cotton card stock with visible fibres under soft studio light.",
+    "0.8-1.8s: A brass die carrying the couple's monogram descends, presses with a slight 2% squash, and lifts away.",
+    "1.8-2.6s: The monogram is left debossed in gold foil, and a specular glint sweeps across it.",
+    "2.6-4.2s: The rest of the card letterpresses in line by line, each line settling from scale 1.04 with a tiny inner shadow, as the camera pulls back from the macro view to the full card.",
+    "2.8s: t0 (the text cascade overlaps the pull-back)."
+   ],
+   "motifs": [
+    "brass die",
+    "gold foil",
+    "letterpress deboss",
+    "cotton paper",
+    "monogram"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Engagement"
+   ],
+   "why_it_wins": "Quiet luxury: tactile, minimal and expensive-looking, the print-shop craft that high-end card makers sell, now in motion.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'foil', T0 2.8, DEF {b:'single', n:'fade', d:'up', f:'none', lan:false, spk:false}. Paper: cd plus a static SVG noise layer (fibres) at 5% multiply. Die: a div with a brass linear-gradient and a mirrored monogram. The press is translateY plus scale 1.25→1 with a box-shadow that tightens, an 80 ms scaleY(.98) squash, then the lift. Deboss: a text-shadow pair in cqw (-0.15cqw -0.15cqw 0 rgba(0,0,0,.22), 0.15cqw 0.15cqw 0 rgba(255,255,255,.8)). Foil: background: linear-gradient(110deg, #8C6A2B, #E9CF7A 40%, #FFF4C8 48%, #B8913F 56%, #9A7432) with background-clip:text and background-size 300%; the glint is a background-position animation. Pull-back: the card wrapper scales 2.2→1 with transform-origin at the monogram, overlapping the text cascade (lines keep the existing data-o delays).",
+   "palette_idea": "Walima · Cotton Foil #E9E2D6/#2C2A28/#F6F1E8/#F8F4EC/#2C2A28/#6B5634/#B8892F/#C9A2A0/#8B9A86 (bg/it/ef/cd/ink/ink2/acc/fl/lf). Baraat · Oxblood Foil #4A0E1A/#F8F2EA/#F1E8DC/#F8F2EA/#3A0E18/#7E1B2D/#B8892F/#7E1B2D/#5E6E55.",
+   "references": [
+    "https://party.alibaba.com/asset/pakistani-wedding-invitation-cards",
+    "https://english-wedding.com/?p=110644"
+   ]
+  },
+  {
+   "name": "Fanoos Udaan (Sky-Lantern Release)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.2s: A night sky over a garden silhouette. Dozens of paper lanterns rise from below at different speeds, flickering warm.",
+    "1.2-2.4s: One larger lantern drifts toward the camera, the couple's initials cut into its paper like a silhouette.",
+    "2.4-3.4s: It comes so close that its glow fills the screen with warm amber.",
+    "3.4-4.2s: The glow settles into the card's background while small lanterns keep rising behind the card edges.",
+    "3.8s: t0."
+   ],
+   "motifs": [
+    "sky lanterns (fanoos)",
+    "night garden",
+    "warm glow",
+    "cut-paper initials"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "Magical and cinematic with a very warm mood. It is a moving-sky scene, so it is clearly different from the static hanging-lantern ornament already in the studio.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'fanoos', T0 3.8, DEF {b:'arch', n:'hand', d:'up', f:'none', lan:false, spk:true}. JS generates 30 lanterns with seeded size (4-9cqw), x position (0-100%) and duration (5-9s), plus negative delays so the sky is already full at frame 1. riseK translates each one from 110% of stage height to -20% (use --H in cqw), linear and infinite; sway uses the separate rotate property, and flicker is opacity steps(6). Hero lantern: scale .3→9 (transform-origin at its centre) with ease-in, plus a radial glow overlay (mix-blend-mode: screen) whose opacity rises to .9 and settles at .15. Lantern art: a rounded trapezoid with a radial-gradient (#FFE3A3 core → #FF7A3D edge) and a dark base; the initials are cut out via an SVG mask.",
+   "palette_idea": "Mehndi/Baraat · Night Lantern #0B0F2A/#FFE7C2/#FFF1D9/#FFF6E3/#2A1A12/#A44A1F/#C98E35/#E86B5A/#3F6C70 (bg/it/ef/cd/ink/ink2/acc/fl/lf). Walima · Dusk Lahore #1A1440/#F5E8D4/#F1E3CF/#FBF6EC/#1E1938/#62386F/#C99A48/#C4577A/#2E5E5A.",
+   "references": [
+    "https://unsplash.com/photos/silhouette-photography-of-land-under-a-crescent-moon-during-golden-hour-lDJHQp-3AuI"
+   ]
+  },
+  {
+   "name": "Aatish Baazi (Baraat Fireworks Monogram)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: A night sky. Three rockets streak up from the bottom with sparkling trails.",
+    "0.8-2.4s: Fireworks burst in gold, red and green on a dhol-like rhythm; the sparks fly out, droop with gravity and fade.",
+    "2.4-3.2s: A final big burst forms a heart, then its sparks regroup into the couple's initials.",
+    "3.2-4.2s: The initials glow, then the sparks rain down and land along the card's border as it draws itself, and the card appears.",
+    "3.8s: t0."
+   ],
+   "motifs": [
+    "aatishbazi fireworks",
+    "rocket trails",
+    "spark heart",
+    "particle initials",
+    "dhol rhythm"
+   ],
+   "best_events": [
+    "Baraat",
+    "Mehndi"
+   ],
+   "why_it_wins": "Fireworks greet the baraat at Pakistani weddings, and the moment the sparks spell the couple's initials is a genuine wow.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'aatish', T0 3.8, DEF {b:'double', n:'letter', d:'up', f:'dust', lan:false, spk:true}. Each burst: a gravity group (translateY droop, ease-in) contains 24-36 wrappers, each statically rotated to --ang. Inside each wrapper a spark dot translates outward (translateY 0 → -var(--R), ease-out) and fades, with a short linear-gradient tail along its axis. This composes correctly without offset-path. Initials: once document.fonts.ready resolves at setup, draw the initials onto an offscreen canvas, sample about 220 filled pixels, and store them as --tx/--ty per particle. The particles then tween from the heart positions to those targets. Rockets: dots moving up with a fading gradient tail. Sync: put burst times on a beat grid (e.g. every 0.55s, about 110 BPM). Cap the total at about 300 particles for 4K speed.",
+   "palette_idea": "Baraat · Firework Night #05060F/#F7E7C1/#F7EEDA/#FFF8EA/#24142A/#9E2348/#CF9A2A/#FF4D6D/#1FA971 (bg/it/ef/cd/ink/ink2/acc/fl/lf); sparks #FFD36B, #FF4D6D, #3DDC97, #FFFFFF. Dark-card option: Cosmic Navy (cd #0E1430, ink #F3E9D2, ink2/acc #F0CF85).",
+   "references": [
+    "https://en.wikipedia.org/wiki/Baraat"
+   ]
+  },
+  {
+   "name": "Truck Art Tailgate (Phool Patti Panel)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.2s: A full-colour truck-art tailgate panel slides up from the bottom: chevrons, roses, a pair of peacocks, chamak-patti reflective strips, and swinging chains with ghungroo bells. Sign-painter lettering reads 'Shaadi Mubarak' and 'Hamza ♥ Ayesha'.",
+    "1.2-2.6s: The chains and tassels swing, the mirror strips flash in sequence, and a painted banner flaps.",
+    "2.6-3.6s: The tailgate hinges down from its bottom edge like a real truck's, revealing the card behind it with a truck-art border.",
+    "3.6-4.2s: Painted flowers pop onto the card corners.",
+    "3.8s: t0."
+   ],
+   "motifs": [
+    "Pakistani truck art",
+    "chamak patti",
+    "chains and ghungroo",
+    "peacocks and roses",
+    "sign-painter lettering"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki",
+    "Mayun"
+   ],
+   "why_it_wins": "Iconic Pakistani pop art that is proud, loud, joyful and instantly Instagrammable. Truck art has gone global (Haider Ali, fashion campaigns), so it feels both desi and cool.",
+   "css_svg_feasibility": 3,
+   "build_notes": "key 'truck', T0 3.8, DEF {b:'truck' (new), n:'slide', d:'slide', f:'none', lan:false, spk:true}. Panel: a flat SVG built from bold shapes with thick dark outlines (stroke var(--ink), paint-order stroke). It has chevron bands, reused rose and peacock <symbol>s, and mirror strips as small polygons. Mirror flash: a white overlay on each strip with opacity keyframes staggered 80 ms; this is cheaper than a filter. Chains: rows of small ellipses swaying via rotate, with ghungroo circles. Lettering: Lalezar or Jomhuria for Urdu, Rozha One or Bungee for Latin. Tailgate drop: rotateX(0→95deg) with transform-origin bottom in a parent with perspective:180cqw, ease-in with a bounce at the end. The colour count is high, so derive the extra colours from the roles with color-mix instead of hard-coding them.",
+   "palette_idea": "Mehndi · Truck Art Pop #1B0F3A/#FFF4D6/#FFE9A8/#FFF4D6/#1B0F3A/#C4104F/#D99200/#FF2D6F/#00A86B (bg/it/ef/cd/ink/ink2/acc/fl/lf), plus extras #1E88E5, #FF7A00, #FFD400. Alt · Bangle Carnival #5B1A6E/#FFF1F7/#FFE3F1/#FFF7FB/#3A0F45/#B0186A/#D69500/#FF3E8A/#16A085.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Truck_art_in_South_Asia",
+    "https://www.npr.org/transcripts/1075168735",
+    "https://www.birminghammuseums.org.uk/events/pakistani-truck-art-inspired-greeting-cards-with-hira-butt",
+    "https://unsplash.com/photos/a-colorfully-decorated-truck-driving-down-a-street-J4k13M1CILY"
+   ]
+  },
+  {
+   "name": "Ajrak Thappa (Block-Print Stamping)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.4s: Plain off-white cotton cloth fills the frame.",
+    "0.4-2.4s: A carved wooden block (thappa) stamps across the cloth in a grid, left to right and top to bottom. Each stamp leaves an Ajrak star medallion in crimson and indigo, with slight ink irregularity.",
+    "2.4-3.2s: With the pattern complete, a larger block stamps the couple's initials into the central medallion.",
+    "3.2-4.2s: The cloth folds away diagonally like a shawl being draped, revealing the card, while Ajrak bands remain at the top and bottom.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "Ajrak block print",
+    "wooden thappa",
+    "indigo and madder red",
+    "star medallion (jaal)"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Walima",
+    "Nikah"
+   ],
+   "why_it_wins": "Ajrak is Sindh's pride and is presented to guests at weddings as a mark of respect, so Sindhi families love seeing it. The stamping rhythm syncs perfectly with dhol.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'ajrak', T0 4.0, DEF {b:'ajrak' (new), n:'fade', d:'up', f:'none', lan:false, spk:false}. Pattern cell: one SVG <symbol> (an 8-fold star medallion, crimson fill, indigo ground, white dot outlines), laid out by <use> in a 5×9 grid. Stamp: the block div descends (scale 1.15→1 plus translateY) on each grid position, with JS-computed delays in 70 ms steps. On impact, the matching cell's opacity goes 0→1 with a scale 1.03→1 ink squash. Irregularity: a static displacement filter (feTurbulence + feDisplacementMap, scale 1.5) on the pattern layer. Diagonal fold: an overlay clip-path polygon animates from the full rectangle to a triangle in the top-left corner, with a darker 'back of cloth' triangle following the fold line (the classic page-curl approximation).",
+   "palette_idea": "Ajrak · Ajrak Indigo #1C2E6B/#F4EFE6/#F4EFE6/#F7F2E8/#141414/#9E1428/#A3162B/#A3162B/#1C2E6B (bg/it/ef/cd/ink/ink2/acc/fl/lf). For a light Walima version keep the same roles but set bg to #F4EFE6 and it to #141414.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Ajrak",
+    "https://en.wikipedia.org/wiki/Crafts_of_Sindh"
+   ]
+  },
+  {
+   "name": "Zardozi Silai (Gold Embroidery on Velvet)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.6s: A deep velvet backdrop with a soft nap sheen.",
+    "0.6-2.6s: A gold needle travels across the velvet, stitching a Mughal paisley-and-vine motif in gold thread, while sequins and seed pearls pop on at intervals.",
+    "2.6-3.4s: The embroidery completes into a frame around a central oval. The needle exits and light glints along the thread.",
+    "3.4-4.2s: The central oval opens out, revealing the card, and the embroidered frame settles as its border.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "zardozi / tilla embroidery",
+    "velvet",
+    "sequins (sitara)",
+    "seed pearls (moti)",
+    "paisley vines"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "It echoes the handwork on the bridal lehenga, so it feels couture. A needle that leaves gold thread behind it is hypnotic to watch.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'zardozi', T0 4.0, DEF {b:'corner', n:'hand', d:'up', f:'dust', lan:false, spk:true}. Thread: a dashed 'stitch' path (stroke-dasharray 1.2 .6 in user units) revealed by a mask that draws the same path with pathLength=1 + drawK, so the dash pattern stays intact while the reveal advances. Needle: offset-path: path(<same d>) with offset-distance 0→100% on the same timing and offset-rotate: auto, inside a fixed 360×640 motion box. Sequins: circles with a gold radial gradient that pop at preset path percentages; pearls are white circles with a highlight. Velvet: a radial-gradient (fl centre → darker edge) plus 4% static noise for nap. Oval opening: .card clip-path ellipse grows from (20% 14%) to (120% 120%).",
+   "palette_idea": "Baraat · Velvet Maroon #3A0812/#F3DDB5/#F1E0C2/#FFF8EE/#3B0B16/#8C1A2E/#D4AC58/#5A0F1F/#2D5A3D (bg/it/ef/cd/ink/ink2/acc/fl/lf). Walima · Emerald Darbar #062A22/#F1E6C8/#EFE3C6/#FBF6EA/#0D2B24/#0F6B55/#C59A3E/#A8323E/#1C7A5F (use lf as the velvet).",
+   "references": [
+    "https://en.wikipedia.org/wiki/Islamic_embroidery"
+   ]
+  },
+  {
+   "name": "Mehrab Corridor (Arch Arcade Fly-Through)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.0s: A view down a long arcade of cusped Mughal arches receding into soft light, like the Badshahi Mosque's arcades, with a lantern hanging in each arch.",
+    "1.0-3.4s: The camera glides forward. Each arch grows and passes overhead, revealing the next; the lanterns swing and rose petals drift toward the camera.",
+    "3.4-4.2s: The last arch ahead holds the illuminated card. The camera arrives and that arch becomes exactly the card's arch border.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "cusped arches (mehrab)",
+    "arcade perspective",
+    "hanging lanterns",
+    "red sandstone / marble"
+   ],
+   "best_events": [
+    "Baraat",
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "Very simple to build yet deeply cinematic. It works with any palette (white marble for Nikah, red sandstone for Baraat) and lands seamlessly on the arch border.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'mehrab', T0 4.0, DEF {b:'arch', n:'hand', d:'up', f:'petal', lan:true, spk:false}. Six copies of one arch-frame SVG (an evenodd path forming a wall with a multifoil arch hole, plus inlay lines in var(--ef)), stacked with --k = 0..5. Each layer animates scale from 0.55^k to 0.55^(k-6), so layer k passes the camera in turn, with roughly linear timing and opacity fading to 0 above scale 3. Delays are equal, so the motion is continuous; transform-origin 50% 46%. Interior shading: each deeper layer is darker by color-mix(…, #000 k*8%). The light at the end is a radial-gradient of #FFE2A8. The last layer's arch path is the .b-arch path, so the hand-off is pixel-aligned. Lanterns reuse the existing lantern SVG with the sw sway.",
+   "palette_idea": "Baraat · Red Sandstone #3C1D14/#F6E3C3/#F2E2CB/#FFF7EA/#3C1D14/#9A3D29/#D4A95C/#C8434F/#5E7A55 (bg/it/ef/cd/ink/ink2/acc/fl/lf); arch walls #A8452F→#6E2A1C. Nikah/Walima · Marble Gold #2E2418/#F4EAD6/#F4F1EA/#FFFBF3/#2E2418/#7E5F26/#B8913F/#D9A3A3/#6E8F7A (white marble arches).",
+   "references": [
+    "https://en.wikipedia.org/wiki/Badshahi_mosque",
+    "https://weddingsutra.com/planning/looking-for-wedding-invitation-inspiration-turmeric-inks-innovative-digital-invites-will-leave-your-guests-in-awe",
+    "https://unsplash.com/photos/a-view-of-a-castle-through-an-archway-wBuhQE8n4sg"
+   ]
+  },
+  {
+   "name": "Sitaron ki Baraat (Constellation Couple)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.0s: A deep night sky; stars twinkle into view and a crescent hangs at the top.",
+    "1.0-2.4s: Lines connect chosen stars to draw two minimalist constellations: a groom with a sehra on the left and a bride in a dupatta on the right (or simply their initials).",
+    "2.4-3.2s: A shooting star streaks from groom to bride, and its trail curls into a heart.",
+    "3.2-4.2s: The camera drifts into the heart, the stars soften into gold dust, and the card fades in.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "constellations",
+    "shooting star",
+    "crescent",
+    "star dust"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima",
+    "Save the date"
+   ],
+   "why_it_wins": "'Written in the stars' (qismat) is a romantic idea in Urdu poetry. The look is minimal and elegant, and it suits dark-mode cards perfectly.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'sitare', T0 4.0, DEF {b:'single', n:'hand', d:'up', f:'dust', lan:false, spk:true}. Background stars: seeded dots with twK infinite. Constellations: predefined point lists in a 100×178 viewBox (one for each figure), or points generated from the initials by sampling a canvas at setup. Lines are a polyline with pathLength=1 + drawK, and the nodes pop with popK. Shooting star: a small bright dot with a linear-gradient tail, moved by translate along 2 keyframes; the heart is a path drawn right after it (drawK). Zoom: a wrapper scales 1→3 at the heart, then cross-fades to the card. With the dark Cosmic Navy card, set the .bism, names and details to the light ink.",
+   "palette_idea": "Nikah, dark card · Cosmic Navy #070B1F/#E8E1FF/#EDE8DA/#0E1430/#F3E9D2/#F0CF85/#F0CF85/#E7A1C1/#7FB6B0 (bg/it/ef/cd/ink/ink2/acc/fl/lf); lines #BFD1FF at 60%. Walima, light card · Midnight Gold #0B1630/#EADFC4/#EFE6D2/#FBF6EC/#13213F/#6E5016/#C9A233/#9C2A4A/#1C9A97.",
+   "references": [
+    "https://unsplash.com/photos/white-crescent-moon-in-black-background-XBw-GqBMquA"
+   ]
+  },
+  {
+   "name": "Sheesh Mahal (Mirror-Mosaic Light Wave)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.0s: A dark chamber; a single candle flame appears at bottom-centre.",
+    "1.0-2.4s: Light ripples outward across a full-screen mosaic of hundreds of tiny convex mirror chips set in floral patterns. Each chip flashes as the wave passes, and flowers emerge in light.",
+    "2.4-3.2s: The whole ceiling glows, and a central mirror medallion shows the initials.",
+    "3.2-4.2s: The mosaic pieces fly outward toward the camera and fade, revealing the card; the edge pieces stay as a glittering border.",
+    "4.0s: t0."
+   ],
+   "motifs": [
+    "Sheesh Mahal aina-kari",
+    "convex mirror chips",
+    "candlelight",
+    "floral mosaic",
+    "gold seams"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "Lahore Fort's Palace of Mirrors is legendary. A ripple of light through thousands of mirrors is pure glamour and stands apart from every other opening.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'sheesh', T0 4.0, DEF {b:'double', n:'fade', d:'up', f:'dust', lan:false, spk:true}. JS builds about 400 small polygons (triangles, diamonds, hexagons) in one SVG on a floral mask grid, giving each a --dist from the flame (setup only). Flash: a fill-opacity keyframe 0.25→1→0.55 with delay dist*1.2ms (the light wave), plus an opacity flash on a white highlight polygon per chip. Gold seams: the same grid drawn again as a stroke-only copy in var(--acc). Shatter: each chip translates outward along (x-cx, y-cy), normalised × 70cqw, with rotate, scale 1.8 and opacity → 0. Delay by inverse distance so the centre goes first; edge chips (dist above a threshold) stay. Candle: a teardrop flame with a small scaleY steps flicker. Keep it to one SVG of simple polygons; 400 elements animate fine at 4K.",
+   "palette_idea": "Baraat/Walima · Mirror Onyx #0A0A0F/#F2E6CF/#DDE6EE/#FFF9F0/#1A1612/#7F5F2C/#C9A45C/#D47A86/#6F8F86 (bg/it/ef/cd/ink/ink2/acc/fl/lf); chips #DDE6EE/#B9C6D3; candle #FFC46B. Walima · Champagne Onyx #0E0E14/#EDE3CF/#F3EADB/#FFFCF5/#1C1A22/#7A5E2E/#C9A65C/#D29A95/#7C8C7A.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Sheesh_Mahal_(Lahore_Fort)",
+    "https://en.wikipedia.org/wiki/Lahore_Fort"
+   ]
+  },
+  {
+   "name": "Choori Portal (Glass-Bangle Ripple)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.2s: Rainbow glass bangles roll in from both sides, bounce gently against each other, and stack concentrically at the centre.",
+    "1.2-2.4s: The stack spins in alternating directions with glints running around each bangle; the intro line appears inside the smallest ring.",
+    "2.4-3.8s: The bangles expand outward one after another like ripples, each passing the camera, revealing the card at the centre.",
+    "3.8-4.0s: t0 at 3.6s. The last ring fades out at the edges as the text begins."
+   ],
+   "motifs": [
+    "glass bangles (choorian)",
+    "concentric rings",
+    "rainbow glints"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Mayun",
+    "Dholki"
+   ],
+   "why_it_wins": "Bangles are the sound and colour of mehndi night. The ripple portal is playful and joyous, quick to read and great with music.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'choori', T0 3.6, DEF {b:'single', n:'letter', d:'slide', f:'petal', lan:false, spk:true}. Seven bangles as SVG circles with a 2.4cqw stroke. Shine: a second circle in white at 50% with stroke-dasharray .12 .88 (pathLength=1) and a looping dashoffset, giving a moving glint. Roll-in: translate from ±70cqw plus a rotate matched to the circumference, with a damped bounce (linear()). Final stack radii are 8-26cqw. Spin: alternating rotate keyframes. Ripple: each ring scales 1→9 and fades to 0, staggered 0.12s, with .card fadeS underneath. Colours: fl, lf, acc and ink2, plus two color-mix tints.",
+   "palette_idea": "Mehndi · Bangle Carnival #5B1A6E/#FFF1F7/#FFE3F1/#FFF7FB/#3A0F45/#B0186A/#D69500/#FF3E8A/#16A085 (bg/it/ef/cd/ink/ink2/acc/fl/lf). Mayun · Basant Sky #FBE7A1/#3B2A0E/#FFF6D5/#FFFBEA/#3B2A0E/#B02D60/#C98A06/#E5487A/#2FA36B (yellow and green bangles).",
+   "references": [
+    "https://unsplash.com/photos/red-and-gold-floral-textile-riV3lfWZoOg"
+   ]
+  },
+  {
+   "name": "Doli Aayi (Rukhsati Palanquin)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.5s: Dusk with string lights. A decorated doli (palanquin) with red-and-gold drapes and floral strands glides in from the left, bobbing gently. Its carrying poles run off the frame, so no bearers are shown. Petals are tossed from above.",
+    "1.5-2.5s: The doli stops at the centre and its floral curtain flutters in a soft pause.",
+    "2.5-4.0s: The front curtains gather to both sides, warm light glows from inside, and the camera pushes into the opening, which becomes the card.",
+    "4.0-4.4s: t0 at 4.0s. Petals settle on the card's garland border."
+   ],
+   "motifs": [
+    "doli palanquin",
+    "rukhsati",
+    "floral strands",
+    "string lights",
+    "petal shower"
+   ],
+   "best_events": [
+    "Baraat",
+    "Rukhsati"
+   ],
+   "why_it_wins": "The rukhsati is the emotional peak of a Pakistani wedding, and 'doli' is a much-loved image in songs and poetry. Showing only the doli, without bearers, keeps it elegant and easy to animate.",
+   "css_svg_feasibility": 3,
+   "build_notes": "key 'doli', T0 4.0, DEF {b:'garland', n:'hand', d:'up', f:'petal', lan:true, spk:true}. Doli: a flat SVG (a domed roof with a kalgi finial, four posts, drapes in var(--fl) with acc borders, floral strands in ef/fl) on two horizontal poles that run off-screen. Travel: translateX -120%→0 with ease-out. Bob: a separate translate on an inner wrapper, a 0.5s ease-in-out alternate loop with a finite iteration count so it stops on arrival. Curtains: two drape paths scaling scaleX(1→.2) toward their posts (transform-origin at each post). Push-in: the doli group scales 1→6 at the opening with ease-in, then cross-fades to the card. The background string lights reuse the 'ghar' light layer.",
+   "palette_idea": "Baraat · Shahi Maroon #2A0A12/#F6E3C3/#F3E3C8/#FFF8EE/#3A1016/#8C1D2C/#C9A04E/#B3203A/#2F6B4F (bg/it/ef/cd/ink/ink2/acc/fl/lf). Night · Dusk Lahore #1A1440/#F5E8D4/#F1E3CF/#FBF6EC/#1E1938/#62386F/#C99A48/#C4577A/#2E5E5A.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Marriage_in_Pakistan",
+    "https://en.wikipedia.org/wiki/Litter_(vehicle)"
+   ]
+  },
+  {
+   "name": "Sheesha Card (Clear Acrylic Invite)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-1.2s: A clear acrylic panel slides in at a 3D angle over soft terrazzo; its bevelled edges glow with refracted light.",
+    "1.2-2.4s: The panel turns to face the camera. The printed text and a gold-foil monogram resolve on the glass, and its shadow casts faint coloured caustics on the surface.",
+    "2.4-3.4s: A light sweep travels across the glass and the panel settles.",
+    "3.4-4.2s: t0 at 3.4s. The details print in line by line."
+   ],
+   "motifs": [
+    "clear acrylic invitation",
+    "bevel refraction",
+    "gold-foil monogram",
+    "terrazzo",
+    "caustic shadow"
+   ],
+   "best_events": [
+    "Walima",
+    "Engagement",
+    "Nikah"
+   ],
+   "why_it_wins": "Acrylic invitations, often sent in velvet boxes, are the current luxury trend. The transparent look is modern and unlike any paper reveal.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'acrylic', T0 3.4, DEF {b:'none', n:'fade', d:'up', f:'none', lan:false, spk:false}. The panel is the .card itself: cd at 70% alpha (color-mix(in srgb, var(--cd) 70%, transparent)) over a terrazzo background (seeded chips of fl/lf/acc on bg). Add a 0.6cqw inner border of linear-gradient white→transparent for the bevel, and a skewed white gradient band for the sweep (translateX, mix-blend-mode: screen). Entry: rotateY(-35deg) rotateX(12deg) plus translate → none inside a perspective parent. Cross-fade the text in only after the rotation ends, keeping text out of 3D. Caustics: two blurred rainbow-gradient ellipses offset as the shadow (static blur, rendered once). Keep the text in ink on the light terrazzo, because white text needs a darker background behind the glass.",
+   "palette_idea": "Walima · Lilac Silver #E9E4F2/#2F2A45/#F4F1FA/#FFFFFF/#2A2540/#5F4B93/#8E95A8/#C3A1D6/#8FB3A8 (bg/it/ef/cd/ink/ink2/acc/fl/lf). Engagement · Terrazzo Clear #EFE9E1/#2E2A27/#FFFFFF/#FBF9F6/#2E2A27/#8A5A44/#B8913F/#E4A99A/#93A88F.",
+   "references": [
+    "https://english-wedding.com/?p=110644",
+    "https://www.theknot.com/content/wedding-invitation-box"
+   ]
+  },
+  {
+   "name": "Angoothi (Ring-Box Zoom-Through)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: A small velvet ring box sits on a satin surface under a spotlight.",
+    "0.8-1.8s: The lid springs open on its hinge; inside, a ring with a solitaire catches the light in star glints.",
+    "1.8-2.8s: The camera pushes in toward the ring until the band's circle frames the screen.",
+    "2.8-4.0s: The camera passes through the ring. Its inner edge becomes a circular window onto the card, which then fills the frame, and the ring settles as a thin gold circle behind the monogram.",
+    "3.8s: t0."
+   ],
+   "motifs": [
+    "velvet ring box",
+    "solitaire ring",
+    "star glints",
+    "satin"
+   ],
+   "best_events": [
+    "Nikah",
+    "Mangni",
+    "Walima"
+   ],
+   "why_it_wins": "Perfect for Nikah and mangni (engagement) invites. The zoom through the ring is a clean, memorable transition that symbolises commitment.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'angoothi', T0 3.8, DEF {b:'single', n:'hand', d:'up', f:'dust', lan:false, spk:true}. Box: two shapes, a base and a lid; the lid rotates rotateX(0→-110deg) around its back hinge in a perspective parent (a short 3D move on a non-text element). Ring: an SVG ellipse band with a gold gradient stroke, and a diamond polygon with white facet lines; the glints are 4-point stars with twK. Push-in: the ring group scales 1→22 around the ring centre with ease-in. At about 12×, switch to a .card clip-path circle whose radius grows from 18% to 150%, so the window matches the ring's inner edge. Satin: soft linear-gradient folds.",
+   "palette_idea": "Nikah/Mangni · Royal Ruby #14060A/#F7E6CF/#F4E2CF/#FFF7F2/#3B0D16/#9C1530/#D2AC62/#B3122E/#2C5E3B (bg/it/ef/cd/ink/ink2/acc/fl/lf; ruby velvet box). Walima · Ivory Blush #F4E7E1/#4A2E33/#F9EFEA/#FFFDFB/#43282E/#9C4A5E/#B88A68/#E39AAA/#8FAA91.",
+   "references": []
+  },
+  {
+   "name": "Shahi Dawat (Silver Cloche Reveal)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.8s: A banquet table with an embroidered runner; a polished silver cloche on a platter slides into the centre.",
+    "0.8-1.6s: Light glints run over the dome, and rose petals are scattered around the platter.",
+    "1.6-2.6s: The cloche lifts with a puff of curling steam, rising and tilting out of the frame.",
+    "2.6-4.2s: The folded invitation lies on the platter, garnished with a rose. It lifts and opens to fill the frame.",
+    "3.8s: t0."
+   ],
+   "motifs": [
+    "silver cloche",
+    "banquet runner",
+    "steam curls",
+    "rose garnish",
+    "platter"
+   ],
+   "best_events": [
+    "Walima",
+    "Dinner / Dawat"
+   ],
+   "why_it_wins": "The walima is literally the wedding feast, so serving the invitation on a silver platter is witty, warm and hospitable without being kitschy.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'dawat', T0 3.8, DEF {b:'double', n:'slide', d:'up', f:'none', lan:false, spk:true}. Cloche: an SVG dome with a silver gradient and a moving highlight (a gradient band clipped to the dome); the lift is translateY(-70%) plus rotate(-12deg) with ease-in-out. Steam: 4-5 soft white blobs, pre-blurred as radial-gradients (no filter), rising with translate, scale and opacity. Platter: an ellipse with a rim highlight. Invitation: folded paper that opens with a rotateX on its top half, then cross-fades to the .card. Runner: an embroidered stripe pattern in fl/acc.",
+   "palette_idea": "Walima · Champagne Onyx #0E0E14/#EDE3CF/#F3EADB/#FFFCF5/#1C1A22/#7A5E2E/#C9A65C/#D29A95/#7C8C7A (bg/it/ef/cd/ink/ink2/acc/fl/lf). Garden Walima · Emerald Darbar #062A22/#F1E6C8/#EFE3C6/#FBF6EA/#0D2B24/#0F6B55/#C59A3E/#A8323E/#1C7A5F.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Walima"
+   ]
+  },
+  {
+   "name": "Sunehri Qalam (Golden Calligraphy Brush Strokes)",
+   "category": "opening",
+   "storyboard": [
+    "0.0-0.6s: Ivory paper; the tip of a gold qalam (reed pen) appears top-right.",
+    "0.6-2.6s: Three broad gold brush strokes sweep diagonally from right to left, following the direction of Arabic script. Each wipes in a band of the card behind it, with ink pooling at the stroke ends.",
+    "2.6-3.4s: A final calligraphic swash draws an elegant flourish under where the names will sit.",
+    "3.4-4.0s: The strokes fade to a subtle gold texture at the card's edges.",
+    "3.6s: t0."
+   ],
+   "motifs": [
+    "qalam (reed pen)",
+    "gold ink strokes",
+    "calligraphic swash",
+    "right-to-left motion"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "Calligraphy is the most revered art in Islamic culture. Bold brush wipes feel modern and editorial while staying culturally rooted.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'qalam', T0 3.6, DEF {b:'none', n:'hand', d:'wipe', f:'none', lan:false, spk:false}. Strokes: three wide SVG paths (stroke-width 30-40 user units, round caps, gold gradient) drawn with pathLength=1 + drawK. The same paths sit inside an SVG <mask> on the card, so the card appears exactly where the strokes pass. Dry-brush edges: one static feTurbulence displacement filter on the stroke group. Pen tip: offset-path along the current stroke path, inside the motion box. Swash: a thin calligraphic path, with variable width faked by two offset strokes.",
+   "palette_idea": "Nikah · Sage Nikah #E7EDE4/#2B352C/#F4F2EA/#FFFEF9/#26302A/#4F6B4C/#B08F4E/#D79F99/#7F9B7A (bg/it/ef/cd/ink/ink2/acc/fl/lf). Walima · Midnight Gold #0B1630/#EADFC4/#EFE6D2/#FBF6EC/#13213F/#6E5016/#C9A233/#9C2A4A/#1C9A97 (gold strokes on navy).",
+   "references": [
+    "https://en.wikipedia.org/wiki/Islamic_calligraphy"
+   ]
+  },
+  {
+   "name": "Dulha-Dulhan Pop Story (Names & Icons)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.4s: An event-colour wash with soft drifting confetti dots.",
+    "0.4-1.2s: The groom's name (e.g. 'Hamza') pops in with a spring (scale 0→1.12→1) in script, with 'Dulha · دولہا' in small Nastaliq beneath.",
+    "1.2-2.0s: A faceless groom icon bounces up into a round, gold-ringed badge: sherwani, turban with kalgi and sehra strands, which sway.",
+    "2.0-2.4s: The groom's badge and name slide left and shrink to 80%.",
+    "2.4-3.2s: A faceless bride icon pops into a matching badge on the right: red lehenga with gota bands, dupatta over the head, and a tikka, jhoomar and nath that glint.",
+    "3.2-4.0s: The bride's name ('Ayesha') pops beneath, with 'Dulhan · دلہن'.",
+    "4.0-4.8s: A calligraphic '&' or a heart pops between them. The badges nudge closer, a mini confetti burst goes off, and 'are getting married' types on.",
+    "4.8-5.4s: Everything zooms into the heart and fades, handing off to the chosen opening."
+   ],
+   "motifs": [
+    "faceless dulha icon (sherwani, kulla/turban, sehra)",
+    "faceless dulhan icon (lehenga, dupatta, tikka, jhoomar, nath)",
+    "gold-ring badges",
+    "heart / ampersand",
+    "confetti"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Mehndi",
+    "Nikah"
+   ],
+   "why_it_wins": "This is the client's own idea, and it matches what caricature-invite sellers charge for. It is personal and joyful, shows at once who is getting married, and the faceless icons suit Muslim families who avoid depicting faces.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'pop', P0 5.4. Layer .pre-l (z 9, opaque bg) fades out over its last 0.4s. Spring easing: linear(0, 1.12 45%, .96 65%, 1.02 82%, 1) (Chromium 113+). Badges: 34cqw circles with a gold-gradient ring (stroke) and an inner tint of the outfit colour. Icons are flat SVGs (viewBox 0 0 100 120). Groom: a head circle (skin tone --sk, 3 tones in the UI); a pagri dome with diagonal fold stripes in var(--acc) and a teardrop kalgi; 9 sehra strands (stroke-dasharray dots, each swaying via rotate); a sherwani trapezoid in var(--ink2) or var(--lf) with buttons. Bride: a head circle; a dupatta arc in var(--fl) with a scalloped acc gota edge; tikka, jhoomar and nath as small acc shapes that twinkle; a lehenga flare with 3 border bands. No eyes or mouth. Order: if the bride's family is hosting (Baraat/Rukhsati) run the bride first; for the Walima (groom's family) run the groom first, read from a 'Whose side?' option. Name text comes from the existing name inputs: letter-by-letter is fine for Latin, but Urdu uses a whole-word right-to-left wipe.",
+   "palette_idea": "Uses the active sample palette: badge ring in acc, groom outfit in ink2 or lf, bride outfit in fl, background bg with it text. Baraat: Royal Ruby. Walima: Ivory Blush. Mehndi: Marigold, with the groom in a white kurta and green shawl and the bride in yellow and green.",
+   "references": [
+    "https://fiverr.com/grafly_studio/caricature-wedding-invite-video",
+    "https://www.krikey.ai/digital-invitations/nikkah-invitation",
+    "https://www.weddingwire.in/wedding-tips/whatsapp-wedding-invitation--c1122"
+   ]
+  },
+  {
+   "name": "Jharokha Duet (Couple in Palace Windows)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.6s: A palace facade with two jharokha balconies, shutters closed, and the intro line 'Two families, one celebration'.",
+    "0.6-1.6s: The left jharokha's shutters open to frame the faceless groom icon, and his name unfurls on a banner hanging below.",
+    "1.6-2.6s: The right jharokha opens to show the bride icon, and her name unfurls on her banner.",
+    "2.6-3.4s: A marigold-and-rose garland swings across between the two balconies, and a heart lantern lights up in the middle.",
+    "3.4-4.2s: The camera pushes into the heart lantern, handing off to the opening."
+   ],
+   "motifs": [
+    "jharokha balconies",
+    "couple icons",
+    "hanging name banners",
+    "garland between windows",
+    "heart lantern"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "A more regal, architectural version of the client's 'groom then bride' sequence that reads like a royal announcement.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'jharokha', P0 4.2. The facade is a flat SVG; the shutters rotate ±105deg on Y in small perspective parents. Banners unroll top→bottom with a clip-path inset, as in 'farman'. The garland morphs from straight to sagging via the CSS d property, with the bead dasharray. Reuse the Pop Story couple icons, and follow the same 'Whose side?' ordering.",
+   "palette_idea": "Baraat · Red Sandstone; Walima · Marble Gold (see the opening palettes); garland in fl and acc.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Jharokha"
+   ]
+  },
+  {
+   "name": "Split-Screen Couple (Two Sides Meet)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.8s: The screen splits diagonally. The groom's half, in his sherwani colour, slides in from the top-left with his name and 'Son of Mr & Mrs …'.",
+    "0.8-1.6s: The bride's half, in her lehenga colour, slides in from the bottom-right with her name and parents.",
+    "1.6-2.4s: The diagonal seam glows, and a calligraphic '&' medallion spins in once and locks at the centre.",
+    "2.4-3.2s: The two halves slide apart along the seam, opening onto the next scene."
+   ],
+   "motifs": [
+    "diagonal split",
+    "outfit colours",
+    "family names",
+    "ampersand medallion"
+   ],
+   "best_events": [
+    "Walima",
+    "Baraat",
+    "Nikah"
+   ],
+   "why_it_wins": "Modern, graphic and respectful to both families: each side's parents are named, which matters in Pakistani etiquette.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'split', P0 3.2. Two full-stage divs with clip-path polygon(0 0, 100% 0, 0 100%) and polygon(100% 0, 100% 100%, 0 100%), translating in from opposite corners. Seam glow: a thin rotated div with an acc linear-gradient and a soft box-shadow. The '&' medallion uses ampK. Exit: translate the halves apart along the diagonal. Parents' names come from new 'Son of / Daughter of' inputs.",
+   "palette_idea": "Groom half in ink2 or lf; bride half in fl; text in it; seam in acc.",
+   "references": [
+    "https://www.degruyterbrill.com/document/doi/10.1515/opli-2019-0019/pdf"
+   ]
+  },
+  {
+   "name": "Bismillah Calligraphy Draw",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.3s: A plain background with a faint gold-noise texture.",
+    "0.3-2.3s: 'بسم الله الرحمن الرحيم' draws itself slowly and smoothly in gold: the outline stroke first, then the fill floods in.",
+    "2.3-3.0s: A soft glow pulse, with a fine ornament line beneath. An optional translation fades in: 'In the name of Allah, the Most Gracious, the Most Merciful'.",
+    "3.0-3.6s: The calligraphy rises and scales to its place at the top of the card (or fades) as the opening begins."
+   ],
+   "motifs": [
+    "Bismillah calligraphy",
+    "gold outline-then-fill",
+    "ornament rule"
+   ],
+   "best_events": [
+    "Nikah",
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "Pakistani cards begin with the Bismillah. Drawing it calmly sets a blessed tone and reassures religious families.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'bism', P0 3.6. An SVG <text> in Amiri, Aref Ruqaa or Scheherazade New (Chromium shapes Arabic correctly in SVG text), using the existing wrK keyframes (stroke-dashoffset, then fill-opacity). Set stroke-dasharray long enough for the glyph outlines, or convert the text to a path with pathLength for precision. If you use a clip wipe, reveal right to left. Never bounce or spin the Bismillah, overlap it with petals, or put effects over it, and keep it fully visible for at least 1.5 s.",
+   "palette_idea": "Gold acc on bg; translation in it.",
+   "references": [
+    "https://scrapbox.io/craftyart1010/Create_Stunning_Muslim_Marriage_Invitation"
+   ]
+  },
+  {
+   "name": "Ayat-e-Mohabbat (Surah Ar-Rum 30:21)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.5s: The background fades in with a very faint girih pattern.",
+    "0.5-3.5s: The verse 'وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً' is revealed line by line with a soft right-to-left wipe.",
+    "3.5-5.0s: The English (or Urdu) meaning fades up beneath: 'And among His signs is that He created for you spouses from among yourselves, that you may find tranquillity in them; and He placed between you affection and mercy.' (Ar-Rum 30:21).",
+    "5.0-5.8s: A gentle fade to the opening."
+   ],
+   "motifs": [
+    "Quranic verse 30:21",
+    "Naskh calligraphy",
+    "faint geometric pattern"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima",
+    "Baraat"
+   ],
+   "why_it_wins": "This is the verse most quoted about marriage and is common on Pakistani cards. Families appreciate seeing it treated with dignity.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'ayah', P0 5.8. Arabic in Amiri or Scheherazade New at 6cqw or more, with a generous line-height (2.0) for the diacritics. Reveal each line with clip-path from inset(0 0 0 100%) to inset(0), a right-to-left wipe, ease-in-out 0.9s per line. Verify the Arabic against quran.com/30/21 before shipping. Hold it still for 2 s after it completes, with no effects over the text.",
+   "palette_idea": "Calm palettes: Sage Nikah or Midnight Gold. Arabic in ink2 or acc, translation in it.",
+   "references": [
+    "https://quran.com/30/21",
+    "https://kalimah-center.com/quran-verses-about-marriage-in-arabic/"
+   ]
+  },
+  {
+   "name": "Qubool Hai (Nikah Acceptance)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.6s: A soft ivory background under a delicate floral arch.",
+    "0.6-1.4s: 'قبول ہے · Qubool hai' writes itself in calligraphy at the centre.",
+    "1.4-2.2s: A second, slightly smaller 'Qubool hai' writes itself above-left.",
+    "2.2-3.0s: A third appears above-right, completing a triangle, and a soft heartbeat glow passes through all three.",
+    "3.0-4.0s: 'Alhamdulillah' appears beneath, and the three phrases gently converge into a gold ring around the couple's initials.",
+    "4.0-4.6s: Hand-off to the opening."
+   ],
+   "motifs": [
+    "'Qubool hai' ×3",
+    "calligraphy",
+    "gold ring with initials",
+    "floral arch"
+   ],
+   "best_events": [
+    "Nikah"
+   ],
+   "why_it_wins": "The three acceptances are the heart of the Nikah ceremony, making this a lovely, specific and emotional intro for Nikah-only invites.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'qubool', P0 4.6. Urdu text in Gulzar or Noto Nastaliq Urdu. Reveal each phrase with a right-to-left clip wipe, never per-letter spans, which break Nastaliq joining. Convergence: each phrase translates to the centre while scaling to .4 and fading, as the ring draws (drawK). Offer it only for Nikah events and keep it optional, since some families feel it should follow rather than precede the Nikah.",
+   "palette_idea": "Sage Nikah or Ivory Blush; text in ink, ring in acc.",
+   "references": []
+  },
+  {
+   "name": "Save-the-Date Calendar Flip",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.8s: A desk calendar with a spiral binding drops in and settles.",
+    "0.8-2.0s: Pages flip quickly from the top through 3-4 months to the wedding month.",
+    "2.0-3.0s: A hand-drawn red-gold heart circles the wedding date, and a small 'Shaadi!' sticker pops on.",
+    "3.0-3.8s: The camera zooms into the circled date, which becomes a circle wipe into the opening."
+   ],
+   "motifs": [
+    "desk calendar",
+    "page flips",
+    "hand-drawn heart circle",
+    "sticker"
+   ],
+   "best_events": [
+    "Save the date",
+    "Walima",
+    "Baraat"
+   ],
+   "why_it_wins": "It puts the date, the one thing guests must remember, front and centre, which is exactly what effective save-the-date videos do.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'cal', P0 3.8. At setup, JS builds the real month grid from the date input (a 7-column CSS grid, with weekday labels in English or Urdu). Flips: page divs rotate rotateX(0→-180deg) with transform-origin top in perspective:160cqw, 0.25s each. Heart circle: a path with pathLength=1 and drawK around the date cell, positioned at setup. Circle wipe: the next layer's clip-path is a circle growing from the date cell's centre.",
+   "palette_idea": "Calendar paper in ef/cd, numbers in ink, heart in fl/acc.",
+   "references": [
+    "https://shortgenius.com/blog/save-the-date-videos"
+   ]
+  },
+  {
+   "name": "Baraat Route Map (Ghar se Venue tak)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.8s: A stylised illustrated city map fades in (a river, a minaret icon, parks), and two pins drop: 'Dulha ka Ghar' and the venue.",
+    "0.8-2.8s: A dotted route draws between them. A tiny decorated car, or the groom on a white horse, travels along it, with dhol icons popping along the way and tiny fireworks on arrival.",
+    "2.8-3.6s: The venue pin bounces and the venue name and baraat time pop up, then hand off to the opening."
+   ],
+   "motifs": [
+    "illustrated map",
+    "map pins",
+    "dotted route",
+    "decorated baraat car / ghori",
+    "dhol icons"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "It doubles as directions: guests see where and when in a fun way. Illustrated maps are already a popular stationery idea.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'map', P0 3.6. The map is a flat SVG (generic streets, a river band, park blobs); never copy a real map service's styling or logo. Route: a path with pathLength=1 drawn via drawK, plus a dashed overlay. Vehicle: offset-path: path(<route d>) with offset-rotate: auto, inside a fixed 360×640 motion box scaled by --k. Pins: popK with a squash on landing.",
+   "palette_idea": "Light map: bg in ef, roads in cd, river in an lf tint, route in acc, pins in fl.",
+   "references": [
+    "https://apracticalwedding.com/save-the-date-ideas"
+   ]
+  },
+  {
+   "name": "Ghori Sawari (Baraat Procession)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.5s: A dusk street with string lights.",
+    "0.5-3.5s: A dhol player walks in from the left beating the drum. Behind him the groom rides a white mare with a decorated saddle and sehra, with friends dancing in silhouette (bhangra arms) behind. Petals fly and small fireworks burst overhead.",
+    "3.5-4.5s: The procession reaches the centre and '<Groom> ki Baraat' lights up in marquee bulbs above. Everyone exits right, handing off to the opening."
+   ],
+   "motifs": [
+    "groom on ghori",
+    "dhol player",
+    "dancing friends in silhouette",
+    "petals",
+    "marquee"
+   ],
+   "best_events": [
+    "Baraat"
+   ],
+   "why_it_wins": "The baraat procession is the most festive image of a Pakistani wedding and makes the groom's side proud.",
+   "css_svg_feasibility": 3,
+   "build_notes": "key 'ghori', P0 4.5. Side-view silhouettes only, with no faces. Walk cycles: 3-4 pose groups toggled by steps() opacity loops with a finite iteration count, so the video length stays predictable. The horse bobs via translateY steps(2). Parallax: the lights layer moves at 40% speed. Marquee bulbs blink in a staggered sequence.",
+   "palette_idea": "Night Lantern or Shahi Maroon; silhouettes in color-mix(in srgb, var(--bg) 60%, #000); horse in ef.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Baraat",
+    "https://en.wikipedia.org/wiki/Sehra_(headdress)"
+   ]
+  },
+  {
+   "name": "Families ki Taraf se (Handwritten Hosts' Letter)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.6s: A sheet of laid letter paper with a fountain pen resting on it.",
+    "0.6-3.0s: The pen writes line by line, its nib moving as the ink appears: 'Mr & Mrs Tariq Mahmood' / 'request the honour of your presence' / 'at the wedding of their beloved daughter'.",
+    "3.0-3.8s: A family seal stamps beside the signature, with 'Insha'Allah' in small script.",
+    "3.8-4.4s: The letter slides away, or slides into the envelope if the opening is 'env'."
+   ],
+   "motifs": [
+    "fountain pen",
+    "handwritten hosts' line",
+    "family seal",
+    "laid paper"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Nikah"
+   ],
+   "why_it_wins": "Pakistani cards are invitations from the parents, so leading with the hosts' names is proper etiquette and feels personal.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'letter', P0 4.4. Lines in La Belle Aurore, Homemade Apple or Mrs Saint Delafield. Reveal each line with clip-path from inset(0 100% 0 0) to inset(0), with the pen nib translating on X in sync (same duration and easing). The seal uses popK. The hosts' names come from a new 'Hosted by' input.",
+   "palette_idea": "Paper in ef, writing in ink, seal in fl.",
+   "references": [
+    "https://www.degruyterbrill.com/document/doi/10.1515/opli-2019-0019/pdf"
+   ]
+  },
+  {
+   "name": "Rishta Pakka (Family Chat Bubbles)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-0.4s: A generic phone chat screen with no app branding slides up.",
+    "0.4-3.4s: Bubbles type and pop, with typing dots between them: 'Ammi: Mithai le aao!' · 'Abbu: Rishta pakka ho gaya!' · 'Phupho: Shaadi kab hai?' · 'Hamza: 12 December, Insha'Allah'.",
+    "3.4-4.2s: The last bubble zooms to fill the screen and becomes the transition."
+   ],
+   "motifs": [
+    "chat bubbles",
+    "typing indicator",
+    "family banter"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki",
+    "Save the date"
+   ],
+   "why_it_wins": "Chat-style invites are a recognised trend for fun couples, and family banter is relatable and gets shared.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'chat', P0 4.2. A generic UI with no WhatsApp green, icons or logos. Bubbles pop with popK and transform-origin at their tail corner; the typing indicator is three dots with staggered, finite 'up' keyframes. Each line is an editable text field with sensible Roman Urdu defaults.",
+   "palette_idea": "Avoid WhatsApp-like beige and green. Use the sample bg with cd bubbles and fl/lf tints.",
+   "references": [
+    "https://www.weddingwire.in/wedding-tips/whatsapp-wedding-invitation--c1122"
+   ]
+  },
+  {
+   "name": "Dhol Thaap (Dhol Beat Countdown)",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-3.0s: A dhol drum at the centre. On each beat (about every 0.55s) the drum squashes, a colourful shockwave ring expands, and a word pops: 'Dholki' · 'Mehndi' · 'Masti' · '3 · 2 · 1'.",
+    "3.0-3.6s: A final big beat bursts confetti and hands off to the opening."
+   ],
+   "motifs": [
+    "dhol",
+    "shockwave rings",
+    "beat words",
+    "confetti"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki"
+   ],
+   "why_it_wins": "Mehndi is all about the dhol; beat-synced visuals feel alive and pair perfectly with music.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'dhol', P0 3.6. A 'Beat (BPM)' option sets --beat (default 0.55s) at setup, and every beat element uses delay = n × var(--beat). Drum: an SVG cylinder with zig-zag laces in fl/acc; the squash is scale(1.06,.94). Rings: circles scaling 0→3 with a fading stroke. Words pop with popK on the beats.",
+   "palette_idea": "Mehndi Marigold or Bangle Carnival.",
+   "references": [
+    "https://aishafaisal.gumroad.com/l/bxaye"
+   ]
+  },
+  {
+   "name": "Polaroid Love Story",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-1.4s: A polaroid drops and pins onto a twine with a mini clip, showing a doodle: 'First met · 2023'.",
+    "1.4-2.8s: A second polaroid: 'Rishta · 2025'.",
+    "2.8-4.2s: A third: 'Nikah · 2026', with a heart doodle.",
+    "4.2-4.8s: The camera slides along the twine into the third photo, handing off to the opening."
+   ],
+   "motifs": [
+    "polaroids on twine",
+    "doodles",
+    "milestone years"
+   ],
+   "best_events": [
+    "Walima",
+    "Save the date",
+    "Nikah"
+   ],
+   "why_it_wins": "It tells the couple's story warmly. Photos are optional, so doodles work for families who don't want pictures.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'polaroid', P0 4.8. Each polaroid is a white frame div with a drop-shadow and a slight rotation; it falls with a linear() bounce and swings on its clip (a damped rotate). Use an <img> for photos if supplied (html2mp4 waits for <img>), otherwise SVG doodles. The twine is a path.",
+   "palette_idea": "Paper in cd, twine in acc, doodles in ink2.",
+   "references": []
+  },
+  {
+   "name": "Boarding Pass to Forever",
+   "category": "prelude-scene",
+   "storyboard": [
+    "0.0-1.0s: A boarding pass slides out of a slot as if being printed: 'Flight HA 1212 · Lahore → Forever'.",
+    "1.0-2.4s: The fields type in: Passengers Hamza & Ayesha · Date · Boarding (Baraat) 7:30 PM · Gate (venue).",
+    "2.4-3.2s: A laser line scans the barcode, followed by a green tick and 'Boarding confirmed'.",
+    "3.2-3.8s: The pass tears along its perforation, handing off to the opening."
+   ],
+   "motifs": [
+    "boarding pass",
+    "barcode scan",
+    "perforation tear"
+   ],
+   "best_events": [
+    "Walima",
+    "Destination",
+    "Save the date"
+   ],
+   "why_it_wins": "A playful travel theme that modern couples love, laying out the date, time and venue clearly in a fun format.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'boarding', P0 3.8. Fonts: Space Mono or Courier Prime, plus Libre Barcode 128 Text. The slide-out is a translateY with steps-like printer jitter. Typing uses width steps or per-character spans (Latin only). The scan line is a gradient bar translating across. The tear is two halves rotating and translating apart. Avoid real airline names and logos.",
+   "palette_idea": "Ticket in cd with ink text; header strip in ink2; accents in acc.",
+   "references": [
+    "https://apracticalwedding.com/save-the-date-ideas"
+   ]
+  },
+  {
+   "name": "Couple Portrait Badge (Faceless Dulha & Dulhan)",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+0.0-0.6s: A round or arch-shaped badge with a gold ring draws itself at the top of the card.",
+    "t0+0.6-1.2s: The faceless couple (groom left, bride right) fade and scale in; the dupatta edge and sehra strands sway gently on a loop.",
+    "Hold: every 4 s a glint passes over the bride's jewellery."
+   ],
+   "motifs": [
+    "faceless couple",
+    "sehra",
+    "dupatta",
+    "jewellery glints"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Mehndi",
+    "Nikah"
+   ],
+   "why_it_wins": "It personalises the card without photos, and the outfit colours can match what the couple will actually wear.",
+   "css_svg_feasibility": 4,
+   "build_notes": "key 'orn-couple'. Reuse the icons from the Pop Story prelude and add 'Outfit colour' pickers for groom and bride (defaults: ink2 or lf for the groom, fl for the bride). Size it 22-26cqw tall at the top, under the Bismillah, and push the .in content down via a class on .st. The sway is an infinite rotate on the strand groups. A 'No figures' toggle swaps it for a monogram for conservative families.",
+   "palette_idea": "Groom in ink2 or lf, bride in fl, ring in acc; selectable skin tone.",
+   "references": [
+    "https://fiverr.com/grafly_studio/caricature-wedding-invite-video"
+   ]
+  },
+  {
+   "name": "Jhumka Drops",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+0.4-1.2s: Two gold jhumka earrings drop on fine chains from the top corners of the card, bouncing slightly.",
+    "Hold: they swing like pendulums, with the pearl drops lagging behind (secondary motion) and a glint every 3 s."
+   ],
+   "motifs": [
+    "jhumka earrings",
+    "pearl drops",
+    "gold chains"
+   ],
+   "best_events": [
+    "Baraat",
+    "Mehndi",
+    "Walima"
+   ],
+   "why_it_wins": "Jewellery is central to the Pakistani bridal look. Swinging jhumkas bring the still card to life without distracting from the text.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'orn-jhumka'. An SVG jhumka: a dome bell with rows of filigree and 5 pearl drops. The outer group rotates ±6deg (sw keyframes); the pearls sit in an inner group rotating ±4deg with a 0.15s phase lag for secondary motion. Gold gradient. They take the slots the lanterns (.ln) use.",
+   "palette_idea": "Gold in acc; pearls #F7F2E8; small stones in fl/lf.",
+   "references": []
+  },
+  {
+   "name": "Lahore Skyline Footer",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+1.0-2.0s: A silhouette strip rises from the bottom edge: the Badshahi Mosque's domes and minarets, Minar-e-Pakistan, and a Lahore Fort gate.",
+    "Hold: tiny window lights twinkle, with a crescent above the skyline."
+   ],
+   "motifs": [
+    "Badshahi Mosque",
+    "Minar-e-Pakistan",
+    "Lahore Fort gate",
+    "crescent"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Nikah"
+   ],
+   "why_it_wins": "It anchors the card to Lahore, a point of pride for Lahori families and diaspora guests alike.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'orn-skyline'. One SVG path about 18% of the card height, filled with color-mix(in srgb, var(--ink) 85%, var(--cd)), rising via translateY(100%→0). Window lights: 20 seeded dots with twK. When this is on, hide the bottom closing line or move it up.",
+   "palette_idea": "Silhouette in ink at 85%; lights in acc.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Badshahi_mosque",
+    "https://en.wikipedia.org/wiki/Lahore_Fort"
+   ]
+  },
+  {
+   "name": "Postage-Stamp Portraits & Postmark",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+0.6-1.4s: Two perforated postage stamps slide in from left and right, tilted toward each other, showing the faceless groom and bride.",
+    "t0+1.4-1.8s: A circular postmark, 'LAHORE · 12 DEC 2026', thuds on across both stamps with an ink texture."
+   ],
+   "motifs": [
+    "postage stamps",
+    "postmark",
+    "couple portraits"
+   ],
+   "best_events": [
+    "Save the date",
+    "Walima",
+    "Nikah"
+   ],
+   "why_it_wins": "Inspired by a much-praised wedding suite in which stamp portraits of the couple face each other. Charming, witty and very giftable.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'orn-stamps'. The perforated stamp edge is a repeating radial-gradient mask: radial-gradient(circle at 0.6cqw 0.6cqw, transparent .45cqw, #000 .5cqw), with the portrait inside. Postmark: an SVG circle of text on a textPath, plus wavy cancellation lines; it lands with popK and rotate(-12deg).",
+   "palette_idea": "Stamp paper in cd, frames in fl/lf, postmark in ink2 at 80%.",
+   "references": [
+    "https://creativeboom.com/inspiration/shahina-ahmed"
+   ]
+  },
+  {
+   "name": "Jhalar Pearl Fringe Header",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+0.2-1.0s: Strings of pearls and tiny flowers drop from the card's top edge like a stage jhalar or sehra, parting around the Bismillah.",
+    "Hold: the strands sway softly in a wave travelling outward from the centre."
+   ],
+   "motifs": [
+    "jhalar fringe",
+    "pearl strings",
+    "sehra strands"
+   ],
+   "best_events": [
+    "Baraat",
+    "Mehndi",
+    "Nikah"
+   ],
+   "why_it_wins": "It echoes stage décor and the groom's sehra, framing the top of the card festively at a glance.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'orn-jhalar'. 20 short strands of stroke-dasharray dot beads, with a staggered drop (translateY) and an infinite sway (rotate ±3deg, phased by index). The middle strands are shorter so the Bismillah stays clear.",
+   "palette_idea": "Pearls #F7F2E8, beads in acc, flowers in fl.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Sehra_(headdress)"
+   ]
+  },
+  {
+   "name": "Monogram Crest (Cypress & Roses)",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+0.3-1.3s: A gold crest draws itself: two cypress trees flank a cusped arch, roses curl up its sides, and the couple's initials sit inside.",
+    "Hold: a glint crosses the crest every 4 s."
+   ],
+   "motifs": [
+    "monogram",
+    "Mughal cypress (sarv)",
+    "roses",
+    "arch crest"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Baraat"
+   ],
+   "why_it_wins": "It gives the couple a personal emblem they can reuse on social posts. The cypress is the Mughal symbol of eternity.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'orn-crest'. SVG paths with pathLength=1 and drawK; the initials come from .xm1/.xm2. The glint is a moving gradient on a clipped copy of the crest.",
+   "palette_idea": "Lines in acc, roses in fl, cypress in lf.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Shalimar_Gardens,_Lahore"
+   ]
+  },
+  {
+   "name": "Barakallah Du'a Ribbon",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+0.2-1.0s: A slim ribbon cartouche unfurls under the Bismillah, carrying the Prophetic du'a for newlyweds: 'بارك الله لكما وبارك عليكما وجمع بينكما في خير'.",
+    "Hold: static, with no effects over it."
+   ],
+   "motifs": [
+    "du'a for newlyweds",
+    "ribbon cartouche",
+    "Naskh script"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "Many families like a blessing on the card. This one is dignified and small enough not to crowd the names.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'orn-dua'. A ribbon path with folded ends; text in Amiri at 4cqw, revealed with a right-to-left clip wipe. When it is on, mask a band out of the .fall layer so petals and sparkles never cross it.",
+   "palette_idea": "Ribbon in ef with acc edges; text in ink2.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Islamic_calligraphy"
+   ]
+  },
+  {
+   "name": "RSVP & Location Panel",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+2.6-3.2s: A compact panel slides up at the bottom with RSVP names and phone numbers, a pulsing map-pin icon with the venue's short address, and an optional static QR code.",
+    "Hold: the pin pulses gently; the QR code never moves."
+   ],
+   "motifs": [
+    "RSVP",
+    "map pin",
+    "QR code"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Mehndi",
+    "Nikah"
+   ],
+   "why_it_wins": "Pakistani cards list RSVP contacts, and a QR code to the venue's location saves countless 'location bhejo' messages.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'orn-rsvp'. A panel with a 0.5cqw acc border; RSVP lines come from inputs. Generate the QR at setup with a tiny inline QR library or a pre-rendered SVG. Make it at least 26cqw with a quiet zone of at least 2 modules, keep it static, and mask it out of the effect layers.",
+   "palette_idea": "Panel in cd with ink text; pin in fl.",
+   "references": [
+    "https://party.alibaba.com/asset/pakistani-wedding-invitation-cards"
+   ]
+  },
+  {
+   "name": "Mehndi Thaal Candle Glow",
+   "category": "card-ornament",
+   "storyboard": [
+    "t0+0.8-1.6s: A brass mehndi thaal slides up at the bottom of the card, holding a green henna mound, flowers and lit candles.",
+    "Hold: the candle flames flicker and a warm glow pulses."
+   ],
+   "motifs": [
+    "mehndi thaal",
+    "candles (mombatti)",
+    "henna mound",
+    "flowers"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Mayun"
+   ],
+   "why_it_wins": "Girls dancing in with the decorated mehndi thaal and its candles is a signature moment of a Pakistani mehndi.",
+   "css_svg_feasibility": 5,
+   "build_notes": "key 'orn-thaal'. An SVG thaal (an ellipse with an engraved rim pattern) holding a henna mound in lf and flowers in fl/acc. Flames are teardrops with infinite scaleY and opacity steps flicker; the glow is a radial-gradient circle with an opacity pulse. Draw candles, not diyas, to keep the imagery Pakistani-Muslim.",
+   "palette_idea": "Brass in acc, mound in lf, flowers in fl, flame #FFC46B.",
+   "references": [
+    "https://unsplash.com/photos/hands-adorned-with-henna-and-marigold-garlands-ZVRwm75I4S8"
+   ]
+  },
+  {
+   "name": "Parchin Kari (Pietra Dura Vine Border)",
+   "category": "border",
+   "storyboard": [
+    "t0-0.4 → t0+0.2s: A white-marble frame (a 0.9cqw band with a gold inner rule) fades in around the card.",
+    "t0+0.2 → t0+1.6s: An inlaid vine grows clockwise along the frame from the top centre, and at each node a five-petal flower clicks into place in carnelian, lapis and jade inlay with fine gold outlines.",
+    "Hold: every 5 s a soft sheen passes along the marble."
+   ],
+   "motifs": [
+    "parchin kari / pietra dura",
+    "white marble",
+    "inlaid flowers",
+    "gold outline"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "Taj-style stone inlay is the most refined Mughal ornament. It adds luxury while keeping the card light and airy, ideal for a daytime Walima or a Nikah.",
+   "css_svg_feasibility": 5,
+   "build_notes": "class bd-parchin. The frame is one SVG rect path stroked in var(--ef) for marble, with a static vein texture (feTurbulence + feColorMatrix producing grey veins at 10%). Vine: one perimeter path with pathLength=1 and drawK. Flowers are <use> elements placed at path percentages computed at setup with getPointAtLength, with popK delays that match the draw progress. Inlay colours: fl (carnelian), ink2 (lapis), lf (jade); outlines in acc.",
+   "palette_idea": "Best with Marble Gold, Sage Nikah or Ivory Blush.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Pietra_dura"
+   ]
+  },
+  {
+   "name": "Kashi Tile Border",
+   "category": "border",
+   "storyboard": [
+    "t0-0.3 → t0+1.4s: 28 square tiles flip into place clockwise around the card edge, 50 ms apart: cobalt, turquoise, ochre and white floral tiles.",
+    "Hold: a glaze highlight runs around the border every 6 s."
+   ],
+   "motifs": [
+    "kashi-kari tiles",
+    "cobalt and turquoise",
+    "floral rosettes"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Mehndi"
+   ],
+   "why_it_wins": "It frames the card in Lahori tilework with a fresh blue palette, and pairs with the Kashi Kari opening for a seamless hand-off.",
+   "css_svg_feasibility": 5,
+   "build_notes": "class bd-kashi. Reuse the tile data-URIs from the 'kashi' opening. Compute perimeter positions at setup (8 across, 14 down, at 12.5cqw). The flip is rotateY(90deg→0); the highlight is a gradient band moving along each side in sequence (infinite, with an idle segment in its keyframes).",
+   "palette_idea": "Kashi Blue or Turquoise Multan.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Kashi_Kari"
+   ]
+  },
+  {
+   "name": "Truck Art Border",
+   "category": "border",
+   "storyboard": [
+    "t0-0.2 → t0+0.8s: Bold chevron bands wipe in along all four sides, and painted roses bloom in each corner.",
+    "t0+0.8 → t0+1.6s: Chamak-patti strips flash in a chasing sequence; small chains with ghungroo bells hang from the top corners and swing.",
+    "Hold: the mirror chase repeats every 3 s."
+   ],
+   "motifs": [
+    "truck-art chevrons",
+    "painted roses",
+    "chamak patti",
+    "chains and ghungroo"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki",
+    "Mayun"
+   ],
+   "why_it_wins": "It turns any card into a loud, proud and fun truck-art celebration.",
+   "css_svg_feasibility": 4,
+   "build_notes": "class bd-truck. Four strip divs, each with repeating-linear-gradient(45deg, var(--fl) 0 1.4cqw, var(--acc) 0 2.8cqw, var(--lf) 0 4.2cqw, var(--ink2) 0 5.6cqw) and a dark 0.4cqw outline. Corners use a rose <symbol>. Mirror strips are small polygons with a white overlay whose opacity flashes on staggered delays. The chains reuse the jhumka sway.",
+   "palette_idea": "Truck Art Pop or Bangle Carnival.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Truck_art_in_South_Asia",
+    "https://www.birminghammuseums.org.uk/events/pakistani-truck-art-inspired-greeting-cards-with-hira-butt"
+   ]
+  },
+  {
+   "name": "Phulkari Bagh Border",
+   "category": "border",
+   "storyboard": [
+    "t0-0.2 → t0+1.8s: A deep-red band with khaddar texture appears, and geometric phulkari motifs (diamonds, stars) are stitched around the frame row by row in satin darning stitches of golden yellow, orange and pink."
+   ],
+   "motifs": [
+    "phulkari / bagh",
+    "darning stitch",
+    "geometric diamonds",
+    "khaddar"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Mayun",
+    "Dholki"
+   ],
+   "why_it_wins": "Phulkari 'bagh' pieces were traditionally embroidered by grandmothers for a granddaughter's wedding, which makes this deeply Punjabi and emotional.",
+   "css_svg_feasibility": 4,
+   "build_notes": "class bd-phulkari. The motif is an SVG pattern of short parallel strokes (stitches) arranged into diamonds. Reveal it clockwise with a conic mask: @property --p (angle) inside conic-gradient(from 0deg at 50% 50%, #000 var(--p), transparent 0), animating 0→360deg. For stitch sheen, alternate stroke colours and vary the angles slightly.",
+   "palette_idea": "Band color-mix(in srgb, var(--fl) 70%, #000); threads #F2B705, #F57C00, #E91E63 (or acc/fl tints).",
+   "references": [
+    "https://en.wikipedia.org/wiki/Phulkari"
+   ]
+  },
+  {
+   "name": "Ajrak Band Border",
+   "category": "border",
+   "storyboard": [
+    "t0-0.2 → t0+1.2s: Bands of Ajrak pattern stamp in across the top and bottom, block by block from left to right, with rows of white dots between the bands.",
+    "Hold: static."
+   ],
+   "motifs": [
+    "Ajrak",
+    "block print",
+    "white dot rows"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Walima",
+    "Nikah"
+   ],
+   "why_it_wins": "A respectful nod to Sindhi heritage that pairs with the Ajrak Thappa opening.",
+   "css_svg_feasibility": 5,
+   "build_notes": "class bd-ajrak. Reuse the Ajrak cell <symbol> in bands of 8 cells, with 70 ms stamp delays (scale 1.04→1 plus opacity).",
+   "palette_idea": "Ajrak Indigo.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Ajrak"
+   ]
+  },
+  {
+   "name": "Gota Kinari Lace",
+   "category": "border",
+   "storyboard": [
+    "t0-0.3 → t0+0.9s: A gold gota ribbon with a scalloped edge runs around the card (a clockwise clip reveal).",
+    "Hold: a bright shine travels around the ribbon every 4 s, and tiny sequins wink."
+   ],
+   "motifs": [
+    "gota kinari ribbon",
+    "scalloped edge",
+    "sequins"
+   ],
+   "best_events": [
+    "Baraat",
+    "Mehndi",
+    "Nikah"
+   ],
+   "why_it_wins": "Gota is the shimmering trim on every Pakistani bridal and mehndi outfit, so it reads as festive at once.",
+   "css_svg_feasibility": 5,
+   "build_notes": "class bd-gota. The border is 4 divs with gold-striped linear-gradient backgrounds (#8C6A2B, #F3D98A, #B8913F) and a repeating radial-gradient mask for the scallops on the inner edge. The shine is a moving gradient band clipped to the ribbon (infinite, with an idle segment in its keyframes). Sequins are small dots with twK.",
+   "palette_idea": "Gold gota on Royal Ruby, Velvet Maroon or Ivory Blush.",
+   "references": [
+    "https://unsplash.com/photos/red-and-gold-floral-textile-riV3lfWZoOg"
+   ]
+  },
+  {
+   "name": "Mughal Hashiya Margin",
+   "category": "border",
+   "storyboard": [
+    "t0-0.4 → t0+0.6s: Inner rules draw around the text panel: thin gold, then lapis, then gold again.",
+    "t0+0.6 → t0+1.6s: The outer margin fills with a gold floral scroll on a salmon or pistachio ground, fading in from the corners."
+   ],
+   "motifs": [
+    "hashiya (album-page margin)",
+    "gold floral scroll",
+    "coloured rules"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Baraat"
+   ],
+   "why_it_wins": "It makes the card look like an illuminated Mughal album page: scholarly, elegant and distinctive.",
+   "css_svg_feasibility": 5,
+   "build_notes": "class bd-hashiya. Nested rect strokes with pathLength=1 and drawK. The margin ground is solid color-mix(in srgb, var(--fl) 30%, #fff) or color-mix(in srgb, var(--lf) 30%, #fff). The floral scroll is an SVG pattern in acc at 70%, revealed from the corners outward by a radial mask. Keep the vines bird-free and figure-free.",
+   "palette_idea": "Ivory Blush (salmon ground) or Pistachio Walima (pistachio ground), with ink2 lapis rules.",
+   "references": [
+    "https://imp-art.org/article/hashiya/",
+    "https://www.freersackler.si.edu/object/F1996.9/"
+   ]
+  },
+  {
+   "name": "Moti Mala Arch (Pearl-Strung Arch)",
+   "category": "border",
+   "storyboard": [
+    "t0-0.3 → t0+1.2s: Pearls bead along the arch outline one by one, rising from the base up both sides to meet at the apex.",
+    "t0+1.2 → t0+1.6s: Teardrop pearl drops fall into place at intervals and swing.",
+    "Hold: the drops swing gently."
+   ],
+   "motifs": [
+    "pearl strings",
+    "teardrop pearls",
+    "cusped arch"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima",
+    "Baraat"
+   ],
+   "why_it_wins": "Pearls read as bridal and pure, and the beading animation is delicate and satisfying.",
+   "css_svg_feasibility": 5,
+   "build_notes": "class bd-moti. The arch path is stroked with stroke-dasharray 0 2.2 and round caps, which renders as dots. A mask path drawn with drawK reveals it in two halves, base to apex. The drops are <use> elements at computed points, swaying with sw.",
+   "palette_idea": "Pearls #F7F2E8 with acc highlights on any dark palette, or ink2-tinted pearls on light palettes.",
+   "references": []
+  },
+  {
+   "name": "Girih Star Lattice",
+   "category": "pattern",
+   "storyboard": [
+    "From frame 1: the lattice sits static at 8-12% opacity behind the intro and at 5-7% on the card.",
+    "From t0+1s: a wide, soft band of light drifts diagonally across the pattern every 6 s, making it shimmer."
+   ],
+   "motifs": [
+    "8-point stars and crosses",
+    "Islamic tessellation"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "A quiet Islamic texture that adds richness without competing with the text.",
+   "css_svg_feasibility": 5,
+   "build_notes": "pt-girih. An SVG <pattern> built from one star-and-cross tile path. Shimmer: a second copy in var(--acc) at 30%, masked by a moving linear-gradient (@property --g), infinite with an idle segment.",
+   "palette_idea": "acc on bg/cd at low opacity.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Islamic_geometric_patterns"
+   ]
+  },
+  {
+   "name": "Mughal Jaal Trellis",
+   "category": "pattern",
+   "storyboard": [
+    "An ogee trellis with a small buti flower in each cell, tone-on-tone, drifting in a slow 2% parallax during the hold."
+   ],
+   "motifs": [
+    "ogee jaal",
+    "buti flowers"
+   ],
+   "best_events": [
+    "Walima",
+    "Baraat"
+   ],
+   "why_it_wins": "The classic Mughal textile and architecture lattice, elegant on dark velvet or ivory.",
+   "css_svg_feasibility": 5,
+   "build_notes": "pt-jaal. An SVG pattern: the ogee is two mirrored S-curves, plus a 5-petal buti. The drift translates the pattern layer 0→-2cqw with infinite alternate timing; a finite 10 s drift would lengthen the render.",
+   "palette_idea": "color-mix(in srgb, var(--acc) 40%, var(--bg)) on bg; ink2 at 6% on cd.",
+   "references": []
+  },
+  {
+   "name": "Kairi Paisley Damask",
+   "category": "pattern",
+   "storyboard": [
+    "A tone-on-tone paisley (buta) damask at 7%. A foil glint sweeps across it once at t0+1.5s and then every 7 s."
+   ],
+   "motifs": [
+    "paisley (kairi/buta)",
+    "damask"
+   ],
+   "best_events": [
+    "Baraat",
+    "Mehndi"
+   ],
+   "why_it_wins": "Paisley is the most beloved subcontinental textile motif and reads as bridal fabric.",
+   "css_svg_feasibility": 5,
+   "build_notes": "pt-paisley. An SVG pattern of the paisley motif, with the glint done the same way as the girih lattice shimmer.",
+   "palette_idea": "fl or acc tone-on-tone.",
+   "references": []
+  },
+  {
+   "name": "Jamawar Brocade Shimmer",
+   "category": "pattern",
+   "storyboard": [
+    "A woven brocade field of small floral medallions in gold thread. A band of light passes over it so the threads glint, as if the fabric were turning in the light."
+   ],
+   "motifs": [
+    "jamawar / kimkhab brocade",
+    "gold thread",
+    "weave texture"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "Jamawar and kimkhab brocades are heirloom wedding fabrics, so this feels luxurious and tactile.",
+   "css_svg_feasibility": 5,
+   "build_notes": "pt-brocade. Draw the pattern twice: a base in color-mix(in srgb, var(--bg) 94%, #fff), and a gold-thread copy in acc masked by a moving gradient. Add 0.15cqw weave lines via a repeating-linear-gradient at 4% for a fabric feel.",
+   "palette_idea": "Velvet Maroon, Emerald Darbar or Royal Ruby.",
+   "references": []
+  },
+  {
+   "name": "Multani Blue Florals",
+   "category": "pattern",
+   "storyboard": [
+    "Hand-painted-style blue and turquoise florals on white at 10%, static. Optionally, a large central rosette rotates slowly (0.5°/s) behind the intro."
+   ],
+   "motifs": [
+    "Multan blue pottery",
+    "6-petal flowers",
+    "leaves"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah"
+   ],
+   "why_it_wins": "Multan's blue pottery is a famous Pakistani craft, and the pattern feels fresh and cool for daytime events.",
+   "css_svg_feasibility": 5,
+   "build_notes": "pt-multani. An SVG pattern of a 6-petal flower with leaves in ink2 and lf; the rosette layer has an infinite linear spin.",
+   "palette_idea": "Turquoise Multan or Kashi Blue.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Kashi_Kari"
+   ]
+  },
+  {
+   "name": "Starry Night",
+   "category": "pattern",
+   "storyboard": [
+    "Seeded stars twinkle across the background, and about every 5 s a shooting star streaks across the top third."
+   ],
+   "motifs": [
+    "stars",
+    "shooting star"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima",
+    "Baraat"
+   ],
+   "why_it_wins": "Night-sky romance that pairs with the Chaand, Sitare and Fanoos openings.",
+   "css_svg_feasibility": 5,
+   "build_notes": "pt-stars. 60 seeded dots with twK (infinite). The shooting star is an infinite animation whose keyframes stay idle from 0-90% and streak from 90-100%.",
+   "palette_idea": "Stars #FFFFFF/#FFE7A8 on Midnight Gold, Dusk Lahore or Cosmic Navy.",
+   "references": []
+  },
+  {
+   "name": "Jugnu (Fireflies)",
+   "category": "effect",
+   "storyboard": [
+    "From t0: 20-25 soft glowing dots drift on looping curved paths, pulsing brighter and dimmer. A few drift in front of the card edges, never over the names."
+   ],
+   "motifs": [
+    "fireflies (jugnu)",
+    "glow"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Walima",
+    "Nikah"
+   ],
+   "why_it_wins": "Magical, subtle life on the held card.",
+   "css_svg_feasibility": 5,
+   "build_notes": "f:'jugnu'. Each firefly is an outer div translating on X (ease-in-out alternate, 6-11 s) and an inner div translating on Y with a different duration, giving Lissajous paths. The glow is a radial-gradient dot with mix-blend-mode: screen and an opacity pulse. Seeded positions keep them within the outer 18% margins.",
+   "palette_idea": "#FFE9A3 glow on dark palettes; acc on light palettes.",
+   "references": []
+  },
+  {
+   "name": "Gulab Pashi (Rose-Petal Burst)",
+   "category": "effect",
+   "storyboard": [
+    "t0-0.2s: About 40 rose petals burst from the top edge, as if thrown by family at the baraat.",
+    "t0 → t0+3s: The petals flutter down, tumbling in 3D, then thin out to 8-10 slowly falling petals for the hold."
+   ],
+   "motifs": [
+    "rose petals",
+    "gulab pashi"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Nikah"
+   ],
+   "why_it_wins": "Gulab pashi is THE baraat welcome, and 3D tumbling petals look far richer than flat confetti.",
+   "css_svg_feasibility": 5,
+   "build_notes": "f:'gulab'. Each petal is a curved SVG shape with an fl gradient. The fall uses translate keyframes; the tumble is rotateX plus rotateY animations on an inner element, with a slightly darker second layer for the back face. The burst petals are finite and end by t0+3s; the hold petals loop infinitely.",
+   "palette_idea": "fl with color-mix(in srgb, var(--fl) 70%, #000) for the back face.",
+   "references": [
+    "https://en.wikipedia.org/wiki/Baraat"
+   ]
+  },
+  {
+   "name": "Sone ki Chamak (Foil Glint on Names)",
+   "category": "effect",
+   "storyboard": [
+    "At t0+2.5s and then every 4 s, a specular band of light sweeps across the names, the ampersand and the event title, as if the gold foil caught the light."
+   ],
+   "motifs": [
+    "gold foil",
+    "specular glint"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Nikah",
+    "Mehndi"
+   ],
+   "why_it_wins": "A real foil glint is what makes gold look like gold rather than yellow.",
+   "css_svg_feasibility": 5,
+   "build_notes": "fx-glint. HTML names and the event title use background-clip:text with a gold gradient at background-size 300%, animating background-position (infinite, with idle keyframes). For SVG handwriting names, CSS cannot animate gradientTransform and SMIL isn't seekable, so overlay a copy of the text whose <mask> contains a gradient <rect>, and animate that rect's CSS transform.",
+   "palette_idea": "Gold stops #8C6A2B/#E9CF7A/#FFF4C8/#B8913F.",
+   "references": []
+  },
+  {
+   "name": "Bokeh & Light Leak",
+   "category": "effect",
+   "storyboard": [
+    "t0-0.5 → t0+1s: A warm light leak (an amber→rose gradient) sweeps diagonally across once.",
+    "Hold: 12 soft bokeh discs drift slowly behind the card frame (screen blend)."
+   ],
+   "motifs": [
+    "bokeh",
+    "light leak"
+   ],
+   "best_events": [
+    "Walima",
+    "Mehndi"
+   ],
+   "why_it_wins": "It gives a cinematic, filmed-on-camera warmth.",
+   "css_svg_feasibility": 5,
+   "build_notes": "fx-bokeh. The light leak is a large gradient div, pre-blurred via radial-gradients, translating once. The bokeh are seeded discs with soft radial-gradient edges on an infinite drift. Optional photo: the Unsplash bokeh photo-1512320265221 as an <img> at 30%.",
+   "palette_idea": "Leak #FFB86B→#FF7A8A; bokeh in acc/fl tints.",
+   "references": [
+    "https://unsplash.com/photos/bokeh-photography-wallpaper-5AeVXhAD6lc"
+   ]
+  },
+  {
+   "name": "Phuljhari (Sparkler-Written Names)",
+   "category": "effect",
+   "storyboard": [
+    "t0+0.7s: A sparkler tip writes the bride's name in glowing gold, spraying sparks from the moving tip; the written line cools from white-hot to gold.",
+    "t0+1.6s: The same happens for the groom's name."
+   ],
+   "motifs": [
+    "phuljhari sparkler",
+    "sparks",
+    "glowing script"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Baraat"
+   ],
+   "why_it_wins": "Phuljhari sparklers are part of every mehndi and baraat night, and names written in fire are a wow.",
+   "css_svg_feasibility": 3,
+   "build_notes": "n:'sparkler'. Build on the existing 'hand' names mode (SVG text stroke draw). The emitter is a small group on offset-path along a hand-authored baseline path that follows the writing direction (left→right). It emits 3-4 spark particles per 0.1s at seeded angles, all finite. Glow: a duplicate of the text with a static feGaussianBlur that fades out. The stroke colour animates #FFFFFF→acc.",
+   "palette_idea": "Dark palettes: Firework Night, Night Lantern.",
+   "references": []
+  },
+  {
+   "name": "Mehndi Cone Piping (Henna-Piped Names)",
+   "category": "effect",
+   "storyboard": [
+    "t0+0.7s: The names are piped on in thick henna paste (rounded, slightly raised strokes), with a cone tip moving ahead of the line.",
+    "t0+2.5s: The paste 'dries', and its colour shifts from fresh green-brown to deep maroon-orange."
+   ],
+   "motifs": [
+    "henna cone",
+    "piped paste",
+    "drying colour"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Mayun"
+   ],
+   "why_it_wins": "It turns the names into mehndi itself, the perfect detail for a mehndi invite.",
+   "css_svg_feasibility": 4,
+   "build_notes": "n:'henna'. SVG text stroke draw with stroke-width about 2.2 user units, stroke-linecap round and paint-order stroke; the fill fades in last. The drying is a CSS stroke colour animation from #5B4A1E to #8A2E12. The cone is a small triangle translating on X in sync with the draw.",
+   "palette_idea": "Mehndi Marigold, Basant Sky.",
+   "references": [
+    "https://www.cathaypacific.com/cx/en_GB/inspiration/travel/look-indias-henna-tradition.html"
+   ]
+  },
+  {
+   "name": "Bakhoor Smoke Mist",
+   "category": "effect",
+   "storyboard": [
+    "From t0: soft wisps of smoke curl up from the bottom corners and dissolve near the middle, on very slow 8-12 s loops."
+   ],
+   "motifs": [
+    "oud / bakhoor smoke",
+    "mist"
+   ],
+   "best_events": [
+    "Nikah",
+    "Walima"
+   ],
+   "why_it_wins": "It evokes oud and bakhoor, a luxe Arabian-Islamic mood that suits a Nikah.",
+   "css_svg_feasibility": 4,
+   "build_notes": "f:'oud'. 5-6 large pre-blurred blobs (radial-gradient, no live filter) with infinite translate, scale and rotate, at opacity ≤ .18. Use mix-blend-mode: screen on dark palettes and a multiply-tinted version on light ones.",
+   "palette_idea": "Smoke color-mix(in srgb, var(--it) 60%, transparent).",
+   "references": []
+  },
+  {
+   "name": "Gota Confetti Burst",
+   "category": "effect",
+   "storyboard": [
+    "t0-0.1s: Shiny ribbon confetti (gold, pink and green strips, plus sequins) bursts from both lower corners in arcs.",
+    "t0 → t0+2.5s: The strips flip and flutter in 3D as they fall and fade."
+   ],
+   "motifs": [
+    "gota strips",
+    "sequins",
+    "confetti"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Dholki",
+    "Mayun"
+   ],
+   "why_it_wins": "It gives the reveal instant celebration energy.",
+   "css_svg_feasibility": 5,
+   "build_notes": "fx-confetti. 40 strips. Each arc uses nested wrappers with separate X and Y easings; an inner element spins with rotateX and rotateY. All finite, in acc/fl/lf.",
+   "palette_idea": "acc, fl, lf.",
+   "references": []
+  },
+  {
+   "name": "Genda Phool Rain (Marigold)",
+   "category": "effect",
+   "storyboard": [
+    "From t0: marigold petals and a few whole marigold heads fall and spin, thickest at the start and gentle during the hold."
+   ],
+   "motifs": [
+    "marigold (genda)",
+    "petals"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Mayun"
+   ],
+   "why_it_wins": "Marigold garlands and petals are the colour of mehndi and mayun décor in Pakistan.",
+   "css_svg_feasibility": 5,
+   "build_notes": "f:'genda'. A variant of the existing .fall system. Petals are small ruffled orange and yellow SVG circles that rotate; whole flowers are 3 rings of scalloped circles.",
+   "palette_idea": "#F7A325, #F57C00, #FFC93C.",
+   "references": [
+    "https://unsplash.com/photos/hands-adorned-with-henna-and-marigold-garlands-ZVRwm75I4S8"
+   ]
+  },
+  {
+   "name": "Living Card (Camera Drift & Parallax Hold)",
+   "category": "effect",
+   "storyboard": [
+    "From t0+2s to te: the whole card very slowly pushes in (scale 1→1.035) while the border and background pattern drift the opposite way by 0.6cqw, so the final hold feels filmed rather than frozen."
+   ],
+   "motifs": [
+    "Ken Burns push-in",
+    "parallax"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Nikah",
+    "Mehndi"
+   ],
+   "why_it_wins": "Top templates never freeze. A subtle Ken Burns drift keeps the 6-8 s hold alive without moving the text block relative to itself.",
+   "css_svg_feasibility": 5,
+   "build_notes": "fx-drift. Apply it to a wrapper inside .card, not to .card itself, which the openings animate. Use scale and translate in one linear animation lasting (te - t0 - 2) s, so it ends exactly at te and doesn't extend the render.",
+   "palette_idea": "n/a",
+   "references": []
+  },
+  {
+   "name": "Bilingual Urdu-English Card",
+   "category": "layout",
+   "storyboard": [
+    "t0+0.0s: The Arabic Bismillah fades in, followed by the line 'نحمده ونصلي على رسوله الكريم'.",
+    "t0+0.6s: The names appear in Urdu Nastaliq at the top with a right-to-left wipe, e.g. 'عائشہ ❀ حمزہ'.",
+    "t0+1.4s: The English names appear beneath in script, and the event title shows in both languages ('بارات · Baraat').",
+    "t0+2.2s: The details appear in two mirrored columns (Urdu on the right, English on the left), with the closing line in Roman Urdu."
+   ],
+   "motifs": [
+    "Nastaliq and Latin script pairing",
+    "mirrored columns",
+    "Bismillah header"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Nikah",
+    "Mehndi"
+   ],
+   "why_it_wins": "Bilingual Urdu-English cards are a top Pakistani trend, and they let both grandparents and young guests read comfortably.",
+   "css_svg_feasibility": 5,
+   "build_notes": "ly-bi. Urdu blocks use dir='rtl' with Gulzar or Noto Nastaliq Urdu at a line-height of at least 2 for Nastaliq descenders. Never split Urdu into letter spans, which breaks the joining; use right-to-left clip-path wipes. A two-column mirrored grid. Add Urdu fields for the names, event and venue, with transliteration defaults.",
+   "palette_idea": "Any palette; Urdu in ink2, English in ink.",
+   "references": [
+    "https://party.alibaba.com/asset/pakistani-wedding-invitation-cards",
+    "https://www.degruyterbrill.com/document/doi/10.1515/opli-2019-0019/pdf"
+   ]
+  },
+  {
+   "name": "Programme Timeline",
+   "category": "layout",
+   "storyboard": [
+    "t0+2.0 → t0+3.4s: A vertical timeline draws down the lower half, and four stops pop in one by one with tiny icons: Baraat arrival 7:30 PM (horse), Nikah 8:00 PM (rings and pen), Dinner 9:30 PM (plate), Rukhsati 11:00 PM (doli)."
+   ],
+   "motifs": [
+    "timeline",
+    "event icons"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "Pakistani cards commonly list the programme timings, and guests love knowing when dinner is served.",
+   "css_svg_feasibility": 5,
+   "build_notes": "ly-program. The vertical line draws with drawK and the stops pop with popK. The icons are small SVG symbols in acc. Times come from new inputs. The Walima version uses Arrival, Dinner and Photo session.",
+   "palette_idea": "Line and icons in acc; times in ink2.",
+   "references": [
+    "https://www.krikey.ai/digital-invitations/nikkah-invitation"
+   ]
+  },
+  {
+   "name": "Three-Event Itinerary",
+   "category": "layout",
+   "storyboard": [
+    "t0+1.8 → t0+3.6s: Three small cusped arches slide up side by side (or stacked): Mehndi in green and yellow, Baraat in red and gold, Walima in ivory and gold, each with its date, time and venue. The current event's arch is larger and glows."
+   ],
+   "motifs": [
+    "triple arches",
+    "event colour-coding"
+   ],
+   "best_events": [
+    "Mehndi",
+    "Baraat",
+    "Walima"
+   ],
+   "why_it_wins": "One shareable video covers the whole shaadi week, so families don't have to send three separate invites.",
+   "css_svg_feasibility": 4,
+   "build_notes": "ly-events. Each arch is a mini-card using the matching event palette from the sample, staggered 0.25s. The current event is highlighted with scale 1.08 and an acc glow.",
+   "palette_idea": "Mehndi: Marigold tints; Baraat: Royal Ruby tints; Walima: Ivory Blush tints.",
+   "references": []
+  },
+  {
+   "name": "Muntazir & RSVP Footer",
+   "category": "layout",
+   "storyboard": [
+    "t0+2.8 → t0+3.6s: A slim footer fades in: 'Muntazir' followed by relatives' names in two columns, 'RSVP' with two phone numbers, and an optional 'Dua-go' line."
+   ],
+   "motifs": [
+    "Muntazir list",
+    "RSVP numbers",
+    "Dua-go"
+   ],
+   "best_events": [
+    "Baraat",
+    "Walima",
+    "Mehndi"
+   ],
+   "why_it_wins": "This is proper Pakistani card etiquette: families expect to see the hosts and the RSVP names.",
+   "css_svg_feasibility": 5,
+   "build_notes": "ly-muntazir. Text at 3.6-4cqw, with the Urdu headings in Nastaliq. Content comes from a textarea, one name per line. The panel is masked out of the effect layers.",
+   "palette_idea": "Headings in ink2; names in ink.",
+   "references": [
+    "https://www.degruyterbrill.com/document/doi/10.1515/opli-2019-0019/pdf"
+   ]
+  },
+  {
+   "name": "Story Pages (Instagram-Story Card)",
+   "category": "layout",
+   "storyboard": [
+    "t0: Progress bars appear at the top, in three segments.",
+    "t0 → t0+3s: Page 1 shows the Bismillah, the couple badge and the names.",
+    "t0+3 → t0+6s: Page 2 slides in from the right with the event, date, time and venue.",
+    "t0+6 → t0+9s: Page 3 shows the RSVP, map pin and closing line."
+   ],
+   "motifs": [
+    "story progress bars",
+    "paged card"
+   ],
+   "best_events": [
+    "Walima",
+    "Mehndi",
+    "Save the date"
+   ],
+   "why_it_wins": "It feels native to Instagram and WhatsApp stories and fits more information without cramming.",
+   "css_svg_feasibility": 5,
+   "build_notes": "ly-story. Three page containers move in with translateX keyframes and delays, and the progress bars fill via scaleX 0→1 per segment (finite). The total length grows by about 3 s, so raise --te accordingly. Keep the last page up for at least 4 s.",
+   "palette_idea": "Progress bars in it at 60%; pages in cd.",
+   "references": [
+    "https://shortgenius.com/blog/save-the-date-videos"
+   ]
+  },
+  {
+   "name": "Minimal Monogram Modern",
+   "category": "layout",
+   "storyboard": [
+    "t0 → t0+1s: A large monogram of the initials fades up in a thin serif within a hairline circle.",
+    "t0+1 → t0+2.5s: The names appear in small caps with generous tracking, then the event and date beneath, and thin rules draw in."
+   ],
+   "motifs": [
+    "monogram",
+    "negative space",
+    "hairline rules"
+   ],
+   "best_events": [
+    "Walima",
+    "Nikah",
+    "Engagement"
+   ],
+   "why_it_wins": "Modern couples want quiet luxury, and a minimal layout reads cleanly even at thumbnail size.",
+   "css_svg_feasibility": 5,
+   "build_notes": "ly-minimal. Fonts: Italiana or Cinzel for the monogram, Cormorant for the text. Keep lots of negative space and strokes of at least 0.25cqw to avoid shimmer in video.",
+   "palette_idea": "Cotton Foil, Terrazzo Clear, Lilac Silver.",
+   "references": [
+    "https://www.weddingwire.in/wedding-tips/whatsapp-wedding-invitation--c1122"
+   ]
+  }
+ ]
+}

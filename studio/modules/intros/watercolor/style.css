@@ -1,0 +1,47 @@
+.ix-watercolor .wc-paper{position:absolute;inset:0;z-index:3;opacity:0;
+  background:radial-gradient(120% 80% at 50% 45%,transparent 55%,color-mix(in srgb,var(--ef) 82%,var(--acc)) 100%),
+  radial-gradient(.35cqw .35cqw at 20% 30%,color-mix(in srgb,var(--ef) 88%,#000),transparent),
+  radial-gradient(.3cqw .3cqw at 70% 62%,color-mix(in srgb,var(--ef) 88%,#000),transparent),var(--ef);
+  background-size:100% 100%,7cqw 9cqw,11cqw 8cqw,100% 100%}
+.ix-watercolor .wc-w{position:absolute;z-index:3;opacity:0;border-radius:46% 54% 58% 42%/52% 44% 56% 48%;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--c) 42%,transparent) 0%,color-mix(in srgb,var(--c) 28%,transparent) 55%,color-mix(in srgb,var(--c) 12%,transparent) 82%,transparent 100%)}
+.ix-watercolor .w1{--c:var(--bl);left:-18%;top:-6%;width:78cqw;height:66cqw}
+.ix-watercolor .w2{--c:var(--lv);left:30%;top:4%;width:62cqw;height:50cqw;border-radius:58% 42% 46% 54%/44% 56% 44% 56%}
+.ix-watercolor .w3{--c:var(--acc);left:-6%;top:20%;width:46cqw;height:40cqw}
+.ix-watercolor .w4{--c:var(--bl);right:-20%;bottom:-4%;width:84cqw;height:70cqw;border-radius:52% 48% 40% 60%/58% 46% 54% 42%}
+.ix-watercolor .w5{--c:var(--lv);left:-14%;bottom:8%;width:60cqw;height:52cqw}
+.ix-watercolor .w6{--c:var(--acc);right:4%;bottom:26%;width:40cqw;height:34cqw}
+.ix-watercolor .wc-rose,.ix-watercolor .wc-bud{position:absolute;z-index:4;opacity:0}
+.ix-watercolor .wc-rose path,.ix-watercolor .wc-bud path{stroke-dasharray:1;stroke-dashoffset:1;stroke-width:1.4;vector-effect:non-scaling-stroke}
+.ix-watercolor .wc-rose path:nth-child(-n+3){stroke:color-mix(in srgb,var(--bl) 70%,var(--ink))}
+.ix-watercolor .wc-rose path:nth-child(n+4),.ix-watercolor .wc-bud path:nth-child(n+3){stroke:color-mix(in srgb,var(--lv) 75%,var(--ink))}
+.ix-watercolor .wc-bud path:nth-child(-n+2){stroke:color-mix(in srgb,var(--bl) 70%,var(--ink))}
+.ix-watercolor .r1{left:4%;top:5%;width:40cqw;transform:rotate(-14deg)}
+.ix-watercolor .r2{right:3%;bottom:6%;width:44cqw;transform:rotate(166deg)}
+.ix-watercolor .b1{left:58%;top:7%;width:15cqw;transform:rotate(24deg)}
+.ix-watercolor .b2{left:12%;bottom:9%;width:14cqw;transform:rotate(-160deg)}
+.ix-watercolor .wc-txt{position:absolute;left:8%;right:8%;top:38%;z-index:5;text-align:center;color:var(--ink)}
+.ix-watercolor .wc-txt .ib{color:color-mix(in srgb,var(--acc) 55%,var(--ink));margin:1.5cqw 0}
+.ix-watercolor .wc-txt>div{opacity:0}
+.play.s-watercolor .wc-paper{animation:watercolor-on .8s ease-out var(--o) both}
+.play.s-watercolor .wc-w{animation:watercolor-bloom 2.6s cubic-bezier(.2,.8,.2,1) calc(var(--o) + var(--wd,.3s)) both}
+.play.s-watercolor .w1{--wd:.3s}.play.s-watercolor .w2{--wd:.7s}.play.s-watercolor .w3{--wd:1.1s}
+.play.s-watercolor .w4{--wd:.5s}.play.s-watercolor .w5{--wd:.9s}.play.s-watercolor .w6{--wd:1.3s}
+.play.s-watercolor .wc-rose,.play.s-watercolor .wc-bud{animation:watercolor-on .3s ease-out calc(var(--o) + .9s) both}
+.play.s-watercolor .wc-rose path,.play.s-watercolor .wc-bud path{animation:watercolor-draw 1.6s cubic-bezier(.45,.05,.3,1) calc(var(--o) + var(--rd,1s)) both}
+.play.s-watercolor .wc-rose path:nth-child(2){--rd:1.25s}.play.s-watercolor .wc-rose path:nth-child(3){--rd:1.5s}
+.play.s-watercolor .wc-rose path:nth-child(4){--rd:1.2s}.play.s-watercolor .wc-rose path:nth-child(n+5){--rd:1.7s}
+.play.s-watercolor .wc-bud path{--rd:1.6s}.play.s-watercolor .wc-bud path:nth-child(n+3){--rd:1.9s}
+.play.s-watercolor .wc-txt>div{-webkit-mask-image:linear-gradient(90deg,#000 40%,transparent 60%);mask-image:linear-gradient(90deg,#000 40%,transparent 60%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  animation:watercolor-paint 1.1s cubic-bezier(.3,.6,.3,1) calc(var(--o) + var(--d)) both}
+.play.s-watercolor .wc-txt{animation:watercolor-off .5s ease-in calc(var(--o) + 3.9s) both}
+.play.s-watercolor .card{-webkit-mask-image:linear-gradient(115deg,#000 38%,transparent 62%);mask-image:linear-gradient(115deg,#000 38%,transparent 62%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  animation:watercolor-card 1.3s cubic-bezier(.4,.1,.25,1) calc(var(--o) + 3.9s) both}
+@keyframes watercolor-on{0%{opacity:0}100%{opacity:1}}
+@keyframes watercolor-off{0%{opacity:1}100%{opacity:0}}
+@keyframes watercolor-bloom{0%{opacity:0;transform:scale(.25) rotate(-8deg)}60%{opacity:.95}100%{opacity:.85;transform:none}}
+@keyframes watercolor-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes watercolor-paint{0%{opacity:1;-webkit-mask-position:100% 0;mask-position:100% 0}100%{opacity:1;-webkit-mask-position:0 0;mask-position:0 0}}
+@keyframes watercolor-card{0%{-webkit-mask-position:100% 0;mask-position:100% 0}99.9%{-webkit-mask-position:0 0;mask-position:0 0}100%{-webkit-mask-position:0 0;mask-position:0 0;-webkit-mask-image:none;mask-image:none}}

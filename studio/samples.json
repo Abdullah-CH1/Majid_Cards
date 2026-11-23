@@ -1,0 +1,3554 @@
+[
+ {
+  "name": "Classic Envelope",
+  "cat": "Classic",
+  "desc": "The original: an envelope opens and the ivory card rises under a Mughal arch.",
+  "set": {
+   "sStyle": "env"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#3B2A20",
+    "it": "#F3E6CC",
+    "ef": "#F4EAD8",
+    "cd": "#FBF4E6",
+    "ink": "#2E2018",
+    "ink2": "#7A5A24",
+    "acc": "#B8913F",
+    "bl": "#9E3B3B",
+    "lv": "#5E6B3A"
+   },
+   "walima": {
+    "bg": "#6F5E52",
+    "it": "#FBF3E8",
+    "ef": "#FAF3EA",
+    "cd": "#FFFAF3",
+    "ink": "#3A2C25",
+    "ink2": "#8A5E4A",
+    "acc": "#A97C5F",
+    "bl": "#C27C80",
+    "lv": "#7D8B6A"
+   }
+  }
+ },
+ {
+  "name": "Palace Doors",
+  "cat": "Classic",
+  "desc": "The original: carved palace doors swing open beneath hanging lanterns.",
+  "set": {
+   "sStyle": "door",
+   "sBorder": "corner",
+   "sName": "slide",
+   "sDet": "up",
+   "sFall": "dust",
+   "kLan": true,
+   "kSpk": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#3B2A20",
+    "it": "#F3E6CC",
+    "ef": "#F4EAD8",
+    "cd": "#FBF4E6",
+    "ink": "#2E2018",
+    "ink2": "#7A5A24",
+    "acc": "#B8913F",
+    "bl": "#9E3B3B",
+    "lv": "#5E6B3A"
+   },
+   "walima": {
+    "bg": "#6F5E52",
+    "it": "#FBF3E8",
+    "ef": "#FAF3EA",
+    "cd": "#FFFAF3",
+    "ink": "#3A2C25",
+    "ink2": "#8A5E4A",
+    "acc": "#A97C5F",
+    "bl": "#C27C80",
+    "lv": "#7D8B6A"
+   }
+  }
+ },
+ {
+  "name": "Golden Medallion",
+  "cat": "Classic",
+  "desc": "The original: a golden ring draws the couple's initials, then the card blooms open.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "garland",
+   "sName": "hand",
+   "sDet": "up",
+   "sFall": "dust"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#3B2A20",
+    "it": "#F3E6CC",
+    "ef": "#F4EAD8",
+    "cd": "#FBF4E6",
+    "ink": "#2E2018",
+    "ink2": "#7A5A24",
+    "acc": "#B8913F",
+    "bl": "#9E3B3B",
+    "lv": "#5E6B3A"
+   },
+   "walima": {
+    "bg": "#6F5E52",
+    "it": "#FBF3E8",
+    "ef": "#FAF3EA",
+    "cd": "#FFFAF3",
+    "ink": "#3A2C25",
+    "ink2": "#8A5E4A",
+    "acc": "#A97C5F",
+    "bl": "#C27C80",
+    "lv": "#7D8B6A"
+   }
+  }
+ },
+ {
+  "name": "Faisal Mosque Dawn",
+  "cat": "Sophisticated",
+  "desc": "Islamabad at dawn: the Faisal Mosque draws itself in fine line against the Margallas.",
+  "set": {
+   "sStyle": "faisal-mosque",
+   "sBorder": "monogram-minimal",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'MonteCarlo'",
+   "sFt": "'Tenor Sans'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#141B30",
+    "it": "#EDE4CF",
+    "ef": "#EFE8D8",
+    "cd": "#FBF7EE",
+    "ink": "#141B30",
+    "ink2": "#5A4A2A",
+    "acc": "#C2A56B",
+    "bl": "#9C5A68",
+    "lv": "#5C7A78"
+   },
+   "walima": {
+    "bg": "#D9E2EA",
+    "it": "#22313F",
+    "ef": "#F8F6F1",
+    "cd": "#FCFBF7",
+    "ink": "#1E2C3A",
+    "ink2": "#4F6A85",
+    "acc": "#A8946A",
+    "bl": "#C9A3A7",
+    "lv": "#8FA5A0"
+   }
+  }
+ },
+ {
+  "name": "Badshahi Nights",
+  "cat": "Sophisticated",
+  "desc": "Lahore's Badshahi Mosque lights up dome by dome above its reflecting pool.",
+  "set": {
+   "sStyle": "badshahi-night",
+   "sBorder": "jharokha",
+   "sPat": "none",
+   "sFall": "dust",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'Cinzel'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#3E141C",
+    "it": "#F2E3D2",
+    "ef": "#F3E6D6",
+    "cd": "#FCF7EF",
+    "ink": "#2F1016",
+    "ink2": "#7A2433",
+    "acc": "#C29A60",
+    "bl": "#9E2F42",
+    "lv": "#6C7354"
+   },
+   "walima": {
+    "bg": "#EFE7DA",
+    "it": "#2B2A28",
+    "ef": "#FBF8F2",
+    "cd": "#FFFDF8",
+    "ink": "#1F1E1C",
+    "ink2": "#6B5A3E",
+    "acc": "#B49A6A",
+    "bl": "#C9A99A",
+    "lv": "#8C9A86"
+   }
+  }
+ },
+ {
+  "name": "Departure Board",
+  "cat": "Sophisticated",
+  "desc": "An airport split-flap board flips to your names, event and date. Status: on time.",
+  "set": {
+   "sStyle": "departure-board",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sName": "fade",
+   "sDet": "wipe",
+   "sFs": "'Sacramento'",
+   "sFt": "'Josefin Sans'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#222022",
+    "it": "#F2E7E6",
+    "ef": "#F4ECEB",
+    "cd": "#FDF9F8",
+    "ink": "#222022",
+    "ink2": "#7A4E56",
+    "acc": "#B39588",
+    "bl": "#B57A80",
+    "lv": "#6E7E73"
+   },
+   "walima": {
+    "bg": "#EFE3E1",
+    "it": "#2A2829",
+    "ef": "#FCF8F7",
+    "cd": "#FFFDFC",
+    "ink": "#232122",
+    "ink2": "#7E5A60",
+    "acc": "#A88F86",
+    "bl": "#DDAFB0",
+    "lv": "#8F9C92"
+   }
+  }
+ },
+ {
+  "name": "Wax Seal Letter",
+  "cat": "Sophisticated",
+  "desc": "A brass stamp presses a wax seal and a letterpress card slides from a linen envelope.",
+  "set": {
+   "sStyle": "wax-seal",
+   "sBorder": "monogram-minimal",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Petit Formal Script'",
+   "sFt": "'Gilda Display'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#3B2A25",
+    "it": "#F3E6DE",
+    "ef": "#F6EDE6",
+    "cd": "#FFFAF6",
+    "ink": "#2E201B",
+    "ink2": "#8A5245",
+    "acc": "#C29A76",
+    "bl": "#B76E68",
+    "lv": "#7F8466"
+   },
+   "walima": {
+    "bg": "#EAD9CF",
+    "it": "#3A2A24",
+    "ef": "#FBF6F2",
+    "cd": "#FFFBF8",
+    "ink": "#33241F",
+    "ink2": "#8A5B4F",
+    "acc": "#B08E6E",
+    "bl": "#DDA9A2",
+    "lv": "#A3A78C"
+   }
+  }
+ },
+ {
+  "name": "Vinyl Record",
+  "cat": "Sophisticated",
+  "desc": "The needle drops on a record with your names on the label.",
+  "set": {
+   "sStyle": "vinyl",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Vujahday Script'",
+   "sFt": "'Bodoni Moda'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#1E1D1B",
+    "it": "#EFE6D6",
+    "ef": "#F3EDE2",
+    "cd": "#FBF8F1",
+    "ink": "#1E1D1B",
+    "ink2": "#6B5A3E",
+    "acc": "#B49A6A",
+    "bl": "#8E5B4E",
+    "lv": "#5F6B58"
+   },
+   "walima": {
+    "bg": "#EEDCCB",
+    "it": "#3A2418",
+    "ef": "#FCF7F0",
+    "cd": "#FFFCF7",
+    "ink": "#331F15",
+    "ink2": "#9A4E2E",
+    "acc": "#B48A5A",
+    "bl": "#D4937A",
+    "lv": "#8E9A72"
+   }
+  }
+ },
+ {
+  "name": "Constellation",
+  "cat": "Sophisticated",
+  "desc": "A star map of the wedding night: the stars align into your initials.",
+  "set": {
+   "sStyle": "constellation",
+   "sBorder": "monogram-minimal",
+   "sPat": "stars-crescents",
+   "sFall": "fireflies",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Italianno'",
+   "sFt": "'Cinzel'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0F1424",
+    "it": "#E6E9F0",
+    "ef": "#E9ECF2",
+    "cd": "#F7F8FB",
+    "ink": "#10162A",
+    "ink2": "#3E4A66",
+    "acc": "#9DA6B8",
+    "bl": "#8E7CA8",
+    "lv": "#6A8C8A"
+   },
+   "walima": {
+    "bg": "#E3E6EC",
+    "it": "#1E2433",
+    "ef": "#F9FAFC",
+    "cd": "#FFFFFF",
+    "ink": "#1A2030",
+    "ink2": "#4A5670",
+    "acc": "#8C95A8",
+    "bl": "#B9A3C2",
+    "lv": "#8EA6A4"
+   }
+  }
+ },
+ {
+  "name": "Countdown Calendar",
+  "cat": "Sophisticated",
+  "desc": "Tear-off calendar pages fly away until the wedding day is circled.",
+  "set": {
+   "sStyle": "tear-calendar",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "confetti",
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Sacramento'",
+   "sFt": "'Tenor Sans'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2E2F1B",
+    "it": "#F0EBD3",
+    "ef": "#F2EEDC",
+    "cd": "#FCFAF0",
+    "ink": "#232413",
+    "ink2": "#5A5D2E",
+    "acc": "#C2A052",
+    "bl": "#A4664E",
+    "lv": "#6E7542"
+   },
+   "walima": {
+    "bg": "#E6E2D0",
+    "it": "#2C2E1C",
+    "ef": "#FBFAF2",
+    "cd": "#FEFDF6",
+    "ink": "#262817",
+    "ink2": "#5E6233",
+    "acc": "#A88C47",
+    "bl": "#C9967E",
+    "lv": "#7D8450"
+   }
+  }
+ },
+ {
+  "name": "Save the Date Dart",
+  "cat": "Sophisticated",
+  "desc": "Calendar pages tear away, then a dart thunks into the wedding day: save the date!",
+  "set": {
+   "sStyle": "dart-calendar",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "confetti",
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Sacramento'",
+   "sFt": "'Tenor Sans'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#3E141C",
+    "it": "#F2E3D2",
+    "ef": "#F3E6D6",
+    "cd": "#FCF7EF",
+    "ink": "#2F1016",
+    "ink2": "#7A2433",
+    "acc": "#C29A60",
+    "bl": "#9E2F42",
+    "lv": "#6C7354"
+   },
+   "walima": {
+    "bg": "#EFE7DA",
+    "it": "#2B2A28",
+    "ef": "#FBF8F2",
+    "cd": "#FFFDF8",
+    "ink": "#1F1E1C",
+    "ink2": "#6B5A3E",
+    "acc": "#B49A6A",
+    "bl": "#C9A99A",
+    "lv": "#8C9A86"
+   }
+  }
+ },
+ {
+  "name": "Alhambra",
+  "cat": "Sophisticated",
+  "desc": "Granada's lace-stucco arches and a reflecting pool lead to the card.",
+  "set": {
+   "sStyle": "alhambra",
+   "sBorder": "arch",
+   "sPat": "quatrefoil",
+   "sFall": "none",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#4A2516",
+    "it": "#F6E6D6",
+    "ef": "#F5E8DA",
+    "cd": "#FDF8F1",
+    "ink": "#2E1A10",
+    "ink2": "#8E3F1F",
+    "acc": "#C79A62",
+    "bl": "#B35A3A",
+    "lv": "#6E7A50"
+   },
+   "walima": {
+    "bg": "#DFE5D8",
+    "it": "#263023",
+    "ef": "#FAF9F3",
+    "cd": "#FDFCF7",
+    "ink": "#222B20",
+    "ink2": "#55684E",
+    "acc": "#A89466",
+    "bl": "#D4A99E",
+    "lv": "#7E9472"
+   }
+  }
+ },
+ {
+  "name": "Pressed Botanicals",
+  "cat": "Sophisticated",
+  "desc": "Pressed flowers laid on cotton paper with a typewritten herbarium label.",
+  "set": {
+   "sStyle": "pressed-botanicals",
+   "sBorder": "none",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sImg": "textured-ivory-paper",
+   "sImgOn": "crd",
+   "rImg": 60,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Allura'",
+   "sFt": "'EB Garamond'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2E3A2C",
+    "it": "#F1EFE4",
+    "ef": "#F4F2E8",
+    "cd": "#FBFAF4",
+    "ink": "#1F291D",
+    "ink2": "#4C6145",
+    "acc": "#BFA163",
+    "bl": "#B07D6E",
+    "lv": "#758C6A"
+   },
+   "walima": {
+    "bg": "#DFE5D8",
+    "it": "#263023",
+    "ef": "#FAF9F3",
+    "cd": "#FDFCF7",
+    "ink": "#222B20",
+    "ink2": "#55684E",
+    "acc": "#A89466",
+    "bl": "#D4A99E",
+    "lv": "#7E9472"
+   }
+  }
+ },
+ {
+  "name": "Love Map",
+  "cat": "Sophisticated",
+  "desc": "Two pins, one dotted route: a paper plane brings you both to the venue.",
+  "set": {
+   "sStyle": "love-map",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Vujahday Script'",
+   "sFt": "'EB Garamond'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#141B30",
+    "it": "#EDE4CF",
+    "ef": "#EFE8D8",
+    "cd": "#FBF7EE",
+    "ink": "#141B30",
+    "ink2": "#5A4A2A",
+    "acc": "#C2A56B",
+    "bl": "#9C5A68",
+    "lv": "#5C7A78"
+   },
+   "walima": {
+    "bg": "#EFE7DA",
+    "it": "#2B2A28",
+    "ef": "#FBF8F2",
+    "cd": "#FFFDF8",
+    "ink": "#1F1E1C",
+    "ink2": "#6B5A3E",
+    "acc": "#B49A6A",
+    "bl": "#C9A99A",
+    "lv": "#8C9A86"
+   }
+  }
+ },
+ {
+  "name": "Vintage Typewriter",
+  "cat": "Sophisticated",
+  "desc": "A vintage typewriter types your invitation line by line - ding!",
+  "set": {
+   "sStyle": "typewriter",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Petit Formal Script'",
+   "sFt": "'Bodoni Moda'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#222022",
+    "it": "#F2E7E6",
+    "ef": "#F4ECEB",
+    "cd": "#FDF9F8",
+    "ink": "#222022",
+    "ink2": "#7A4E56",
+    "acc": "#B39588",
+    "bl": "#B57A80",
+    "lv": "#6E7E73"
+   },
+   "walima": {
+    "bg": "#EAD9CF",
+    "it": "#3A2A24",
+    "ef": "#FBF6F2",
+    "cd": "#FFFBF8",
+    "ink": "#33241F",
+    "ink2": "#8A5B4F",
+    "acc": "#B08E6E",
+    "bl": "#DDA9A2",
+    "lv": "#A3A78C"
+   }
+  }
+ },
+ {
+  "name": "Hot Air Balloons",
+  "cat": "Sophisticated",
+  "desc": "Balloons rise at sunrise over Cappadocia carrying your names.",
+  "set": {
+   "sStyle": "hot-air-balloons",
+   "sBorder": "monogram-minimal",
+   "sPat": "none",
+   "sFall": "none",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Allura'",
+   "sFt": "'Tenor Sans'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#23344A",
+    "it": "#EEF1F4",
+    "ef": "#F4F1EA",
+    "cd": "#FBF9F4",
+    "ink": "#1A2838",
+    "ink2": "#44607E",
+    "acc": "#B79B62",
+    "bl": "#B4787F",
+    "lv": "#6F8C86"
+   },
+   "walima": {
+    "bg": "#D9E2EA",
+    "it": "#22313F",
+    "ef": "#F8F6F1",
+    "cd": "#FCFBF7",
+    "ink": "#1E2C3A",
+    "ink2": "#4F6A85",
+    "acc": "#A8946A",
+    "bl": "#C9A3A7",
+    "lv": "#8FA5A0"
+   }
+  }
+ },
+ {
+  "name": "Origami Cranes",
+  "cat": "Sophisticated",
+  "desc": "A sheet of paper folds into a crane and a flock carries your initials.",
+  "set": {
+   "sStyle": "origami-cranes",
+   "sBorder": "none",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Italianno'",
+   "sFt": "'Josefin Sans'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2E3A2C",
+    "it": "#F1EFE4",
+    "ef": "#F4F2E8",
+    "cd": "#FBFAF4",
+    "ink": "#1F291D",
+    "ink2": "#4C6145",
+    "acc": "#BFA163",
+    "bl": "#B07D6E",
+    "lv": "#758C6A"
+   },
+   "walima": {
+    "bg": "#DFE5D8",
+    "it": "#263023",
+    "ef": "#FAF9F3",
+    "cd": "#FDFCF7",
+    "ink": "#222B20",
+    "ink2": "#55684E",
+    "acc": "#A89466",
+    "bl": "#D4A99E",
+    "lv": "#7E9472"
+   }
+  }
+ },
+ {
+  "name": "Gold Foil Press",
+  "cat": "Sophisticated",
+  "desc": "A letterpress stamps your names in shimmering gold foil.",
+  "set": {
+   "sStyle": "foil-press",
+   "sBorder": "art-deco",
+   "sPat": "none",
+   "sFall": "dust",
+   "sName": "fade",
+   "sDet": "wipe",
+   "sFs": "'Imperial Script'",
+   "sFt": "'Cinzel'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#3E141C",
+    "it": "#F2E3D2",
+    "ef": "#F3E6D6",
+    "cd": "#FCF7EF",
+    "ink": "#2F1016",
+    "ink2": "#7A2433",
+    "acc": "#C29A60",
+    "bl": "#9E2F42",
+    "lv": "#6C7354"
+   },
+   "walima": {
+    "bg": "#E4E2DC",
+    "it": "#1C2338",
+    "ef": "#FAF8F3",
+    "cd": "#FEFDF9",
+    "ink": "#18203A",
+    "ink2": "#4A5478",
+    "acc": "#B39B6B",
+    "bl": "#B98E95",
+    "lv": "#7F9290"
+   }
+  }
+ },
+ {
+  "name": "Polaroid Memories",
+  "cat": "Sophisticated",
+  "desc": "Polaroids of the dulha, the dulhan and the date develop on a string.",
+  "set": {
+   "sStyle": "polaroid",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "hearts",
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Parisienne'",
+   "sFt": "'Lora'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#23344A",
+    "it": "#EEF1F4",
+    "ef": "#F4F1EA",
+    "cd": "#FBF9F4",
+    "ink": "#1A2838",
+    "ink2": "#44607E",
+    "acc": "#B79B62",
+    "bl": "#B4787F",
+    "lv": "#6F8C86"
+   },
+   "walima": {
+    "bg": "#EFE7DA",
+    "it": "#2B2A28",
+    "ef": "#FBF8F2",
+    "cd": "#FFFDF8",
+    "ink": "#1F1E1C",
+    "ink2": "#6B5A3E",
+    "acc": "#B49A6A",
+    "bl": "#C9A99A",
+    "lv": "#8C9A86"
+   }
+  }
+ },
+ {
+  "name": "Sheesh Mahal",
+  "cat": "Signature",
+  "desc": "Lahore Fort's palace of mirrors: light hops chip to chip until the wall glitters.",
+  "set": {
+   "sStyle": "sheesh-mahal",
+   "sBorder": "jharokha",
+   "sPat": "khatam",
+   "sFall": "dust",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'Cinzel'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#E5E4E8",
+    "it": "#2E2A30",
+    "ef": "#FFFFFF",
+    "cd": "#FFFFFF",
+    "ink": "#2A2629",
+    "ink2": "#6B6366",
+    "acc": "#857F78",
+    "bl": "#D09E92",
+    "lv": "#9DB0A6"
+   }
+  }
+ },
+ {
+  "name": "Shalimar Bagh",
+  "cat": "Signature",
+  "desc": "Fountains switch on across Shalimar's pools and the names rise from their reflection.",
+  "set": {
+   "sStyle": "shalimar",
+   "sBorder": "arch",
+   "sPat": "quatrefoil",
+   "sFall": "rose-petals",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#04404D",
+    "it": "#F2EBD3",
+    "ef": "#F1EBD8",
+    "cd": "#FFFBF1",
+    "ink": "#0A2E31",
+    "ink2": "#0B6A70",
+    "acc": "#D0A44C",
+    "bl": "#B8337A",
+    "lv": "#2E9C6E"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Moving Miniature",
+  "cat": "Signature",
+  "desc": "A Mughal miniature comes alive: the baraat procession reaches the palace gate.",
+  "set": {
+   "sStyle": "miniature",
+   "sBorder": "art-deco",
+   "sPat": "damask",
+   "sFall": "dust",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'EB Garamond'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#45200F",
+    "it": "#F6E6D2",
+    "ef": "#F2E2CC",
+    "cd": "#FCF4E8",
+    "ink": "#3A1C12",
+    "ink2": "#A14A26",
+    "acc": "#C29350",
+    "bl": "#C8603A",
+    "lv": "#2F7A55"
+   },
+   "walima": {
+    "bg": "#F5F0E6",
+    "it": "#2C2622",
+    "ef": "#FFFFFF",
+    "cd": "#FFFFFF",
+    "ink": "#2B2530",
+    "ink2": "#9A4A52",
+    "acc": "#8F7334",
+    "bl": "#D98C9A",
+    "lv": "#5FA38A"
+   }
+  }
+ },
+ {
+  "name": "Dulhay ki Sawari",
+  "cat": "Signature",
+  "desc": "A painted truck carries the baraat: bells, chamak-patti and \"Baraat aa rahi hai!\"",
+  "set": {
+   "sStyle": "truck-sawari",
+   "sBorder": "garland",
+   "sPat": "buti",
+   "sFall": "confetti",
+   "kO_bells": true,
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'Style Script'",
+   "sFt": "'Lora'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#F2B705",
+    "it": "#14205A",
+    "ef": "#FFFBEA",
+    "cd": "#FFFDF3",
+    "ink": "#14205A",
+    "ink2": "#C2122E",
+    "acc": "#8A5E00",
+    "bl": "#E8247A",
+    "lv": "#0E8A3A"
+   },
+   "walima": {
+    "bg": "#A9DDEB",
+    "it": "#1A2550",
+    "ef": "#FFFDF2",
+    "cd": "#FFFDF4",
+    "ink": "#17225A",
+    "ink2": "#C2185B",
+    "acc": "#8F6400",
+    "bl": "#F25C9A",
+    "lv": "#2EAD6B"
+   }
+  }
+ },
+ {
+  "name": "Shaadi Wala Ghar",
+  "cat": "Signature",
+  "desc": "The wedding house lights up: fairy lights tumble down the haveli and the street glows.",
+  "set": {
+   "sStyle": "shaadi-ghar",
+   "sBorder": "corner",
+   "sPat": "dot",
+   "sFall": "fireflies",
+   "kO_fairy-string": true,
+   "kSpk": false,
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Beau Rivage'",
+   "sFt": "'Playfair Display'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2B1E52",
+    "it": "#FFE9D6",
+    "ef": "#FCE7D9",
+    "cd": "#FFF6EE",
+    "ink": "#2A1636",
+    "ink2": "#B8402A",
+    "acc": "#D49A45",
+    "bl": "#F2735E",
+    "lv": "#3F7F6A"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Phoolon ki Chadar",
+  "cat": "Signature",
+  "desc": "Through the bride's eyes, walking under the flower canopy to the stage.",
+  "set": {
+   "sStyle": "phoolon-chadar",
+   "sBorder": "rose-corners",
+   "sPat": "sprigs",
+   "sFall": "rose-petals",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#F7DDD9",
+    "it": "#4E242B",
+    "ef": "#FFF8F6",
+    "cd": "#FFFCFB",
+    "ink": "#4A2229",
+    "ink2": "#A65163",
+    "acc": "#A86A60",
+    "bl": "#EA8890",
+    "lv": "#8FAF95"
+   }
+  }
+ },
+ {
+  "name": "Phulkari",
+  "cat": "Signature",
+  "desc": "Golden silk is embroidered stitch by stitch, then drapes like a dupatta.",
+  "set": {
+   "sStyle": "phulkari",
+   "sBorder": "corner",
+   "sPat": "khatam",
+   "sFall": "dust",
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Alex Brush'",
+   "sFt": "'Marcellus'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Mithai ka Dabba",
+  "cat": "Signature",
+  "desc": "Open the sweet box: each mithai reveals the date, time and venue.",
+  "set": {
+   "sStyle": "mithai",
+   "sBorder": "pearl-swag",
+   "sPat": "dot",
+   "sFall": "confetti",
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Style Script'",
+   "sFt": "'Lora'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#74104A",
+    "it": "#FFE8F2",
+    "ef": "#FCE4EC",
+    "cd": "#FFF6F8",
+    "ink": "#3D0628",
+    "ink2": "#B0145F",
+    "acc": "#D4A23A",
+    "bl": "#E0287D",
+    "lv": "#3FA34D"
+   },
+   "walima": {
+    "bg": "#D3F0E2",
+    "it": "#163D33",
+    "ef": "#FFFFFF",
+    "cd": "#FCFFFD",
+    "ink": "#183F35",
+    "ink2": "#2F7A66",
+    "acc": "#B07664",
+    "bl": "#EA8296",
+    "lv": "#6CC09C"
+   }
+  }
+ },
+ {
+  "name": "Qalam aur Siyahi",
+  "cat": "Signature",
+  "desc": "A calligrapher's qalam writes the Bismillah in Nastaliq ink, right to left.",
+  "set": {
+   "sStyle": "qalam",
+   "sBorder": "arch",
+   "sPat": "none",
+   "sFall": "dust",
+   "sImg": "textured-ivory-paper",
+   "sImgOn": "crd",
+   "rImg": 70,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'Cormorant Garamond'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2A0709",
+    "it": "#F3DFC6",
+    "ef": "#EAD7BE",
+    "cd": "#3A0B10",
+    "ink": "#F6E3C8",
+    "ink2": "#E0B27A",
+    "acc": "#B9824A",
+    "bl": "#D13A45",
+    "lv": "#3F7A55"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Dhol Drop",
+  "cat": "Signature",
+  "desc": "Beat-synced bold words: SHAADI / PAKKI / HAI! with the names on a drum roll.",
+  "set": {
+   "sStyle": "dhol",
+   "sBorder": "monogram-minimal",
+   "sPat": "none",
+   "sFall": "confetti",
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'Style Script'",
+   "sFt": "'Josefin Sans'",
+   "kFdi": false
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#74104A",
+    "it": "#FFE8F2",
+    "ef": "#FCE4EC",
+    "cd": "#FFF6F8",
+    "ink": "#3D0628",
+    "ink2": "#B0145F",
+    "acc": "#D4A23A",
+    "bl": "#E0287D",
+    "lv": "#3FA34D"
+   },
+   "walima": {
+    "bg": "#874637",
+    "it": "#FFF3E6",
+    "ef": "#FBEBDD",
+    "cd": "#FFFAF3",
+    "ink": "#3E2418",
+    "ink2": "#9A5130",
+    "acc": "#CFA463",
+    "bl": "#DA8A68",
+    "lv": "#9AA36E"
+   }
+  }
+ },
+ {
+  "name": "Doli Rukhsati",
+  "cat": "Story",
+  "desc": "The doli glides in at dusk and its curtain lifts to reveal the dulhan.",
+  "set": {
+   "sStyle": "doli",
+   "sBorder": "jharokha",
+   "sPat": "jaali",
+   "sFall": "rose-petals",
+   "kO_marigold-garland": true,
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#D6C2CB",
+    "it": "#45252F",
+    "ef": "#FFF9FA",
+    "cd": "#FFFBFB",
+    "ink": "#3F222C",
+    "ink2": "#95506A",
+    "acc": "#8C6C3A",
+    "bl": "#C27E92",
+    "lv": "#889A92"
+   }
+  }
+ },
+ {
+  "name": "Baraat on Horseback",
+  "cat": "Story",
+  "desc": "The dulha rides in on a decorated white mare as the dhol beats.",
+  "set": {
+   "kSc_dulha-dulhan": true,
+   "sStyle": "ghodi",
+   "sBorder": "corner",
+   "sPat": "khatam",
+   "sFall": "confetti",
+   "kLan": true,
+   "kSpk": false,
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2A0709",
+    "it": "#F3DFC6",
+    "ef": "#EAD7BE",
+    "cd": "#3A0B10",
+    "ink": "#F6E3C8",
+    "ink2": "#E0B27A",
+    "acc": "#B9824A",
+    "bl": "#D13A45",
+    "lv": "#3F7A55"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Couple Walk-in",
+  "cat": "Story",
+  "desc": "Dulha and dulhan walk in under a floral arch, then the curtains part.",
+  "set": {
+   "kSc_couple-walk": true,
+   "sStyle": "curtain",
+   "sBorder": "rose-corners",
+   "sPat": "sprigs",
+   "sFall": "hearts",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Parisienne'",
+   "sFt": "'Playfair Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#603A3A",
+    "it": "#FBE6E3",
+    "ef": "#F8E3DF",
+    "cd": "#FFF5F2",
+    "ink": "#3E1A20",
+    "ink2": "#A0475A",
+    "acc": "#C98A7C",
+    "bl": "#DE6A82",
+    "lv": "#86A383"
+   },
+   "walima": {
+    "bg": "#F7DDD9",
+    "it": "#4E242B",
+    "ef": "#FFF8F6",
+    "cd": "#FFFCFB",
+    "ink": "#4A2229",
+    "ink2": "#A65163",
+    "acc": "#A86A60",
+    "bl": "#EA8890",
+    "lv": "#8FAF95"
+   }
+  }
+ },
+ {
+  "name": "Save the Date",
+  "cat": "Story",
+  "desc": "A calendar flips to the wedding day, then the envelope opens.",
+  "set": {
+   "kSc_save-date": true,
+   "sStyle": "env",
+   "sBorder": "monogram-minimal",
+   "sPat": "dot",
+   "sFall": "confetti",
+   "sName": "fade",
+   "sDet": "wipe",
+   "sFs": "'Sacramento'",
+   "sFt": "'Josefin Sans'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#A8452F",
+    "it": "#FFF1E6",
+    "ef": "#FCE6D8",
+    "cd": "#FFF7F0",
+    "ink": "#3F1A12",
+    "ink2": "#A63A2E",
+    "acc": "#D3A055",
+    "bl": "#F0805F",
+    "lv": "#5FB8A4"
+   },
+   "walima": {
+    "bg": "#FBCFB8",
+    "it": "#4A2618",
+    "ef": "#FFF9F4",
+    "cd": "#FFFCF9",
+    "ink": "#43231A",
+    "ink2": "#AD4E37",
+    "acc": "#A27639",
+    "bl": "#F2937A",
+    "lv": "#86B8A8"
+   }
+  }
+ },
+ {
+  "name": "Blessing Verse",
+  "cat": "Story",
+  "desc": "\"And We created you in pairs\" (78:8), then the royal scroll unrolls.",
+  "set": {
+   "kSc_blessing": true,
+   "sStyle": "scroll",
+   "sBorder": "arch",
+   "sPat": "khatam",
+   "sFall": "dust",
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#4D3A22",
+    "it": "#F7EBD0",
+    "ef": "#FBF4E4",
+    "cd": "#FFFCF4",
+    "ink": "#2F2416",
+    "ink2": "#7D6230",
+    "acc": "#C4A462",
+    "bl": "#C99B83",
+    "lv": "#9A9A6A"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Shahi Farman",
+  "cat": "Royal",
+  "desc": "A royal Mughal scroll unrolls with the invitation written on it.",
+  "set": {
+   "sStyle": "scroll",
+   "sBorder": "jharokha",
+   "sPat": "damask",
+   "sFall": "dust",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#874637",
+    "it": "#FFF3E6",
+    "ef": "#FBEBDD",
+    "cd": "#FFFAF3",
+    "ink": "#3E2418",
+    "ink2": "#9A5130",
+    "acc": "#CFA463",
+    "bl": "#DA8A68",
+    "lv": "#9AA36E"
+   }
+  }
+ },
+ {
+  "name": "Paper-cut Arches",
+  "cat": "Royal",
+  "desc": "Layered paper-cut Mughal arches; the camera flies through them.",
+  "set": {
+   "sStyle": "paper-arches",
+   "sBorder": "arch",
+   "sPat": "jaali",
+   "sFall": "dust",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Allura'",
+   "sFt": "'Marcellus'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B3D2E",
+    "it": "#F3E9CF",
+    "ef": "#F2E8D2",
+    "cd": "#FFFAEE",
+    "ink": "#0E2E23",
+    "ink2": "#0F6B4A",
+    "acc": "#C9A046",
+    "bl": "#B0173A",
+    "lv": "#2FA37A"
+   },
+   "walima": {
+    "bg": "#4C5A46",
+    "it": "#F6F6EC",
+    "ef": "#F2F3E8",
+    "cd": "#FBFBF4",
+    "ink": "#22301F",
+    "ink2": "#4E6748",
+    "acc": "#C6A762",
+    "bl": "#D9978A",
+    "lv": "#9DB592"
+   }
+  }
+ },
+ {
+  "name": "Golden Star",
+  "cat": "Royal",
+  "desc": "An Islamic eight-point star draws itself and opens like an iris.",
+  "set": {
+   "sStyle": "islamic-star",
+   "sBorder": "art-deco",
+   "sPat": "khatam",
+   "sFall": "dust",
+   "sName": "fade",
+   "sDet": "wipe",
+   "sFs": "'Imperial Script'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B0A09",
+    "it": "#EFD9A6",
+    "ef": "#EDE0C4",
+    "cd": "#17140F",
+    "ink": "#F3E4C0",
+    "ink2": "#D8B25E",
+    "acc": "#C29A45",
+    "bl": "#B3263A",
+    "lv": "#2E7A5A"
+   },
+   "walima": {
+    "bg": "#2B2927",
+    "it": "#F4EEE3",
+    "ef": "#F6F1E7",
+    "cd": "#FFFDF8",
+    "ink": "#161412",
+    "ink2": "#6E5626",
+    "acc": "#B8975A",
+    "bl": "#C98F8F",
+    "lv": "#75836F"
+   }
+  }
+ },
+ {
+  "name": "Jharokha Window",
+  "cat": "Royal",
+  "desc": "Carved jaali shutters open and warm light pours out.",
+  "set": {
+   "sStyle": "jharokha-window",
+   "sBorder": "jharokha",
+   "sPat": "jaali",
+   "sFall": "rose-petals",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Great Vibes'",
+   "sFt": "'EB Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#45200F",
+    "it": "#F6E6D2",
+    "ef": "#F2E2CC",
+    "cd": "#FCF4E8",
+    "ink": "#3A1C12",
+    "ink2": "#A14A26",
+    "acc": "#C29350",
+    "bl": "#C8603A",
+    "lv": "#2F7A55"
+   },
+   "walima": {
+    "bg": "#FACB96",
+    "it": "#4A2508",
+    "ef": "#FFFAF2",
+    "cd": "#FFFCF7",
+    "ink": "#3F2008",
+    "ink2": "#B0480F",
+    "acc": "#9A6E25",
+    "bl": "#EE8A3A",
+    "lv": "#7FA35A"
+   }
+  }
+ },
+ {
+  "name": "Peacock Fan",
+  "cat": "Royal",
+  "desc": "Peacock feathers fan open around a golden medallion.",
+  "set": {
+   "sStyle": "peacock",
+   "sBorder": "corner",
+   "sPat": "buti",
+   "sFall": "dust",
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'Beau Rivage'",
+   "sFt": "'Playfair Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#04404D",
+    "it": "#F2EBD3",
+    "ef": "#F1EBD8",
+    "cd": "#FFFBF1",
+    "ink": "#0A2E31",
+    "ink2": "#0B6A70",
+    "acc": "#D0A44C",
+    "bl": "#B8337A",
+    "lv": "#2E9C6E"
+   },
+   "walima": {
+    "bg": "#2F6263",
+    "it": "#F4FBF8",
+    "ef": "#F0F7F4",
+    "cd": "#FCFFFD",
+    "ink": "#113A3D",
+    "ink2": "#23767A",
+    "acc": "#CBA862",
+    "bl": "#E28FB5",
+    "lv": "#6DB89A"
+   }
+  }
+ },
+ {
+  "name": "Storybook",
+  "cat": "Royal",
+  "desc": "An embossed book opens and its pages turn to the invitation.",
+  "set": {
+   "sStyle": "storybook",
+   "sBorder": "pearl-swag",
+   "sPat": "damask",
+   "sFall": "jasmine",
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'MonteCarlo'",
+   "sFt": "'Gilda Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#4A1A50",
+    "it": "#F8E7F1",
+    "ef": "#F5E6EE",
+    "cd": "#FFF8FB",
+    "ink": "#2E0B2A",
+    "ink2": "#7D2370",
+    "acc": "#CFA24B",
+    "bl": "#C04A9A",
+    "lv": "#8A9A3E"
+   },
+   "walima": {
+    "bg": "#E6DDF3",
+    "it": "#33244D",
+    "ef": "#FDFBFF",
+    "cd": "#FFFFFF",
+    "ink": "#2E2145",
+    "ink2": "#7253A3",
+    "acc": "#857D96",
+    "bl": "#C3A0E0",
+    "lv": "#84B29A"
+   }
+  }
+ },
+ {
+  "name": "Kaleidoscope",
+  "cat": "Royal",
+  "desc": "A jewelled kaleidoscope turns around the couple's initials.",
+  "set": {
+   "sStyle": "kaleidoscope",
+   "sBorder": "single",
+   "sPat": "quatrefoil",
+   "sFall": "dust",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Italianno'",
+   "sFt": "'Tenor Sans'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#1D3E9A",
+    "it": "#F3F0E6",
+    "ef": "#F1EEE4",
+    "cd": "#FBFCFF",
+    "ink": "#0E1D4A",
+    "ink2": "#1E4BA8",
+    "acc": "#C99A2E",
+    "bl": "#D9442B",
+    "lv": "#1FA3B4"
+   },
+   "walima": {
+    "bg": "#CFE0F5",
+    "it": "#1E2F48",
+    "ef": "#FBFCFE",
+    "cd": "#FFFFFF",
+    "ink": "#1A2A40",
+    "ink2": "#4D6A94",
+    "acc": "#76838F",
+    "bl": "#E3A3B5",
+    "lv": "#8EB0A6"
+   }
+  }
+ },
+ {
+  "name": "Rose Bloom",
+  "cat": "Floral",
+  "desc": "A giant rose unfolds petal by petal, then scatters to the card.",
+  "set": {
+   "sStyle": "rose-bloom",
+   "sBorder": "rose-corners",
+   "sPat": "sprigs",
+   "sFall": "rose-petals",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#F7DDD9",
+    "it": "#4E242B",
+    "ef": "#FFF8F6",
+    "cd": "#FFFCFB",
+    "ink": "#4A2229",
+    "ink2": "#A65163",
+    "acc": "#A86A60",
+    "bl": "#EA8890",
+    "lv": "#8FAF95"
+   }
+  }
+ },
+ {
+  "name": "Phoolon ki Larhi",
+  "cat": "Floral",
+  "desc": "Strings of jasmine and roses hang like a curtain and part.",
+  "set": {
+   "sStyle": "phool-larhi",
+   "sBorder": "pearl-swag",
+   "sPat": "sprigs",
+   "sFall": "jasmine",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Allura'",
+   "sFt": "'EB Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#4D3A22",
+    "it": "#F7EBD0",
+    "ef": "#FBF4E4",
+    "cd": "#FFFCF4",
+    "ink": "#2F2416",
+    "ink2": "#7D6230",
+    "acc": "#C4A462",
+    "bl": "#C99B83",
+    "lv": "#9A9A6A"
+   },
+   "walima": {
+    "bg": "#D3F0E2",
+    "it": "#163D33",
+    "ef": "#FFFFFF",
+    "cd": "#FCFFFD",
+    "ink": "#183F35",
+    "ink2": "#2F7A66",
+    "acc": "#B07664",
+    "bl": "#EA8296",
+    "lv": "#6CC09C"
+   }
+  }
+ },
+ {
+  "name": "Watercolour Bloom",
+  "cat": "Floral",
+  "desc": "Soft watercolour washes and line-art roses paint in.",
+  "set": {
+   "sStyle": "watercolor",
+   "sBorder": "rose-corners",
+   "sPat": "none",
+   "sFall": "hearts",
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Vujahday Script'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#4E2F44",
+    "it": "#F7E9EE",
+    "ef": "#F4E6EA",
+    "cd": "#FCF6F7",
+    "ink": "#3A1F2C",
+    "ink2": "#8E4A64",
+    "acc": "#BE9A5C",
+    "bl": "#C98597",
+    "lv": "#8E9C87"
+   },
+   "walima": {
+    "bg": "#F7DDD9",
+    "it": "#4E242B",
+    "ef": "#FFF8F6",
+    "cd": "#FFFCFB",
+    "ink": "#4A2229",
+    "ink2": "#A65163",
+    "acc": "#A86A60",
+    "bl": "#EA8890",
+    "lv": "#8FAF95"
+   }
+  }
+ },
+ {
+  "name": "Mehndi Hands",
+  "cat": "Festive",
+  "desc": "Henna draws on two hands with the couple's initials hidden in the palms.",
+  "set": {
+   "sStyle": "mehndi-hands",
+   "sBorder": "garland",
+   "sPat": "buti",
+   "sFall": "marigold",
+   "kO_bells": true,
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Style Script'",
+   "sFt": "'Lora'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#36380F",
+    "it": "#FFF1C2",
+    "ef": "#FFF3CF",
+    "cd": "#FFFAE6",
+    "ink": "#262B0C",
+    "ink2": "#B04A00",
+    "acc": "#D4A12A",
+    "bl": "#F28A0C",
+    "lv": "#7DA22A"
+   },
+   "walima": {
+    "bg": "#DCE8C4",
+    "it": "#1F3A22",
+    "ef": "#FFFEF6",
+    "cd": "#FFFEF8",
+    "ink": "#1B3424",
+    "ink2": "#2B6E4C",
+    "acc": "#9A7428",
+    "bl": "#D9828F",
+    "lv": "#5E9A50"
+   }
+  }
+ },
+ {
+  "name": "Truck Art Shaadi",
+  "cat": "Festive",
+  "desc": "Vivid Pakistani truck-art panels with bells swing open.",
+  "set": {
+   "sStyle": "truck-art",
+   "sBorder": "garland",
+   "sPat": "buti",
+   "sFall": "confetti",
+   "kO_bells": true,
+   "kO_marigold-garland": true,
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'Style Script'",
+   "sFt": "'Lora'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#F2B705",
+    "it": "#14205A",
+    "ef": "#FFFBEA",
+    "cd": "#FFFDF3",
+    "ink": "#14205A",
+    "ink2": "#C2122E",
+    "acc": "#8A5E00",
+    "bl": "#E8247A",
+    "lv": "#0E8A3A"
+   },
+   "walima": {
+    "bg": "#A9DDEB",
+    "it": "#1A2550",
+    "ef": "#FFFDF2",
+    "cd": "#FFFDF4",
+    "ink": "#17225A",
+    "ink2": "#C2185B",
+    "acc": "#8F6400",
+    "bl": "#F25C9A",
+    "lv": "#2EAD6B"
+   }
+  }
+ },
+ {
+  "name": "Gift Box",
+  "cat": "Festive",
+  "desc": "A wrapped gift bounces, pops open with confetti and the card rises out.",
+  "set": {
+   "sStyle": "gift-box",
+   "sBorder": "corner",
+   "sPat": "dot",
+   "sFall": "confetti",
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Beau Rivage'",
+   "sFt": "'Playfair Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#74104A",
+    "it": "#FFE8F2",
+    "ef": "#FCE4EC",
+    "cd": "#FFF6F8",
+    "ink": "#3D0628",
+    "ink2": "#B0145F",
+    "acc": "#D4A23A",
+    "bl": "#E0287D",
+    "lv": "#3FA34D"
+   },
+   "walima": {
+    "bg": "#F9CADF",
+    "it": "#4A1235",
+    "ef": "#FFF8FA",
+    "cd": "#FFFBFC",
+    "ink": "#45122F",
+    "ink2": "#A8306E",
+    "acc": "#9A6A28",
+    "bl": "#E86FA6",
+    "lv": "#5DAE73"
+   }
+  }
+ },
+ {
+  "name": "Love Birds",
+  "cat": "Festive",
+  "desc": "Two doves carry a silk ribbon with the couple's names.",
+  "set": {
+   "sStyle": "love-birds",
+   "sBorder": "pearl-swag",
+   "sPat": "none",
+   "sFall": "hearts",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Parisienne'",
+   "sFt": "'Gilda Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2B4058",
+    "it": "#EEF3F9",
+    "ef": "#EAF0F7",
+    "cd": "#F8FAFD",
+    "ink": "#14243A",
+    "ink2": "#3D5F8C",
+    "acc": "#9AA5B2",
+    "bl": "#6F9FDB",
+    "lv": "#8FB3A8"
+   },
+   "walima": {
+    "bg": "#CFE0F5",
+    "it": "#1E2F48",
+    "ef": "#FBFCFE",
+    "cd": "#FFFFFF",
+    "ink": "#1A2A40",
+    "ink2": "#4D6A94",
+    "acc": "#76838F",
+    "bl": "#E3A3B5",
+    "lv": "#8EB0A6"
+   }
+  }
+ },
+ {
+  "name": "Fireworks Night",
+  "cat": "Night",
+  "desc": "Atishbazi bursts over the skyline with the names in gold.",
+  "set": {
+   "sStyle": "fireworks",
+   "sBorder": "art-deco",
+   "sPat": "none",
+   "sFall": "confetti",
+   "sName": "fade",
+   "sDet": "wipe",
+   "sFs": "'Imperial Script'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B0A09",
+    "it": "#EFD9A6",
+    "ef": "#EDE0C4",
+    "cd": "#17140F",
+    "ink": "#F3E4C0",
+    "ink2": "#D8B25E",
+    "acc": "#C29A45",
+    "bl": "#B3263A",
+    "lv": "#2E7A5A"
+   },
+   "walima": {
+    "bg": "#3F5185",
+    "it": "#F7F3EA",
+    "ef": "#F4F1EA",
+    "cd": "#FBFAF6",
+    "ink": "#1D2647",
+    "ink2": "#4A5A96",
+    "acc": "#C8A55C",
+    "bl": "#D98AA3",
+    "lv": "#7FAFAC"
+   }
+  }
+ },
+ {
+  "name": "Fairy Lights",
+  "cat": "Night",
+  "desc": "Strings of lights ripple on and a chandelier lowers.",
+  "set": {
+   "sStyle": "fairy-lights",
+   "sBorder": "corner",
+   "sPat": "dot",
+   "sFall": "fireflies",
+   "kO_fairy-string": true,
+   "kSpk": false,
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2B1E52",
+    "it": "#FFE9D6",
+    "ef": "#FCE7D9",
+    "cd": "#FFF6EE",
+    "ink": "#2A1636",
+    "ink2": "#B8402A",
+    "acc": "#D49A45",
+    "bl": "#F2735E",
+    "lv": "#3F7F6A"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Lahore at Dusk",
+  "cat": "Night",
+  "desc": "The sun sets behind Badshahi-style domes and minarets.",
+  "set": {
+   "sStyle": "lahore-dusk",
+   "sBorder": "jharokha",
+   "sPat": "jaali",
+   "sFall": "sky-lanterns",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Alex Brush'",
+   "sFt": "'Marcellus'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2B1E52",
+    "it": "#FFE9D6",
+    "ef": "#FCE7D9",
+    "cd": "#FFF6EE",
+    "ink": "#2A1636",
+    "ink2": "#B8402A",
+    "acc": "#D49A45",
+    "bl": "#F2735E",
+    "lv": "#3F7F6A"
+   },
+   "walima": {
+    "bg": "#574474",
+    "it": "#FFEFE4",
+    "ef": "#FCEDE6",
+    "cd": "#FFF8F2",
+    "ink": "#3A1F38",
+    "ink2": "#B8483A",
+    "acc": "#D2A562",
+    "bl": "#EF7F6E",
+    "lv": "#7FB09A"
+   }
+  }
+ },
+ {
+  "name": "Dulha Dulhan Royal",
+  "cat": "Story",
+  "desc": "Groom's name, dulha, dulhan and her name pop in, then the palace doors open.",
+  "set": {
+   "kSc_dulha-dulhan": true,
+   "sStyle": "door",
+   "sBorder": "corner",
+   "sPat": "khatam",
+   "sFall": "dust",
+   "kLan": true,
+   "kSpk": false,
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#F7DDD9",
+    "it": "#4E242B",
+    "ef": "#FFF8F6",
+    "cd": "#FFFCFB",
+    "ink": "#4A2229",
+    "ink2": "#A65163",
+    "acc": "#A86A60",
+    "bl": "#EA8890",
+    "lv": "#8FAF95"
+   }
+  }
+ },
+ {
+  "name": "Dulha Dulhan Moonlit",
+  "cat": "Story",
+  "desc": "The couple's portraits, then a crescent rises over Lahore with floating lanterns.",
+  "set": {
+   "kSc_dulha-dulhan": true,
+   "sStyle": "moonlit",
+   "sBorder": "arch",
+   "sPat": "stars-crescents",
+   "sFall": "fireflies",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Allura'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0A1230",
+    "it": "#F4E7C5",
+    "ef": "#EFE4CC",
+    "cd": "#16224A",
+    "ink": "#F6EBD0",
+    "ink2": "#E2BE6A",
+    "acc": "#C9A04A",
+    "bl": "#D2506A",
+    "lv": "#4FA3A0"
+   },
+   "walima": {
+    "bg": "#CFE0F5",
+    "it": "#1E2F48",
+    "ef": "#FBFCFE",
+    "cd": "#FFFFFF",
+    "ink": "#1A2A40",
+    "ink2": "#4D6A94",
+    "acc": "#76838F",
+    "bl": "#E3A3B5",
+    "lv": "#8EB0A6"
+   }
+  }
+ },
+ {
+  "name": "Dulha Dulhan Curtains",
+  "cat": "Story",
+  "desc": "The couple's portraits, then velvet curtains part on a jharokha card.",
+  "set": {
+   "kSc_dulha-dulhan": true,
+   "sStyle": "curtain",
+   "sBorder": "jharokha",
+   "sPat": "damask",
+   "sFall": "rose-petals",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'EB Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2A0709",
+    "it": "#F3DFC6",
+    "ef": "#EAD7BE",
+    "cd": "#3A0B10",
+    "ink": "#F6E3C8",
+    "ink2": "#E0B27A",
+    "acc": "#B9824A",
+    "bl": "#D13A45",
+    "lv": "#3F7A55"
+   },
+   "walima": {
+    "bg": "#D6C2CB",
+    "it": "#45252F",
+    "ef": "#FFF9FA",
+    "cd": "#FFFBFB",
+    "ink": "#3F222C",
+    "ink2": "#95506A",
+    "acc": "#8C6C3A",
+    "bl": "#C27E92",
+    "lv": "#889A92"
+   }
+  }
+ },
+ {
+  "name": "Bismillah & the Couple",
+  "cat": "Story",
+  "desc": "Bismillah calligraphy, the couple's portraits, then the envelope opens.",
+  "set": {
+   "kSc_bismillah": true,
+   "kSc_dulha-dulhan": true,
+   "sStyle": "env",
+   "sBorder": "rose-corners",
+   "sPat": "sprigs",
+   "sFall": "hearts",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B3D2E",
+    "it": "#F3E9CF",
+    "ef": "#F2E8D2",
+    "cd": "#FFFAEE",
+    "ink": "#0E2E23",
+    "ink2": "#0F6B4A",
+    "acc": "#C9A046",
+    "bl": "#B0173A",
+    "lv": "#2FA37A"
+   },
+   "walima": {
+    "bg": "#4C5A46",
+    "it": "#F6F6EC",
+    "ef": "#F2F3E8",
+    "cd": "#FBFBF4",
+    "ink": "#22301F",
+    "ink2": "#4E6748",
+    "acc": "#C6A762",
+    "bl": "#D9978A",
+    "lv": "#9DB592"
+   }
+  }
+ },
+ {
+  "name": "Dulha Dulhan Medallion",
+  "cat": "Story",
+  "desc": "The couple's portraits, then a golden ring draws the initials.",
+  "set": {
+   "kSc_dulha-dulhan": true,
+   "sStyle": "med",
+   "sBorder": "garland",
+   "sPat": "jaali",
+   "sFall": "confetti",
+   "kO_marigold-garland": true,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Beau Rivage'",
+   "sFt": "'Playfair Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#74104A",
+    "it": "#FFE8F2",
+    "ef": "#FCE4EC",
+    "cd": "#FFF6F8",
+    "ink": "#3D0628",
+    "ink2": "#B0145F",
+    "acc": "#D4A23A",
+    "bl": "#E0287D",
+    "lv": "#3FA34D"
+   },
+   "walima": {
+    "bg": "#F9CADF",
+    "it": "#4A1235",
+    "ef": "#FFF8FA",
+    "cd": "#FFFBFC",
+    "ink": "#45122F",
+    "ink2": "#A8306E",
+    "acc": "#9A6A28",
+    "bl": "#E86FA6",
+    "lv": "#5DAE73"
+   }
+  }
+ },
+ {
+  "name": "Shaadi Confetti",
+  "cat": "Story",
+  "desc": "The couple's portraits, an envelope, golden confetti and swinging bells.",
+  "set": {
+   "kSc_dulha-dulhan": true,
+   "sStyle": "env",
+   "sBorder": "garland",
+   "sPat": "dot",
+   "sFall": "confetti",
+   "kO_bells": true,
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Style Script'",
+   "sFt": "'Lora'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#74104A",
+    "it": "#FFE8F2",
+    "ef": "#FCE4EC",
+    "cd": "#FFF6F8",
+    "ink": "#3D0628",
+    "ink2": "#B0145F",
+    "acc": "#D4A23A",
+    "bl": "#E0287D",
+    "lv": "#3FA34D"
+   },
+   "walima": {
+    "bg": "#FBCFB8",
+    "it": "#4A2618",
+    "ef": "#FFF9F4",
+    "cd": "#FFFCF9",
+    "ink": "#43231A",
+    "ink2": "#AD4E37",
+    "acc": "#A27639",
+    "bl": "#F2937A",
+    "lv": "#86B8A8"
+   }
+  }
+ },
+ {
+  "name": "Royal Curtains",
+  "cat": "Royal",
+  "desc": "Velvet curtains with gold fringe part on a carved jharokha arch.",
+  "set": {
+   "sStyle": "curtain",
+   "sBorder": "jharokha",
+   "sPat": "damask",
+   "sFall": "rose-petals",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Emerald Darbar",
+  "cat": "Royal",
+  "desc": "Emerald velvet backdrop and a golden medallion under a jharokha.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "jharokha",
+   "sPat": "jaali",
+   "sFall": "dust",
+   "sImg": "emerald-velvet",
+   "sImgOn": "stg",
+   "rImg": 85,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'Marcellus'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B3D2E",
+    "it": "#F3E9CF",
+    "ef": "#F2E8D2",
+    "cd": "#FFFAEE",
+    "ink": "#0E2E23",
+    "ink2": "#0F6B4A",
+    "acc": "#C9A046",
+    "bl": "#B0173A",
+    "lv": "#2FA37A"
+   },
+   "walima": {
+    "bg": "#DCE8C4",
+    "it": "#1F3A22",
+    "ef": "#FFFEF6",
+    "cd": "#FFFEF8",
+    "ink": "#1B3424",
+    "ink2": "#2B6E4C",
+    "acc": "#9A7428",
+    "bl": "#D9828F",
+    "lv": "#5E9A50"
+   }
+  }
+ },
+ {
+  "name": "Black & Gold Luxe",
+  "cat": "Royal",
+  "desc": "Gold glitter, a drawn medallion and an art deco frame on black.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "art-deco",
+   "sPat": "khatam",
+   "sFall": "dust",
+   "sImg": "gold-glitter-bokeh",
+   "sImgOn": "stg",
+   "rImg": 60,
+   "sName": "fade",
+   "sDet": "wipe",
+   "sFs": "'Imperial Script'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B0A09",
+    "it": "#EFD9A6",
+    "ef": "#EDE0C4",
+    "cd": "#17140F",
+    "ink": "#F3E4C0",
+    "ink2": "#D8B25E",
+    "acc": "#C29A45",
+    "bl": "#B3263A",
+    "lv": "#2E7A5A"
+   },
+   "walima": {
+    "bg": "#2B2927",
+    "it": "#F4EEE3",
+    "ef": "#F6F1E7",
+    "cd": "#FFFDF8",
+    "ink": "#161412",
+    "ink2": "#6E5626",
+    "acc": "#B8975A",
+    "bl": "#C98F8F",
+    "lv": "#75836F"
+   }
+  }
+ },
+ {
+  "name": "Bismillah Curtains",
+  "cat": "Royal",
+  "desc": "Bismillah calligraphy, then the royal curtains open.",
+  "set": {
+   "kSc_bismillah": true,
+   "sStyle": "curtain",
+   "sBorder": "arch",
+   "sPat": "khatam",
+   "sFall": "dust",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#4A1A50",
+    "it": "#F8E7F1",
+    "ef": "#F5E6EE",
+    "cd": "#FFF8FB",
+    "ink": "#2E0B2A",
+    "ink2": "#7D2370",
+    "acc": "#CFA24B",
+    "bl": "#C04A9A",
+    "lv": "#8A9A3E"
+   },
+   "walima": {
+    "bg": "#744571",
+    "it": "#FFF4F9",
+    "ef": "#FBF0F5",
+    "cd": "#FFFAFC",
+    "ink": "#3D1A37",
+    "ink2": "#8E4A80",
+    "acc": "#CBA55B",
+    "bl": "#E39ACB",
+    "lv": "#A3B07A"
+   }
+  }
+ },
+ {
+  "name": "Wine & Pearl",
+  "cat": "Royal",
+  "desc": "Palace doors open on a card draped with pearl strings.",
+  "set": {
+   "sStyle": "door",
+   "sBorder": "pearl-swag",
+   "sPat": "damask",
+   "sFall": "jasmine",
+   "kLan": true,
+   "kSpk": false,
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'MonteCarlo'",
+   "sFt": "'Gilda Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#3E0726",
+    "it": "#F7EDF0",
+    "ef": "#F5ECEE",
+    "cd": "#FCF8F8",
+    "ink": "#2E0A18",
+    "ink2": "#8A1538",
+    "acc": "#A9A2A7",
+    "bl": "#C2185B",
+    "lv": "#6E8B7B"
+   },
+   "walima": {
+    "bg": "#6C3852",
+    "it": "#FBF3F6",
+    "ef": "#F8F0F3",
+    "cd": "#FFFBFC",
+    "ink": "#3A1B2B",
+    "ink2": "#8E3E62",
+    "acc": "#B3A9AF",
+    "bl": "#D98BAE",
+    "lv": "#9FB3A7"
+   }
+  }
+ },
+ {
+  "name": "Kashi Tiles",
+  "cat": "Royal",
+  "desc": "Lahore's blue kashi tiles: lapis and turquoise with a golden medallion.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "corner",
+   "sPat": "quatrefoil",
+   "sFall": "dust",
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Parisienne'",
+   "sFt": "'Marcellus'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#1D3E9A",
+    "it": "#F3F0E6",
+    "ef": "#F1EEE4",
+    "cd": "#FBFCFF",
+    "ink": "#0E1D4A",
+    "ink2": "#1E4BA8",
+    "acc": "#C99A2E",
+    "bl": "#D9442B",
+    "lv": "#1FA3B4"
+   },
+   "walima": {
+    "bg": "#2F5F8A",
+    "it": "#F5FAFC",
+    "ef": "#F2F7FA",
+    "cd": "#FDFEFF",
+    "ink": "#14304F",
+    "ink2": "#2E6A9E",
+    "acc": "#CDA95E",
+    "bl": "#E8846E",
+    "lv": "#5CC1C9"
+   }
+  }
+ },
+ {
+  "name": "Peacock Mor",
+  "cat": "Royal",
+  "desc": "Teal and gold peacock tones behind carved doors and paisley buti.",
+  "set": {
+   "sStyle": "door",
+   "sBorder": "corner",
+   "sPat": "buti",
+   "sFall": "dust",
+   "kLan": true,
+   "kSpk": false,
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'Alex Brush'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#04404D",
+    "it": "#F2EBD3",
+    "ef": "#F1EBD8",
+    "cd": "#FFFBF1",
+    "ink": "#0A2E31",
+    "ink2": "#0B6A70",
+    "acc": "#D0A44C",
+    "bl": "#B8337A",
+    "lv": "#2E9C6E"
+   },
+   "walima": {
+    "bg": "#2F6263",
+    "it": "#F4FBF8",
+    "ef": "#F0F7F4",
+    "cd": "#FCFFFD",
+    "ink": "#113A3D",
+    "ink2": "#23767A",
+    "acc": "#CBA862",
+    "bl": "#E28FB5",
+    "lv": "#6DB89A"
+   }
+  }
+ },
+ {
+  "name": "Pietra Dura",
+  "cat": "Royal",
+  "desc": "White and gold marble with Mughal inlay colours.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "art-deco",
+   "sPat": "quatrefoil",
+   "sFall": "jasmine",
+   "sImg": "white-marble-gold",
+   "sImgOn": "crd",
+   "rImg": 90,
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Petit Formal Script'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#D3CEC6",
+    "it": "#2A1A12",
+    "ef": "#FFFFFF",
+    "cd": "#FFFDF9",
+    "ink": "#1E1A2E",
+    "ink2": "#A3311C",
+    "acc": "#8E6B25",
+    "bl": "#B23A1E",
+    "lv": "#1E7B4F"
+   },
+   "walima": {
+    "bg": "#F5F0E6",
+    "it": "#2C2622",
+    "ef": "#FFFFFF",
+    "cd": "#FFFFFF",
+    "ink": "#2B2530",
+    "ink2": "#9A4A52",
+    "acc": "#8F7334",
+    "bl": "#D98C9A",
+    "lv": "#5FA38A"
+   }
+  }
+ },
+ {
+  "name": "Rose Garden",
+  "cat": "Floral",
+  "desc": "An envelope over red rose petals, opening to rose-corner bouquets.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "rose-corners",
+   "sPat": "sprigs",
+   "sFall": "rose-petals",
+   "sImg": "red-rose-petals",
+   "sImgOn": "stg",
+   "rImg": 70,
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#580C1C",
+    "it": "#F6E6C6",
+    "ef": "#F3E2C2",
+    "cd": "#FFF7E8",
+    "ink": "#3B0A14",
+    "ink2": "#8C1C2B",
+    "acc": "#B98A3E",
+    "bl": "#C41E3A",
+    "lv": "#2E6B4F"
+   },
+   "walima": {
+    "bg": "#F7DDD9",
+    "it": "#4E242B",
+    "ef": "#FFF8F6",
+    "cd": "#FFFCFB",
+    "ink": "#4A2229",
+    "ink2": "#A65163",
+    "acc": "#A86A60",
+    "bl": "#EA8890",
+    "lv": "#8FAF95"
+   }
+  }
+ },
+ {
+  "name": "Motia Gajra",
+  "cat": "Floral",
+  "desc": "Jasmine buds, pearl swags and falling motia flowers.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "pearl-swag",
+   "sPat": "sprigs",
+   "sFall": "jasmine",
+   "sImg": "motia-jasmine-buds",
+   "sImgOn": "stg",
+   "rImg": 75,
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Allura'",
+   "sFt": "'EB Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#4D3A22",
+    "it": "#F7EBD0",
+    "ef": "#FBF4E4",
+    "cd": "#FFFCF4",
+    "ink": "#2F2416",
+    "ink2": "#7D6230",
+    "acc": "#C4A462",
+    "bl": "#C99B83",
+    "lv": "#9A9A6A"
+   },
+   "walima": {
+    "bg": "#4C5A46",
+    "it": "#F6F6EC",
+    "ef": "#F2F3E8",
+    "cd": "#FBFBF4",
+    "ink": "#22301F",
+    "ink2": "#4E6748",
+    "acc": "#C6A762",
+    "bl": "#D9978A",
+    "lv": "#9DB592"
+   }
+  }
+ },
+ {
+  "name": "Blush Peonies",
+  "cat": "Floral",
+  "desc": "Soft blush peonies, floating hearts and rose corners.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "rose-corners",
+   "sPat": "none",
+   "sFall": "hearts",
+   "sImg": "blush-peonies",
+   "sImgOn": "stg",
+   "rImg": 75,
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Parisienne'",
+   "sFt": "'Playfair Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#603A3A",
+    "it": "#FBE6E3",
+    "ef": "#F8E3DF",
+    "cd": "#FFF5F2",
+    "ink": "#3E1A20",
+    "ink2": "#A0475A",
+    "acc": "#C98A7C",
+    "bl": "#DE6A82",
+    "lv": "#86A383"
+   },
+   "walima": {
+    "bg": "#F7DDD9",
+    "it": "#4E242B",
+    "ef": "#FFF8F6",
+    "cd": "#FFFCFB",
+    "ink": "#4A2229",
+    "ink2": "#A65163",
+    "acc": "#A86A60",
+    "bl": "#EA8890",
+    "lv": "#8FAF95"
+   }
+  }
+ },
+ {
+  "name": "Marigold Mehndi",
+  "cat": "Floral",
+  "desc": "Genda strings, marigold garlands, bells and tumbling marigolds.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "garland",
+   "sPat": "buti",
+   "sFall": "marigold",
+   "kO_marigold-garland": true,
+   "kO_bells": true,
+   "sImg": "marigold-garland-strings",
+   "sImgOn": "stg",
+   "rImg": 70,
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Style Script'",
+   "sFt": "'Lora'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#36380F",
+    "it": "#FFF1C2",
+    "ef": "#FFF3CF",
+    "cd": "#FFFAE6",
+    "ink": "#262B0C",
+    "ink2": "#B04A00",
+    "acc": "#D4A12A",
+    "bl": "#F28A0C",
+    "lv": "#7DA22A"
+   },
+   "walima": {
+    "bg": "#F8E8A2",
+    "it": "#33360F",
+    "ef": "#FFFCEF",
+    "cd": "#FFFEF6",
+    "ink": "#2E300E",
+    "ink2": "#A84B08",
+    "acc": "#9C7826",
+    "bl": "#F59B2E",
+    "lv": "#86A83A"
+   }
+  }
+ },
+ {
+  "name": "Vintage Garden",
+  "cat": "Floral",
+  "desc": "Vintage floral paper texture on the card with falling rose petals.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "rose-petals",
+   "sImg": "vintage-floral-wallpaper",
+   "sImgOn": "crd",
+   "rImg": 60,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Vujahday Script'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#A8452F",
+    "it": "#FFF1E6",
+    "ef": "#FCE6D8",
+    "cd": "#FFF7F0",
+    "ink": "#3F1A12",
+    "ink2": "#A63A2E",
+    "acc": "#D3A055",
+    "bl": "#F0805F",
+    "lv": "#5FB8A4"
+   },
+   "walima": {
+    "bg": "#FBCFB8",
+    "it": "#4A2618",
+    "ef": "#FFF9F4",
+    "cd": "#FFFCF9",
+    "ink": "#43231A",
+    "ink2": "#AD4E37",
+    "acc": "#A27639",
+    "bl": "#F2937A",
+    "lv": "#86B8A8"
+   }
+  }
+ },
+ {
+  "name": "White Roses Noir",
+  "cat": "Floral",
+  "desc": "White roses on black, a minimal monogram and falling jasmine.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "monogram-minimal",
+   "sPat": "none",
+   "sFall": "jasmine",
+   "sImg": "white-roses-noir",
+   "sImgOn": "stg",
+   "rImg": 90,
+   "sName": "fade",
+   "sDet": "wipe",
+   "sFs": "'MonteCarlo'",
+   "sFt": "'Tenor Sans'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B0A09",
+    "it": "#EFD9A6",
+    "ef": "#EDE0C4",
+    "cd": "#17140F",
+    "ink": "#F3E4C0",
+    "ink2": "#D8B25E",
+    "acc": "#C29A45",
+    "bl": "#B3263A",
+    "lv": "#2E7A5A"
+   },
+   "walima": {
+    "bg": "#E5E4E8",
+    "it": "#2E2A30",
+    "ef": "#FFFFFF",
+    "cd": "#FFFFFF",
+    "ink": "#2A2629",
+    "ink2": "#6B6366",
+    "acc": "#857F78",
+    "bl": "#D09E92",
+    "lv": "#9DB0A6"
+   }
+  }
+ },
+ {
+  "name": "Moon & Lanterns",
+  "cat": "Night",
+  "desc": "A crescent rises over the Lahore skyline as lanterns float up.",
+  "set": {
+   "sStyle": "moonlit",
+   "sBorder": "arch",
+   "sPat": "stars-crescents",
+   "sFall": "fireflies",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Great Vibes'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0A1230",
+    "it": "#F4E7C5",
+    "ef": "#EFE4CC",
+    "cd": "#16224A",
+    "ink": "#F6EBD0",
+    "ink2": "#E2BE6A",
+    "acc": "#C9A04A",
+    "bl": "#D2506A",
+    "lv": "#4FA3A0"
+   },
+   "walima": {
+    "bg": "#3F5185",
+    "it": "#F7F3EA",
+    "ef": "#F4F1EA",
+    "cd": "#FBFAF6",
+    "ink": "#1D2647",
+    "ink2": "#4A5A96",
+    "acc": "#C8A55C",
+    "bl": "#D98AA3",
+    "lv": "#7FAFAC"
+   }
+  }
+ },
+ {
+  "name": "Chand Raat",
+  "cat": "Night",
+  "desc": "Bismillah, then the moonlit skyline, a jharokha card and sky lanterns.",
+  "set": {
+   "kSc_bismillah": true,
+   "sStyle": "moonlit",
+   "sBorder": "jharokha",
+   "sPat": "stars-crescents",
+   "sFall": "sky-lanterns",
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'Marcellus'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#141A24",
+    "it": "#EEF1F6",
+    "ef": "#E9EDF3",
+    "cd": "#F4F6F9",
+    "ink": "#141B26",
+    "ink2": "#4A5568",
+    "acc": "#9BA2AC",
+    "bl": "#C9A3B6",
+    "lv": "#7E9A92"
+   },
+   "walima": {
+    "bg": "#4C5566",
+    "it": "#F5F7FA",
+    "ef": "#F1F3F6",
+    "cd": "#FBFCFD",
+    "ink": "#1E2430",
+    "ink2": "#56627A",
+    "acc": "#A5ACB7",
+    "bl": "#D59FB6",
+    "lv": "#8FAEA4"
+   }
+  }
+ },
+ {
+  "name": "Crescent Dusk",
+  "cat": "Night",
+  "desc": "A real crescent at dusk behind the envelope, with sky lanterns.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "arch",
+   "sPat": "stars-crescents",
+   "sFall": "sky-lanterns",
+   "sImg": "crescent-moon-dusk",
+   "sImgOn": "stg",
+   "rImg": 90,
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Allura'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#141A24",
+    "it": "#EEF1F6",
+    "ef": "#E9EDF3",
+    "cd": "#F4F6F9",
+    "ink": "#141B26",
+    "ink2": "#4A5568",
+    "acc": "#9BA2AC",
+    "bl": "#C9A3B6",
+    "lv": "#7E9A92"
+   },
+   "walima": {
+    "bg": "#E6DDF3",
+    "it": "#33244D",
+    "ef": "#FDFBFF",
+    "cd": "#FFFFFF",
+    "ink": "#2E2145",
+    "ink2": "#7253A3",
+    "acc": "#857D96",
+    "bl": "#C3A0E0",
+    "lv": "#84B29A"
+   }
+  }
+ },
+ {
+  "name": "Fairy Light Mehfil",
+  "cat": "Night",
+  "desc": "Warm fairy-light glow behind the envelope and twinkling bulbs on the card.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "corner",
+   "sPat": "dot",
+   "sFall": "fireflies",
+   "kO_fairy-string": true,
+   "kSpk": false,
+   "sImg": "fairy-lights-bokeh",
+   "sImgOn": "stg",
+   "rImg": 85,
+   "sName": "letter",
+   "sDet": "up",
+   "sFs": "'Beau Rivage'",
+   "sFt": "'Playfair Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2B1E52",
+    "it": "#FFE9D6",
+    "ef": "#FCE7D9",
+    "cd": "#FFF6EE",
+    "ink": "#2A1636",
+    "ink2": "#B8402A",
+    "acc": "#D49A45",
+    "bl": "#F2735E",
+    "lv": "#3F7F6A"
+   },
+   "walima": {
+    "bg": "#574474",
+    "it": "#FFEFE4",
+    "ef": "#FCEDE6",
+    "cd": "#FFF8F2",
+    "ink": "#3A1F38",
+    "ink2": "#B8483A",
+    "acc": "#D2A562",
+    "bl": "#EF7F6E",
+    "lv": "#7FB09A"
+   }
+  }
+ },
+ {
+  "name": "Starry Nikah",
+  "cat": "Night",
+  "desc": "A starry sky, a golden ring and a clean monogram card.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "monogram-minimal",
+   "sPat": "stars-crescents",
+   "sFall": "fireflies",
+   "sImg": "starry-night-sky",
+   "sImgOn": "stg",
+   "rImg": 90,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Italianno'",
+   "sFt": "'Tenor Sans'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0A1230",
+    "it": "#F4E7C5",
+    "ef": "#EFE4CC",
+    "cd": "#16224A",
+    "ink": "#F6EBD0",
+    "ink2": "#E2BE6A",
+    "acc": "#C9A04A",
+    "bl": "#D2506A",
+    "lv": "#4FA3A0"
+   },
+   "walima": {
+    "bg": "#E6DDF3",
+    "it": "#33244D",
+    "ef": "#FDFBFF",
+    "cd": "#FFFFFF",
+    "ink": "#2E2145",
+    "ink2": "#7253A3",
+    "acc": "#857D96",
+    "bl": "#C3A0E0",
+    "lv": "#84B29A"
+   }
+  }
+ },
+ {
+  "name": "Lahore Sunset",
+  "cat": "Night",
+  "desc": "Sunset tones over the Badshahi skyline, lanterns and a jaali card.",
+  "set": {
+   "sStyle": "moonlit",
+   "sBorder": "jharokha",
+   "sPat": "jaali",
+   "sFall": "sky-lanterns",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Alex Brush'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2B1E52",
+    "it": "#FFE9D6",
+    "ef": "#FCE7D9",
+    "cd": "#FFF6EE",
+    "ink": "#2A1636",
+    "ink2": "#B8402A",
+    "acc": "#D49A45",
+    "bl": "#F2735E",
+    "lv": "#3F7F6A"
+   },
+   "walima": {
+    "bg": "#574474",
+    "it": "#FFEFE4",
+    "ef": "#FCEDE6",
+    "cd": "#FFF8F2",
+    "ink": "#3A1F38",
+    "ink2": "#B8483A",
+    "acc": "#D2A562",
+    "bl": "#EF7F6E",
+    "lv": "#7FB09A"
+   }
+  }
+ },
+ {
+  "name": "Minimal Monogram",
+  "cat": "Modern",
+  "desc": "Pearl and platinum, a monogram crest and lots of calm space.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "monogram-minimal",
+   "sPat": "none",
+   "sFall": "none",
+   "kSpk": false,
+   "sName": "fade",
+   "sDet": "wipe",
+   "sFs": "'Sacramento'",
+   "sFt": "'Josefin Sans'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#48423E",
+    "it": "#F6F3EE",
+    "ef": "#F4F1EB",
+    "cd": "#FBF9F5",
+    "ink": "#26221F",
+    "ink2": "#5E5650",
+    "acc": "#ABA69E",
+    "bl": "#C99292",
+    "lv": "#94A69C"
+   },
+   "walima": {
+    "bg": "#E5E4E8",
+    "it": "#2E2A30",
+    "ef": "#FFFFFF",
+    "cd": "#FFFFFF",
+    "ink": "#2A2629",
+    "ink2": "#6B6366",
+    "acc": "#857F78",
+    "bl": "#D09E92",
+    "lv": "#9DB0A6"
+   }
+  }
+ },
+ {
+  "name": "Art Deco Night",
+  "cat": "Modern",
+  "desc": "Palace doors, a 1920s gold frame and gold confetti.",
+  "set": {
+   "sStyle": "door",
+   "sBorder": "art-deco",
+   "sPat": "khatam",
+   "sFall": "confetti",
+   "kLan": false,
+   "kSpk": true,
+   "sName": "slide",
+   "sDet": "wipe",
+   "sFs": "'Imperial Script'",
+   "sFt": "'Cinzel'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B0A09",
+    "it": "#EFD9A6",
+    "ef": "#EDE0C4",
+    "cd": "#17140F",
+    "ink": "#F3E4C0",
+    "ink2": "#D8B25E",
+    "acc": "#C29A45",
+    "bl": "#B3263A",
+    "lv": "#2E7A5A"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Marble Minimal",
+  "cat": "Modern",
+  "desc": "A white marble card, a golden ring and a simple frame.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "single",
+   "sPat": "none",
+   "sFall": "dust",
+   "sImg": "white-marble-gold",
+   "sImgOn": "crd",
+   "rImg": 100,
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'MonteCarlo'",
+   "sFt": "'Tenor Sans'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#4D3A22",
+    "it": "#F7EBD0",
+    "ef": "#FBF4E4",
+    "cd": "#FFFCF4",
+    "ink": "#2F2416",
+    "ink2": "#7D6230",
+    "acc": "#C4A462",
+    "bl": "#C99B83",
+    "lv": "#9A9A6A"
+   },
+   "walima": {
+    "bg": "#EBDDBF",
+    "it": "#3A2E1F",
+    "ef": "#FFFDF8",
+    "cd": "#FFFEFA",
+    "ink": "#2F2619",
+    "ink2": "#7E6130",
+    "acc": "#9A7A3A",
+    "bl": "#CF9E88",
+    "lv": "#A3A57E"
+   }
+  }
+ },
+ {
+  "name": "Black Marble",
+  "cat": "Modern",
+  "desc": "Black marble behind the envelope, an art deco card and gold dust.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "art-deco",
+   "sPat": "none",
+   "sFall": "dust",
+   "sImg": "black-marble",
+   "sImgOn": "stg",
+   "rImg": 90,
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Petit Formal Script'",
+   "sFt": "'Bodoni Moda'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#0B0A09",
+    "it": "#EFD9A6",
+    "ef": "#EDE0C4",
+    "cd": "#17140F",
+    "ink": "#F3E4C0",
+    "ink2": "#D8B25E",
+    "acc": "#C29A45",
+    "bl": "#B3263A",
+    "lv": "#2E7A5A"
+   },
+   "walima": {
+    "bg": "#2B2927",
+    "it": "#F4EEE3",
+    "ef": "#F6F1E7",
+    "cd": "#FFFDF8",
+    "ink": "#161412",
+    "ink2": "#6E5626",
+    "acc": "#B8975A",
+    "bl": "#C98F8F",
+    "lv": "#75836F"
+   }
+  }
+ },
+ {
+  "name": "Handmade Paper",
+  "cat": "Modern",
+  "desc": "A cotton-paper card, garlands and soft petals.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "garland",
+   "sPat": "none",
+   "sFall": "petal",
+   "sImg": "textured-ivory-paper",
+   "sImgOn": "crd",
+   "rImg": 90,
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Great Vibes'",
+   "sFt": "'EB Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2F3A2E",
+    "it": "#F1EEDF",
+    "ef": "#F2EFE2",
+    "cd": "#FBFBF4",
+    "ink": "#1E2A1F",
+    "ink2": "#4F6B4A",
+    "acc": "#C2A15A",
+    "bl": "#C97B6B",
+    "lv": "#8FA584"
+   },
+   "walima": {
+    "bg": "#4C5A46",
+    "it": "#F6F6EC",
+    "ef": "#F2F3E8",
+    "cd": "#FBFBF4",
+    "ink": "#22301F",
+    "ink2": "#4E6748",
+    "acc": "#C6A762",
+    "bl": "#D9978A",
+    "lv": "#9DB592"
+   }
+  }
+ },
+ {
+  "name": "Mehndi Bells",
+  "cat": "Festive",
+  "desc": "Truck-art brights, marigold garlands, bells and tumbling marigolds.",
+  "set": {
+   "sStyle": "door",
+   "sBorder": "garland",
+   "sPat": "buti",
+   "sFall": "marigold",
+   "kO_bells": true,
+   "kO_marigold-garland": true,
+   "kLan": false,
+   "kSpk": false,
+   "sName": "slide",
+   "sDet": "up",
+   "sFs": "'Style Script'",
+   "sFt": "'Lora'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#F2B705",
+    "it": "#14205A",
+    "ef": "#FFFBEA",
+    "cd": "#FFFDF3",
+    "ink": "#14205A",
+    "ink2": "#C2122E",
+    "acc": "#8A5E00",
+    "bl": "#E8247A",
+    "lv": "#0E8A3A"
+   },
+   "walima": {
+    "bg": "#A9DDEB",
+    "it": "#1A2550",
+    "ef": "#FFFDF2",
+    "cd": "#FFFDF4",
+    "ink": "#17225A",
+    "ink2": "#C2185B",
+    "acc": "#8F6400",
+    "bl": "#F25C9A",
+    "lv": "#2EAD6B"
+   }
+  }
+ },
+ {
+  "name": "Kashmiri Saffron",
+  "cat": "Festive",
+  "desc": "Saffron and gold with paisley buti and corner flourishes.",
+  "set": {
+   "sStyle": "med",
+   "sBorder": "corner",
+   "sPat": "buti",
+   "sFall": "dust",
+   "sName": "hand",
+   "sDet": "up",
+   "sFs": "'Beau Rivage'",
+   "sFt": "'Playfair Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#8A3A06",
+    "it": "#FFEFD2",
+    "ef": "#FFF1D9",
+    "cd": "#FFF8EC",
+    "ink": "#3D1B05",
+    "ink2": "#B5480A",
+    "acc": "#D4A040",
+    "bl": "#E8780F",
+    "lv": "#72A23E"
+   },
+   "walima": {
+    "bg": "#FACB96",
+    "it": "#4A2508",
+    "ef": "#FFFAF2",
+    "cd": "#FFFCF7",
+    "ink": "#3F2008",
+    "ink2": "#B0480F",
+    "acc": "#9A6E25",
+    "bl": "#EE8A3A",
+    "lv": "#7FA35A"
+   }
+  }
+ },
+ {
+  "name": "Terracotta Haveli",
+  "cat": "Festive",
+  "desc": "A backlit Mughal jaali, terracotta tones and a jharokha card.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "jharokha",
+   "sPat": "jaali",
+   "sFall": "dust",
+   "sImg": "mughal-jaali-arch",
+   "sImgOn": "stg",
+   "rImg": 85,
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Pinyon Script'",
+   "sFt": "'Marcellus'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#45200F",
+    "it": "#F6E6D2",
+    "ef": "#F2E2CC",
+    "cd": "#FCF4E8",
+    "ink": "#3A1C12",
+    "ink2": "#A14A26",
+    "acc": "#C29350",
+    "bl": "#C8603A",
+    "lv": "#2F7A55"
+   },
+   "walima": {
+    "bg": "#874637",
+    "it": "#FFF3E6",
+    "ef": "#FBEBDD",
+    "cd": "#FFFAF3",
+    "ink": "#3E2418",
+    "ink2": "#9A5130",
+    "acc": "#CFA463",
+    "bl": "#DA8A68",
+    "lv": "#9AA36E"
+   }
+  }
+ },
+ {
+  "name": "Lilac Dreams",
+  "cat": "Festive",
+  "desc": "Lilac and silver moonlit skyline, pearl swags and floating hearts.",
+  "set": {
+   "sStyle": "moonlit",
+   "sBorder": "pearl-swag",
+   "sPat": "sprigs",
+   "sFall": "hearts",
+   "sName": "fade",
+   "sDet": "up",
+   "sFs": "'Parisienne'",
+   "sFt": "'Gilda Display'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#524080",
+    "it": "#F4EEFC",
+    "ef": "#EFE7F8",
+    "cd": "#FBF8FE",
+    "ink": "#24173D",
+    "ink2": "#6A4A9E",
+    "acc": "#A59FB6",
+    "bl": "#C29BE3",
+    "lv": "#8FB8A0"
+   },
+   "walima": {
+    "bg": "#E6DDF3",
+    "it": "#33244D",
+    "ef": "#FDFBFF",
+    "cd": "#FFFFFF",
+    "ink": "#2E2145",
+    "ink2": "#7253A3",
+    "acc": "#857D96",
+    "bl": "#C3A0E0",
+    "lv": "#84B29A"
+   }
+  }
+ },
+ {
+  "name": "Mint & Rose Gold",
+  "cat": "Festive",
+  "desc": "Mint curtains, rose-gold corners and rose petals.",
+  "set": {
+   "sStyle": "curtain",
+   "sBorder": "rose-corners",
+   "sPat": "sprigs",
+   "sFall": "rose-petals",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Allura'",
+   "sFt": "'Cormorant Garamond'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2B5953",
+    "it": "#F0FAF5",
+    "ef": "#EEF8F3",
+    "cd": "#F6FCF9",
+    "ink": "#143A33",
+    "ink2": "#2E7564",
+    "acc": "#CC8E7E",
+    "bl": "#E8799A",
+    "lv": "#6FBF9E"
+   },
+   "walima": {
+    "bg": "#D3F0E2",
+    "it": "#163D33",
+    "ef": "#FFFFFF",
+    "cd": "#FCFFFD",
+    "ink": "#183F35",
+    "ink2": "#2F7A66",
+    "acc": "#B07664",
+    "bl": "#EA8296",
+    "lv": "#6CC09C"
+   }
+  }
+ },
+ {
+  "name": "Powder Blue Walima",
+  "cat": "Festive",
+  "desc": "Powder blue and silver, pearl swags and falling jasmine.",
+  "set": {
+   "sStyle": "env",
+   "sBorder": "pearl-swag",
+   "sPat": "quatrefoil",
+   "sFall": "jasmine",
+   "sName": "letter",
+   "sDet": "wipe",
+   "sFs": "'Italianno'",
+   "sFt": "'Tenor Sans'"
+  },
+  "pal": {
+   "baraat": {
+    "bg": "#2B4058",
+    "it": "#EEF3F9",
+    "ef": "#EAF0F7",
+    "cd": "#F8FAFD",
+    "ink": "#14243A",
+    "ink2": "#3D5F8C",
+    "acc": "#9AA5B2",
+    "bl": "#6F9FDB",
+    "lv": "#8FB3A8"
+   },
+   "walima": {
+    "bg": "#CFE0F5",
+    "it": "#1E2F48",
+    "ef": "#FBFCFE",
+    "cd": "#FFFFFF",
+    "ink": "#1A2A40",
+    "ink2": "#4D6A94",
+    "acc": "#76838F",
+    "bl": "#E3A3B5",
+    "lv": "#8EB0A6"
+   }
+  }
+ }
+]

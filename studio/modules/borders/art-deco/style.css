@@ -1,0 +1,44 @@
+.bdx-art-deco .ad-svg{position:absolute;inset:0;width:100%;height:100%;color:var(--acc);overflow:visible}
+.bdx-art-deco .ad-s1{stop-color:var(--acc)}
+.bdx-art-deco .ad-s2{stop-color:color-mix(in srgb,var(--acc) 72%,#fff)}
+.bdx-art-deco .ad-s3{stop-color:color-mix(in srgb,var(--acc) 78%,#000)}
+.bdx-art-deco .ad-g path{stroke-linecap:butt;stroke-linejoin:miter}
+.bdx-art-deco .ad-dw{stroke-dasharray:1;stroke-dashoffset:0}
+.bdx-art-deco .ad-o1{stroke-width:4.6}
+.bdx-art-deco .ad-o2{stroke-width:1.6}
+.bdx-art-deco .ad-s{stroke-width:2.6}
+.bdx-art-deco .ad-p{stroke-width:1.5}
+.bdx-art-deco .ad-a1{stroke-width:2.8}
+.bdx-art-deco .ad-a2{stroke-width:1.5}
+.bdx-art-deco .ad-ray{stroke-width:1.5}
+.bdx-art-deco .ad-g .ad-wg,.bdx-art-deco .ad-g .ad-fill,.bdx-art-deco .ad-g .ad-dt{fill:url(#art-deco-g);stroke:none}
+.bdx-art-deco .ad-wg{transform-box:view-box}
+.bdx-art-deco .ad-tw{transform-origin:450px 56px}
+.bdx-art-deco .ad-bw{transform-origin:450px 1544px}
+.bdx-art-deco .ad-dt{transform-box:fill-box;transform-origin:center}
+.bdx-art-deco .ad-jw,.bdx-art-deco .ad-hub{transform-box:fill-box;transform-origin:center}
+.bdx-art-deco .ad-loz{fill:var(--cd);stroke:url(#art-deco-g);stroke-width:2.2}
+.bd-art-deco .in{top:16%;bottom:9%}
+.play .bdx-art-deco .ad-o1{animation:art-deco-draw 1.9s cubic-bezier(.5,0,.2,1) calc(var(--t0) - .3s) both}
+.play .bdx-art-deco .ad-o2{animation:art-deco-draw 1.9s cubic-bezier(.5,0,.2,1) calc(var(--t0) - .15s) both}
+.play .bdx-art-deco .ad-s{animation:art-deco-draw 2.1s cubic-bezier(.5,0,.2,1) calc(var(--t0) + 0s) both}
+.play .bdx-art-deco .ad-p{animation:art-deco-draw 2s cubic-bezier(.5,0,.2,1) calc(var(--t0) + .5s) both}
+.play .bdx-art-deco .ad-th{animation:art-deco-pop .6s cubic-bezier(.3,1.5,.5,1) calc(var(--t0) + .15s) both}
+.play .bdx-art-deco .ad-ta{animation:art-deco-draw 1s cubic-bezier(.3,0,.2,1) calc(var(--t0) + .3s) both}
+.play .bdx-art-deco .ad-tw{animation:art-deco-ray .6s cubic-bezier(.2,.8,.2,1) calc(var(--t0) + .45s + var(--k) * .6s) both}
+.play .bdx-art-deco .ad-tr{animation:art-deco-draw .5s ease-out calc(var(--t0) + .55s + var(--k) * .6s) both}
+.play .bdx-art-deco .ad-td{animation:art-deco-dot .4s ease-out calc(var(--t0) + .9s + var(--k) * .6s) both}
+.play .bdx-art-deco .ad-bh{animation:art-deco-pop .6s cubic-bezier(.3,1.5,.5,1) calc(var(--t0) + 1.05s) both}
+.play .bdx-art-deco .ad-ba{animation:art-deco-draw 1s cubic-bezier(.3,0,.2,1) calc(var(--t0) + 1.15s) both}
+.play .bdx-art-deco .ad-bw{animation:art-deco-ray .6s cubic-bezier(.2,.8,.2,1) calc(var(--t0) + 1.3s + var(--k) * .5s) both}
+.play .bdx-art-deco .ad-br{animation:art-deco-draw .5s ease-out calc(var(--t0) + 1.4s + var(--k) * .5s) both}
+.play .bdx-art-deco .ad-bd{animation:art-deco-dot .4s ease-out calc(var(--t0) + 1.7s + var(--k) * .5s) both}
+.play .bdx-art-deco .ad-cj{animation:art-deco-pop .6s cubic-bezier(.3,1.5,.5,1) calc(var(--t0) + 1.3s) both}
+.play .bdx-art-deco .ad-tj{animation:art-deco-pop .6s cubic-bezier(.3,1.5,.5,1) calc(var(--t0) - .35s) both}
+.play .bdx-art-deco .ad-bj{animation:art-deco-pop .6s cubic-bezier(.3,1.5,.5,1) calc(var(--t0) + 1.55s) both}
+.play .bdx-art-deco .ad-loz,.play .bdx-art-deco .ad-lc{animation:art-deco-loz .8s cubic-bezier(.2,.8,.2,1) calc(var(--t0) + .85s) both}
+@keyframes art-deco-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes art-deco-pop{0%{opacity:0;transform:scale(0) rotate(-90deg)}100%{opacity:1;transform:none}}
+@keyframes art-deco-ray{0%{opacity:0;transform:scale(.25)}100%{opacity:1;transform:none}}
+@keyframes art-deco-dot{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:none}}
+@keyframes art-deco-loz{0%{opacity:0;transform:scaleY(0)}100%{opacity:1;transform:none}}

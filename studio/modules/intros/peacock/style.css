@@ -1,0 +1,23 @@
+.ix-peacock .pk-bg{position:absolute;inset:0;z-index:3;opacity:0;background:radial-gradient(120% 70% at 50% 82%,color-mix(in srgb,var(--bg) 82%,var(--lv)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 70%,#000) 100%)}
+.ix-peacock .pk-glow{position:absolute;left:50%;top:82%;width:120cqw;height:120cqw;margin:-60cqw 0 0 -60cqw;border-radius:50%;z-index:3;opacity:0;background:radial-gradient(circle,color-mix(in srgb,var(--acc) 30%,transparent) 0%,transparent 62%)}
+.ix-peacock .pk-fan{position:absolute;left:50%;top:82%;width:0;height:0;z-index:4}
+.ix-peacock .pk-f{position:absolute;left:-10.5cqw;bottom:0;width:21cqw;height:63cqw;opacity:0;transform-origin:50% 98%;filter:drop-shadow(0 .6cqw 1.2cqw rgba(0,0,0,.35))}
+.ix-peacock .pk-med{position:absolute;left:50%;top:82%;width:28cqw;height:28cqw;margin:-14cqw 0 0 -14cqw;border-radius:50%;z-index:5;opacity:0;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--acc) 45%,#fff) 0%,var(--acc) 45%,color-mix(in srgb,var(--acc) 60%,#000) 100%);box-shadow:0 0 0 .8cqw color-mix(in srgb,var(--bg) 85%,transparent),0 0 0 1.2cqw var(--acc),0 1.5cqw 5cqw rgba(0,0,0,.45)}
+.ix-peacock .pk-ring{position:absolute;inset:2.2cqw;border-radius:50%;border:1px solid color-mix(in srgb,var(--bg) 60%,transparent);box-shadow:inset 0 0 0 .7cqw color-mix(in srgb,var(--acc) 80%,#fff)}
+.ix-peacock .pk-ini{position:relative;font-family:var(--fs);font-size:8.5cqw;line-height:1;white-space:nowrap;color:color-mix(in srgb,var(--bg) 85%,#000)}
+.ix-peacock .pk-txt{position:absolute;left:7%;right:7%;top:12%;z-index:5;text-align:center;color:var(--it)}
+.ix-peacock .pk-txt .ib{color:var(--acc)}
+.ix-peacock .pk-txt>div{opacity:0}
+.play.s-peacock .pk-bg{animation:peacock-bg 4.6s ease-out var(--o) both}
+.play.s-peacock .pk-glow{animation:peacock-glow 4.2s ease-out calc(var(--o) + .4s) both}
+.play.s-peacock .pk-f{animation:peacock-fan 3.9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .5s + var(--i) * .04s) both}
+.play.s-peacock .pk-med{animation:peacock-med 4.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .2s) both}
+.play.s-peacock .pk-txt>div{animation:peacock-txt 2.4s ease-out calc(var(--o) + var(--d)) both}
+.play.s-peacock .card{animation:peacock-card 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 3.7s) both}
+@keyframes peacock-bg{0%{opacity:0}12%,80%{opacity:1}100%{opacity:0}}
+@keyframes peacock-glow{0%{opacity:0;transform:scale(.4)}40%,75%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.3)}}
+@keyframes peacock-fan{0%{opacity:0;transform:rotate(0) scale(.25)}10%{opacity:1}40%{transform:rotate(var(--a)) scale(1)}76%{opacity:1;transform:rotate(var(--a)) scale(1)}100%{opacity:0;transform:rotate(calc(var(--a) * 1.7)) scale(1.3)}}
+@keyframes peacock-med{0%{opacity:0;transform:scale(.3)}16%{opacity:1;transform:scale(1.08)}24%,82%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.6)}}
+@keyframes peacock-txt{0%{opacity:0;transform:translateY(3cqw)}30%,78%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-3cqw)}}
+@keyframes peacock-card{0%{opacity:0;transform:translateY(60%) scale(.94)}35%{opacity:1}100%{opacity:1;transform:none}}

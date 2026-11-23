@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#293d32">
+  <meta name="description" content="Compare nine animated wedding invitation designs for Abdul Aleem and Laiba.">
+  <title>Choose Your Invitation | Abdul Aleem & Laiba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --forest:#293d32; --gold:#b28a48; --gold-light:#dbc28e; --paper:#f7f2e8; --ivory:#fcfaf4; --ink:#30392f; --muted:#6f7469; --serif:"Cormorant Garamond",Georgia,serif; --script:"Great Vibes",cursive; --sans:"Manrope",system-ui,sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    button { font:inherit; }
+    img { display:block; width:100%; }
+    .icon { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+    :focus-visible { outline:3px solid var(--gold-light); outline-offset:4px; }
+    [hidden] { display:none!important; }
+    .hero { position:relative; overflow:hidden; padding:64px 22px 54px; color:#fff8e9; background:radial-gradient(circle at 50% 0,#49604d,#23372c 70%); text-align:center; }
+    .hero::before { content:""; position:absolute; inset:14px; border:1px solid rgba(219,194,142,.25); pointer-events:none; }
+    .hero__eyebrow { margin:0 0 12px; color:var(--gold-light); font-size:9px; font-weight:700; letter-spacing:.3em; text-transform:uppercase; }
+    .hero h1 { margin:0; font:400 clamp(45px,10vw,68px)/1.05 var(--script); }
+    .hero h2 { margin:12px 0 0; font:500 clamp(25px,5vw,36px)/1.2 var(--serif); }
+    .hero p:last-child { max-width:520px; margin:16px auto 0; color:rgba(255,248,233,.72); font:400 17px/1.55 var(--serif); }
+    .collection { max-width:1180px; margin:0 auto; }
+    .filters { position:sticky; z-index:10; top:0; display:flex; gap:7px; padding:14px 16px; overflow-x:auto; border-bottom:1px solid rgba(178,138,72,.18); background:rgba(247,242,232,.94); backdrop-filter:blur(14px); scrollbar-width:none; }
+    .filters::-webkit-scrollbar { display:none; }
+    .filter { flex:0 0 auto; min-height:40px; padding:8px 15px; border:1px solid rgba(123,134,111,.3); border-radius:30px; color:var(--muted); background:transparent; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+    .filter[aria-pressed="true"] { border-color:var(--forest); color:#fff; background:var(--forest); }
+    .collection-head { display:flex; align-items:end; justify-content:space-between; gap:16px; padding:32px 18px 20px; }
+    .collection-head h2 { margin:0; font:500 31px/1.1 var(--serif); }
+    .collection-head p { margin:0; color:var(--muted); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; padding:0 14px 36px; }
+    .card { min-width:0; overflow:hidden; border:1px solid rgba(123,134,111,.22); background:var(--ivory); box-shadow:0 9px 28px rgba(41,61,50,.06); animation:card-in .45s ease both; }
+    .card__image { position:relative; display:block; overflow:hidden; aspect-ratio:3/4; background:#e6e3d9; }
+    .card__image img { height:100%; object-fit:cover; object-position:center top; transition:transform .7s cubic-bezier(.2,.7,.2,1); }
+    .card__image:hover img { transform:scale(1.035); }
+    .card__number { position:absolute; top:9px; left:9px; display:grid; place-items:center; width:30px; height:30px; border:1px solid rgba(255,255,255,.45); border-radius:50%; color:#fff; background:rgba(30,42,33,.7); backdrop-filter:blur(8px); font-size:9px; font-weight:700; letter-spacing:.08em; }
+    .card__new { position:absolute; right:8px; bottom:8px; padding:5px 7px; color:var(--forest); background:rgba(252,250,244,.88); backdrop-filter:blur(8px); font-size:7px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .card__body { padding:14px 11px 12px; }
+    .card__type { margin:0 0 4px; color:var(--gold); font-size:7px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+    .card__title { min-height:44px; margin:0; font:600 21px/1.05 var(--serif); }
+    .swatches { display:flex; gap:5px; margin:10px 0 12px; }
+    .swatches i { width:12px; height:12px; border:1px solid rgba(30,40,30,.13); border-radius:50%; background:var(--swatch); }
+    .card__actions { display:grid; grid-template-columns:1fr 40px; gap:7px; }
+    .open, .share { display:inline-flex; align-items:center; justify-content:center; min-height:42px; border:1px solid var(--forest); cursor:pointer; text-decoration:none; }
+    .open { gap:6px; color:#fff; background:var(--forest); font-size:8px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+    .share { padding:0; color:var(--forest); background:transparent; }
+    .open:hover { background:#3c5544; }
+    .share:hover { background:#eef0e7; }
+    .empty { padding:50px 20px; text-align:center; color:var(--muted); font:400 22px/1.4 var(--serif); }
+    .hosting-note { margin:0 14px 34px; padding:18px; border:1px solid rgba(178,138,72,.24); color:var(--muted); background:#eef0e7; font-size:11px; line-height:1.65; text-align:center; }
+    .footer { padding:42px 20px; color:#f8f1df; background:#203329; text-align:center; }
+    .footer__names { margin:0; font:400 40px/1.1 var(--script); }
+    .footer p:last-child { margin:12px 0 0; color:rgba(248,241,223,.62); font:400 15px/1.5 var(--serif); }
+    .toast { position:fixed; z-index:50; left:50%; bottom:22px; width:max-content; max-width:calc(100% - 32px); padding:12px 17px; color:#fff9ea; background:rgba(32,51,41,.97); box-shadow:0 10px 30px rgba(20,35,24,.25); transform:translate(-50%,18px); opacity:0; pointer-events:none; font-size:11px; line-height:1.5; text-align:center; transition:.25s; }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    @keyframes card-in { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+    @media (min-width:680px) {
+      .grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; padding:0 24px 46px; }
+      .collection-head { padding-left:26px; padding-right:26px; }
+      .filters { justify-content:center; }
+      .card__body { padding:18px 16px 16px; }
+      .card__title { font-size:26px; }
+      .card__type { font-size:8px; }
+      .open { font-size:9px; }
+      .hosting-note { margin-left:24px; margin-right:24px; }
+    }
+    @media (max-width:340px) {
+      .grid { gap:9px; padding-left:9px; padding-right:9px; }
+      .card__body { padding:11px 8px 9px; }
+      .card__title { font-size:18px; }
+      .card__actions { grid-template-columns:1fr 36px; gap:5px; }
+      .open { font-size:7px; }
+    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
+  </style>
+  <link rel="stylesheet" href="animated-tools.css">
+</head>
+<body>
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-open" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></symbol></svg>
+  <main class="collection">
+    <header class="hero">
+      <p class="hero__eyebrow">The wedding of</p>
+      <h1>Abdul Aleem & Laiba</h1>
+      <h2>Choose your invitation</h2>
+      <p>Nine classic designs, plus a complete video-style animation studio. Every option includes calendar, directions, RSVP and sharing.</p>
+      <a class="animated-link" href="animated-invitations.html">Explore 88 animated designs <small>Open studio</small></a>
+    </header>
+    <nav class="filters" aria-label="Filter invitation designs">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">All 9</button>
+      <button class="filter" type="button" data-filter="light" aria-pressed="false">Light</button>
+      <button class="filter" type="button" data-filter="dark" aria-pressed="false">Dark</button>
+      <button class="filter" type="button" data-filter="floral" aria-pressed="false">Floral</button>
+      <button class="filter" type="button" data-filter="royal" aria-pressed="false">Royal</button>
+    </nav>
+    <div class="collection-head"><h2>The collection</h2><p id="resultCount">9 designs</p></div>
+    <section class="grid" id="designGrid" aria-label="Invitation designs">
+      <article class="card" data-tags="light floral">
+        <a class="card__image" href="index.html" aria-label="Open Ivory Swans invitation"><img src="card.jpeg" alt="Ivory Swans invitation" width="853" height="1280"><span class="card__number">01</span><span class="card__new">Walima</span></a>
+        <div class="card__body"><p class="card__type">Botanical · Classic</p><h3 class="card__title">Ivory Swans</h3><div class="swatches" aria-label="Ivory, sage and gold"><i style="--swatch:#f5f0e4"></i><i style="--swatch:#6d7963"></i><i style="--swatch:#b28a48"></i></div><div class="card__actions"><a class="open" href="index.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="index.html" data-name="Ivory Swans" aria-label="Share Ivory Swans"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+      <article class="card" data-tags="light royal">
+        <a class="card__image" href="noor-mehrab.html" aria-label="Open Noor Mehrab invitation"><img src="card-noor.jpg" alt="Noor Mehrab invitation" width="1080" height="1512" loading="lazy"><span class="card__number">02</span><span class="card__new">Baraat</span></a>
+        <div class="card__body"><p class="card__type">Mughal · Timeless</p><h3 class="card__title">Noor Mehrab</h3><div class="swatches" aria-label="Cream, antique gold and brown"><i style="--swatch:#f8f1e2"></i><i style="--swatch:#a18035"></i><i style="--swatch:#625126"></i></div><div class="card__actions"><a class="open" href="noor-mehrab.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="noor-mehrab.html" data-name="Noor Mehrab" aria-label="Share Noor Mehrab"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+      <article class="card" data-tags="dark royal">
+        <a class="card__image" href="emerald-jharokha.html" aria-label="Open Emerald Jharokha invitation"><img src="card-emerald.jpg" alt="Emerald Jharokha invitation" width="1080" height="1512" loading="lazy"><span class="card__number">03</span><span class="card__new">Baraat</span></a>
+        <div class="card__body"><p class="card__type">Emerald · Regal</p><h3 class="card__title">Emerald Jharokha</h3><div class="swatches" aria-label="Emerald, ivory and gold"><i style="--swatch:#0d3d30"></i><i style="--swatch:#fffaf0"></i><i style="--swatch:#b8954e"></i></div><div class="card__actions"><a class="open" href="emerald-jharokha.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="emerald-jharokha.html" data-name="Emerald Jharokha" aria-label="Share Emerald Jharokha"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+      <article class="card" data-tags="dark royal">
+        <a class="card__image" href="firoza.html" aria-label="Open Firoza invitation"><img src="card-firoza.jpg" alt="Firoza invitation" width="1080" height="1512" loading="lazy"><span class="card__number">04</span><span class="card__new">Baraat</span></a>
+        <div class="card__body"><p class="card__type">Turquoise · Geometric</p><h3 class="card__title">Firoza</h3><div class="swatches" aria-label="Turquoise, teal and gold"><i style="--swatch:#123f43"></i><i style="--swatch:#edf2ed"></i><i style="--swatch:#bd984f"></i></div><div class="card__actions"><a class="open" href="firoza.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="firoza.html" data-name="Firoza" aria-label="Share Firoza"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+      <article class="card" data-tags="light floral">
+        <a class="card__image" href="nilofar.html" aria-label="Open Nilofar invitation"><img src="card-nilofar.jpg" alt="Nilofar invitation" width="1080" height="1512" loading="lazy"><span class="card__number">05</span><span class="card__new">Baraat</span></a>
+        <div class="card__body"><p class="card__type">Lotus · Romantic</p><h3 class="card__title">Nilofar</h3><div class="swatches" aria-label="Ivory, blush and burgundy"><i style="--swatch:#faf3eb"></i><i style="--swatch:#d6a1a7"></i><i style="--swatch:#743845"></i></div><div class="card__actions"><a class="open" href="nilofar.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="nilofar.html" data-name="Nilofar" aria-label="Share Nilofar"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+      <article class="card" data-tags="light royal">
+        <a class="card__image" href="sang-e-marmar.html" aria-label="Open Sang-e-Marmar invitation"><img src="card-marble.jpg" alt="Sang-e-Marmar invitation" width="1080" height="1512" loading="lazy"><span class="card__number">06</span><span class="card__new">Baraat</span></a>
+        <div class="card__body"><p class="card__type">Marble · Minimal</p><h3 class="card__title">Sang-e-Marmar</h3><div class="swatches" aria-label="Marble, stone and gold"><i style="--swatch:#f5f3ee"></i><i style="--swatch:#99978d"></i><i style="--swatch:#a28c5c"></i></div><div class="card__actions"><a class="open" href="sang-e-marmar.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="sang-e-marmar.html" data-name="Sang-e-Marmar" aria-label="Share Sang-e-Marmar"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+      <article class="card" data-tags="light royal">
+        <a class="card__image" href="wine-pearl.html" aria-label="Open Wine and Pearl invitation"><img src="card-wine.jpg" alt="Wine and Pearl invitation" width="1080" height="1920" loading="lazy"><span class="card__number">07</span><span class="card__new">Baraat</span></a>
+        <div class="card__body"><p class="card__type">Pearls · Elegant</p><h3 class="card__title">Wine & Pearl</h3><div class="swatches" aria-label="Pearl, wine and silver"><i style="--swatch:#fffaf7"></i><i style="--swatch:#67253d"></i><i style="--swatch:#b7acaa"></i></div><div class="card__actions"><a class="open" href="wine-pearl.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="wine-pearl.html" data-name="Wine & Pearl" aria-label="Share Wine and Pearl"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+      <article class="card" data-tags="dark royal floral">
+        <a class="card__image" href="white-roses-noir.html" aria-label="Open White Roses Noir invitation"><img src="card-noir.jpg" alt="White Roses Noir invitation" width="1080" height="1920" loading="lazy"><span class="card__number">08</span><span class="card__new">Baraat</span></a>
+        <div class="card__body"><p class="card__type">Noir · Dramatic</p><h3 class="card__title">White Roses Noir</h3><div class="swatches" aria-label="Black, gold and ivory"><i style="--swatch:#14140f"></i><i style="--swatch:#c6a357"></i><i style="--swatch:#f4ead5"></i></div><div class="card__actions"><a class="open" href="white-roses-noir.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="white-roses-noir.html" data-name="White Roses Noir" aria-label="Share White Roses Noir"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+      <article class="card" data-tags="light royal">
+        <a class="card__image" href="faisal-dawn.html" aria-label="Open Faisal Mosque Dawn invitation"><img src="card-faisal.jpg" alt="Faisal Mosque Dawn invitation" width="1080" height="1920" loading="lazy"><span class="card__number">09</span><span class="card__new">Baraat</span></a>
+        <div class="card__body"><p class="card__type">Islamabad · Serene</p><h3 class="card__title">Faisal Dawn</h3><div class="swatches" aria-label="Dawn, olive and gold"><i style="--swatch:#faf5e9"></i><i style="--swatch:#4c513a"></i><i style="--swatch:#a58c4a"></i></div><div class="card__actions"><a class="open" href="faisal-dawn.html">Open design <svg class="icon" aria-hidden="true"><use href="#i-open"/></svg></a><button class="share" type="button" data-file="faisal-dawn.html" data-name="Faisal Mosque Dawn" aria-label="Share Faisal Mosque Dawn"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button></div></div>
+      </article>
+    </section>
+    <p class="empty" id="emptyState" hidden>No designs match this filter.</p>
+    <p class="hosting-note">Tap <strong>Open design</strong> to experience the full animated invitation. After hosting, the share buttons create a direct link for each design.</p>
+  </main>
+  <footer class="footer"><p class="footer__names">Abdul Aleem & Laiba</p><p>Thursday, 31 December 2026 · Noor Mahal Marquee, Islamabad</p></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const filterButtons = [...document.querySelectorAll('[data-filter]')];
+    const cards = [...document.querySelectorAll('.card')];
+    const toast = document.getElementById('toast');
+    let toastTimer;
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      toast.textContent = message;
+      toast.classList.add('show');
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      filterButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      let visible = 0;
+      cards.forEach(card => {
+        const show = filter === 'all' || card.dataset.tags.split(' ').includes(filter);
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      document.getElementById('resultCount').textContent = `${visible} design${visible === 1 ? '' : 's'}`;
+      document.getElementById('emptyState').hidden = visible !== 0;
+    }));
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.append(textarea);
+      textarea.select();
+      const copied = document.execCommand('copy');
+      textarea.remove();
+      if (!copied) throw new Error('Copy failed');
+    }
+
+    document.querySelectorAll('.share').forEach(button => button.addEventListener('click', async () => {
+      const name = button.dataset.name;
+      const hosted = /^https?:$/.test(location.protocol);
+      const url = new URL(button.dataset.file, location.href).href;
+      if (!hosted) {
+        showToast(`${name} is ready to preview. Host the gallery to share its live link.`);
+        return;
+      }
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: `${name} | Abdul Aleem & Laiba`, text: `Which invitation do you prefer? This is the ${name} design.`, url });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      try {
+        await copyText(url);
+        showToast(`${name} link copied.`);
+      } catch {
+        showToast('Could not copy automatically. Please copy the browser address.');
+      }
+    }));
+  </script>
+</body>
+</html>

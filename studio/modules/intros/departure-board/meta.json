@@ -1,0 +1,1 @@
+{"name": "Departure Board", "desc": "An airport split-flap board flips letter by letter to your event, names and date, then a boarding pass slides out.", "order": 90, "t0": 9.0, "defaults": {"sName": "fade", "sDet": "up", "kLan": false, "kSpk": false, "kFdi": false}, "fonts": ["IBM+Plex+Mono:wght@400;500;600"]}

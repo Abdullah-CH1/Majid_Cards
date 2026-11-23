@@ -1,0 +1,78 @@
+.ix-vinyl{--vk:color-mix(in srgb,var(--ink) 22%,#0c0b0d);--vcr:color-mix(in srgb,var(--ef) 88%,var(--acc));--vac:var(--acc);--vpl:color-mix(in srgb,var(--bg) 86%,var(--it))}
+.ix-vinyl>*{position:absolute;opacity:0}
+.ix-vinyl .vn-bg{inset:0;z-index:2;background:radial-gradient(120% 70% at 50% 38%,color-mix(in srgb,var(--bg) 92%,var(--it)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 88%,#000) 100%)}
+.ix-vinyl .vn-top{left:0;right:0;top:11cqw;z-index:3;display:flex;flex-direction:column;align-items:center;gap:2.4cqw;font-family:var(--ft),Georgia,serif;font-size:3.2cqw;letter-spacing:.5em;text-indent:.5em;text-transform:uppercase;color:var(--it)}
+.ix-vinyl .vn-top i{width:16cqw;height:1px;background:var(--vac)}
+.ix-vinyl .vn-deck{left:5cqw;right:5cqw;top:24cqw;height:100cqw;z-index:3;border-radius:3cqw;background:linear-gradient(160deg,color-mix(in srgb,var(--vpl) 92%,#fff),var(--vpl) 55%,color-mix(in srgb,var(--vpl) 90%,#000));box-shadow:0 3cqw 7cqw rgb(0 0 0 / .28),inset 0 0 0 1px color-mix(in srgb,var(--vac) 45%,transparent)}
+.ix-vinyl .vn-deck::after{content:"";position:absolute;inset:2cqw;border-radius:2cqw;border:1px solid color-mix(in srgb,var(--it) 14%,transparent)}
+.ix-vinyl .vn-sc{position:absolute;width:1.4cqw;height:1.4cqw;border-radius:50%;background:color-mix(in srgb,var(--vpl) 70%,#000);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--vac) 40%,transparent)}
+.ix-vinyl .s1{left:3.6cqw;top:3.6cqw}.ix-vinyl .s2{right:3.6cqw;top:3.6cqw}.ix-vinyl .s3{left:3.6cqw;bottom:3.6cqw}.ix-vinyl .s4{right:3.6cqw;bottom:3.6cqw}
+.ix-vinyl .vn-led{position:absolute;left:76cqw;bottom:9cqw;width:1.6cqw;height:1.6cqw;border-radius:50%;background:var(--vac);box-shadow:0 0 2cqw var(--vac)}
+.ix-vinyl .vn-rpm{position:absolute;left:64cqw;bottom:8.2cqw;font-style:normal;font-family:var(--ft),Georgia,serif;font-size:2.8cqw;letter-spacing:.2em;color:color-mix(in srgb,var(--it) 60%,transparent)}
+.ix-vinyl .vn-plat{left:6cqw;top:30cqw;width:80cqw;height:80cqw;z-index:3;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--vpl) 70%,#000) 0 60%,color-mix(in srgb,var(--vac) 55%,var(--vpl)) 62%,color-mix(in srgb,var(--vpl) 80%,#000) 70%);box-shadow:0 1cqw 3cqw rgb(0 0 0 / .35)}
+.ix-vinyl .vn-rec{left:10cqw;top:34cqw;width:72cqw;height:72cqw;z-index:4;border-radius:50%}
+.ix-vinyl .vn-spin,.ix-vinyl .vn-sheen{position:absolute;inset:0;border-radius:50%}
+.ix-vinyl .vn-spin{background:radial-gradient(circle,transparent 0 21%,var(--vk) 21.5% 24%,transparent 24.5% 95%,var(--vk) 95.5%),repeating-radial-gradient(circle,var(--vk) 0 .32cqw,color-mix(in srgb,var(--vk) 82%,#fff) .42cqw,var(--vk) .58cqw);box-shadow:0 2cqw 4cqw rgb(0 0 0 / .45),inset 0 0 0 .4cqw color-mix(in srgb,var(--vk) 80%,#000)}
+.ix-vinyl .vn-sheen{background:conic-gradient(from 20deg,transparent 0 6%,rgb(255 255 255 / .16) 11%,transparent 17% 50%,rgb(255 255 255 / .11) 61%,transparent 67%);-webkit-mask:radial-gradient(circle,transparent 21.5%,#000 22%);mask:radial-gradient(circle,transparent 21.5%,#000 22%)}
+.ix-vinyl .vn-lab{position:absolute;left:29%;top:29%;width:42%;height:42%;border-radius:50%;background:radial-gradient(circle,var(--bg) 0 3.2%,var(--vcr) 3.8% 86%,var(--vac) 87% 88.5%,var(--vcr) 89.5%)}
+.ix-vinyl .vn-mk{position:absolute;left:50%;top:3.5%;width:2.2%;height:8%;margin-left:-1.1%;border-radius:1cqw;background:var(--vac)}
+.ix-vinyl .vn-lt{position:absolute;left:29%;top:29%;width:42%;height:42%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5cqw;text-align:center;color:var(--ink);font-family:var(--ft),Georgia,serif}
+.ix-vinyl .vn-sa{font-size:1.75cqw;letter-spacing:.22em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 70%,transparent);white-space:nowrap}
+.ix-vinyl .vn-in{font-family:var(--fs),Georgia,serif;font-size:7.4cqw;line-height:1;color:var(--ink2);white-space:nowrap}
+.ix-vinyl .vn-in em{font-style:normal;font-size:.5em;color:var(--vac);margin:0 .25em;vertical-align:.3em}
+.ix-vinyl .vn-nm{font-size:2.1cqw;letter-spacing:.06em;max-width:24cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:1.2cqw}
+.ix-vinyl .vn-arm{left:85cqw;top:33cqw;width:0;height:0;z-index:5;transform:rotate(3deg)}
+.ix-vinyl .vn-tube{position:absolute;left:-.55cqw;top:-8cqw;width:1.1cqw;height:62cqw;border-radius:1cqw;background:linear-gradient(90deg,color-mix(in srgb,var(--vac) 55%,#000),color-mix(in srgb,var(--vac) 40%,#fff) 45%,var(--vac));box-shadow:1.2cqw 1.6cqw 1.6cqw rgb(0 0 0 / .3)}
+.ix-vinyl .vn-cw{position:absolute;left:-1.6cqw;top:-1cqw;width:4.3cqw;height:6cqw;border-radius:1cqw;background:linear-gradient(90deg,color-mix(in srgb,var(--vk) 80%,#fff),var(--vk))}
+.ix-vinyl .vn-head{position:absolute;left:-1.7cqw;bottom:-4.6cqw;width:4.5cqw;height:7cqw;border-radius:.8cqw .8cqw 1.4cqw 1.4cqw;background:linear-gradient(90deg,var(--vk),color-mix(in srgb,var(--vk) 70%,#fff));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--vac) 60%,transparent)}
+.ix-vinyl .vn-piv{left:79.5cqw;top:27.5cqw;width:11cqw;height:11cqw;z-index:5;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--vac) 50%,#fff) 0 16%,var(--vac) 18% 30%,color-mix(in srgb,var(--vpl) 75%,#000) 32% 100%);box-shadow:0 .8cqw 2cqw rgb(0 0 0 / .35),inset 0 0 0 1px color-mix(in srgb,var(--vac) 50%,transparent)}
+.ix-vinyl .vn-nt{width:5cqw;z-index:6;fill:var(--vac);top:58cqw}
+.ix-vinyl .n1{left:58cqw}.ix-vinyl .n2{left:68cqw;width:3.6cqw}.ix-vinyl .n3{left:50cqw;width:4cqw}.ix-vinyl .n4{left:74cqw;width:4.4cqw}.ix-vinyl .n5{left:62cqw;width:3.2cqw}.ix-vinyl .n6{left:44cqw;width:3.8cqw}
+.ix-vinyl .vn-txt{left:6%;right:6%;top:131cqw;z-index:3;text-align:center;color:var(--it)}
+.ix-vinyl .vn-txt>div{opacity:0}
+.ix-vinyl .va{font-family:var(--ft),Georgia,serif;font-size:4cqw;letter-spacing:.06em}
+.ix-vinyl .vb{font-family:var(--ft),Georgia,serif;font-size:9.5cqw;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;color:var(--vac);line-height:1.35}
+.ix-vinyl .vc{font-family:var(--fs),Georgia,serif;font-size:7cqw;line-height:1.2}
+.ix-vinyl .vn-sleeve{left:8cqw;top:46cqw;width:64cqw;height:64cqw;z-index:5;background:linear-gradient(150deg,color-mix(in srgb,var(--vcr) 94%,#fff),var(--vcr) 60%,color-mix(in srgb,var(--vcr) 92%,#000));box-shadow:2cqw 3cqw 6cqw rgb(0 0 0 / .32);color:var(--ink)}
+.ix-vinyl .vn-sl-in{position:absolute;inset:3cqw;border:1px solid color-mix(in srgb,var(--vac) 70%,transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:var(--ft),Georgia,serif}
+.ix-vinyl .vn-sl-k{font-size:2.3cqw;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 70%,transparent);margin-bottom:4cqw}
+.ix-vinyl .vn-sl-n{font-family:var(--fs),Georgia,serif;font-size:10.5cqw;line-height:1.1;color:var(--ink2);max-width:54cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ix-vinyl .vn-sl-a{font-size:4.4cqw;color:var(--vac);font-style:italic;line-height:1.4}
+.ix-vinyl .vn-sl-r{width:10cqw;height:1px;background:var(--vac);margin:4cqw 0 3cqw}
+.ix-vinyl .vn-sl-s{font-size:2.1cqw;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap}
+.ix-vinyl .vn-foot{left:0;right:0;top:122cqw;z-index:5;text-align:center;font-family:var(--ft),Georgia,serif;font-size:4cqw;letter-spacing:.24em;text-transform:uppercase;color:var(--it)}
+
+/* timeline */
+.play.s-vinyl .ix-vinyl{animation:vinyl-out .8s ease-in calc(var(--o) + 7.1s) both}
+.play.s-vinyl .vn-bg{animation:vinyl-bg 1s linear var(--o) both}
+.play.s-vinyl .vn-top{animation:vinyl-top 5.7s cubic-bezier(.2,.8,.2,1) var(--o) both}
+.play.s-vinyl .vn-deck,.play.s-vinyl .vn-plat,.play.s-vinyl .vn-piv{animation:vinyl-deck 5.9s cubic-bezier(.2,.8,.2,1) var(--o) both}
+.play.s-vinyl .vn-rec{animation:vinyl-rec 6.4s cubic-bezier(.65,0,.35,1) calc(var(--o) + .4s) both}
+.play.s-vinyl .vn-spin{animation:vinyl-spin 5.2s linear calc(var(--o) + 1s) both}
+.play.s-vinyl .vn-sheen{animation:vinyl-sheen 6s ease-in-out calc(var(--o) + .8s) both}
+.play.s-vinyl .vn-arm{animation:vinyl-arm 5.6s linear calc(var(--o) + .2s) both}
+.play.s-vinyl .vn-nt{animation:vinyl-note 2.6s ease-out calc(var(--o) + var(--nd)) both}
+.play.s-vinyl .n1{--nd:3.3s}.play.s-vinyl .n2{--nd:3.7s}.play.s-vinyl .n3{--nd:4s}.play.s-vinyl .n4{--nd:4.3s}.play.s-vinyl .n5{--nd:4.6s}.play.s-vinyl .n6{--nd:4.9s}
+.play.s-vinyl .vn-txt{animation:vinyl-tx 5.8s linear var(--o) both}
+.play.s-vinyl .vn-txt .va{animation:vinyl-up .9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 2.3s) both}
+.play.s-vinyl .vn-txt .vb{animation:vinyl-up .9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 2.7s) both}
+.play.s-vinyl .vn-txt .vc{animation:vinyl-up .9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 3.1s) both}
+.play.s-vinyl .vn-sleeve{animation:vinyl-sleeve 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 5.2s) both}
+.play.s-vinyl .vn-foot{animation:vinyl-up .9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 6.1s) both}
+.play.s-vinyl .card{animation:vinyl-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 6.8s) both}
+
+@keyframes vinyl-bg{0%,100%{opacity:1}}
+@keyframes vinyl-out{0%{opacity:1}100%{opacity:0}}
+@keyframes vinyl-tx{0%,90%{opacity:1}100%{opacity:0}}
+@keyframes vinyl-top{0%{opacity:.4;transform:translateY(-2cqw)}12%,88%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes vinyl-deck{0%{opacity:.45;transform:translateY(3cqw)}12%{opacity:1;transform:none}86%{opacity:1;transform:none}100%{opacity:0;transform:translateY(2cqw)}}
+@keyframes vinyl-rec{0%{opacity:0;transform:translateY(-6cqw) scale(1.1)}14%{opacity:1;transform:none}75%{opacity:1;transform:none}87.5%{opacity:1;transform:translate(-6cqw,12cqw) scale(.86)}100%{opacity:1;transform:translate(18cqw,12cqw) scale(.86)}}
+@keyframes vinyl-spin{0%{transform:rotate(0);animation-timing-function:cubic-bezier(.5,0,1,1)}20%{transform:rotate(190deg);animation-timing-function:linear}100%{transform:rotate(1560deg)}}
+@keyframes vinyl-sheen{0%{opacity:0;transform:rotate(-30deg)}20%{opacity:1}100%{opacity:1;transform:rotate(25deg)}}
+@keyframes vinyl-arm{0%{opacity:0;transform:rotate(3deg)}8%{opacity:1;transform:rotate(3deg)}
+  36%{transform:rotate(3deg);animation-timing-function:cubic-bezier(.3,.1,.2,1)}52%{transform:rotate(27deg) scale(1.03)}57%{transform:rotate(27deg) scale(1)}
+  82%{transform:rotate(27.4deg) scale(1);animation-timing-function:cubic-bezier(.5,0,.3,1)}94%{opacity:1;transform:rotate(3deg)}100%{opacity:0;transform:rotate(3deg)}}
+@keyframes vinyl-note{0%{opacity:0;transform:translate(0,0) scale(.5) rotate(-10deg)}20%{opacity:1;transform:translate(1cqw,-6cqw) scale(1) rotate(6deg)}100%{opacity:0;transform:translate(-3cqw,-30cqw) scale(.9) rotate(-8deg)}}
+@keyframes vinyl-up{0%{opacity:0;transform:translateY(4cqw)}100%{opacity:1;transform:none}}
+@keyframes vinyl-sleeve{0%{opacity:0;transform:translateX(-30cqw) rotate(-4deg)}100%{opacity:1;transform:none}}
+@keyframes vinyl-card{0%{opacity:0;transform:scale(.96)}100%{opacity:1;transform:none}}

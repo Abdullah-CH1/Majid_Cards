@@ -1,0 +1,82 @@
+.ix-hot-air-balloons{
+  --hb-hz:color-mix(in srgb,var(--bg) 58%,var(--lt));
+  --hb-sun:color-mix(in srgb,var(--lt) 70%,#fff);
+  --hb-dk:color-mix(in srgb,color-mix(in srgb,var(--bg) 72%,var(--lv)) 80%,#000);
+  --hb-hi:color-mix(in srgb,var(--acc) 62%,var(--it));
+  --hb-ln:color-mix(in srgb,var(--acc) 75%,#000);
+  --hb-cr:color-mix(in srgb,var(--ef) 86%,var(--acc));
+  --hb-bk:color-mix(in srgb,var(--acc) 60%,#000)}
+.ix-hot-air-balloons .hb-defs{position:absolute;width:0;height:0;overflow:hidden}
+.ix-hot-air-balloons .hb-root{position:absolute;inset:0;z-index:5;overflow:hidden;opacity:0;color:var(--it);font-family:var(--ft);text-align:center}
+.ix-hot-air-balloons .hb-sky{position:absolute;inset:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 92%,var(--lv)) 0%,var(--bg) 22%,color-mix(in srgb,var(--bg) 82%,var(--bl)) 52%,color-mix(in srgb,var(--bg) 72%,var(--lt)) 70%,var(--hb-hz) 80%)}
+.ix-hot-air-balloons .hb-glow{position:absolute;inset:0;opacity:.35;
+  background:radial-gradient(70% 30% at 50% 77%,color-mix(in srgb,var(--hb-sun) 55%,transparent) 0%,transparent 100%)}
+.ix-hot-air-balloons .hb-sun{position:absolute;left:14cqw;width:72cqw;top:84cqw;height:72cqw}
+.ix-hot-air-balloons .hb-disc{fill:var(--hb-sun);opacity:.9}
+.ix-hot-air-balloons .hb-land{position:absolute;left:0;bottom:0;width:100cqw;height:60cqw}
+.ix-hot-air-balloons .hb-p1{fill:color-mix(in srgb,var(--hb-hz) 66%,var(--hb-dk))}
+.ix-hot-air-balloons .hb-p2{fill:color-mix(in srgb,var(--hb-hz) 38%,var(--hb-dk))}
+.ix-hot-air-balloons .hb-p3{fill:var(--hb-dk)}
+.ix-hot-air-balloons .hb-b{position:absolute}
+.ix-hot-air-balloons .hb-b svg{display:block;width:100%;height:auto;overflow:visible}
+.ix-hot-air-balloons .hb-b1{left:17cqw;top:54cqw;width:66cqw;--hb-c1:color-mix(in srgb,var(--bl) 58%,var(--ef));--hb-c2:var(--hb-cr)}
+.ix-hot-air-balloons .hb-b2{left:5cqw;top:82cqw;width:21cqw;--hb-c1:color-mix(in srgb,var(--lv) 58%,var(--ef));--hb-c2:var(--hb-cr)}
+.ix-hot-air-balloons .hb-b3{left:76cqw;top:62cqw;width:16cqw;--hb-c1:color-mix(in srgb,var(--acc) 66%,var(--ef));--hb-c2:color-mix(in srgb,var(--bl) 34%,var(--ef))}
+.ix-hot-air-balloons .hb-b4{left:19cqw;top:106cqw;width:9cqw;opacity:.82;--hb-c1:color-mix(in srgb,color-mix(in srgb,var(--bl) 50%,var(--lv)) 55%,var(--ef));--hb-c2:var(--hb-cr)}
+.ix-hot-air-balloons .hb-b5{left:69cqw;top:118cqw;width:6cqw;opacity:.72;--hb-c1:color-mix(in srgb,var(--lv) 45%,var(--acc));--hb-c2:var(--hb-cr)}
+.ix-hot-air-balloons .hb-s{transform-origin:50% 30%}
+.ix-hot-air-balloons .hb-rope{fill:none;stroke:var(--hb-ln);stroke-width:.4}
+.ix-hot-air-balloons .hb-tail{fill:color-mix(in srgb,var(--cd) 82%,#000)}
+.ix-hot-air-balloons .hb-rib{fill:var(--cd);stroke:var(--acc);stroke-width:.35}
+.ix-hot-air-balloons .hb-edge{fill:none;stroke:var(--acc);stroke-width:.3;opacity:.75}
+.ix-hot-air-balloons .hb-nm{font-family:var(--fs);font-size:17px;fill:var(--ink)}
+.ix-hot-air-balloons .hb-amp{font-family:var(--ft);font-style:italic;font-size:9px;fill:var(--acc)}
+.ix-hot-air-balloons .hb-txt{position:absolute;left:8%;right:8%;top:10cqw}
+.ix-hot-air-balloons .hb-a{font-size:3cqw;letter-spacing:.26em;text-transform:uppercase;white-space:nowrap;opacity:.82}
+.ix-hot-air-balloons .hb-ev{font-family:var(--fs);font-size:12cqw;line-height:1.25;color:var(--hb-hi);margin-top:1.2cqw}
+.ix-hot-air-balloons .hb-rule{position:relative;width:30cqw;height:1px;margin:2.2cqw auto 3cqw}
+.ix-hot-air-balloons .hb-rule i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--hb-hi),transparent)}
+.ix-hot-air-balloons .hb-rule::after{content:"";position:absolute;left:50%;top:50%;width:1.3cqw;height:1.3cqw;background:var(--hb-hi);transform:translate(-50%,-50%) rotate(45deg)}
+.ix-hot-air-balloons .hb-dt{font-size:4.6cqw;letter-spacing:.24em;text-transform:uppercase;color:var(--hb-hi)}
+.ix-hot-air-balloons .hb-dt b{font-weight:400;margin:0 .7em;opacity:.6}
+.ix-hot-air-balloons .hb-tm{font-size:3.1cqw;letter-spacing:.28em;text-transform:uppercase;opacity:.72;margin-top:2cqw}
+
+/* ---- motion ---- */
+.play.s-hot-air-balloons .hb-root{animation:hot-air-balloons-on 9.2s linear var(--o) both}
+.play.s-hot-air-balloons .hb-glow{animation:hot-air-balloons-glow 6s ease-out var(--o) both}
+.play.s-hot-air-balloons .hb-sun{animation:hot-air-balloons-sun 7s cubic-bezier(.3,.5,.3,1) var(--o) both}
+.play.s-hot-air-balloons .hb-b5 .hb-x{--hb-y:16cqw;animation:hot-air-balloons-rise 5s cubic-bezier(.3,.55,.3,1) var(--o) both}
+.play.s-hot-air-balloons .hb-b4 .hb-x{--hb-y:20cqw;animation:hot-air-balloons-rise 4.6s cubic-bezier(.3,.55,.3,1) var(--o) both}
+.play.s-hot-air-balloons .hb-b3 .hb-x{--hb-y:78cqw;animation:hot-air-balloons-rise 4.6s cubic-bezier(.3,.6,.3,1) calc(var(--o) + .4s) both}
+.play.s-hot-air-balloons .hb-b2 .hb-x{--hb-y:88cqw;animation:hot-air-balloons-rise 4.8s cubic-bezier(.3,.6,.3,1) calc(var(--o) + .8s) both}
+.play.s-hot-air-balloons .hb-b1 .hb-x{--hb-y:132cqw;animation:hot-air-balloons-rise 4.2s cubic-bezier(.25,.6,.25,1) calc(var(--o) + 1.1s) both}
+.play.s-hot-air-balloons .hb-b{animation:hot-air-balloons-out 1.8s cubic-bezier(.5,0,.7,.7) calc(var(--o) + 6.5s) both}
+.play.s-hot-air-balloons .hb-b1{animation-duration:1.7s;animation-delay:calc(var(--o) + 6.7s)}
+.play.s-hot-air-balloons .hb-b4,.play.s-hot-air-balloons .hb-b5{animation-duration:2s;animation-delay:calc(var(--o) + 6.4s)}
+.play.s-hot-air-balloons .hb-s{animation:hot-air-balloons-sway 5.2s ease-in-out var(--o) infinite alternate}
+.play.s-hot-air-balloons .hb-b2 .hb-s{animation-duration:4.4s;animation-delay:calc(var(--o) - 1.3s)}
+.play.s-hot-air-balloons .hb-b3 .hb-s{animation-duration:4.8s;animation-delay:calc(var(--o) - 2.6s)}
+.play.s-hot-air-balloons .hb-b4 .hb-s{animation-duration:3.9s;animation-delay:calc(var(--o) - .7s)}
+.play.s-hot-air-balloons .hb-ban{transform-box:fill-box;transform-origin:50% 0;animation:hot-air-balloons-ban 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 4.6s) both}
+.play.s-hot-air-balloons .hb-nm{animation:hot-air-balloons-fade 1s ease-out calc(var(--o) + 5.2s) both}
+.play.s-hot-air-balloons .hb-txt>*{animation:hot-air-balloons-up 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 5.5s) both}
+.play.s-hot-air-balloons .hb-ev{animation-delay:calc(var(--o) + 5.75s)}
+.play.s-hot-air-balloons .hb-rule{animation-name:hot-air-balloons-rule;animation-delay:calc(var(--o) + 6.1s)}
+.play.s-hot-air-balloons .hb-dt{animation-delay:calc(var(--o) + 6.25s)}
+.play.s-hot-air-balloons .hb-tm{animation-delay:calc(var(--o) + 6.45s)}
+.play.s-hot-air-balloons .hb-txt{animation:hot-air-balloons-tout .9s ease-in calc(var(--o) + 6.6s) both}
+.play.s-hot-air-balloons .card{animation:hot-air-balloons-card 1.5s cubic-bezier(.45,0,.2,1) calc(var(--o) + 7.5s) both}
+
+@keyframes hot-air-balloons-on{0%,99%{opacity:1}100%{opacity:0}}
+@keyframes hot-air-balloons-glow{0%{opacity:.35}100%{opacity:1}}
+@keyframes hot-air-balloons-sun{0%{transform:translateY(22cqw)}100%{transform:none}}
+@keyframes hot-air-balloons-rise{0%{transform:translateY(var(--hb-y))}100%{transform:none}}
+@keyframes hot-air-balloons-out{0%{transform:none}100%{transform:translateY(-190cqw)}}
+@keyframes hot-air-balloons-sway{0%{transform:rotate(-1.6deg) translateX(-.6cqw)}100%{transform:rotate(1.6deg) translateX(.6cqw)}}
+@keyframes hot-air-balloons-ban{0%{opacity:0;transform:scale(.2,.6)}40%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes hot-air-balloons-fade{0%{opacity:0}100%{opacity:1}}
+@keyframes hot-air-balloons-up{0%{opacity:0;transform:translateY(2.5cqw)}100%{opacity:1;transform:none}}
+@keyframes hot-air-balloons-rule{0%{opacity:0;transform:scaleX(0)}100%{opacity:1;transform:none}}
+@keyframes hot-air-balloons-tout{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-6cqw)}}
+@keyframes hot-air-balloons-card{0%{transform:translateY(100%)}100%{transform:none}}

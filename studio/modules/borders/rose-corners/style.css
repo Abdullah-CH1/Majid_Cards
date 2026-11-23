@@ -1,0 +1,29 @@
+/* Rose corners - layered rose bouquets (top-left, bottom-right), small sprigs (other corners), thin gold frame.
+   Roses use shades of --bl, leaves --lv, hairlines --acc. Symbol colours arrive through the --rsc-* custom properties. */
+.bdx-rose-corners .rsc{position:absolute;inset:0;width:100%;height:100%;
+  --rsc-1:color-mix(in srgb,var(--bl) 45%,#fff);--rsc-2:color-mix(in srgb,var(--bl) 72%,#fff);--rsc-3:var(--bl);
+  --rsc-4:color-mix(in srgb,var(--bl) 78%,#000);--rsc-5:color-mix(in srgb,var(--bl) 58%,#000);
+  --rsc-l1:color-mix(in srgb,var(--lv) 80%,#fff);--rsc-l2:var(--lv);--rsc-l3:color-mix(in srgb,var(--lv) 50%,#fff);
+  --rsc-b1:color-mix(in srgb,var(--bl) 6%,#fff);--rsc-b2:color-mix(in srgb,var(--bl) 40%,#fff);--rsc-b3:var(--acc)}
+.bdx-rose-corners .rsc-rl{--rsc-1:color-mix(in srgb,var(--bl) 20%,#fff);--rsc-2:color-mix(in srgb,var(--bl) 40%,#fff);--rsc-3:color-mix(in srgb,var(--bl) 64%,#fff);--rsc-4:color-mix(in srgb,var(--bl) 94%,#000);--rsc-5:color-mix(in srgb,var(--bl) 78%,#000)}
+.bdx-rose-corners .rsc-lb{--rsc-l1:color-mix(in srgb,var(--lv) 86%,#000);--rsc-l2:color-mix(in srgb,var(--lv) 68%,#000);--rsc-l3:color-mix(in srgb,var(--lv) 75%,#fff)}
+.bdx-rose-corners .rsc-fr{fill:none;stroke:var(--acc);stroke-dasharray:1;stroke-dashoffset:0}
+.bdx-rose-corners .rsc-f1{stroke-width:1.1}
+.bdx-rose-corners .rsc-f2{stroke-width:.55;opacity:.7}
+.bdx-rose-corners .rsc-sp{fill:none;stroke:var(--acc);stroke-width:.9;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.bdx-rose-corners .rsc-dt{fill:var(--acc);transform-box:fill-box;transform-origin:center}
+.bdx-rose-corners .rsc use{transform-box:view-box;transform-origin:0 0}
+.bd-rose-corners .in{top:13%;bottom:11%}
+/* ---- animation: the frame line runs out of the top-left bouquet, flowers bloom, leaves unfurl ---- */
+.play .bdx-rose-corners .rsc-fr{animation:rose-corners-draw 1.9s cubic-bezier(.45,0,.25,1) calc(var(--t0) - .1s) both}
+.play .bdx-rose-corners .rsc-f2{animation-delay:calc(var(--t0) + .1s)}
+.play .bdx-rose-corners .rsc-sp{animation:rose-corners-draw .9s ease-out calc(var(--t0) + var(--dl)) both}
+.play .bdx-rose-corners .rsc-l{animation:rose-corners-unfurl .8s cubic-bezier(.2,.8,.2,1.1) calc(var(--t0) + var(--dl)) both}
+.play .bdx-rose-corners .rsc-r{animation:rose-corners-bloom 1s cubic-bezier(.2,.8,.2,1.12) calc(var(--t0) + var(--dl)) both}
+.play .bdx-rose-corners .rsc-b{animation:rose-corners-bud .8s cubic-bezier(.2,.8,.2,1.15) calc(var(--t0) + var(--dl)) both}
+.play .bdx-rose-corners .rsc-j,.play .bdx-rose-corners .rsc-dt{animation:rose-corners-pop .5s cubic-bezier(.2,.8,.2,1.3) calc(var(--t0) + var(--dl)) both}
+@keyframes rose-corners-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes rose-corners-bloom{0%{opacity:0;transform:scale(0) rotate(-70deg)}40%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes rose-corners-unfurl{0%{opacity:0;transform:rotate(-35deg) scale(0,.2)}50%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes rose-corners-bud{0%{opacity:0;transform:scale(.2,0)}100%{opacity:1;transform:none}}
+@keyframes rose-corners-pop{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:none}}

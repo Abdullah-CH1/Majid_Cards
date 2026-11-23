@@ -1,0 +1,33 @@
+.sc-blessing .blx-bg{position:absolute;inset:0;background:radial-gradient(110% 70% at 50% 45%,color-mix(in srgb,var(--bg) 82%,var(--acc)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 85%,#000) 100%)}
+.sc-blessing .blx-geo{position:absolute;inset:0;width:100%;height:100%;stroke:var(--acc);opacity:.14}
+.sc-blessing .blx-arch{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.sc-blessing .blx-arch path{fill:none;stroke:var(--acc);stroke-dasharray:1;stroke-dashoffset:0}
+.sc-blessing .blx-arch .a1{stroke-width:.55;fill:color-mix(in srgb,var(--acc) 6%,transparent)}
+.sc-blessing .blx-arch .a2{stroke-width:.22;opacity:.8}
+.sc-blessing .blx-arch .a3{stroke-width:.3;opacity:.6}
+.sc-blessing .blx-arch .fin{fill:var(--acc);stroke:none}
+.sc-blessing .blx-orn{position:absolute;left:35cqw;top:62cqw;width:30cqw;fill:var(--acc);stroke:var(--acc)}
+.sc-blessing .blx-ar{position:absolute;left:14cqw;right:14cqw;top:76cqw;text-align:center;font-family:'Amiri',serif;font-weight:700;font-size:10.5cqw;line-height:1.6;color:var(--it);white-space:nowrap;text-shadow:0 .4cqw 1.2cqw rgb(0 0 0 / .18)}
+.sc-blessing .blx-div{position:absolute;left:30cqw;top:104cqw;width:40cqw;fill:var(--acc);stroke:var(--acc)}
+.sc-blessing .blx-tr{position:absolute;left:16cqw;right:16cqw;top:112cqw;text-align:center;font-family:var(--ft),Georgia,serif;font-style:italic;font-size:5.4cqw;line-height:1.35;color:var(--it)}
+.sc-blessing .blx-ref{position:absolute;left:0;right:0;top:127cqw;text-align:center;font-family:var(--ft),Georgia,serif;font-size:3.6cqw;letter-spacing:.3em;margin-right:-.3em;text-transform:uppercase;color:var(--acc)}
+
+.play.scn-blessing .sc-blessing{animation:blessing-life 4.4s linear var(--po) both}
+.play.scn-blessing .blx-geo{animation:blessing-geo 1.6s ease-out calc(var(--po) + .1s) both}
+.play.scn-blessing .blx-arch .a1{animation:blessing-draw 1.6s cubic-bezier(.45,0,.2,1) calc(var(--po) + .2s) both}
+.play.scn-blessing .blx-arch .a2{animation:blessing-draw 1.6s cubic-bezier(.45,0,.2,1) calc(var(--po) + .45s) both}
+.play.scn-blessing .blx-arch .a3{animation:blessing-draw 1.2s ease-out calc(var(--po) + .6s) both}
+.play.scn-blessing .blx-arch .fin{animation:blessing-fade .8s ease-out calc(var(--po) + 1.3s) both}
+.play.scn-blessing .blx-orn{animation:blessing-fade .9s ease-out calc(var(--po) + 1.1s) both}
+.play.scn-blessing .blx-ar{animation:blessing-ar 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--po) + 1.2s) both}
+.play.scn-blessing .blx-div{animation:blessing-wide 1s cubic-bezier(.2,.8,.2,1) calc(var(--po) + 1.9s) both}
+.play.scn-blessing .blx-tr{animation:blessing-up 1s cubic-bezier(.2,.8,.2,1) calc(var(--po) + 2.1s) both}
+.play.scn-blessing .blx-ref{animation:blessing-up 1s cubic-bezier(.2,.8,.2,1) calc(var(--po) + 2.4s) both}
+
+@keyframes blessing-life{0%{opacity:0}5%,93%{opacity:1}100%{opacity:0}}
+@keyframes blessing-geo{0%{opacity:0}100%{opacity:.14}}
+@keyframes blessing-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes blessing-fade{0%{opacity:0}100%{opacity:1}}
+@keyframes blessing-ar{0%{opacity:0;filter:blur(.6cqw)}100%{opacity:1;filter:none}}
+@keyframes blessing-wide{0%{opacity:0;transform:scaleX(.2)}100%{opacity:1;transform:none}}
+@keyframes blessing-up{0%{opacity:0;transform:translateY(2.5cqw)}100%{opacity:1;transform:none}}

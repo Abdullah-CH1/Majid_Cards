@@ -1,0 +1,44 @@
+.ix-fireworks .fw-sky{position:absolute;inset:0;z-index:3;opacity:0;background:radial-gradient(120% 60% at 50% 100%,color-mix(in srgb,var(--bg) 75%,var(--acc)) 0%,transparent 60%),linear-gradient(180deg,color-mix(in srgb,var(--bg) 35%,#03040c) 0%,color-mix(in srgb,var(--bg) 70%,#03040c) 60%,var(--bg) 100%)}
+.ix-fireworks .fw-stars{position:absolute;inset:0 0 35% 0;z-index:3;opacity:0;background-image:radial-gradient(.25cqw .25cqw at 14% 20%,#fff,transparent),radial-gradient(.2cqw .2cqw at 38% 9%,#fff,transparent),radial-gradient(.3cqw .3cqw at 61% 30%,#fff,transparent),radial-gradient(.2cqw .2cqw at 86% 14%,#fff,transparent),radial-gradient(.2cqw .2cqw at 27% 46%,#fff,transparent),radial-gradient(.25cqw .25cqw at 73% 44%,#fff,transparent);background-size:50% 45%}
+.ix-fireworks .fw-city{position:absolute;left:0;bottom:0;width:100%;height:36cqw;z-index:5;opacity:0;--sil:color-mix(in srgb,var(--bg) 50%,#000)}
+.ix-fireworks .b1,.ix-fireworks .b4{--c:var(--acc)}
+.ix-fireworks .b2,.ix-fireworks .b5{--c:var(--bl)}
+.ix-fireworks .b3{--c:color-mix(in srgb,var(--acc) 35%,#fff)}
+.ix-fireworks .fw-tr{position:absolute;bottom:22%;width:.6cqw;height:9cqw;margin-left:-.3cqw;z-index:4;opacity:0;border-radius:1cqw;background:linear-gradient(0deg,transparent,color-mix(in srgb,var(--c) 60%,#fff))}
+.ix-fireworks .fw-bu{position:absolute;width:0;height:0;z-index:4;opacity:0}
+.ix-fireworks .fw-bu i,.ix-fireworks .fw-bu b{position:absolute;left:-.4cqw;top:0;width:.8cqw;height:3.6cqw;border-radius:50%;transform-origin:50% 0;background:linear-gradient(180deg,transparent,var(--c) 55%,#fff);box-shadow:0 0 1.2cqw color-mix(in srgb,var(--c) 70%,transparent);transform:rotate(var(--a)) translateY(0) scale(.2)}
+.ix-fireworks .fw-bu b{width:.5cqw;left:-.25cqw;height:2cqw;background:linear-gradient(180deg,transparent,#fff)}
+.ix-fireworks .fw-bu::before{content:"";position:absolute;left:-6cqw;top:-6cqw;width:12cqw;height:12cqw;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--c) 40%,#fff) 0%,color-mix(in srgb,var(--c) 40%,transparent) 35%,transparent 70%);opacity:0}
+.ix-fireworks .fw-txt{position:absolute;left:7%;right:7%;top:30%;z-index:6;text-align:center;color:var(--it)}
+.ix-fireworks .fw-txt>div{opacity:0}
+.ix-fireworks .fw-ia{font-family:var(--ft);font-size:4.2cqw;letter-spacing:.06em;margin-bottom:4cqw}
+.ix-fireworks .fw-ia .xev{color:var(--acc);font-weight:700}
+.ix-fireworks .fw-n{font-family:var(--fs);font-size:15cqw;line-height:1.15;color:var(--acc);background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 40%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 2.2cqw color-mix(in srgb,var(--acc) 55%,transparent))}
+.ix-fireworks .fw-am{font-family:var(--fs);font-size:9cqw;color:var(--it);margin:1cqw 0}
+.ix-fireworks .fw-flash{position:absolute;inset:0;z-index:7;opacity:0;pointer-events:none;background:radial-gradient(circle at 50% 42%,#fff 0%,color-mix(in srgb,var(--acc) 70%,#fff) 30%,var(--acc) 75%)}
+
+.play.s-fireworks .fw-sky,.play.s-fireworks .fw-stars,.play.s-fireworks .fw-city{animation:fireworks-on 1s ease-out var(--o) both,fireworks-out .3s ease-in calc(var(--o) + 4.5s) forwards}
+.play.s-fireworks .fw-tr{animation:fireworks-rise .7s cubic-bezier(.3,.6,.4,1) calc(var(--o) + var(--s)) both}
+.play.s-fireworks .fw-bu{animation:fireworks-droop 1.9s ease-out calc(var(--o) + var(--s) + .7s) both}
+.play.s-fireworks .fw-bu i{--r:16cqw;animation:fireworks-p 1.5s cubic-bezier(.15,.85,.3,1) calc(var(--o) + var(--s) + .7s) both}
+.play.s-fireworks .fw-bu b{--r:9cqw;animation:fireworks-p 1.3s cubic-bezier(.15,.85,.3,1) calc(var(--o) + var(--s) + .75s) both}
+.play.s-fireworks .fw-bu::before{animation:fireworks-glow .8s ease-out calc(var(--o) + var(--s) + .7s) both}
+.play.s-fireworks .b1{--s:.2s}.play.s-fireworks .b2{--s:.8s}.play.s-fireworks .b3{--s:1.5s}.play.s-fireworks .b4{--s:2.2s}.play.s-fireworks .b5{--s:2.8s}
+.play.s-fireworks .fw-bu.b3 i{--r:21cqw}
+.play.s-fireworks .fw-ia{animation:fireworks-in .9s ease-out calc(var(--o) + 1s) both,fireworks-out .6s ease-in calc(var(--o) + 4.2s) forwards}
+.play.s-fireworks .fw-g{animation:fireworks-name 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 1.5s) both,fireworks-out .6s ease-in calc(var(--o) + 4.2s) forwards}
+.play.s-fireworks .fw-am{animation:fireworks-in .8s ease-out calc(var(--o) + 2.2s) both,fireworks-out .6s ease-in calc(var(--o) + 4.2s) forwards}
+.play.s-fireworks .fw-b{animation:fireworks-name 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 2.6s) both,fireworks-out .6s ease-in calc(var(--o) + 4.2s) forwards}
+.play.s-fireworks .fw-flash{animation:fireworks-flash 1.4s ease-out calc(var(--o) + 4.2s) both}
+.play.s-fireworks .card{animation:fireworks-card 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 4.4s) both}
+
+@keyframes fireworks-on{0%{opacity:0}100%{opacity:1}}
+@keyframes fireworks-out{0%{opacity:1}100%{opacity:0}}
+@keyframes fireworks-rise{0%{opacity:0;transform:translateY(0)}15%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translateY(calc((78 - var(--y)) * -1.777cqw + 4cqw))}}
+@keyframes fireworks-droop{0%{opacity:1;transform:translateY(0)}55%{opacity:1}100%{opacity:0;transform:translateY(7cqw)}}
+@keyframes fireworks-p{0%{transform:rotate(var(--a)) translateY(0) scale(.2)}100%{transform:rotate(var(--a)) translateY(var(--r)) scale(1,.6)}}
+@keyframes fireworks-glow{0%{opacity:0;transform:scale(.3)}25%{opacity:.9}100%{opacity:0;transform:scale(1.6)}}
+@keyframes fireworks-in{0%{opacity:0;transform:translateY(3cqw)}100%{opacity:1;transform:none}}
+@keyframes fireworks-name{0%{opacity:0;transform:scale(.7);letter-spacing:.2em}100%{opacity:1;transform:none;letter-spacing:0}}
+@keyframes fireworks-flash{0%{opacity:0}18%{opacity:.95}100%{opacity:0}}
+@keyframes fireworks-card{0%{opacity:0;transform:scale(.94)}100%{opacity:1;transform:none}}

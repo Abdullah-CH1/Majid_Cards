@@ -1,0 +1,29 @@
+.bdx-pearl-swag .ps-svg{position:absolute;inset:0;width:100%;height:100%;color:var(--acc);overflow:visible}
+.bdx-pearl-swag .ps-g0{stop-color:#fff}
+.bdx-pearl-swag .ps-g1{stop-color:color-mix(in srgb,#fff 86%,var(--acc))}
+.bdx-pearl-swag .ps-g2{stop-color:color-mix(in srgb,#fff 58%,var(--acc))}
+.bdx-pearl-swag .ps-g3{stop-color:color-mix(in srgb,var(--acc) 82%,#000)}
+.bdx-pearl-swag .ps-shc{flood-color:color-mix(in srgb,var(--acc) 55%,#000);flood-opacity:.32}
+.bdx-pearl-swag .ps-fr path,.bdx-pearl-swag .ps-th,.bdx-pearl-swag .ps-th2{fill:none;stroke:currentColor;stroke-linecap:round}
+.bdx-pearl-swag .ps-f1{stroke-width:2.4}
+.bdx-pearl-swag .ps-f2{stroke-width:1.3;opacity:.55}
+.bdx-pearl-swag .ps-th,.bdx-pearl-swag .ps-th2{stroke-width:1.1;opacity:.7}
+.bdx-pearl-swag .ps-dw{stroke-dasharray:1;stroke-dashoffset:0}
+.bdx-pearl-swag .ps-pl circle,.bdx-pearl-swag .ps-tear{transform-box:fill-box;transform-origin:center}
+.bdx-pearl-swag .ps-gd,.bdx-pearl-swag .ps-cap{fill:currentColor}
+.bdx-pearl-swag .ps-jw,.bdx-pearl-swag .ps-pop{transform-box:fill-box;transform-origin:center}
+.bdx-pearl-swag .ps-tear{transform-origin:50% 0}
+.bdx-pearl-swag .ps-drop{transform-box:view-box}
+.bd-pearl-swag .in{top:17%;bottom:9%}
+.play .bdx-pearl-swag .ps-f1{animation:pearl-swag-draw 2s cubic-bezier(.45,0,.2,1) calc(var(--t0) - .35s) both}
+.play .bdx-pearl-swag .ps-f2{animation:pearl-swag-draw 2s cubic-bezier(.45,0,.2,1) calc(var(--t0) - .15s) both}
+.play .bdx-pearl-swag .ps-th{animation:pearl-swag-fade 1s ease-out calc(var(--t0) + .1s) both}
+.play .bdx-pearl-swag .ps-th2{animation:pearl-swag-fade .6s ease-out calc(var(--t0) + .5s) both}
+.play .bdx-pearl-swag .ps-pl circle,.play .bdx-pearl-swag .ps-tear{animation:pearl-swag-pop .5s cubic-bezier(.3,1.6,.55,1) calc(var(--t0) + var(--d0)) both}
+.play .bdx-pearl-swag .ps-jw,.play .bdx-pearl-swag .ps-pop{animation:pearl-swag-jw .6s cubic-bezier(.3,1.6,.55,1) calc(var(--t0) + var(--d0)) both}
+.play .bdx-pearl-swag .ps-drop{animation:pearl-swag-sway var(--sp) linear calc(var(--t0) + var(--d0)) infinite both}
+@keyframes pearl-swag-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes pearl-swag-fade{0%{opacity:0}100%{opacity:.7}}
+@keyframes pearl-swag-pop{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:none}}
+@keyframes pearl-swag-jw{0%{opacity:0;transform:scale(0) rotate(-120deg)}100%{opacity:1;transform:none}}
+@keyframes pearl-swag-sway{0%{transform:rotate(0deg);animation-timing-function:cubic-bezier(.61,1,.88,1)}25%{transform:rotate(2.2deg);animation-timing-function:cubic-bezier(.37,0,.63,1)}75%{transform:rotate(-2.2deg);animation-timing-function:cubic-bezier(.12,0,.39,0)}100%{transform:rotate(0deg)}}

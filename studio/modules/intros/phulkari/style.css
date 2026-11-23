@@ -1,0 +1,90 @@
+.ix-phulkari .phk-cl{position:absolute;inset:0;z-index:7;opacity:0;transform-origin:50% 0;overflow:visible;--cl:color-mix(in srgb,var(--bl) 55%,#000);--sl:color-mix(in srgb,var(--acc) 65%,#fff)}
+.ix-phulkari .phk-zm{position:absolute;inset:0;overflow:hidden;transform-origin:50% 18%}
+.ix-phulkari .phk-cloth{position:absolute;inset:0;background:
+ repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 .18cqw,transparent .18cqw .55cqw,rgba(255,255,255,.05) .55cqw .7cqw,transparent .7cqw .9cqw),
+ repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0 .2cqw,transparent .2cqw .5cqw,rgba(255,255,255,.06) .5cqw .65cqw,transparent .65cqw .9cqw),
+ radial-gradient(120% 80% at 50% 30%,color-mix(in srgb,var(--cl) 80%,var(--bl)) 0%,var(--cl) 60%,color-mix(in srgb,var(--cl) 70%,#000) 100%)}
+.ix-phulkari .phk-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ix-phulkari .phk-mk{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:1 1;stroke-dashoffset:1}
+.ix-phulkari .phk-sp{fill:none;stroke:var(--sl);stroke-width:.6;stroke-dasharray:1.1 .55;stroke-linecap:round}
+.ix-phulkari .phk-f1,.ix-phulkari .phk-f2{opacity:0;transform-box:fill-box;transform-origin:center}
+.ix-phulkari .phk-f1{fill:color-mix(in srgb,var(--acc) 75%,#fff)}
+.ix-phulkari .phk-f2{fill:color-mix(in srgb,var(--bl) 45%,#fff)}
+.ix-phulkari .phk-ia,.ix-phulkari .phk-ev,.ix-phulkari .phk-am{position:absolute;left:8%;right:8%;text-align:center;opacity:0;color:var(--sl);text-shadow:0 .3cqw .6cqw rgba(0,0,0,.5)}
+.ix-phulkari .phk-ia{top:34.6%;font-family:var(--ft);font-size:4.2cqw;letter-spacing:.05em}
+.ix-phulkari .phk-ev{top:38.2%;font-family:var(--ft);font-size:8cqw;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--acc) 85%,#fff)}
+.ix-phulkari .phk-am{top:56%;font-family:var(--fs);font-size:7cqw;line-height:1}
+.ix-phulkari .phk-nm{position:absolute;left:14%;width:72%;text-align:center;white-space:nowrap;font-family:var(--fs);font-size:13cqw;line-height:1.3;color:transparent;
+ background:repeating-linear-gradient(68deg,var(--lt) 0 .28cqw,var(--acc) .28cqw .5cqw,color-mix(in srgb,var(--acc) 55%,#000) .5cqw .62cqw);-webkit-background-clip:text;background-clip:text;
+ filter:drop-shadow(0 .35cqw .25cqw rgba(0,0,0,.55));clip-path:inset(-20% 100% -20% 0)}
+.ix-phulkari .phk-g{top:46%}.ix-phulkari .phk-b{top:60.3%}
+.ix-phulkari .phk-bd{position:absolute;display:block;opacity:0;box-shadow:0 0 0 .25cqw color-mix(in srgb,var(--acc) 50%,#000),0 .4cqw .8cqw rgba(0,0,0,.5);
+ background:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.8) 50%,transparent 60%) 150% 0/300% 100% no-repeat,
+ repeating-linear-gradient(55deg,var(--lt) 0 .3cqw,var(--acc) .3cqw .6cqw,color-mix(in srgb,var(--acc) 55%,#000) .6cqw .78cqw)}
+.ix-phulkari .phk-t{left:3cqw;right:3cqw;top:3cqw;height:2.6cqw;transform-origin:0 50%}
+.ix-phulkari .phk-bt{left:3cqw;right:3cqw;bottom:3cqw;height:2.6cqw;transform-origin:100% 50%}
+.ix-phulkari .phk-r,.ix-phulkari .phk-l{top:3cqw;bottom:3cqw;width:2.6cqw;
+ background:linear-gradient(190deg,transparent 40%,rgba(255,255,255,.8) 50%,transparent 60%) 0 150%/100% 300% no-repeat,
+ repeating-linear-gradient(145deg,var(--lt) 0 .3cqw,var(--acc) .3cqw .6cqw,color-mix(in srgb,var(--acc) 55%,#000) .6cqw .78cqw)}
+.ix-phulkari .phk-r{right:3cqw;transform-origin:50% 0}.ix-phulkari .phk-l{left:3cqw;transform-origin:50% 100%}
+.ix-phulkari .phk-fr{position:absolute;left:0;right:0;top:100%;height:4cqw;display:block;opacity:0;
+ background:repeating-linear-gradient(90deg,var(--acc) 0 .45cqw,transparent .45cqw 1.6cqw);-webkit-mask:linear-gradient(180deg,#000 40%,transparent);mask:linear-gradient(180deg,#000 40%,transparent)}
+.ix-phulkari .phk-nd{position:absolute;left:50%;top:6.75%;width:0;height:0;z-index:7;opacity:0}
+.ix-phulkari .phk-nd svg{position:absolute;left:-2cqw;bottom:0;width:4cqw;height:34cqw;overflow:visible;transform-origin:50% 100%;transform:rotate(32deg);filter:drop-shadow(.8cqw 1cqw .6cqw rgba(0,0,0,.45))}
+.ix-phulkari .phk-th{fill:none;stroke:var(--lt);stroke-width:1.4}
+
+.play.s-phulkari .phk-cl{animation:phulkari-lift 1.2s cubic-bezier(.55,0,.3,1) calc(var(--o) + 9s) both}
+.play.s-phulkari .phk-zm{animation:phulkari-zoom 6.1s linear var(--o) both}
+.play.s-phulkari .phk-mk{animation:phulkari-draw var(--l) steps(14,end) calc(var(--o) + var(--d)) both}
+.play.s-phulkari .phk-f1,.play.s-phulkari .phk-f2{animation:phulkari-pop .5s cubic-bezier(.3,1.6,.5,1) calc(var(--o) + var(--d)) both}
+.play.s-phulkari .phk-ia{animation:phulkari-up .8s ease-out calc(var(--o) + 6.2s) both}
+.play.s-phulkari .phk-ev{animation:phulkari-up .8s ease-out calc(var(--o) + 6.45s) both}
+.play.s-phulkari .phk-am{animation:phulkari-up .5s ease-out calc(var(--o) + 7.7s) both}
+.play.s-phulkari .phk-g{animation:phulkari-sew .9s linear calc(var(--o) + 6.8s) both}
+.play.s-phulkari .phk-b{animation:phulkari-sew .9s linear calc(var(--o) + 7.9s) both}
+.play.s-phulkari .phk-t{animation:phulkari-gx .3s linear calc(var(--o) + 5.8s) both,phulkari-shx 2.6s ease-in-out calc(var(--o) + 7.4s) infinite}
+.play.s-phulkari .phk-r{animation:phulkari-gy .5s linear calc(var(--o) + 6.1s) both,phulkari-shy 2.6s ease-in-out calc(var(--o) + 7.7s) infinite}
+.play.s-phulkari .phk-bt{animation:phulkari-gx .3s linear calc(var(--o) + 6.6s) both,phulkari-shx 2.6s ease-in-out calc(var(--o) + 8s) infinite}
+.play.s-phulkari .phk-l{animation:phulkari-gy .5s linear calc(var(--o) + 6.9s) both,phulkari-shy 2.6s ease-in-out calc(var(--o) + 8.3s) infinite}
+.play.s-phulkari .phk-fr{animation:phulkari-on .4s ease-out calc(var(--o) + 8.8s) both}
+.play.s-phulkari .phk-nd{animation:phulkari-needle 9.4s linear var(--o) both}
+.play.s-phulkari .phk-nd svg{animation:phulkari-dip .3s ease-in-out var(--o) infinite alternate}
+.play.s-phulkari .card{animation:phulkari-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 9s) both}
+
+@keyframes phulkari-on{0%{opacity:0}100%{opacity:1}}
+@keyframes phulkari-up{0%{opacity:0;transform:translateY(2cqw)}100%{opacity:1;transform:none}}
+@keyframes phulkari-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes phulkari-pop{0%{opacity:0;transform:scale(.2)}100%{opacity:1;transform:none}}
+@keyframes phulkari-sew{0%{opacity:1;clip-path:inset(-20% 100% -20% 0)}100%{opacity:1;clip-path:inset(-20% 0 -20% 0)}}
+@keyframes phulkari-gx{0%{opacity:1;transform:scaleX(0)}100%{opacity:1;transform:none}}
+@keyframes phulkari-gy{0%{opacity:1;transform:scaleY(0)}100%{opacity:1;transform:none}}
+@keyframes phulkari-shx{0%{background-position:150% 0,0 0}60%,100%{background-position:-50% 0,0 0}}
+@keyframes phulkari-shy{0%{background-position:0 150%,0 0}60%,100%{background-position:0 -50%,0 0}}
+@keyframes phulkari-zoom{
+ 0%,39.3%{transform:scale(4);animation-timing-function:cubic-bezier(.4,0,.2,1)}
+ 47.5%,70.5%{transform:scale(2.2);animation-timing-function:cubic-bezier(.4,0,.2,1)}
+ 78.7%,90.2%{transform:scale(1.4);animation-timing-function:cubic-bezier(.4,0,.2,1)}
+ 100%{transform:none}}
+@keyframes phulkari-needle{
+ 0%{opacity:1;left:50%;top:6.75%;transform:none}
+ 2.13%{left:50%;top:6.75%}
+ 7.98%{left:70%;top:18%}
+ 13.83%{left:50%;top:29.25%}
+ 19.68%{left:30%;top:18%}
+ 25.53%{left:50%;top:6.75%;transform:none}
+ 30.85%{left:74%;top:18%;transform:scale(.75)}
+ 38.3%{left:66%;top:8%}
+ 45.74%{left:30%;top:27%;transform:scale(.75)}
+ 51.06%{left:82%;top:18%;transform:scale(.6)}
+ 58.5%{left:62%;top:30%}
+ 72.34%{left:14%;top:50.8%;transform:scale(.55)}
+ 81.91%{left:86%;top:50.8%}
+ 84.04%{left:14%;top:65%}
+ 93.62%{opacity:1;left:86%;top:65%}
+ 100%{opacity:0;left:110%;top:40%;transform:scale(.55)}}
+@keyframes phulkari-dip{0%{transform:rotate(32deg) translate(0,0)}100%{transform:rotate(30deg) translate(-.4cqw,-1.6cqw)}}
+@keyframes phulkari-lift{
+ 0%{opacity:1;transform:none}
+ 30%{opacity:1;transform:perspective(220cqw) translateY(-4%) rotateX(16deg) skewY(-2deg) scaleY(.96)}
+ 100%{opacity:1;transform:perspective(220cqw) translateY(-125%) rotateX(38deg) rotate(-7deg) skewX(-14deg) scaleY(.8)}}
+@keyframes phulkari-card{0%{transform:scale(.94);filter:brightness(.65)}100%{transform:none;filter:none}}

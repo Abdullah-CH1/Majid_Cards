@@ -1,0 +1,30 @@
+.bdx-monogram-minimal .mm-svg{position:absolute;inset:0;width:100%;height:100%;color:var(--acc);overflow:visible}
+.bdx-monogram-minimal .mm-ln path,.bdx-monogram-minimal .mm-st{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.bdx-monogram-minimal .mm-fr{stroke-width:2.6}
+.bdx-monogram-minimal .mm-r1{stroke-width:2.6}
+.bdx-monogram-minimal .mm-r2{stroke-width:1.6;opacity:.6}
+.bdx-monogram-minimal .mm-st{stroke-width:1.8}
+.bdx-monogram-minimal .mm-dw{stroke-dasharray:1;stroke-dashoffset:0}
+.bdx-monogram-minimal .mm-leaf{fill:currentColor;transform-box:fill-box;transform-origin:50% 100%}
+.bdx-monogram-minimal .mm-in{opacity:.7}
+.bdx-monogram-minimal .mm-jw{fill:currentColor;transform-box:fill-box;transform-origin:center}
+.bdx-monogram-minimal .mm-mono{position:absolute;left:0;right:0;top:10.75%;height:0;display:flex;align-items:center;justify-content:center;gap:.9cqw;font-family:var(--ft),Georgia,serif;font-size:4.5cqw;line-height:1;color:var(--ink2);font-weight:500;letter-spacing:.02em}
+.bdx-monogram-minimal .mm-mono>*{display:inline-block}
+.bdx-monogram-minimal .mm-amp{font-size:3cqw;font-style:italic;color:var(--acc);transform:translateY(.06em)}
+.bd-monogram-minimal .in{top:17%;bottom:7%}
+.play .bdx-monogram-minimal .mm-jt{animation:monogram-minimal-pop .6s cubic-bezier(.3,1.6,.5,1) calc(var(--t0) - .35s) both}
+.play .bdx-monogram-minimal .mm-fr{animation:monogram-minimal-draw 2.3s cubic-bezier(.45,0,.2,1) calc(var(--t0) - .15s) both}
+.play .bdx-monogram-minimal .mm-r1{animation:monogram-minimal-draw 1.3s cubic-bezier(.45,0,.2,1) calc(var(--t0) - .2s) both}
+.play .bdx-monogram-minimal .mm-r2{animation:monogram-minimal-draw 1.3s cubic-bezier(.45,0,.2,1) calc(var(--t0) + .05s) both}
+.play .bdx-monogram-minimal .mm-st{animation:monogram-minimal-draw 1s ease-out calc(var(--t0) + .35s) both}
+.play .bdx-monogram-minimal .mm-leaf{animation:monogram-minimal-leaf .55s cubic-bezier(.3,1.5,.5,1) calc(var(--t0) + var(--d0)) both}
+.play .bdx-monogram-minimal .mm-dot{animation:monogram-minimal-pop .5s cubic-bezier(.3,1.6,.5,1) calc(var(--t0) + .3s) both}
+.play .bdx-monogram-minimal .mm-jb{animation:monogram-minimal-pop .6s cubic-bezier(.3,1.6,.5,1) calc(var(--t0) + 1.95s) both}
+.play .bdx-monogram-minimal .mm-m{animation:monogram-minimal-ini .9s cubic-bezier(.2,.8,.2,1) calc(var(--t0) + .55s) both}
+.play .bdx-monogram-minimal .mm-m2{animation-delay:calc(var(--t0) + .85s)}
+.play .bdx-monogram-minimal .mm-amp{animation:monogram-minimal-amp .8s cubic-bezier(.2,.8,.2,1) calc(var(--t0) + .72s) both}
+@keyframes monogram-minimal-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes monogram-minimal-pop{0%{opacity:0;transform:scale(0) rotate(-45deg)}100%{opacity:1;transform:none}}
+@keyframes monogram-minimal-leaf{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:none}}
+@keyframes monogram-minimal-ini{0%{opacity:0;transform:translateY(30%) scale(.9)}100%{opacity:1;transform:none}}
+@keyframes monogram-minimal-amp{0%{opacity:0;transform:translateY(.06em) scale(.4) rotate(-20deg)}100%{opacity:1;transform:translateY(.06em)}}

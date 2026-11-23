@@ -1,0 +1,82 @@
+.ix-dart-calendar .tc-all{position:absolute;inset:0;z-index:5;opacity:0;--pk:color-mix(in srgb,var(--ef) 16%,#000);--rd:color-mix(in srgb,var(--bl) 82%,#000)}
+.ix-dart-calendar .tc-bg{position:absolute;inset:0;background:radial-gradient(120% 70% at 50% 42%,color-mix(in srgb,var(--bg) 88%,var(--acc)) 0%,var(--bg) 62%,color-mix(in srgb,var(--bg) 88%,#000) 100%)}
+.ix-dart-calendar .tc-mono{position:absolute;left:50%;top:9cqw;width:17cqw;height:17cqw;margin-left:-8.5cqw;display:flex;align-items:center;justify-content:center;gap:.6cqw;font-family:var(--fs),Georgia,serif;font-size:6.4cqw;color:var(--acc);line-height:1}
+.ix-dart-calendar .tc-mono svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ix-dart-calendar .tc-mono circle{fill:none;stroke:var(--acc);stroke-width:1.2;stroke-dasharray:1;stroke-dashoffset:0;transform:rotate(-90deg);transform-origin:50% 50%}
+.ix-dart-calendar .tc-mono i{font-style:normal;font-family:var(--ft),Georgia,serif;font-size:3.4cqw;opacity:.8}
+.ix-dart-calendar .tc-kick{position:absolute;left:0;right:0;top:31cqw;text-align:center;font-family:var(--ft),Georgia,serif;font-size:3.3cqw;letter-spacing:.42em;margin-right:-.42em;text-transform:uppercase;color:color-mix(in srgb,var(--it) 80%,transparent)}
+.ix-dart-calendar .tc-cal{position:absolute;left:16cqw;right:16cqw;top:43cqw;height:82cqw;perspective:140cqw}
+.ix-dart-calendar .tc-stack{position:absolute;inset:0;transform-style:preserve-3d}
+.ix-dart-calendar .tc-pages{position:absolute;inset:0;transform-style:preserve-3d}
+.ix-dart-calendar .tc-pg{position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--ef) 93%,#000) 0,var(--ef) 9%,var(--ef) 88%,color-mix(in srgb,var(--ef) 96%,#000) 100%);border-radius:0 0 1.2cqw 1.2cqw;color:var(--pk);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:9cqw 0 6cqw;box-sizing:border-box;transform-origin:50% 0;backface-visibility:hidden;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--pk) 10%,transparent)}
+.ix-dart-calendar .tc-pg::before{content:"";position:absolute;left:4%;right:4%;top:3.2cqw;border-top:1px dashed color-mix(in srgb,var(--pk) 25%,transparent)}
+.ix-dart-calendar .tc-pg::after{content:"";position:absolute;inset:5.4cqw 3cqw 3cqw;border:1px solid color-mix(in srgb,var(--acc) 50%,transparent);border-radius:.6cqw;pointer-events:none}
+.ix-dart-calendar .tc-fin{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--pk) 10%,transparent),0 .7cqw 0 -.2cqw color-mix(in srgb,var(--ef) 88%,#000),0 1.4cqw 0 -.4cqw color-mix(in srgb,var(--ef) 80%,#000),0 3cqw 6cqw rgb(0 0 0 / .32)}
+.ix-dart-calendar .tc-mo{font-family:var(--ft),Georgia,serif;font-size:3.4cqw;letter-spacing:.34em;margin-right:-.34em;text-transform:uppercase;padding-bottom:2cqw;border-bottom:1px solid color-mix(in srgb,var(--acc) 60%,transparent);white-space:nowrap}
+.ix-dart-calendar .tc-num{position:relative;font-family:var(--ft),Georgia,serif;font-size:30cqw;line-height:1;font-weight:400;letter-spacing:-.02em;font-variant-numeric:lining-nums}
+.ix-dart-calendar .tc-fri .tc-num,.ix-dart-calendar .tc-fri .tc-wd{color:var(--rd)}
+.ix-dart-calendar .tc-wd{font-family:var(--ft),Georgia,serif;font-size:3.8cqw;letter-spacing:.3em;margin-right:-.3em;text-transform:uppercase;font-style:italic}
+.ix-dart-calendar .tc-fin .tc-num{color:var(--rd)}
+.ix-dart-calendar .tc-ring{position:absolute;left:50%;top:50%;width:46cqw;height:37cqw;margin:-19cqw 0 0 -23cqw;overflow:visible}
+.ix-dart-calendar .tc-ring path{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.ix-dart-calendar .tc-bind{position:absolute;left:-3cqw;right:-3cqw;top:-3.4cqw;height:5.6cqw;border-radius:1cqw;background:linear-gradient(180deg,color-mix(in srgb,var(--pk) 80%,var(--acc)) 0,var(--pk) 60%,color-mix(in srgb,var(--pk) 85%,#000) 100%);box-shadow:0 .8cqw 1.6cqw rgb(0 0 0 / .35),inset 0 1px 0 color-mix(in srgb,var(--acc) 60%,transparent);display:flex;justify-content:space-around;align-items:flex-end;padding:0 6cqw;transform:translateZ(1cqw)}
+.ix-dart-calendar .tc-bind i{width:1.6cqw;height:4.4cqw;margin-bottom:-2.2cqw;border-radius:.8cqw;background:linear-gradient(90deg,color-mix(in srgb,var(--acc) 55%,#000),var(--acc),color-mix(in srgb,var(--acc) 45%,#fff),var(--acc))}
+.ix-dart-calendar .tc-txt{position:absolute;left:6%;right:6%;top:133cqw;text-align:center}
+.ix-dart-calendar .tc-std{font-family:var(--fs),Georgia,serif;font-size:13cqw;line-height:1.15;color:var(--it)}
+.ix-dart-calendar .tc-ev{display:flex;align-items:center;justify-content:center;gap:3cqw;margin-top:2.4cqw;font-family:var(--ft),Georgia,serif;font-size:3.8cqw;letter-spacing:.34em;text-transform:uppercase;color:color-mix(in srgb,var(--acc) 55%,var(--it))}
+.ix-dart-calendar .tc-ev b{display:block;width:9cqw;height:1px;background:color-mix(in srgb,var(--acc) 70%,transparent)}
+.ix-dart-calendar .tc-nm{margin-top:2.6cqw;font-family:var(--ft),Georgia,serif;font-style:italic;font-size:4.4cqw;color:color-mix(in srgb,var(--it) 85%,transparent)}
+.ix-dart-calendar .tc-std,.ix-dart-calendar .tc-ev,.ix-dart-calendar .tc-nm{opacity:0}
+
+.play.s-dart-calendar .tc-all{animation:dart-calendar-all 10.3s linear var(--o) both}
+.play.s-dart-calendar .tc-mono circle{animation:dart-calendar-draw 1.6s cubic-bezier(.45,0,.2,1) calc(var(--o) + .1s) both}
+.play.s-dart-calendar .tc-mono span,.play.s-dart-calendar .tc-mono i{animation:dart-calendar-fade 1s ease-out calc(var(--o) + .5s) both}
+.play.s-dart-calendar .tc-kick{animation:dart-calendar-kick 5.6s ease-in-out calc(var(--o) + .3s) both}
+.play.s-dart-calendar .tc-cal{animation:dart-calendar-cal .9s cubic-bezier(.2,.8,.2,1) var(--o) both}
+.play.s-dart-calendar .tc-pages .tc-pg{animation:dart-calendar-tear var(--du,.9s) cubic-bezier(.45,.05,.55,.95) calc(var(--o) + var(--t)) both}
+.play.s-dart-calendar .tc-fin .tc-num{animation:dart-calendar-beat 1.2s cubic-bezier(.34,1.4,.64,1) calc(var(--o) + 5.1s) both}
+.play.s-dart-calendar .tc-ring path{animation:dart-calendar-draw 1.2s cubic-bezier(.6,.05,.3,1) calc(var(--o) + 5.4s) both}
+.play.s-dart-calendar .tc-std{animation:dart-calendar-std 1.3s cubic-bezier(.3,.6,.2,1) calc(var(--o) + 7.3s) both}
+.play.s-dart-calendar .tc-ev{animation:dart-calendar-up 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 7.85s) both}
+.play.s-dart-calendar .tc-nm{animation:dart-calendar-up 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 8.15s) both}
+.play.s-dart-calendar .card{animation:dart-calendar-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 9.1s) both}
+
+@keyframes dart-calendar-all{0%{opacity:1}88.3%{opacity:1}100%{opacity:0}}
+@keyframes dart-calendar-fade{0%{opacity:0}100%{opacity:1}}
+@keyframes dart-calendar-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes dart-calendar-kick{0%{opacity:0;transform:translateY(1.5cqw)}12%,85%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes dart-calendar-cal{0%{opacity:.55;transform:translateY(3cqw) scale(.98)}100%{opacity:1;transform:none}}
+@keyframes dart-calendar-tear{0%{transform:none;opacity:1}22%{transform:translateY(.6cqw) rotateX(-18deg) rotate(calc(var(--rz) * .12))}100%{transform:translate(var(--dx),-115cqw) rotateX(-62deg) rotate(var(--rz)) scale(.9);opacity:0}}
+@keyframes dart-calendar-beat{0%{transform:scale(.94)}100%{transform:none}}
+@keyframes dart-calendar-up{0%{opacity:0;transform:translateY(3cqw)}100%{opacity:1;transform:none}}
+@keyframes dart-calendar-card{0%{opacity:0;transform:scale(1.04)}100%{opacity:1;transform:none}}
+
+/* ---- finale: a dart thunks into the circled day ---- */
+.ix-dart-calendar .tc-dl{position:absolute;left:52cqw;top:86cqw;width:0;height:0;z-index:3}
+.ix-dart-calendar .tc-dx,.ix-dart-calendar .tc-dy,.ix-dart-calendar .tc-dz,.ix-dart-calendar .tc-dw{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+.ix-dart-calendar .tc-dw{transform:rotate(-31deg)}
+.ix-dart-calendar .tc-dart{position:absolute;left:-.6cqw;top:-3.4cqw;width:34cqw;height:6.8cqw;overflow:visible;transform-origin:.6cqw 50%;filter:drop-shadow(.9cqw 1.5cqw .7cqw rgb(0 0 0 / .28))}
+.ix-dart-calendar .tc-imp{position:absolute;left:-7cqw;top:-7cqw;width:14cqw;height:14cqw;border-radius:50%;border:1px solid color-mix(in srgb,var(--acc) 80%,transparent);opacity:0;box-sizing:border-box}
+.ix-dart-calendar .tc-hole{position:absolute;left:-.7cqw;top:-.7cqw;width:1.4cqw;height:1.4cqw;border-radius:50%;background:radial-gradient(circle,rgb(0 0 0 / .5),rgb(0 0 0 / 0) 70%);opacity:0}
+.ix-dart-calendar .tc-fl{position:absolute;left:0;top:0;width:0;height:0}
+.ix-dart-calendar .tc-fl i{position:absolute;left:0;top:0;width:var(--fw,1cqw);height:var(--fh,.6cqw);margin:-.3cqw 0 0 -.5cqw;background:var(--ef);box-shadow:0 0 0 1px color-mix(in srgb,var(--pk) 28%,transparent),0 .3cqw .5cqw rgb(0 0 0 / .18);border-radius:.1cqw;opacity:0}
+
+.play.s-dart-calendar .tc-dx{animation:dart-calendar-dx .8s cubic-bezier(.3,.2,.55,1) calc(var(--o) + 6.25s) both}
+.play.s-dart-calendar .tc-dy{animation:dart-calendar-dy .8s cubic-bezier(.4,0,.7,.6) calc(var(--o) + 6.25s) both}
+.play.s-dart-calendar .tc-dz{animation:dart-calendar-dz .8s cubic-bezier(.45,.2,.75,.85) calc(var(--o) + 6.25s) both}
+.play.s-dart-calendar .tc-dw{animation:dart-calendar-wob 1.2s cubic-bezier(.3,0,.4,1) calc(var(--o) + 7.05s) both}
+.play.s-dart-calendar .tc-dart{animation:dart-calendar-squash .32s ease-out calc(var(--o) + 7.05s) both}
+.play.s-dart-calendar .tc-stack,.play.s-dart-calendar .tc-dl{animation:dart-calendar-shake .5s ease-out calc(var(--o) + 7.05s) both}
+.play.s-dart-calendar .tc-hole{animation:dart-calendar-fade .15s linear calc(var(--o) + 7.05s) both}
+.play.s-dart-calendar .tc-imp{animation:dart-calendar-imp .9s cubic-bezier(.2,.7,.3,1) calc(var(--o) + 7.05s) both}
+.play.s-dart-calendar .tc-fl i{animation:dart-calendar-fleck var(--fd,.9s) cubic-bezier(.2,.6,.4,1) calc(var(--o) + 7.06s) both}
+
+@keyframes dart-calendar-dx{0%{transform:translateX(64cqw)}100%{transform:none}}
+@keyframes dart-calendar-dy{0%{transform:translateY(-118cqw)}100%{transform:none}}
+@keyframes dart-calendar-dz{0%{opacity:0;transform:scale(4.6) rotate(-20deg)}8%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes dart-calendar-wob{0%{transform:rotate(-31deg)}12%{transform:rotate(-24.5deg)}27%{transform:rotate(-36deg)}42%{transform:rotate(-27deg)}57%{transform:rotate(-33.6deg)}72%{transform:rotate(-29.4deg)}86%{transform:rotate(-31.8deg)}100%{transform:rotate(-31deg)}}
+@keyframes dart-calendar-squash{0%{transform:scaleX(.84) scaleY(1.08)}45%{transform:scaleX(1.03) scaleY(.98)}100%{transform:none}}
+@keyframes dart-calendar-shake{0%{transform:translate(.7cqw,.9cqw)}18%{transform:translate(-.5cqw,-.3cqw)}36%{transform:translate(.35cqw,.25cqw)}56%{transform:translate(-.18cqw,-.1cqw)}78%{transform:translate(.08cqw,.05cqw)}100%{transform:none}}
+@keyframes dart-calendar-imp{0%{opacity:0;transform:scale(.15)}6%{opacity:.9;transform:scale(.2)}100%{opacity:0;transform:scale(1.25)}}
+@keyframes dart-calendar-fleck{0%{opacity:0;transform:translate(0,0) rotate(0)}4%{opacity:1}55%{opacity:1;transform:translate(var(--fx),var(--fy)) rotate(calc(var(--fr) * .6))}100%{opacity:0;transform:translate(calc(var(--fx) * 1.25),calc(var(--fy) + 9cqw)) rotate(var(--fr))}}
+@keyframes dart-calendar-std{0%{opacity:0;transform:translateY(1.2cqw) rotate(-2deg);clip-path:inset(-30% 100% -30% -8%)}25%{opacity:1}100%{opacity:1;transform:none;clip-path:inset(-30% -8% -30% -8%)}}

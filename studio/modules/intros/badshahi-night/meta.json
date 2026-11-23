@@ -1,0 +1,1 @@
+{"name": "Badshahi Mosque", "desc": "Lahore's Badshahi Mosque lights up dome by dome over its reflecting pool, then the view glides through the central arch to the card.", "order": 60, "t0": 8.0, "defaults": {"sBorder": "arch", "sName": "fade", "sDet": "up", "sFall": "dust", "kLan": false, "kSpk": true, "kFdi": false}}

@@ -1,0 +1,1 @@
+{"name": "Qalam aur Siyahi", "desc": "A calligrapher's bamboo qalam writes the Bismillah in Nastaliq ink, gold vines bloom, the names are inked and a wax seal presses down before the card appears.", "order": 34, "t0": 10, "defaults": {"sBorder": "arch", "sName": "fade", "sDet": "up", "sFall": "petal", "kLan": false, "kSpk": true}, "fonts": ["Noto+Nastaliq+Urdu:wght@400;700"]}

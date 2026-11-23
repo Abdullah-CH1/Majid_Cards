@@ -1,0 +1,1 @@
+{"name": "Gift box", "desc": "A ribboned gift box drops in, wiggles and pops open with confetti as the card rises out.", "order": 30, "t0": 5.2, "defaults": {"sBorder": "arch", "sName": "letter", "sDet": "up", "sFall": "petal", "kLan": false, "kSpk": true}}

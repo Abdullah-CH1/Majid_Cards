@@ -1,0 +1,584 @@
+{
+ "script_fonts": [
+  {
+   "family": "Great Vibes",
+   "css": "'Great Vibes'",
+   "google_param": "Great+Vibes",
+   "verified_200": true,
+   "personality": "(already in studio) Classic flowing brush copperplate. This is the reference look: romantic, familiar, works for most designs. Has calt/init/fina contextual forms.",
+   "min_size_note": "Reference x1.0 = 13.5cqw (46px on the 340px preview, 146px at 1080w). x-height 0.357em. Capital A is a looped lowercase-style form, so the medallion monogram reads 'a & H'.",
+   "pairs_with": [
+    "Cormorant Garamond",
+    "Playfair Display",
+    "Cinzel",
+    "Bodoni Moda"
+   ]
+  },
+  {
+   "family": "Parisienne",
+   "css": "'Parisienne'",
+   "google_param": "Parisienne",
+   "verified_200": true,
+   "personality": "(already in studio) Open French brush script. Very legible, soft and friendly. Suits romantic and garden designs.",
+   "min_size_note": "x0.95 (12.8cqw, about 44px). x-height 0.353em. Descenders are deep (0.45em), so keep line-height at 1.1 or more.",
+   "pairs_with": [
+    "Lora",
+    "EB Garamond",
+    "Josefin Sans"
+   ]
+  },
+  {
+   "family": "Alex Brush",
+   "css": "'Alex Brush'",
+   "google_param": "Alex+Brush",
+   "verified_200": true,
+   "personality": "(already in studio) Brush-pen copperplate with lively thick-thin contrast. Warm and romantic.",
+   "min_size_note": "x0.95 (about 44px). x-height 0.416em. Short descenders, so it holds up on busy photo backgrounds.",
+   "pairs_with": [
+    "Cormorant Garamond",
+    "Gilda Display",
+    "Jost"
+   ]
+  },
+  {
+   "family": "Pinyon Script",
+   "css": "'Pinyon Script'",
+   "google_param": "Pinyon+Script",
+   "verified_200": true,
+   "personality": "(already in studio) Formal engraved copperplate for royal and Mughal-heritage stationery. Its own '&' is an odd swash. The card draws '&' in the text font; keep it that way.",
+   "min_size_note": "x1.05 (14.2cqw, about 48px). x-height 0.334em.",
+   "pairs_with": [
+    "Marcellus",
+    "Cinzel",
+    "Cormorant Garamond"
+   ]
+  },
+  {
+   "family": "Allura",
+   "css": "'Allura'",
+   "google_param": "Allura",
+   "verified_200": true,
+   "personality": "Airy, evenly spaced formal script with clear, simple capitals. The safe elegant choice for blush/pastel romantic and Walima designs. Good monogram capitals.",
+   "min_size_note": "x1.0 (about 46px). x-height is small (0.301em) but the letters are wide, so do not enlarge it further or names start wrapping.",
+   "pairs_with": [
+    "Cormorant Garamond",
+    "Bodoni Moda",
+    "Tenor Sans"
+   ]
+  },
+  {
+   "family": "Italianno",
+   "css": "'Italianno'",
+   "google_param": "Italianno",
+   "verified_200": true,
+   "personality": "Slender Italian chancery hand, quiet and refined. Suits Persian-miniature / Mughal-manuscript looks and minimal luxury.",
+   "min_size_note": "x1.35 (18.2cqw, about 62px). Tiny x-height (0.265em). Below about 55px it reads faint.",
+   "pairs_with": [
+    "Cormorant Upright",
+    "Cormorant Garamond",
+    "Marcellus"
+   ]
+  },
+  {
+   "family": "Tangerine",
+   "css": "'Tangerine'",
+   "google_param": "Tangerine:wght@400;700",
+   "verified_200": true,
+   "personality": "Condensed calligraphic italic, and one of the few scripts with a real Bold (700). Old-world romance. The Bold weight stays readable on phone screens.",
+   "min_size_note": "x1.25 (16.9cqw, about 57px). x-height 0.255em. Use font-weight 700 when the preview size is under about 55px or the name sits on a photo background.",
+   "pairs_with": [
+    "EB Garamond",
+    "Cormorant Garamond",
+    "Cinzel"
+   ]
+  },
+  {
+   "family": "Petit Formal Script",
+   "css": "'Petit Formal Script'",
+   "google_param": "Petit+Formal+Script",
+   "verified_200": true,
+   "personality": "Formal upright copperplate with very open, highly legible letters. Gives an engraved-letterpress, royal-formal look that older guests read easily.",
+   "min_size_note": "Use x0.7 only (9.5cqw, about 32px). The x-height is huge (0.588em) and the letters are very wide; at x1.0 a word like 'Muhammad' overflows the 74cqw text column.",
+   "pairs_with": [
+    "Cormorant Garamond",
+    "Cinzel",
+    "Bodoni Moda"
+   ]
+  },
+  {
+   "family": "Rouge Script",
+   "css": "'Rouge Script'",
+   "google_param": "Rouge+Script",
+   "verified_200": true,
+   "personality": "Compact copperplate with decorative looped capitals. Suits vintage-royal, Mughal-court and jewel-tone designs.",
+   "min_size_note": "x1.1 (14.9cqw, about 51px). x-height 0.34em. Covers Basic Latin and Latin-1 only (no Latin Extended-A).",
+   "pairs_with": [
+    "Cinzel",
+    "Cormorant Garamond",
+    "Marcellus"
+   ]
+  },
+  {
+   "family": "Imperial Script",
+   "css": "'Imperial Script'",
+   "google_param": "Imperial+Script",
+   "verified_200": true,
+   "personality": "Formal script with swash capitals carrying hairline flourishes. The most 'royal durbar' font in the set.",
+   "min_size_note": "x1.05 (about 48px). The hairlines on the capitals need about 40px or more on screen. Avoid noisy photo backgrounds.",
+   "pairs_with": [
+    "Cinzel",
+    "Cinzel Decorative",
+    "Bodoni Moda"
+   ]
+  },
+  {
+   "family": "Lavishly Yours",
+   "css": "'Lavishly Yours'",
+   "google_param": "Lavishly+Yours",
+   "verified_200": true,
+   "personality": "Heavily flourished capitals over a fine copperplate lowercase. Couture/royal luxury, for hero names on a plain card colour.",
+   "min_size_note": "x1.15 (15.5cqw, about 53px). x-height 0.245em. Swashes reach +0.86em and -0.50em, and the default line box is 1.6em. Use line-height 1.2 or more and no tight overflow clipping around the names.",
+   "pairs_with": [
+    "Bodoni Moda",
+    "Cinzel",
+    "Italiana"
+   ]
+  },
+  {
+   "family": "MonteCarlo",
+   "css": "'MonteCarlo'",
+   "google_param": "MonteCarlo",
+   "verified_200": true,
+   "personality": "Refined formal script with the clearest elegant capitals in the set. Best choice for the medallion monogram (A & H) and for royal/classic designs. Has calt/clig/init/fina. Note: the Google family name is 'MonteCarlo'; 'Monte+Carlo' returns 400.",
+   "min_size_note": "x1.05 (about 48px). x-height 0.335em. The default line box is 1.7em, so always set an explicit line-height.",
+   "pairs_with": [
+    "Cinzel",
+    "Cinzel Decorative",
+    "Cormorant Garamond"
+   ]
+  },
+  {
+   "family": "Beau Rivage",
+   "css": "'Beau Rivage'",
+   "google_param": "Beau+Rivage",
+   "verified_200": true,
+   "personality": "Bold, warm calligraphic script with strong contrast. Very legible and holds up over photo backgrounds. Confident romance.",
+   "min_size_note": "x1.05 (about 48px). x-height 0.344em.",
+   "pairs_with": [
+    "Gilda Display",
+    "Cormorant Garamond",
+    "Playfair Display"
+   ]
+  },
+  {
+   "family": "Vujahday Script",
+   "css": "'Vujahday Script'",
+   "google_param": "Vujahday+Script",
+   "verified_200": true,
+   "personality": "Crisp modern pointed-pen calligraphy with clean, wide joins. Contemporary minimal; suits monochrome or sage/stone palettes.",
+   "min_size_note": "x1.0 (about 46px). x-height 0.416em, so it stays readable at small sizes.",
+   "pairs_with": [
+    "Jost",
+    "Tenor Sans",
+    "Josefin Sans"
+   ]
+  },
+  {
+   "family": "Style Script",
+   "css": "'Style Script'",
+   "google_param": "Style+Script",
+   "verified_200": true,
+   "personality": "Bold modern brush lettering in a casual-luxe signage style. Suits modern and playful designs, Mehndi and dholki. Has calt/clig.",
+   "min_size_note": "x0.95 (12.8cqw, about 44px). Large x-height (0.451em). Capital A is a lowercase form, so monograms read 'a & H'; use MonteCarlo or Allura for the medallion.",
+   "pairs_with": [
+    "Josefin Sans",
+    "Fraunces",
+    "Jost"
+   ]
+  },
+  {
+   "family": "Mr Dafoe",
+   "css": "'Mr Dafoe'",
+   "google_param": "Mr+Dafoe",
+   "verified_200": true,
+   "personality": "Heavy brush signature. The boldest, most energetic name font (playful designs, Mehndi/Mayun, dholki night).",
+   "min_size_note": "x1.05 (about 48px). The strokes are dense, so avoid it below about 40px and on low-contrast backgrounds. Capital A is lowercase-style in monograms. Covers Basic Latin and Latin-1 only.",
+   "pairs_with": [
+    "Fraunces",
+    "Josefin Sans",
+    "Jost"
+   ]
+  },
+  {
+   "family": "Yesteryear",
+   "css": "'Yesteryear'",
+   "google_param": "Yesteryear",
+   "verified_200": true,
+   "personality": "Bold 1950s sign-painter script. Fun and very legible; pairs well with Art Deco titling.",
+   "min_size_note": "x1.1 (14.9cqw, about 51px). x-height 0.295em. Capital A is lowercase-style.",
+   "pairs_with": [
+    "Josefin Sans",
+    "Poiret One",
+    "Fraunces"
+   ]
+  },
+  {
+   "family": "Sacramento",
+   "css": "'Sacramento'",
+   "google_param": "Sacramento",
+   "verified_200": true,
+   "personality": "The monoline (single-weight) script. Use it for the handwriting / SVG stroke-draw names entrance: the even line looks like real pen writing. Light, airy, modern.",
+   "min_size_note": "x1.05 (about 48px). The strokes are thin and even, so use a full-contrast ink colour. Descenders are 0.53em deep.",
+   "pairs_with": [
+    "Tenor Sans",
+    "Italiana",
+    "Jost"
+   ]
+  },
+  {
+   "family": "Fleur De Leah",
+   "css": "'Fleur De Leah'",
+   "google_param": "Fleur+De+Leah",
+   "verified_200": true,
+   "personality": "Script whose capitals sprout leaves and blossoms. Suits floral, garden, spring and Mehndi-like designs, and works naturally with the new fl/lf palette roles.",
+   "min_size_note": "x0.95 (about 44px). The floral capitals partly hide the first letter, so it works best with simple capitals (A, H, S, Z, M). Do not use it for the monogram.",
+   "pairs_with": [
+    "Lora",
+    "Fraunces",
+    "Cormorant Garamond"
+   ]
+  }
+ ],
+ "text_fonts": [
+  {
+   "family": "Cormorant Garamond",
+   "css": "'Cormorant Garamond'",
+   "google_param": "Cormorant+Garamond:ital,wght@0,300..700;1,300..700",
+   "verified_200": true,
+   "personality": "(already in studio) Delicate display Garamond with old-style figures. The most versatile body/italic companion. Use its italic for the venue and closing lines when the title font has no italic (Cinzel, Marcellus, Gilda Display).",
+   "has_italic": true,
+   "weights": "300-700 variable, italic 300-700"
+  },
+  {
+   "family": "Playfair Display",
+   "css": "'Playfair Display'",
+   "google_param": "Playfair+Display:ital,wght@0,400..900;1,400..900",
+   "verified_200": true,
+   "personality": "(already in studio) High-contrast transitional display serif. Editorial luxury and strong BARAAT/WALIMA titles.",
+   "has_italic": true,
+   "weights": "400-900 variable, italic"
+  },
+  {
+   "family": "EB Garamond",
+   "css": "'EB Garamond'",
+   "google_param": "EB+Garamond:ital,wght@0,400..800;1,400..800",
+   "verified_200": true,
+   "personality": "(already in studio) Classic book Garamond. Sturdier than Cormorant at the 11-13px preview sizes. Old-world romance.",
+   "has_italic": true,
+   "weights": "400-800 variable, italic"
+  },
+  {
+   "family": "Lora",
+   "css": "'Lora'",
+   "google_param": "Lora:ital,wght@0,400..700;1,400..700",
+   "verified_200": true,
+   "personality": "(already in studio) Friendly calligraphic serif that stays solid at small sizes. Suits garden/floral and playful designs.",
+   "has_italic": true,
+   "weights": "400-700 variable, italic"
+  },
+  {
+   "family": "Cinzel",
+   "css": "'Cinzel'",
+   "google_param": "Cinzel:wght@400..900",
+   "verified_200": true,
+   "personality": "Roman inscription capitals (Trajan-like). Regal titling for 'TOGETHER WITH THEIR FAMILIES', the event name and the date in royal and Mughal designs. Lowercase input renders as small caps. It has no italic: send the venue/closing lines to Cormorant Garamond italic, or set font-synthesis-style:none.",
+   "has_italic": false,
+   "weights": "400-900 variable (caps and small caps only)"
+  },
+  {
+   "family": "Cinzel Decorative",
+   "css": "'Cinzel Decorative'",
+   "google_param": "Cinzel+Decorative:wght@400;700;900",
+   "verified_200": true,
+   "personality": "Cinzel with ornamental swash capitals. Use it only for the event title (BARAAT / WALIMA / MEHNDI / NIKAH) at 9cqw or larger; it is too busy for body lines (checked in mock-ups).",
+   "has_italic": false,
+   "weights": "400, 700, 900"
+  },
+  {
+   "family": "Marcellus",
+   "css": "'Marcellus'",
+   "google_param": "Marcellus",
+   "verified_200": true,
+   "personality": "Flared, carved-stone Roman with lowercase. Calmer than Cinzel, with a Lahore Fort / Badshahi Mosque heritage feel for Mughal designs.",
+   "has_italic": false,
+   "weights": "400"
+  },
+  {
+   "family": "Bodoni Moda",
+   "css": "'Bodoni Moda'",
+   "google_param": "Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900",
+   "verified_200": true,
+   "personality": "High-fashion Didone with real italics. Couture luxury and modern-royal designs. Pin the optical size (font-optical-sizing:none; font-variation-settings:'opsz' 24 for body, 'opsz' 48 for titles) so the 340px preview and the 1080/4K video look the same.",
+   "has_italic": true,
+   "weights": "400-900 variable, italic, optical size 6-96 (default 11)"
+  },
+  {
+   "family": "Gilda Display",
+   "css": "'Gilda Display'",
+   "google_param": "Gilda+Display",
+   "verified_200": true,
+   "personality": "Soft romantic Didone display that stays readable at small sizes. Pairs well with bold scripts such as Beau Rivage. No italic.",
+   "has_italic": false,
+   "weights": "400"
+  },
+  {
+   "family": "Italiana",
+   "css": "'Italiana'",
+   "google_param": "Italiana",
+   "verified_200": true,
+   "personality": "Hairline modern Didone. Use it only for luxury-minimal titles (BARAAT at 9cqw or larger). It is too thin for the 11-13px body lines; set those in Tenor Sans or Jost.",
+   "has_italic": false,
+   "weights": "400"
+  },
+  {
+   "family": "Cormorant Upright",
+   "css": "'Cormorant Upright'",
+   "google_param": "Cormorant+Upright:wght@300;400;500;600;700",
+   "verified_200": true,
+   "personality": "Upright cursive serif: calligraphic but upright. Lovely for venue and closing lines and for Persian-manuscript / Mughal-miniature designs.",
+   "has_italic": false,
+   "weights": "300, 400, 500, 600, 700 (the face itself is cursive)"
+  },
+  {
+   "family": "Josefin Sans",
+   "css": "'Josefin Sans'",
+   "google_param": "Josefin+Sans:ital,wght@0,100..700;1,100..700",
+   "verified_200": true,
+   "personality": "Vintage 1920s geometric sans with italics. Elegant modern-minimal and light Art Deco. Use it for body text under Poiret One titles.",
+   "has_italic": true,
+   "weights": "100-700 variable, italic"
+  },
+  {
+   "family": "Jost",
+   "css": "'Jost'",
+   "google_param": "Jost:ital,wght@0,100..900;1,100..900",
+   "verified_200": true,
+   "personality": "Futura-style geometric sans. Crisp modern minimal. Use 400-500 for body and 300 with wide letter-spacing for labels.",
+   "has_italic": true,
+   "weights": "100-900 variable, italic"
+  },
+  {
+   "family": "Tenor Sans",
+   "css": "'Tenor Sans'",
+   "google_param": "Tenor+Sans",
+   "verified_200": true,
+   "personality": "Elegant humanist sans with classical proportions. Quiet-luxury body text for minimal designs. No italic and no bold.",
+   "has_italic": false,
+   "weights": "400"
+  },
+  {
+   "family": "Poiret One",
+   "css": "'Poiret One'",
+   "google_param": "Poiret+One",
+   "verified_200": true,
+   "personality": "Art Deco hairline geometric display. Use it only for playful/retro titles at 9cqw or larger; it washes out on the small lines. Set body text in Josefin Sans.",
+   "has_italic": false,
+   "weights": "400"
+  },
+  {
+   "family": "Fraunces",
+   "css": "'Fraunces'",
+   "google_param": "Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900",
+   "verified_200": true,
+   "personality": "Soft, slightly 'wonky' old-style serif. Warm and playful (Mehndi, dholki, pastel). Pin opsz as with Bodoni Moda so the preview and the video match.",
+   "has_italic": true,
+   "weights": "100-900 variable, italic, optical size 9-144"
+  }
+ ],
+ "arabic_urdu_fonts": [
+  {
+   "family": "Amiri",
+   "css": "'Amiri'",
+   "google_param": "Amiri:ital,wght@0,400;0,700;1,400;1,700",
+   "verified_200": true,
+   "use": "Default Bismillah (classic Naskh, as in the studio today) for royal and romantic designs. Every Urdu letter rendered in Chrome with no fallback glyphs (ہ ی ے ٹ ڈ ڑ ں ھ ۓ ٰ ئ). It has Urdu-specific number forms, which appear only with lang='ur'. Its ﷽ (U+FDFD) glyph is 11.4em wide: type the words, never use the ligature with Amiri. Size x1.0 of the current .bism (6cqw), line-height 1.6."
+  },
+  {
+   "family": "Noto Nastaliq Urdu",
+   "css": "'Noto Nastaliq Urdu'",
+   "google_param": "Noto+Nastaliq+Urdu:wght@400..700",
+   "verified_200": true,
+   "use": "Authentic Urdu Nastaliq, the real Pakistani/Mughal invitation script. Use it for the Bismillah, Urdu names (عائشہ ، حمزہ), Urdu event words and Urdu closing lines. Weights 400-700. It is tall: ink rises 1.3-1.6em above the baseline and the default line box is 2.5em, so use line-height 2.2-2.4 at about 0.9x the current .bism size. It has a bold, compact ﷽ (4.6em wide x 2.05em tall). Download: about 239KB for the Arabic subset."
+  },
+  {
+   "family": "Gulzar",
+   "css": "'Gulzar'",
+   "google_param": "Gulzar",
+   "verified_200": true,
+   "use": "Calligraphic display Nastaliq, the most hand-lettered Urdu. Use it for the Bismillah, Urdu event words (بارات، ولیمہ، مہندی) and the closing line in romantic and Mughal designs. Single weight: do not set it bold, or Chrome fakes the bold. Default line box is 2.7em, so use line-height 2.2 or more. Its ﷽ is a stacked composition (3.0em x 1.6em) that makes an ideal Bismillah emblem. About 209KB. It lacks the ﷲ glyph (U+FDF2)."
+  },
+  {
+   "family": "Aref Ruqaa",
+   "css": "'Aref Ruqaa'",
+   "google_param": "Aref+Ruqaa:wght@400;700",
+   "verified_200": true,
+   "use": "Ruqaa calligraphy, festive and handwritten. Use it for playful/Mehndi Bismillah lines and Urdu headings. It covers every Urdu letter except ۂ (U+06C2, not used on the cards). No ﷽ glyph. A colour version, 'Aref Ruqaa Ink' (COLR font with a fixed red/black palette), also exists. Size x1.05, line-height 1.8."
+  },
+  {
+   "family": "Scheherazade New",
+   "css": "'Scheherazade New'",
+   "google_param": "Scheherazade+New:wght@400;500;600;700",
+   "verified_200": true,
+   "use": "Traditional Naskh (from SIL) with full Urdu. Its ﷽ is an ornate Thuluth-style emblem (2.6em x 0.9em), the best calligraphic Bismillah emblem for royal and Mughal designs at 10cqw or larger. Size x1.1, line-height 1.7 (default line box 2.0em)."
+  },
+  {
+   "family": "Lateef",
+   "css": "'Lateef'",
+   "google_param": "Lateef:wght@200;300;400;500;600;700;800",
+   "verified_200": true,
+   "use": "Sindhi/Urdu Naskh (from SIL) in 7 weights, with an ornate ﷽ (2.5em). It renders small, so use about 1.35x the .bism size. Good for soft or playful designs."
+  },
+  {
+   "family": "Reem Kufi",
+   "css": "'Reem Kufi'",
+   "google_param": "Reem+Kufi:wght@400..700",
+   "verified_200": true,
+   "use": "Geometric Kufi with full Urdu, for modern, Art Deco and minimal designs. Very light download (12KB Arabic subset). No ﷽. Sibling families: Reem Kufi Fun, and Reem Kufi Ink (gradient COLR)."
+  },
+  {
+   "family": "El Messiri",
+   "css": "'El Messiri'",
+   "google_param": "El+Messiri:wght@400..700",
+   "verified_200": true,
+   "use": "Modern semi-geometric Arabic with a matching Latin. Use it for modern/minimal Bismillah lines and Urdu event titles. Full Urdu; it has neither ﷽ nor ﷲ."
+  },
+  {
+   "family": "Markazi Text",
+   "css": "'Markazi Text'",
+   "google_param": "Markazi+Text:wght@400..700",
+   "verified_200": true,
+   "use": "Elegant editorial Naskh with a Latin companion, for classic or minimal designs. Full Urdu. The x-height is small, so use about 1.15x. Numbers always use the Persian shapes, even with lang='ur'. No ﷽."
+  },
+  {
+   "family": "Noto Naskh Arabic",
+   "css": "'Noto Naskh Arabic'",
+   "google_param": "Noto+Naskh+Arabic:wght@400..700",
+   "verified_200": true,
+   "use": "Neutral, clean Naskh with full Urdu and Urdu number forms. The safest fallback behind any decorative Arabic font, e.g. font-family:'Gulzar','Noto Naskh Arabic',serif. Its ﷽ glyph is 12em wide, so do not use it."
+  },
+  {
+   "family": "Rakkas",
+   "css": "'Rakkas'",
+   "google_param": "Rakkas",
+   "verified_200": true,
+   "use": "Bold calligraphic display. Use it for playful Mehndi/dholki Bismillah lines and Urdu event words (مہندی، ڈھولکی). Full Urdu with Urdu number forms; no ﷽."
+  },
+  {
+   "family": "Almarai",
+   "css": "'Almarai'",
+   "google_param": "Almarai:wght@300;400;700;800",
+   "verified_200": true,
+   "use": "Modern clean sans with full Urdu and a compact, light ﷽ (2.7em), which makes a good Bismillah emblem for modern/minimal designs. Numbers always use the Persian shapes."
+  }
+ ],
+ "pairings": [
+  {
+   "script": "Imperial Script",
+   "text": "Cinzel",
+   "mood": "ROYAL / Durbar: swash capitals over Roman inscription caps. Cinzel for the labels, event, date and time; Cormorant Garamond italic for the venue and closing line (Cinzel has no italic). Bismillah in Amiri. Maroon #4A0E1C, ivory card #FBF3E4, antique gold #B8913F. Names x1.05."
+  },
+  {
+   "script": "Lavishly Yours",
+   "text": "Bodoni Moda",
+   "mood": "ROYAL / Couture: heavily flourished capitals with a high-fashion Didone that has real italics. Bismillah in Noto Nastaliq Urdu (0.9x, line-height 2.3). Midnight navy #0F1B33, pearl #FAF6EE, champagne gold #C9A54C. Names x1.15; pin Bodoni's opsz."
+  },
+  {
+   "script": "Petit Formal Script",
+   "text": "Cormorant Garamond",
+   "mood": "ROYAL / Engraved letterpress: upright formal copperplate with Garamond. Scheherazade New Bismillah, or its ﷽ emblem. Aubergine #2B1B3D, ivory #F8F1E7, gold #B8913F. Names x0.7."
+  },
+  {
+   "script": "Beau Rivage",
+   "text": "Gilda Display",
+   "mood": "ROMANTIC / Bold romance: warm calligraphy with a soft Didone. Gulzar Bismillah. Wine #6E1E2F, blush card #FFF6F3, rose gold #D4A373. Keep Gilda upright on the italic lines (font-synthesis-style:none). Names x1.05."
+  },
+  {
+   "script": "Allura",
+   "text": "Cormorant Garamond",
+   "mood": "ROMANTIC / Classic blush, also good for a pastel Walima: airy copperplate with a Garamond italic closing line. Amiri Bismillah. Blush #E9C9C2, ivory #FFF8F4, rose gold #C58E7A. Names x1.0."
+  },
+  {
+   "script": "Fleur De Leah",
+   "text": "Lora",
+   "mood": "ROMANTIC / Floral garden: blossom-capital script with Lora italic. Gulzar Bismillah. Drive the leaves and roses with the new fl/lf roles. Sage #7E9C7F, rose #B05C74, cream #FFFDF8. Names x0.95."
+  },
+  {
+   "script": "Vujahday Script",
+   "text": "Jost",
+   "mood": "MODERN / Minimal: crisp pointed-pen script with a Futura-style sans (Jost italic for the closing line). El Messiri Bismillah. Warm white, charcoal #1E1E1E, brushed gold #B29A6A. Names x1.0."
+  },
+  {
+   "script": "Style Script",
+   "text": "Josefin Sans",
+   "mood": "MODERN / Brush: bold casual-luxe script with a vintage geometric sans. Reem Kufi Bismillah. Deep teal #1C2B2D / #2F7F79, sand card #F7F4EE, gold #C2A15F. Names x0.95."
+  },
+  {
+   "script": "Sacramento",
+   "text": "Tenor Sans",
+   "mood": "MODERN / Monoline, the best match for the handwriting stroke-draw entrance. Italiana only for the BARAAT/WALIMA title; Tenor Sans for every small line. Almarai Bismillah or its ﷽ emblem. Black #0E0E10, stone #F5F1EA, champagne #B89B5E. Names x1.05."
+  },
+  {
+   "script": "Mr Dafoe",
+   "text": "Fraunces",
+   "mood": "PLAYFUL / Mehndi-dholki: heavy brush names with a soft, slightly wonky serif (Fraunces italic for the closing line). Rakkas Bismillah. Peach #F6B8A0, plum ink #3B2A4A, hot pink #E0567A, teal #2B9C93. Names x1.05."
+  },
+  {
+   "script": "Yesteryear",
+   "text": "Josefin Sans",
+   "mood": "PLAYFUL / Retro Art Deco: 1950s bold script. Poiret One for the event title only (it is too thin for small lines); Josefin Sans for the body. Aref Ruqaa Bismillah. Peacock #1F4E5F, cream #FFF4E0, coral #E07A5F, marigold #F2B84B. Names x1.1."
+  },
+  {
+   "script": "Style Script",
+   "text": "Fraunces",
+   "mood": "PLAYFUL / Pastel sweet: bouncy brush with a soft serif italic. Lateef Bismillah (1.35x). Candy pink #FFD6E0, raspberry #D6336C, apricot #F4A259 on #FFFBF5. Names x0.95."
+  },
+  {
+   "script": "Rouge Script",
+   "text": "Cinzel",
+   "mood": "MUGHAL / Shahi court: looped-capital copperplate, Roman inscription caps and a Gulzar Nastaliq Bismillah. Cormorant Garamond italic for the venue and closing line. Emerald #0B3D2E, parchment #F7EFDC, ruby #8C2F39, gold #C9A44C. Names x1.1."
+  },
+  {
+   "script": "Pinyon Script",
+   "text": "Marcellus",
+   "mood": "MUGHAL / Lahore Fort heritage: engraved copperplate with a carved-stone Roman. Noto Nastaliq Urdu Bismillah (0.9x, line-height 2.3). Brick maroon #5B1A18, sandstone #FAF1DE, antique gold #C79A3E. Marcellus stays upright (font-synthesis-style:none). Names x1.05."
+  },
+  {
+   "script": "Italianno",
+   "text": "Cormorant Upright",
+   "mood": "MUGHAL / Persian miniature manuscript: slender chancery hand with an upright cursive serif. Scheherazade New ﷽ emblem or written Bismillah. Lapis #123A52, vermilion #A23E48, gold #C9A04E on ivory #F8F3E8. Names x1.35."
+  }
+ ],
+ "notes": [
+  "VERIFICATION: Every google_param above was fetched as-is with curl (https://fonts.googleapis.com/css2?family=<param>&display=swap) and returned HTTP 200. 233 candidates were tested; wrong names or axes return 400. Fixes found: the family is 'MonteCarlo', not 'Monte+Carlo'. Libre Caslon Text needs 'ital,wght@0,400;0,700;1,400'.",
+  "GLYPH CHECK: In headless Chromium I asked Chrome which font actually drew each sample (CSS.getPlatformFontsForNode). No sample fell back to another font: the names, A-Z capitals and '&' for every script; the labels, date and italic closing line for every text font; and, for all 12 Arabic fonts, the Urdu-spelled Bismillah, the Urdu closing sentence, Urdu names (عائشہ حمزہ فاطمہ عثمان زینب بلال مریم), wedding words (بارات ولیمہ مہندی ڈھولکی رخصتی نکاح) and an Urdu date with Urdu numerals.",
+  "GROUP LINKS (each returned 200 with both a curl and a Chrome user agent; all three merged into one 1470-char URL also returned 200; write & as &amp; inside the HTML href):",
+  "SCRIPTS: https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Alex+Brush&family=Pinyon+Script&family=Allura&family=Italianno&family=Tangerine:wght@400;700&family=Petit+Formal+Script&family=Rouge+Script&family=Imperial+Script&family=Lavishly+Yours&family=MonteCarlo&family=Beau+Rivage&family=Vujahday+Script&family=Style+Script&family=Mr+Dafoe&family=Yesteryear&family=Sacramento&family=Fleur+De+Leah&display=swap",
+  "TEXT: https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lora:ital,wght@0,400..700;1,400..700&family=Cinzel:wght@400..900&family=Cinzel+Decorative:wght@400;700;900&family=Marcellus&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Gilda+Display&family=Italiana&family=Cormorant+Upright:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Tenor+Sans&family=Poiret+One&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap",
+  "ARABIC/URDU: https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Nastaliq+Urdu:wght@400..700&family=Gulzar&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;500;600;700&family=Lateef:wght@200;300;400;500;600;700;800&family=Reem+Kufi:wght@400..700&family=El+Messiri:wght@400..700&family=Markazi+Text:wght@400..700&family=Noto+Naskh+Arabic:wght@400..700&family=Rakkas&family=Almarai:wght@300;400;700;800&display=swap",
+  "NAME SIZE MULTIPLIER: script fonts differ a lot in size at the same font-size. Give each design a per-font factor, e.g. .nm{font-size:calc(13.5cqw*var(--fk,1))}, and apply the same factor to .ib, .mono and the SVG .nt (58px*k). Factors: Great Vibes 1.0, Parisienne 0.95, Alex Brush 0.95, Pinyon Script 1.05, Allura 1.0, Italianno 1.35, Tangerine 1.25, Petit Formal Script 0.7, Rouge Script 1.1, Imperial Script 1.05, Lavishly Yours 1.15, MonteCarlo 1.05, Beau Rivage 1.05, Vujahday Script 1.0, Style Script 0.95, Mr Dafoe 1.05, Yesteryear 1.1, Sacramento 1.05, Fleur De Leah 0.95. Method: match Great Vibes' x-height and cap-height, keep the default names within 110% of Great Vibes' width, and make sure the longest single word fits the 74cqw text column. Checked by rendering on 250px and 340px cards.",
+  "LETTER-BY-LETTER ENTRANCE: splitting the names into one inline-block per letter (the studio's 'letter' entrance) was rendered side by side with whole words. At 46px none of the 19 scripts showed visibly broken joins. The ampersand is drawn in the text font (.amp, .mono i), so odd script ampersands (Pinyon, MonteCarlo, Lavishly Yours) never appear. Keep it that way.",
+  "MONOGRAM CAPITALS (medallion A & H): clearest are MonteCarlo, Allura, Parisienne, Petit Formal Script, Beau Rivage, Sacramento and Imperial Script. Great Vibes, Style Script, Mr Dafoe and Yesteryear draw capital A as a lowercase-style 'a'. Avoid Fleur De Leah for monograms. Ballet (Ballet:opsz@16..72, verified) suits a giant monogram only: its hairlines vanish below about 60px.",
+  "NO-ITALIC TEXT FONTS (Cinzel, Cinzel Decorative, Marcellus, Gilda Display, Italiana, Tenor Sans, Poiret One, Cormorant Upright): Chrome fakes a slanted 'italic' on the italic lines (.ia .ic .vn .cl .amp) — this was visible in the specimens. Either set font-synthesis-style:none (stays upright) or give designs a separate italic-font variable (e.g. --fi:'Cormorant Garamond').",
+  "THIN DISPLAY FONTS: Italiana and Poiret One are for the event title only (9cqw or larger). On the 11-13px lines they wash out, so set those lines in Tenor Sans / Jost / Josefin Sans. Cinzel Decorative is also title-only.",
+  "OPTICAL SIZE: Bodoni Moda (opsz 6-96, default 11), Fraunces (opsz 9-144) and Ballet (opsz 16-72) change their letter shapes with the CSS pixel size. The card scales with cqw, so the 1080px or 4K video would use a different, higher-contrast design than the 340px preview. For identical output set font-optical-sizing:none; font-variation-settings:'opsz' N per element.",
+  "URDU MARKUP: put lang='ur' dir='rtl' on the Bismillah and every Urdu element. Rendering showed that Amiri, Noto Nastaliq Urdu, Gulzar, Aref Ruqaa, Scheherazade New, Lateef, Reem Kufi, El Messiri, Noto Naskh Arabic and Rakkas draw Urdu numeral shapes (۴ ۶ ۷) only when lang='ur'; Markazi Text and Almarai always draw the Persian shapes. Always add a fallback: font-family:'<Arabic font>','Noto Naskh Arabic',serif.",
+  "NASTALIQ SPACING: the current .bism line-height of 1.5 is fine for Amiri (default line box 1.75em) but too tight for Nastaliq. Noto Nastaliq Urdu's ink reaches +1.27em/-0.62em on the Bismillah and +1.62em on Urdu sentences, with a default line box of 2.5em; Gulzar's is 2.7em. Use line-height 2.2-2.4 and do not let an overflow:hidden parent hug the text.",
+  "BISMILLAH EMBLEM OPTION: the single character ﷽ (U+FDFD) makes a compact calligraphic emblem in Gulzar (3.0 x 1.6em), Noto Nastaliq Urdu (4.6 x 2.05em), Scheherazade New (2.6em), Lateef (2.5em) and Almarai (2.7em); use about 10-14cqw. Amiri, Noto Naskh Arabic, Noto Kufi Arabic and Noto Sans Arabic draw it 10-12em wide (unusable). Fonts without it fall back to Times New Roman. Gulzar, Aref Ruqaa, Reem Kufi and El Messiri also lack ﷲ (U+FDF2), so type the word اللہ instead.",
+  "AVOID FOR URDU (Chrome dropped to Times New Roman inside words): Amiri Quran (missing ہ ے ٹ ڈ ڑ ھ ک گ ...), Tajawal, Readex Pro, Rubik, Vibes, Ruwudu and Alkalami. Blaka, Blaka Ink and Blaka Hollow lack U+0670, which breaks الرحمٰن.",
+  "AVOID AS NAME FONTS: Playwrite IT Moderna and Playwrite GB S (print letters, not cursive), Tapestry (a serif, not a script), Monsieur La Doulaise and Miss Fajardose (illegible capitals at 46px), Meddon and WindSong (overflow the card), League Script (hairline). Cherish, Estonia and Babylonica looked rough or casual.",
+  "VERIFIED ALTERNATES (all 200): scripts Water+Brush (x0.9, watercolour brush), Meow+Script (x1.1, playful monoline), Mrs+Saint+Delafield (x1.25, thin couture signature), Carattere (x1.05, bold chancery), Bonheur+Royale, Ephesis, Corinthia:wght@400;700, The+Nautigal:wght@400;700, Whisper, Moon+Dance, Birthstone+Bounce:wght@400;500, Updock, Niconne. Text: Forum, Castoro+Titling, Bellefair, Prata, Montserrat:ital,wght@0,100..900;1,100..900, Aboreto, Julius+Sans+One, DM+Serif+Display:ital@0;1, Instrument+Serif:ital@0;1, Elsie+Swash+Caps:wght@400;900. Arabic: Aref+Ruqaa+Ink:wght@400;700, Reem+Kufi+Ink, Katibeh, Lalezar, Mirza:wght@400;500;600;700, Noto+Kufi+Arabic:wght@100..900.",
+  "COLOUR FONTS: Aref Ruqaa Ink, Reem Kufi Ink and Blaka Ink are COLR fonts. They ignore CSS color; to recolour them (e.g. to gold) use @font-palette-values with override-colors, or do not use them.",
+  "DOWNLOAD SIZE: Arabic regular faces as woff2 are Noto Nastaliq Urdu about 239KB, Gulzar 209KB, Amiri 109KB, Noto Naskh 94KB, Scheherazade New 79KB, Lateef 62KB, the rest 12-41KB. Latin scripts are about 15-60KB each. Given the stage selector, html2mp4.py's JS_LOAD_ASSETS loads only the font faces the stage actually uses, so one big <link> is fine for rendering. A gallery showing 30-50 live samples at once downloads every visible sample's fonts: lazy-load the samples or add each sample's <link> on demand. All Google Fonts are under open licences (OFL/Apache), so commercial use is fine.",
+  "EVIDENCE (in C:\\Users\\Saad\\AppData\\Local\\Temp\\claude\\f--Wedding-Card\\eec7d3db-784a-4324-a6e3-7d20b990b41f\\scratchpad\\fontcheck\\): fetch_results.json (HTTP status per candidate), analyze_results.json (character coverage, metrics, OpenType features), specimen_results.json (fallback check and ink metrics), scales.json, combined_report.json; images in shots\\: script_01-09.png, text_01-08.png, arabic_01-05.png, focus_ar_1-2.png, final_pairs_1-3.png (the 15 pairings on 340px cards), scales_cards.png, langtest.png, splittest.png."
+ ]
+}

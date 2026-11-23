@@ -1,0 +1,7 @@
+/* Eight-point stars: a static texture - an SVG <pattern> tile filled with currentColor.
+   Stage copy sits behind the opening; card copy is a faint watermark behind the text.
+   The stage gold is mixed with a little of the intro-text colour so it stays visible on dark,
+   mid-tone and light backgrounds alike. */
+.ptx-khatam svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;pointer-events:none}
+.ptx-khatam .khatam-s{color:color-mix(in srgb,var(--acc),var(--it) 35%);opacity:0.17}
+.ptx-khatam .khatam-c{color:var(--acc);opacity:0.07}

@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Baraat Cards</title>
+<!--
+  BARAAT INVITATION CARDS - Abdul Aleem with Laiba
+  =================================================
+  To change any wording: edit the DATA block in the <script> near the bottom (look for "const D = {"),
+  save, then double-click "Make Cards.bat" (in the folder above) to re-create all the images.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@500&family=Ephesis&family=Corinthia:wght@400;700&family=Pinyon+Script&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Cormorant+SC:wght@500;600&family=Marcellus&display=block" rel="stylesheet">
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; background: #2b2622; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .card { position: relative; width: 1000px; height: 1400px; overflow: hidden; flex: none; }
+  .card > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .card > svg.front { pointer-events: none; }
+  .txt { position: absolute; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column;
+         align-items: center; text-align: center; color: var(--ink); }
+  .txt > * { margin: 0; }
+  .bism { font-family: Amiri, serif; font-size: var(--bism, 64px); line-height: 1.25; color: var(--bc, var(--ink2)); }
+  .hosts { font-family: var(--fh, 'Cormorant Garamond'); font-size: var(--hs, 40px); line-height: 1.15; color: var(--ink2);
+           font-weight: 500; margin-top: var(--g1, 18px); }
+  .inv { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: var(--is, 29px); line-height: 1.3;
+         margin-top: 6px; color: var(--ink); }
+  .name { font-family: var(--fn, Ephesis), cursive; font-size: var(--ns, 124px); line-height: 1.05; color: var(--nc, var(--ink2));
+          padding: 0 .25em; white-space: nowrap; }
+  .groom { margin-top: var(--g2, 14px); }
+  .with { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: var(--ws, 34px); line-height: 1; color: var(--ink);
+          margin: var(--wm, -4px) 0; }
+  .event { display: flex; align-items: center; gap: 18px; margin-top: var(--g3, 20px); font-family: Cinzel, serif; font-weight: 500;
+           font-size: var(--es, 30px); letter-spacing: .42em; padding-left: .42em; color: var(--ec, var(--ink2)); }
+  .event svg { width: 120px; height: 24px; overflow: visible; }
+  .date { font-family: Marcellus, serif; font-size: var(--ds, 30px); letter-spacing: .12em; margin-top: var(--g4, 18px); color: var(--ink); }
+  .date sup { font-size: .55em; letter-spacing: .05em; }
+  .time { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: var(--ts, 30px); margin-top: 4px; color: var(--ink); }
+  .venue { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: var(--vs, 30px); line-height: 1.28; margin-top: 10px; color: var(--ink); }
+  .venue b { font-family: Cinzel, serif; font-weight: 500; font-size: .86em; letter-spacing: .14em; color: var(--ink2); }
+  .urdu { font-family: 'Noto Nastaliq Urdu', serif; font-size: var(--us, 24px); line-height: 2.1; margin-top: var(--g5, 14px); color: var(--ink2); direction: rtl; }
+  .rsvp { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: .08em; margin-top: 10px; color: var(--ink); opacity: .85; }
+
+  /* date as a block:  THURSDAY | 31 | DECEMBER 2026 */
+  .dblock { display: flex; align-items: center; gap: 22px; margin-top: var(--g4, 20px); color: var(--ink); }
+  .dblock .side { font-family: Cinzel, serif; font-size: 23px; letter-spacing: .26em; padding: 10px 0; width: 220px;
+                  border-top: 1.5px solid var(--rule); border-bottom: 1.5px solid var(--rule); }
+  .dblock .big { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 92px; line-height: .9; color: var(--ink2); }
+  .dblock .big sup { font-size: .3em; vertical-align: top; position: relative; top: .5em; margin-left: 2px; }
+
+  /* gold foil text */
+  .foil { background: var(--foil); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+  .foil-light { --foil: linear-gradient(100deg,#b8913f 0%,#f3dc96 18%,#fff3c9 30%,#d4ad55 46%,#f0d48a 64%,#a77f33 82%,#e9cd83 100%); }
+  .foil-deep  { --foil: linear-gradient(100deg,#7a561c 0%,#b8913f 20%,#d9b866 34%,#8c6a2c 52%,#c6a04f 70%,#6f4f1a 88%,#a8823a 100%); }
+
+  /* ---------- per-design settings ---------- */
+  #noor   { --ink:#5b4024; --ink2:#7a5523; --rule:#b8913f; background:#f4e8d3; }
+  #noor .txt { top: 214px; width: 600px; --bism:44px; --is:31px; --g3:28px; --fh:'Great Vibes'; --hs:44px; --fn:Corinthia; --ns:128px; --g2:4px; }
+  #noor .name { font-weight: 700; }
+
+  #shahi  { --ink:#4a1018; --ink2:#7a1c28; --rule:#b8913f; background:#4a0d17; }
+  #shahi .txt { top: 226px; width: 620px; --bism:44px; --is:30px; --g3:26px; --fn:Ephesis; --ns:118px; --hs:38px; --fh:'Cormorant SC'; }
+
+  #zumurrud { --ink:#f1e5c6; --ink2:#e2c47a; --rule:#c9a24e; background:#0c3a2c; }
+  #zumurrud .txt { top: 462px; width: 520px; --bism:38px; --g1:0px; --fn:'Pinyon Script'; --ns:84px; --hs:34px; --fh:'Cormorant SC';
+                   --is:26px; --ds:25px; --vs:26px; --ts:27px; --es:26px; --g2:12px; --ws:28px; --wm:2px; }
+  #zumurrud .name { line-height: 1.25; }
+
+  #pichwai { --ink:#f3e7cb; --ink2:#e6c97f; --rule:#c9a24e; background:#0d2838; }
+  #pichwai .txt { top: 214px; width: 600px; --bism:44px; --is:31px; --g3:28px; --fn:Ephesis; --ns:120px; --fh:'Great Vibes'; --hs:44px; }
+
+  #jaali  { --ink:#4b3a28; --ink2:#8a6a2f; --rule:#c2a065; background:#faf6ee; }
+  #jaali .txt { top: 600px; width: 700px; --fn:'Pinyon Script'; --ns:88px; --hs:30px; --fh:'Cormorant SC'; --g1:0px;
+                --is:27px; --g2:16px; --ws:30px; --wm:4px; --g3:26px; }
+  #jaali .name { line-height: 1.3; }
+
+  #gulesurkh { --ink:#f7e6cf; --ink2:#efd08a; --rule:#d4ad55; background:#6e0f1d; }
+  #gulesurkh .txt { top: 370px; width: 600px; --bism:44px; --is:30px; --fn:Corinthia; --ns:122px; --fh:'Great Vibes'; --hs:42px; --g2:2px; }
+  #gulesurkh .name { font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ======================= SHARED ARTWORK ======================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- gold foil for lines (spans the whole card so it shimmers across) -->
+    <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="1400">
+      <stop offset="0" stop-color="#9c7630"/><stop offset=".16" stop-color="#e6c877"/><stop offset=".3" stop-color="#b38a3c"/>
+      <stop offset=".46" stop-color="#f1d98f"/><stop offset=".62" stop-color="#a98134"/><stop offset=".8" stop-color="#e0bf6c"/>
+      <stop offset="1" stop-color="#8e6a2a"/>
+    </linearGradient>
+    <linearGradient id="goldBright" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="1400">
+      <stop offset="0" stop-color="#c9a24e"/><stop offset=".18" stop-color="#f6e2a2"/><stop offset=".34" stop-color="#d2ad5a"/>
+      <stop offset=".5" stop-color="#fff0c0"/><stop offset=".66" stop-color="#c79d48"/><stop offset=".84" stop-color="#f2d88e"/>
+      <stop offset="1" stop-color="#b08636"/>
+    </linearGradient>
+    <linearGradient id="goldFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6e2a2"/><stop offset=".35" stop-color="#c9a24e"/><stop offset=".6" stop-color="#f0d68e"/><stop offset="1" stop-color="#9a742d"/>
+    </linearGradient>
+
+    <!-- paper grain + parchment mottling -->
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4" result="n"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 .35  0 0 0 0 .27  0 0 0 0 .18  0 0 0 -1.1 .62"/>
+    </filter>
+    <filter id="mottle" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".006" numOctaves="4" seed="11"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 .55  0 0 0 0 .42  0 0 0 0 .25  0 0 0 -1.6 .9"/>
+    </filter>
+    <filter id="velvet" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="8"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1 .55"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- motif library (from studio/modules/art/motifs) -->
+<radialGradient id="art-mtf-glow"><stop offset="0" style="stop-color:#fff;stop-opacity:.95"/><stop offset=".45" style="stop-color:#fff;stop-opacity:.4"/><stop offset="1" style="stop-color:#fff;stop-opacity:0"/></radialGradient>
+<radialGradient id="art-mtf-hg"><stop offset="0" style="stop-color:#fff;stop-opacity:.9"/><stop offset=".35" style="stop-color:#fff;stop-opacity:.42"/><stop offset="1" style="stop-color:#fff;stop-opacity:0"/></radialGradient>
+<mask id="art-mtf-halo" maskContentUnits="objectBoundingBox"><rect width="1" height="1" style="fill:url(#art-mtf-hg)"/></mask>
+<linearGradient id="art-mtf-cyl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" style="stop-color:#fff;stop-opacity:.3"/><stop offset=".38" style="stop-color:#fff;stop-opacity:0"/><stop offset=".62" style="stop-color:#000;stop-opacity:0"/><stop offset="1" style="stop-color:#000;stop-opacity:.3"/></linearGradient>
+<linearGradient id="art-mtf-dn" x1="0" y1="0" x2="0" y2="1"><stop offset=".2" style="stop-color:#000;stop-opacity:0"/><stop offset="1" style="stop-color:#000;stop-opacity:.34"/></linearGradient>
+<radialGradient id="art-mtf-sph" cx=".36" cy=".3" r=".78"><stop offset="0" style="stop-color:#fff;stop-opacity:.42"/><stop offset=".42" style="stop-color:#fff;stop-opacity:0"/><stop offset=".7" style="stop-color:#000;stop-opacity:0"/><stop offset="1" style="stop-color:#000;stop-opacity:.3"/></radialGradient>
+<symbol id="art-rose" viewBox="0 0 100 100"><g style="--k:var(--rose,var(--bl));--kd:color-mix(in srgb,var(--k) 72%,#000);--kx:color-mix(in srgb,var(--k) 50%,#000);--kl:color-mix(in srgb,var(--k) 66%,#fff)"><defs><g id="art-mtf-ra"><path style="fill:var(--kd)" d="M0 0C22.9-4.8 35.1-28.8 16.7-44.6Q8.1-49.4 0-45.6q-8.1-3.8-16.7 1C-35.1-28.8-22.9-4.8 0 0Z"/><g style="fill:var(--k)"><path id="art-mtf-raf" d="M0-.5C21.8-5.2 33.3-28.6 15.9-44.1Q7.7-48.7 0-45q-7.7-3.7-15.9.9C-33.3-28.6-21.8-5.2 0-.5Z"/></g><use href="#art-mtf-raf" style="fill:url(#art-mtf-dn)"/><path style="fill:var(--kl)" d="M16.7-44.6c-.9-.4-3.4-1.8-5.3-2.2-1.9-.4-4.4-.6-6.3-.4-1.9.2-3.4 1.6-5.1 1.6-1.7 0-3.2-1.4-5.1-1.6-1.9-.2-4.4 0-6.3.4-1.9.4-4.4 1.8-5.3 2.2 .9-.2 3.8-.8 5.8-.9 2-.1 4.3.1 6.1.5 1.8.3 3.2 1.8 4.8 1.8 1.6 0 3-1.5 4.8-1.8 1.8-.4 4.1-.6 6.1-.5 2 .1 4.9.7 5.8.9Z"/></g><g id="art-mtf-rb"><path style="fill:var(--kd)" d="M0 0C19.6-3.9 29.9-23.4 14.3-36.3Q6.9-40.2 0-37q-6.9-3.2-14.3.7C-29.9-23.4-19.6-3.9 0 0Z"/><g style="fill:var(--k)"><path id="art-mtf-rbf" d="M0-.4C18.6-4.2 28.4-23.3 13.5-35.8Q6.6-39.6 0-36.6q-6.6-3-13.5.8C-28.4-23.3-18.6-4.2 0-.4Z"/></g><use href="#art-mtf-rbf" style="fill:url(#art-mtf-dn)"/><path style="fill:var(--kl)" d="M14.3-36.3c-.8-.3-2.9-1.4-4.6-1.7-1.6-.4-3.7-.5-5.3-.3C2.7-38.2 1.5-37 0-37c-1.5 0-2.7-1.2-4.4-1.3-1.6-.2-3.7-.1-5.3.3-1.7.3-3.8 1.4-4.6 1.7 .9-.1 3.3-.6 5-.7 1.7 0 3.7.1 5.2.4 1.6.3 2.7 1.5 4.1 1.5 1.4 0 2.5-1.2 4.1-1.5 1.5-.3 3.5-.4 5.2-.4 1.7.1 4.1.6 5 .7Z"/></g><g id="art-mtf-rc"><path style="fill:var(--kd)" d="M0 0C15.7-2.9 24.1-17.4 11.5-27q-6-2.9-11.5-.5-5.5-2.4-11.5.5C-24.1-17.4-15.7-2.9 0 0Z"/><g style="fill:var(--k)"><path id="art-mtf-rcf" d="M0-.3c14.9-2.9 22.8-17 10.9-26.3Q5.3-29.4 0-27.2q-5.3-2.2-10.9.6C-22.8-17.3-14.9-3.2 0-.3Z"/></g><use href="#art-mtf-rcf" style="fill:url(#art-mtf-dn)"/><path style="fill:var(--kl)" d="M11.5-27c-.6-.2-2.4-1-3.7-1.3-1.3-.2-3-.3-4.3-.2-1.3.1-2.3 1-3.5 1-1.2 0-2.2-.9-3.5-1-1.3-.1-3 0-4.3.2-1.3.3-3.1 1.1-3.7 1.3 .7-.1 2.6-.5 4-.5 1.4 0 3 0 4.2.3C-2-27-1.1-26.1 0-26.1c1.1 0 2-.9 3.3-1.1 1.2-.3 2.8-.3 4.2-.3 1.4 0 3.3.4 4 .5Z"/></g><g id="art-mtf-rd"><path style="fill:var(--kd)" d="M0 0C11.9-2 18.2-11.7 8.7-18.1q-4.5-2-8.7-.4-4.2-1.6-8.7.4C-18.2-11.7-11.9-2 0 0Z"/><g style="fill:var(--k)"><path id="art-mtf-rdf" d="M0-.2C11.3-2.1 17.3-11.6 8.2-17.9Q4-19.8 0-18.3q-4-1.5-8.2.4C-17.3-11.6-11.3-2.1 0-.2Z"/></g><use href="#art-mtf-rdf" style="fill:url(#art-mtf-dn)"/><path style="fill:var(--kl)" d="M8.7-18.1c-.5-.2-1.8-.7-2.8-.9-1-.2-2.3-.2-3.2-.2-1 .1-1.8.7-2.7.7-.9 0-1.7-.6-2.7-.7-.9 0-2.2 0-3.2.2-1 .2-2.3.7-2.8.9 .5-.1 2-.4 3-.4 1.1 0 2.3 0 3.2.2 1 .2 1.7.8 2.5.8 .8 0 1.5-.6 2.5-.8 .9-.2 2.1-.2 3.2-.2 1 0 2.5.3 3 .4Z"/></g></defs><use href="#art-mtf-ra" transform="translate(50 50) rotate(0) scale(1)"/><use href="#art-mtf-ra" transform="translate(50 50) rotate(70) scale(0.97)"/><use href="#art-mtf-ra" transform="translate(50 50) rotate(146) scale(1.02)"/><use href="#art-mtf-ra" transform="translate(50 50) rotate(218) scale(0.96)"/><use href="#art-mtf-ra" transform="translate(50 50) rotate(290) scale(1)"/><use href="#art-mtf-rb" transform="translate(50 50) rotate(36) scale(1)"/><use href="#art-mtf-rb" transform="translate(50 50) rotate(110) scale(0.96)"/><use href="#art-mtf-rb" transform="translate(50 50) rotate(178) scale(1)"/><use href="#art-mtf-rb" transform="translate(50 50) rotate(252) scale(1.03)"/><use href="#art-mtf-rb" transform="translate(50 50) rotate(324) scale(0.97)"/><use href="#art-mtf-rc" transform="translate(50 50) rotate(12) scale(1)"/><use href="#art-mtf-rc" transform="translate(50 50) rotate(84) scale(1)"/><use href="#art-mtf-rc" transform="translate(50 50) rotate(158) scale(0.95)"/><use href="#art-mtf-rc" transform="translate(50 50) rotate(226) scale(1)"/><use href="#art-mtf-rc" transform="translate(50 50) rotate(302) scale(0.97)"/><use href="#art-mtf-rd" transform="translate(50 50) rotate(58) scale(1)"/><use href="#art-mtf-rd" transform="translate(50 50) rotate(150) scale(0.95)"/><use href="#art-mtf-rd" transform="translate(50 50) rotate(244) scale(1)"/><use href="#art-mtf-rd" transform="translate(50 50) rotate(332) scale(0.97)"/><path style="fill:var(--kd)" d="M39.5 50a10.5 10.5 0 1 0 21 0a10.5 10.5 0 1 0 -21 0Z"/><path style="fill:var(--k)" d="M46.4 59.9c-.8-.6-3.6-2-4.7-3.5-1.2-1.5-2-3.6-2.2-5.5-.1-1.9.3-4.1 1.2-5.7 .9-1.7 2.4-3.4 4-4.3 1.7-.9 3.9-1.5 5.8-1.4 1.8.1 4 .8 5.5 1.9 1.6 1.1 3 2.8 3.7 4.6 .7 1.7.5 4.8.6 5.8-.3-.8-1.1-3.9-2.2-5.2-1-1.3-2.6-2.1-3.9-2.7-1.3-.5-2.7-.5-3.9-.3-1.2.1-2.4.5-3.4 1.1-.9.6-1.9 1.3-2.6 2.3-.7 1-1.4 2.3-1.7 3.6-.2 1.4-.2 3.2.4 4.8 .6 1.5 2.8 3.7 3.4 4.5Z"/><path style="fill:var(--kl)" d="M44 58.6c-.4-.4-1.8-1.4-2.4-2.3-.7-.9-1.2-2-1.6-3-.3-1-.5-2.2-.5-3.3 0-1.1.2-2.3.5-3.3 .4-1 .9-2.1 1.6-3 .6-.9 2-1.9 2.4-2.3-.3.5-1.4 1.8-1.9 2.7-.5 1-.8 2-1 3-.2.9-.3 1.9-.3 2.9 0 1 .1 2 .3 2.9 .2 1 .5 2 1 3 .5.9 1.6 2.2 1.9 2.7Z"/><path style="fill:var(--k)" d="M56.1 46.5c.1.6.9 2.4.9 3.7 0 1.2-.4 2.5-1.1 3.6-.6 1-1.7 1.9-2.8 2.5-1.1.5-2.5.8-3.7.7-1.2-.1-2.6-.6-3.5-1.4-1-.7-1.9-1.8-2.4-2.9-.4-1.1-.6-2.6-.4-3.8 .2-1.2 1.3-2.8 1.5-3.4 0 .6-.5 2.6-.3 3.6 .2 1.1.8 2 1.3 2.7 .6.7 1.3 1.1 2 1.5 .7.3 1.4.4 2.1.5 .7 0 1.4 0 2.1-.2 .7-.2 1.5-.5 2.2-1.1 .7-.5 1.4-1.4 1.8-2.4 .3-1 .2-3 .3-3.6Z"/><path style="fill:var(--kl)" d="M56.9 48.8c0 .4.1 1.6 0 2.4-.1.8-.4 1.6-.8 2.3-.4.7-1 1.3-1.6 1.9-.6.5-1.4.9-2.1 1.2-.8.3-1.6.4-2.4.4-.8 0-2-.4-2.4-.4 .4 0 1.7 0 2.4-.1 .7-.2 1.4-.5 2.1-.8 .6-.3 1.2-.7 1.7-1.2 .5-.4 1-.9 1.4-1.5 .5-.5.9-1.2 1.2-1.9 .2-.7.4-1.9.5-2.3Z"/><path style="fill:var(--kl)" d="M46.4 48.7c.3-.3.9-1.5 1.6-1.9 .7-.4 1.7-.7 2.4-.6 .8.1 1.7.6 2.3 1.1 .5.6 1 1.5 1.1 2.3 .1.7-.2 1.7-.6 2.4-.4.7-1.6 1.3-1.9 1.6 .2-.4.9-1.6 1-2.2 .1-.6-.2-1.2-.4-1.6-.2-.4-.5-.7-.8-.9-.2-.3-.5-.6-.9-.8-.4-.2-1-.5-1.6-.4-.6.1-1.8.8-2.2 1Z"/><path style="fill:var(--kx)" d="M49.5 49.7a1.1 1.1 0 1 0 2.2 0a1.1 1.1 0 1 0 -2.2 0Z"/></g></symbol>
+<symbol id="art-rosebud" viewBox="0 0 48 96"><g style="--k:var(--rose,var(--bl));--kd:color-mix(in srgb,var(--k) 72%,#000);--kx:color-mix(in srgb,var(--k) 50%,#000);--kl:color-mix(in srgb,var(--k) 70%,#fff);--g:var(--leaf,var(--lv));--gd:color-mix(in srgb,var(--g) 70%,#000);--gl:color-mix(in srgb,var(--g) 72%,#fff)"><path style="fill:none;stroke:var(--gd);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round" d="M24 49.5C24.6 62 20 76 22 94"/><path style="fill:var(--gd)" d="M22.4 82q-1.8-1.4-3-1.2 1.6 1.8 2.8 3.4Z"/><path style="fill:var(--g)" d="M22.9 70c8.8 5.9 16.9-1 19.3-12.6C29.9 54.7 20.5 59.6 22.9 70Z"/><path style="fill:var(--gd)" d="M22.9 70c8.8 5.9 16.9-1 19.3-12.6Q32.2 63.2 22.9 70Z"/><path style="fill:var(--kd)" d="M24.5 3.5c1.2 1.1 4.9 3.4 7 6.5 2.1 3.1 4.7 8 5.5 12 .8 4 .2 8.4-1 12-1.2 3.6-4.5 7.6-6.5 9.5-2 1.9-4.6 1.7-5.5 2-1-.3-4-.1-6-2-2-1.9-4.9-5.9-6-9.5-1.1-3.6-1.3-8.1-.5-12 .8-3.9 3.3-8.4 5.5-11.5 2.2-3.1 6.2-5.8 7.5-7Z"/><path style="fill:var(--kx)" d="M24.5 4c.6 1 3 3.6 3.9 6 .9 2.4 1.6 6 1.6 8.5 0 2.5-1.2 5.4-1.4 6.5-.2-1.2-.8-5-1.3-7.5-.5-2.5-1.2-5.3-1.7-7.5-.5-2.2-.9-5-1.1-6Z"/><g style="fill:var(--k)"><path id="art-mtf-bf" d="M11.8 20c-.5 1.2-.3 9.3.8 13 1.1 3.7 3.5 7.1 5.9 9 2.4 1.9 5.8 3 8.5 2.6 2.7-.4 7.2-4 7.5-5.1 .3-1.1-3.7-.4-6-1.5-2.3-1.1-5.8-2.9-8-5-2.2-2.1-3.6-5.3-5-7.5-1.4-2.2-3.2-6.7-3.7-5.5Z"/></g><use href="#art-mtf-bf" style="fill:url(#art-mtf-dn)"/><path style="fill:var(--k)" d="M36.6 19c.4 1.7.5 8.4-.4 12-.9 3.6-2.9 7.3-5.2 9.5-2.3 2.2-6.1 3.4-8.5 3.7-2.4.3-6.1-1-5.9-2 .3-1 5-1.7 7.4-3.7 2.4-2 5.3-5.6 7-8.5 1.7-2.9 2.1-7.2 3-9 .9-1.8 2.2-3.7 2.6-2Z"/><path style="fill:var(--kl)" d="M36.6 19c0 1.4.5 5.4.2 8.1-.4 2.8-1.6 8.7-2.2 8.2-.6-.5-1.6-8.5-1.6-11.2 .1-2.6 1.3-3.8 1.9-4.7 .6-.8 1.4-.3 1.7-.4-.4 0-1.6-.9-2.5-.1-.8.9-2.5 2.3-2.6 5.2-.1 2.9 1.1 11.8 2.2 12.3 1 .6 3.5-6.2 4-9.1 .5-3-.9-6.9-1.1-8.3Z"/><g style="fill:var(--g)"><path id="art-mtf-bs" d="M24 48c-1.5-.5-6.6-1.3-9-3-2.4-1.7-4.1-4.4-5.5-7-1.4-2.6-2.5-7.1-3-8.5 .8 1.2 3 5 5 7 2 2 4.9 3.9 7 5 2.1 1.1 4.6 1.3 5.5 1.5Zm0 0c1.5-.5 6.6-1.4 9-3 2.4-1.6 4-4 5.5-6.5C40 36 41.4 31.4 42 30c-1 1.2-3.9 5.1-6 7-2.1 1.9-4.5 3.5-6.5 4.5-2 1-4.6 1.3-5.5 1.5Z"/></g><use href="#art-mtf-bs" style="fill:url(#art-mtf-dn)"/><path style="fill:var(--gd)" d="M27.6 48.4c0 1.6-1.6 2.9-3.6 2.9-2 0-3.6-1.3-3.6-2.9 0-1.6 1.6-2.9 3.6-2.9 2 0 3.6 1.3 3.6 2.9Z"/><path style="fill:var(--gl)" d="M22 47.5c-.1-.9-.9-3.5-.6-5.5 .3-2 2.2-5.4 2.6-6.5 .4 1.1 2.3 4.5 2.6 6.5 .3 2-.5 4.6-.6 5.5Z"/></g></symbol>
+<symbol id="art-leaf" viewBox="0 0 40 80"><g style="--g:var(--leaf,var(--lv));--gd:color-mix(in srgb,var(--g) 70%,#000);--gl:color-mix(in srgb,var(--g) 72%,#fff)"><path style="fill:none;stroke:var(--gd);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round" d="M19 79.5q.2-2.5 0-6.5"/><path style="fill:var(--g)" d="M19 76C38.6 64.8 38.1 32.6 23.9 6 3.8 31.2-.3 63.4 19 76Z"/><path style="fill:var(--gd)" d="M19 76C38.6 64.8 38.1 32.6 23.9 6Q19 41 19 76Z"/><path style="fill:none;stroke:var(--gl);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.75" d="M19.2 62q-5.3-1.4-12.6-7m12.6 7q5.2-1.4 12.6-7M19.7 50.1q-5.3-1.4-11.2-7m11.2 7q5.2-1.4 11.2-7M20.4 38.2q-5.2-1.4-9.8-7m9.8 7q5.3-1.4 9.8-7m-8.7-4.9q-5.3-1.4-8.4-7m8.4 7q5.2-1.4 8.4-7M19 73.2Q19 41 23.5 11.6"/></g></symbol>
+<symbol id="art-sprig" viewBox="0 0 60 120"><g style="--g:var(--leaf,var(--lv));--gd:color-mix(in srgb,var(--g) 70%,#000);--gl:color-mix(in srgb,var(--g) 72%,#fff)"><path style="fill:none;stroke:var(--gd);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round" d="M30 118C16 88 46 52 32 6"/><path style="fill:var(--g)" d="M26.3 103.1C28.7 92.2 17.8 87 3.9 89.8c3.1 12.1 12.7 19.3 22.4 13.3Zm.6-13.8c8.7 6.9 18.3.5 22.3-11.4-12.9-4.1-23.7.2-22.3 11.4ZM30 72.4c5.1-9-3-16.1-15.7-16.8C13.7 66.9 20 75.4 30 72.4Zm3.3-15.7c6.8 6.1 14.7 1.4 18.3-8.2-10.2-4.1-19-1.1-18.3 8.2Zm2.2-16.8c3.1-7.4-3.6-11.7-13.3-10.6 .5 8.6 6 14.2 13.3 10.6Zm0-15.2c5.8 3.3 9.9-1.1 10.1-8.2-7.4-1.2-12.5 2.1-10.1 8.2ZM32 10c5.6-3.1 4-9.3-1.9-13.9C25.5 1.9 25.7 8.3 32 10Z"/><path style="fill:var(--gd)" d="M26.3 103.1C28.7 92.2 17.8 87 3.9 89.8q11.6 6 22.4 13.3Zm.6-13.8c8.7 6.9 18.3.5 22.3-11.4q-11.5 5-22.3 11.4ZM30 72.4c5.1-9-3-16.1-15.7-16.8q8.4 8 15.7 16.8Zm3.3-15.7c6.8 6.1 14.7 1.4 18.3-8.2Q42.2 52 33.3 56.7Zm2.2-16.8c3.1-7.4-3.6-11.7-13.3-10.6q7 4.9 13.3 10.6Zm0-15.2c5.8 3.3 9.9-1.1 10.1-8.2q-5.3 3.9-10.1 8.2ZM32 10c5.6-3.1 4-9.3-1.9-13.9Q31 3.1 32 10Z"/></g></symbol>
+<symbol id="art-jasmine" viewBox="0 0 60 60"><g style="--k:var(--jasmine,var(--ef));--kd:color-mix(in srgb,var(--k) 87%,var(--acc));--ke:color-mix(in srgb,var(--k) 70%,var(--acc));--kc:color-mix(in srgb,var(--acc) 62%,var(--lv));--kl:color-mix(in srgb,var(--acc) 40%,#fff)"><defs><g id="art-mtf-jp"><path style="fill:var(--k);stroke:var(--ke);stroke-width:.7;stroke-linejoin:round" d="M.3-2.6C.9-3.2 3-4.3 4.2-6 5.4-7.7 7-10.7 7.7-13c.7-2.3.8-4.9.5-7-.3-2.1-1.3-4.3-2.2-5.6-.9-1.3-2.7-1.7-3.2-2-.6.3-2.5.7-3.6 2C-2-24.3-3.5-22.1-4.2-20c-.7 2.1-1.1 4.7-.9 7 .2 2.3 1.2 5.3 2.1 7C-2.1-4.3-.3-3.2.3-2.6Z"/><path style="fill:var(--kd)" d="M.3-2.6C.9-3.2 3-4.3 4.2-6 5.4-7.7 7-10.7 7.7-13c.7-2.3.8-4.9.5-7-.3-2.1-1.3-4.3-2.2-5.6-.9-1.3-2.7-1.7-3.2-2Q2.9-15 .3-2.6Z"/></g></defs><use href="#art-mtf-jp" transform="translate(30 30) rotate(6)"/><use href="#art-mtf-jp" transform="translate(30 30) rotate(78)"/><use href="#art-mtf-jp" transform="translate(30 30) rotate(150)"/><use href="#art-mtf-jp" transform="translate(30 30) rotate(222)"/><use href="#art-mtf-jp" transform="translate(30 30) rotate(294)"/><path style="fill:var(--kc)" d="M26.7 30a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0Z"/><path style="fill:var(--kl)" d="M28 29.3a1.3 1.3 0 1 0 2.6 0a1.3 1.3 0 1 0 -2.6 0Z"/></g></symbol>
+<symbol id="art-marigold" viewBox="0 0 60 60"><g style="--k:var(--marigold,color-mix(in srgb,var(--acc) 35%,#F28A1E));--kd:color-mix(in srgb,color-mix(in srgb,var(--k) 72%,var(--bl)) 82%,#000);--kx:color-mix(in srgb,color-mix(in srgb,var(--k) 60%,var(--bl)) 62%,#000);--kl:color-mix(in srgb,var(--k) 72%,#FFE9A8)"><path style="fill:var(--kd)" d="M30 3q3.1-2 5.5 1.2Q39 2.2 41 5.3q3.6-.6 4.5 3.4 4-.4 4.6 3.2 3.5.9 2.7 4.9 3.9 1.3 2.9 4.9 2.9 2.2.5 5.5 3 2.8.7 5.6 1.7 3.3-1.8 5.3 1.6 3.8-1.7 5.4 .2 3.7-3.8 4.1-.1 4.1-3.7 4.2-1.3 3.5-5.2 2.3-1.7 3.7-5.1 2.3-2.5 2.6-5.6-.1-3.1 2.7-5.6.1-3.4 1.4-5.1-2.3-3.9 1.2-5.2-2.3-3.6-.1-3.7-4.2-4-.4-3.8-4.1-3.3-1.6-1.7-5.4-3.5-2-1.8-5.3-2.3-2.8.7-5.6-2.4-3.3.5-5.5-1-3.6 2.9-4.9-.8-4 2.7-4.9 .6-3.6 4.6-3.2 .9-4 4.5-3.4 2-3.1 5.5-1.1Q26.9 1 30 3Z"/><path style="fill:var(--k)" d="M35.3 5.2q3.2-1.4 4.8 2.2 3.7-1.3 4.8 2.1 3.6 0 3.5 3.9 3.9.4 3.6 3.9 3.2 1.5 1.5 5.1 3.5 1.9 1.8 4.9 2.3 2.7-.7 5.3 2.4 3.1-.4 5.2 1 3.4-2.8 4.6 .9 3.8-2.5 4.6-.4 3.5-4.4 3-.7 3.9-4.2 3.2-1.8 3-5.2 1-2.2 3.2-5.1 1.2-2.9 2-5.1-1.2-3.4 2-5.2-1-3.5.7-4.2-3.2-4 .5-4.4-3-3.4-.8-2.5-4.6-3.8-1.2-2.8-4.6-2.8-2.1-.4-5.2-3-2.6-.7-5.3-1.7-3 1.8-4.9Q4.8 18.8 8 17.3q-.3-3.5 3.6-3.9-.1-3.9 3.5-3.9 1.1-3.4 4.8-2.1 1.6-3.6 4.8-2.2 2.4-2.6 5.3.1 2.9-2.7 5.3-.1Z"/><path style="fill:var(--kd)" d="M32.5 9.7q2.9-1.5 4.6 1.7 3.4-1.3 4.6 1.7 3.2.1 3.2 3.7 3.6.4 3.3 3.7Q51 22 49.3 25.3q3 2 1.2 4.7 1.8 2.7-1.2 4.8Q51 38 48.1 39.6q.4 3.2-3.2 3.6 0 3.7-3.3 3.7-1.2 3-4.6 1.7-1.6 3.3-4.6 1.8-2.4 2.1-4.8-.6-3 2-4.9-.6-3.2.7-4-2.8-3.6.4-4.1-2.8-3.1-.8-2.2-4.4Q9 38 10.1 34.9q-2.4-2.2 0-4.9-2.4-2.7 0-4.9Q9 22 12.4 20.7q-.9-3.5 2.3-4.3 .4-3.3 4-2.8 .9-3.5 4.1-2.8 1.8-2.7 4.8-.6 2.4-2.7 4.9-.5Z"/><path style="fill:var(--kl)" d="M36.7 12.3q3-.8 3.7 2.7 3.5-.6 3.8 2.5 3 .7 2 4 3.4 1.1 2.2 4 2.4 2-.1 4.5 2.4 2.5 0 4.5 1.2 2.9-2.1 4 1 3.4-2.1 4.1-.3 3.1-3.7 2.5-.7 3.4-3.7 2.6-1.7 2.6-4.5.5-2.2 2.7-4.5.6-2.7 1.5-4.2-1.7-3.2 1.4-4.3-1.6-3.1.1-2.9-3.4-3.5-.3-3-3.3-2.9-1.4-1.1-4.4-3-1.9-1.1-4.4-1.8-2.5 1.1-4.4-1.7-3 1.1-4.4-.5-3.1 3-3.4-.1-3.5 3-3.4 1-2.9 4.2-1.5 1.5-3.2 4.2-1.7 2.3-2.1 4.5.6 2.8-2.1 4.5.5Z"/><path style="fill:var(--kd)" d="M33.4 16.4q2.6-1 3.4 2 3-.8 3.4 2 2.7.5 1.8 3.5 3 1 1.8 3.5 2 1.9-.4 4 1.9 2.4-.4 3.9 .6 2.7-2.5 3.1 .3 3.1-2.5 3.1-.8 2.6-3.7 1.2-1.4 2.8-3.7 1.3-2.2 1.7-3.9-.9-2.7 1.5-3.8-1-2.7.3-2.7-2.9-3.1-.1-2.7-2.9-2.5-1.2-.7-3.8-2.6-1.8-.7-3.9-1.4-2.4 1.4-3.7-1.1-2.9 1.6-3.6 .1-2.8 3.2-2.3 .5-3.1 3.2-2.3 1.6-2.2 3.9-.1 2.2-2.3 4-.2Z"/><path style="fill:var(--k)" d="M36.3 19.3q2.5-.4 2.3 2.6 3-.1 2.5 2.5 2.3 1 .6 3.4 2.5 1.6.6 3.5 1.5 2.1-1.3 3.2 1.3 2.7-1.3 3.2 0 2.6-2.9 2-.4 3-2.8 2-1.4 2.3-3.5.1-1.9 2.3-3.5.2-2.4 1.1-3-1.8-2.8.9-3-1.7-2.6-.3-1.6-3.1-2.8-.8-1.6-3.1-2-1.7.4-3.5-2-2.2.3-3.5-.8-2.5 2.2-2.7-.4-2.9 2.2-2.7 .7-2.6 3.3-1.1 1.2-2.8 3.3-1.2 1.9-1.7 3.4.9 2.5-1.6 3.4.8Z"/><path style="fill:var(--kd)" d="M32.9 22.5q2-.6 2.1 1.8 2.4-.3 2 1.8 2 .8.5 2.7 2 1.4.4 2.7 1 1.9-1.4 2.4 .7 2.3-1.5 2.3-.4 2.1-2.5.9-1 2.3-2.6.9-1.7 1.3-2.6-1-2.2 1.1-2.5-1-2.2 0-1.4-2.3-2.4-.6-1.3-2.4-1.6-1.5.5-2.7-1.5-2 .5-2.7-.3-2.1 2.1-1.8 .2-2.4 2.2-1.7 1.1-1.8 2.7.1 1.7-1.8 2.8 0Z"/><path style="fill:var(--kl)" d="M34.2 25.2q1.9-.2 1 1.9 2.3.3 1.1 1.9 1.6 1.1-.5 2.1 1.6 1.7-.3 2.2 .5 1.9-1.8 1.3 .1 2.3-1.6 1.5-.9 1.7-2.2-.2-1.4 1.9-2.2.1-1.8.8-1.6-1.5-2.2.5-1.7-1.4-1.9-.5-.3-2.2-2-1-.4-2.1-1.1-1.6 1.2-1.9Q24 24.8 26 25q.2-1.9 2.1-.6 .7-2.2 2-.8 1.4-1.4 2 .8 2-1.2 2.1.8Z"/><path style="fill:none;stroke:var(--kd);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.7" d="M32.5 6.3q2.7-.6 4.5 2m4.9 1.1q2.7.5 3.4 3.7m4 2.9q2.2 1.6 1.5 4.7m2.5 4.4q1.4 2.3-.5 4.9m.5 4.9q.3 2.8-2.5 4.4M49.3 44q-.9 2.6-4 2.9m-3.4 3.7q-1.8 2.1-4.9 1.1m-4.5 2q-2.5 1.1-4.9-1m-5-.1q-2.7.1-4-2.9m-4.5-2q-2.5-1.1-2.5-4.3M8.3 39.7q-1.9-2-.6-5M6.2 30q-.9-2.6 1.5-4.7m.6-5q.2-2.7 3.3-3.7m2.5-4.3q1.3-2.4 4.5-2m4-2.9q2.2-1.7 5-.1m6.8 6q2.1-.4 3 2.2m4.3 1.8q2 .6 1.6 3.2m3 3.6q1.5 1.5-.1 3.7m.9 4.6q.7 2-1.8 3.2m-1.2 4.5Q43.7 42.2 41 42m-3.2 3.5q-1.3 1.6-3.7.3m-4.4 1.5q-1.9.9-3.4-1.4m-4.6-.7q-2.1-.2-2.3-2.8m-3.8-2.8q-1.8-1.1-.8-3.6m-2-4.2q-1.1-1.8 1-3.5m.1-4.7q-.1-2.1 2.6-2.7m2.3-4q.8-2 3.4-1.2m4-2.6q1.6-1.3 3.6.6m4.7 6.5q1.5-.4 1.3 1.9m3.3 2q1.4.6.1 2.4M40.8 30q.9 1.2-1.2 2m-.5 3.8q.1 1.6-2.1 1.1m-2.5 2.9q-.7 1.4-2.3-.2m-3.7 1.1q-1.4.7-1.9-1.5m-3.6-1q-1.6-.1-.8-2.3m-2.6-2.8q-1.2-.9.6-2.3M19.6 27q-.5-1.5 1.8-1.6m1.5-3.5q.3-1.6 2.3-.5m3.2-2.1q1.1-1.1 2.2.9"/><path style="fill:var(--kd)" d="M30.6 26.5q1.2-.8 1.3.8 1.6-.4 1.3 1 1.3.4.1 1.5 1.3 1 0 1.6 .5 1.3-1.1 1.1 0 1.6-1.2 1-.8 1.2-1.6-.3-1.2 1.1-1.5-.3-1.4.2-.8-1.3-1.6-.3-.7-1.4-1-1 .6-1.5-.8-1.4.6-1.4 .2-1.4 1.5-.4 .7-1.6 1.5-.4Z"/><path style="fill:var(--kl)" d="M31.2 27.9q1.1-.2.7 1 1.2.3.5 1.1 .7.8-.5 1.1 .4 1.2-.7 1-.4 1-1.2.1-.8.9-1.2-.1-1.1.2-.7-1-1.2-.3-.5-1.1-.7-.8.5-1.1-.4-1.2.7-1 .4-1 1.2-.1 .8-.9 1.2.1Z"/><path style="fill:url(#art-mtf-sph)" d="M30 3q3.1-2 5.5 1.2Q39 2.2 41 5.3q3.6-.6 4.5 3.4 4-.4 4.6 3.2 3.5.9 2.7 4.9 3.9 1.3 2.9 4.9 2.9 2.2.5 5.5 3 2.8.7 5.6 1.7 3.3-1.8 5.3 1.6 3.8-1.7 5.4 .2 3.7-3.8 4.1-.1 4.1-3.7 4.2-1.3 3.5-5.2 2.3-1.7 3.7-5.1 2.3-2.5 2.6-5.6-.1-3.1 2.7-5.6.1-3.4 1.4-5.1-2.3-3.9 1.2-5.2-2.3-3.6-.1-3.7-4.2-4-.4-3.8-4.1-3.3-1.6-1.7-5.4-3.5-2-1.8-5.3-2.3-2.8.7-5.6-2.4-3.3.5-5.5-1-3.6 2.9-4.9-.8-4 2.7-4.9 .6-3.6 4.6-3.2 .9-4 4.5-3.4 2-3.1 5.5-1.1Q26.9 1 30 3Z"/></g></symbol>
+<symbol id="art-lotus" viewBox="0 0 100 84"><g style="--k:var(--lotus,var(--bl));--kd:color-mix(in srgb,var(--k) 76%,#000);--kx:color-mix(in srgb,var(--k) 50%,#000);--kl:color-mix(in srgb,var(--k) 70%,#fff);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff)"><path style="fill:var(--kd)" d="M54 67c2.3-.5 9.3-1.2 14-3 4.7-1.8 10.2-4.7 14-8 3.8-3.3 6.8-7.8 9-12 2.2-4.2 3.3-10.8 4-13-1.4 1.2-5.2 4.3-8.5 7-3.3 2.7-6.9 5.5-11 9-4.1 3.5-9.9 8.7-13.5 12-3.6 3.3-6.7 6.7-8 8ZM46 67c-2.3-.5-9.3-1.2-14-3-4.7-1.8-10.2-4.7-14-8-3.8-3.3-6.8-7.8-9-12-2.2-4.2-3.3-10.8-4-13 1.4 1.2 5.2 4.3 8.5 7 3.3 2.7 6.9 5.5 11 9 4.1 3.5 9.9 8.7 13.5 12 3.6 3.3 6.7 6.7 8 8Z"/><path style="fill:var(--kl)" d="M65.1 59.9c1.1-.3 4.6-.6 7-1.5 2.3-.9 5-2.3 7-4 1.9-1.7 3.4-3.9 4.5-6 1-2.1 1.6-5.4 2-6.5-.8.6-2.7 2.2-4.3 3.5-1.6 1.3-3.5 2.7-5.5 4.5-2 1.7-5 4.3-6.7 6-1.8 1.7-3.4 3.3-4 4ZM34.9 59.9c-1.1-.3-4.6-.6-7-1.5-2.3-.9-5-2.3-7-4-1.9-1.7-3.4-3.9-4.5-6-1-2.1-1.6-5.4-2-6.5 .8.6 2.7 2.2 4.3 3.5 1.6 1.3 3.5 2.7 5.5 4.5 2 1.7 5 4.3 6.7 6 1.8 1.7 3.4 3.3 4 4Z"/><path style="fill:var(--k)" d="M52 64c1.8-1 7.6-3 11-6 3.4-3 7.1-7.5 9.5-12 2.4-4.5 4.3-9.5 5-15 .7-5.5-.4-15-.5-18-1.2 1.5-4.6 5.5-7 9-2.4 3.5-5.2 7.5-7.5 12-2.3 4.5-4.7 10-6.5 15-1.8 5-3.3 12.5-4 15ZM48 64c-1.8-1-7.6-3-11-6-3.4-3-7.1-7.5-9.5-12-2.4-4.5-4.3-9.5-5-15-.7-5.5.4-15 .5-18 1.2 1.5 4.6 5.5 7 9 2.4 3.5 5.2 7.5 7.5 12 2.3 4.5 4.7 10 6.5 15 1.8 5 3.3 12.5 4 15Z"/><path style="fill:var(--kl)" d="M58.3 54.1c1-.6 4.1-1.7 6-3.3 1.9-1.7 3.9-4.2 5.2-6.6 1.4-2.5 2.4-5.3 2.8-8.3 .4-3-.2-8.2-.3-9.9-.6.8-2.5 3-3.8 5-1.4 1.9-2.9 4.1-4.2 6.6-1.2 2.4-2.6 5.5-3.5 8.2-1 2.8-1.9 6.9-2.2 8.3ZM41.7 54.1c-1-.6-4.1-1.7-6-3.3-1.9-1.7-3.9-4.2-5.2-6.6-1.4-2.5-2.4-5.3-2.8-8.3-.4-3 .2-8.2.3-9.9 .6.8 2.5 3 3.8 5 1.4 1.9 2.9 4.1 4.2 6.6 1.2 2.4 2.6 5.5 3.5 8.2 1 2.8 1.9 6.9 2.2 8.3Z"/><g style="fill:var(--k)"><path id="art-mtf-lc" d="M50 5c1.2 1.5 5.1 5.2 7 9 1.9 3.8 3.8 9 4.5 14 .7 5 .7 11 0 16-.7 5-2.6 10.3-4.5 14-1.9 3.7-5.8 6.7-7 8-1.2-1.3-5.1-4.3-7-8-1.9-3.7-3.8-9-4.5-14-.7-5-.7-11 0-16 .7-5 2.6-10.2 4.5-14 1.9-3.8 5.8-7.5 7-9Z"/></g><use href="#art-mtf-lc" style="fill:url(#art-mtf-dn)"/><path style="fill:var(--kl)" d="M50 18.3c.7.9 2.9 3 4.1 5.2 1.1 2.2 2.1 5.2 2.6 8.1 .4 2.9.4 6.4 0 9.3-.5 2.9-1.5 6-2.6 8.1-1.2 2.2-3.4 3.9-4.1 4.7-.7-.8-2.9-2.5-4.1-4.7-1.1-2.1-2.1-5.2-2.6-8.1-.4-2.9-.4-6.4 0-9.3 .5-2.9 1.5-5.9 2.6-8.1 1.2-2.2 3.4-4.3 4.1-5.2Z"/><path style="fill:none;stroke:var(--a);stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round" d="M50 14q1 22 0 44m6-2Q66 36 75 18M44 56Q34 36 25 18M60 62Q78 50 91 36M40 62Q22 50 9 36"/><path style="fill:var(--kd)" d="M51 68c2.3-.2 9.2-1.6 14-1.5 4.8.1 10.7.5 15 2 4.3 1.5 9.2 5.8 11 7-1.8-.4-6.5-2-11-2.5-4.5-.5-11.2-.6-16-.5-4.8.1-10.8.8-13 1ZM49 68c-2.3-.2-9.2-1.6-14-1.5-4.8.1-10.7.5-15 2-4.3 1.5-9.2 5.8-11 7 1.8-.4 6.5-2 11-2.5 4.5-.5 11.2-.6 16-.5 4.8.1 10.8.8 13 1Z"/><path style="fill:var(--a)" d="M50 64.5c1.7.2 7.1.4 10 1 2.9.6 7 1.1 7.5 2.5 .5 1.4-1.6 4.6-4.5 6-2.9 1.4-10.8 2.1-13 2.5-2.2-.4-10.1-1.1-13-2.5-2.9-1.4-5-4.6-4.5-6 .5-1.4 4.6-1.9 7.5-2.5 2.9-.6 8.3-.8 10-1Z"/><path style="fill:var(--ad)" d="M50 75.5c.6.3 3 1.2 3.4 2 .4.8-.2 2.1-.8 3.1-.6 1-2.2 2.3-2.6 2.8-.4-.5-2-1.8-2.6-2.8-.6-1-1.2-2.3-.8-3.1 .4-.8 2.8-1.7 3.4-2Z"/><path style="fill:none;stroke:var(--al);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round" d="M37 68.6q13 4.4 26 0"/><path style="fill:var(--al)" d="M48.8 70.8a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0 -2.4 0Z"/></g></symbol>
+<symbol id="art-jasmine-string" viewBox="0 0 20 200"><g style="--j:var(--jasmine,var(--ef));--jd:color-mix(in srgb,var(--j) 86%,var(--acc));--je:color-mix(in srgb,var(--j) 72%,var(--acc));--k:var(--rose,var(--bl));--kd:color-mix(in srgb,var(--k) 72%,#000);--kx:color-mix(in srgb,var(--k) 50%,#000);--kl:color-mix(in srgb,var(--k) 70%,#fff);--g:var(--leaf,var(--lv));--gd:color-mix(in srgb,var(--g) 70%,#000);--gl:color-mix(in srgb,var(--g) 72%,#fff);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff)"><defs><g id="art-mtf-jb"><path style="fill:var(--j);stroke:var(--je);stroke-width:.4" d="M0 1.4c.2.2 1.1.7 1.5 1.4 .4.7.8 2 1 3 .1 1-.1 2.1-.3 3-.2.9-.7 1.6-1.1 2.2-.4.6-.9.9-1.1 1.1-.2-.2-.7-.5-1.1-1.1-.4-.6-.9-1.3-1.1-2.2-.2-.9-.4-2-.3-3 .2-1 .6-2.3 1-3C-1.1 2.1-.2 1.6 0 1.4Z"/><path style="fill:var(--jd)" d="M0 1.4c.2.2 1.1.7 1.5 1.4 .4.7.8 2 1 3 .1 1-.1 2.1-.3 3-.2.9-.7 1.6-1.1 2.2-.4.6-.9.9-1.1 1.1Q.7 6.6 0 1.4Z"/><path style="fill:var(--g)" d="M-1.1 1.6c.2.3.7 2 1.1 2 .4 0 .9-1.7 1.1-2C.9 1.4.4.4 0 .4c-.4 0-.9 1-1.1 1.2Z"/></g><g id="art-mtf-jn"><use href="#art-mtf-jb" transform="translate(-.6 0) rotate(33)"/><use href="#art-mtf-jb" transform="translate(.6 .6) rotate(-27)"/><use href="#art-mtf-jb" transform="translate(.2 1.6) rotate(5) scale(.86 .62)"/></g><g id="art-mtf-jr"><path style="fill:var(--kd)" d="M-3.4 0a3.4 3.4 0 1 0 6.8 0a3.4 3.4 0 1 0 -6.8 0Z"/><path style="fill:var(--k)" d="M-1.2 3.2c-.2-.2-1.3-.8-1.7-1.4-.3-.5-.5-1.4-.5-2.1 .1-.6.4-1.4.9-1.9 .4-.6 1.2-1 1.8-1.1 .7-.2 1.6-.1 2.2.2 .6.3 1.2.9 1.5 1.5 .3.7.3 1.8.3 2.2-.1-.3-.4-1.4-.8-1.9-.4-.4-1-.6-1.5-.8-.5-.1-1 0-1.4.1-.4.2-.8.4-1.1.7-.3.3-.6.7-.8 1.1-.1.5-.2 1.1 0 1.7 .2.6.9 1.4 1.1 1.7Z"/><path style="fill:var(--kl)" d="M1.4-1.7c.2.2.7.9.8 1.4 .1.5-.1 1.1-.3 1.5-.3.4-.8.8-1.3 1C.1 2.3-.6 2.2-1 2c-.5-.2-.9-.7-1.1-1.2-.2-.4 0-1.3 0-1.6 .1.3.2 1.1.5 1.4 .2.4.7.5 1 .6 .3.1.6.1.9 0 .3-.1.6-.2.8-.5 .3-.2.6-.5.6-1 .1-.4-.2-1.2-.3-1.4Z"/><path style="fill:var(--k)" d="M-1.2 0c.1-.1.2-.6.4-.8 .2-.2.5-.3.8-.4 .2 0 .6.2.8.3 .2.2.3.6.4.8C1.2.2.9.6.9.7 .9.6.8.1.8-.1 .7-.2.5-.3.3-.4 .2-.5.1-.5 0-.5c-.2 0-.4-.1-.5 0-.2.1-.6.4-.7.5Z"/></g></defs><path style="fill:none;stroke:var(--ad);stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round" d="M10 0V186"/><path style="fill:var(--a)" d="M8.5 2.2a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0Z"/><use href="#art-mtf-jn" transform="translate(10 5.0)"/><use href="#art-mtf-jn" transform="translate(10 12.2) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 19.4)"/><use href="#art-mtf-jn" transform="translate(10 26.6) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 33.8)"/><use href="#art-mtf-jn" transform="translate(10 41.0) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 48.2)"/><use href="#art-mtf-jr" transform="translate(10 58.4)"/><use href="#art-mtf-jn" transform="translate(10 63.4)"/><use href="#art-mtf-jn" transform="translate(10 70.6) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 77.8)"/><use href="#art-mtf-jn" transform="translate(10 85.0) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 92.2)"/><use href="#art-mtf-jn" transform="translate(10 99.4) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 106.6)"/><use href="#art-mtf-jr" transform="translate(10 116.8)"/><use href="#art-mtf-jn" transform="translate(10 121.8)"/><use href="#art-mtf-jn" transform="translate(10 129.0) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 136.2)"/><use href="#art-mtf-jn" transform="translate(10 143.4) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 150.6)"/><use href="#art-mtf-jn" transform="translate(10 157.8) scale(-1 1)"/><use href="#art-mtf-jn" transform="translate(10 165.0)"/><use href="#art-mtf-jr" transform="translate(10 174.8)"/><use href="#art-mtf-jb" transform="translate(10 177.8)"/><path style="fill:var(--a)" d="M8.4 191.8a1.6 1.6 0 1 0 3.2 0a1.6 1.6 0 1 0 -3.2 0Z"/><path style="fill:var(--al)" d="M9 191.3a.5 .5 0 1 0 1 0a.5 .5 0 1 0 -1 0Z"/></g></symbol>
+<symbol id="art-marigold-string" viewBox="0 0 28 220"><g style="--k:var(--rose,var(--bl));--kd:color-mix(in srgb,var(--k) 72%,#000);--kx:color-mix(in srgb,var(--k) 50%,#000);--kl:color-mix(in srgb,var(--k) 70%,#fff);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff)"><defs><g id="art-mtf-mh" style="--md:color-mix(in srgb,color-mix(in srgb,var(--m) 72%,var(--bl)) 80%,#000);--ml:color-mix(in srgb,var(--m) 66%,#FFE9A8)"><path style="fill:var(--md)" d="M0-10.4q1.4-1.1 2.4.7 1.7-1.1 2.4.5 1.8-.3 1.9 1.7 2-.2 1.9 1.6 1.7.5.8 2.3 1.9.8.9 2.3Q11.6 0 10 1.2q1.3 1.6-.3 2.5 .6 1.7-1.4 2 .4 2-1.4 2.1-.3 1.7-2.2 1.1-.6 1.9-2.2 1.2Q1.4 11.5 0 10q-1.4 1.5-2.5.1-1.6.7-2.2-1.2-1.9.6-2.2-1.1-1.8-.1-1.4-2.1-2-.3-1.4-2-1.6-.9-.3-2.5-1.6-1.2-.3-2.5-1-1.5.9-2.3-.9-1.8.8-2.3-.1-1.8 1.9-1.6 .1-2 1.9-1.7 .7-1.6 2.4-.5 1-1.8 2.4-.7Z"/><path style="fill:var(--m)" d="M2.2-8.8q1.4-.7 1.9 1 1.7-.6 1.9 1Q7.6-6.8 7.2-5 9-4.7 8.5-3.2q1.4.8.2 2.1Q10.2 0 9 1.1q.9 1.3-.8 2Q9 4.7 7.5 5.2q.1 1.6-1.7 1.4 0 1.8-1.6 1.5-.6 1.4-2.1.4-.9 1.6-2.1.6-1.2 1-2.1-.6-1.5 1-2.1-.4-1.6.3-1.6-1.5-1.8.2-1.7-1.4-1.5-.5-.7-2.1-1.7-.7-.8-2-1.2-1.1.3-2.2-1.2-1.3.2-2.1Q-9-4.7-7.2-5-7.6-6.8-6-6.8q.2-1.6 1.9-1 .5-1.7 1.9-1 1-1.3 2.2 0 1.2-1.3 2.2 0Z"/><path style="fill:var(--md)" d="M1-7.1q1.3-.7 1.9.9 1.6-.5 1.8.9 1.4.2.9 1.8 1.6.6.9 1.9 1.1 1-.3 2 1 1.3-.3 2 .2 1.5-1.4 1.5Q4.5 5.5 3 5.3q-.7 1.3-2 .3Q0 7-1 5.9-2.3 6.6-2.9 5q-1.6.5-1.8-.9-1.4-.2-.9-1.8-1.6-.6-.9-1.9-1.1-1 .3-2-1-1.3.3-2-.2-1.5 1.4-1.5 0-1.6 1.5-1.4 .7-1.3 2-.3 1-1.4 2-.3Z"/><path style="fill:var(--ml)" d="M2.5-5.7Q3.8-6 3.7-4.5q1.5-.1 1.2 1.2 1.2.5.3 1.7 1.2.8.2 1.7 .7 1.1-.7 1.5Q5.2 3 3.9 3.1q-.1 1.3-1.5.8Q2 5.3.9 4.6 0 5.6-.8 4.4-2 5.3-2.5 4.1q-1.3.3-1.2-1.2-1.5.1-1.2-1.2-1.2-.5-.3-1.7-1.2-.8-.2-1.7-.7-1.1.7-1.5-.5-1.4.8-1.5 .1-1.3 1.5-.8Q-2-6.9-.9-6.2 0-7.2.8-6q1.2-.9 1.7.3Z"/><path style="fill:var(--m)" d="M.2-3.6q.8-.5 1 .5 1.1-.3 1 .7 .9.2.2 1.1 .9.6.1 1.1 .3.9-.8.8 .1 1.1-.8.8-.4.9-1.1 0-.8.7-1.1-.2-1 .2-.7-.9-1.1-.1-.6-.9-.7-.7.3-1.1-.5-1 .4-1.1 .1-.9 1.1-.4 .3-1.1 1-.4Z"/><path style="fill:url(#art-mtf-sph)" d="M0-10.4q1.4-1.1 2.4.7 1.7-1.1 2.4.5 1.8-.3 1.9 1.7 2-.2 1.9 1.6 1.7.5.8 2.3 1.9.8.9 2.3Q11.6 0 10 1.2q1.3 1.6-.3 2.5 .6 1.7-1.4 2 .4 2-1.4 2.1-.3 1.7-2.2 1.1-.6 1.9-2.2 1.2Q1.4 11.5 0 10q-1.4 1.5-2.5.1-1.6.7-2.2-1.2-1.9.6-2.2-1.1-1.8-.1-1.4-2.1-2-.3-1.4-2-1.6-.9-.3-2.5-1.6-1.2-.3-2.5-1-1.5.9-2.3-.9-1.8.8-2.3-.1-1.8 1.9-1.6 .1-2 1.9-1.7 .7-1.6 2.4-.5 1-1.8 2.4-.7Z"/></g><g id="art-mtf-mr"><path style="fill:var(--kd)" d="M-4.6 0a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0 -9.2 0Z"/><path style="fill:var(--k)" d="M-1.6 4.3C-2 4-3.4 3.3-3.9 2.5-4.4 1.7-4.7.6-4.6-.3c.1-1 .5-2 1.2-2.7 .6-.7 1.6-1.3 2.5-1.5 .9-.2 2.1 0 2.9.4 .8.4 1.7 1.2 2.1 2 .4.8.4 2.4.4 2.9-.2-.4-.6-1.9-1.2-2.5-.5-.6-1.3-.9-2-1.1-.6-.1-1.3 0-1.8.1-.6.2-1.1.5-1.5.9-.5.4-.9.9-1.1 1.6-.2.6-.3 1.5-.1 2.2 .3.8 1.4 1.9 1.6 2.3Z"/><path style="fill:var(--kl)" d="M2-2.3c.1.3.9 1.2 1 1.9 .1.6-.1 1.5-.5 2.1-.3.5-1.1 1.1-1.7 1.2-.7.2-1.6.1-2.2-.2-.6-.3-1.2-1-1.4-1.6-.3-.6 0-1.8-.1-2.1 .2.3.4 1.4.7 1.9 .4.4.9.6 1.4.7 .4.2.8.1 1.2 0 .4-.1.8-.3 1.1-.6 .4-.3.8-.8.8-1.3C2.4-.9 2-2 2-2.3Z"/><path style="fill:var(--k)" d="M-1.6 0c.1-.2.2-.8.5-1.1 .2-.2.7-.5 1-.5 .4 0 .9.2 1.1.4 .3.3.5.7.6 1.1 0 .4-.3.9-.4 1.1C1.2.8 1.1.2 1-.1 .9-.3.6-.4.5-.5 .3-.6.2-.7 0-.7c-.2 0-.5-.1-.7 0-.3.1-.7.6-.9.7Z"/></g><g id="art-mtf-mb"><path style="fill:var(--a)" d="M-1.9 0a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0 -3.8 0Z"/><path style="fill:var(--al)" d="M-1.2 -.6a.6 .6 0 1 0 1.2 0a.6 .6 0 1 0 -1.2 0Z"/></g></defs><path style="fill:none;stroke:var(--ad);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round" d="M14 0V208"/><use href="#art-mtf-mb" transform="translate(14 3)"/><use href="#art-mtf-mh" transform="translate(14 16.5)" style="--m:var(--marigold,color-mix(in srgb,var(--acc) 35%,#F28A1E))"/><use href="#art-mtf-mr" transform="translate(14 31.7)"/><use href="#art-mtf-mb" transform="translate(14 39.1)"/><use href="#art-mtf-mh" transform="translate(14 51.5)" style="--m:var(--marigold2,color-mix(in srgb,var(--acc) 30%,#F8BE34))"/><use href="#art-mtf-mr" transform="translate(14 66.7)"/><use href="#art-mtf-mb" transform="translate(14 74.1)"/><use href="#art-mtf-mh" transform="translate(14 86.5)" style="--m:var(--marigold,color-mix(in srgb,var(--acc) 35%,#F28A1E))"/><use href="#art-mtf-mr" transform="translate(14 101.7)"/><use href="#art-mtf-mb" transform="translate(14 109.1)"/><use href="#art-mtf-mh" transform="translate(14 121.5)" style="--m:var(--marigold2,color-mix(in srgb,var(--acc) 30%,#F8BE34))"/><use href="#art-mtf-mr" transform="translate(14 136.7)"/><use href="#art-mtf-mb" transform="translate(14 144.1)"/><use href="#art-mtf-mh" transform="translate(14 156.5)" style="--m:var(--marigold,color-mix(in srgb,var(--acc) 35%,#F28A1E))"/><use href="#art-mtf-mr" transform="translate(14 171.7)"/><use href="#art-mtf-mb" transform="translate(14 179.1)"/><use href="#art-mtf-mh" transform="translate(14 191.5)" style="--m:var(--marigold2,color-mix(in srgb,var(--acc) 30%,#F8BE34))"/><use href="#art-mtf-mb" transform="translate(14 204.9)"/><path style="fill:var(--a)" d="M14 206.9c.3.2 1.2.2 1.6 1.2 .4 1 .5 2.9.8 4.8 .3 1.9.8 5.4 1 6.5l-3.4.2-3.4-.2c.2-1.1.7-4.6 1-6.5 .3-1.9.4-3.8.8-4.8 .4-1 1.3-1 1.6-1.2Z"/><path style="fill:none;stroke:var(--ad);stroke-width:0.35;stroke-linecap:round;stroke-linejoin:round" d="M12.4 209.4l-.8 9.6m1.9-9.6l-.3 9.6m1.4-9.6l.3 9.6m.8-9.6l.9 9.6"/></g></symbol>
+<symbol id="art-dome-mosque" viewBox="0 0 120 100"><g style="--s:var(--sil,var(--acc))"><path style="fill:var(--s)" d="M4 94H116v6H4Zm4-3H112v3H8ZM28 56H92V91H28Zm-1.5-1.5h67V56h-67ZM28.1 47h1.8v7.5H28.1Zm.9-3.6c.4.8 1.9 1.4 1.5 3.6H29 27.5c-.4-2.2 1.1-2.8 1.5-3.6ZM90.1 47h1.8v7.5H90.1Zm.9-3.6c.4.8 1.9 1.4 1.5 3.6H91 89.5c-.4-2.2 1.1-2.8 1.5-3.6ZM45 45H75V91H45Zm.1-6h1.8v6H45.1Zm.9-3.6c.4.8 1.9 1.4 1.5 3.6H46 44.5c-.4-2.2 1.1-2.8 1.5-3.6ZM73.1 39h1.8v6H73.1Zm.9-3.6c.4.8 1.9 1.4 1.5 3.6H74 72.5c-.4-2.2 1.1-2.8 1.5-3.6ZM69 91V71c0-8.2-6.1-12.9-9-15-2.9 2.1-9 6.8-9 15V91ZM48 91H72V48.5H48Zm1-41.5H71V91H49ZM69 91V71c0-8.2-6.1-12.9-9-15-2.9 2.1-9 6.8-9 15V91ZM40.5 91V79c0-4.1-2.7-6.5-4-7.5-1.3 1-4 3.4-4 7.5V91ZM39 67.5V63c0-2.2-1.7-3.4-2.5-4-.8.6-2.5 1.8-2.5 4v4.5ZM87.5 91V79c0-4.1-2.7-6.5-4-7.5-1.3 1-4 3.4-4 7.5V91ZM86 67.5V63c0-2.2-1.7-3.4-2.5-4-.8.6-2.5 1.8-2.5 4v4.5Zm-54.5-18h10v5h-10Zm2 5h6V50.4h-6Zm-2.8-6.1H42.3v1.1H30.7ZM36.5 42c1.1 1.4 5.6 2.4 4.5 6.4H36.5 32c-1.1-4 3.4-5 4.5-6.4Zm-.3-2.2h.6v2.6h-.6ZM35.8 41a.8 .6 0 1 1 1.5 0a.8 .6 0 1 1 -1.5 0ZM36 39.8a.6 .5 0 1 1 1.1 0a.6 .5 0 1 1 -1.1 0Zm42.5 9.7h10v5h-10Zm2 5h6V50.4h-6Zm-2.8-6.1H89.3v1.1H77.7ZM83.5 42c1.1 1.4 5.6 2.4 4.5 6.4H83.5 79c-1.1-4 3.4-5 4.5-6.4Zm-.3-2.2h.6v2.6h-.6ZM82.8 41a.8 .6 0 1 1 1.5 0a.8 .6 0 1 1 -1.5 0ZM83 39.8a.6 .5 0 1 1 1.1 0a.6 .5 0 1 1 -1.1 0ZM43 39H77v6H43ZM60 10c.4.5.4 1.4 2.1 2.9 1.8 1.5 5.5 3.8 8.4 6.4 3 2.6 8.3 6 9.4 9.3C81 31.8 77.5 37.3 77 39H60 43c-.5-1.7-4-7.2-2.9-10.4 1.1-3.3 6.4-6.7 9.4-9.3 2.9-2.6 6.6-4.9 8.4-6.4 1.7-1.5 1.7-2.4 2.1-2.9Zm-.5-4.1h1v4.5h-1ZM58.6 8a1.4 1.1 0 1 1 2.7 0a1.4 1.1 0 1 1 -2.7 0ZM59 5.9a1 .8 0 1 1 2 0a1 .8 0 1 1 -2 0ZM9.9 84h8.2v7H9.9Zm1.5-57h5.2L17 84H11ZM9.2 64h9.6v1.4l-2.1 1.8H11.3L9.2 65.4Zm0-20h9.6v1.4l-2.1 1.8H11.3L9.2 45.4Zm.3-18.2h9V27h-9Zm1.2-5.3h6.6v5.3H10.7Zm1.6 5.3h3.4V21.4H12.3Zm-3-6.4h9.3v1.1H9.3Zm4.7-6c.9 1.3 4.7 2.3 3.8 6H14 10.2c-.9-3.7 2.9-4.7 3.8-6Zm-.3 0h.6v.2h-.6ZM13.2 13a.8 .7 0 1 1 1.7 0a.8 .7 0 1 1 -1.7 0ZM13.4 12.5a.6 .5 0 1 1 1.2 0a.6 .5 0 1 1 -1.2 0ZM102 84h8v7h-8Zm1.5-57h5l.5 57h-6Zm-2.3 37h9.6v1.4l-2.1 1.8h-5.4l-2.1-1.8Zm0-20h9.6v1.4l-2.1 1.8h-5.4l-2.1-1.8Zm.3-18.2h9V27h-9Zm1.2-5.3h6.6v5.3h-6.6Zm1.6 5.3h3.4V21.4h-3.4Zm-3-6.4h9.4v1.1h-9.4Zm4.7-6c.9 1.3 4.7 2.3 3.8 6H106h-3.8c-.9-3.7 2.9-4.7 3.8-6Zm-.3 0h.6v.2h-.6ZM105.2 13a.8 .7 0 1 1 1.7 0a.8 .7 0 1 1 -1.7 0ZM105.4 12.5a.6 .5 0 1 1 1.2 0a.6 .5 0 1 1 -1.2 0ZM57.3 2.3A2.7 2.7 0 0 0 62.7 2.3A3 3 0 0 1 57.3 2.3Z"/></g></symbol>
+<symbol id="art-skyline" viewBox="0 0 360 120"><g style="--s:var(--sil,var(--acc))"><path style="fill:var(--s);fill-opacity:.5" d="M318 112h32l-6-6H324Zm5-6h22l-4-5H327Zm5-5h12l-3.4-73h-5.2Zm1.4-74.6h9.2V28h-9.2Zm2.2 0h4.8l-1-11.4h-2.8ZM334 10.6c.6 1 2.8 1.7 2.2 4.4H334h-2.2c-.6-2.7 1.6-3.4 2.2-4.4ZM333.6 4h.8v7h-.8Zm-181 78.4h6.8V88h-6.8ZM153.9 48h4.2l.4 34.4h-5ZM152 60h8v1.1l-1.8 1.5h-4.4L152 61.1Zm.2-13h7.6v1h-7.6Zm1-4.2h5.6V47h-5.6Zm1.4 4.2h2.8V43.5h-2.8Zm-2.5-5.1h7.8v.9h-7.8Zm3.9-4.8c.8 1.1 3.9 1.8 3.1 4.8H156h-3.1c-.8-3 2.3-3.7 3.1-4.8Zm-.2 0h.4v.2h-.4ZM155.3 36.8a.7 .5 0 1 1 1.3 0a.7 .5 0 1 1 -1.3 0ZM155.5 36.4a.5 .4 0 1 1 1 0a.5 .4 0 1 1 -1 0Zm85.1 46h6.8V88h-6.8ZM241.9 48h4.2l.4 34.4h-5ZM240 60h8v1.1l-1.8 1.5h-4.4L240 61.1Zm.2-13h7.6v1h-7.6Zm1-4.2h5.6V47h-5.6Zm1.4 4.2h2.8V43.5h-2.8Zm-2.5-5.1h7.8v.9h-7.8Zm3.9-4.8c.8 1.1 3.9 1.8 3.1 4.8H244h-3.1c-.8-3 2.3-3.7 3.1-4.8Zm-.2 0h.4v.2h-.4ZM243.3 36.8a.7 .5 0 1 1 1.3 0a.7 .5 0 1 1 -1.3 0ZM243.5 36.4a.5 .4 0 1 1 1 0a.5 .4 0 1 1 -1 0ZM122 103a6 5.7 0 1 1 12 0a6 5.7 0 1 1 -12 0ZM119.3 106.3a4.5 4.2 0 1 1 9 0a4.5 4.2 0 1 1 -9 0ZM127.8 106a4.7 4.3 0 1 1 9.4 0a4.7 4.3 0 1 1 -9.4 0Zm-.5 3h1.4v3h-1.4ZM135 104.5a5 4.8 0 1 1 10 0a5 4.8 0 1 1 -10 0ZM132.8 107.2a3.8 3.5 0 1 1 7.5 0a3.8 3.5 0 1 1 -7.5 0ZM139.8 107a3.9 3.6 0 1 1 7.8 0a3.9 3.6 0 1 1 -7.8 0Zm-.4 2.5h1.2V112h-1.2ZM256.6 103.9a5.4 5.1 0 1 1 10.8 0a5.4 5.1 0 1 1 -10.8 0ZM254.2 106.9a4.1 3.8 0 1 1 8.1 0a4.1 3.8 0 1 1 -8.1 0ZM261.8 106.6a4.2 3.9 0 1 1 8.4 0a4.2 3.9 0 1 1 -8.4 0Zm-.4 2.7h1.2V112h-1.2ZM267.8 102.7a6.2 5.9 0 1 1 12.4 0a6.2 5.9 0 1 1 -12.4 0ZM265 106.1a4.7 4.3 0 1 1 9.3 0a4.7 4.3 0 1 1 -9.3 0ZM273.8 105.8a4.8 4.5 0 1 1 9.7 0a4.8 4.5 0 1 1 -9.7 0Zm-.5 3.1h1.4V112h-1.4ZM299.4 102.1a6.6 6.3 0 1 1 13.2 0a6.6 6.3 0 1 1 -13.2 0ZM296.4 105.7a4.9 4.6 0 1 1 9.9 0a4.9 4.6 0 1 1 -9.9 0ZM305.8 105.4a5.1 4.8 0 1 1 10.3 0a5.1 4.8 0 1 1 -10.3 0Zm-.6 3.3h1.6V112h-1.6Z"/><path style="fill:var(--s)" d="M0 112H360v8H0ZM110 90H290v22H110Zm22 18v-7c0-2.5-2-3.9-3-4.5-1 .6-3 2-3 4.5v7Zm14 0v-7c0-2.5-2-3.9-3-4.5-1 .6-3 2-3 4.5v7Zm14 0v-7c0-2.5-2-3.9-3-4.5-1 .6-3 2-3 4.5v7Zm14 0v-7c0-2.5-2-3.9-3-4.5-1 .6-3 2-3 4.5v7Zm56 0v-7c0-2.5-2-3.9-3-4.5-1 .6-3 2-3 4.5v7Zm14 0v-7c0-2.5-2-3.9-3-4.5-1 .6-3 2-3 4.5v7Zm14 0v-7c0-2.5-2-3.9-3-4.5-1 .6-3 2-3 4.5v7Zm14 0v-7c0-2.5-2-3.9-3-4.5-1 .6-3 2-3 4.5v7ZM150 66H250V90H150Zm34-14h32V90H184Zm0-8h2v8h-2ZM183.3 43.2a1.7 2.2 0 1 1 3.4 0a1.7 2.2 0 1 1 -3.4 0ZM214 44h2v8h-2ZM213.3 43.2a1.7 2.2 0 1 1 3.4 0a1.7 2.2 0 1 1 -3.4 0ZM209.5 90V71c0-7.7-6.5-12-9.5-14-3 2-9.5 6.3-9.5 14V90Zm-22 0h25V55h-25Zm1-34h23V90h-23Zm21 34V71c0-7.7-6.5-12-9.5-14-3 2-9.5 6.3-9.5 14V90ZM163 90V79c0-4.4-2.7-6.9-4-8-1.3 1.1-4 3.6-4 8V90Zm14 0V79c0-4.4-2.7-6.9-4-8-1.3 1.1-4 3.6-4 8V90Zm54 0V79c0-4.4-2.7-6.9-4-8-1.3 1.1-4 3.6-4 8V90Zm14 0V79c0-4.4-2.7-6.9-4-8-1.3 1.1-4 3.6-4 8V90ZM150 58h2v8h-2ZM149.3 57.2a1.7 2.2 0 1 1 3.4 0a1.7 2.2 0 1 1 -3.4 0ZM248 58h2v8h-2ZM247.3 57.2a1.7 2.2 0 1 1 3.4 0a1.7 2.2 0 1 1 -3.4 0ZM187 45h26v7H187Zm13-25c.3.4.3 1.2 1.7 2.5 1.4 1.3 4.3 3.3 6.7 5.5 2.3 2.2 6.5 5.2 7.4 8 .8 2.8-1.9 7.5-2.3 9H200 186.5c-.4-1.5-3.1-6.2-2.3-9 .9-2.8 5.1-5.8 7.4-8 2.4-2.2 5.3-4.2 6.7-5.5 1.4-1.3 1.4-2.1 1.7-2.5Zm-.4-7.7h.8V21h-.8ZM198.7 17a1.4 1.1 0 1 1 2.7 0a1.4 1.1 0 1 1 -2.7 0ZM199 13.7a1 .8 0 1 1 2 0a1 .8 0 1 1 -2 0ZM159 61h16v5H159Zm8-16c.2.3.2.7 1.1 1.6 .8.9 2.7 2.1 4.2 3.5 1.4 1.5 4.1 3.3 4.6 5.1 .6 1.9-1.2 4.8-1.4 5.8H167h-8.5c-.2-1-2-3.9-1.4-5.8 .5-1.8 3.2-3.6 4.6-5.1 1.5-1.4 3.4-2.6 4.2-3.5 .9-.9.9-1.3 1.1-1.6Zm-.3-7.4h.6V46h-.6ZM166.1 42.4a.9 .7 0 1 1 1.8 0a.9 .7 0 1 1 -1.8 0ZM166.3 39.4a.7 .5 0 1 1 1.3 0a.7 .5 0 1 1 -1.3 0ZM225 61h16v5H225Zm8-16c.2.3.2.7 1.1 1.6 .8.9 2.7 2.1 4.2 3.5 1.4 1.5 4.1 3.3 4.6 5.1 .6 1.9-1.2 4.8-1.4 5.8H233h-8.5c-.2-1-2-3.9-1.4-5.8 .5-1.8 3.2-3.6 4.6-5.1 1.5-1.4 3.4-2.6 4.2-3.5 .9-.9.9-1.3 1.1-1.6Zm-.3-7.4h.6V46h-.6ZM232.1 42.4a.9 .7 0 1 1 1.8 0a.9 .7 0 1 1 -1.8 0ZM232.3 39.4a.7 .5 0 1 1 1.3 0a.7 .5 0 1 1 -1.3 0ZM110.6 104.3h10.8V112H110.6Zm2-81.8h6.8l.6 81.8h-8Zm-3 63.5h12.8v1.5l-2.8 2h-7.2l-2.8-2Zm0-22h12.8v1.5l-2.8 2h-7.2l-2.8-2Zm0-22h12.8v1.5l-2.8 2h-7.2l-2.8-2Zm.4-20.8h12v1.3H110Zm1.6-5.9h8.8v5.9h-8.8Zm2.2 5.9h4.4V16.3h-4.4Zm-4-7.1h12.4v1.2H109.8ZM116 7.5c1.2 1.5 6.2 2.5 5 6.6h-5-5c-1.2-4.1 3.8-5.1 5-6.6Zm-.3.1h.6v.2h-.6ZM115.1 7.1a.9 .7 0 1 1 1.8 0a.9 .7 0 1 1 -1.8 0ZM115.3 6.6a.7 .5 0 1 1 1.3 0a.7 .5 0 1 1 -1.3 0Zm163.3 97.7h10.8V112H278.6Zm2-81.8h6.8l.6 81.8h-8Zm-3 63.5h12.8v1.5l-2.8 2h-7.2l-2.8-2Zm0-22h12.8v1.5l-2.8 2h-7.2l-2.8-2Zm0-22h12.8v1.5l-2.8 2h-7.2l-2.8-2Zm.4-20.8h12v1.3H278Zm1.6-5.9h8.8v5.9h-8.8Zm2.2 5.9h4.4V16.3h-4.4Zm-4-7.1h12.4v1.2H277.8ZM284 7.5c1.2 1.5 6.2 2.5 5 6.6h-5-5c-1.2-4.1 3.8-5.1 5-6.6Zm-.3.1h.6v.2h-.6ZM283.1 7.1a.9 .7 0 1 1 1.8 0a.9 .7 0 1 1 -1.8 0ZM283.3 6.6a.7 .5 0 1 1 1.3 0a.7 .5 0 1 1 -1.3 0ZM0 92H104v20H0Zm28 20H46V72l-3-3H31l-3 3Zm2-50H44v4.6H30Zm2 4.6H42V62.8H32Zm-3-6H45V62H29Zm8-9c1.6 2 8.1 3.4 6.5 9H37 30.5c-1.6-5.6 4.9-7 6.5-9Zm-.2-5.3h.4v6.5h-.4ZM36.2 50a.8 .6 0 1 1 1.5 0a.8 .6 0 1 1 -1.5 0ZM36.5 47.7a.6 .5 0 1 1 1.1 0a.6 .5 0 1 1 -1.1 0ZM28 80.7H46V80H28Zm0 10H46V90H28Zm0 10H46V100H28ZM62 112H80V72l-3-3H65l-3 3Zm2-50H78v4.6H64Zm2 4.6H76V62.8H66Zm-3-6H79V62H63Zm8-9c1.6 2 8.1 3.4 6.5 9H71 64.5c-1.6-5.6 4.9-7 6.5-9Zm-.2-5.3h.4v6.5h-.4ZM70.2 50a.8 .6 0 1 1 1.5 0a.8 .6 0 1 1 -1.5 0ZM70.5 47.7a.6 .5 0 1 1 1.1 0a.6 .5 0 1 1 -1.1 0ZM62 80.7H80V80H62Zm0 10H80V90H62Zm0 10H80V100H62ZM46 78H62v34H46Zm13 34V98c0-5.5-3.4-8.6-5-10-1.6 1.4-5 4.5-5 10v14Zm-38 0v-8c0-2.8-2-4.3-3-5-1 .7-3 2.2-3 5v8Zm72 0v-8c0-2.8-2-4.3-3-5-1 .7-3 2.2-3 5v8Zm197-12h70v12H290ZM104 78c.4 1.4 1.8 4.5 2.5 8.5 .8 4 2 11 2 15.3 0 4.2-1.5 8.5-1.8 10.2H104h-2.7c-.3-1.7-1.8-6-1.8-10.2 0-4.3 1.2-11.3 2-15.3 .7-4 2.1-7.1 2.5-8.5Zm193-8c.4 1.2 1.6 4 2.2 7.5 .7 3.5 1.8 9.7 1.8 13.5 0 3.8-1.3 7.5-1.6 9H297h-2.4c-.3-1.5-1.6-5.2-1.6-9 0-3.8 1.1-10 1.8-13.5 .6-3.5 1.8-6.3 2.2-7.5ZM5 81.5a7 6.6 0 1 1 14 0a7 6.6 0 1 1 -14 0ZM1.9 85.3a5.2 4.9 0 1 1 10.5 0a5.2 4.9 0 1 1 -10.5 0ZM11.8 85a5.5 5 0 1 1 10.9 0a5.5 5 0 1 1 -10.9 0Zm-.6 3.5h1.6V92H11.2ZM345.6 90.4a6.4 6.1 0 1 1 12.8 0a6.4 6.1 0 1 1 -12.8 0ZM342.7 93.9a4.8 4.5 0 1 1 9.6 0a4.8 4.5 0 1 1 -9.6 0ZM351.8 93.6a5 4.6 0 1 1 10 0a5 4.6 0 1 1 -10 0Zm-.6 3.2h1.6V100h-1.6ZM312.8 92.2a5.2 4.9 0 1 1 10.4 0a5.2 4.9 0 1 1 -10.4 0ZM310.5 95.1a3.9 3.6 0 1 1 7.8 0a3.9 3.6 0 1 1 -7.8 0ZM317.8 94.8a4.1 3.7 0 1 1 8.1 0a4.1 3.7 0 1 1 -8.1 0Zm-.4 2.6h1.2V100h-1.2Z"/><path style="fill:none;stroke:var(--s);stroke-width:1.6;stroke-dasharray:2.2 1.8" d="M111 89.2H289"/><path style="fill:none;stroke:var(--s);stroke-width:1.3;stroke-dasharray:1.8 1.7" d="M151 65.3h98M185 51.4h30"/><path style="fill:none;stroke:var(--s);stroke-width:1.8;stroke-dasharray:2.4 1.6" d="M1 91.1H103"/><path style="fill:none;stroke:var(--s);stroke-width:1.4;stroke-dasharray:2 1.6" d="M28.5 68.3h17m17 0h17m-33 9h15"/><path style="fill:none;stroke:var(--s);stroke-width:1.4;stroke-dasharray:2.2 1.8" d="M291 99.3h68"/></g></symbol>
+<symbol id="art-jharokha" viewBox="0 0 100 140"><g style="--j:var(--jharokha,var(--ef));--jd:color-mix(in srgb,var(--j) 80%,var(--a));--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff)"><path style="fill:var(--j);stroke:var(--a);stroke-width:.8;stroke-linejoin:round" d="M50 9c.4.3.4 1 2.3 2.1 1.8 1.1 5.7 2.7 8.9 4.6 3.1 1.9 8.7 4.4 9.9 6.7 1.1 2.4-2.6 6.3-3.1 7.6H50 32c-.5-1.3-4.2-5.2-3.1-7.6 1.2-2.3 6.8-4.8 9.9-6.7 3.2-1.9 7.1-3.5 8.9-4.6C49.6 10 49.6 9.3 50 9ZM30 30H70v3H30ZM21 33H79l12 8H9ZM8.5 41h83v2H8.5ZM15 43H85v57H15ZM72 100V66A4.7 4.7 0 0 0 67.4 57.8A4.8 4.8 0 0 0 59.1 52.9A4.8 4.8 0 0 0 50 49.5A4.8 4.8 0 0 0 40.9 52.9A4.8 4.8 0 0 0 32.6 57.8A4.7 4.7 0 0 0 28 66V100ZM9 100H91v4H9ZM13 104H87v17H13ZM11 121H89v3H11Zm4 3H85v2.5H15ZM19 126.5c.2.5.8 2.1 1.4 3 .6.9 1.6 1.2 2.4 2.5 .8 1.3 1.8 4.3 2.2 5.2 .4-.9 1.4-3.9 2.2-5.2 .8-1.3 1.8-1.6 2.4-2.5 .6-.9 1.2-2.5 1.4-3Zm25 0c.2.5.8 2.1 1.4 3 .6.9 1.6 1.2 2.4 2.5 .8 1.3 1.8 4.3 2.2 5.2 .4-.9 1.4-3.9 2.2-5.2 .8-1.3 1.8-1.6 2.4-2.5 .6-.9 1.2-2.5 1.4-3Zm25 0c.2.5.8 2.1 1.4 3 .6.9 1.6 1.2 2.4 2.5 .8 1.3 1.8 4.3 2.2 5.2 .4-.9 1.4-3.9 2.2-5.2 .8-1.3 1.8-1.6 2.4-2.5 .6-.9 1.2-2.5 1.4-3ZM48.6 137c.1.5.6 2.3.8 2.8 .2.5.5.2.6.2 .1 0 .4.3.6-.2 .2-.5.7-2.3.8-2.8Z"/><path style="fill:var(--jd)" d="M9 41H91l.5 2H8.5ZM30 32H70v1H30Z"/><path style="fill:url(#art-mtf-cyl)" d="M50 9c.4.3.4 1 2.3 2.1 1.8 1.1 5.7 2.7 8.9 4.6 3.1 1.9 8.7 4.4 9.9 6.7 1.1 2.4-2.6 6.3-3.1 7.6H50 32c-.5-1.3-4.2-5.2-3.1-7.6 1.2-2.3 6.8-4.8 9.9-6.7 3.2-1.9 7.1-3.5 8.9-4.6C49.6 10 49.6 9.3 50 9Z"/><path style="fill:none;stroke:var(--a);stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round" d="M14.2 114.6l5.2 5.2m0-14.6l-5.2 5.2m0-1l10.4 10.4m0-14.6L14.2 115.6m1-10.4l14.6 14.6m0-14.6L15.2 119.8m5.2-14.6L35 119.8m0-14.6L20.4 119.8m5.2-14.6l14.6 14.6m0-14.6L25.6 119.8m5.2-14.6l14.6 14.6m0-14.6L30.8 119.8M36 105.2l14.6 14.6m0-14.6L36 119.8m5.2-14.6l14.6 14.6m0-14.6L41.2 119.8m5.2-14.6L61 119.8m0-14.6L46.4 119.8m5.2-14.6l14.6 14.6m0-14.6L51.6 119.8m5.2-14.6l14.6 14.6m0-14.6L56.8 119.8M62 105.2l14.6 14.6m0-14.6L62 119.8m5.2-14.6l14.6 14.6m0-14.6L67.2 119.8m5.2-14.6l13.4 13.4m0-12.2L72.4 119.8m5.2-14.6l8.2 8.2m0-1.8l-8.2 8.2m5.2-14.6l3 3m0 8.6l-3 3M50 9.5Q44 18 41.5 30M50 9.5Q56 18 58.5 30M50 9.5V30M17 47.5a2.2 2.2 0 0 1 4.4 0M22.1 47.5a2.2 2.2 0 0 1 4.4 0M27.2 47.5a2.2 2.2 0 0 1 4.4 0M32.3 47.5a2.2 2.2 0 0 1 4.4 0M37.4 47.5a2.2 2.2 0 0 1 4.4 0M42.5 47.5a2.2 2.2 0 0 1 4.4 0M47.6 47.5a2.2 2.2 0 0 1 4.4 0M52.7 47.5a2.2 2.2 0 0 1 4.4 0M57.8 47.5a2.2 2.2 0 0 1 4.4 0M62.9 47.5a2.2 2.2 0 0 1 4.4 0M68 47.5a2.2 2.2 0 0 1 4.4 0M73.1 47.5a2.2 2.2 0 0 1 4.4 0M78.2 47.5a2.2 2.2 0 0 1 4.4 0"/><path style="fill:var(--a)" d="M49.6 3.1h.8V9.6h-.8ZM48.8 6.5a1.2 1 0 1 1 2.4 0a1.2 1 0 1 1 -2.4 0ZM49.1 3.9a.9 .7 0 1 1 1.8 0a.9 .7 0 1 1 -1.8 0ZM18.6 51.5a2.4 2.4 0 1 0 4.8 0a2.4 2.4 0 1 0 -4.8 0ZM76.6 51.5a2.4 2.4 0 1 0 4.8 0a2.4 2.4 0 1 0 -4.8 0ZM31.8 57.8a.8 .8 0 1 0 1.5 0a.8 .8 0 1 0 -1.5 0ZM40.2 52.9a.8 .8 0 1 0 1.5 0a.8 .8 0 1 0 -1.5 0ZM49.2 49.5a.8 .8 0 1 0 1.5 0a.8 .8 0 1 0 -1.5 0ZM58.3 52.9a.8 .8 0 1 0 1.5 0a.8 .8 0 1 0 -1.5 0ZM66.7 57.8a.8 .8 0 1 0 1.5 0a.8 .8 0 1 0 -1.5 0ZM19.5 64h4V98h-4Zm57 0h4V98h-4ZM18.5 62h6v2h-6Zm57 0h6v2h-6Zm-57 36h6v2h-6Zm57 0h6v2h-6Z"/><path style="fill:var(--j)" d="M20.1 51.5a.9 .9 0 1 0 1.8 0a.9 .9 0 1 0 -1.8 0ZM78.1 51.5a.9 .9 0 1 0 1.8 0a.9 .9 0 1 0 -1.8 0Z"/><path style="fill:var(--jd)" d="M20.5 64H22V98H20.5Zm57 0H79V98H77.5Z"/></g></symbol>
+<symbol id="art-arch-frame" viewBox="0 0 100 160"><g style="--f:var(--frame,var(--acc))"><path style="fill:none;stroke:var(--f);stroke-width:1.6;stroke-linejoin:round" vector-effect="non-scaling-stroke" d="M4 158V64C4 32.1 35.3 14.1 50 6c14.7 8.1 46 26.1 46 58v94Z"/><path style="fill:none;stroke:var(--f);stroke-width:.9;stroke-linejoin:round" vector-effect="non-scaling-stroke" d="M10 152V70A10.1 10.1 0 0 1 12.1 56.3A10.1 10.1 0 0 1 18.3 43.8A10.1 10.1 0 0 1 27.4 33.2A10.1 10.1 0 0 1 38.2 24.4A10.1 10.1 0 0 1 50 17A10.1 10.1 0 0 1 61.8 24.4A10.1 10.1 0 0 1 72.6 33.2A10.1 10.1 0 0 1 81.7 43.8A10.1 10.1 0 0 1 87.9 56.3A10.1 10.1 0 0 1 90 70V152Z"/><path style="fill:var(--f)" d="M50 .4c.3.4 1.7 1.6 1.7 2.4 0 .8-1.4 2.2-1.7 2.6-.3-.4-1.7-1.8-1.7-2.6 0-.8 1.4-2 1.7-2.4ZM11.1 56.3a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM17.3 43.8a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM26.4 33.2a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM37.2 24.4a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM49 17a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM60.8 24.4a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM71.6 33.2a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM80.7 43.8a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM86.9 56.3a1 1 0 1 1 2 0a1 1 0 1 1 -2 0ZM48.7 11a1.3 1.3 0 1 1 2.6 0a1.3 1.3 0 1 1 -2.6 0Z"/></g></symbol>
+<symbol id="art-jaali-tile" viewBox="0 0 40 40"><g style="--j:var(--jaali,var(--acc))"><path style="fill:var(--j);fill-opacity:.12" d="M20 0l5.9 5.9h8.2v8.2L40 20l-5.9 5.9v8.2H25.9L20 40l-5.9-5.9H5.9V25.9L0 20l5.9-5.9V5.9h8.2Z"/><path style="fill:none;stroke:var(--j);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round" d="M20 0l5.9 5.9h8.2v8.2L40 20l-5.9 5.9v8.2H25.9L20 40l-5.9-5.9H5.9V25.9L0 20l5.9-5.9V5.9h8.2Z"/><path style="fill:none;stroke:var(--j);stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round" d="M20 2.6l5.1 5.1h7.2v7.2L37.4 20l-5.1 5.1v7.2H25.1L20 37.4l-5.1-5.1H7.7V25.1L2.6 20l5.1-5.1V7.7h7.2Zm0 7.9l2.8 2.8h3.9v3.9L29.5 20l-2.8 2.8v3.9H22.8L20 29.5l-2.8-2.8H13.3V22.8L10.5 20l2.8-2.8V13.3h3.9Z"/><path style="fill:var(--j)" d="M18 20a2 2 0 1 1 4 0a2 2 0 1 1 -4 0ZM19.1 15.7a.9 .9 0 1 1 1.8 0a.9 .9 0 1 1 -1.8 0ZM22.1 17a.9 .9 0 1 1 1.8 0a.9 .9 0 1 1 -1.8 0ZM23.4 20a.9 .9 0 1 1 1.8 0a.9 .9 0 1 1 -1.8 0ZM22.1 23a.9 .9 0 1 1 1.8 0a.9 .9 0 1 1 -1.8 0ZM19.1 24.3a.9 .9 0 1 1 1.8 0a.9 .9 0 1 1 -1.8 0ZM16.1 23a.9 .9 0 1 1 1.8 0a.9 .9 0 1 1 -1.8 0ZM14.8 20a.9 .9 0 1 1 1.8 0a.9 .9 0 1 1 -1.8 0ZM16.1 17a.9 .9 0 1 1 1.8 0a.9 .9 0 1 1 -1.8 0ZM-1.5 0a1.5 1.5 0 1 1 3 0a1.5 1.5 0 1 1 -3 0ZM-1.5 40a1.5 1.5 0 1 1 3 0a1.5 1.5 0 1 1 -3 0ZM38.5 0a1.5 1.5 0 1 1 3 0a1.5 1.5 0 1 1 -3 0ZM38.5 40a1.5 1.5 0 1 1 3 0a1.5 1.5 0 1 1 -3 0Z"/></g></symbol>
+<symbol id="art-lantern" viewBox="0 0 40 100"><g style="--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff);--gw:var(--glow,var(--lt,color-mix(in srgb,var(--acc) 28%,#fff)));--gf:color-mix(in srgb,var(--gw) 55%,var(--acc))"><path style="fill:var(--gw);opacity:0.9" mask="url(#art-mtf-halo)" d="M.4 47a19.6 19.6 0 1 1 39.2 0a19.6 19.6 0 1 1 -39.2 0Z"/><path style="fill:var(--gw)" d="M20 26.2h9.5c3.1 6.3 4.5 14 4.2 20.3-.5 9.3-2.7 17-4.7 22.8H20 11C9 63.5 6.8 55.8 6.3 46.5c-.3-6.3 1.1-14 4.2-20.3H20Z"/><path style="fill:url(#art-mtf-glow)" d="M20 26.2h9.5c3.1 6.3 4.5 14 4.2 20.3-.5 9.3-2.7 17-4.7 22.8H20 11C9 63.5 6.8 55.8 6.3 46.5c-.3-6.3 1.1-14 4.2-20.3H20Z"/><path style="fill:none;stroke:var(--gf);stroke-width:0.35;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.7" d="M7.8 64.5l8-24.5m0 24.5L7.8 40m2.6 24.5l8-24.5m0 24.5L10.4 40M13 64.5L21 40m0 24.5L13 40m2.6 24.5l8-24.5m0 24.5L15.6 40m2.6 24.5l8-24.5m0 24.5L18.2 40m2.6 24.5l8-24.5m0 24.5L20.8 40m2.6 24.5l8-24.5m0 24.5L23.4 40M26 64.5L34 40m0 24.5L26 40"/><path style="fill:var(--a)" d="M20 25.5H30.5C34 32 35.6 40 35.2 46.5 34.7 56 32.2 64 30 70H20 10C7.8 64 5.3 56 4.8 46.5 4.4 40 6 32 9.5 25.5H20Zm4.4 39V39c0-4.7-3-7.3-4.4-8.5-1.4 1.2-4.4 3.8-4.4 8.5V64.5ZM12.6 62V39c0-3.3-1.4-5.2-2.1-6-.7.8-2.1 2.7-2.1 6V62Zm19 0V39c0-3.3-1.4-5.2-2.1-6-.7.8-2.1 2.7-2.1 6V62ZM10.8 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM14.9 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM19.3 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM23.7 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM27.8 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM12.9 67.3a.6 .9 0 1 0 1.2 0a.6 .9 0 1 0 -1.2 0ZM19.4 67.3a.6 .9 0 1 0 1.2 0a.6 .9 0 1 0 -1.2 0ZM25.9 67.3a.6 .9 0 1 0 1.2 0a.6 .9 0 1 0 -1.2 0Z"/><path style="fill:url(#art-mtf-cyl)" d="M20 25.5H30.5C34 32 35.6 40 35.2 46.5 34.7 56 32.2 64 30 70H20 10C7.8 64 5.3 56 4.8 46.5 4.4 40 6 32 9.5 25.5H20Zm4.4 39V39c0-4.7-3-7.3-4.4-8.5-1.4 1.2-4.4 3.8-4.4 8.5V64.5ZM12.6 62V39c0-3.3-1.4-5.2-2.1-6-.7.8-2.1 2.7-2.1 6V62Zm19 0V39c0-3.3-1.4-5.2-2.1-6-.7.8-2.1 2.7-2.1 6V62ZM10.8 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM14.9 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM19.3 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM23.7 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM27.8 28a.7 1.1 0 1 0 1.4 0a.7 1.1 0 1 0 -1.4 0ZM12.9 67.3a.6 .9 0 1 0 1.2 0a.6 .9 0 1 0 -1.2 0ZM19.4 67.3a.6 .9 0 1 0 1.2 0a.6 .9 0 1 0 -1.2 0ZM25.9 67.3a.6 .9 0 1 0 1.2 0a.6 .9 0 1 0 -1.2 0Z"/><path style="fill:var(--a)" d="M20 13.6c.2.2.2.4 1.3.9 1 .5 3.2 1.3 4.9 2.1 1.7.9 4.9 2 5.5 3 .6 1.1-1.4 2.8-1.7 3.4H20 10c-.3-.6-2.3-2.3-1.7-3.4 .6-1 3.8-2.1 5.5-3 1.7-.8 3.9-1.6 4.9-2.1 1.1-.5 1.1-.7 1.3-.9ZM7.4 23H32.6v2.6H7.4ZM9.4 70H30.6v2.4H9.4ZM20 72.4h9c-2 4.1-6 7.1-9 10.2-3-3.1-7-6.1-9-10.2h9ZM18.4 13.3a1.6 1.8 0 1 1 3.2 0a1.6 1.8 0 1 1 -3.2 0ZM18.3 84.8a1.7 2.1 0 1 1 3.4 0a1.7 2.1 0 1 1 -3.4 0ZM20 86.8h1.3c0 5.8 1.4 8.1 1.4 11.6q-1.3.9-2.7.3-1.4.6-2.7-.3c0-3.5 1.4-5.8 1.4-11.6H20Z"/><path style="fill:url(#art-mtf-cyl)" d="M20 13.6c.2.2.2.4 1.3.9 1 .5 3.2 1.3 4.9 2.1 1.7.9 4.9 2 5.5 3 .6 1.1-1.4 2.8-1.7 3.4H20 10c-.3-.6-2.3-2.3-1.7-3.4 .6-1 3.8-2.1 5.5-3 1.7-.8 3.9-1.6 4.9-2.1 1.1-.5 1.1-.7 1.3-.9Zm0 58.8h9c-2 4.1-6 7.1-9 10.2-3-3.1-7-6.1-9-10.2h9Z"/><path style="fill:var(--ad)" d="M7.4 24.6H32.6v1H7.4ZM9.4 71.4H30.6v1H9.4Z"/><path style="fill:none;stroke:var(--ad);stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round" d="M19.2 88.6L18.6 98M20 88.6V98m.8-9.4l.6 9.4"/><path style="fill:none;stroke:var(--a);stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round" d="M20 4.4v7.2"/><path style="fill:none;stroke:var(--a);stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round" d="M18.2 2.6a1.8 1.8 0 1 1 3.6 0a1.8 1.8 0 1 1 -3.6 0Z"/></g></symbol>
+<symbol id="art-lantern-round" viewBox="0 0 40 66"><g style="--p:var(--paper,var(--bl));--pd:color-mix(in srgb,var(--p) 70%,#000);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff);--gw:var(--glow,var(--lt,color-mix(in srgb,var(--acc) 28%,#fff)));--gf:color-mix(in srgb,var(--gw) 55%,var(--acc))"><path style="fill:var(--gw);opacity:0.55" mask="url(#art-mtf-halo)" d="M.4 29a19.6 19.6 0 1 1 39.2 0a19.6 19.6 0 1 1 -39.2 0Z"/><path style="fill:var(--p)" d="M3 29a17 16 0 1 1 34 0a17 16 0 1 1 -34 0Z"/><path style="fill:url(#art-mtf-glow);opacity:.75" d="M6.4 30a13.6 12.8 0 1 1 27.2 0a13.6 12.8 0 1 1 -27.2 0Z"/><path style="fill:none;stroke:var(--pd);stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.8" d="M12 14.9q8 1.2 16 0M6.6 19.1q13.4 2.1 26.8 0m-29.9 6q16.5 2.6 33 0M3.3 31.8q16.7 2.5 33.4 0M5.9 37.9q14.1 2.2 28.2 0M11 42.6q9 1.3 18 0"/><path style="fill:url(#art-mtf-sph)" d="M3 29a17 16 0 1 1 34 0a17 16 0 1 1 -34 0Z"/><path style="fill:none;stroke:var(--ad);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round" d="M20 0V9"/><path style="fill:var(--a)" d="M14.6 8.6H25.4v5H14.6ZM15.6 44.4h8.8V48H15.6ZM18.4 51.4a1.6 1.8 0 1 1 3.2 0a1.6 1.8 0 1 1 -3.2 0ZM20 53h1.2c0 5.7 1.3 8 1.3 11.4q-1.3.9-2.5.3-1.2.6-2.5-.3c0-3.4 1.3-5.7 1.3-11.4H20Z"/><path style="fill:var(--ad)" d="M14.6 12.6H25.4v1H14.6ZM15.6 44.4h8.8v.9H15.6Z"/><path style="fill:none;stroke:var(--ad);stroke-width:0.35;stroke-linecap:round;stroke-linejoin:round" d="M19.2 55l-.6 9M20 55v9m.8-9l.6 9"/></g></symbol>
+<symbol id="art-fairy-bulb" viewBox="0 0 24 36"><g style="--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff);--gw:var(--glow,var(--lt,color-mix(in srgb,var(--acc) 28%,#fff)));--gf:color-mix(in srgb,var(--gw) 55%,var(--acc))"><path style="fill:var(--gw)" mask="url(#art-mtf-halo)" d="M.2 18a11.8 11.8 0 1 1 23.6 0a11.8 11.8 0 1 1 -23.6 0Z"/><path style="fill:var(--gw)" d="M12 9.4h2c.4 2 4.4 3.8 4.3 8.2-.1 3.8-2.9 6-6.3 7.6-3.4-1.6-6.2-3.8-6.3-7.6-.1-4.4 3.9-6.2 4.3-8.2h2Z"/><path style="fill:url(#art-mtf-glow)" d="M12 9.4h2c.4 2 4.4 3.8 4.3 8.2-.1 3.8-2.9 6-6.3 7.6-3.4-1.6-6.2-3.8-6.3-7.6-.1-4.4 3.9-6.2 4.3-8.2h2Z"/><path style="fill:none;stroke:var(--gf);stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round" d="M10.4 15l.8 2.4L12 15l.8 2.4 .8-2.4"/><path style="fill:#fff;fill-opacity:.7" d="M8.5 14.2a1.1 1.9 0 1 1 2.2 0a1.1 1.9 0 1 1 -2.2 0Z"/><path style="fill:var(--ad)" d="M9.6 4.2h4.8V9.8H9.6Z"/><path style="fill:var(--a)" d="M9.6 5.2h4.8v1H9.6ZM9.6 7.4h4.8v1H9.6Z"/><path style="fill:none;stroke:var(--ad);stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round" d="M12 0V4.4"/></g></symbol>
+<symbol id="art-candle-glass" viewBox="0 0 40 72"><g style="--c:var(--candle,var(--ef));--cd:color-mix(in srgb,var(--c) 84%,#000);--cl:color-mix(in srgb,var(--c) 70%,#fff);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff);--gw:var(--glow,var(--lt,color-mix(in srgb,var(--acc) 28%,#fff)));--gf:color-mix(in srgb,var(--gw) 55%,var(--acc))"><path style="fill:var(--gw);opacity:0.9" mask="url(#art-mtf-halo)" d="M4.4 30a15.6 15.6 0 1 1 31.2 0a15.6 15.6 0 1 1 -31.2 0Z"/><path style="fill:var(--c)" d="M14.5 40.4q1.7-1.8 3.5-.6 2-1.6 4.2 0 1.8-1 3.3.6V62h-11Z"/><path style="fill:var(--cd)" d="M22.6 40.4h2.9V62H22.6Z"/><path style="fill:var(--cl)" d="M14.5 40.4c.2.3.9 1 1.1 2 .2 1 0 3.4.1 4.2 .1.8.6.7.7.8 .1-.1.8.1.9-.8 .1-.9-.2-3.5-.1-4.6 .1-1.1.7-1.8.8-2.2Z"/><path style="fill:none;stroke:var(--ad);stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round" d="M20 39.4V35.6"/><path style="fill:var(--gw)" d="M20 25.6c.9 2.8 2.8 5.2 2.6 7.6-.2 2-1.5 2.9-2.6 2.9-1.1 0-2.4-.9-2.6-2.9-.2-2.4 1.7-4.8 2.6-7.6Z"/><path style="fill:#fff;fill-opacity:.85" d="M20 29.9c.4 1.6 1.4 2.9 1.3 4.2-.1 1.1-.7 1.6-1.3 1.6-.6 0-1.2-.5-1.3-1.6-.1-1.3.9-2.6 1.3-4.2Z"/><path style="fill:#fff;fill-opacity:.1;stroke:var(--a);stroke-width:.6;stroke-opacity:.9" d="M20 10h7.6c.4 12 6 22 5.6 34-.3 8-3 14-4.2 18H20 11C9.8 58 7.1 52 6.8 44 6.4 32 12 22 12.4 10H20Z"/><path style="fill:#fff;fill-opacity:.32" d="M10.4 30c-.2 1.7-1 6.3-1 10 0 3.7 1 10 1.2 12 .3-1.8 1.3-7.3 1.6-11 .3-3.7.3-9.2.4-11H10.4Z"/><path style="fill:#fff;fill-opacity:.18" d="M30.2 34c.1 1.3.8 5.3.8 8 0 2.7-.7 6.7-.8 8-.2-1.3-.9-5.3-1-8-.1-2.7.2-6.7.2-8h.8Z"/><path style="fill:var(--a)" d="M9 68H31v3H9ZM11.4 64H28.6L31 68H9ZM12 62H28v2H12Z"/><path style="fill:url(#art-mtf-cyl)" d="M9 68H31v3H9Zm2.4-4H28.6L31 68H9Zm.6-2H28v2H12Z"/><path style="fill:var(--a)" d="M12 9H28v1.4H12Z"/></g></symbol>
+<symbol id="art-chandelier" viewBox="0 0 100 92"><g style="--c:var(--candle,var(--ef));--cd:color-mix(in srgb,var(--c) 84%,#000);--cr:var(--crystal,color-mix(in srgb,var(--gw) 50%,#fff));--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff);--gw:var(--glow,var(--lt,color-mix(in srgb,var(--acc) 28%,#fff)));--gf:color-mix(in srgb,var(--gw) 55%,var(--acc))"><defs><g id="art-mtf-cd"><path style="fill:var(--cr);stroke:var(--a);stroke-width:.3" d="M0 0C.5 1.6 1.6 3.2 1.6 4.4 1.6 5.6.8 6.2 0 6.2c-.8 0-1.6-.6-1.6-1.8C-1.6 3.2-.5 1.6 0 0Z"/><path style="fill:#fff;fill-opacity:.7" d="M-.9 4.2a.4 .9 0 1 1 .8 0a.4 .9 0 1 1 -.8 0Z"/></g><g id="art-mtf-cu"><path style="fill:var(--gw);opacity:0.9" mask="url(#art-mtf-halo)" d="M-6.4 -9.6a6.4 6.4 0 1 1 12.8 0a6.4 6.4 0 1 1 -12.8 0Z"/><path style="fill:var(--c)" d="M-1.3-7.6H1.3V-1H-1.3Z"/><path style="fill:var(--cd)" d="M.4-7.6h.9V-1H.4Z"/><path style="fill:var(--gw)" d="M0-12.6C.6-11 1.5-9.8 1.4-8.8 1.3-7.8.6-7.5 0-7.5c-.6 0-1.3-.3-1.4-1.3-.1-1 .8-2.2 1.4-3.8Z"/><path style="fill:#fff;fill-opacity:.8" d="M-.5 -8.7a.5 .9 0 1 1 1 0a.5 .9 0 1 1 -1 0Z"/><path style="fill:var(--a)" d="M-3.8 -.6a3.8 1.2 0 1 1 7.6 0a3.8 1.2 0 1 1 -7.6 0ZM0 3.4L2.2 0H0-2.2L0 3.4Z"/><use href="#art-mtf-cd" transform="translate(0 3.6)"/></g></defs><path style="fill:var(--gw);opacity:0.45" mask="url(#art-mtf-halo)" d="M20 46a30 30 0 1 1 60 0a30 30 0 1 1 -60 0Z"/><path style="fill:none;stroke:var(--a);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round" d="M50 38c6 3.5 19 4 20-6.4M50 56c8 4.5 35 4.5 36-9.2M64 41.4c3 4-1.6 5.6-2.4 2.8M76 59.4c3.4 4.2-2 6-2.6 2.8M50 38c-6 3.5-19 4-20-6.4M50 56c-8 4.5-35 4.5-36-9.2m22-5.4c-3 4 1.6 5.6 2.4 2.8M24 59.4c-3.4 4.2 2 6 2.6 2.8"/><path style="fill:var(--a)" d="M49.2 9h1.6V22H49.2ZM50 21.4c3 .6 4.4 5.2 2.4 8.8L50 31l-2.4-.8c-2-3.6-.6-8.2 2.4-8.8ZM47.3 33.6a2.7 1.9 0 1 1 5.4 0a2.7 1.9 0 1 1 -5.4 0ZM43.6 47a6.4 7 0 1 1 12.8 0a6.4 7 0 1 1 -12.8 0ZM45.6 53.6h8.8V56H45.6ZM50 55.6h6.6c-.4 4.8-3.2 8-6.6 14.6-3.4-6.6-6.2-9.8-6.6-14.6H50ZM46 8.6a4 1.6 0 1 1 8 0a4 1.6 0 1 1 -8 0Z"/><path style="fill:url(#art-mtf-sph)" d="M43.6 47a6.4 7 0 1 1 12.8 0a6.4 7 0 1 1 -12.8 0Z"/><path style="fill:url(#art-mtf-cyl)" d="M50 21.4c3 .6 4.4 5.2 2.4 8.8L50 31l-2.4-.8c-2-3.6-.6-8.2 2.4-8.8Zm0 34.2h6.6c-.4 4.8-3.2 8-6.6 14.6-3.4-6.6-6.2-9.8-6.6-14.6H50Z"/><path style="fill:none;stroke:var(--a);stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round" d="M50 0V7.2"/><path style="fill:var(--cr);stroke:var(--a);stroke-width:.2" d="M67.7 38.4a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM66.1 41.6a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM64.6 44.2a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM63 46.1a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM61.5 47.4a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM59.9 48a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM58.4 48a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM56.8 47.3a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM30.8 38.4a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM32.4 41.6a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM33.9 44.2a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM35.5 46.1a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM37 47.4a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM38.6 48a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM40.1 48a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM41.7 47.3a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM82.9 53.4a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM80.5 56.5a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM78.1 59a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM75.7 61.2a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM73.3 62.9a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM70.9 64.3a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM68.6 65.1a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM66.2 65.6a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM63.8 65.6a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM61.4 65.2a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM59 64.4a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM56.6 63.2a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM15.6 53.4a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM18 56.5a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM20.4 59a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM22.8 61.2a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM25.2 62.9a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM27.6 64.3a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM29.9 65.1a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM32.3 65.6a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM34.7 65.6a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM37.1 65.2a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM39.5 64.4a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0ZM41.9 63.2a.8 .8 0 1 1 1.5 0a.8 .8 0 1 1 -1.5 0Z"/><use href="#art-mtf-cu" transform="translate(30 31.6)"/><use href="#art-mtf-cu" transform="translate(70 31.6)"/><use href="#art-mtf-cu" transform="translate(14 46.8)"/><use href="#art-mtf-cu" transform="translate(86 46.8)"/><use href="#art-mtf-cd" transform="translate(50 70) scale(1.9 2.2)"/><path style="fill:var(--cr)" d="M48.9 85.2a1.1 1.1 0 1 1 2.2 0a1.1 1.1 0 1 1 -2.2 0Z"/></g></symbol>
+<symbol id="art-crescent" viewBox="0 0 60 60"><g style="--m:var(--moon,var(--acc));--ml:color-mix(in srgb,var(--m) 50%,#fff);--md:color-mix(in srgb,var(--m) 76%,#000)"><path style="fill:var(--m)" d="M26.4 5A26 26 0 1 0 50.8 41.6A22 22 0 1 1 26.4 5Z"/><path style="fill:var(--ml)" d="M27.8 5A26 26 0 1 0 52.9 33.6A24.6 24.6 0 1 1 27.8 5Z"/></g></symbol>
+<symbol id="art-star8" viewBox="0 0 40 40"><g style="--s:var(--star,var(--acc));--sl:color-mix(in srgb,var(--s) 62%,#fff);--sd:color-mix(in srgb,var(--s) 74%,#000)"><path style="fill:var(--sl)" d="M20 20L14.3 6.1 20 .4ZM20 20L25.7 6.1h8.2ZM20 20l13.9-5.7L39.6 20ZM20 20l13.9 5.7v8.2ZM20 20l5.7 13.9L20 39.6ZM20 20L14.3 33.9H6.1ZM20 20L6.1 25.7 .4 20ZM20 20L6.1 14.3V6.1Z"/><path style="fill:var(--s)" d="M20 20V.4l5.7 5.7ZM20 20L33.9 6.1v8.2ZM20 20H39.6l-5.7 5.7ZM20 20L33.9 33.9H25.7ZM20 20V39.6l-5.7-5.7ZM20 20L6.1 33.9V25.7ZM20 20H.4l5.7-5.7ZM20 20L6.1 6.1h8.2Z"/><path style="fill:var(--sd)" d="M20 13.6l1.9 1.9h2.6v2.6L26.4 20l-1.9 1.9v2.6H21.9L20 26.4l-1.9-1.9H15.5V21.9L13.6 20l1.9-1.9V15.5h2.6Z"/><path style="fill:var(--sl)" d="M17.4 20a2.6 2.6 0 1 1 5.2 0a2.6 2.6 0 1 1 -5.2 0Z"/></g></symbol>
+<symbol id="art-sparkle" viewBox="0 0 20 20"><g style="--s:var(--star,var(--acc));--sl:color-mix(in srgb,var(--s) 45%,#fff)"><path style="fill:var(--s);fill-opacity:.55" d="M13.7 6.3q-3 3.7 0 7.4-3.7-3-7.4 0 3-3.7 0-7.4 3.7 3 7.4 0Z"/><path style="fill:var(--s)" d="M10 0q.8 9.2 10 10-9.2.8-10 10-.8-9.2-10-10Q9.2 9.2 10 0Z"/><path style="fill:var(--sl)" d="M10 5.6q.6 3.8 4.4 4.4-3.8.6-4.4 4.4-.6-3.8-4.4-4.4Q9.4 9.4 10 5.6Z"/><path style="fill:#fff;fill-opacity:.85" d="M9 10a1 1 0 1 1 2 0a1 1 0 1 1 -2 0Z"/></g></symbol>
+<symbol id="art-crescent-star" viewBox="0 0 60 60"><g style="--m:var(--moon,var(--acc));--ml:color-mix(in srgb,var(--m) 50%,#fff);--md:color-mix(in srgb,var(--m) 76%,#000);--s:var(--star,var(--m));--sl:color-mix(in srgb,var(--s) 55%,#fff)"><path style="fill:var(--m)" d="M23.5 9A23 23 0 1 0 46.3 40.6A19.5 19.5 0 1 1 23.5 9Z"/><path style="fill:var(--ml)" d="M25.7 9A23 23 0 1 0 47.8 34.8A21.8 21.8 0 1 1 25.7 9Z"/><path style="fill:var(--s)" d="M44.5 12.3l.5 6.8 6.6 1.6-6.4 2.6 .5 6.8-4.4-5.2L35 27.4l3.6-5.7-4.4-5.3 6.7 1.7Z"/><path style="fill:var(--sl)" d="M43.2 17.3l.2 3.1 3 .7-2.8 1.2 .2 3-2-2.3L39 24.1l1.6-2.6-2-2.3 3 .7Z"/></g></symbol>
+<symbol id="art-paisley" viewBox="0 0 60 90"><g style="--k:var(--paisley,var(--bl));--kd:color-mix(in srgb,var(--k) 74%,#000);--kx:color-mix(in srgb,var(--k) 50%,#000);--kl:color-mix(in srgb,var(--k) 62%,#fff);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff)"><path style="fill:var(--k);stroke:var(--a);stroke-width:.9" d="M47 4.6c2.6-.3 3.3 3.2 3.6 5 .3 1.8-.4 4.1-1.6 5.8-1.2 1.7-4.2 2.6-5.6 4.2-1.4 1.6-3 3.3-2.8 5.4 .2 2.1 2.1 4.2 4 7 1.9 2.8 5.6 5.8 7.4 9.6 1.8 3.8 3.3 8.3 3.4 13 .1 4.7-.8 10.8-3 15.4-2.2 4.6-6.7 9.3-10.4 12-3.7 2.7-7.8 3.8-12 4-4.2.2-9.3-.7-13-3-3.7-2.3-7-6.8-9-11-2-4.2-2.9-9.3-3-14-.1-4.7.6-9.5 2.2-14 1.6-4.5 4.3-9 7.2-13 2.9-4 6.6-7.7 10-11 3.4-3.3 6.8-6 10.6-8.6 3.8-2.6 9.4-6.5 12-6.8Z"/><path style="fill:var(--kd)" d="M42.7 18.6c1.9-.2 2.4 2.4 2.7 3.7 .2 1.3-.3 3.1-1.2 4.3-.9 1.2-3.1 1.9-4.2 3.1-1 1.2-2.2 2.5-2 4 .1 1.5 1.5 3.1 2.9 5.2 1.4 2 4.2 4.3 5.5 7.1 1.3 2.8 2.5 6.1 2.5 9.6 .1 3.5-.5 8-2.2 11.4-1.6 3.4-4.9 6.9-7.7 8.9-2.8 2-5.8 2.8-8.9 2.9-3.1.2-6.9-.4-9.6-2.2-2.7-1.7-5.2-5-6.6-8.1-1.5-3.1-2.2-6.9-2.3-10.4-.1-3.4.5-7 1.7-10.3 1.1-3.4 3.2-6.7 5.3-9.7 2.1-2.9 4.8-5.7 7.4-8.1 2.5-2.4 5-4.5 7.8-6.4 2.8-1.9 7-4.8 8.9-5Z"/><path style="fill:var(--kl)" d="M38.8 32.3c1.2-.2 1.6 1.6 1.7 2.5 .2.9-.1 2.1-.7 2.9-.7.8-2.2 1.3-2.8 2.1-.8.8-1.5 1.7-1.5 2.7 .2 1 1.1 2.1 2 3.5 1 1.4 2.9 2.9 3.7 4.8 .9 1.9 1.7 4.1 1.8 6.5 0 2.4-.4 5.4-1.5 7.7-1.2 2.3-3.4 4.7-5.3 6-1.8 1.3-3.9 1.9-6 2-2 .1-4.6-.3-6.4-1.5-1.9-1.2-3.6-3.4-4.6-5.5-1-2.1-1.4-4.7-1.4-7-.1-2.3.3-4.8 1.1-7 .7-2.2 2.1-4.5 3.5-6.5 1.5-2 3.3-3.9 5-5.5 1.8-1.6 3.5-3 5.4-4.3 1.8-1.3 4.7-3.2 6-3.4Z"/><path style="fill:var(--a)" d="M44 11.5a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM46.8 14.4a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM46.9 18.4a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM44.7 21.9a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM40.9 24.5a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM38.6 27.9a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM39.6 32a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM43.4 37.2a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM48.4 43.7a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM51 51.9a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM50.8 61.7a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM46.9 71.4a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM39.7 78.8a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM31.9 82a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM23.4 81.8a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM15.6 77.8a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM10.1 70.1a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM7.7 61a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM7.9 51.8a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM10.6 42.8a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM15.6 34.4a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM22.1 27.1a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM28.8 20.9a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM36.3 15.6a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0ZM44 11.5a.8 .8 0 1 1 1.7 0a.8 .8 0 1 1 -1.7 0Z"/><path style="fill:var(--k)" d="M32.4 56.4c0 2-.9 3.6-1.9 3.6-1 0-1.9-1.6-1.9-3.6 0-2 .9-3.6 1.9-3.6 1 0 1.9 1.6 1.9 3.6ZM35.1 59.1c-1.4 1.4-3.2 1.9-3.9 1.2-.7-.7-.2-2.5 1.2-3.9 1.4-1.4 3.2-1.9 3.9-1.2 .7.7.2 2.5-1.2 3.9ZM35.1 62.9c-2 0-3.6-.9-3.6-1.9 0-1 1.6-1.9 3.6-1.9 2 0 3.6.9 3.6 1.9 0 1-1.6 1.9-3.6 1.9ZM32.4 65.6c-1.4-1.4-1.9-3.2-1.2-3.9 .7-.7 2.5-.2 3.9 1.2 1.4 1.4 1.9 3.2 1.2 3.9-.7.7-2.5.2-3.9-1.2ZM28.6 65.6c0-2 .9-3.6 1.9-3.6 1 0 1.9 1.6 1.9 3.6 0 2-.9 3.6-1.9 3.6-1 0-1.9-1.6-1.9-3.6ZM25.9 62.9c1.4-1.4 3.2-1.9 3.9-1.2 .7.7.2 2.5-1.2 3.9-1.4 1.4-3.2 1.9-3.9 1.2-.7-.7-.2-2.5 1.2-3.9ZM25.9 59.1c2 0 3.6.9 3.6 1.9 0 1-1.6 1.9-3.6 1.9-2 0-3.6-.9-3.6-1.9 0-1 1.6-1.9 3.6-1.9ZM28.6 56.4c1.4 1.4 1.9 3.2 1.2 3.9-.7.7-2.5.2-3.9-1.2-1.4-1.4-1.9-3.2-1.2-3.9 .7-.7 2.5-.2 3.9 1.2Z"/><path style="fill:var(--a)" d="M27.9 61a2.6 2.6 0 1 1 5.2 0a2.6 2.6 0 1 1 -5.2 0ZM31.6 43.7c.3 2.2-.4 4.1-1.5 4.3-1.2.1-2.4-1.5-2.7-3.7-.3-2.2.4-4.1 1.5-4.3 1.2-.1 2.4 1.5 2.7 3.7ZM34 36.2c-.6 1.5-1.8 2.5-2.5 2.2-.8-.3-.9-1.8-.3-3.4 .6-1.5 1.8-2.5 2.5-2.2 .8.3.9 1.8.3 3.4ZM37 29.5c-.7.9-1.7 1.4-2.2 1-.5-.4-.2-1.5.6-2.4 .7-.9 1.7-1.4 2.2-1 .5.4.2 1.5-.6 2.4Z"/><path style="fill:var(--kl)" d="M29.5 61a1 1 0 1 1 2 0a1 1 0 1 1 -2 0Z"/><path style="fill:none;stroke:var(--a);stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round" d="M44.2 13.4c3.4-2 2.2-6-.6-4.8-2.2 1-1.2 3.8.6 3"/></g></symbol>
+<symbol id="art-peacock-feather" viewBox="0 0 40 120"><g style="--f:var(--feather,var(--lv));--fd:color-mix(in srgb,var(--f) 70%,#000);--fx:color-mix(in srgb,var(--f) 38%,#000);--fl:color-mix(in srgb,var(--f) 62%,#fff);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff)"><path style="fill:var(--f)" d="M20 4c.2 1.5 1.2 6.3 1.2 9 0 2.7-1.3 4.7-1.2 7 .1 2.3 1.2 4.7 1.8 7 .6 2.3.8 4.7 1.8 7 1 2.3 3.1 4.7 3.9 7 .9 2.3.5 4.7 1.2 7 .7 2.3 2.5 4.7 3 7 .5 2.3-.3 4.7 0 7 .2 2.3 1.6 4.7 1.5 7 0 2.3-1.3 4.7-1.6 7-.3 2.3.5 4.7-.1 7-.6 2.3-2.5 4.7-3.4 7-1 2.3-.7 4.7-2 7-1.4 2.3-5.1 5.5-6.1 7-1 1.5 0 1.7 0 2 0-.3 1-.5 0-2-1-1.5-4.7-4.7-6.1-7-1.3-2.3-1-4.7-2-7-.9-2.3-2.8-4.7-3.4-7-.6-2.3.2-4.7-.1-7-.3-2.3-1.6-4.7-1.6-7-.1-2.3 1.3-4.7 1.5-7 .3-2.3-.5-4.7 0-7 .5-2.3 2.3-4.7 3-7 .7-2.3.3-4.7 1.2-7 .8-2.3 2.9-4.7 3.9-7 1-2.3 1.2-4.7 1.8-7 .6-2.3 1.7-4.7 1.8-7 .1-2.3-1.2-4.3-1.2-7 0-2.7 1-7.5 1.2-9Z"/><path style="fill:none;stroke:var(--fl);stroke-width:0.45;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.8" d="M20 35.6q-6.5-2-12.9-6.5M20 35.6q6.5-2 12.9-6.5M20 41.2q-6.1-2-12.2-6.5M20 41.2q6.1-2 12.2-6.5M20 46.8q-5.7-2-11.5-6.5M20 46.8q5.7-2 11.5-6.5M20 52.4q-5.4-2-10.7-6.5M20 52.4q5.4-2 10.7-6.5M20 58q-5-2-10-6.5M20 58q5-2 10-6.5M20 63.6q-4.6-2-9.2-6.5M20 63.6q4.6-2 9.2-6.5M20 69.2q-4.2-2-8.4-6.5M20 69.2q4.2-2 8.4-6.5M20 74.8q-3.8-2-7.5-6.5M20 74.8q3.8-2 7.5-6.5M20 80.4q-3.3-2-6.6-6.5M20 80.4q3.3-2 6.6-6.5M20 86q-2.8-2-5.7-6.5M20 86q2.8-2 5.7-6.5M20 91.6q-2.3-2-4.6-6.5M20 91.6q2.3-2 4.6-6.5M20 97.2q-1.7-2-3.5-6.5M20 97.2q1.7-2 3.5-6.5"/><path style="fill:var(--a)" d="M30.6 29c0 7.2-4.7 13-10.6 13-5.9 0-10.6-5.8-10.6-13 0-7.2 4.7-13 10.6-13 5.9 0 10.6 5.8 10.6 13Z"/><path style="fill:var(--fl)" d="M28.2 29.6c0 5.6-3.7 10.2-8.2 10.2-4.5 0-8.2-4.6-8.2-10.2 0-5.6 3.7-10.2 8.2-10.2 4.5 0 8.2 4.6 8.2 10.2Z"/><path style="fill:var(--fd)" d="M26.6 30.4c0 4.5-3 8.2-6.6 8.2-3.6 0-6.6-3.7-6.6-8.2 0-4.5 3-8.2 6.6-8.2 3.6 0 6.6 3.7 6.6 8.2Z"/><path style="fill:var(--fx)" d="M20 23c2.6-1.8 5.6.4 5.4 5.2-.2 4.4-3.4 7.8-5.4 9.4-2-1.6-5.2-5-5.4-9.4-.2-4.8 2.8-7 5.4-5.2Z"/><path style="fill:var(--al);fill-opacity:.85" d="M19.5 26.4c0 1.1-.5 2-1.1 2-.6 0-1.1-.9-1.1-2 0-1.1.5-2 1.1-2 .6 0 1.1.9 1.1 2Z"/><path style="fill:none;stroke:var(--ad);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round" d="M20 38v81"/></g></symbol>
+<symbol id="art-dove" viewBox="0 0 80 64"><g style="--d:var(--dove,var(--ef));--dd:color-mix(in srgb,var(--d) 84%,var(--acc));--de:color-mix(in srgb,var(--d) 62%,var(--acc));--a:var(--metal,var(--acc))"><path style="fill:var(--dd);stroke:var(--de);stroke-width:.6;stroke-linejoin:round" d="M54.6 27c.5-1.8 1.9-7.5 2.8-10.6 .9-3.1 1.5-5.5 2.6-8 1.1-2.5 3.2-5.7 3.8-6.8-.7.8-3.1 3.7-4.4 4.6-1.3.9-2.7.5-3.2.6-.3.8-1 3.8-1.8 4.8-.8 1-2.5.8-3 1-.1.8-.2 3.8-.8 5-.6 1.2-2.2 1.7-2.6 2 .1.8-.1 3.6.6 5 .7 1.4 2.8 2.8 3.4 3.4Z"/><path style="fill:var(--d);stroke:var(--de);stroke-width:.6;stroke-linejoin:round" d="M31 34.6c-1.7.2-6.6.4-10 1-3.4.6-8.8 2.2-10.6 2.6 .4.4 2.5 1.3 2.2 2.2-.3.9-3.2 2.5-3.8 3 .6.2 3.3.6 3.8 1.4 .5.8-.8 3-1 3.6 .7 0 3.4-.6 4.2-.2 .8.4.7 2 .8 2.4 1.3-1 5.2-4.2 8-6 2.8-1.8 7.5-4.2 9-5Z"/><path style="fill:var(--d);stroke:var(--de);stroke-width:.6;stroke-linejoin:round" d="M64.6 21.6c.9.7 2.3 1.8 2.2 3-.1 1.2-1.5 2.9-3 4-1.5 1.1-3.9 1.5-5.8 2.8-1.9 1.3-3.2 3.5-5.4 4.8-2.2 1.3-5.2 2.6-8 3.2-2.8.6-6.1.7-9 .4-2.9-.3-5.9-1.4-8.2-2-2.3-.6-5.9-.7-5.8-1.4 .1-.7 3.8-2.2 6.2-3 2.4-.8 5.2-1.2 8.2-1.8 3-.6 7.1-1 10-2 2.9-1 5.7-2.7 7.6-4 1.9-1.3 2.7-3 4-3.8 1.3-.8 2.6-1.2 3.8-1.2 1.2 0 2.3.3 3.2 1Z"/><path style="fill:var(--d);stroke:var(--de);stroke-width:.6;stroke-linejoin:round" d="M52.6 29.4c-.3-1.8-.8-7.6-2-11-1.2-3.4-3-6.5-5.2-9.2-2.2-2.7-6.5-5.7-7.8-6.8-.2.9-.5 4.4-1.4 5.6-.9 1.2-3.3 1.5-4 1.8 .1.8 1 3.7.4 4.8-.6 1.1-3.3 1.7-4 2 .2.8 1.7 3.5 1.4 4.6-.3 1.1-2.8 1.8-3.4 2.2 .7.7 2.3 3.2 4 4.2 1.7 1 5 1.3 6 1.6 1.3.4 5.3 2.2 8 2.2 2.7 0 6.7-1.7 8-2Z"/><path style="fill:none;stroke:var(--de);stroke-width:0.55;stroke-linecap:round;stroke-linejoin:round" d="M36.4 8.6q5 7.4 10 17.4M32.8 15Q38.6 20.4 44 28M30 21.6q5.4 3 10.6 7.4"/><path style="fill:var(--a)" d="M66.2 23.6l4.4 2.2-4.8 1Z"/><path style="fill:var(--de)" d="M61.6 23.8a.9 .9 0 1 1 1.9 0a.9 .9 0 1 1 -1.9 0Z"/></g></symbol>
+<symbol id="art-dove-glide" viewBox="0 0 100 50"><g style="--d:var(--dove,var(--ef));--dd:color-mix(in srgb,var(--d) 84%,var(--acc));--de:color-mix(in srgb,var(--d) 62%,var(--acc));--a:var(--metal,var(--acc))"><path style="fill:var(--dd);stroke:var(--de);stroke-width:.6;stroke-linejoin:round" d="M66 24c1.3-1.5 5-6.4 8-9 3-2.6 6.1-4.6 10-6.6 3.9-2 11.2-4.5 13.4-5.4-1 .9-4.2 4.3-5.8 5.2-1.6.9-3 .3-3.6.4-.6.6-2.2 3.1-3.4 3.8-1.2.7-3.3.3-4 .4-.5.7-1.8 3.6-3 4.4-1.2.8-3.3.2-4 .2-.5.9-1.7 3.7-3 5.2-1.3 1.5-3.8 3.3-4.6 4Z"/><path style="fill:var(--d);stroke:var(--de);stroke-width:.6;stroke-linejoin:round" d="M45 36.6c-1.7.2-6.6.4-10 1-3.4.6-8.8 2.2-10.6 2.6 .4.4 2.5 1.3 2.2 2.2-.3.9-3.2 2.5-3.8 3 .6.2 3.3.6 3.8 1.4 .5.8-.8 3-1 3.6 .7 0 3.4-.6 4.2-.2 .8.4.7 2 .8 2.4 1.3-1 5.2-4.2 8-6 2.8-1.8 7.5-4.2 9-5Z"/><path style="fill:var(--d);stroke:var(--de);stroke-width:.6;stroke-linejoin:round" d="M78.6 23.6c.9.7 2.3 1.8 2.2 3-.1 1.2-1.5 2.9-3 4-1.5 1.1-3.9 1.5-5.8 2.8-1.9 1.3-3.2 3.5-5.4 4.8-2.2 1.3-5.2 2.6-8 3.2-2.8.6-6.1.7-9 .4-2.9-.3-5.9-1.4-8.2-2-2.3-.6-5.9-.7-5.8-1.4 .1-.7 3.8-2.2 6.2-3 2.4-.8 5.2-1.2 8.2-1.8 3-.6 7.1-1 10-2 2.9-1 5.7-2.7 7.6-4 1.9-1.3 2.7-3 4-3.8 1.3-.8 2.6-1.2 3.8-1.2 1.2 0 2.3.3 3.2 1Z"/><path style="fill:var(--d);stroke:var(--de);stroke-width:.6;stroke-linejoin:round" d="M66.4 28.4c-1.7-1.5-5.6-6-10-9-4.4-3-9.4-6.3-16.4-8.8-7-2.5-21.2-5.2-25.4-6.2 1 1 5.3 4.6 5.8 5.8 .5 1.2-2.3 1.2-2.8 1.4 1.3.6 6.9 2.7 7.8 3.6 .9.9-2 1.7-2.4 2 1.6.4 8.1 1.7 9.4 2.6 1.3.9-1.5 2.2-1.8 2.6 1.6.3 8.3.9 9.8 1.6 1.5.7-.7 2.2-.8 2.6 2.2.5 8.5 2.9 13 3.2 4.5.3 11.5-1.2 13.8-1.4Z"/><path style="fill:none;stroke:var(--de);stroke-width:0.55;stroke-linecap:round;stroke-linejoin:round" d="M20.4 10Q36 15.6 52 24M25.6 15.4q13 3.8 27 11.2M32.4 20Q42.6 22.6 54 28"/><path style="fill:var(--a)" d="M80.2 25.6l4.4 2.2-4.8 1Z"/><path style="fill:var(--de)" d="M75.6 25.8a.9 .9 0 1 1 1.9 0a.9 .9 0 1 1 -1.9 0Z"/></g></symbol>
+<symbol id="art-parrot" viewBox="0 0 60 100"><g style="--p:var(--parrot,var(--lv));--pd:color-mix(in srgb,var(--p) 74%,#000);--pl:color-mix(in srgb,var(--p) 55%,#fff);--px:color-mix(in srgb,var(--p) 30%,#000);--k:var(--bl);--kd:color-mix(in srgb,var(--bl) 66%,#000);--e:var(--ef);--tw:color-mix(in srgb,var(--acc) 55%,#000);--g:var(--leaf,var(--lv));--gd:color-mix(in srgb,var(--g) 70%,#000);--gl:color-mix(in srgb,var(--g) 72%,#fff);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff)"><path style="fill:var(--pd);stroke:var(--px);stroke-width:.7;stroke-linejoin:round" d="M31 62c-1.1 2.3-4.3 9.3-6.6 14-2.3 4.7-5 10.2-7 14-2 3.8-4 7.5-4.8 9 1.2-1.2 4.3-4 7-7.4 2.7-3.4 6.3-8.7 9-13C31.3 74.3 34.8 68.1 36 66ZM34 64c-.6 2.3-2.4 9.7-3.6 14-1.2 4.3-2.7 8.7-3.8 12-1.1 3.3-2.2 6.3-2.6 7.6 .9-1.4 3.8-5.2 5.6-8.6 1.8-3.4 3.9-8.2 5.4-12 1.5-3.8 3-9.2 3.6-11Z"/><path style="fill:none;stroke:var(--tw);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round" d="M14 68q20-4.4 43-1.4"/><path style="fill:var(--g)" d="M52 66.2c3.5 3.2 7.5.9 9.3-3.8-5.3-2.3-9.8-.9-9.3 3.8Z"/><path style="fill:var(--p);stroke:var(--px);stroke-width:.7;stroke-linejoin:round" d="M41.6 9c2.2.4 5.5 2.4 6.8 4.6 1.3 2.2 1 5.3 1.2 8.4 .2 3.1 0 6.3-.2 10-.2 3.7-.2 8-1 12-.8 4-2.3 8.4-4 12-1.7 3.6-3.8 7.7-6 9.4-2.2 1.7-5.1 2.2-7 1-1.9-1.2-3.6-4.7-4.4-8.4-.8-3.7-.8-9.5-.6-14 .2-4.5 1.2-8.8 2-13 .8-4.2 1.9-8.7 3-12 1.1-3.3 1.9-5.9 3.6-7.6 1.7-1.7 4.4-2.8 6.6-2.4Z"/><path style="fill:var(--pd);stroke:var(--px);stroke-width:.7;stroke-linejoin:round" d="M33.6 26c1.8-.5 5.3 1.3 6.8 4 1.5 2.7 2.2 7.8 2 12-.2 4.2-1.4 8.6-3 13-1.6 4.4-4.5 10.2-6.4 13.4-1.9 3.2-4.1 7.1-5 6-.9-1.1-.5-7.7-.6-12.4-.1-4.7-.3-11.2 0-16 .3-4.8 1-9.7 2-13 1-3.3 2.4-6.5 4.2-7Z"/><path style="fill:none;stroke:var(--pl);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round" d="M30.6 37a1.3 1.3 0 0 0 2.6 0M33.3 37a1.3 1.3 0 0 0 2.6 0M36.1 37a1.3 1.3 0 0 0 2.6 0M30 43.4a1.4 1.4 0 0 0 2.8 0M32.9 43.4a1.4 1.4 0 0 0 2.8 0M35.9 43.4a1.4 1.4 0 0 0 2.8 0M29.6 50a1.4 1.4 0 0 0 2.8 0M32.5 50a1.4 1.4 0 0 0 2.8 0M35.5 50a1.4 1.4 0 0 0 2.8 0M29.4 56.6a1.5 1.5 0 0 0 3 0M32.5 56.6a1.5 1.5 0 0 0 3 0"/><path style="fill:none;stroke:var(--a);stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round" d="M29.4 33q4.6-4 11-3"/><path style="fill:none;stroke:var(--px);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round" d="M34 24.2q7.4 6.2 15.4 2.4"/><path style="fill:none;stroke:var(--bl);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round" d="M33.6 26.4q8 6.2 16 2.4"/><path style="fill:var(--k);stroke:var(--px);stroke-width:.7;stroke-linejoin:round" d="M46.4 12.8c.8.1 3.7-.6 5 .4 1.3 1 2.7 3.4 3 5.4 .3 2-.8 5.7-1 6.8-.3-.7-.8-3.2-1.8-4-1-.8-3.5-.8-4.2-1Z"/><path style="fill:var(--kd)" d="M47.4 20.4c.5.2 2.6.5 3.2 1.2 .6.7.3 2.5.4 3-.4-.1-1.9-.1-2.6-.4-.7-.3-1.5-1.3-1.8-1.6Z"/><path style="fill:var(--e)" d="M40.3 15.4a2.3 2.3 0 1 1 4.6 0a2.3 2.3 0 1 1 -4.6 0Z"/><path style="fill:var(--px)" d="M41.9 15.4a1.1 1.1 0 1 1 2.3 0a1.1 1.1 0 1 1 -2.3 0Z"/><path style="fill:var(--a)" d="M34.2 65.4a2.2 1.5 0 1 1 4.4 0a2.2 1.5 0 1 1 -4.4 0ZM39.4 65.2a2.2 1.5 0 1 1 4.4 0a2.2 1.5 0 1 1 -4.4 0Z"/></g></symbol>
+<symbol id="art-heart" viewBox="0 0 40 36"><g style="--h:var(--heart,var(--bl));--hd:color-mix(in srgb,var(--h) 80%,#000);--hl:color-mix(in srgb,var(--h) 45%,#fff);--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff)"><g style="fill:var(--h)"><path id="art-mtf-hh" d="M20 8.4c3-5.8 11-7.2 15.4-2.8 4.4 4.8 2.6 12.8-3 18C28 27.8 22 31.6 20 34.8c-2-3.2-8-7-12.4-11.2C2 18.4.2 10.4 4.6 5.6 9 1.2 17 2.6 20 8.4Z"/></g><use href="#art-mtf-hh" style="fill:url(#art-mtf-dn)"/><path style="fill:none;stroke:var(--a);stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round" d="M20 10.6C22.3 6.1 28.6 5 32 8.5c3.4 3.7 2 9.9-2.3 14-3.5 3.3-8.1 6.2-9.7 8.7-1.6-2.5-6.2-5.4-9.7-8.7C6 18.4 4.6 12.2 8 8.5c3.4-3.5 9.7-2.4 12 2.1Z"/><path style="fill:var(--hl)" d="M9.6 7.6c-.5.5-2.6 1.7-3.2 3-.6 1.3-.2 3.8-.2 4.6 .3-.6.7-2.7 1.6-3.8 .9-1.1 3.3-2.2 4-2.6L9.6 7.6Z"/></g></symbol>
+<symbol id="art-rings" viewBox="0 0 80 60"><g style="--a:var(--metal,var(--acc));--ad:color-mix(in srgb,var(--a) 68%,#000);--al:color-mix(in srgb,var(--a) 55%,#fff);--gm:var(--gem,color-mix(in srgb,var(--ef) 55%,#fff));--gd:color-mix(in srgb,var(--gm) 78%,var(--acc))"><clipPath id="art-mtf-rclip"><rect x="34" y="36" width="12" height="16"/></clipPath><path style="fill:var(--a)" d="M13 35a17 15.4 0 1 1 34 0a17 15.4 0 1 1 -34 0ZM16.8 35.6a13.2 11.6 0 1 0 26.4 0a13.2 11.6 0 1 0 -26.4 0Z"/><path style="fill:var(--ad)" d="M16.8 33.4a13.2 10.6 0 1 1 26.4 0a13.2 10.6 0 1 1 -26.4 0ZM16.8 35.6a13.2 11.6 0 1 0 26.4 0a13.2 11.6 0 1 0 -26.4 0Z"/><path style="fill:var(--al)" d="M14.8 33c.5-1.4 1.3-6.3 3.2-8.4 1.9-2.1 6.7-3.3 8-4-1 .5-4.4.9-6 2.8-1.6 1.9-2.8 7.2-3.4 8.6l-1.8 1Z"/><path style="fill:var(--a)" d="M33 33a17 15.4 0 1 1 34 0a17 15.4 0 1 1 -34 0ZM36.8 33.6a13.2 11.6 0 1 0 26.4 0a13.2 11.6 0 1 0 -26.4 0Z"/><path style="fill:var(--ad)" d="M36.8 31.4a13.2 10.6 0 1 1 26.4 0a13.2 10.6 0 1 1 -26.4 0ZM36.8 33.6a13.2 11.6 0 1 0 26.4 0a13.2 11.6 0 1 0 -26.4 0Z"/><path style="fill:var(--al)" d="M34.8 31c.5-1.4 1.3-6.3 3.2-8.4 1.9-2.1 6.7-3.3 8-4-1 .5-4.4.9-6 2.8-1.6 1.9-2.8 7.2-3.4 8.6l-1.8 1Z"/><g clip-path="url(#art-mtf-rclip)"><path style="fill:var(--a)" d="M13 35a17 15.4 0 1 1 34 0a17 15.4 0 1 1 -34 0ZM16.8 35.6a13.2 11.6 0 1 0 26.4 0a13.2 11.6 0 1 0 -26.4 0Z"/><path style="fill:var(--ad)" d="M16.8 33.4a13.2 10.6 0 1 1 26.4 0a13.2 10.6 0 1 1 -26.4 0ZM16.8 35.6a13.2 11.6 0 1 0 26.4 0a13.2 11.6 0 1 0 -26.4 0Z"/><path style="fill:var(--al)" d="M14.8 33c.5-1.4 1.3-6.3 3.2-8.4 1.9-2.1 6.7-3.3 8-4-1 .5-4.4.9-6 2.8-1.6 1.9-2.8 7.2-3.4 8.6l-1.8 1Z"/></g><path style="fill:var(--a)" d="M47.4 16.6h5.2v2.8H47.4Z"/><path style="fill:var(--gm)" d="M45.6 12.6h8.8l3 3.4L50 24.4 42.6 16Z"/><path style="fill:var(--gd)" d="M50 24.4L53.6 16h3.8Z"/><path style="fill:none;stroke:var(--gd);stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round" d="M42.6 16H57.4m-10-3.4l-1 3.4L50 24.4 53.6 16l-1-3.4"/><path style="fill:#fff;fill-opacity:.9" d="M46.2 13.4h2l-1.2 2Z"/></g></symbol>
+<symbol id="art-bow" viewBox="0 0 80 60"><g style="--r:var(--ribbon,var(--bl));--rd:color-mix(in srgb,var(--r) 74%,#000);--rl:color-mix(in srgb,var(--r) 52%,#fff)"><path style="fill:var(--rd)" d="M37.4 29.4c-1 1.7-4 6.5-6 10-2 3.5-4.3 8.1-6 11-1.7 2.9-3.7 5.5-4.4 6.6 .9-.5 4.2-3.3 5.6-3 1.4.3 2.5 3.8 3 4.6 .7-1.8 2.2-6.6 4-11 1.8-4.4 5.7-13 6.8-15.6ZM42.6 29.4c1 1.6 4.2 6.4 6 9.6 1.8 3.2 3.3 6.8 4.8 9.4 1.5 2.6 3.3 5 4 6-1-.3-4.4-2.4-5.8-2-1.4.4-2.2 3.8-2.6 4.6-.5-1.7-1.4-6.2-3-10.4-1.6-4.2-5.3-12.2-6.4-14.6Z"/><path style="fill:var(--r)" d="M37 22.6c-1.6-2.8-6.3-7.7-10-10.2-3.7-2.5-8.6-4.8-12-5-3.4-.2-7 1.7-8.6 4-1.6 2.3-1.8 7-1 10 .8 3 2.9 6.3 6 8 3.1 1.7 8.4 2 12.6 2 4.2 0 10.2-.5 12.4-2 2.2-1.5 2.2-4 .6-6.8ZM43 22.6c1.6-2.8 6.3-7.7 10-10.2 3.7-2.5 8.6-4.8 12-5 3.4-.2 7 1.7 8.6 4 1.6 2.3 1.8 7 1 10-.8 3-2.9 6.3-6 8-3.1 1.7-8.4 2-12.6 2-4.2 0-10.2-.5-12.4-2-2.2-1.5-2.2-4-.6-6.8Z"/><path style="fill:var(--rd)" d="M36.6 23.4c-1.3-1.7-5.7-4.5-8.6-6-2.9-1.5-6.9-2.8-9-2.8-2.1 0-3.7 1.7-3.6 3 .1 1.3 2 3.7 4.2 5 2.2 1.3 6.1 2.2 8.8 3 2.7.8 6.2 2.4 7.6 2 1.4-.4 1.9-2.5.6-4.2ZM43.4 23.4c1.3-1.7 5.7-4.5 8.6-6 2.9-1.5 6.9-2.8 9-2.8 2.1 0 3.7 1.7 3.6 3-.1 1.3-2 3.7-4.2 5-2.2 1.3-6.1 2.2-8.8 3-2.7.8-6.2 2.4-7.6 2-1.4-.4-1.9-2.5-.6-4.2Z"/><path style="fill:none;stroke:var(--rl);stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.8" d="M8.4 13.8q7.6-4.6 18 .2m45.2-.2Q64 9.2 53.6 14"/><g style="fill:var(--r)"><path id="art-mtf-bk" d="M36.4 21.4c.8-1.1 2.4-1.8 3.6-1.8 1.2 0 2.8.7 3.6 1.8 .8 1.1 1 3.4 1 5 0 1.6-.4 3.6-1.2 4.6-.8 1-2.3 1.4-3.4 1.4-1.1 0-2.6-.4-3.4-1.4-.8-1-1.2-3-1.2-4.6 0-1.6.2-3.9 1-5Z"/></g><use href="#art-mtf-bk" style="fill:url(#art-mtf-dn)"/><path style="fill:none;stroke:var(--rd);stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round" d="M38 22.4q1 4 0 8.2"/></g></symbol>
+<symbol id="art-tassel" viewBox="0 0 24 72"><g style="--t:var(--tassel,var(--acc));--td:color-mix(in srgb,var(--t) 68%,#000);--tl:color-mix(in srgb,var(--t) 55%,#fff)"><path style="fill:none;stroke:var(--t);stroke-width:1;stroke-linecap:round;stroke-linejoin:round" d="M9.6 4a2.4 3.4 0 1 1 4.8 0a2.4 3.4 0 1 1 -4.8 0Z"/><path style="fill:var(--t)" d="M12 7c2.6.4 5.6 5 5.1 9.4-.4 3.4-2.5 5.4-5.1 5.8-2.6-.4-4.7-2.4-5.1-5.8C6.4 12 9.4 7.4 12 7ZM12 25h3.4c1 15 3.6 30 4.8 41q-3.8 2.2-8.2 1.4-4.4.8-8.2-1.4C5 55 7.6 40 8.6 25H12Z"/><path style="fill:url(#art-mtf-sph)" d="M12 7c2.6.4 5.6 5 5.1 9.4-.4 3.4-2.5 5.4-5.1 5.8-2.6-.4-4.7-2.4-5.1-5.8C6.4 12 9.4 7.4 12 7Z"/><path style="fill:url(#art-mtf-cyl)" d="M12 25h3.4c1 15 3.6 30 4.8 41q-3.8 2.2-8.2 1.4-4.4.8-8.2-1.4C5 55 7.6 40 8.6 25H12Z"/><path style="fill:none;stroke:var(--td);stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round" d="M9.2 26L5.4 66.4M10.2 26L7.6 66.4M11.1 26L9.8 66.4M12 26V66.4M12.9 26l1.3 40.4M13.8 26l2.6 40.4M14.8 26l3.8 40.4"/><path style="fill:none;stroke:var(--tl);stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.8" d="M9.7 27L6.5 64m5-37l-.6 37m2.5-37l1.9 37"/><path style="fill:var(--td)" d="M8.4 21.8h7.2v3.6H8.4Z"/><path style="fill:var(--tl)" d="M8.4 22.8h7.2v.7H8.4Z"/></g></symbol>
+<symbol id="art-bell" viewBox="0 0 24 30"><g style="--b:var(--bell,var(--acc));--bd:color-mix(in srgb,var(--b) 66%,#000);--bx:color-mix(in srgb,var(--b) 30%,#000)"><path style="fill:none;stroke:var(--b);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round" d="M10 3.2a2 2 0 1 1 4 0a2 2 0 1 1 -4 0Z"/><path style="fill:var(--bd)" d="M9.8 5h4.4V7.6H9.8Z"/><path style="fill:var(--b)" d="M1.8 17a10.2 10.2 0 1 1 20.4 0a10.2 10.2 0 1 1 -20.4 0Z"/><path style="fill:none;stroke:var(--bd);stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round" d="M2.2 14.6q9.8 4.8 19.6 0"/><path style="fill:var(--bx)" d="M5.4 20.6c1.1.5 4.4 3 6.6 3 2.2 0 5.5-2.5 6.6-3-1.1 1-4.4 6-6.6 6-2.2 0-5.5-5-6.6-6Z"/><path style="fill:var(--bd)" d="M10.5 23.8a1.5 1.5 0 1 1 3 0a1.5 1.5 0 1 1 -3 0Z"/><path style="fill:url(#art-mtf-sph)" d="M1.8 17a10.2 10.2 0 1 1 20.4 0a10.2 10.2 0 1 1 -20.4 0Z"/></g></symbol>
+
+  </defs>
+</svg>
+
+<div id="cards"></div>
+
+<script>
+/* ================================================================
+   DATA  -  change the wording here, save, then run "Make Cards.bat"
+   ================================================================ */
+const D = {
+  hosts:   "Mr. & Mrs. Col Asim",
+  invite1: "request the pleasure of your company",
+  invite2: "at the Baraat of their beloved son",
+  groom:   "Abdul Aleem",
+  joiner:  "with",
+  bride:   "Laiba",
+  event:   "Baraat",
+  day:     "Thursday",
+  dateNum: "31", dateSup: "st",
+  month:   "December", year: "2026",
+  time:    "at 2:00 pm",
+  venue:   "Noor Mahal Marquee",
+  place:   "G.T Road, Islamabad",
+  urdu:    "آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی",   // "Your presence will be a source of joy for us"
+  rsvp:    ""                                         // e.g. "RSVP: 0300 1234567"  (leave "" to hide)
+};
+
+/* ================================================================
+   DRAWING HELPERS
+   ================================================================ */
+const f = n => +n.toFixed(2);
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+// Cusped (multifoil) Mughal arch. Left side from (x, yBase) up to the spring line, lobed pointed top, down the right side.
+function archD(x, w, ySpring, yBase, k = .62, lobes = 7, open = false) {
+  const s = w / 2, R = k * w, cxL = x + R, cxR = x + w - R;
+  const ta = Math.acos((s - R) / R);
+  const left = [], right = [];
+  for (let i = 0; i <= lobes; i++) {
+    const t = Math.PI - (Math.PI - ta) * i / lobes;
+    left.push([cxL + R * Math.cos(t), ySpring - R * Math.sin(t)]);
+  }
+  for (let i = lobes; i >= 0; i--) {
+    const t = Math.PI - (Math.PI - ta) * i / lobes;
+    right.push([cxR - R * Math.cos(t), ySpring - R * Math.sin(t)]);
+  }
+  let d = `M${f(x)},${f(yBase)} L${f(x)},${f(ySpring)}`;
+  const pts = left.concat(right.slice(1));
+  for (let i = 1; i < pts.length; i++) {
+    const [ax, ay] = pts[i - 1], [bx, by] = pts[i];
+    const r = Math.hypot(bx - ax, by - ay) * .62;
+    d += ` A${f(r)},${f(r)} 0 0 1 ${f(bx)},${f(by)}`;
+  }
+  d += ` L${f(x + w)},${f(yBase)}`;
+  if (!open) d += " Z";
+  return d;
+}
+function archApex(w, ySpring, k = .62) { const s = w / 2, R = k * w; return ySpring - Math.sqrt(R * R - (R - s) * (R - s)); }
+
+// Ogee / onion arch (Shah Jahani), with shoulders.
+function ogeeD(x, w, ySpring, yBase, h, open = false) {
+  const X = t => f(x + w * t), Y = t => f(ySpring - h * t);
+  let d = `M${X(0)},${f(yBase)} L${X(0)},${Y(0)}`;
+  d += ` C${X(0)},${Y(.1)} ${X(.035)},${Y(.15)} ${X(.075)},${Y(.15)}`;           // shoulder curl
+  d += ` C${X(.035)},${Y(.25)} ${X(.06)},${Y(.42)} ${X(.2)},${Y(.55)}`;           // rise
+  d += ` C${X(.34)},${Y(.68)} ${X(.46)},${Y(.78)} ${X(.5)},${Y(1)}`;              // to apex
+  d += ` C${X(.54)},${Y(.78)} ${X(.66)},${Y(.68)} ${X(.8)},${Y(.55)}`;
+  d += ` C${X(.94)},${Y(.42)} ${X(.965)},${Y(.25)} ${X(.925)},${Y(.15)}`;
+  d += ` C${X(.965)},${Y(.15)} ${X(1)},${Y(.1)} ${X(1)},${Y(0)}`;
+  d += ` L${X(1)},${f(yBase)}`;
+  if (!open) d += " Z";
+  return d;
+}
+
+// a petal pointing up from (0,0)
+function petalD(len, wid, tipPinch = .75) {
+  return `M0,0 C${f(wid)},${f(-len * .22)} ${f(wid * tipPinch)},${f(-len * .78)} 0,${f(-len)} C${f(-wid * tipPinch)},${f(-len * .78)} ${f(-wid)},${f(-len * .22)} 0,0Z`;
+}
+// petal ring element for mandala: from radius r1 to r2
+function ringPetal(r1, r2, w, pinch = .7) {
+  const L = r2 - r1;
+  return `M0,${f(-r1)} C${f(w)},${f(-r1 - L * .2)} ${f(w * pinch)},${f(-r2 + L * .28)} 0,${f(-r2)} C${f(-w * pinch)},${f(-r2 + L * .28)} ${f(-w)},${f(-r1 - L * .2)} 0,${f(-r1)}Z`;
+}
+// Gold line-art mandala centred at 0,0. sw = base stroke width.
+function mandala(R, opt = {}) {
+  const sw = opt.sw || 1.6, st = opt.stroke || "url(#gold)", o = [];
+  const rot = (n, fn, off = 0) => { let s = ""; for (let i = 0; i < n; i++) s += `<g transform="rotate(${f(off + i * 360 / n)})">${fn(i)}</g>`; return s; };
+  o.push(`<circle r="${f(R * .1)}" fill="none" stroke="${st}" stroke-width="${sw}"/>`);
+  o.push(`<circle r="${f(R * .05)}" fill="${st}"/>`);
+  o.push(rot(8, () => `<path d="${ringPetal(R * .1, R * .24, R * .055)}"/>`));
+  o.push(`<circle r="${f(R * .27)}" stroke-dasharray="1 ${f(R * .018)}" stroke-linecap="round" stroke-width="${sw * 2}"/>`);
+  o.push(rot(16, () => `<path d="${ringPetal(R * .29, R * .48, R * .06)}"/><path d="${ringPetal(R * .32, R * .44, R * .028)}"/>`));
+  o.push(rot(16, () => `<circle cy="${f(-R * .515)}" r="${f(R * .012)}" fill="${st}" stroke="none"/>`, 11.25));
+  o.push(`<circle r="${f(R * .54)}"/>`);
+  o.push(`<circle r="${f(R * .565)}"/>`);
+  o.push(rot(24, () => `<path d="${ringPetal(R * .565, R * .78, R * .055, .62)}"/><path d="${ringPetal(R * .6, R * .74, R * .022)}"/><circle cy="${f(-R * .82)}" r="${f(R * .011)}" fill="${st}" stroke="none"/>`));
+  o.push(rot(24, () => `<path d="${ringPetal(R * .57, R * .69, R * .03)}" opacity=".7"/>`, 7.5));
+  o.push(rot(48, () => `<path d="M0,${f(-R * .86)} q${f(R * .035)},${f(-R * .06)} 0,${f(-R * .12)} q${f(-R * .035)},${f(R * .06)} 0,${f(R * .12)}Z"/>`));
+  o.push(`<circle r="${f(R * .85)}" stroke-width="${sw * .8}"/>`);
+  o.push(rot(48, () => `<circle cy="${f(-R * .995)}" r="${f(R * .009)}" fill="${st}" stroke="none"/>`, 3.75));
+  return `<g fill="none" stroke="${st}" stroke-width="${sw}" stroke-linejoin="round">${o.join("")}</g>`;
+}
+
+/* ---------- painterly lotus, built per colour set ---------- */
+const LOTUS = {
+  pink:  { tip: "#d4627a", mid: "#efb0b6", base: "#fcebe4", back: "#c55069", edge: "#a8455c", vein: "#fff4ef" },
+  blush: { tip: "#cf7f8c", mid: "#f1c2c3", base: "#fdf1ea", back: "#bd6b78", edge: "#a35a66", vein: "#fff8f2" },
+  white: { tip: "#e9d9cf", mid: "#f8f0e8", base: "#ffffff", back: "#d9c3b6", edge: "#b8a08f", vein: "#ffffff" },
+  gold:  { tip: "#a8803a", mid: "#e9cf86", base: "#fff2c6", back: "#8e6a2a", edge: "#6f521e", vein: "#fff6d8" },
+  red:   { tip: "#8e1426", mid: "#c9384c", base: "#f3a6a6", back: "#6e0e1c", edge: "#560a15", vein: "#ffd2cc" },
+};
+function lotusDefs(name) {
+  const c = LOTUS[name], g = (id, a, b, m) => `<linearGradient id="${id}" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="${a}"/><stop offset=".5" stop-color="${m}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+  return g(`lf-${name}`, c.base, c.tip, c.mid) + g(`lb-${name}`, c.mid, c.back, c.tip);
+}
+// a lotus flower, base at (0,0), about 230 wide x 150 tall at scale 1
+function lotus(name, open = 1) {
+  const c = LOTUS[name];
+  const P = (len, wid, ang, grad, dx = 0, dy = 0, veins = 2) => {
+    let v = "";
+    for (let i = 1; i <= veins; i++) {
+      const t = (i / (veins + 1) - .5) * wid * .9;
+      v += `<path d="M${f(t * .2)},-4 Q${f(t)},${f(-len * .45)} ${f(t * .25)},${f(-len * .9)}" fill="none" stroke="${c.vein}" stroke-width=".9" opacity=".55"/>`;
+    }
+    return `<g transform="translate(${dx},${dy}) rotate(${f(ang * open)})"><path d="${petalD(len, wid)}" fill="url(#${grad}-${name})" stroke="${c.edge}" stroke-width="1"/>${v}</g>`;
+  };
+  return `<g>
+    ${P(78, 26, -78, "lb", -6, 2, 1)}${P(78, 26, 78, "lb", 6, 2, 1)}
+    ${P(100, 30, -56, "lb", -4, 0)}${P(100, 30, 56, "lb", 4, 0)}
+    ${P(118, 34, -34, "lb", -2, 0)}${P(118, 34, 34, "lb", 2, 0)}
+    ${P(132, 36, -12, "lb")}${P(132, 36, 12, "lb")}
+    ${P(140, 40, 0, "lf", 0, 0, 3)}
+    ${P(112, 38, -44, "lf", -8, 4)}${P(112, 38, 44, "lf", 8, 4)}
+    ${P(120, 40, -22, "lf", -6, 6, 3)}${P(120, 40, 22, "lf", 6, 6, 3)}
+    ${P(96, 36, -66, "lf", -10, 8)}${P(96, 36, 66, "lf", 10, 8)}
+    <path d="M-34,6 C-20,22 20,22 34,6 C20,12 -20,12 -34,6Z" fill="${name === 'gold' ? '#8e6a2a' : '#6f7d43'}"/>
+  </g>`;
+}
+function bud(name) {
+  const c = LOTUS[name];
+  return `<g><path d="${petalD(70, 22, .55)}" transform="rotate(-14)" fill="url(#lb-${name})" stroke="${c.edge}" stroke-width="1"/>
+    <path d="${petalD(70, 22, .55)}" transform="rotate(14)" fill="url(#lb-${name})" stroke="${c.edge}" stroke-width="1"/>
+    <path d="${petalD(78, 24, .5)}" fill="url(#lf-${name})" stroke="${c.edge}" stroke-width="1"/>
+    <path d="M0,-6 Q2,-40 0,-70" stroke="${c.vein}" stroke-width=".9" fill="none" opacity=".5"/></g>`;
+}
+// lotus leaf (pad) seen in perspective, centre (0,0)
+function pad(rx, ry, light = "#8a9a5b", dark = "#4f5f2f", rim = "#3f4c24", goldRim = false) {
+  const id = "pd" + Math.random().toString(36).slice(2, 8);
+  let veins = "";
+  for (let i = 0; i < 14; i++) {
+    const a = -Math.PI / 2 + .25 + i * (2 * Math.PI - .5) / 13;
+    veins += `<path d="M0,0 Q${f(Math.cos(a) * rx * .5)},${f(Math.sin(a) * ry * .55)} ${f(Math.cos(a) * rx * .95)},${f(Math.sin(a) * ry * .95)}" />`;
+  }
+  return `<g><defs><radialGradient id="${id}" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="${light}"/><stop offset="1" stop-color="${dark}"/></radialGradient></defs>
+    <path d="M0,0 L${f(Math.cos(-1.35) * rx)},${f(Math.sin(-1.35) * ry)} A${rx},${ry} 0 1 0 ${f(Math.cos(-1.79) * rx)},${f(Math.sin(-1.79) * ry)} Z" fill="url(#${id})" stroke="${goldRim ? 'url(#gold)' : rim}" stroke-width="${goldRim ? 2 : 1.4}"/>
+    <g fill="none" stroke="${goldRim ? '#d9b866' : '#c8d39a'}" stroke-width="1" opacity="${goldRim ? .6 : .45}">${veins}</g></g>`;
+}
+// side-view curled lotus leaf (like a painted miniature)
+function curlLeaf(light = "#8a9a5b", dark = "#4e5d2e", rim = "#3e4a22") {
+  const id = "cl" + Math.random().toString(36).slice(2, 8);
+  let v = "";
+  for (let i = 0; i < 9; i++) { const x = -110 + i * 27.5; v += `<path d="M0,6 Q${f(x * .5)},-6 ${f(x)},${f(-24 + Math.abs(x) * .12)}"/>`; }
+  return `<g><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${light}"/><stop offset="1" stop-color="${dark}"/></linearGradient></defs>
+    <path d="M-120,-10 C-110,-50 -40,-62 0,-56 C40,-62 110,-50 120,-10 C90,10 40,14 0,8 C-40,14 -90,10 -120,-10Z" fill="url(#${id})" stroke="${rim}" stroke-width="1.4"/>
+    <path d="M-120,-10 C-80,-22 -30,-26 0,-24 C30,-26 80,-22 120,-10" fill="none" stroke="${rim}" stroke-width="1" opacity=".5"/>
+    <g fill="none" stroke="#c9d59c" stroke-width="1" opacity=".4">${v}</g></g>`;
+}
+const stem = (d, col = "#5d6b35", w = 5) => `<path d="${d}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linecap="round"/>`;
+
+// small ornaments
+const diamondOrn = (s = 1) => `<g transform="scale(${s})" fill="url(#gold)"><path d="M0,-18 L7,0 L0,18 L-7,0Z"/><circle cx="-14" r="2.4"/><circle cx="14" r="2.4"/><path d="M-26,0 h-30 M26,0 h30" stroke="url(#gold)" stroke-width="1.4"/></g>`;
+const flourish = (flip = false) => `<svg viewBox="0 0 120 24"${flip ? ' style="transform:scaleX(-1)"' : ''}><g fill="none" stroke="var(--rule)" stroke-width="1.4" stroke-linecap="round"><path d="M2,12 H70"/><path d="M70,12 C82,12 86,4 96,4 C106,4 110,12 104,16 C98,20 90,14 96,9"/></g><circle cx="112" cy="12" r="3.4" fill="var(--rule)"/><path d="M118,12 l-3,-3 l-3,3 l3,3z" fill="var(--rule)"/></svg>`;
+const finial = (s = 1, fill = "url(#gold)") => `<g transform="scale(${s})" fill="${fill}"><path d="M0,-58 C4,-48 10,-44 10,-36 C10,-29 5,-26 0,-24 C-5,-26 -10,-29 -10,-36 C-10,-44 -4,-48 0,-58Z"/><circle cy="-18" r="5"/><path d="M-16,-8 C-8,-12 8,-12 16,-8 L10,0 H-10Z"/><circle cy="-66" r="3"/></g>`;
+const crescentStar = (s = 1, fill = "url(#gold)") => `<g transform="scale(${s})" fill="${fill}"><path d="M8,-30 A22,22 0 1 0 8,14 A17,17 0 1 1 8,-30Z"/><path d="M14,-14 l2.4,5 5.4,.6 -4,3.7 1.1,5.3 -4.9,-2.7 -4.9,2.7 1.1,-5.3 -4,-3.7 5.4,-.6z"/></g>`;
+const use = (id, x, y, w, h, style = "", extra = "") => `<use href="#${id}" x="${x}" y="${y}" width="${w}" height="${h}" style="${style}" ${extra}/>`;
+
+// a pattern made from a symbol, for velvet/jaali backgrounds
+const tilePattern = (id, size, inner) => `<pattern id="${id}" width="${size}" height="${size}" patternUnits="userSpaceOnUse">${inner}</pattern>`;
+
+/* ---------- the text column ---------- */
+function T(o = {}) {
+  const foil = o.foil ? ` foil ${o.foil}` : "";
+  const date = o.dateBlock
+    ? `<div class="dblock"><div class="side">${esc(D.day).toUpperCase()}</div><div class="big">${esc(D.dateNum)}<sup>${esc(D.dateSup)}</sup></div><div class="side">${esc(D.month).toUpperCase()} ${esc(D.year)}</div></div>`
+    : `<p class="date">${esc(D.day).toUpperCase()}, ${esc(D.dateNum)}<sup>${esc(D.dateSup).toUpperCase()}</sup> ${esc(D.month).toUpperCase()} ${esc(D.year)}</p>`;
+  return `<div class="txt">
+    ${o.noBism ? "" : `<p class="bism${o.bismFoil ? foil : ''}">&#xFDFD;</p>`}
+    <p class="hosts">${esc(D.hosts)}</p>
+    <p class="inv">${esc(D.invite1)}<br>${esc(D.invite2)}</p>
+    <p class="name groom${foil}">${esc(D.groom)}</p>
+    <p class="with">${esc(D.joiner)}</p>
+    <p class="name bride${foil}">${esc(D.bride)}</p>
+    <div class="event">${flourish(true)}<span>${esc(D.event).toUpperCase()}</span>${flourish()}</div>
+    ${date}
+    ${o.dateBlock ? "" : `<p class="time">${esc(D.time)}</p>`}
+    <p class="venue"><b>${esc(D.venue).toUpperCase()}</b><br>${esc(D.place)}${o.dateBlock ? ` &nbsp;·&nbsp; <i>${esc(D.time)}</i>` : ""}</p>
+    ${o.urdu ? `<p class="urdu">${esc(D.urdu)}</p>` : ""}
+    ${D.rsvp ? `<p class="rsvp">${esc(D.rsvp)}</p>` : ""}
+  </div>`;
+}
+
+const svg = (inner, cls = "") => `<svg class="${cls}" viewBox="0 0 1000 1400" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+const paperOverlay = (o1 = .55, o2 = .5) => `<rect width="1000" height="1400" filter="url(#mottle)" opacity="${o2}"/><rect width="1000" height="1400" filter="url(#grain)" opacity="${o1}"/>`;
+const velvetOverlay = (o = .35) => `<rect width="1000" height="1400" filter="url(#velvet)" opacity="${o}"/>`;
+const vignette = (id, col, o = .5) => `<defs><radialGradient id="${id}" cx=".5" cy=".45" r=".75"><stop offset=".55" stop-color="${col}" stop-opacity="0"/><stop offset="1" stop-color="${col}" stop-opacity="${o}"/></radialGradient></defs><rect width="1000" height="1400" fill="url(#${id})"/>`;
+
+/* ================================================================
+   THE DESIGNS
+   ================================================================ */
+const DESIGNS = [];
+
+/* 1 ─ NOOR LOTUS  (the client's favourite, refined) */
+DESIGNS.push({ id: "noor", build() {
+  const aw = 640, ax = 180, sp = 520, k = .6, apex = archApex(aw, sp, k);
+  const plant = `
+      ${stem("M60,1400 C70,1250 80,1120 110,1010", "#5d6b35", 5)}
+      ${stem("M20,1400 C30,1300 40,1210 78,1130", "#5d6b35", 4)}
+      ${stem("M120,1400 C130,1330 160,1260 190,1215", "#5d6b35", 4)}
+      <g transform="translate(70,1300) rotate(16) scale(.95)">${curlLeaf()}</g>
+      <g transform="translate(150,1230) rotate(-24) scale(.62)">${curlLeaf("#94a464", "#55652f")}</g>
+      <g transform="translate(118,1012) rotate(10) scale(.92)">${lotus("pink")}</g>
+      <g transform="translate(80,1134) rotate(-8) scale(.62)">${bud("pink")}</g>
+      <g transform="translate(193,1218) rotate(22) scale(.48)">${bud("pink")}</g>
+      <g transform="translate(30,1390) rotate(4) scale(.8)">${curlLeaf("#7f9050", "#46552a")}</g>`;
+  return {
+    art: svg(`
+      <defs>${lotusDefs("pink")}<radialGradient id="nbg" cx=".5" cy=".42" r=".7"><stop offset="0" stop-color="#fbf4e6"/><stop offset=".7" stop-color="#f3e5cc"/><stop offset="1" stop-color="#e8d4b2"/></radialGradient>
+      <clipPath id="ncard"><rect width="1000" height="1400"/></clipPath></defs>
+      <rect width="1000" height="1400" fill="url(#nbg)"/>
+      ${paperOverlay(.5, .45)}
+      <g opacity=".5"><g transform="translate(0,0)">${mandala(300, { sw: 1.3 })}</g><g transform="translate(1000,0)">${mandala(300, { sw: 1.3 })}</g></g>
+      <rect x="26" y="26" width="948" height="1348" fill="none" stroke="url(#gold)" stroke-width="2.4"/>
+      <rect x="38" y="38" width="924" height="1324" fill="none" stroke="url(#gold)" stroke-width="1"/>
+      <g transform="translate(32,700) rotate(90)">${diamondOrn(.9)}</g><g transform="translate(968,700) rotate(90)">${diamondOrn(.9)}</g>
+      <path d="${archD(ax - 14, aw + 28, sp, 1400, k, 7)}" fill="none" stroke="url(#gold)" stroke-width="1.2"/>
+      <path d="${archD(ax, aw, sp, 1400, k, 7)}" fill="#fbf3e4" fill-opacity=".55" stroke="url(#gold)" stroke-width="3"/>
+      <path d="${archD(ax + 12, aw - 24, sp, 1400, k, 7)}" fill="none" stroke="url(#gold)" stroke-width="1"/>
+      <g transform="translate(500,${f(apex - 16)})">${finial(.9)}</g>
+      <g transform="translate(500,1440)" opacity=".9">${mandala(420, { sw: 1.5 })}</g>
+      <g transform="translate(500,1405) scale(1.75)">${lotus("pink")}</g>
+      <g transform="translate(330,1395) rotate(-35) scale(.55)">${bud("pink")}</g><g transform="translate(670,1395) rotate(35) scale(.55)">${bud("pink")}</g>
+      ${plant}
+      <g transform="translate(1000,0) scale(-1,1)">${plant}</g>
+      ${vignette("nvig", "#7a5523", .18)}
+    `),
+    text: T({ foil: "foil-deep", urdu: false }),
+  };
+}});
+
+/* 2 ─ SHAHI MAROON  (royal Baraat) */
+DESIGNS.push({ id: "shahi", build() {
+  const aw = 700, ax = 150, sp = 500, k = .6, apex = archApex(aw, sp, k);
+  const lantern = (x, len, s) => `<line x1="${x}" y1="42" x2="${x}" y2="${42 + len}" stroke="url(#gold)" stroke-width="1.6"/>${use("art-lantern", x - 20 * s, 42 + len, 40 * s, 100 * s, "--metal:#d4ad55;--acc:#c9a24e;--glow:#ffe2a0")}`;
+  return {
+    art: svg(`
+      <defs>${lotusDefs("gold")}
+        <radialGradient id="sbg" cx=".5" cy=".45" r=".75"><stop offset="0" stop-color="#7d1a2b"/><stop offset=".6" stop-color="#5a0f1d"/><stop offset="1" stop-color="#330710"/></radialGradient>
+        ${tilePattern("sjaali", 80, `<use href="#art-jaali-tile" width="80" height="80" style="--jaali:#d4ad55;--acc:#d4ad55"/>`)}
+        <radialGradient id="sglow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd27a" stop-opacity=".35"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+        <clipPath id="spanel"><path d="${archD(ax, aw, sp, 1310, k, 7)}"/></clipPath>
+      </defs>
+      <rect width="1000" height="1400" fill="url(#sbg)"/>
+      <rect width="1000" height="1400" fill="url(#sjaali)" opacity=".09"/>
+      ${velvetOverlay(.3)}
+      <rect x="22" y="22" width="956" height="1356" fill="none" stroke="url(#goldBright)" stroke-width="3"/>
+      <rect x="34" y="34" width="932" height="1332" fill="none" stroke="url(#goldBright)" stroke-width="1"/>
+      ${[[34, 34], [966, 34], [34, 1366], [966, 1366]].map(([x, y]) => `<g transform="translate(${x},${y})">${mandala(70, { sw: 1.1, stroke: "url(#goldBright)" })}</g>`).join("")}
+      <ellipse cx="88" cy="300" rx="70" ry="90" fill="url(#sglow)"/><ellipse cx="912" cy="250" rx="70" ry="90" fill="url(#sglow)"/>
+      ${lantern(88, 150, 1.8)}${lantern(912, 100, 1.8)}
+      <path d="${archD(ax - 16, aw + 32, sp, 1326, k, 7)}" fill="none" stroke="url(#goldBright)" stroke-width="1.4"/>
+      <g filter="url(#shadow)"><path d="${archD(ax, aw, sp, 1310, k, 7)}" fill="#f8eedb"/></g>
+      <g clip-path="url(#spanel)">
+        ${paperOverlay(.45, .35)}
+        <g transform="translate(500,1330)" opacity=".75">${mandala(400, { sw: 1.4 })}</g>
+        <g transform="translate(500,1300) scale(1.5)">${lotus("gold")}</g>
+        <g transform="translate(330,1300) rotate(-38) scale(.6)">${bud("gold")}</g><g transform="translate(670,1300) rotate(38) scale(.6)">${bud("gold")}</g>
+      </g>
+      <path d="${archD(ax, aw, sp, 1310, k, 7)}" fill="none" stroke="url(#gold)" stroke-width="5"/>
+      <path d="${archD(ax + 14, aw - 28, sp, 1296, k, 7)}" fill="none" stroke="url(#gold)" stroke-width="1.2"/>
+      <g transform="translate(500,${f(apex - 18)})">${finial(.95, "url(#goldBright)")}</g>
+      <g transform="translate(500,${f(apex - 100)})">${crescentStar(.75, "url(#goldBright)")}</g>
+    `),
+    text: T({ foil: "foil-deep" }),
+  };
+}});
+
+/* 3 ─ ZUMURRUD JHAROKHA  (emerald palace window) */
+DESIGNS.push({ id: "zumurrud", build() {
+  const cx = 230, cw = 540, csp = 600, ch = 300;
+  const side = (x) => {
+    const w = 150, sp = 720, h = 110, cxm = x + w / 2;
+    return `<path d="${ogeeD(x, w, sp, 1220, h)}" fill="#062219" fill-opacity=".55" stroke="url(#goldBright)" stroke-width="2.2"/>
+      <path d="${ogeeD(x + 9, w - 18, sp, 1220, h - 12)}" fill="none" stroke="url(#goldBright)" stroke-width=".9"/>
+      <line x1="${cxm}" y1="${sp - h + 20}" x2="${cxm}" y2="${sp - 10}" stroke="url(#goldBright)" stroke-width="1.2"/>
+      <ellipse cx="${cxm}" cy="${sp + 100}" rx="60" ry="80" fill="url(#zglow)"/>
+      ${use("art-lantern", cxm - 36, sp - 10, 72, 180, "--metal:#d4ad55;--acc:#c9a24e;--glow:#ffe2a0")}
+      <rect x="${x + 20}" y="${1000}" width="${w - 40}" height="200" fill="url(#zjaali)" opacity=".55"/>
+      <rect x="${x + 20}" y="${1000}" width="${w - 40}" height="200" fill="none" stroke="url(#goldBright)" stroke-width="1"/>`;
+  };
+  // kangura (Mughal leaf battlements)
+  let kang = "";
+  for (let x = 30; x <= 970; x += 40) kang += `<path transform="translate(${x},104)" d="M-14,0 C-14,-14 -6,-18 0,-30 C6,-18 14,-14 14,0Z" fill="url(#goldBright)"/>`;
+  return {
+    art: svg(`
+      <defs>
+        <radialGradient id="zbg" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#1b5e48"/><stop offset=".6" stop-color="#0e3f30"/><stop offset="1" stop-color="#06231a"/></radialGradient>
+        ${tilePattern("zjaali", 40, `<use href="#art-jaali-tile" width="40" height="40" style="--jaali:#d4ad55;--acc:#d4ad55"/>`)}
+        ${tilePattern("zjaali2", 90, `<use href="#art-jaali-tile" width="90" height="90" style="--jaali:#d4ad55;--acc:#d4ad55"/>`)}
+        <radialGradient id="zglow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd27a" stop-opacity=".4"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+        <radialGradient id="zin" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="#1f6a52"/><stop offset="1" stop-color="#0a3528"/></radialGradient>
+      </defs>
+      <rect width="1000" height="1400" fill="url(#zbg)"/>
+      <rect width="1000" height="1400" fill="url(#zjaali2)" opacity=".07"/>
+      ${velvetOverlay(.32)}
+      ${kang}
+      <rect x="20" y="104" width="960" height="8" fill="url(#goldBright)"/>
+      <line x1="20" y1="122" x2="980" y2="122" stroke="url(#goldBright)" stroke-width="1.2"/>
+      <rect x="20" y="1220" width="960" height="2.5" fill="url(#goldBright)"/>
+      <rect x="20" y="1236" width="960" height="130" fill="url(#zjaali)" opacity=".5"/>
+      <rect x="20" y="1236" width="960" height="130" fill="none" stroke="url(#goldBright)" stroke-width="1.2"/>
+      <line x1="20" y1="1380" x2="980" y2="1380" stroke="url(#goldBright)" stroke-width="3"/>
+      <line x1="20" y1="104" x2="20" y2="1380" stroke="url(#goldBright)" stroke-width="2"/><line x1="980" y1="104" x2="980" y2="1380" stroke="url(#goldBright)" stroke-width="2"/>
+      ${side(45)}${side(805)}
+      ${[205, 795].map(x => `<rect x="${x - 9}" y="${csp - 20}" width="18" height="680" fill="none" stroke="url(#goldBright)" stroke-width="1.4"/><circle cx="${x}" cy="${csp - 34}" r="9" fill="url(#goldBright)"/>`).join("")}
+      <path d="${ogeeD(cx - 14, cw + 28, csp, 1220, ch + 14)}" fill="none" stroke="url(#goldBright)" stroke-width="1.2"/>
+      <path d="${ogeeD(cx, cw, csp, 1220, ch)}" fill="url(#zin)" stroke="url(#goldBright)" stroke-width="4"/>
+      <path d="${ogeeD(cx + 12, cw - 24, csp, 1220, ch - 14)}" fill="none" stroke="url(#goldBright)" stroke-width="1"/>
+      <g transform="translate(500,${csp - ch - 12})">${finial(.85, "url(#goldBright)")}</g>
+      <clipPath id="zclip"><rect x="0" y="0" width="1000" height="1219"/></clipPath><g clip-path="url(#zclip)"><g transform="translate(500,1219)" opacity=".8">${mandala(175, { sw: 1.1, stroke: "url(#goldBright)" })}</g></g>
+      <text x="500" y="186" text-anchor="middle" dominant-baseline="middle" font-family="Amiri" font-size="48" fill="url(#goldBright)">&#xFDFD;</text>
+      <rect x="${cx}" y="1222" width="${cw}" height="14" fill="#0b3a2c"/>
+    `),
+    text: T({ foil: "foil-light", noBism: true }),
+  };
+}});
+
+/* 4 ─ PICHWAI NIGHT LOTUS  (midnight lotus pond) */
+DESIGNS.push({ id: "pichwai", build() {
+  const aw = 680, ax = 160, sp = 500, k = .6, apex = archApex(aw, sp, k);
+  let stars = "";
+  for (let i = 0; i < 70; i++) {
+    const x = (i * 137.5) % 1000, y = 40 + ((i * 89.3) % 700), r = .8 + (i % 4) * .5;
+    if (x > ax - 20 && x < ax + aw + 20 && y > apex - 30) continue;
+    stars += `<circle cx="${f(x)}" cy="${f(y)}" r="${r}" fill="#f3dc96" opacity="${.35 + (i % 5) * .12}"/>`;
+  }
+  // pond: rows of pads + flowers
+  let pond = "";
+  const rows = [
+    { y: 1150, n: 7, rx: 62, ry: 20, off: 0 },
+    { y: 1230, n: 6, rx: 72, ry: 23, off: 80 },
+    { y: 1315, n: 7, rx: 82, ry: 26, off: 20 },
+  ];
+  rows.forEach((r, ri) => {
+    for (let i = 0; i < r.n; i++) {
+      const x = r.off + 70 + i * (1000 / r.n) + ((i * 37) % 30);
+      pond += `<g transform="translate(${f(x)},${r.y})">${pad(r.rx, r.ry, "#2f6a5a", "#173f37", "#0e2b26", true)}</g>`;
+    }
+  });
+  const flowers = [
+    [95, 1150, .62, "pink", 1060], [235, 1095, .7, "white", 1000], [395, 1170, .5, "pink", 1120],
+    [605, 1170, .5, "white", 1120], [765, 1095, .7, "pink", 1000], [905, 1150, .62, "white", 1060],
+    [500, 1260, .95, "pink", 1300],
+  ];
+  let fl = "";
+  flowers.forEach(([x, y, s, c], i) => {
+    fl += stem(`M${x},${y} C${x + (i % 2 ? 6 : -6)},${y + 60} ${x},${y + 120} ${x + 4},1400`, "#2a5a4c", 4);
+    fl += `<g transform="translate(${x},${y}) scale(${s})">${lotus(c)}</g>`;
+  });
+  const buds = [[160, 1080, -10], [320, 1110, 8], [680, 1110, -8], [840, 1080, 10]].map(([x, y, a]) =>
+    stem(`M${x},${y} C${x + 4},${y + 80} ${x - 4},${y + 160} ${x},1400`, "#2a5a4c", 3.5) + `<g transform="translate(${x},${y}) rotate(${a}) scale(.5)">${bud(a > 0 ? "pink" : "white")}</g>`).join("");
+  let water = "";
+  for (let y = 1120; y < 1400; y += 22) water += `<path d="M0,${y} q25,-6 50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0 t50,0" fill="none" stroke="#c9a24e" stroke-width="1" opacity=".22"/>`;
+  return {
+    art: svg(`
+      <defs>${lotusDefs("pink")}${lotusDefs("white")}
+        <linearGradient id="pbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b2233"/><stop offset=".5" stop-color="#103245"/><stop offset=".78" stop-color="#0f3a40"/><stop offset="1" stop-color="#0b2a2e"/></linearGradient>
+        <radialGradient id="pmoon" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f6e2a2" stop-opacity=".22"/><stop offset="1" stop-color="#f6e2a2" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="1000" height="1400" fill="url(#pbg)"/>
+      ${velvetOverlay(.28)}
+      ${stars}
+      <circle cx="500" cy="260" r="330" fill="url(#pmoon)"/>
+      <rect x="24" y="24" width="952" height="1352" fill="none" stroke="url(#goldBright)" stroke-width="2.4"/>
+      <rect x="36" y="36" width="928" height="1328" fill="none" stroke="url(#goldBright)" stroke-width=".9" stroke-dasharray="1 7" stroke-linecap="round"/>
+      <rect x="44" y="44" width="912" height="1312" fill="none" stroke="url(#goldBright)" stroke-width="1"/>
+      <g transform="translate(500,${f(apex + 175)})" opacity=".2">${mandala(300, { sw: 1.4, stroke: "url(#goldBright)" })}</g>
+      <path d="${archD(ax - 14, aw + 28, sp, 1110, k, 7, true)}" fill="none" stroke="url(#goldBright)" stroke-width="1.1"/>
+      <path d="${archD(ax, aw, sp, 1110, k, 7, true)}" fill="none" stroke="url(#goldBright)" stroke-width="3"/>
+      <g transform="translate(500,${f(apex - 16)})">${finial(.9, "url(#goldBright)")}</g>
+      <rect x="0" y="1110" width="1000" height="290" fill="#0c3036" opacity=".55"/>
+      ${water}
+      ${pond}
+      ${buds}
+      ${fl}
+      ${vignette("pvig", "#02080c", .45)}
+      <rect x="24" y="24" width="952" height="1352" fill="none" stroke="url(#goldBright)" stroke-width="2.4"/>
+    `),
+    text: T({ foil: "foil-light", bismFoil: true }),
+  };
+}});
+
+/* 5 ─ IVORY JAALI LUXE  (modern minimal) */
+DESIGNS.push({ id: "jaali", build() {
+  const ax = 320, aw = 360, sp = 360, k = .62, apex = archApex(aw, sp, k), wb = 470;
+  const sprig = `<g fill="none" stroke="url(#gold)" stroke-width="1.6" stroke-linecap="round">
+      <path d="M0,0 C30,-60 80,-110 150,-140"/>
+      ${[[30, -58, -40], [55, -88, -30], [85, -112, -18], [115, -128, -8], [44, -76, 70], [72, -102, 62], [100, -122, 52], [132, -136, 42]].map(([x, y, a]) =>
+        `<path transform="translate(${x},${y}) rotate(${a})" d="M0,0 C8,-10 8,-26 0,-36 C-8,-26 -8,-10 0,0Z M0,-4 V-30" />`).join("")}
+    </g>`;
+  return {
+    art: svg(`
+      <defs>${tilePattern("jj", 50, `<use href="#art-jaali-tile" width="50" height="50" style="--jaali:#b8913f;--acc:#b8913f"/>`)}
+        <clipPath id="jwin"><path d="${archD(ax, aw, sp, wb, k, 7)}"/></clipPath>
+        <radialGradient id="jbg" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#f1e8d8"/></radialGradient>
+      </defs>
+      <rect width="1000" height="1400" fill="url(#jbg)"/>
+      ${paperOverlay(.4, .2)}
+      <rect x="40" y="40" width="920" height="1320" fill="none" stroke="url(#gold)" stroke-width="1.4"/>
+      <rect x="50" y="50" width="900" height="1300" fill="none" stroke="url(#gold)" stroke-width=".6"/>
+      <g clip-path="url(#jwin)"><rect x="${ax}" y="${f(apex)}" width="${aw}" height="${f(wb - apex)}" fill="#f6eedf"/>
+        <rect x="${ax}" y="${f(apex)}" width="${aw}" height="${f(wb - apex)}" fill="url(#jj)" opacity=".85"/></g>
+      <path d="${archD(ax, aw, sp, wb, k, 7)}" fill="none" stroke="url(#gold)" stroke-width="3"/>
+      <path d="${archD(ax - 14, aw + 28, sp, wb + 14, k, 7)}" fill="none" stroke="url(#gold)" stroke-width="1"/>
+      <text x="500" y="92" text-anchor="middle" dominant-baseline="middle" font-family="Amiri" font-size="44" fill="#8a6a2f">&#xFDFD;</text>
+      <circle cx="500" cy="${wb}" r="94" fill="#fbf7ef"/>
+      <circle cx="500" cy="${wb}" r="94" fill="none" stroke="url(#gold)" stroke-width="3"/>
+      <circle cx="500" cy="${wb}" r="84" fill="none" stroke="url(#gold)" stroke-width="1"/>
+      <circle cx="500" cy="${wb}" r="102" fill="none" stroke="url(#gold)" stroke-width=".8" stroke-dasharray="1 6" stroke-linecap="round"/>
+      <text x="470" y="${wb + 16}" text-anchor="middle" font-family="Pinyon Script" font-size="74" fill="url(#gold)">${esc(D.groom.trim().split(/\s+/).pop()[0])}</text>
+      <text x="532" y="${wb + 40}" text-anchor="middle" font-family="Pinyon Script" font-size="74" fill="url(#gold)">${esc(D.bride.trim()[0])}</text>
+      <line x1="482" y1="${wb + 34}" x2="518" y2="${wb - 30}" stroke="url(#gold)" stroke-width="1.2"/>
+      <g transform="translate(64,64) scale(1,-1)">${sprig}</g><g transform="translate(936,64) scale(-1,-1)">${sprig}</g>
+    `),
+    text: T({ foil: "foil-deep", noBism: true, dateBlock: true, urdu: true }),
+  };
+}});
+
+/* 6 ─ GUL-E-SURKH  (crimson with phoolon ki larhi) */
+DESIGNS.push({ id: "gulesurkh", build() {
+  const aw = 680, ax = 160, sp = 600, k = .6, apex = archApex(aw, sp, k);
+  // toran: draped marigold swags with hanging flower strings (phoolon ki larhi)
+  let larhi = "";
+  const joins = [], NS = 8, x0 = 30, sw = 940 / NS;
+  for (let j = 0; j <= NS; j++) joins.push(x0 + j * sw);
+  const hang = { 1: 300, 2: 170, 3: 100 };
+  joins.forEach((x, j) => {
+    const len = hang[Math.min(j, NS - j)];
+    if (!len) return;
+    larhi += `<line x1="${f(x)}" y1="40" x2="${f(x)}" y2="${40 + len}" stroke="#d4ad55" stroke-width="1.2"/>`;
+    let y = 70, k = 0;
+    for (; y < 40 + len - 10; y += 30, k++) {
+      larhi += use("art-marigold", f(x - 13), f(y - 13), 26, 26, `--marigold:${k % 2 ? "#f6b733" : "#ee8a16"}`);
+      larhi += `<circle cx="${f(x)}" cy="${f(y + 15)}" r="3" fill="url(#goldBright)"/>`;
+    }
+    larhi += use("art-rosebud", f(x - 11), f(y - 20), 22, 44, "--rose:#b3202f;--leaf:#2f5d3a", `transform="rotate(180 ${f(x)} ${f(y + 2)})"`);
+    larhi += use("art-tassel", f(x - 9), f(y + 18), 18, 54, "--tassel:#d4ad55;--acc:#d4ad55");
+  });
+  for (let j = 0; j < NS; j++) {
+    const a = joins[j], b = joins[j + 1], dip = 56;
+    for (let t = 0; t <= 1.0001; t += 1 / 11) {
+      const x = a + (b - a) * t, y = 36 + 4 * dip * t * (1 - t);
+      const c = Math.round(t * 11) % 2 ? "#f6b733" : "#ee8a16";
+      larhi += use("art-marigold", f(x - 17), f(y - 17), 34, 34, `--marigold:${c}`);
+    }
+  }
+  joins.forEach(x => { larhi += use("art-rose", f(x - 22), 14, 44, 44, "--rose:#b3202f;--bl:#b3202f"); });
+  const cluster = `
+      ${use("art-leaf", 30, -150, 60, 120, "--leaf:#2f5d3a;--lv:#2f5d3a", 'transform="rotate(-50 60 -90)"')}
+      ${use("art-leaf", 120, -170, 56, 112, "--leaf:#3a6b45;--lv:#3a6b45", 'transform="rotate(30 148 -114)"')}
+      ${use("art-rose", -40, -120, 170, 170, "--rose:#b3202f;--bl:#b3202f")}
+      ${use("art-rose", 100, -60, 120, 120, "--rose:#c43145;--bl:#c43145")}
+      ${use("art-rose", -30, 20, 110, 110, "--rose:#a21b2a;--bl:#a21b2a")}
+      ${use("art-rosebud", 150, -200, 48, 96, "--rose:#b3202f;--leaf:#2f5d3a")}
+      ${use("art-marigold", 210, 70, 60, 60, "--marigold:#ee8a16")}`;
+  return {
+    art: svg(`
+      <defs><radialGradient id="gbg" cx=".5" cy=".5" r=".75"><stop offset="0" stop-color="#9a1d2e"/><stop offset=".6" stop-color="#741222"/><stop offset="1" stop-color="#420811"/></radialGradient>
+        ${tilePattern("gbuti", 120, `<use href="#art-paisley" x="44" y="34" width="32" height="48" style="--paisley:#d4ad55;--bl:#d4ad55;--acc:#d4ad55"/>`)}
+      </defs>
+      <rect width="1000" height="1400" fill="url(#gbg)"/>
+      <rect width="1000" height="1400" fill="url(#gbuti)" opacity=".1"/>
+      ${velvetOverlay(.3)}
+      <rect x="22" y="22" width="956" height="1356" fill="none" stroke="url(#goldBright)" stroke-width="2.4"/>
+      <rect x="34" y="34" width="932" height="1332" fill="none" stroke="url(#goldBright)" stroke-width="1"/>
+      <path d="${archD(ax - 14, aw + 28, sp, 1400, k, 7)}" fill="none" stroke="url(#goldBright)" stroke-width="1.1"/>
+      <path d="${archD(ax, aw, sp, 1400, k, 7)}" fill="#5a0c18" fill-opacity=".35" stroke="url(#goldBright)" stroke-width="3"/>
+      <path d="${archD(ax + 12, aw - 24, sp, 1400, k, 7)}" fill="none" stroke="url(#goldBright)" stroke-width="1"/>
+      <g transform="translate(500,${f(apex - 14)})">${finial(.85, "url(#goldBright)")}</g>
+      <g transform="translate(500,1430)" opacity=".55">${mandala(360, { sw: 1.4, stroke: "url(#goldBright)" })}</g>
+      ${larhi}
+      <g transform="translate(60,1330)">${cluster}</g>
+      <g transform="translate(940,1330) scale(-1,1)">${cluster}</g>
+      ${vignette("gvig", "#1a0206", .4)}
+    `),
+    text: T({ foil: "foil-light", bismFoil: true }),
+  };
+}});
+
+/* ---------- render all ---------- */
+const root = document.getElementById("cards");
+for (const d of DESIGNS) {
+  const b = d.build();
+  root.insertAdjacentHTML("beforeend", `<section class="card" id="${d.id}">${b.art}${b.text}${b.front || ""}</section>`);
+}
+document.fonts.ready.then(() => { document.body.dataset.ready = "1"; });
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+/* Gold confetti - each piece falls (p), drifts (q) and flips in 3D (r); the glint (::after) runs in step with the flip */
+.fx-confetti{--cf-l:color-mix(in srgb,var(--acc) 38%,#fff);--cf-d:color-mix(in srgb,var(--acc) 64%,#000)}
+.fx-confetti .confetti-p{position:absolute;top:0;display:block;width:var(--w);height:var(--h);margin-left:calc(var(--w) * -.5);opacity:0}
+.fx-confetti .confetti-q{position:absolute;inset:0;display:block;perspective:14cqw}
+.fx-confetti .confetti-r{position:absolute;inset:0;display:block;border-radius:.12cqw}
+.fx-confetti .confetti-o{border-radius:50%}
+.fx-confetti .confetti-g{background:linear-gradient(125deg,var(--cf-d) 0%,var(--acc) 24%,var(--cf-l) 46%,var(--acc) 62%,var(--cf-d) 100%) 0 0/260% 260%}
+.fx-confetti .confetti-k{background:linear-gradient(125deg,color-mix(in srgb,var(--k) 70%,#fff) 0%,var(--k) 48%,color-mix(in srgb,var(--k) 76%,#000) 100%)}
+.fx-confetti .confetti-r::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 28%,rgb(255 255 255 / .9) 50%,transparent 72%);opacity:0}
+.play.fx-confetti .confetti-p{animation:confetti-fall 9s linear infinite backwards}
+.play.fx-confetti .confetti-q{animation:confetti-sway 2.2s ease-in-out infinite alternate}
+.play.fx-confetti .confetti-r{animation:confetti-flip var(--f) linear var(--fp) infinite}
+.play.fx-confetti .confetti-r::after{animation:confetti-glint var(--f) linear var(--fp) infinite}
+@keyframes confetti-fall{
+  0%{transform:translate3d(0,-8cqw,0) rotate(0deg);opacity:0}
+  3%{opacity:var(--a)}
+  94%{opacity:var(--a)}
+  100%{transform:translate3d(0,186cqw,0) rotate(var(--rot));opacity:0}
+}
+@keyframes confetti-sway{
+  0%{transform:translateX(calc(var(--sw) * -1)) rotate(calc(var(--rz) * -1))}
+  100%{transform:translateX(var(--sw)) rotate(var(--rz))}
+}
+@keyframes confetti-flip{
+  0%{transform:rotate3d(var(--ax),var(--ay),var(--az),0deg);background-position:0% 0%}
+  50%{background-position:100% 100%}
+  100%{transform:rotate3d(var(--ax),var(--ay),var(--az),360deg);background-position:0% 0%}
+}
+@keyframes confetti-glint{0%,18%,50%,68%,100%{opacity:0}8%{opacity:.85}58%{opacity:.6}}

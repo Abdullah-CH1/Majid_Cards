@@ -1,0 +1,66 @@
+.ix-polaroid>*{opacity:0}
+.ix-polaroid .pl-bg{position:absolute;inset:0;z-index:2;background:radial-gradient(120% 70% at 50% 38%,color-mix(in srgb,var(--bg) 88%,var(--acc)) 0%,var(--bg) 60%,color-mix(in srgb,var(--bg) 88%,#000) 100%)}
+.ix-polaroid .pl-fr{position:absolute;inset:5cqw;z-index:3;border:1px solid color-mix(in srgb,var(--dr,var(--acc)) 45%,transparent);pointer-events:none}
+.ix-polaroid .pl-fr::after{content:"";position:absolute;inset:1.2cqw;border:1px solid color-mix(in srgb,var(--dr,var(--acc)) 22%,transparent)}
+.ix-polaroid .pl-hd{position:absolute;left:8%;right:8%;top:34cqw;z-index:5;text-align:center;color:var(--it)}
+.ix-polaroid .pl-a{font-family:var(--ft),Georgia,serif;font-size:3.2cqw;letter-spacing:.16em;white-space:nowrap;text-transform:uppercase;opacity:.85}
+.ix-polaroid .pl-ev{font-family:var(--fs),Georgia,serif;font-size:13cqw;line-height:1.25;color:color-mix(in srgb,var(--acc) 72%,var(--it))}
+.ix-polaroid .pl-cam{position:absolute;inset:0;z-index:4;transform-origin:50% 57%}
+.ix-polaroid .pl-tw{position:absolute;left:0;top:0;width:100%;height:130cqw;overflow:visible}
+.ix-polaroid .pl-tw path{fill:none;stroke:color-mix(in srgb,var(--dr,var(--acc)) 65%,var(--it));stroke-width:.32;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.ix-polaroid .pl-pf{position:absolute;width:27cqw;margin-left:-13.5cqw}
+.ix-polaroid .p1{left:19cqw;top:79.2cqw;--r:-4deg;--fx:-60cqw;--fy:-10cqw}
+.ix-polaroid .p2{left:81cqw;top:79.2cqw;--r:3.5deg;--fx:60cqw;--fy:-10cqw}
+.ix-polaroid .p3{left:50cqw;top:84cqw;--r:-1deg;--fx:0cqw;--fy:-90cqw}
+.ix-polaroid .pl-sw{position:relative;transform-origin:50% 0;transform:rotate(var(--r));background:color-mix(in srgb,var(--cd) 45%,#fff);padding:2cqw 2cqw 0;box-shadow:0 1.6cqw 3.6cqw rgb(0 0 0 / .28),0 .2cqw .5cqw rgb(0 0 0 / .18)}
+.ix-polaroid .pl-peg{position:absolute;left:50%;top:-3.4cqw;width:2.4cqw;height:6.6cqw;margin-left:-1.2cqw;z-index:2;border-radius:.5cqw;background:linear-gradient(90deg,color-mix(in srgb,var(--acc) 55%,#000) 0%,color-mix(in srgb,var(--acc) 70%,#5a3a1a) 45%,color-mix(in srgb,var(--acc) 55%,#000) 100%);box-shadow:0 .4cqw .7cqw rgb(0 0 0 / .3)}
+.ix-polaroid .pl-peg::after{content:"";position:absolute;left:-.25cqw;right:-.25cqw;top:2.6cqw;height:.7cqw;border-radius:.3cqw;background:color-mix(in srgb,var(--acc) 50%,#fff)}
+.ix-polaroid .pl-ph{position:relative;width:23cqw;height:23cqw;overflow:hidden;background:color-mix(in srgb,var(--ink) 55%,#000)}
+.ix-polaroid .pl-im{position:absolute;inset:0;background:radial-gradient(90% 90% at 50% 30%,color-mix(in srgb,var(--p2,var(--acc)) 55%,#fff) 0%,color-mix(in srgb,var(--bl) 22%,var(--cd)) 100%)}
+.ix-polaroid .pl-im svg{position:absolute;left:6%;top:12%;width:88%;height:88%}
+.ix-polaroid .pl-dev{position:absolute;inset:0;background:color-mix(in srgb,var(--ink) 35%,#222)}
+.ix-polaroid .pl-im.pl-cal{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--cd);color:var(--ink);border-top:4.6cqw solid var(--bl)}
+.ix-polaroid .pl-cm{position:absolute;top:-4.6cqw;left:0;right:0;height:4.6cqw;line-height:4.6cqw;text-align:center;font-family:var(--ft),Georgia,serif;font-size:2.5cqw;letter-spacing:.28em;text-transform:uppercase;color:var(--cd)}
+.ix-polaroid .pl-cd{font-family:var(--ft),Georgia,serif;font-size:10cqw;line-height:1;font-weight:500;color:var(--ink2)}
+.ix-polaroid .pl-cw{font-family:var(--ft),Georgia,serif;font-size:2.3cqw;letter-spacing:.22em;text-transform:uppercase;margin-top:1.2cqw;opacity:.8}
+.ix-polaroid .pl-cap{height:9cqw;line-height:9cqw;text-align:center;white-space:nowrap;overflow:hidden;font-family:Caveat,var(--fs),cursive;font-weight:600;font-size:5.4cqw;color:color-mix(in srgb,var(--ink) 80%,#000);clip-path:inset(0 100% 0 0)}
+.ix-polaroid .p3 .pl-cap{font-size:4.5cqw}
+.ix-polaroid .pl-ft{position:absolute;left:10%;right:10%;top:130cqw;z-index:5;text-align:center;color:var(--it)}
+.ix-polaroid .pl-nm{font-family:var(--ft),Georgia,serif;font-size:4.6cqw;letter-spacing:.06em}
+.ix-polaroid .pl-ln{display:block;width:16cqw;height:1px;margin:3.4cqw auto;background:var(--dr,var(--acc))}
+.ix-polaroid .pl-vn{font-family:var(--ft),Georgia,serif;font-size:3.4cqw;letter-spacing:.2em;text-transform:uppercase;opacity:.92}
+.ix-polaroid .pl-ft>*{opacity:0}
+
+.play.s-polaroid .pl-bg{animation:polaroid-on 9.2s linear var(--o) both}
+.play.s-polaroid .pl-fr{animation:polaroid-hold 9.2s linear var(--o) both}
+.play.s-polaroid .pl-hd{animation:polaroid-txt 7.4s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .1s) both}
+.play.s-polaroid .pl-ft{animation:polaroid-out 1s ease-in calc(var(--o) + 7.1s) both}
+.play.s-polaroid .pl-ft>*{animation:polaroid-up 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 6s) both}
+.play.s-polaroid .pl-ft>.pl-ln{animation-delay:calc(var(--o) + 6.2s)}
+.play.s-polaroid .pl-ft>.pl-vn{animation-delay:calc(var(--o) + 6.4s)}
+.play.s-polaroid .pl-cam{animation:polaroid-push 2s cubic-bezier(.55,0,.25,1) calc(var(--o) + 7s) both}
+.play.s-polaroid .pl-tw path{animation:polaroid-draw 1.5s cubic-bezier(.4,0,.2,1) calc(var(--o) + .4s) both}
+.play.s-polaroid .pl-pf{animation:polaroid-in 1.1s cubic-bezier(.2,.8,.25,1.08) calc(var(--o) + var(--t)) both}
+.play.s-polaroid .p1{--t:1.3s}.play.s-polaroid .p2{--t:2.5s}.play.s-polaroid .p3{--t:3.7s}
+.play.s-polaroid .pl-sw{animation:polaroid-sway 3.6s ease-in-out calc(var(--o) + var(--t) + 1s) infinite alternate}
+.play.s-polaroid .p2 .pl-sw{animation-duration:4.2s}.play.s-polaroid .p3 .pl-sw{animation-duration:3.9s}
+.play.s-polaroid .pl-peg{animation:polaroid-peg .45s cubic-bezier(.34,1.6,.64,1) calc(var(--o) + var(--t) + .75s) both}
+.play.s-polaroid .pl-dev{animation:polaroid-dev 1.8s ease-out calc(var(--o) + var(--t) + 1s) both}
+.play.s-polaroid .pl-im{animation:polaroid-col 2.2s ease-out calc(var(--o) + var(--t) + 1.1s) both}
+.play.s-polaroid .pl-cap{animation:polaroid-write 1s cubic-bezier(.45,.1,.4,1) calc(var(--o) + var(--t) + 1.6s) both}
+.play.s-polaroid .card{animation:polaroid-card 1.4s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 7.6s) both}
+
+@keyframes polaroid-on{0%,100%{opacity:1}}
+@keyframes polaroid-hold{0%{opacity:0}8%,80%{opacity:1}96%,100%{opacity:0}}
+@keyframes polaroid-txt{0%{opacity:0;transform:translateY(2.4cqw)}12%,85%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes polaroid-up{0%{opacity:0;transform:translateY(2.4cqw)}100%{opacity:1;transform:none}}
+@keyframes polaroid-out{0%{opacity:1}100%{opacity:0}}
+@keyframes polaroid-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes polaroid-in{0%{opacity:0;transform:translate(var(--fx),var(--fy)) rotate(calc(var(--r) * -4))}30%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes polaroid-sway{0%{transform:rotate(var(--r))}100%{transform:rotate(calc(var(--r) * -.5))}}
+@keyframes polaroid-peg{0%{transform:scale(1.5,.4) translateY(-2cqw);opacity:0}100%{transform:none;opacity:1}}
+@keyframes polaroid-dev{0%{opacity:1}100%{opacity:0}}
+@keyframes polaroid-col{0%{filter:grayscale(1) brightness(.55) contrast(.8)}100%{filter:none}}
+@keyframes polaroid-write{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes polaroid-push{0%{opacity:1;transform:none}55%{opacity:1}100%{opacity:0;transform:scale(3.4)}}
+@keyframes polaroid-card{0%{opacity:0;transform:scale(.86)}100%{opacity:1;transform:none}}

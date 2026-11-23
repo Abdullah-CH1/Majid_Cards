@@ -1,0 +1,38 @@
+<pattern id="truck-art-chev" patternUnits="userSpaceOnUse" width="16" height="16"><rect width="16" height="16" style="fill:var(--lv)"/><path d="M0 16 8 2 16 16Z" style="fill:var(--acc)"/><path d="M4 16 8 9 12 16Z" style="fill:var(--bl)"/></pattern>
+<pattern id="truck-art-chevv" patternUnits="userSpaceOnUse" width="16" height="16"><rect width="16" height="16" style="fill:var(--lv)"/><path d="M0 0 14 8 0 16Z" style="fill:var(--acc)"/><path d="M0 4 7 8 0 12Z" style="fill:var(--bl)"/></pattern>
+<pattern id="truck-art-dots" patternUnits="userSpaceOnUse" width="12" height="10"><circle cx="6" cy="5" r="3.2" style="fill:color-mix(in srgb,var(--acc) 35%,#fff);stroke:var(--acc);stroke-width:.9"/><circle cx="5" cy="4" r="1" fill="#fff" opacity=".9"/></pattern>
+<pattern id="truck-art-dotsv" patternUnits="userSpaceOnUse" width="10" height="12"><circle cx="5" cy="6" r="3.2" style="fill:color-mix(in srgb,var(--acc) 35%,#fff);stroke:var(--acc);stroke-width:.9"/><circle cx="4" cy="5" r="1" fill="#fff" opacity=".9"/></pattern>
+<symbol id="truck-art-panel" viewBox="0 0 180 640">
+ <rect width="180" height="640" style="fill:color-mix(in srgb,var(--bl) 72%,#000)"/>
+ <rect x="0" y="0" width="180" height="16" fill="url(#truck-art-chev)"/>
+ <rect x="0" y="624" width="180" height="16" fill="url(#truck-art-chev)"/>
+ <rect x="0" y="0" width="16" height="640" fill="url(#truck-art-chevv)"/>
+ <rect x="16" y="17" width="158" height="10" fill="url(#truck-art-dots)"/>
+ <rect x="16" y="613" width="158" height="10" fill="url(#truck-art-dots)"/>
+ <rect x="18" y="27" width="10" height="586" fill="url(#truck-art-dotsv)"/>
+ <rect x="174" y="0" width="6" height="640" style="fill:var(--acc)"/>
+ <rect x="36" y="44" width="128" height="556" rx="10" style="fill:color-mix(in srgb,var(--lv) 50%,#000);stroke:var(--acc);stroke-width:2.4"/>
+ <rect x="42" y="50" width="116" height="544" rx="7" style="fill:none;stroke:color-mix(in srgb,var(--acc) 60%,#fff);stroke-width:.8;stroke-dasharray:3 3"/>
+ <path d="M42 50 Q 40 28 66 30 Q 82 42 100 30 Q 118 42 134 30 Q 160 28 158 50" style="fill:none;stroke:var(--acc);stroke-width:1.4;stroke-dasharray:2 1.6"/>
+ <use href="#art-bell" x="61" y="30" width="10" height="13"/><use href="#art-bell" x="95" y="30" width="10" height="13"/><use href="#art-bell" x="129" y="30" width="10" height="13"/>
+ <use href="#art-sprig" x="52" y="72" width="40" height="80" transform="rotate(-25 72 112)"/>
+ <use href="#art-sprig" x="108" y="72" width="40" height="80" transform="rotate(25 128 112)"/>
+ <use href="#art-rose" x="70" y="78" width="60" height="60"/>
+ <use href="#art-marigold" x="46" y="128" width="28" height="28"/><use href="#art-marigold" x="126" y="128" width="28" height="28"/>
+ <use href="#art-parrot" x="58" y="168" width="48" height="80"/>
+ <use href="#art-jasmine" x="112" y="196" width="26" height="26"/>
+ <path d="M100 262 l20 18 -20 18 -20 -18Z" style="fill:color-mix(in srgb,var(--acc) 35%,#fff);stroke:var(--acc);stroke-width:1.6"/>
+ <circle cx="100" cy="280" r="5" style="fill:var(--bl)"/>
+ <use href="#art-paisley" x="56" y="312" width="44" height="66"/>
+ <use href="#art-paisley" x="104" y="330" width="40" height="60" transform="rotate(180 124 360)"/>
+ <use href="#art-leaf" x="54" y="408" width="22" height="44" transform="rotate(-40 65 430)"/>
+ <use href="#art-leaf" x="124" y="408" width="22" height="44" transform="rotate(40 135 430)"/>
+ <use href="#art-rose" x="66" y="404" width="68" height="68"/>
+ <use href="#art-marigold" x="50" y="470" width="30" height="30"/><use href="#art-marigold" x="120" y="470" width="30" height="30"/>
+ <use href="#art-jasmine" x="88" y="480" width="24" height="24"/>
+ <path d="M48 534 60 520 72 534 84 520 96 534 108 520 120 534 132 520 144 534 152 525 152 534Z" style="fill:var(--acc)"/>
+ <path d="M48 536H152" style="stroke:var(--acc);stroke-width:1.2"/>
+ <g style="fill:color-mix(in srgb,var(--acc) 35%,#fff);stroke:var(--acc);stroke-width:.9"><circle cx="58" cy="545" r="3.2"/><circle cx="72" cy="545" r="3.2"/><circle cx="86" cy="545" r="3.2"/><circle cx="100" cy="545" r="3.2"/><circle cx="114" cy="545" r="3.2"/><circle cx="128" cy="545" r="3.2"/><circle cx="142" cy="545" r="3.2"/></g>
+ <path d="M48 560 Q 74 584 100 560 Q 126 584 152 560" style="fill:none;stroke:var(--acc);stroke-width:1.4;stroke-dasharray:2 1.6"/>
+ <use href="#art-bell" x="69" y="570" width="10" height="13"/><use href="#art-bell" x="121" y="570" width="10" height="13"/><use href="#art-bell" x="95" y="558" width="10" height="13"/>
+</symbol>

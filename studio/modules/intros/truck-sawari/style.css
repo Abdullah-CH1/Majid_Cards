@@ -1,0 +1,59 @@
+.ix-truck-sawari{overflow:hidden}
+.ix-truck-sawari .ts-sky,.ix-truck-sawari .ts-cam,.ix-truck-sawari .ts-top,.ix-truck-sawari .ts-tail,.ix-truck-sawari .ts-rear{opacity:0}
+.ix-truck-sawari .ts-sky{position:absolute;inset:0;z-index:3;background:radial-gradient(60% 30% at 80% 18%,color-mix(in srgb,var(--acc) 35%,transparent),transparent 70%),linear-gradient(180deg,color-mix(in srgb,var(--bg) 70%,var(--acc)) 0%,var(--bg) 62%)}
+.ix-truck-sawari .ts-cam{position:absolute;inset:0;z-index:4;transform-origin:64.4cqw 119.5cqw}
+.ix-truck-sawari .ts-far{position:absolute;left:0;right:0;top:106cqw;height:22cqw;
+  background:radial-gradient(ellipse 50% 100% at 50% 100%,color-mix(in srgb,var(--lv) 30%,var(--bg)) 96%,transparent 100%) 0 0/62cqw 100% repeat-x,radial-gradient(ellipse 50% 70% at 50% 100%,color-mix(in srgb,var(--lv) 18%,var(--bg)) 96%,transparent 100%) 20cqw 0/40cqw 100% repeat-x}
+.ix-truck-sawari .ts-mid{position:absolute;left:0;right:0;top:96cqw;height:32cqw;
+  background:radial-gradient(circle 6.5cqw at 50% 30%,color-mix(in srgb,var(--lv) 75%,var(--bg)) 96%,transparent 100%) 0 0/46cqw 100% repeat-x,linear-gradient(90deg,transparent 22.3cqw,color-mix(in srgb,var(--lv) 40%,#000) 22.3cqw 23.7cqw,transparent 23.7cqw) 0 0/46cqw 100% repeat-x}
+.ix-truck-sawari .ts-road{position:absolute;left:0;right:0;top:127cqw;height:32cqw;background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 50%,var(--bg)) 0 1.2cqw,color-mix(in srgb,var(--bg) 68%,#000) 1.2cqw)}
+.ix-truck-sawari .ts-road::after{content:"";position:absolute;left:0;right:0;top:24cqw;height:1.1cqw;background:linear-gradient(90deg,color-mix(in srgb,var(--acc) 70%,#fff) 0 45%,transparent 45%) 0 0/18cqw 100% repeat-x}
+.ix-truck-sawari .ts-near{position:absolute;left:0;right:0;top:158cqw;bottom:0;background:radial-gradient(circle 1.3cqw at 30% 40%,var(--bl) 90%,transparent) 0 0/14cqw 9cqw,radial-gradient(circle 1cqw at 75% 75%,var(--acc) 90%,transparent) 0 0/14cqw 9cqw,linear-gradient(180deg,color-mix(in srgb,var(--lv) 70%,var(--bg)),color-mix(in srgb,var(--lv) 45%,#000))}
+.ix-truck-sawari .ts-tk{position:absolute;left:2cqw;top:87.3cqw;width:96cqw}
+.ix-truck-sawari .ts-truck{display:block;width:100%;height:auto;overflow:visible}
+.ix-truck-sawari .ts-wh{transform-box:fill-box;transform-origin:50% 50%}
+.ix-truck-sawari .ts-ch{transform-box:fill-box;transform-origin:50% 0}
+.ix-truck-sawari .ts-horn{position:absolute;left:4cqw;top:-6cqw;width:20cqw;height:10cqw}
+.ix-truck-sawari .ts-horn i{position:absolute;font-style:normal;font-size:6cqw;color:var(--acc);opacity:0;text-shadow:0 0 1.5cqw color-mix(in srgb,var(--acc) 60%,transparent)}
+.ix-truck-sawari .ts-horn i:nth-child(1){left:0;top:2cqw}.ix-truck-sawari .ts-horn i:nth-child(2){left:6cqw;top:-1cqw;font-size:5cqw}.ix-truck-sawari .ts-horn i:nth-child(3){left:12cqw;top:3cqw;font-size:4.5cqw}
+.ix-truck-sawari .ts-top{position:absolute;left:8%;right:8%;top:26cqw;z-index:5;text-align:center;color:var(--it)}
+.ix-truck-sawari .ts-top .ia{font-family:var(--ft);font-size:4.4cqw;letter-spacing:.04em}
+.ix-truck-sawari .ts-top .ib{font-family:var(--fs);font-size:15cqw;line-height:1.25;color:var(--acc)}
+.ix-truck-sawari .ts-top .ic{font-family:var(--ft);font-size:4.6cqw}
+.ix-truck-sawari .ts-tail,.ix-truck-sawari .ts-rear{position:absolute;inset:0;width:100%;height:100%;z-index:5}
+.ix-truck-sawari .ts-tail{transform-origin:50% 60%}
+
+.play.s-truck-sawari .ts-sky{animation:truck-sawari-on .01s linear var(--o) both}
+.play.s-truck-sawari .ts-tail{animation:truck-sawari-tail 1.5s cubic-bezier(.55,0,.35,1) calc(var(--o) + 2.3s) both}
+.play.s-truck-sawari .ts-shim{animation:truck-sawari-shim 2.6s linear var(--o) infinite}
+.play.s-truck-sawari .ts-cam{animation:truck-sawari-cam 5.9s ease-in-out calc(var(--o) + 2.3s) both}
+.play.s-truck-sawari .ts-top{animation:truck-sawari-top 2.3s ease-out calc(var(--o) + 3.2s) both}
+.play.s-truck-sawari .ts-tk{animation:truck-sawari-bob .22s ease-in-out calc(var(--o) + 2.3s) 26 alternate both}
+.play.s-truck-sawari .ts-bn{animation:truck-sawari-bounce .8s cubic-bezier(.3,.6,.4,1) calc(var(--o) + 6.3s) both}
+.play.s-truck-sawari .ts-horn i{animation:truck-sawari-note 1.3s ease-out calc(var(--o) + 6.2s + var(--nd,0s)) both}
+.play.s-truck-sawari .ts-horn i:nth-child(2){--nd:.15s}.play.s-truck-sawari .ts-horn i:nth-child(3){--nd:.3s}
+.play.s-truck-sawari .ts-wh{animation:truck-sawari-spin 5.9s linear calc(var(--o) + 2.3s) both}
+.play.s-truck-sawari .ts-ch{animation:truck-sawari-swing .55s ease-in-out calc(var(--o) + var(--sd,0s)) infinite alternate both}
+.play.s-truck-sawari .ts-far{animation:truck-sawari-far 5.9s linear calc(var(--o) + 2.3s) both}
+.play.s-truck-sawari .ts-mid{animation:truck-sawari-mid 5.9s linear calc(var(--o) + 2.3s) both}
+.play.s-truck-sawari .ts-road::after{animation:truck-sawari-road 5.9s linear calc(var(--o) + 2.3s) both}
+.play.s-truck-sawari .ts-near{animation:truck-sawari-near 5.9s linear calc(var(--o) + 2.3s) both}
+.play.s-truck-sawari .ts-rear{animation:truck-sawari-rear .9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 8.1s) both}
+.play.s-truck-sawari .card{animation:truck-sawari-card 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 9.2s) both}
+
+@keyframes truck-sawari-on{0%,100%{opacity:1}}
+@keyframes truck-sawari-tail{0%{opacity:1;transform:none}55%{opacity:1}100%{opacity:0;transform:scale(.28)}}
+@keyframes truck-sawari-shim{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-1000}}
+@keyframes truck-sawari-cam{0%{opacity:0;transform:scale(1.5)}12%{opacity:1}22%,44%{opacity:1;transform:none}60%,80%{opacity:1;transform:translate(-14.4cqw,-30.6cqw) scale(1.75)}97%,100%{opacity:1;transform:none}}
+@keyframes truck-sawari-top{0%{opacity:0;transform:translateY(3cqw)}22%,72%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-4cqw)}}
+@keyframes truck-sawari-bob{0%{transform:translateY(0)}100%{transform:translateY(.3cqw)}}
+@keyframes truck-sawari-bounce{0%{transform:none}25%{transform:translateY(-3.2cqw)}50%{transform:none}70%{transform:translateY(-1.1cqw)}100%{transform:none}}
+@keyframes truck-sawari-note{0%{opacity:0;transform:translate(0,2cqw) scale(.6)}25%{opacity:1}100%{opacity:0;transform:translate(-4cqw,-8cqw) scale(1.1)}}
+@keyframes truck-sawari-spin{0%{transform:rotate(0)}85%{transform:rotate(-4100deg);animation-timing-function:cubic-bezier(.3,.6,.5,1)}100%{transform:rotate(-4450deg)}}
+@keyframes truck-sawari-swing{0%{transform:rotate(-14deg)}100%{transform:rotate(14deg)}}
+@keyframes truck-sawari-far{0%{background-position:0 0,20cqw 0}85%{background-position:40cqw 0,60cqw 0;animation-timing-function:cubic-bezier(.3,.6,.5,1)}100%{background-position:43cqw 0,63cqw 0}}
+@keyframes truck-sawari-mid{0%{background-position:0 0,0 0}85%{background-position:160cqw 0,160cqw 0;animation-timing-function:cubic-bezier(.3,.6,.5,1)}100%{background-position:174cqw 0,174cqw 0}}
+@keyframes truck-sawari-road{0%{background-position:0 0}85%{background-position:400cqw 0;animation-timing-function:cubic-bezier(.3,.6,.5,1)}100%{background-position:434cqw 0}}
+@keyframes truck-sawari-near{0%{background-position:0 0,0 0,0 0}85%{background-position:520cqw 0,520cqw 0,0 0;animation-timing-function:cubic-bezier(.3,.6,.5,1)}100%{background-position:565cqw 0,565cqw 0,0 0}}
+@keyframes truck-sawari-rear{0%{opacity:0;transform:scale(1.12)}100%{opacity:1;transform:none}}
+@keyframes truck-sawari-card{0%{opacity:0;transform:translateY(6%) scale(.9)}100%{opacity:1;transform:none}}

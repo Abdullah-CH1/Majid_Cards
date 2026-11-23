@@ -1,0 +1,1 @@
+{"name": "Moving Miniature", "desc": "A Mughal miniature painting comes alive: the baraat procession reaches the palace gate under gold fireworks, and the gate opens to the card.", "order": 34, "t0": 10.6, "defaults": {"sBorder": "arch", "sName": "fade", "sDet": "up", "sFall": "petal", "kLan": false, "kSpk": true, "kFdi": false}}

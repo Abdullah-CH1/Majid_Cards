@@ -1,0 +1,129 @@
+stage 360x640 CSS px -> 1080x1920
+01 Classic Envelope                 end 11.00s  anims  44 (4 loop)
+02 Palace Doors                     end 10.20s  anims  31 (2 loop)
+03 Golden Medallion                 end 10.10s  anims  41 (5 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+04 Faisal Mosque Dawn               end 13.40s  anims 103 (7 loop)
+05 Badshahi Nights                  end 13.20s  anims 211 (53 loop)  ISSUES: ['sparkle on bn']
+06 Departure Board                  end 14.20s  anims 116 (0 loop)
+07 Wax Seal Letter                  end 14.20s  anims  76 (0 loop)
+08 Vinyl Record                     end 13.20s  anims  38 (0 loop)
+09 Constellation                    end 14.20s  anims 371 (88 loop)
+10 Countdown Calendar               end 14.20s  anims  46 (4 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+11 Save the Date Dart               end 15.50s  anims  64 (4 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+12 Alhambra                         end 14.20s  anims 111 (5 loop)
+13 Pressed Botanicals               end 14.30s  anims  42 (0 loop)
+14 Love Map                         end 14.20s  anims  68 (0 loop)
+15 Vintage Typewriter               end 15.20s  anims 104 (0 loop)
+16 Hot Air Balloons                 end 14.20s  anims  89 (9 loop)  ISSUES: ['sparkle on bn']
+17 Origami Cranes                   end 14.20s  anims  83 (27 loop)
+18 Gold Foil Press                  end 14.20s  anims 153 (12 loop)
+19 Polaroid Memories                end 14.20s  anims  60 (7 loop)
+20 Sheesh Mahal                     end 14.30s  anims 442 (135 loop)  ISSUES: ['sparkle on bn']
+21 Shalimar Bagh                    end 15.30s  anims 101 (25 loop)
+22 Moving Miniature                 end 15.80s  anims 328 (13 loop)  ISSUES: ['sparkle on bn']
+23 Dulhay ki Sawari                 end 15.40s  anims  98 (49 loop)  ISSUES: ['sparkle on dt']
+24 Shaadi Wala Ghar                 end 15.20s  anims 734 (293 loop)
+25 Phoolon ki Chadar                end 15.20s  anims 452 (228 loop)
+26 Phulkari                         end 15.40s  anims 120 (9 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+27 Mithai ka Dabba                  end 16.20s  anims 422 (7 loop)
+28 Qalam aur Siyahi                 end 15.20s  anims  85 (4 loop)
+29 Dhol Drop                        end 15.20s  anims 253 (5 loop)
+30 Doli Rukhsati                    end 11.20s  anims 106 (10 loop)
+31 Baraat on Horseback              end 18.40s  anims  62 (7 loop)
+32 Couple Walk-in                   end 16.30s  anims 205 (4 loop)
+33 Save the Date                    end 15.80s  anims 113 (7 loop)  ISSUES: ['sparkle on bn']
+34 Blessing Verse                   end 14.60s  anims  49 (4 loop)
+35 Shahi Farman                     end 10.20s  anims  92 (4 loop)  ISSUES: ['sparkle on bn']
+36 Paper-cut Arches                 end 10.20s  anims  37 (4 loop)  ISSUES: ['sparkle on bn']
+37 Golden Star                      end 10.00s  anims 121 (4 loop)
+38 Jharokha Window                  end 10.50s  anims 104 (4 loop)
+39 Peacock Fan                      end 10.20s  anims  49 (4 loop)
+40 Storybook                        end 10.80s  anims 380 (7 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+41 Kaleidoscope                     end 10.00s  anims  30 (4 loop)
+42 Rose Bloom                       end 10.40s  anims 223 (5 loop)
+43 Phoolon ki Larhi                 end 10.20s  anims 439 (39 loop)  ISSUES: ['sparkle on bn']
+44 Watercolour Bloom                end 10.40s  anims 185 (4 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+45 Mehndi Hands                     end 10.80s  anims  92 (12 loop)  ISSUES: ['sparkle on dt']
+46 Truck Art Shaadi                 end 10.20s  anims  66 (17 loop)  ISSUES: ['sparkle on dt']
+47 Gift Box                         end 10.40s  anims  70 (4 loop)
+48 Love Birds                       end 10.60s  anims 395 (7 loop)
+49 Fireworks Night                  end 10.80s  anims 255 (4 loop)
+50 Fairy Lights                     end 10.60s  anims 247 (69 loop)
+51 Lahore at Dusk                   end 10.80s  anims  82 (5 loop)  ISSUES: ['sparkle on bn']
+52 Dulha Dulhan Royal               end 17.40s  anims  54 (6 loop)
+53 Dulha Dulhan Moonlit             end 18.10s  anims  60 (9 loop)  ISSUES: ['sparkle on bn']
+54 Dulha Dulhan Curtains            end 17.30s  anims 111 (8 loop)  ISSUES: ['sparkle on bn']
+55 Bismillah & the Couple           end 22.00s  anims 242 (8 loop)
+56 Dulha Dulhan Medallion           end 17.30s  anims  73 (14 loop)  ISSUES: ['sparkle on gn', 'sparkle on dt', 'sparkle on bn']
+57 Shaadi Confetti                  end 18.20s  anims  89 (16 loop)  ISSUES: ['sparkle on dt']
+58 Royal Curtains                   end 10.10s  anims  88 (4 loop)
+59 Emerald Darbar                   end 10.10s  anims  80 (5 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+60 Black & Gold Luxe                end 10.10s  anims 117 (5 loop)
+61 Bismillah Curtains               end 13.90s  anims  95 (4 loop)
+62 Wine & Pearl                     end 10.20s  anims 372 (5 loop)
+63 Kashi Tiles                      end 10.10s  anims  40 (5 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+64 Peacock Mor                      end 10.20s  anims  31 (2 loop)
+65 Pietra Dura                      end 11.00s  anims 126 (4 loop)
+66 Rose Garden                      end 11.00s  anims 169 (4 loop)
+67 Motia Gajra                      end 11.00s  anims 375 (7 loop)  ISSUES: ['sparkle on bn']
+68 Blush Peonies                    end 11.00s  anims 169 (4 loop)
+69 Marigold Mehndi                  end 10.10s  anims  79 (18 loop)  ISSUES: ['sparkle on dt']
+70 Vintage Garden                   end 10.10s  anims  35 (5 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+71 White Roses Noir                 end 11.00s  anims  72 (4 loop)
+72 Moon & Lanterns                  end 10.90s  anims  37 (5 loop)
+73 Chand Raat                       end 14.70s  anims 143 (5 loop)  ISSUES: ['sparkle on bn']
+74 Crescent Dusk                    end 11.00s  anims  44 (4 loop)
+75 Fairy Light Mehfil               end 11.00s  anims 123 (30 loop)
+76 Starry Nikah                     end 10.10s  anims  78 (5 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+77 Lahore Sunset                    end 10.90s  anims  80 (5 loop)  ISSUES: ['sparkle on bn']
+78 Minimal Monogram                 end 11.00s  anims  68 (0 loop)
+79 Art Deco Night                   end 10.20s  anims 112 (4 loop)
+80 Marble Minimal                   end 10.10s  anims  33 (5 loop)
+81 Black Marble                     end 11.00s  anims 126 (4 loop)
+82 Handmade Paper                   end 10.10s  anims  41 (5 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+83 Mehndi Bells                     end 10.20s  anims  57 (13 loop)
+84 Kashmiri Saffron                 end 10.10s  anims  40 (5 loop)  ISSUES: ['sparkle on gn', 'sparkle on bn']
+85 Terracotta Haveli                end 11.00s  anims  87 (4 loop)  ISSUES: ['sparkle on bn']
+86 Lilac Dreams                     end 10.90s  anims 381 (8 loop)
+87 Mint & Rose Gold                 end 10.10s  anims 170 (4 loop)  ISSUES: ['sparkle on bn']
+88 Powder Blue Walima               end 11.00s  anims 388 (7 loop)
+
+88 cards rendered; 34 with issues
+  03 Golden Medallion: ['sparkle on gn', 'sparkle on bn']
+  05 Badshahi Nights: ['sparkle on bn']
+  10 Countdown Calendar: ['sparkle on gn', 'sparkle on bn']
+  11 Save the Date Dart: ['sparkle on gn', 'sparkle on bn']
+  16 Hot Air Balloons: ['sparkle on bn']
+  20 Sheesh Mahal: ['sparkle on bn']
+  22 Moving Miniature: ['sparkle on bn']
+  23 Dulhay ki Sawari: ['sparkle on dt']
+  26 Phulkari: ['sparkle on gn', 'sparkle on bn']
+  33 Save the Date: ['sparkle on bn']
+  35 Shahi Farman: ['sparkle on bn']
+  36 Paper-cut Arches: ['sparkle on bn']
+  40 Storybook: ['sparkle on gn', 'sparkle on bn']
+  43 Phoolon ki Larhi: ['sparkle on bn']
+  44 Watercolour Bloom: ['sparkle on gn', 'sparkle on bn']
+  45 Mehndi Hands: ['sparkle on dt']
+  46 Truck Art Shaadi: ['sparkle on dt']
+  51 Lahore at Dusk: ['sparkle on bn']
+  53 Dulha Dulhan Moonlit: ['sparkle on bn']
+  54 Dulha Dulhan Curtains: ['sparkle on bn']
+  56 Dulha Dulhan Medallion: ['sparkle on gn', 'sparkle on dt', 'sparkle on bn']
+  57 Shaadi Confetti: ['sparkle on dt']
+  59 Emerald Darbar: ['sparkle on gn', 'sparkle on bn']
+  63 Kashi Tiles: ['sparkle on gn', 'sparkle on bn']
+  67 Motia Gajra: ['sparkle on bn']
+  69 Marigold Mehndi: ['sparkle on dt']
+  70 Vintage Garden: ['sparkle on gn', 'sparkle on bn']
+  73 Chand Raat: ['sparkle on bn']
+  76 Starry Nikah: ['sparkle on gn', 'sparkle on bn']
+  77 Lahore Sunset: ['sparkle on bn']
+  82 Handmade Paper: ['sparkle on gn', 'sparkle on bn']
+  84 Kashmiri Saffron: ['sparkle on gn', 'sparkle on bn']
+  85 Terracotta Haveli: ['sparkle on bn']
+  87 Mint & Rose Gold: ['sparkle on bn']
+sheet: F:\Wedding Card\Baraat Card Studio\studio_endcards\_sheet_1.jpg
+sheet: F:\Wedding Card\Baraat Card Studio\studio_endcards\_sheet_2.jpg
+sheet: F:\Wedding Card\Baraat Card Studio\studio_endcards\_sheet_3.jpg
+sheet: F:\Wedding Card\Baraat Card Studio\studio_endcards\_sheet_4.jpg

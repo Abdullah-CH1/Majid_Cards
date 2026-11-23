@@ -1,0 +1,59 @@
+.ix-faisal-mosque .fm-sky,.ix-faisal-mosque .fm-warm,.ix-faisal-mosque .fm-cam,.ix-faisal-mosque .fm-txt>*{opacity:0}
+.ix-faisal-mosque .fm-sky{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 88%,var(--it)) 0%,color-mix(in srgb,var(--bg) 92%,var(--lv)) 45%,color-mix(in srgb,var(--bg) 80%,var(--it)) 70%,color-mix(in srgb,var(--bg) 85%,var(--acc)) 100%)}
+.ix-faisal-mosque .fm-warm{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,transparent 18%,color-mix(in srgb,var(--bg) 82%,var(--bl)) 46%,color-mix(in srgb,var(--acc) 45%,color-mix(in srgb,var(--bl) 25%,var(--bg))) 68%,color-mix(in srgb,var(--acc) 30%,var(--bg)) 80%)}
+.ix-faisal-mosque .fm-cam{position:absolute;inset:0;z-index:4}
+.ix-faisal-mosque .fm-art{position:absolute;inset:0;width:100%;height:100%}
+.ix-faisal-mosque .fm-ln{fill:none;stroke:color-mix(in srgb,var(--acc) 55%,var(--it));stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.ix-faisal-mosque .fm-th{stroke-width:1}
+.ix-faisal-mosque .fm-fill{opacity:0}
+.ix-faisal-mosque .fm-sun{opacity:0}
+.ix-faisal-mosque .fm-mist{position:absolute;left:-30%;width:160%;height:12%;border-radius:50%;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--bg) 40%,#fff) 0%,transparent 70%);opacity:0}
+.ix-faisal-mosque .fm-mi1{top:70%}
+.ix-faisal-mosque .fm-mi2{top:79%;height:10%}
+.ix-faisal-mosque .fm-birds{position:absolute;inset:0}
+.ix-faisal-mosque .fm-b{position:absolute;width:5.5cqw;opacity:0;overflow:visible}
+.ix-faisal-mosque .fm-b path{fill:none;stroke:var(--it);stroke-width:2;stroke-linecap:round}
+.ix-faisal-mosque .b1{left:-8%;top:44%}.ix-faisal-mosque .b2{left:-14%;top:47%;width:4.2cqw}.ix-faisal-mosque .b3{left:-11%;top:41%;width:4.6cqw}
+.ix-faisal-mosque .b4{left:-20%;top:45.5%;width:3.6cqw}.ix-faisal-mosque .b5{left:-17%;top:42.5%;width:3.2cqw}
+.ix-faisal-mosque .fm-txt{position:absolute;left:8%;right:8%;top:10%;z-index:5;text-align:center;color:var(--it)}
+.ix-faisal-mosque .fm-a,.ix-faisal-mosque .fm-n,.ix-faisal-mosque .fm-c{font-family:var(--ft),Georgia,serif;text-transform:uppercase;letter-spacing:.32em;line-height:1.6}
+.ix-faisal-mosque .fm-a{font-size:3cqw;letter-spacing:.2em;white-space:nowrap}
+.ix-faisal-mosque .fm-rule{width:22cqw;height:1px;margin:3cqw auto 1cqw;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--acc) 65%,var(--it)),transparent)}
+.ix-faisal-mosque .fm-e{font-family:var(--fs),'Snell Roundhand',Georgia,serif;font-size:16cqw;line-height:1.15;color:color-mix(in srgb,var(--acc) 65%,var(--it))}
+.ix-faisal-mosque .fm-n{font-size:4cqw;margin-top:1cqw;font-weight:600}
+.ix-faisal-mosque .fm-c{font-size:2.8cqw;letter-spacing:.6em;margin-top:3cqw;color:color-mix(in srgb,var(--acc) 65%,var(--it))}
+
+.play.s-faisal-mosque .fm-sky{opacity:1}
+.play.s-faisal-mosque .fm-warm{animation:faisal-mosque-on 4s ease-in-out calc(var(--o) + 2.2s) both}
+.play.s-faisal-mosque .fm-cam{opacity:1;animation:faisal-mosque-cam 1.6s cubic-bezier(.6,0,.2,1) calc(var(--o) + 6.6s) both}
+.play.s-faisal-mosque .fm-ln{animation:faisal-mosque-draw 2.4s cubic-bezier(.45,.05,.25,1) calc(var(--o) + var(--ld)) both}
+.play.s-faisal-mosque .fm-h1l{--ld:0s;animation-duration:3s}.play.s-faisal-mosque .fm-h2l{--ld:.3s;animation-duration:3s}
+.play.s-faisal-mosque .fm-m1{--ld:.4s}.play.s-faisal-mosque .fm-m2{--ld:.5s}.play.s-faisal-mosque .fm-m3{--ld:.7s}.play.s-faisal-mosque .fm-m4{--ld:.8s}
+.play.s-faisal-mosque .fm-m5{--ld:1.6s;animation-duration:1.2s}
+.play.s-faisal-mosque .fm-t1{--ld:.6s}.play.s-faisal-mosque .fm-t2{--ld:1.3s;animation-duration:1.8s}.play.s-faisal-mosque .fm-t3{--ld:1.7s;animation-duration:1.6s}
+.play.s-faisal-mosque .fm-t4{--ld:.9s;animation-duration:2s}.play.s-faisal-mosque .fm-t5{--ld:1.8s;animation-duration:1.4s}.play.s-faisal-mosque .fm-gl{--ld:1.2s}
+.play.s-faisal-mosque .fm-fill{animation:faisal-mosque-on 2.2s ease-out calc(var(--o) + var(--fd)) both}
+.play.s-faisal-mosque .fm-h1{--fd:1.6s}.play.s-faisal-mosque .fm-h2{--fd:1.9s}.play.s-faisal-mosque .fm-mf{--fd:2.6s}.play.s-faisal-mosque .fm-gr{--fd:2s}
+.play.s-faisal-mosque .fm-sun{animation:faisal-mosque-sun 4.6s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 1.4s) both}
+.play.s-faisal-mosque .fm-mist{animation:faisal-mosque-mist 3s ease-out calc(var(--o) + 2.4s) both,faisal-mosque-drift 9s ease-in-out calc(var(--o) + 2.4s) infinite alternate}
+.play.s-faisal-mosque .fm-mi2{animation-delay:calc(var(--o) + 3s);animation-direction:normal,alternate-reverse}
+.play.s-faisal-mosque .fm-b{animation:faisal-mosque-fly 6s cubic-bezier(.3,0,.7,1) calc(var(--o) + var(--bd)) both}
+.play.s-faisal-mosque .fm-b path{animation:faisal-mosque-flap .5s ease-in-out infinite alternate;transform-origin:50% 70%}
+.play.s-faisal-mosque .b1{--bd:3s}.play.s-faisal-mosque .b2{--bd:3.25s}.play.s-faisal-mosque .b3{--bd:3.4s}.play.s-faisal-mosque .b4{--bd:3.7s}.play.s-faisal-mosque .b5{--bd:3.85s}
+.play.s-faisal-mosque .b2 path{animation-delay:-.2s}.play.s-faisal-mosque .b3 path{animation-delay:-.35s}.play.s-faisal-mosque .b4 path{animation-delay:-.1s}
+.play.s-faisal-mosque .fm-txt>*{animation:faisal-mosque-txt 1.4s cubic-bezier(.2,.8,.2,1) calc(var(--o) + var(--d)) both,faisal-mosque-out 1s ease-in calc(var(--o) + 6.5s) forwards}
+.play.s-faisal-mosque .fm-rule{animation-name:faisal-mosque-rule,faisal-mosque-out}
+.play.s-faisal-mosque .card{animation:faisal-mosque-card 1.6s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 6.6s) both}
+
+@keyframes faisal-mosque-on{0%{opacity:0}100%{opacity:1}}
+@keyframes faisal-mosque-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes faisal-mosque-sun{0%{opacity:0;transform:translateY(14cqw)}100%{opacity:1;transform:none}}
+@keyframes faisal-mosque-mist{0%{opacity:0}100%{opacity:.75}}
+@keyframes faisal-mosque-drift{0%{transform:translateX(-6%)}100%{transform:translateX(6%)}}
+@keyframes faisal-mosque-fly{0%{opacity:0;transform:translate(0,0)}12%{opacity:.9}85%{opacity:.9}100%{opacity:0;transform:translate(125cqw,-34cqw)}}
+@keyframes faisal-mosque-flap{0%{transform:scaleY(1)}100%{transform:scaleY(-.5)}}
+@keyframes faisal-mosque-txt{0%{opacity:0;transform:translateY(2cqw)}100%{opacity:1;transform:none}}
+@keyframes faisal-mosque-rule{0%{opacity:0;transform:scaleX(0)}100%{opacity:1;transform:none}}
+@keyframes faisal-mosque-out{0%{opacity:1}100%{opacity:0;transform:translateY(-6cqw)}}
+@keyframes faisal-mosque-cam{0%{transform:none}100%{transform:translateY(34cqw)}}
+@keyframes faisal-mosque-card{0%{opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(-4%)}30%{opacity:1}100%{opacity:1;clip-path:inset(0 0 0 0);transform:none}}

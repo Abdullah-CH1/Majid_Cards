@@ -1,0 +1,25 @@
+.ix-phool-larhi .pl-bg{position:absolute;inset:0;z-index:3;opacity:0;background:radial-gradient(ellipse 80% 50% at 50% 45%,color-mix(in srgb,var(--bg) 82%,var(--acc)) 0%,var(--bg) 70%)}
+.ix-phool-larhi .pl-txt{position:absolute;left:10%;right:10%;top:43%;z-index:5;text-align:center;color:var(--it);text-shadow:0 .3cqw 1.5cqw color-mix(in srgb,var(--bg) 80%,transparent)}
+.ix-phool-larhi .pl-txt .ib{color:var(--acc)}
+.ix-phool-larhi .pl-txt>div{opacity:0}
+.ix-phool-larhi .pl-rod{position:absolute;left:0;right:0;top:0;height:2.2cqw;z-index:8;opacity:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 60%,#fff) 0%,var(--acc) 45%,color-mix(in srgb,var(--acc) 60%,#000) 100%);
+  box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.35)}
+.ix-phool-larhi .pl-s{position:absolute;top:1cqw;width:var(--w);margin-left:calc(var(--w) / -2);z-index:7;opacity:0;display:flex;flex-direction:column;transform-origin:50% 0}
+.ix-phool-larhi .pl-s svg{display:block;width:100%;margin-top:-1.5cqw;filter:drop-shadow(0 .5cqw .7cqw rgba(0,0,0,.3))}
+.ix-phool-larhi .pl-s svg:first-child{margin-top:0}
+.play.s-phool-larhi .pl-bg{animation:phool-larhi-bg 4.9s ease-in-out var(--o) both}
+.play.s-phool-larhi .pl-rod{animation:phool-larhi-rod 4.9s cubic-bezier(.2,.8,.2,1) var(--o) both}
+.play.s-phool-larhi .pl-s{animation:phool-larhi-drop 1.3s cubic-bezier(.3,1.25,.5,1) calc(var(--o) + .2s + var(--dd)) both,
+  phool-larhi-part 1.4s cubic-bezier(.6,0,.3,1) calc(var(--o) + 3.3s + var(--ci) * .07s) forwards}
+.play.s-phool-larhi .pl-s svg{animation:phool-larhi-sway 2.6s ease-in-out calc(var(--o) + 1.2s + var(--sw)) infinite alternate;transform-origin:50% 0}
+.play.s-phool-larhi .pl-txt>div{animation:up .9s ease-out calc(var(--o) + var(--d)) both,phool-larhi-out .6s ease-in calc(var(--o) + 3.6s) forwards}
+.play.s-phool-larhi .card{animation:phool-larhi-card 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 3.7s) both}
+@keyframes phool-larhi-bg{0%{opacity:0}12%,80%{opacity:1}100%{opacity:0}}
+@keyframes phool-larhi-rod{0%{opacity:0;transform:translateY(-100%)}8%,82%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-100%)}}
+@keyframes phool-larhi-drop{0%{opacity:0;transform:translateY(-110%)}30%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes phool-larhi-sway{0%{transform:rotate(-1.6deg)}100%{transform:rotate(1.6deg)}}
+.ix-phool-larhi .pl-r{--px:1}.ix-phool-larhi .pl-l{--px:-1}
+@keyframes phool-larhi-part{0%{opacity:1;transform:none}100%{opacity:0;transform:translateX(calc(var(--px) * 60cqw)) rotate(calc(var(--px) * -8deg))}}
+@keyframes phool-larhi-out{0%{opacity:1}100%{opacity:0;transform:translateY(-2cqw)}}
+@keyframes phool-larhi-card{0%{opacity:0;transform:scale(.94)}100%{opacity:1;transform:none}}

@@ -1,0 +1,30 @@
+.ix-kaleidoscope .kl-bg{position:absolute;inset:0;z-index:7;opacity:0;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--bg) 82%,var(--acc)) 0%,var(--bg) 62%,color-mix(in srgb,var(--bg) 70%,#000) 100%)}
+.ix-kaleidoscope .kl-disc{position:absolute;left:50%;top:38%;width:88cqw;height:88cqw;margin:-44cqw 0 0 -44cqw;z-index:7;opacity:0}
+.ix-kaleidoscope .kl-o,.ix-kaleidoscope .kl-i{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ix-kaleidoscope .kl-ring{position:absolute;left:50%;top:50%;width:30cqw;height:30cqw;margin:-15cqw 0 0 -15cqw;border-radius:50%;
+  border:.6cqw solid var(--acc);box-shadow:0 0 0 1.2cqw color-mix(in srgb,var(--bg) 85%,transparent),0 0 0 1.5cqw color-mix(in srgb,var(--acc) 55%,transparent),0 0 5cqw color-mix(in srgb,var(--acc) 40%,transparent);
+  background:radial-gradient(circle,color-mix(in srgb,var(--bg) 90%,var(--acc)) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center}
+.ix-kaleidoscope .kl-ring span{font-family:var(--fs);font-size:9cqw;color:var(--acc);white-space:nowrap;line-height:1}
+.ix-kaleidoscope .kl-txt{position:absolute;left:0;right:0;top:79%;z-index:7;text-align:center;color:var(--it);padding:3cqw 6%;
+  border-top:1px solid color-mix(in srgb,var(--acc) 60%,transparent);border-bottom:1px solid color-mix(in srgb,var(--acc) 60%,transparent);
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--bg) 70%,#000) 20%,color-mix(in srgb,var(--bg) 70%,#000) 80%,transparent);opacity:0}
+.ix-kaleidoscope .kl-txt .ia{font-size:4.2cqw;letter-spacing:.06em}
+.ix-kaleidoscope .kl-txt .ib{color:var(--acc);font-family:var(--fs);font-size:11cqw;line-height:1.15}
+.ix-kaleidoscope .kl-txt .ic{font-size:4.6cqw}
+.ix-kaleidoscope .kl-txt>div{opacity:0}
+.play.s-kaleidoscope .kl-bg{animation:kaleidoscope-bg 4.6s ease-in-out var(--o) both}
+.play.s-kaleidoscope .kl-disc{animation:kaleidoscope-zoom 4.6s cubic-bezier(.5,0,.2,1) var(--o) both}
+.play.s-kaleidoscope .kl-o{animation:kaleidoscope-cw 4.6s cubic-bezier(.3,.1,.3,1) var(--o) both}
+.play.s-kaleidoscope .kl-i{animation:kaleidoscope-ccw 4.6s cubic-bezier(.3,.1,.3,1) var(--o) both}
+.play.s-kaleidoscope .kl-ring{animation:kaleidoscope-pop 1s cubic-bezier(.3,1.5,.5,1) calc(var(--o) + .6s) both}
+.play.s-kaleidoscope .kl-txt{animation:kaleidoscope-band 3.3s ease-out calc(var(--o) + .9s) both}
+.play.s-kaleidoscope .kl-txt>div{animation:kaleidoscope-up .8s ease-out calc(var(--o) + var(--d)) both}
+.play.s-kaleidoscope .card{animation:kaleidoscope-card 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 3.7s) both}
+@keyframes kaleidoscope-bg{0%{opacity:0}10%,74%{opacity:1}100%{opacity:0}}
+@keyframes kaleidoscope-zoom{0%{opacity:0;transform:scale(.3)}18%{opacity:1;transform:scale(1)}72%{opacity:1;transform:scale(1.04)}100%{opacity:0;transform:scale(5)}}
+@keyframes kaleidoscope-cw{0%{transform:rotate(-90deg)}100%{transform:rotate(150deg)}}
+@keyframes kaleidoscope-ccw{0%{transform:rotate(120deg)}100%{transform:rotate(-120deg)}}
+@keyframes kaleidoscope-pop{0%{opacity:0;transform:scale(.4)}100%{opacity:1;transform:none}}
+@keyframes kaleidoscope-band{0%{opacity:0;clip-path:inset(0 50%)}15%{opacity:1;clip-path:inset(0 0)}75%{opacity:1;transform:none}100%{opacity:0;transform:translateY(8cqw);clip-path:inset(0 0)}}
+@keyframes kaleidoscope-up{0%{opacity:0;transform:translateY(3cqw)}100%{opacity:1;transform:none}}
+@keyframes kaleidoscope-card{0%{opacity:0;transform:scale(.86)}100%{opacity:1;transform:none}}

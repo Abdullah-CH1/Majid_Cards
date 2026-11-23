@@ -1,0 +1,1 @@
+{"name": "Fairy lights", "desc": "Strings of fairy lights drop in and glow in a ripple as a chandelier lowers, then the card fades in through a warm bloom.", "order": 23, "t0": 5.4, "defaults": {"sBorder": "arch", "sName": "fade", "sDet": "up", "sFall": "fireflies", "kLan": false, "kSpk": true}}

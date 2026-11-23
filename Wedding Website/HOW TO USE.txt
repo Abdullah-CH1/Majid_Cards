@@ -1,0 +1,36 @@
+WEDDING WEBSITE - Abdul Aleem & Laiba (Baraat)
+================================================
+
+OPEN IT
+  Double-click  index.html  (Chrome / Edge / phone browser). Internet on for the fonts.
+  Best viewed on a phone, or on a computer it shows as a phone-width page in the middle.
+
+WHAT HAPPENS (same flow as the reference video)
+  1. Sculpted mauve envelope with ginkgo leaves and a wax seal (A L monogram). Tap the seal.
+  2. The flap opens, the envelope falls away: pearly satin tied with a sheer organza bow.
+  3. The bow unties and the ribbon slides off both sides, then the satin parts from the centre.
+  4. The embossed rose card - the wording fades in line by line.
+  5. Scroll: live countdown ticket, "See you soon!"
+  6. Mother-of-pearl section with a pearl frame - guests scratch the oval to reveal your photo.
+  7. Location: venue, two short paragraphs, venue sketch, GET DIRECTIONS (opens Google Maps).
+  Music button bottom-right (appears once you add a song).
+
+CHANGE THE WORDING
+  Open  config.js  in Notepad, change the text between the quotes, save, refresh the page.
+  (names, date, Baraat time, venue, countdown date/time, location text, Google Maps search, footer)
+
+ADD YOUR PHOTO (scratch-to-reveal)
+  Replace  assets\photo.jpg  with the couple's photo, same file name. Portrait photos fit best.
+
+ADD MUSIC
+  Put a song in the assets folder named  music.mp3 . The music button then shows up by itself;
+  the song starts when the guest taps the seal.
+
+PUT IT ONLINE (so you can send a link on WhatsApp)
+  Upload the whole folder (index.html, style.css, app.js, config.js, assets) to any static host,
+  e.g. Netlify Drop (drag the folder onto app.netlify.com/drop) or GitHub Pages.
+
+FOR LATER (technical)
+  tools\make_assets.py  re-generates every texture (envelope, seal, satin, bow, card, pearl, sketch).
+  The seal monogram letters are set at the top of the "wax seal" part of that file (CONFIG_MONO).
+  Reference video and its frames: ..\Website Reference\

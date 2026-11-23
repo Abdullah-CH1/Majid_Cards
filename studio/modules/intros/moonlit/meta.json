@@ -1,0 +1,1 @@
+﻿{"name": "Moon and lanterns", "desc": "A crescent rises over the Lahore skyline as lanterns float up, then the card rises.", "order": 21, "t0": 5.6, "defaults": {"sBorder": "arch", "sPat": "stars-crescents", "sName": "fade", "sDet": "up", "sFall": "fireflies", "kLan": false, "kSpk": true}}

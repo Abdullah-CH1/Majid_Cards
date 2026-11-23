@@ -1,0 +1,76 @@
+BARAAT CARD STUDIO - Abdul Aleem with Laiba
+===========================================
+
+OPEN:  double-click  "Baraat Card Studio.html"  (Chrome or Edge, internet on for the fonts)
+
+- Left:   all 40 designs. 25 new ones on top, then the 15 best video-studio cards.
+- Middle: the selected card. Click any text on it and type to change it.
+- Right:  every field (hosts, names, date, venue, Urdu line, RSVP, bride's parents, monogram letters).
+          A change applies to ALL designs and is remembered on this computer.
+          "This design only" sliders: name size, text size, move text up/down.
+- Top:    "Download for WhatsApp" (1080 px) or "Download for print" (2000 x 2800, 5x7 inch).
+- Under the card: the design's idea in one sentence, to read to the client.
+- Video-studio cards: the button "Open in Video Studio" opens that design with the client's details, ready to edit.
+
+READY-MADE IMAGES
+- All Images (one by one)\   EVERY design as a single image, numbered 01-42, ready to send:
+                              01-25 new designs, 26-40 the video-studio designs, 41 Faisal Mosque, 42 Badshahi
+- Videos\      the two animated videos with Abdul Aleem & Laiba's details (1080 x 1920, 60 fps):
+               Faisal Mosque Dawn (17 s) and Badshahi Nights (17 s), plus a still image of each
+- WhatsApp\    25 new designs, phone size
+- Print\       25 new designs, 2000 x 2800 PNG (5x7 inch print, 400 dpi)
+- Video designs (15)\   the 15 best video-studio end cards (1080 x 1920)
+- All new designs.jpg   all 25 on one sheet, good to send the client first
+After changing wording, double-click "Make Images.bat" to re-make every image.
+
+
+WHAT THE CLIENT LIKED (Sample 1) AND HOW THE NEW SET ANSWERS IT
+- Real painted art, not clip-art. The new cards use real paintings, engravings and photos:
+  17th-century Mughal album borders, Ohara Koson woodblock lotus and peony prints, hand-tinted
+  lotus plates, carved marble jali. All are public domain / free licence (details in assets\catalog.json).
+- Calm cream paper, thin gold Mughal arch, gold line mandala: kept as the "family look" in most designs.
+- Clear hierarchy: Bismillah > hosts > invitation > NAMES (the hero) > Baraat > date > venue.
+- Correct groom's-side wording: "request the pleasure of your company at the Baraat of their beloved son
+  Abdul Aleem with Laiba".  (Video-studio cards read "Abdul Aleem & Laiba"; they have no hosts line.)
+
+THE 25 NEW DESIGNS, IN FIVE FAMILIES
+ Ivory and lotus (closest to Sample 1)
+  (Round 2, 15 Nov: cards 1-11 have NO flowers; all 25 have bigger, bolder text and thicker gold borders
+   so elderly guests can read them on a phone. Old versions: _backup_2026-11-15_before_readability\)
+  1 Noor Mehrab   - (was Noor Kanwal) the client's favourite look made bolder: ivory paper, strong gold cusped arch,
+                    gold corner mandalas, a big gold half-mandala rising at the base. SAFEST PICK.
+  2 Nazakat       - soft blush paper inside a band of gold eight-point jaali stars, names in tall gold capitals.
+  3 Jharoka       - bold gold Mughal window opening onto a 19th-century painting of the Taj Mahal, navy lettering.
+  4 Haala         - sage paper; a great gold halo with a crescent circles the names like a full moon.
+  5 Shabnam       - torn-edge cotton card on sage, bold gold frame with Mughal stars at the corners. Type-led.
+ Royal jewel tones (evening Baraat)
+  6 Shamsa        - Shah Jahan's gold-and-lapis sun medallion on midnight blue, bold gold frame.
+  7 Zumurrud      - emerald velvet, wide ivory arch panel edged in burnished gold. STRONG BARAAT PICK.
+  8 Zardozi       - oxblood, beaded gold-thread border and one eight-point-star zardozi medallion, like a sherwani.
+  9 Firoza        - turquoise between two illuminated margins of gold lattice and eight-point stars.
+ 10 Sang-e-Musa   - black marble, one tall gold doorway arch and crescent, bold ivory lettering.
+ Mughal manuscript
+ 11 Muraqqa       - a Shah Jahan Album page: gold-leaf-flecked margins, lapis and gold rulings, ivory panel.
+ 12 Unwan         - real lapis-and-gold Mughal headpiece holding the Bismillah.
+ 13 Nadir         - one Mughal flower painting (Ustad Mansur style) in its navy-gold border.
+ 14 Gul-e-Jafari  - Mughal marigold paintings either side of an ivory arch on Baraat red.
+ 15 Gulistan      - 1755 Lucknow flower painting all over, words in an ivory cartouche.
+ Engraved and botanical
+ 16 Gulzar        - Sample 2's sage engraved frame, refined, with a thin gold arch inside.
+ 17 Halqa         - gold engraved wreath around "A & L", classic Bodoni lettering.
+ 18 Nilofar       - Koson woodblock lotus in a cusped arch window, text below.
+ 19 Sosan         - gold lily line art climbing a deep emerald card.
+ 20 Gulnar        - Koson peony print mounted like framed art, beside the text on blush.
+ Marble and modern luxe
+ 21 Sang-e-Marmar - carved white-marble jali as a window, marble below.
+ 22 Mumtaz        - 1880 watercolour of the Taj Mahal, crisp Bodoni capitals.
+ 23 Nishan        - ivory satin, one tall gold-foil arch, A·L monogram.
+ 24 Hilal         - tall arch window: dusk sky, new crescent, marble jali; editorial text column.
+ 25 Siyah Jaali   - black and gold, glowing stone jaali around the names.
+
+Suggested shortlist to show first: 1 Noor Mehrab, 7 Zumurrud, 11 Muraqqa, 14 Gul-e-Jafari,
+16 Gulzar, 18 Nilofar, 24 Hilal, 25 Siyah Jaali.
+
+FOR LATER (technical)
+- Each design is one file: designs\<id>\design.js.  Rebuild the page with "Rebuild Studio.bat".
+- Designer rules and helpers: DESIGNERS.md.  Art library: assets\ (+ contact sheets, catalog.json).

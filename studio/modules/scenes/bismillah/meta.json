@@ -1,0 +1,7 @@
+{
+  "name": "Bismillah",
+  "desc": "Opens with a blessing: golden Bismillah calligraphy draws itself in soft rotating light, with its English meaning below.",
+  "order": 1,
+  "dur": 3.8,
+  "fonts": ["Aref+Ruqaa:wght@400;700"]
+}

@@ -1,0 +1,12 @@
+{
+ "name": "Countdown Calendar",
+ "desc": "Tear-off calendar pages fly away until the wedding day is circled.",
+ "t0": 9.0,
+ "defaults": {
+  "sName": "fade",
+  "sDet": "up",
+  "kLan": false,
+  "kSpk": false,
+  "kFdi": false
+ }
+}

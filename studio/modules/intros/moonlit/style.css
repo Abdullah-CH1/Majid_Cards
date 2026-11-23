@@ -1,0 +1,25 @@
+.ix-moonlit .ml-sky{position:absolute;inset:0;z-index:3;opacity:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 45%,#050817) 0%,var(--bg) 70%,color-mix(in srgb,var(--bg) 80%,var(--acc)) 100%)}
+.ix-moonlit .ml-stars{position:absolute;inset:0 0 30% 0;z-index:3;opacity:0;
+  background-image:radial-gradient(.25cqw .25cqw at 12% 18%,#fff,transparent),radial-gradient(.2cqw .2cqw at 34% 8%,#fff,transparent),radial-gradient(.3cqw .3cqw at 58% 26%,#fff,transparent),radial-gradient(.2cqw .2cqw at 82% 12%,#fff,transparent),radial-gradient(.25cqw .25cqw at 22% 44%,#fff,transparent),radial-gradient(.2cqw .2cqw at 70% 48%,#fff,transparent),radial-gradient(.3cqw .3cqw at 90% 36%,#fff,transparent),radial-gradient(.2cqw .2cqw at 46% 60%,#fff,transparent);
+  background-size:50% 40%}
+.ix-moonlit .ml-moon{position:absolute;left:64%;top:9%;width:20cqw;z-index:4;opacity:0;filter:drop-shadow(0 0 3cqw color-mix(in srgb,var(--acc) 70%,transparent))}
+.ix-moonlit .ml-lan{position:absolute;top:100%;z-index:4;opacity:0;width:8cqw;filter:drop-shadow(0 0 2cqw color-mix(in srgb,#ffb45a 60%,transparent))}
+.ix-moonlit .l1{left:8%;width:7cqw}.ix-moonlit .l2{left:24%;width:10cqw}.ix-moonlit .l3{left:44%;width:6cqw}
+.ix-moonlit .l4{left:62%;width:9cqw}.ix-moonlit .l5{left:80%;width:7cqw}.ix-moonlit .l6{left:33%;width:5cqw}
+.ix-moonlit .ml-city{position:absolute;left:0;bottom:0;width:100%;height:36cqw;z-index:5;opacity:0;--sil:color-mix(in srgb,var(--bg) 55%,#000)}
+.ix-moonlit .ml-txt{position:absolute;left:6%;right:6%;top:36%;z-index:5;text-align:center;color:var(--it)}
+.ix-moonlit .ml-txt .ib{color:var(--acc)}
+.ix-moonlit .ml-txt>div{opacity:0}
+.play.s-moonlit .ml-sky,.play.s-moonlit .ml-city{animation:moonlit-on 1s ease-out var(--o) both}
+.play.s-moonlit .ml-stars{animation:moonlit-on 2s ease-out calc(var(--o) + .2s) both,moonlit-tw 3s ease-in-out calc(var(--o) + 2.2s) infinite alternate}
+.play.s-moonlit .ml-moon{animation:moonlit-moon 2.6s cubic-bezier(.2,.8,.2,1) calc(var(--o) + .3s) both}
+.play.s-moonlit .ml-lan{animation:moonlit-rise 7s linear calc(var(--o) + var(--ld,0s)) both}
+.play.s-moonlit .l1{--ld:.2s}.play.s-moonlit .l2{--ld:.8s;animation-duration:6s}.play.s-moonlit .l3{--ld:1.4s;animation-duration:8s}
+.play.s-moonlit .l4{--ld:.5s;animation-duration:6.5s}.play.s-moonlit .l5{--ld:1.9s}.play.s-moonlit .l6{--ld:2.4s;animation-duration:8.5s}
+.play.s-moonlit .ml-txt>div{animation:up .9s ease-out calc(var(--o) + var(--d)) both}
+.play.s-moonlit .card{animation:moonlit-card 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 4.3s) both}
+@keyframes moonlit-on{0%{opacity:0}100%{opacity:1}}
+@keyframes moonlit-tw{0%{opacity:1}100%{opacity:.55}}
+@keyframes moonlit-moon{0%{opacity:0;transform:translateY(30cqw) scale(.8)}100%{opacity:1;transform:none}}
+@keyframes moonlit-rise{0%{opacity:0;transform:translateY(0) rotate(-4deg)}10%{opacity:1}50%{transform:translateY(-60cqw) rotate(4deg)}90%{opacity:1}100%{opacity:0;transform:translateY(-118cqw) rotate(-3deg)}}
+@keyframes moonlit-card{0%{transform:translateY(100%);box-shadow:0 -2cqw 6cqw color-mix(in srgb,var(--acc) 60%,transparent)}100%{transform:none;box-shadow:none}}

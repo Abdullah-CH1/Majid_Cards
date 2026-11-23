@@ -1,0 +1,72 @@
+.ix-phoolon-chadar{--jasmine:color-mix(in srgb,var(--ef) 75%,#fff);--rose:var(--bl);--pcg:color-mix(in srgb,var(--acc) 45%,#fff);overflow:hidden}
+.ix-phoolon-chadar>*{opacity:0}
+.ix-phoolon-chadar .pc-bg{position:absolute;inset:0;z-index:3;background:radial-gradient(60% 34% at 50% 42%,color-mix(in srgb,var(--acc) 30%,var(--bg)) 0%,var(--bg) 70%),var(--bg)}
+.ix-phoolon-chadar .pc-tun{position:absolute;inset:0;width:100%;height:100%;z-index:3}
+.ix-phoolon-chadar .pc-ln{stroke:color-mix(in srgb,var(--acc) 40%,transparent);stroke-width:.25;vector-effect:non-scaling-stroke}
+.ix-phoolon-chadar .pc-lt{fill:var(--pcg);animation:phoolon-chadar-tw 1.8s ease-in-out infinite alternate}
+.ix-phoolon-chadar .pc-rw{position:absolute;inset:0;z-index:4;transform-origin:50% 42%}
+.ix-phoolon-chadar .pc-row{position:absolute;left:-10%;width:120%;top:0;height:84cqw;overflow:visible}
+.ix-phoolon-chadar .pc-gar{fill:none;stroke:var(--acc);stroke-width:.6}
+.ix-phoolon-chadar .pc-sw{transform-box:view-box;animation:phoolon-chadar-sway 3s ease-in-out infinite alternate}
+.ix-phoolon-chadar .pc-pole{position:absolute;top:-5%;bottom:-5%;width:9cqw;z-index:5}
+.ix-phoolon-chadar .pc-pole i{position:absolute;inset:0;border-radius:1cqw;background:repeating-linear-gradient(60deg,var(--acc) 0 2.4cqw,color-mix(in srgb,var(--acc) 60%,#000) 2.4cqw 3cqw,var(--bl) 3cqw 5cqw,color-mix(in srgb,var(--acc) 60%,#000) 5cqw 5.6cqw);box-shadow:inset -2cqw 0 3cqw rgba(0,0,0,.35)}
+.ix-phoolon-chadar .pc-pole svg{position:absolute;left:1.5cqw;top:0;width:6cqw;height:60cqw}
+.ix-phoolon-chadar .pc-pl{left:-2cqw}.ix-phoolon-chadar .pc-pr{right:-2cqw}
+.ix-phoolon-chadar .pc-pt,.ix-phoolon-chadar .pc-sh{position:absolute;z-index:5;width:3cqw;height:3.6cqw;border-radius:0 70% 0 70%;background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--c) 60%,#fff),var(--c) 60%,color-mix(in srgb,var(--c) 70%,#000))}
+.ix-phoolon-chadar .pc-pt{left:50%;top:42%}
+.ix-phoolon-chadar .pc-c0{--c:var(--bl)}.ix-phoolon-chadar .pc-c1{--c:color-mix(in srgb,var(--bl) 60%,#fff)}.ix-phoolon-chadar .pc-c2{--c:var(--jasmine)}
+.ix-phoolon-chadar .pc-sh{top:-6%;z-index:7;width:var(--sz);height:calc(var(--sz)*1.2)}
+.ix-phoolon-chadar .pc-ag{position:absolute;inset:0;z-index:4}
+.ix-phoolon-chadar .pc-glow{position:absolute;left:5%;right:5%;top:16%;height:110cqw;border-radius:50% 50% 8% 8%;background:radial-gradient(closest-side,color-mix(in srgb,var(--acc) 55%,#fff),color-mix(in srgb,var(--acc) 30%,transparent) 55%,transparent);opacity:.55}
+.ix-phoolon-chadar .pc-arch{position:absolute;left:8%;width:84%;top:14%;height:134cqw;--frame:var(--acc);filter:drop-shadow(0 0 1.5cqw color-mix(in srgb,var(--acc) 60%,transparent))}
+.ix-phoolon-chadar .pc-txt{position:absolute;left:18%;right:18%;top:40%;text-align:center;color:var(--it)}
+.ix-phoolon-chadar .pc-txt>div{opacity:0}
+.ix-phoolon-chadar .pc-ia{font-family:var(--ft);font-size:4cqw;letter-spacing:.05em;line-height:1.35}
+.ix-phoolon-chadar .pc-ev{font-family:var(--ft);font-size:6cqw;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin:1.5cqw 0 4cqw}
+.ix-phoolon-chadar .pc-n{font-family:var(--fs);font-size:13.5cqw;line-height:1.15;color:var(--acc);text-shadow:0 0 2.5cqw color-mix(in srgb,var(--acc) 45%,transparent)}
+.ix-phoolon-chadar .pc-am{font-family:var(--fs);font-size:8cqw;color:var(--it)}
+.ix-phoolon-chadar .pc-cur{position:absolute;top:0;bottom:0;width:50%;z-index:5}
+.ix-phoolon-chadar .pc-cur svg{width:100%;height:100%;overflow:visible}
+.ix-phoolon-chadar .pc-cl{left:0}.ix-phoolon-chadar .pc-cr{right:0}
+.ix-phoolon-chadar .pc-bar{fill:var(--acc)}
+.ix-phoolon-chadar .pc-wide{position:absolute;inset:0;z-index:4;background:radial-gradient(70% 40% at 50% 60%,color-mix(in srgb,var(--acc) 22%,var(--bg)),var(--bg) 75%)}
+.ix-phoolon-chadar .pc-wide svg{width:100%;height:100%}
+.ix-phoolon-chadar .pc-floor{fill:color-mix(in srgb,var(--acc) 25%,transparent)}
+.ix-phoolon-chadar .pc-bp{fill:color-mix(in srgb,var(--acc) 60%,var(--bg))}
+.ix-phoolon-chadar .pc-fp,.ix-phoolon-chadar .pc-fin{fill:var(--acc)}
+.ix-phoolon-chadar .pc-roof{fill:var(--bl);stroke:var(--acc);stroke-width:.4}
+.ix-phoolon-chadar .pc-roofb{fill:color-mix(in srgb,var(--bl) 60%,var(--bg))}
+.ix-phoolon-chadar .pc-bride{opacity:.4}
+
+.play.s-phoolon-chadar .pc-bg,.play.s-phoolon-chadar .pc-tun{animation:phoolon-chadar-hold 8.4s linear var(--o) both}
+.play.s-phoolon-chadar .pc-rw{animation:phoolon-chadar-walk 3.2s linear calc(var(--o) + var(--rd)) both}
+.play.s-phoolon-chadar .pc-pl{animation:phoolon-chadar-poleL 3.4s cubic-bezier(.4,0,.8,.6) calc(var(--o) + 1.6s) both}
+.play.s-phoolon-chadar .pc-pr{animation:phoolon-chadar-poleR 3.4s cubic-bezier(.4,0,.8,.6) calc(var(--o) + 1.6s) both}
+.play.s-phoolon-chadar .pc-pt{animation:phoolon-chadar-fly 2.4s cubic-bezier(.5,0,.9,.6) calc(var(--o) + var(--pd)) both}
+.play.s-phoolon-chadar .pc-ag{animation:phoolon-chadar-ag 4.2s ease-out calc(var(--o) + 4.4s) both}
+.play.s-phoolon-chadar .pc-ia{animation:phoolon-chadar-in .9s ease-out calc(var(--o) + 5.3s) both}
+.play.s-phoolon-chadar .pc-ev{animation:phoolon-chadar-in .9s ease-out calc(var(--o) + 5.5s) both}
+.play.s-phoolon-chadar .pc-n{animation:phoolon-chadar-name 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 5.8s) both}
+.play.s-phoolon-chadar .pc-am{animation:phoolon-chadar-in .8s ease-out calc(var(--o) + 6.2s) both}
+.play.s-phoolon-chadar .pc-txt .xgn{animation-delay:calc(var(--o) + 6.4s)}
+.play.s-phoolon-chadar .pc-cl{animation:phoolon-chadar-curL 2.4s cubic-bezier(.6,0,.2,1) calc(var(--o) + 3.9s) both}
+.play.s-phoolon-chadar .pc-cr{animation:phoolon-chadar-curR 2.4s cubic-bezier(.6,0,.2,1) calc(var(--o) + 3.9s) both}
+.play.s-phoolon-chadar .pc-wide{animation:phoolon-chadar-pull 1.6s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 8.0s) both}
+.play.s-phoolon-chadar .pc-sh{animation:phoolon-chadar-fall 2.6s cubic-bezier(.3,.1,.7,1) calc(var(--o) + var(--sd)) both}
+.play.s-phoolon-chadar .card{animation:phoolon-chadar-card 1s ease-out calc(var(--o) + 9.0s) both}
+
+@keyframes phoolon-chadar-hold{0%,92%{opacity:1}100%{opacity:0}}
+@keyframes phoolon-chadar-tw{0%{opacity:1}100%{opacity:.3}}
+@keyframes phoolon-chadar-sway{0%{transform:rotate(-2.5deg)}100%{transform:rotate(2.5deg)}}
+@keyframes phoolon-chadar-walk{0%{opacity:0;transform:scale(.22)}18%{opacity:1}45%{transform:scale(.55)}75%{opacity:1;transform:scale(1.2)}100%{opacity:0;transform:scale(2.6) translateY(-10%)}}
+@keyframes phoolon-chadar-poleL{0%{opacity:0;transform:translateX(-8cqw) scale(.5)}25%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translateX(-30cqw) scale(1.8)}}
+@keyframes phoolon-chadar-poleR{0%{opacity:0;transform:translateX(8cqw) scale(.5)}25%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translateX(30cqw) scale(1.8)}}
+@keyframes phoolon-chadar-fly{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.2)}15%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(2.6)}}
+@keyframes phoolon-chadar-ag{0%{opacity:0;transform:scale(.85)}25%{opacity:1;transform:none}90%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes phoolon-chadar-in{0%{opacity:0;transform:translateY(3cqw)}100%{opacity:1;transform:none}}
+@keyframes phoolon-chadar-name{0%{opacity:0;transform:scale(.75);letter-spacing:.15em}100%{opacity:1;transform:none;letter-spacing:0}}
+@keyframes phoolon-chadar-curL{0%{opacity:0;transform:none}15%,45%{opacity:1;transform:none}100%{opacity:1;transform:translateX(-105%)}}
+@keyframes phoolon-chadar-curR{0%{opacity:0;transform:none}15%,45%{opacity:1;transform:none}100%{opacity:1;transform:translateX(105%)}}
+@keyframes phoolon-chadar-pull{0%{opacity:0;transform:scale(1.9) translateY(12%)}35%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes phoolon-chadar-fall{0%{opacity:0;transform:translate(0,0) rotate(0)}10%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translate(var(--sx),190cqw) rotate(var(--r))}}
+@keyframes phoolon-chadar-card{0%{opacity:0;transform:scale(1.04)}100%{opacity:1;transform:none}}

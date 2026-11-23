@@ -1,0 +1,23 @@
+/* Jasmine flowers - white motia flowers and buds; a soft shadow and a faint gold edge keep them visible on light cards */
+.fx-jasmine .jasmine-defs{position:absolute;width:0;height:0;overflow:hidden}
+.fx-jasmine .jasmine-p{position:absolute;top:0;display:block;width:var(--s);height:var(--h);margin-left:calc(var(--s) * -.5);opacity:0}
+.fx-jasmine .jasmine-q{position:absolute;inset:0;display:block;transform-origin:50% -160%;perspective:26cqw}
+.fx-jasmine .jasmine-r{position:absolute;inset:0;display:block}
+.fx-jasmine .jasmine-r svg{display:block;width:100%;height:100%;overflow:visible}
+.play.fx-jasmine .jasmine-p{animation:jasmine-fall 14s linear infinite backwards}
+.play.fx-jasmine .jasmine-q{animation:jasmine-sway 3.4s ease-in-out infinite alternate}
+.play.fx-jasmine .jasmine-r{animation:jasmine-spin 12s linear infinite}
+@keyframes jasmine-fall{
+  0%{transform:translate3d(0,-10cqw,0);opacity:0}
+  5%{opacity:var(--a)}
+  95%{opacity:var(--a)}
+  100%{transform:translate3d(0,186cqw,0);opacity:0}
+}
+@keyframes jasmine-sway{
+  0%{transform:translateX(calc(var(--sw) * -1)) rotate(calc(var(--rz) * -1))}
+  100%{transform:translateX(var(--sw)) rotate(var(--rz))}
+}
+@keyframes jasmine-spin{
+  0%{transform:rotateX(var(--tx)) rotate(0deg)}
+  100%{transform:rotateX(var(--tx)) rotate(360deg)}
+}

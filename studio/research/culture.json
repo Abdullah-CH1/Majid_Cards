@@ -1,0 +1,611 @@
+{
+ "events": [
+  {
+   "name": "Dholki (ڈھولکی) - pre-wedding music nights",
+   "meaning": "Informal pre-wedding singing nights held at the bride's and/or groom's family home. They start one to two weeks (sometimes several weeks) before the wedding and are often repeated over several nights. They are traditionally led by women and often women-only. Women sit in a circle on floor cushions. One plays the dholak, a small two-headed hand drum (Rekhta: ڈھولکی = small drum), and another keeps time by striking it with a steel spoon. Evenings often open with the Punjabi folk song 'Suhaag', then move on to teasing songs, couplets and dancing. There is no religious rite. Today it may use a DJ or playlist. It is purely celebratory and sets the mood for the wedding.",
+   "typical_colors": "Bright folk colours. Truck-art palette: fuchsia #E4007C, marigold orange #FF7A00, sunflower #FFD400, parrot green #6CC24A, turquoise #00A6A6, royal blue #2453A6, all on a night aubergine. Phulkari palette: madder/rust-red base #A4282C, golden-yellow silk floss #F2B705, magenta, green. Suggested roles A (truck-art night): bg #3A0B3F, it #FFE7A3, ef #F2549B, cd #FFF3E3, ink #3A0B3F, ink2 #D6246E, acc #F5B700, fl #FF6F3C, lf #12A89D. Roles B (phulkari): bg #A4282C, it #FFE9B0, ef #F2B705, cd #FFF1D6, ink #4A1010, ink2 #C2410C, acc #F2B705, fl #E4405F, lf #2E7D32.",
+   "mood": "Playful, noisy, homely and teasing, with a 'the party starts here' feel. Bouncy, rhythmic animation suits it, such as pulses on the drum beat.",
+   "motifs": "Dholak with rope lacing and a steel spoon. Clapping hands with glass bangles. Colourful dupattas and parandas (tasselled braid ornaments). Phulkari darn-stitch embroidery (geometric/floral, red base, golden floss). Pakistani truck art ('phool patti': dense flowers, ornate borders, mirrors, chain and pendant fringes, birds). Mirror-work dots. Floor cushions. Paper bunting and fairy lights. Mehndi cones and mithai boxes. Animation ideas: rings pulsing out on each drum hit, a spoon tapping, bunting swinging, bangles shimmering, a truck-art border drawing itself in. If people are shown, use women's hands or faceless seated women in dupattas rather than the couple.",
+   "typical_text": "EN: 'Dholki Night' / 'Join us for an evening of dholak, songs and laughter as we celebrate [Bride]'s wedding' / '[Day], [Date] - 8:00 pm onwards - [Home address], Lahore' / 'Ladies only' (optional) / 'Wear your brightest colours!' / 'RSVP: [Name] 03xx-xxxxxxx'.\nRoman Urdu: 'Dholki ki raat - dholak ki thaap par aap ka intezaar rahega!' (composed; medium confidence).\nUrdu: 'ڈھولکی' / 'ڈھولکی کی رات' / 'صرف خواتین کے لیے' (ladies only).\nHosts: the bride's (or groom's) family, often 'the bride's sisters & cousins'. Use 'Dholki' rather than the Hindi/Bollywood 'Sangeet' as the default label."
+  },
+  {
+   "name": "Mayun / Mayoon (مایوں) with Ubtan",
+   "meaning": "Pre-wedding beautification and 'seating' of the bride, held at her parents' home a few days to about a week before the wedding. Some families also hold one for the groom. Rekhta defines it as a pre-wedding rite in which the bride and groom stop going out, wear yellow and stay at home ('maaiyon bithana'). Female relatives rub ubtan (a turmeric, gram-flour, sandalwood and rose-water paste) on her face, arms, hands and feet. Traditionally this began a period of seclusion (about 8-15 days). Today it is usually one evening of ubtan, songs and dance, sometimes merged with the Mehndi, and some families skip it. The bride wears no makeup and a simple yellow shalwar kameez or ghagra with a dupatta, yellow bangles, and oiled hair braided with a paranda. Her yellow outfit is often sent by the groom's family. In Pakistan the rite is called Mayun/Ubtan, not the Indian 'Haldi'.",
+   "typical_colors": "Turmeric/mustard yellow dominates, with marigold orange, leaf green, a little gold, and red accents (in Punjabi custom a red cloth is held over the bride). Roles: bg #E8A317 (turmeric), it #FFF8E1, ef #FFD54F, cd #FFFBEA, ink #5D3A00, ink2 #B5541B, acc #C99A2E, fl #FF8F1F (marigold), lf #4E8B2E. Evening variant: bg #3E4A12 (deep olive) with the same yellows.",
+   "mood": "Tender, intimate and homely. A little shy and emotional (the bride's last days in her parents' home), but with giggles and songs. Warm, sunlit, softly swaying animation.",
+   "motifs": "Bowl (katori) of ubtan. Marigold (genda) garlands and strings. A yellow or red dupatta canopy held over the bride by four women. Low wooden stool (peerhi/patri). Paranda braid. Yellow and green glass bangles. Fresh-flower or gota jewellery. Abstract turmeric smears or handprints. Green leaves, brass tray, mustard gota-lace borders. Show the bride alone (veiled or faceless) or use symbols only; the couple is not together at Mayun.",
+   "typical_text": "EN: 'Mayun' or 'Mayun & Ubtan' / 'With love (and a little ubtan), please join us for the Mayun of our daughter [Bride]' / '[Date] - 5:00 pm - at our residence' / 'Dress code: yellow'.\nUrdu: 'رسمِ مایوں' / 'بتاریخ ... بروز ... بوقت شام ... بمقام: رہائش گاہ'.\nRoman Urdu: 'Rasm-e-Mayun' / 'Peela jora, ubtan ki khushboo - aap ki shirkat ka intezaar rahega' (composed; medium).\nHost: the bride's family (the groom's family for his Mayun)."
+  },
+  {
+   "name": "Mehndi / Rasm-e-Hina (مہندی / رسمِ حنا)",
+   "meaning": "The henna night, held one or two nights before the Baraat. It is the most colourful music-and-dance event. Henna is applied to the bride's hands and feet and stands for joy, beauty and luck. Traditionally the groom's side sent the henna and mithai to the bride's home (Rekhta: hina-bandi). Today the groom's family arrives carrying decorated thaals of mehndi and ubtan with candles. The couple sits on a stage while relatives come up one by one, give money (salami) and feed them mithai. Dance performances follow, often a friendly bride-side versus groom-side contest. Bride and groom traditionally had separate Mehndis; now a joint Mehndi in a hall is common.",
+   "typical_colors": "The Pakistani Mehndi signature is green, yellow and orange (HSY contrasts this with Indian mehndi's reds and oranges). Hot pink/magenta and mint/peach pastels also appear. The bride wears green, yellow or orange (About Islam: green, to match the henna). Henna-stain brown is about #8B3A1A. Roles A (henna leaf & marigold): bg #0E4D2C, it #FCE8B2, ef #F4C430, cd #FFF7DF, ink #3B2A0A, ink2 #A0461F, acc #D9A62E, fl #FF8C1A, lf #7BC043. Roles B (pink & orange): bg #8E1453, it #FFE3EE, ef #FF9F1C, cd #FFF0E6, ink #4B0F2E, ink2 #E0570F, acc #F2B134, fl #FF5C8A, lf #1E9E6A.",
+   "mood": "Exuberant, festive and teasing, with high energy and colour and movement everywhere.",
+   "motifs": "Henna patterns (buta/paisley, vines, dots, floral rosettes) that draw themselves. Henna cones. Mehndi thaal with candles in glass holders (not clay diyas). Marigold strings and canopies. A swing (jhoola) dressed in marigolds. Patterned umbrellas (chhatris). Gota-patti flowers and mirror-work. Fresh-flower or gota jewellery (tikka, earrings, wrist gajray). Parrots, mangoes, truck-art borders, dhol, mithai trays, lanterns, rose petals. Animation ideas: a henna line drawing across a hand, candles flickering on a thaal, marigold strings dropping in, umbrellas opening.",
+   "typical_text": "EN: 'Mehndi' / 'Mr. & Mrs. [Bride's father] request the pleasure of your company at the Mehndi of their daughter [Bride]' (groom's side: '...of their son [Groom]') / '[Day], [Date] - 7:30 pm - [Venue], Lahore' / 'Dress code: shades of yellow & green' / RSVP.\nUrdu: 'رسمِ حنا' or 'مہندی کی رات' / 'آپ کو ہماری بیٹی [نام] کی مہندی کی تقریب میں شرکت کی دعوت دیتے ہیں' (medium).\nRoman Urdu: 'Mehndi ki raat aap ke baghair adhoori hai' (composed; medium).\nHost: the bride's family (the groom's family hosts the groom's Mehndi)."
+  },
+  {
+   "name": "Nikah / Aqd-e-Nikah (نکاح / عقدِ نکاح)",
+   "meaning": "The Islamic marriage contract and the religious core of the wedding. An imam or nikah khwan performs it with the bride's consent and two witnesses. The khutba is recited, and the bride and groom each say 'Qubool hai' (I accept), traditionally three times. The Nikahnama (contract) is signed and the haq mehr (mahr, the groom's obligatory gift to the bride) is recorded. Dua for the couple follows, and dates (chhuharay) and sweets are often distributed; jurists permit distributing dates. It may be held at a mosque (Badshahi Mosque became a popular Lahore nikah venue), at home, or at the Baraat venue, either on the Baraat day or days or months earlier. After Jumu'ah or after Asr are favoured times; a Deoband fatwa approves nikah after Asr with walima after Maghrib. The couple may sit side by side separated by a white net.",
+   "typical_colors": "Calm white, ivory and cream with gold, plus soft pastels (mint, sage, blush, peach). Emerald or deep navy suit an evening card. Some brides wear red, white and gold. Roles A (ivory & gold on emerald): bg #0B3B2E, it #F3E9D2, ef #F6EFE2, cd #FBF8F1, ink #1F2A26, ink2 #8C6A1E, acc #C8A24A, fl #E9B8B8, lf #9CBFA6. Roles B (mint day): bg #DCEFE6, it #23413A, ef #FFFFFF, cd #FFFFFF, ink #23413A, ink2 #A27B2C, acc #C9A646, fl #F2C6C2, lf #7FB59B.",
+   "mood": "Sacred, calm, dignified, prayerful and quietly joyful. Use slow fades and light effects rather than party energy.",
+   "motifs": "Islamic geometry (8-point star/khatam, girih, interlocking circles). Mihrab arch and jaali lattice. Mosque domes and minarets (a Badshahi Mosque silhouette for Lahore). Crescent and stars. Calligraphy: Bismillah, Qur'an 78:8 or 30:21, 'Qubool Hai'. Nikahnama scroll with a qalam, a pair of rings, a bowl of dates and mishri. White roses and jasmine/motia (Pakistan's national flower). Hanging lanterns (fanoos) and a sheer white net canopy. Animation ideas: a geometric star drawing itself, lanterns glowing, calligraphy revealed by a right-to-left mask wipe, 'Qubool Hai' appearing three times.",
+   "typical_text": "EN: Bismillah (top centre) / optional 'And We created you in pairs. (Qur'an 78:8)' / 'With the blessings of Almighty Allah' / 'Mr. & Mrs. [Bride's father] request the honour of your presence at the Nikah of their beloved daughter [Bride] with [Groom] s/o Mr. & Mrs. [Groom's father]' / 'Friday, [Date], after Asr prayer, Insha'Allah' / 'at [Masjid/Venue], Lahore' / 'Your duas are our greatest gift'.\nUrdu: 'تقریبِ نکاح' / 'عقدِ نکاح' / 'نکاح خوانی: بعد نمازِ عصر' / 'بمقام: ...' / 'دعاؤں کے طالب'.\nRoman Urdu: 'Taqreeb-e-Nikah' / 'Nikah khwani: ba'd namaz-e-Asr'.\nHost: usually the bride's family, or both families jointly."
+  },
+  {
+   "name": "Baraat / Barat (بارات) - the wedding day",
+   "meaning": "The main and most formal event. The groom's procession arrives at the bride's venue (marquee, hall or hotel), which is hosted by the bride's family; they welcome the party with garlands and rose petals. Traditionally the groom came on a decorated horse (ghori) with dhol and dancing; today he usually comes in a flower-decked car. Before leaving home, the sehra is tied on the groom (sehra bandi), and a small nephew dressed like him (shah bala) rides along. At the venue: the nikah if it was not held earlier, then playful rituals (joota chupai: the bride's sisters hide the groom's shoes for ransom; doodh pilai: a decorated glass of milk in exchange for money), dinner, stage photos, and finally the Rukhsati. Two cards exist. The bride's family invites guests to the marriage/Rukhsati of their daughter. The groom's family invites guests to 'accompany the Baraat' of their son, giving a departure time from home.",
+   "typical_colors": "Classic red/crimson/maroon with heavy gold zardozi. Alternatives are gold and champagne, or deep jewel tones (emerald, royal blue, plum). The groom wears ivory/off-white or gold, or maroon/black. A 2026 Lahore baraat example: ivory sherwani with a matching gold-detailed pagri. Roles A (royal maroon & gold): bg #4A0A12, it #F6E3C1, ef #7A0F1C, cd #FFF6E8, ink #4A0A12, ink2 #B3122E, acc #D4AF37, fl #C2185B, lf #1E5B3A. Roles B (crimson + emerald Mughal): bg #2B0A0E, it #F3D9A4, ef #8B1E2D, cd #FDF3E1, ink #5A0F16, ink2 #8B1E2D, acc #E2B54A, fl #D7263D, lf #0F6B4B.",
+   "mood": "Regal, grand and ceremonial, with the splendour of a Mughal court. Drums and fireworks energy at the start, dignity on the stage.",
+   "motifs": "Mughal palace doors, cusped arches, jharokha balconies, jaali screens. Kashi-kari tile borders (Wazir Khan Mosque palette: cobalt, turquoise, white, green, orange, yellow, purple). Pietra-dura / parchin-kari florals (tulip, poppy, iris, narcissus). Shalimar Gardens charbagh, cypresses and fountains. Sehra strands (pearls, jasmine, roses, gold tinsel). Turban with turra and kalgi. Rose and motia garlands (haar), or a currency-note garland for a rural Punjabi feel. Dhol and band, fireworks (aatish-baazi), a decorated car or white ghori, shah bala, chandeliers, a rose-petal shower, gold zardozi borders. Animation ideas: doors swinging open, a petal shower, sehra strands swaying, fireworks blooming, a gold border embroidering itself.",
+   "typical_text": "EN (bride's family): 'Mr. & Mrs. [Bride's father] request the pleasure of your company on the auspicious occasion of the marriage of their beloved daughter [Bride] with [Groom] s/o Mr. & Mrs. [Groom's father]' / 'Saturday, [Date], Insha'Allah' / Programme: 'Baraat arrival 7:00 pm - Nikah 7:30 pm - Dinner 8:30 pm - Rukhsati 9:45 pm' / '[Marquee], Lahore' / 'Kindly be punctual; the function will conclude at 10:00 pm as per Government regulations' / 'RSVP'.\nEN (groom's family): '...request the pleasure of your company to accompany the Baraat of their son [Groom]... Baraat departs from [residence] at 6:30 pm'.\nUrdu: 'تقریبِ شادی خانہ آبادی' / 'بارات کی آمد: شام 7 بجے' / 'نکاح: ...' / 'عشائیہ: رات ساڑھے 8 بجے' / 'رخصتی: ...' / 'آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی' / 'چشم براہ: ...'.\nRoman Urdu: 'Baraat ki aamad' / 'Aap ki shirkat hamare liye baais-e-musarrat hogi'."
+  },
+  {
+   "name": "Rukhsati (رخصتی) - the bride's farewell",
+   "meaning": "The bride formally leaves her parents' home or venue for her husband's home. It closes the Baraat evening, or is a separate 'Rukhsati' function when the nikah was held earlier. Rekhta defines it as farewell, specifically the bride's departure from her parents' house. It is deeply emotional, 'filled with blessings and tears'. Parents and elders make dua. In many Pakistani families a brother or uncle holds the Qur'an over the bride's head like an umbrella until she reaches the car; this is widespread, though Darul Ifta Birmingham says it has no Shariah basis. She is led to a decorated car (historically a doli/palanquin). At the groom's home his sisters and younger brother playfully demand 'entry fees'. It corresponds to the Indian 'Bidaai'; Pakistani cards say 'Rukhsati'.",
+   "typical_colors": "The deep crimson/maroon of the bridal outfit with dusky rose and gold, set in twilight tones (plum, indigo) for a bittersweet feel. Roles: bg #24112E (plum dusk), it #F5D9E4, ef #6D2C4F, cd #FCF1F3, ink #3A1428, ink2 #9B1C3C, acc #D8B26A, fl #E07A9A, lf #3E6B57.",
+   "mood": "Bittersweet, tender, emotional and prayerful. Slow, soft movement; a hush after the celebration.",
+   "motifs": "A doli/palki silhouette (without bearers' faces) or a flower-decked car with rose and tuberose strings. Falling rose petals and jasmine. The bride's veil drawn forward. Parents' hands raised in dua (hands only). Lanterns and a moonlit sky, an open doorway or threshold, a trailing red dupatta. Do not animate the Qur'an as a prop.",
+   "typical_text": "Usually one line in the Baraat programme: 'Rukhsati: 10:00 pm' / Urdu 'رخصتی: رات 10 بجے'. As its own card: 'Mr. & Mrs. [Bride's father] request the pleasure of your company at the Rukhsati of their beloved daughter [Bride] with [Groom] s/o ...'. Roman Urdu: 'Rukhsati ki taqreeb'. Closing dua: 'Allah Ta'ala is jori ko hamesha salamat rakhe' / 'اللہ تعالیٰ اس جوڑی کو ہمیشہ سلامت رکھے' (medium)."
+  },
+  {
+   "name": "Walima / Valima (ولیمہ) - the groom's family feast",
+   "meaning": "The marriage feast hosted by the groom's family, usually the day after the Baraat (sometimes days or weeks later). It celebrates and publicly announces the marriage and introduces the couple to society. It is a Sunnah: the Prophet (peace be upon him) told Abd al-Rahman ibn Awf to 'perform a walima, even if only with a goat' (Bukhari). Guests are urged to accept a walima invitation, and simplicity is praised. Today it is often the most polished reception (hotel, marquee or farmhouse). The bride may wear the 'moonh dikhai' jewellery the groom gifted her, and guests give salami (cash gifts).",
+   "typical_colors": "Soft pastels and metallics: blush/peach, ivory and silver, lilac/lavender and sky blue, champagne. An evening alternative is midnight navy with champagne gold. The groom wears a grey, navy or black sherwani, suit or prince coat. A Jan 2026 example: groom in a grey sherwani, bride in a lilac lehenga with silver. Roles A (lilac & silver): bg #2A2346, it #EFE8F7, ef #CDB8E6, cd #FFFFFF, ink #2E2840, ink2 #7E5A9B, acc #BFC6CF, fl #F3C1D3, lf #A9C5B9. Roles B (navy & champagne): bg #13213D, it #F2E6D0, ef #E9DCC6, cd #FBF7F0, ink #1B2541, ink2 #8C6E4A, acc #D6BE8A, fl #E8B7B0, lf #8FAFA3.",
+   "mood": "Graceful, refined and understated, with a calm luxury.",
+   "motifs": "Soft florals (roses, peonies, ranunculus, jasmine), crystal chandeliers, pearl strings, fine-line arabesque or geometric frames, ribbons, a monogram of initials, candles in glass, silver foliage, a tiered floral stage arch. Use sparkles and pearls instead of champagne bubbles or glasses, which read as alcohol.",
+   "typical_text": "EN: Bismillah or 'Alhamdulillah' / 'Mr. & Mrs. [Groom's father] request the pleasure of your company at the Walima reception of their son [Groom] with [Bride] d/o Mr. & Mrs. [Bride's father]' / 'Sunday, [Date] - Dinner 8:30 pm - [Venue], Lahore' / RSVP. Wording attested on real cards: 'Walima Ceremony of their beloved son'.\nUrdu: 'دعوتِ ولیمہ' / 'بسلسلۂ دعوتِ ولیمہ' (medium) / 'آپ کی تشریف آوری ہمارے لیے باعثِ عزت ہوگی'.\nRoman Urdu: 'Dawat-e-Walima' / 'Aap ki tashreef aawari hamare liye baais-e-izzat hogi'."
+  },
+  {
+   "name": "Qawwali Night / Mehfil-e-Qawwali (محفلِ قوالی) - optional extra",
+   "meaning": "An increasingly common pre-wedding evening of Sufi devotional music (qawwals with harmonium, tabla and clapping), and a Pakistani alternative to the Indian 'sangeet'. Groomsmen traditionally wear black kurta shalwar with a bottle-green patka, and the groom may wear white. Some religious families avoid music; keep Qur'anic text off music-themed cards.",
+   "typical_colors": "Black/charcoal, emerald, gold, deep red and candle amber. Roles: bg #0F3D2E (or #0E0E0E), it #F3E3B5, ef #1E4D3A, cd #F7F1E1, ink #1B1B1B, ink2 #0F6B3F, acc #C9A44C, fl #B71C1C, lf #2E7D32.",
+   "mood": "Soulful, warm, candlelit and spiritual-romantic.",
+   "motifs": "Harmonium, tabla, clapping hands, shrine-style domes and arches (no saint portraits), rose petals, lanterns, dhurrie/kilim carpets, Urdu/Persian poetry calligraphy (not Qur'an).",
+   "typical_text": "'An evening of Qawwali in celebration of [Bride] & [Groom]' / Urdu 'محفلِ قوالی' / '[Date] - 9:00 pm - [Venue]'."
+  },
+  {
+   "name": "Mangni / Baat Pakki (منگنی) - engagement, optional extra",
+   "meaning": "The formal engagement, where the families confirm the match ('baat pakki'), exchange rings and share mithai. It can be small or large.",
+   "typical_colors": "Rose/blush, peach, ivory and gold. Roles: bg #F7E1E6, it #4A2633, ef #F2C9D3, cd #FFFFFF, ink #4A2633, ink2 #B03A5B, acc #D4A373, fl #F28CA6, lf #8DB596.",
+   "mood": "Sweet, hopeful and shy.",
+   "motifs": "Pair of rings, ring box, mithai box, roses, two family houses joined by a ribbon.",
+   "typical_text": "'Mangni ceremony of [Bride] & [Groom]' / Urdu 'منگنی کی تقریب'."
+  }
+ ],
+ "phrases": [
+  {
+   "use": "Opening invocation (Arabic, Qur'anic Basmala), top centre of every card. Text from the quran.com API, imlaei script, Qur'an 1:1.",
+   "english": "In the name of Allah, the Most Gracious, the Most Merciful",
+   "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+   "roman_urdu": "Bismillah-ir-Rahman-ir-Raheem",
+   "confidence": "high"
+  },
+  {
+   "use": "Opening invocation, Arabic without diacritics (lighter look)",
+   "english": "In the name of Allah, the Most Gracious, the Most Merciful",
+   "arabic": "بسم الله الرحمن الرحيم",
+   "confidence": "high"
+  },
+  {
+   "use": "Opening invocation in Urdu orthography, which the current card uses. Built from Urdu heh goal U+06C1 (ہ), Farsi yeh U+06CC (ی) and superscript alef U+0670.",
+   "english": "In the name of Allah, the Most Gracious, the Most Merciful",
+   "urdu_script": "بسم اللہ الرحمٰن الرحیم",
+   "roman_urdu": "Bismillah-ir-Rahman-ir-Raheem",
+   "confidence": "high"
+  },
+  {
+   "use": "Single-glyph Basmala ligature U+FDFD for a calligraphic splash. A Google Fonts subset test returned glyph data for Amiri, Amiri Quran, Noto Naskh Arabic, Scheherazade New, Noto Nastaliq Urdu and Gulzar; confirm visually.",
+   "english": "(Basmala ligature)",
+   "arabic": "﷽",
+   "confidence": "high"
+  },
+  {
+   "use": "Numeric Basmala substitute (abjad value) common in South Asia, used so that sacred text is not printed on throwaway paper. Its validity is disputed: Haddad permits it, IslamOnline and the Council of Ulama call it non-Sunnah. Offer it only as an option.",
+   "english": "786",
+   "arabic": "٧٨٦",
+   "urdu_script": "۷۸۶",
+   "roman_urdu": "786",
+   "confidence": "high"
+  },
+  {
+   "use": "Alternative short invocation suggested by Shaykh Gibril Haddad, for families who do not want the full Basmala printed",
+   "english": "In His Name, the Most High",
+   "arabic": "بِاسْمِهِ تَعَالَى",
+   "urdu_script": "باسمہ تعالیٰ",
+   "roman_urdu": "Bismihi Ta'ala",
+   "confidence": "medium"
+  },
+  {
+   "use": "Qur'an verse under the Bismillah (Surah An-Naba 78:8). English: Saheeh International. Urdu: Maududi, Tafheem. Roman Urdu: Maududi (quran.com resource 831).",
+   "english": "And We created you in pairs. (Qur'an 78:8)",
+   "arabic": "وَخَلَقْنَاكُمْ أَزْوَاجًا",
+   "urdu_script": "اور تمہیں (مَردوں اور عورتوں کے) جوڑوں کی شکل میں پیدا کیا",
+   "roman_urdu": "Wa khalaqnakum azwaja - Aur tumhein (mardon aur auraton ke) jodon ki shakal mein paida kiya",
+   "confidence": "high"
+  },
+  {
+   "use": "Qur'an verse (Surah Ar-Rum 30:21), the most popular verse on Muslim wedding cards. The excerpt stops at the first pause mark, which is acceptable. Uthmani script needs a Qur'an font; the imlaei text given here works in Amiri.",
+   "english": "And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy. (Qur'an 30:21)",
+   "arabic": "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
+   "urdu_script": "اور اس کی نشانیوں میں سے یہ ہے کہ اس نے تمہارے لیے تمہاری ہی جنس سے بیویاں بنائیں تاکہ تم ان کے پاس سکون حاصل کرو اور تمہارے درمیان محبّت اور رحمت پیدا کر دی",
+   "roman_urdu": "Aur uski nishaniyon mein se yeh hai ke usne tumhare liye tumhari jins se biwiyan banayi taake tum unke paas sukoon hasil karo aur tumhare darmiyan mohabbat aur rehmat paida kardi",
+   "confidence": "high"
+  },
+  {
+   "use": "Qur'an verse (Adh-Dhariyat 51:49), short",
+   "english": "And of all things We created two mates; perhaps you will remember. (Qur'an 51:49)",
+   "arabic": "وَمِن كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ",
+   "urdu_script": "اور ہر چیز کے ہم نے جوڑے بنائے ہیں، شاید کہ تم اس سے سبق لو",
+   "roman_urdu": "Aur har cheez ke humne jodey banaye hain, shayad ke tum ussey sabaq lo",
+   "confidence": "high"
+  },
+  {
+   "use": "Qur'an verse (Ya-Sin 36:36)",
+   "english": "Exalted is He who created all pairs - from what the earth grows and from themselves and from that which they do not know. (Qur'an 36:36)",
+   "arabic": "سُبْحَانَ الَّذِي خَلَقَ الْأَزْوَاجَ كُلَّهَا مِمَّا تُنبِتُ الْأَرْضُ وَمِنْ أَنفُسِهِمْ وَمِمَّا لَا يَعْلَمُونَ",
+   "confidence": "high"
+  },
+  {
+   "use": "Qur'anic dua for spouses (Al-Furqan 25:74, excerpt from 'Rabbana'); suits a Nikah or Walima card",
+   "english": "Our Lord, grant us from among our spouses and offspring comfort to our eyes and make us an example for the righteous. (Qur'an 25:74)",
+   "arabic": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+   "urdu_script": "اے ہمارے ربّ، ہمیں اپنی بیویوں اور اپنی اولاد سے آنکھوں کی ٹھنڈک دے اور ہم کو پرہیزگاروں کا امام بنا",
+   "roman_urdu": "Aey hamare Rabb, humein apni biwiyon aur apni aulaad se aankhon ki thandak de, aur humko parheizgaaron ka imam bana",
+   "confidence": "high"
+  },
+  {
+   "use": "Qur'an excerpt (Al-Baqarah 2:187), popular on cards. It is a fragment of a longer verse about fasting nights, so prefer 78:8 or 30:21.",
+   "english": "They are clothing for you and you are clothing for them. (Qur'an 2:187)",
+   "arabic": "هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ",
+   "urdu_script": "وہ تمہارے لیے لباس ہیں اور تم اُن کے لیے",
+   "confidence": "high"
+  },
+  {
+   "use": "Hadith line 'Nikah is my Sunnah' (Sunan Ibn Majah 1846; Al-Albani grades it hasan, Zubair Ali Zai da'if). Cite it as 'Ibn Majah', not as 'Sahih'.",
+   "english": "Marriage (Nikah) is my Sunnah. - Prophet Muhammad (peace be upon him), Sunan Ibn Majah 1846",
+   "arabic": "النِّكَاحُ مِنْ سُنَّتِي",
+   "urdu_script": "نکاح میری سنت ہے",
+   "roman_urdu": "An-nikahu min sunnati - Nikah meri sunnat hai",
+   "confidence": "high"
+  },
+  {
+   "use": "Prophetic dua for newlyweds (Abu Dawud 2130, Tirmidhi 1091, graded sahih), as said to the groom. Good for a closing or end card.",
+   "english": "May Allah bless you, shower His blessings upon you, and unite you both in goodness.",
+   "arabic": "بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+   "urdu_script": "اللہ تعالیٰ تم کو برکت دے اور اس برکت کو قائم و دائم رکھے، اور تم دونوں کو خیر پر جمع کر دے",
+   "roman_urdu": "Barakallahu laka wa baraka 'alaika wa jama'a bainakuma fi khair",
+   "confidence": "high"
+  },
+  {
+   "use": "The same dua adapted to address both spouses (dual form), as often printed on cards. Grammatically correct, but this is not the hadith's exact wording.",
+   "english": "May Allah bless you both, shower His blessings upon you both, and unite you in goodness.",
+   "arabic": "بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+   "roman_urdu": "Barakallahu lakuma wa baraka 'alaikuma wa jama'a bainakuma fi khair",
+   "confidence": "medium"
+  },
+  {
+   "use": "After the date or programme ('Saturday, 12 December, Insha'Allah'). In Urdu both ان شاء اللہ and the joined انشاء اللہ (Rekhta's form) are used; the Arabic is three words.",
+   "english": "God willing",
+   "arabic": "إِنْ شَاءَ اللَّهُ",
+   "urdu_script": "ان شاء اللہ",
+   "roman_urdu": "Insha'Allah",
+   "confidence": "high"
+  },
+  {
+   "use": "Walima or thank-you opener ('Alhamdulillah' heads walima-only cards)",
+   "english": "All praise is for Allah",
+   "arabic": "الْحَمْدُ لِلَّهِ",
+   "urdu_script": "الحمد للہ",
+   "roman_urdu": "Alhamdulillah",
+   "confidence": "high"
+  },
+  {
+   "use": "Admiration or blessing line on an end card",
+   "english": "As Allah has willed",
+   "arabic": "مَا شَاءَ اللَّهُ",
+   "urdu_script": "ما شاء اللہ",
+   "roman_urdu": "Masha'Allah",
+   "confidence": "high"
+  },
+  {
+   "use": "'With the blessings of' line above the host names",
+   "english": "With the blessings of Almighty Allah / By the grace of Allah",
+   "arabic": "بِفَضْلِ اللَّهِ",
+   "urdu_script": "بفضلِ تعالیٰ / اللہ تعالیٰ کے فضل و کرم سے",
+   "roman_urdu": "Ba-fazl-e-Ta'ala / Allah Ta'ala ke fazl-o-karam se",
+   "confidence": "high"
+  },
+  {
+   "use": "'With the blessings of our elders' line (also used to honour late grandparents)",
+   "english": "With the prayers and blessings of our elders",
+   "urdu_script": "بزرگوں کی دعاؤں کے ساتھ",
+   "roman_urdu": "Buzurgon ki duaon ke saath",
+   "confidence": "medium"
+  },
+  {
+   "use": "Host line, used on the current card",
+   "english": "Together with their families",
+   "urdu_script": "دونوں خاندانوں کی جانب سے",
+   "roman_urdu": "Dono khandanon ki janib se",
+   "confidence": "medium"
+  },
+  {
+   "use": "Invitation formula (attested on real Pakistani cards)",
+   "english": "...request the honour of your presence and blessings on the auspicious occasion of the wedding ceremony of their beloved daughter / son",
+   "urdu_script": "آپ کو ... کی تقریب میں شرکت کی دعوت دیتے ہیں",
+   "roman_urdu": "Aap ko ... ki taqreeb mein shirkat ki dawat dete hain",
+   "confidence": "high"
+  },
+  {
+   "use": "Invitation formula, more literary Urdu",
+   "english": "...desire your gracious participation in the Baraat ceremony",
+   "urdu_script": "بارات کی تقریب میں آپ کی شرکت کے خواہاں ہیں",
+   "roman_urdu": "Baraat ki taqreeb mein aap ki shirkat ke khwahan hain",
+   "confidence": "medium"
+  },
+  {
+   "use": "Closing courtesy line, used on the current card ('source of joy'). Built from Rekhta-verified words.",
+   "english": "Your presence will be a source of great joy for us",
+   "urdu_script": "آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی",
+   "roman_urdu": "Aap ki shirkat hamare liye baais-e-musarrat hogi",
+   "confidence": "high"
+  },
+  {
+   "use": "'Your presence is our honour' closing line; tashreef aawari = the arrival of a respected person",
+   "english": "Your presence will be an honour for us",
+   "urdu_script": "آپ کی تشریف آوری ہمارے لیے باعثِ عزت ہوگی",
+   "roman_urdu": "Aap ki tashreef aawari hamare liye baais-e-izzat hogi",
+   "confidence": "high"
+  },
+  {
+   "use": "Warm closing line: 'double our joy'",
+   "english": "Join us and double our happiness with your presence",
+   "urdu_script": "اپنی شرکت سے ہماری خوشیوں کو دوبالا کریں",
+   "roman_urdu": "Apni shirkat se hamari khushiyon ko dobala karein",
+   "confidence": "medium"
+  },
+  {
+   "use": "Formal Urdu request: 'kindly come and oblige us'",
+   "english": "Kindly grace us with your presence",
+   "urdu_script": "تشریف لا کر ممنون فرمائیں",
+   "roman_urdu": "Tashreef la kar mamnoon farmaayein",
+   "confidence": "medium"
+  },
+  {
+   "use": "Urdu idiom 'grace the occasion' (Rekhta: raunaq-afroz hona)",
+   "english": "to grace the occasion",
+   "urdu_script": "تقریب میں رونق افروز ہوں",
+   "roman_urdu": "Taqreeb mein raunaq-afroz hon",
+   "confidence": "medium"
+  },
+  {
+   "use": "RSVP block heading. Only about 40% of sampled cards say 'RSVP'; the rest use 'Awaiting to welcome' or Urdu 'chashm-baraah' / 'muntazir', followed by family names and mobile numbers.",
+   "english": "RSVP / Awaiting to welcome",
+   "urdu_script": "چشم براہ / منتظرین / رابطہ",
+   "roman_urdu": "Chashm-e-baraah / Muntazireen / Raabta",
+   "confidence": "high"
+  },
+  {
+   "use": "RSVP or closing line before the family names",
+   "english": "Eagerly awaiting your gracious arrival",
+   "urdu_script": "آپ کی تشریف آوری کے منتظر",
+   "roman_urdu": "Aap ki tashreef aawari ke muntazir",
+   "confidence": "high"
+  },
+  {
+   "use": "Signature label before the inviting names on formal Urdu cards ('the requester / petitioner')",
+   "english": "Requested by / With compliments from",
+   "urdu_script": "الملتمس / منجانب",
+   "roman_urdu": "Al-Multamis / Manjanib",
+   "confidence": "high"
+  },
+  {
+   "use": "Signature line asking for prayers",
+   "english": "Seeking your prayers",
+   "urdu_script": "دعاؤں کے طالب",
+   "roman_urdu": "Duaon ke talib",
+   "confidence": "medium"
+  },
+  {
+   "use": "'No gifts, just duas' note",
+   "english": "Your prayers are the only gift we seek",
+   "urdu_script": "آپ کی دعائیں ہی ہمارا تحفہ ہیں",
+   "roman_urdu": "Aap ki duaein hi hamara tohfa hain",
+   "confidence": "medium"
+  },
+  {
+   "use": "Classic Urdu title for the wedding ('marriage that makes the home flourish', Rekhta)",
+   "english": "Wedding ceremony (lit. marriage and the settling of a home)",
+   "urdu_script": "تقریبِ شادی خانہ آبادی",
+   "roman_urdu": "Taqreeb-e-Shaadi Khana Abadi",
+   "confidence": "high"
+  },
+  {
+   "use": "Event names (titles)",
+   "english": "Dholki / Mayun / Mehndi / Henna ceremony / Nikah / Nikah contract / Baraat / Rukhsati / Walima / Walima feast / Qawwali night / Engagement / Sehra tying",
+   "urdu_script": "ڈھولکی / مایوں / مہندی / رسمِ حنا / نکاح / عقدِ نکاح / بارات / رخصتی / ولیمہ / دعوتِ ولیمہ / محفلِ قوالی / منگنی / سہرا بندی",
+   "roman_urdu": "Dholki / Mayun / Mehndi / Rasm-e-Hina / Nikah / Aqd-e-Nikah / Baraat / Rukhsati / Walima / Dawat-e-Walima / Mehfil-e-Qawwali / Mangni / Sehra Bandi",
+   "confidence": "high"
+  },
+  {
+   "use": "Event sub-titles",
+   "english": "Mehndi night / Rite of Mayun / Nikah ceremony",
+   "urdu_script": "مہندی کی رات / رسمِ مایوں / تقریبِ نکاح",
+   "roman_urdu": "Mehndi ki Raat / Rasm-e-Mayun / Taqreeb-e-Nikah",
+   "confidence": "high"
+  },
+  {
+   "use": "'Rukhsati' programme line (Rekhta: the bride's farewell from her parents' home)",
+   "english": "Rukhsati (bride's farewell): 10:00 pm",
+   "urdu_script": "رخصتی: رات 10 بجے",
+   "roman_urdu": "Rukhsati: raat 10 baje",
+   "confidence": "high"
+  },
+  {
+   "use": "Programme labels: Baraat arrival (bride's-side card) / Baraat departure (groom's-side card) / reading of the Nikah",
+   "english": "Arrival of the Baraat / Departure of the Baraat / Nikah ceremony",
+   "urdu_script": "بارات کی آمد / بارات کی روانگی / نکاح خوانی",
+   "roman_urdu": "Baraat ki aamad / Baraat ki rawangi / Nikah khwani",
+   "confidence": "high"
+  },
+  {
+   "use": "'Dinner' / 'Lunch' programme line (Rekhta: عشائیہ = dinner party)",
+   "english": "Dinner / Lunch (will be served at 9:00 pm)",
+   "urdu_script": "عشائیہ / طعام / ظہرانہ",
+   "roman_urdu": "Ishaiya / Ta'aam / Zuhrana",
+   "confidence": "high"
+  },
+  {
+   "use": "Programme field labels: on (date) / on (day) / at (time) / at (venue)",
+   "english": "Date / Day / Time / Venue",
+   "urdu_script": "بتاریخ / بروز / بوقت / بمقام",
+   "roman_urdu": "Ba-tareekh / Ba-roz / Ba-waqt / Ba-maqaam",
+   "confidence": "high"
+  },
+  {
+   "use": "Prayer-time based timings (common for a Nikah)",
+   "english": "After Asr prayer / after Maghrib prayer / after Isha prayer",
+   "urdu_script": "بعد نمازِ عصر / بعد نمازِ مغرب / بعد نمازِ عشاء",
+   "roman_urdu": "Ba'd namaz-e-Asr / Ba'd namaz-e-Maghrib / Ba'd namaz-e-Isha",
+   "confidence": "high"
+  },
+  {
+   "use": "Urdu day names for the date line (Mon-Sun)",
+   "english": "Monday / Tuesday / Wednesday / Thursday / Friday / Saturday / Sunday",
+   "urdu_script": "پیر / منگل / بدھ / جمعرات / جمعہ / ہفتہ / اتوار",
+   "roman_urdu": "Peer / Mangal / Budh / Jumeraat / Juma / Hafta / Itwaar",
+   "confidence": "high"
+  },
+  {
+   "use": "Time-of-day words used with times (e.g., شام 7 بجے = 7 pm)",
+   "english": "evening / night / afternoon / o'clock",
+   "urdu_script": "شام / رات / دوپہر / بجے",
+   "roman_urdu": "shaam / raat / dopehar / baje",
+   "confidence": "high"
+  },
+  {
+   "use": "Host and kinship formulas. In English: 'Mr. & Mrs. X', 'd/o' (daughter of), 's/o' (son of). Some families show only 'd/o [father]' or 'their daughter' instead of the bride's name.",
+   "english": "Mr. & Mrs. / daughter of / son of / (honorific) daughter / (honorific) son",
+   "urdu_script": "جناب و بیگم / دختر ، بنت / فرزند ، ولد / صاحبزادی / صاحبزادہ",
+   "roman_urdu": "Janab-o-Begum / dukhtar, bint / farzand, wald / sahibzadi / sahibzada",
+   "confidence": "high"
+  },
+  {
+   "use": "Literary endearments for the couple on Urdu cards (Rekhta: nur-e-nazar = light of the eye, beloved son; lakht-e-jigar = piece of the heart, darling child)",
+   "english": "light of our eyes / piece of our heart",
+   "urdu_script": "نورِ نظر / لختِ جگر",
+   "roman_urdu": "Noor-e-nazar / Lakht-e-jigar",
+   "confidence": "medium"
+  },
+  {
+   "use": "Envelope / guest address line",
+   "english": "Respected Mr./Ms. ___ and family",
+   "urdu_script": "محترم / محترمہ ___ مع اہلِ خانہ",
+   "roman_urdu": "Mohtaram / Mohtarma ___ ma'a ahl-e-khana",
+   "confidence": "high"
+  },
+  {
+   "use": "Groom / bride labels (Rekhta also spells it دولھا)",
+   "english": "Groom / Bride",
+   "urdu_script": "دولہا / دلہن",
+   "roman_urdu": "Dulha / Dulhan",
+   "confidence": "high"
+  },
+  {
+   "use": "Nikah motif text (consent phrase) and contract words",
+   "english": "I accept / marriage contract / dower (mahr)",
+   "urdu_script": "قبول ہے / نکاح نامہ / حق مہر",
+   "roman_urdu": "Qubool hai / Nikahnama / Haq mehr",
+   "confidence": "high"
+  },
+  {
+   "use": "End-card congratulations",
+   "english": "Happy wedding! / Congratulations! / Blessed Nikah",
+   "urdu_script": "شادی مبارک / مبارک ہو / نکاح مبارک",
+   "roman_urdu": "Shaadi Mubarak / Mubarak ho / Nikah Mubarak",
+   "confidence": "high"
+  },
+  {
+   "use": "Arabic congratulations (Arab usage, rarely seen on Pakistani cards)",
+   "english": "Congratulations / blessed marriage",
+   "arabic": "مَبْرُوك / زَوَاج مُبَارَك",
+   "confidence": "high"
+  },
+  {
+   "use": "Blessing for the couple (end card)",
+   "english": "May the pair stay blessed / May Allah keep this couple happy forever",
+   "urdu_script": "جوڑی سلامت رہے / اللہ تعالیٰ اس جوڑی کو ہمیشہ خوش و خرم رکھے",
+   "roman_urdu": "Jori salamat rahe / Allah Ta'ala is jori ko hamesha khush-o-khurram rakhe",
+   "confidence": "medium"
+  },
+  {
+   "use": "Playful 'evil-eye-away' line (Dholki, Mehndi)",
+   "english": "May the evil eye stay away",
+   "urdu_script": "چشمِ بد دور",
+   "roman_urdu": "Chashm-e-bad door",
+   "confidence": "medium"
+  },
+  {
+   "use": "Welcome sign or first frame",
+   "english": "Welcome",
+   "urdu_script": "خوش آمدید",
+   "roman_urdu": "Khush aamdeed",
+   "confidence": "high"
+  },
+  {
+   "use": "Notes block. In Punjab, functions must end by 10 pm under the Punjab Marriage Functions Act 2016 (one-dish rule too), and Lahore halls were sealed for timing breaches in Oct 2025.",
+   "english": "Kindly be punctual - the function will conclude at 10:00 pm as per Government regulations",
+   "urdu_script": "وقت کی پابندی فرمائیں - تقریب رات دس بجے اختتام پذیر ہوگی",
+   "roman_urdu": "Waqt ki paabandi farmaayein - taqreeb raat das baje ikhtitam-pazeer hogi",
+   "confidence": "medium"
+  },
+  {
+   "use": "Dholki / Mehndi note",
+   "english": "Ladies only",
+   "urdu_script": "صرف خواتین کے لیے",
+   "roman_urdu": "Sirf khawateen ke liye",
+   "confidence": "high"
+  },
+  {
+   "use": "Thanks line to guests (plural)",
+   "english": "May Allah reward you with goodness",
+   "arabic": "جَزَاكُمُ اللَّهُ خَيْرًا",
+   "urdu_script": "جزاک اللہ خیر",
+   "roman_urdu": "JazakAllah khair",
+   "confidence": "high"
+  },
+  {
+   "use": "Ending a dua line",
+   "english": "Amen",
+   "arabic": "آمِين",
+   "urdu_script": "آمین",
+   "roman_urdu": "Ameen",
+   "confidence": "high"
+  },
+  {
+   "use": "Verse citation formats under a verse",
+   "english": "(Qur'an 78:8) / Surah An-Naba, 78:8",
+   "arabic": "سورة النبأ ٨",
+   "urdu_script": "سورۃ النبا: 8",
+   "confidence": "medium"
+  }
+ ],
+ "card_structure": [
+  "0. Envelope or first frame (optional, personalised): guest name, e.g. 'Mr. & Mrs. ___ & family' / 'محترم ___ مع اہلِ خانہ'. A study of 100 real Pakistani cards found the guest's name was almost always written on the envelope.",
+  "1. Opening invocation, top centre. It appeared on 100% of the cards studied: Bismillah in Arabic calligraphy, the Urdu-orthography line, the English translation, or '786'. Variants to offer: Arabic, Urdu, the ﷽ glyph, the English translation, 786, 'Bismihi Ta'ala', or off. Keep it static or use a gentle fade.",
+  "2. Optional verse or hadith in small type under the Bismillah: 78:8, 30:21, 51:49, 36:36, 25:74, 'Nikah is my Sunnah', or a translation-only version.",
+  "3. Blessing line (optional): 'With the blessings of Almighty Allah' / 'بفضلِ تعالیٰ' / 'Alhamdulillah' (Walima).",
+  "4. Hosts. Found on 84% of cards, just below the opening: both parents ('Mr. & Mrs. Abdul Malik') or the father only. The host depends on the event. Bride's parents: Mehndi (bride's), Nikah (usually), Baraat/Rukhsati. Groom's parents: groom's Mehndi, 'accompany the Baraat' card, Walima. Both: 'Together with their families'.",
+  "5. Invitation formula. Found on 80% of cards, in lofty third person: 'request the honour of your presence / the pleasure of your company ... on the auspicious occasion of the [Event] of their beloved daughter/son'. Typical adjectives: beloved, auspicious, gracious, cordially.",
+  "6. Couple names. Shown on 66% of cards. Some cards hide the bride's name and give only 'D/O [father]' or 'their daughter' for modesty. Order follows the host: the host family's child comes first ('[Bride] with [Groom] s/o ...' on a bride-side card; '[Groom] with [Bride] d/o ...' on a Walima/groom-side card). Connectors: '&', 'weds', 'with'. Provide 'hide bride's name' and 'show d/o, s/o lines' toggles.",
+  "7. Programme. Present on 100% of cards and often repeated per event. Sub-parts: date + day, event name + time, venue. Write it as a chronological list, e.g. Baraat arrival 7:00 pm - Nikah 7:30 pm - Dinner 8:30 pm - Rukhsati 9:45 pm (Lahore: all must end by 10 pm). Add 'Insha'Allah' after the date. A Hijri date is optional and user-editable, because local moon sighting can shift it by a day. Weekend dates and the Nov-Feb season are typical.",
+  "8. Venue: name, area and city, with an optional map pin or QR code. Keep the venue in English even on bilingual cards.",
+  "9. Closing courtesy line: 'Aap ki shirkat hamare liye baais-e-musarrat hogi' / 'Your presence will be an honour for us' / a dua for the couple.",
+  "10. RSVP block, bottom left or right. Only 40% of cards label it 'RSVP'; the rest say 'Awaiting to welcome' or 'چشم براہ' / 'منتظرین'. Give 1-3 names with 03xx-xxxxxxx numbers. Real cards often list many relatives ('Looking forward' / family list); keep that optional and short.",
+  "11. Notes (optional): punctuality and 10 pm end time, dress code (e.g., 'yellow' for Mayun), 'Ladies only', 'Your duas are our gift', 'Separate arrangements for ladies'.",
+  "12. End card (video): 'Shaadi Mubarak' / 'Jori salamat rahe' / couple monogram / the Barakallahu lakuma dua.",
+  "VIDEO SCENE ORDER for the requested pop-up concept: (a) Bismillah alone on screen first, before any name or figure. (b) Host and blessing line. (c) Groom's name pops in. (d) Groom icon rises (turban, plus sehra if chosen). (e) Bride icon appears (dupatta with tikka, jhoomar and nath). (f) Bride's name pops in. (g) Both under an arch or jharokha with petals. (h) Event title, date, programme and venue. (i) Closing line and RSVP. (j) End card. On bride's-family cards (Mehndi, Baraat/Rukhsati), reverse c-f so the bride comes first.",
+  "Per-event emphasis. Dholki/Mayun: casual, often a home address, no verse, light invocation. Mehndi: dress-code line. Nikah: verse plus hadith, mosque, prayer-time timing. Baraat: the full programme with Rukhsati. Walima: groom's parents as hosts, 'Dinner' time, elegant tone.",
+  "Bilingual layout. English carries the logistics; Urdu gives the title, poetic lines and courtesy formulas (Urdu-English bilingual cards are common). Urdu lines need dir='rtl' lang='ur'; Arabic or Qur'anic lines need lang='ar'.",
+  "Research basis for the move model. Majeed, Sahroof & Masroor (2021, 100 cards): Opening; Parents' names; Inviting with pleasure; Bride & groom names; Programme; RSVP; Looking forward; Guest name. Yasmin et al. (2019): 7 obligatory + 1 optional moves in Urdu cards, 6 + 1 in English. Amjad & Riaz (2020): 11 moves in Baraat cards, 10 in Mehndi cards."
+ ],
+ "illustration_notes": [
+  "STYLE: flat vector icons, 3-4 flat fills per figure plus one gold line accent (role acc) for embroidery and jewellery. No skin gradients. At the 340px preview, keep only 2-3 signature cues per figure (groom: turban + sehra; bride: dupatta + jhoomar + nath) so they still read. A figure should take about 25-35% of card height and never overpower the Bismillah or the names.",
+  "FACES: default to faceless (a plain skin-tone oval with no eyes, nose or mouth) or veiled (groom behind sehra strands, bride behind a sheer dupatta veil). An optional 'minimal' mode can use two closed-eye arcs and a hint of blush, with no mouth. Facelessness is a recognised modest Muslim convention (e.g. faceless dolls). Scholars differ on whether it removes the image concern: SeekersGuidance calls featureless figures a difference of opinion; IslamOnline reports Maliki/Hanbali permission when facial features are erased; Darul Uloom Trinidad still objects to featureless full figures. So also provide a 'symbols only' mode with no human figures.",
+  "SKIN & HENNA: warm South Asian browns, e.g. #E2B28C, #C98E63, #A86B45, #7E4E33. Avoid grey, very pale or 'fairness' tones. Mehndi on hands in henna brown #8B3A1A / #A0461F, drawn as vines, dots and a palm rosette.",
+  "GROOM - TURBAN (pagri/safa): stack 4-6 diagonal wrap bands crossing at the front over a visible kulla cap. The Punjabi kulla is soft and conical with a starched muslin wrap and a tall fan crest (turra/shamla) rising on one side. The Peshawari kulla is a hard dome, densely gold-embroidered, under a striped lungi. Lahore grooms typically wear a replica of the elite Punjabi pugree. Optional jewelled kalgi brooch with a small plume at the front centre. Fabric: gold tissue, ivory, maroon or rose-gold.",
+  "GROOM - SEHRA: 9-15 vertical strands hang from the turban's front band to the chest: white pearls or jasmine (motia) buds, tiny red rosebuds, and gold tinsel lines. Make it slightly wider at the bottom and give it a gentle sway. It hides the face naturally, which makes it an ideal faceless solution. It is tied at home before leaving (sehra bandi). Many modern grooms skip it, so offer a turban-only version.",
+  "GROOM - SHERWANI: knee-length coat, slightly A-line, with a high band (stand) collar and a centre placket of 5-7 round gold buttons. Add zardozi bands at the collar, cuffs and hem, optionally with scattered buti dots. Colour by event: Baraat ivory/off-white/gold, maroon or black; Nikah ivory, white or pastel; Walima grey, navy or black sherwani, suit or prince coat. Optional stole draped over one shoulder. For Baraat, a rose/jasmine haar around the neck, or a currency-note garland for a rural Punjabi feel.",
+  "GROOM - LOWER BODY & SHOES: churidar (fitted, with ruched rings at the ankle) or a straight shalwar/pajama in ivory. Khussa shoes: pointed, slightly upturned toe, gold-embroidered. Use a Peshawari chappal for Mehndi.",
+  "GROOM - OTHER EVENTS & REGIONS: Mehndi: kurta shalwar (white, mustard, bottle green or teal) with a contrasting waistcoat and a patka/stole at the neck, no turban. Qawwali: white kurta (groomsmen in black with green patkas). Nikah: sherwani or kurta-waistcoat, optional Jinnah (karakul) cap, a Pakistani national symbol. Regional variants: Sindhi ajrak shawl with Sindhi topi; Pashtun striped lungi over a gold dome kulla; Baloch white turban with no crest.",
+  "BRIDE - DUPATTA: draw it as an arch over the head covering the hair, framing the face and falling over both shoulders and arms to about knee level. Give it a scalloped gota/kiran (gold lace) border and scattered buti dots. Baraat: heavy red dupatta, optionally a second dupatta pinned over the head. Rukhsati: sheer veil drawn forward over the face, which is ideal for faceless mode. Offer a hijab-style bride variant.",
+  "BRIDE - JEWELLERY (the key Pakistani/Mughal cues): maang tikka, a chain along the centre parting with a round or teardrop pendant on the forehead. Jhoomar/passa, a fan-shaped cascade of chains and pearls pinned on one side of the head (usually the left); this is the single most 'Pakistani/Mughal' signifier. Nath, a large thin hoop on one nostril with a chain looping to the hair or ear (keep it even in faceless mode, placed at the nose position, or omit it). Bell-shaped jhumkas, a choker plus a long layered rani haar, stacks of red and gold glass bangles with kangan, optional haath phool and payal. Mehndi: swap to fresh-flower or gota jewellery (tikka, earrings, wrist gajray) in yellow, pink and white.",
+  "BRIDE - OUTFIT BY EVENT: Baraat: red, maroon or crimson. Either a flared lehenga with 2-3 wide zardozi border bands and a long kurti or choli with sleeves; or a farshi gharara (wide legs flaring from a gold gota band at the knee) with a short kurti; or a floor-length Mughal pishwas. Mehndi: yellow, green, orange or pink lehenga or gharara with mirror-work and gota. Mayun: plain yellow shalwar kameez, yellow dupatta, paranda braid, minimal jewellery, no makeup. Nikah: ivory, white or pastel with gold and a lighter dupatta. Walima: pastels (lilac, powder blue, blush, champagne) or ivory with silver, a maxi gown or lehenga, a lighter jewellery set.",
+  "POSE & COUPLE COMPOSITION: front-facing or slightly turned toward each other. Bride's hands folded at the waist or holding the dupatta edge (show mehndi), head slightly lowered. Groom upright, hands at his sides or one hand on his chest, slightly taller. Place them side by side under an arch or jharokha with a small gap; at most the bride's hand rests lightly on his arm. No embrace, kiss, dip, cheek-to-cheek, lifting, dancing-couple or lying poses.",
+  "WHO APPEARS PER EVENT: Dholki shows women's hands, bangles and dholak, or faceless seated women in dupattas, not the couple. Mayun shows the bride alone, veiled, in yellow, or symbols. Mehndi can show the bride or a joint stage. Nikah, Baraat, Rukhsati and Walima show the couple. A small shah bala (nephew dressed as the groom) is a charming Baraat extra.",
+  "SYMBOLS-ONLY KIT (for families who avoid figures): groom as a turban with turra and sehra with no face or body beneath, a sherwani on a hanger, or a pair of khussas. Bride as a dupatta-draped arch with tikka, jhoomar and nath floating (no face), a bangle stack, a mehndi hand (hands alone are widely acceptable), or gota-flower jewellery. Couple as two rings, Nikahnama and qalam, a doli/palki or flower-decked car, a mirror (aarsi), two lanterns, or interlinked monogram initials.",
+  "ANIMATION RIGGING: separate SVG groups for sehra strands (sway), dupatta edge (flutter), jhoomar (pendulum swing), bangles (shimmer), turra (slight wobble) and garland (bounce on arrival). Keep motion gentle and dignified; no comic squash-and-stretch on the bride or groom.",
+  "PALETTE MAPPING: bride outfit uses fl or the event colour (Baraat red, Mehndi yellow/green); groom sherwani uses ivory or ink2; jewellery, zardozi and khussa embroidery use acc; garlands and foliage use lf. Check that the dupatta and sherwani contrast with the card background (cd).",
+  "DO NOT draw: sindoor (red in the hair parting), mangalsutra (black-bead necklace), a red bindi without a tikka, the red-and-ivory chooda with dangling kaleere (Hindu/Sikh Punjabi), a varmala garland exchange between the couple, mandap or sacred fire, pheras, elephants, a Western white gown and veil for Baraat, an all-black bride, sleeveless, off-shoulder, cleavage, bare midriff or body-con cuts, caricatured features, skin-lightening, celebrity or designer likenesses, alcohol props, or the Qur'an held over the bride as an animated prop."
+ ],
+ "dos": [
+  "Open every Muslim card with the Bismillah at top centre (100% of the 100 cards studied by Majeed et al.). Keep the existing 'Show Bismillah' toggle, defaulting to on, and offer variants: Arabic (بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ), Urdu orthography (بسم اللہ الرحمٰن الرحیم), the ﷽ glyph, the English translation, 786, 'Bismihi Ta'ala', or none.",
+  "Treat sacred text with respect. Keep the Bismillah, verses and Allah's name static or gently faded; reveal them with a right-to-left mask wipe. Keep petals, gold dust, sparkles and lanterns out of their bounding box, and keep them above people's names and imagery. Darul Uloom Deoband: paper bearing Allah's name or verses must not be desecrated. Darul Uloom Trinidad: prefer translation-only on cards that will be discarded, so offer a 'translation only' mode.",
+  "Use Qur'an text from a verified source (quran.com imlaei text, as given). Render it in Amiri, Amiri Quran or Scheherazade New. Uthmani script needs a Qur'an-capable font, and the IndoPak script familiar in Pakistan needs special fonts not on Google Fonts.",
+  "Use the right letters for each script. Urdu: heh goal ہ U+06C1, Farsi yeh ی U+06CC, keheh ک U+06A9. Arabic: ه U+0647, ي U+064A, ك U+0643. Use superscript alef U+0670 in الرحمٰن and تعالیٰ. Do not mix them within one string.",
+  "Urdu typography: lang='ur' dir='rtl', Nastaliq (Noto Nastaliq Urdu or Gulzar, both on Google Fonts), with line-height of about 2.0-2.3 so ascenders and descenders are not clipped at container-query sizes. Arabic in Naskh (Amiri, Noto Naskh Arabic). Pair Naskh with a clean serif for English. Use Kufic (Reem Kufi) only for borders and patterns, and avoid Ruq'ah on formal invites (Paperlust). Wait for document.fonts.ready before starting animations.",
+  "Animate Arabic-script names and lines as whole words or lines. For 'handwriting' or 'letter-by-letter' effects on Urdu/Arabic, use a clip-path or mask sweeping right-to-left; splitting into per-letter spans breaks the cursive joining.",
+  "Match colour schemes to events. Dholki: multicolour truck-art or phulkari. Mayun: turmeric yellow with marigold and green. Mehndi: green, yellow and orange (plus pink). Nikah: ivory or white with gold, pastels (mint, sage, blush), or emerald for night. Baraat: red/maroon with gold, or jewel tones. Rukhsati: crimson with dusk plum. Walima: pastels or ivory with silver/lilac, or navy with champagne. Real Pakistani cards most often use white, silver and cream stock with red, green and black accents.",
+  "Use authentic Pakistani, Mughal and Islamic motifs. Mughal cusped arches, jharokhas, jaali, palace doors. Islamic geometry (8-point star, girih). Wazir Khan Mosque kashi-kari tile colours (cobalt, turquoise, white, green, orange, yellow, purple). Pietra-dura florals (tulip, iris, poppy, narcissus, as in Shah Jahan-era flower studies). Shalimar Gardens charbagh, cypresses and fountains. A Badshahi Mosque silhouette for a Lahore Nikah. Truck art and phulkari for Dholki. Ajrak (crimson/indigo) for a Sindhi variant. Jasmine/motia (Pakistan's national flower), roses, marigolds, gota lace, mirror-work, lanterns.",
+  "Word the card around the host. The bride's family hosts Mehndi (hers), Nikah (usually) and Baraat/Rukhsati, and the bride is named first. The groom's family hosts his Mehndi, the 'accompany the Baraat' card and the Walima, and the groom is named first. Include s/o and d/o lines with the fathers' names, and 'Mr. & Mrs.' hosts.",
+  "Offer modesty toggles: hide the bride's name (show 'd/o [father]' or 'their beloved daughter', as some real cards do); figure mode (faceless couple / veiled / symbols only / none); a hijab-style bride variant; and 'translation only / no Qur'an text'.",
+  "Use realistic Lahore sample data. Weekend dates in the Nov-Feb wedding season. Programme times that finish by 10:00 pm (Punjab Marriage Functions Act; Lahore halls sealed for late functions in Oct 2025), with the note 'Kindly be punctual; the function will conclude at 10:00 pm'. Phone numbers in 03xx-xxxxxxx form. Fictional but typical names (bride: Ayesha, Fatima, Zainab, Maryam, Hira, Mahnoor, Amna; groom: Hamza, Ahmed, Ali, Usman, Bilal, Zain, Saad). Generic venues ('The Grand Marquee, Gulberg, Lahore').",
+  "Use Pakistani event spellings consistently: Dholki, Mayun, Mehndi (Rasm-e-Hina), Nikah, Baraat, Rukhsati, Walima. Allow user-chosen variants (Barat, Valima, Nikkah).",
+  "Provide a music-free option, or a nasheed/daf-only option, for religious families. If music is used, keep it on non-Qur'anic scenes.",
+  "Make the Hijri date optional and editable. Pakistan's dates follow local moon sighting and can differ from computed Umm al-Qura dates by a day.",
+  "Use regional variants for variety: Punjabi (conical kulla with tall turra), Peshawari/Pashtun (gold dome kulla with striped lungi), Sindhi (ajrak, topi; ajrak is presented to guests as an honour), Hyderabadi/Urdu-speaking (khara dupatta, farshi gharara), Baloch (white turban).",
+  "Use only properly licensed background imagery: own SVG art, public-domain or CC0 photos, or Wikimedia Commons files whose licence and attribution you have checked (e.g., the Badshahi Mosque category). Prefer drawn SVG versions of architecture so they scale to 4K."
+ ],
+ "donts": [
+  "Don't use Hindu religious symbols or rites: Ganesha, 'Shri Ganeshaya Namah', Om, swastika, kalash (pot with mango leaves and coconut), clay diyas or puja lamps (use candles or fanoos lanterns instead), mandap, sacred fire, pheras, kanyadaan, toran with mango leaves, rangoli as a centrepiece. Lotus and peacock-feather (Krishna) motifs are borderline; avoid them as main symbols.",
+  "Don't use Hindu or Sikh bridal markers or rites: sindoor, mangalsutra, a red bindi without a tikka, the red-ivory chooda with kaleere, a varmala/jaimala garland exchange between the couple, Sikh khanda or laavaan imagery. Don't use elephants (Indian baraat and Ganesha associations; Pakistani grooms come in a decorated car or on a horse).",
+  "Don't default to Hindi or Bollywood terms: use Dholki rather than Sangeet, Mayun/Ubtan rather than Haldi, Rukhsati rather than Vidaai/Bidaai. Avoid Hindi/Sanskrit phrases such as 'Shubh Vivah', 'Shubh Lagan' or 'Swagatam'.",
+  "Don't animate Qur'anic text or Allah's name playfully (bouncing, spinning, flipping, exploding into particles, letter-by-letter scatter). Don't overlay it with falling petals or dust, place it at the bottom or below names, or put it next to jokes.",
+  "Don't pair Qur'an recitation, or on-screen Qur'anic verses, with background music. Jordan's General Iftaa' Department (2024) calls mixing the Qur'an with music a grave sin, and other fatwas call it disrespect to the Qur'an.",
+  "Don't show the Qur'an as a decorative or animated prop (e.g. held over the bride at Rukhsati). The custom is common, but Darul Ifta Birmingham says it has no Shariah basis, and a cartoon mushaf is sensitive. Don't depict the Prophet, sacred persons or saints. Avoid Kaaba imagery as wedding decoration (editorial caution).",
+  "Don't present disputed hadith as sahih. 'Nikah is my Sunnah' (Ibn Majah 1846) is hasan per Al-Albani and da'if per Zubair Ali Zai. 'Marriage is half the deen' has disputed grading. Cite the collection, not 'Sahih'. Don't treat 786 as the only invocation option, since its use is disputed.",
+  "Don't mix Arabic and Urdu letterforms (ه/ہ, ي/ی, ك/ک). Don't add letter-spacing or synthetic italics to Arabic-script text, and don't split it into per-letter spans; all of these break cursive joining and look broken.",
+  "Don't use immodest or culturally off imagery: no kissing, embracing, dipping or dancing-couple silhouettes; no sleeveless, off-shoulder, cleavage, bare-midriff or body-con outfits; no champagne, wine or toasting glasses; no nightclub vibe.",
+  "Don't put the bride in an all-white Western gown and veil, or all black, for the Baraat. Families traditionally associate white with mourning and some consider black inauspicious. Use red, maroon or gold; white and ivory suit the Nikah.",
+  "Don't show the bride's photo or name by default without an option to hide it. Don't use real celebrities' or designers' likenesses or outfits, real venue or brand logos, or copyrighted song lyrics or film dialogue.",
+  "Don't schedule sample programmes past 10:00 pm for Lahore/Punjab, or suggest multi-dish 'menus' (one-dish rule). Avoid sample dates in Muharram (first ten days especially) and Ramadan, when weddings are generally avoided (editorial caution).",
+  "Don't use the national flag as wedding decor. The star and crescent are fine as a subtle Islamic motif (common on Muslim cards), but don't make the card look political."
+ ],
+ "sources": [
+  "Majeed, Sahroof & Masroor (2021), 'Genre Analysis of Pakistani Wedding Invitation Cards', Erevna 5(1), 100 cards; move frequencies, colours, images: https://journals.au.edu.pk/ojserevna/index.php/erevna/article/view/95 (full issue PDF: https://journals.au.edu.pk/ojserevna/index.php/erevna/issue/download/11/26)",
+  "Yasmin, Naseem & Sohail (2019), 'Religious and Socio-cultural Influences on the Pakistani Wedding Invitation', Open Linguistics 5:354-368: https://doi.org/10.1515/opli-2019-0019",
+  "Amjad & Riaz (2020), 'Genre Analysis: A Study of Pakistani Wedding Invitation Cards', Global Political Review 5(1): https://ideas.repec.org/a/aaw/gprjrn/v5y2020i1p155-162.html",
+  "Sadaf Farooqi, 'Pakistani Wedding Traditions & Customs', About Islam: https://aboutislam.net/family-society/culture/1605-2/",
+  "HSY, 'All the Pakistani wedding events explained': https://theworldofhsy.com/blogs/hsy-gazette/all-the-pakistani-wedding-events-explained",
+  "HSY, 'What's the difference between a Pakistani and Indian wedding?': https://theworldofhsy.com/blogs/hsy-gazette/what-s-the-difference-between-a-pakistani-and-indian-wedding",
+  "HSY, groom outfits per event: https://theworldofhsy.com/blogs/hsy-gazette/how-many-outfits-does-a-groom-need-for-a-pakistani-wedding",
+  "HSY, why brides wear yellow on Mehndi: https://theworldofhsy.com/blogs/hsy-gazette/why-do-pakistani-brides-wear-yellow-on-their-mehndi",
+  "HSY, small traditions (joota chupai, doodh pilai, sehra bandi, chauthi, salami): https://theworldofhsy.com/blogs/hsy-gazette/list-of-small-traditions-in-a-pakistani-wedding",
+  "Saira Shakira, dress guide per event (Mehndi, Baraat, Walima colours): https://www.sairashakira.com/blogs/news/from-mehndi-to-walima-a-dress-guide-for-every-wedding-event",
+  "Saira Shakira, evolution of Pakistani bridal fashion (dupatta, jhoomar, tikka, nath): https://www.sairashakira.com/blogs/news/from-tradition-to-trendsetter-the-evolution-of-pakistani-bridal-fashion",
+  "Dawn Images (Jan 2026), Lahore baraat/valima looks (ivory sherwani + pagri; lilac valima lehenga, grey sherwani): https://images.dawn.com/news/1194751",
+  "Duke 'Intersections' interview, 'Weddings in Pakistan: Process and Religion': https://sites.duke.edu/intersections/interviews/weddings-in-pakistan/",
+  "Riwaya, Pakistani wedding traditions in the UK: https://riwaya.co.uk/riwaya-blog/pakistani-wedding-traditions-in-the-uk-celebrating-culture-with-a-modern-twist",
+  "Ling App, Pakistani wedding vocabulary (Dholki women-only, Mangni, Shehendi): https://ling-app.com/ur/pakistani-wedding/",
+  "Wikipedia, Mayian: https://en.wikipedia.org/wiki/Mayian",
+  "Rekhta Dictionary entries (maayon, ruKHsatii, baa'is-e-masarrat, tashriif-aavarii, chashm-baraah, multamis/al-multamis, shaadii-e-KHaana-aabaadii, 'ishaa.iya, Dholakii, rasm-e-hinaa-bandii, inshaa-allaah, dulhaa/dulhan, laKHt-e-jigar, nuur-e-nazar, raunaq-afroz, ba-silsila): https://www.rekhtadictionary.com/meaning-of-maayon ; https://www.rekhtadictionary.com/meaning-of-rukhsatii ; https://www.rekhtadictionary.com/meaning-of-baais-e-masarrat ; https://www.rekhtadictionary.com/meaning-of-tashriif-aavarii ; https://www.rekhtadictionary.com/meaning-of-chashm-baraah ; https://www.rekhtadictionary.com/meaning-of-multamis ; https://www.rekhtadictionary.com/meaning-of-shaadii-e-khaana-aabaadii ; https://www.rekhtadictionary.com/meaning-of-ishaaiya ; https://www.rekhtadictionary.com/meaning-of-dholakii ; https://www.rekhtadictionary.com/meaning-of-rasm-e-hinaa-bandii ; https://www.rekhtadictionary.com/meaning-of-inshaa-allaah ; https://www.rekhtadictionary.com/meaning-of-dulhaa ; https://www.rekhtadictionary.com/meaning-of-lakht-e-jigar ; https://www.rekhtadictionary.com/meaning-of-nuur-e-nazar ; https://www.rekhtadictionary.com/meaning-of-raunaq-afroz",
+  "Quran.com API v4, verse texts (imlaei/uthmani/indopak) and translations (Saheeh International id 20, Maududi Urdu id 97, Maududi Roman Urdu id 831): https://api.quran.com/api/v4/quran/verses/imlaei?verse_key=78:8 (also 1:1, 30:21, 51:49, 36:36, 25:74, 2:187); human page https://quran.com/78/8",
+  "Hadith texts (Arabic/English/Urdu, with gradings) via fawazahmed0 hadith-api: Sunan Ibn Majah 1846 https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/1846.json ; Sunan Abi Dawud 2130 https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/2130.json ; Jami' at-Tirmidhi 1091 https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/1091.json (sunnah.com: https://sunnah.com/ibnmajah:1846 , https://sunnah.com/abudawud:2130 , https://sunnah.com/tirmidhi:1091)",
+  "Darul Uloom Deoband via IslamQA, printing Islamic verses on marriage cards: https://islamqa.org/hanafi/darulifta-deoband/25092/is-it-permissible-to-print-islamic-verses-on-marriage-invitation-cards/",
+  "Darul Uloom Trinidad & Tobago, Qur'anic ayah on wedding invitations (translation only): https://darululoomtt.net/quranic-ayaah-wedding-invitation/",
+  "Shaykh Gibril Haddad, 'Numeral 786 as Basmala' (permits; suggests 'Bismihi Ta'ala'): https://islamqa.org/hanafi/qibla-hanafi/35681/numeral-786-as-basmala/ ; IslamOnline on 786: https://fiqh.islamonline.net/en/can-the-number-786-substitute-for-the-basmallah/ ; Wikipedia Abjad numerals: https://en.wikipedia.org/wiki/Abjad_numerals",
+  "SeekersGuidance via IslamQA, drawing humans without features (difference of opinion): https://islamqa.org/hanafi/seekersguidance-hanafi/167815/what-is-the-ruling-regarding-drawing-living-creatures-without-features/",
+  "IslamOnline, 'Drawing in Islam: rulings on taswir': https://fiqh.islamonline.net/en/drawing-in-islam-rulings-on-taswir/",
+  "Vice, faceless Islamic dolls (modest faceless convention): https://broadly.vice.com/en/article/9bz79a/a-woman-in-britain-is-making-faceless-islamic-dolls-025",
+  "Darul Ifta Birmingham via IslamQA, Qur'an over the bride's head at Rukhsati: https://islamqa.org/hanafi/daruliftaa-birmingham/88212/the-pakistani-custom-of-holding-the-quran-over-the-brides-head-at-the-time-of-her-rukhsati/",
+  "Jordan General Iftaa' Department (17-09-2024), statement on mixing the Qur'an with music: https://aliftaa.jo/article-en/5821/A-Statement-on-the-Grave-Sin-and-Crime-of-Mixing-the-Quran-w",
+  "SeekersGuidance, fiqh of the Walima (sunnah; Bukhari hadiths): https://seekersguidance.org/answers/hanafi-fiqh/the-fiqh-of-the-marriage-feast-walima/",
+  "Darul Uloom Deoband via IslamQA, nikah after Asr / walima after Maghrib: https://islamqa.org/hanafi/darulifta-deoband/26967/can-we-do-nikah-aqiqa-in-asar-valima-in-maghrib/",
+  "Darul Uloom Azaadville via IslamQA, distributing dates after nikah: https://islamqa.org/hanafi/darulifta-azaadville/164977/throwing-dates-after-nikaah-2/",
+  "Paperlust, Muslim wedding invitations (structure, Ar-Rum 30:21, font pairing do/don't): https://paperlust.co/blog/muslim-wedding-invitations/",
+  "Wikipedia, Indian wedding invitations (Hindu symbols Ganesha/kalash/swastika/Om; Muslim star & crescent, Bismillah, 786): https://en.wikipedia.org/wiki/Indian_wedding_invitations",
+  "Wikipedia, Punjabi wedding traditions (chooda/kaleere in Hindu & Sikh variants; sindoor, pheras, jaimala Hindu): https://en.wikipedia.org/wiki/Punjabi_wedding_traditions ; Wikipedia Varamala: https://en.wikipedia.org/wiki/Varamala",
+  "Wikipedia, Sehra (headdress) and Sehra (poetry): https://en.wikipedia.org/wiki/Sehra_(headdress) ; https://en.wikipedia.org/wiki/Sehra_(poetry)",
+  "Mast Qalandar, 'The Turbans (Pugrees) of Pakistan' (kulla, turra/shamla, Lahore grooms): https://pakistaniat.com/2008/09/24/turban-pugree-pug-pakistan/",
+  "Wikipedia, Gharara: https://en.wikipedia.org/wiki/Gharara ; Khara dupatta (tika, jhoomar/paasa, nath): https://en.wikipedia.org/wiki/Khara_dupatta",
+  "Wikipedia, Phulkari: https://en.wikipedia.org/wiki/Phulkari ; Ajrak: https://en.wikipedia.org/wiki/Ajrak ; Truck art in South Asia: https://en.wikipedia.org/wiki/Truck_art_in_South_Asia ; Wazir Khan Mosque: https://en.wikipedia.org/wiki/Wazir_Khan_Mosque ; Jasminum officinale (national flower of Pakistan): https://en.wikipedia.org/wiki/Jasminum_officinale",
+  "The Met, 'Flower Studies' (Shah Jahan period: tulip, iris, poppy, narcissus): https://www.metmuseum.org/art/collection/search/825613 ; Archnet, Shalimar Gardens: https://archnet.org/sites/2748",
+  "Dawn (Oct 2025), Lahore marriage halls sealed over one-dish and timing breach: https://www.dawn.com/news/1951630 ; Newsweek Pakistan (2014), one dish / 10 pm rule: https://www.newsweekpakistan.com/?p=11526",
+  "AP via Khaleej Times, Pakistan's Nov-Feb wedding season: https://www.khaleejtimes.com/world/asia/brides-biryani-and-marriage-multiplexes-pakistans-wedding-season-heats-up-in-cool-weather",
+  "Rana Safvi, Arsi Mushaf ceremony: https://ranasafvi.com/the-arsi-mushaf-ceremony/amp/ ; Polka Dot Wedding, Rukhsati/doli: https://polkadotwedding.com/2021/11/glittering-gold-rukhsati",
+  "ARY News, currency-note garland for groom (Bhakkar): https://arynews.tv/currency-notes-garland-of-35ft-prepared-for-groom-in-bhakar ; Arab News, Jinnah cap: https://www.arabnews.pk/node/1603861",
+  "Free Press Journal, 1933 Urdu wedding card (praise, Hijri + Gregorian dates, punctuality request): https://www.freepressjournal.in/amp/viral/old-wedding-invitation-from-year-1933-goes-viral-amaze-netizens",
+  "Google Fonts availability checked (HTTP 200): Amiri, Amiri Quran, Scheherazade New, Noto Naskh Arabic, Noto Nastaliq Urdu, Gulzar, Lateef, Reem Kufi, Aref Ruqaa, El Messiri, Lalezar, Rakkas, Katibeh: https://fonts.googleapis.com/css2?family=Amiri+Quran"
+ ]
+}

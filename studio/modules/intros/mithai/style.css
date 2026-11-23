@@ -1,0 +1,140 @@
+.ix-mithai .mt-root{position:absolute;inset:0;z-index:7;opacity:0;overflow:hidden;transform-origin:50% 50%;
+ --mt-w:color-mix(in srgb,color-mix(in srgb,var(--acc) 50%,var(--bg)) 60%,#000);
+ --mt-gold:linear-gradient(180deg,color-mix(in srgb,var(--acc) 45%,#fff) 0%,var(--acc) 45%,color-mix(in srgb,var(--acc) 65%,#000) 100%);
+ --mt-paper:color-mix(in srgb,var(--ef) 88%,var(--acc));
+ --mt-orange:color-mix(in srgb,color-mix(in srgb,var(--acc) 62%,var(--bl)) 85%,#fff)}
+.ix-mithai .mt-table{position:absolute;inset:0;background:
+ radial-gradient(ellipse 75% 55% at 50% 50%,transparent 35%,rgba(0,0,0,.5) 100%),
+ radial-gradient(ellipse 40% 30% at 50% 45%,rgba(255,255,255,.10),transparent 70%),
+ repeating-linear-gradient(90deg,transparent 0 24.7cqw,rgba(0,0,0,.45) 24.7cqw 25cqw),
+ repeating-linear-gradient(89deg,rgba(255,255,255,.05) 0 .5cqw,rgba(0,0,0,.08) .5cqw 1.3cqw,transparent 1.3cqw 2.4cqw),
+ repeating-linear-gradient(91.5deg,rgba(0,0,0,.10) 0 2.6cqw,transparent 2.6cqw 6.5cqw,rgba(255,255,255,.04) 6.5cqw 8cqw,transparent 8cqw 11cqw),
+ var(--mt-w)}
+/* paper chits */
+.ix-mithai .mt-chit{position:absolute;left:15%;right:15%;text-align:center;color:var(--ink);background:var(--ef);padding:3cqw 3cqw 2.6cqw;border-radius:.6cqw;
+ box-shadow:0 1.4cqw 3cqw rgba(0,0,0,.4),inset 0 0 0 1.2cqw var(--ef),inset 0 0 0 calc(1.2cqw + 1px) color-mix(in srgb,var(--acc) 75%,transparent)}
+.ix-mithai .mt-top{top:8cqw;transform:rotate(-1.5deg)}
+.ix-mithai .mt-ia{font-family:var(--ft);font-size:4cqw;letter-spacing:.04em}
+.ix-mithai .mt-ev{font-family:"Rozha One",var(--ft);font-size:8.5cqw;line-height:1.1;color:var(--ink2);margin-top:.6cqw}
+.ix-mithai .mt-bot{top:145cqw;left:11%;right:11%;transform:rotate(1.2deg);opacity:0}
+.ix-mithai .mt-ph{font-family:var(--fs);font-size:7cqw;line-height:1.25;color:var(--ink2)}
+/* box */
+.ix-mithai .mt-box{position:absolute;left:10cqw;width:80cqw;top:42cqw;height:98cqw}
+.ix-mithai .mt-base{position:absolute;inset:0;border-radius:1.4cqw;
+ background:linear-gradient(135deg,color-mix(in srgb,var(--bl) 80%,#fff),var(--bl) 40%,color-mix(in srgb,var(--bl) 70%,#000));
+ box-shadow:0 3cqw 6cqw rgba(0,0,0,.55),inset 0 0 0 .7cqw color-mix(in srgb,var(--lv) 55%,var(--bl)),inset 0 0 0 calc(.7cqw + 1px) var(--acc)}
+.ix-mithai .mt-in{position:absolute;inset:3cqw;border-radius:.6cqw;padding:1cqw;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:30cqw 29cqw 29cqw;gap:1cqw;
+ background:repeating-linear-gradient(33deg,rgba(255,255,255,.18) 0 .4cqw,transparent .4cqw 3.2cqw),repeating-linear-gradient(-58deg,rgba(0,0,0,.035) 0 .3cqw,transparent .3cqw 4.1cqw),var(--mt-paper);
+ box-shadow:inset 0 1.2cqw 2.4cqw rgba(0,0,0,.35)}
+.ix-mithai .mt-cell{position:relative;border-radius:.8cqw;background:color-mix(in srgb,var(--mt-paper) 92%,#000);box-shadow:inset 0 .4cqw 1cqw rgba(0,0,0,.2),inset 0 0 0 1px rgba(255,255,255,.3)}
+.ix-mithai .mt-bf,.ix-mithai .mt-ld{grid-column:1 / 3}
+.ix-mithai .mt-tx{position:absolute;color:var(--ink);font-family:var(--ft);text-align:center}
+/* gulab jamun */
+.ix-mithai .mt-gj i{position:absolute;width:12.5cqw;height:12.5cqw;border-radius:50%;
+ background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.75) 0 6%,rgba(255,255,255,.15) 12%,transparent 24%),radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--acc) 38%,#000) 0 55%,color-mix(in srgb,var(--acc) 22%,#000) 100%);
+ box-shadow:0 .6cqw 1cqw rgba(0,0,0,.4),0 0 0 .5cqw color-mix(in srgb,var(--acc) 35%,transparent)}
+.ix-mithai .mt-gj i:nth-child(1){left:4cqw;top:2.5cqw}.ix-mithai .mt-gj i:nth-child(2){left:18cqw;top:2cqw}
+.ix-mithai .mt-gj i:nth-child(3){left:5cqw;top:15.5cqw}.ix-mithai .mt-gj i:nth-child(4){left:18.5cqw;top:15cqw}
+/* jalebi */
+.ix-mithai .mt-jsvg{position:absolute;left:50%;top:1.2cqw;width:20cqw;height:20cqw;margin-left:-10cqw;overflow:visible}
+.ix-mithai .mt-jsvg path{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 1;stroke-dashoffset:0}
+.ix-mithai .mt-j1{stroke:color-mix(in srgb,var(--mt-orange) 70%,#000);stroke-width:7.5}
+.ix-mithai .mt-j2{stroke:var(--mt-orange);stroke-width:4.5}
+.ix-mithai .mt-tm{left:0;right:0;bottom:1.6cqw;font-size:5cqw;font-weight:700;letter-spacing:.03em}
+/* barfi */
+.ix-mithai .mt-slab{position:absolute;inset:2cqw 2.2cqw;border-radius:.6cqw;overflow:hidden;
+ background:repeating-linear-gradient(60deg,transparent 0 6cqw,rgba(0,0,0,.10) 6cqw 6.25cqw),repeating-linear-gradient(-60deg,transparent 0 6cqw,rgba(0,0,0,.10) 6cqw 6.25cqw),linear-gradient(180deg,color-mix(in srgb,var(--lv) 25%,var(--ef)),color-mix(in srgb,var(--lv) 40%,var(--ef)));
+ box-shadow:0 .7cqw 1.2cqw rgba(0,0,0,.3),inset 0 -.8cqw 0 color-mix(in srgb,var(--lv) 50%,var(--ef))}
+.ix-mithai .mt-dt{left:4cqw;right:4cqw;top:50%;transform:translateY(-50%);font-size:5cqw;font-weight:700;line-height:1.25;padding:1.4cqw 1cqw;border-radius:.6cqw;background:color-mix(in srgb,var(--ef) 80%,transparent)}
+.ix-mithai .mt-warq{position:absolute;inset:0;background:repeating-linear-gradient(120deg,rgba(255,255,255,.55) 0 1.1cqw,rgba(0,0,0,.10) 1.1cqw 1.6cqw,rgba(255,255,255,.25) 1.6cqw 3cqw),linear-gradient(135deg,color-mix(in srgb,var(--ef) 30%,#fff),color-mix(in srgb,var(--ef) 50%,#888),color-mix(in srgb,var(--ef) 25%,#fff));clip-path:inset(0 0 0 0)}
+.ix-mithai .mt-curl{position:absolute;top:0;bottom:0;left:0;width:3.5cqw;opacity:0;background:linear-gradient(90deg,rgba(0,0,0,.25),#fff 45%,rgba(160,160,160,.9) 70%,rgba(0,0,0,0));box-shadow:1cqw 0 1.6cqw rgba(0,0,0,.25)}
+.ix-mithai .mt-glint{position:absolute;top:-20%;bottom:-20%;left:0;width:30%;opacity:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.85) 50%,transparent);transform:translateX(-120%)}
+/* laddoos */
+.ix-mithai .mt-vn{left:14.5cqw;right:14.5cqw;top:50%;transform:translateY(-50%);font-size:4.4cqw;font-weight:700;line-height:1.25}
+.ix-mithai .mt-ld b{position:absolute;top:8cqw;width:13cqw;height:13cqw;border-radius:50%;
+ background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.45),transparent 40%),radial-gradient(circle,rgba(255,255,255,.4) 0 22%,transparent 30%) 0 0/1.5cqw 1.5cqw,radial-gradient(circle,rgba(0,0,0,.18) 0 22%,transparent 30%) .75cqw .75cqw/1.5cqw 1.5cqw,radial-gradient(circle at 50% 50%,var(--mt-orange) 45%,color-mix(in srgb,var(--mt-orange) 70%,#000) 100%);
+ box-shadow:0 .7cqw 1.2cqw rgba(0,0,0,.4)}
+.ix-mithai .mt-ld .l1{left:10cqw}.ix-mithai .mt-ld .l2{left:22cqw}.ix-mithai .mt-ld .l3{left:34cqw}.ix-mithai .mt-ld .l4{left:46cqw}
+/* lid */
+.ix-mithai .mt-lidw{position:absolute;inset:-.6cqw;perspective:170cqw;perspective-origin:50% -20%}
+.ix-mithai .mt-lid{position:absolute;inset:0;transform-origin:50% 0;transform-style:preserve-3d}
+.ix-mithai .mt-lf,.ix-mithai .mt-lb{position:absolute;inset:0;border-radius:1.6cqw;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.ix-mithai .mt-lf{background:radial-gradient(circle,color-mix(in srgb,var(--acc) 45%,transparent) 0 .35cqw,transparent .5cqw) 0 0/5cqw 5cqw,linear-gradient(150deg,color-mix(in srgb,var(--bl) 78%,#fff),var(--bl) 45%,color-mix(in srgb,var(--bl) 72%,#000));
+ box-shadow:0 2.5cqw 5cqw rgba(0,0,0,.55),inset 0 0 0 2cqw color-mix(in srgb,var(--lv) 45%,var(--bl)),inset 0 0 0 calc(2cqw + 1px) var(--acc),inset 0 0 0 calc(3.2cqw + 1px) transparent}
+.ix-mithai .mt-lb{transform:rotateX(180deg);background:linear-gradient(180deg,var(--mt-paper),color-mix(in srgb,var(--mt-paper) 80%,#000))}
+.ix-mithai .mt-lbl{position:absolute;left:12cqw;right:12cqw;top:9cqw;padding:3.6cqw 2cqw 3cqw;text-align:center;color:var(--ink);background:var(--ef);border-radius:28cqw 28cqw 2cqw 2cqw / 9cqw 9cqw 2cqw 2cqw;
+ box-shadow:0 1cqw 2cqw rgba(0,0,0,.35),inset 0 0 0 1cqw var(--ef),inset 0 0 0 calc(1cqw + 1px) var(--acc),inset 0 0 0 calc(1cqw + 3px) var(--ef),inset 0 0 0 calc(1cqw + 4px) var(--acc)}
+.ix-mithai .mt-shop{font-family:"Rozha One",var(--ft);font-size:3.4cqw;letter-spacing:.18em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 70%,var(--acc))}
+.ix-mithai .mt-since{margin-top:1.2cqw;font-size:3cqw}
+.ix-mithai .mt-nm{font-family:"Rozha One",var(--ft);font-size:9.5cqw;line-height:1.08;color:var(--ink2);text-shadow:.25cqw .25cqw 0 color-mix(in srgb,var(--acc) 55%,transparent);overflow-wrap:anywhere}
+.ix-mithai .mt-wd{font-family:var(--fs);font-size:6cqw;line-height:1;color:var(--acc);margin:.4cqw 0}
+/* ribbon + bow */
+.ix-mithai .mt-rib{position:absolute;left:-1.2cqw;right:-1.2cqw;top:70cqw;height:5.4cqw;background:var(--mt-gold);box-shadow:0 .6cqw 1cqw rgba(0,0,0,.35)}
+.ix-mithai .mt-bow{position:absolute;left:50%;top:72.7cqw;width:0;height:0}
+.ix-mithai .mt-bow svg{position:absolute;overflow:visible;filter:drop-shadow(0 .6cqw .8cqw rgba(0,0,0,.4))}
+.ix-mithai .mt-bow path{fill:var(--acc);stroke:color-mix(in srgb,var(--acc) 60%,#000);stroke-width:1.2}
+.ix-mithai .mt-bow .mt-lsh{fill:none;stroke:color-mix(in srgb,var(--acc) 40%,#fff);stroke-width:2;stroke-linecap:round}
+.ix-mithai .mt-lo1{left:-25cqw;top:-10cqw;width:24cqw;height:16cqw;transform-origin:100% 55%}
+.ix-mithai .mt-lo2{left:1cqw;top:-10cqw;width:24cqw;height:16cqw;transform-origin:0 55%}
+.ix-mithai .mt-ta1{left:-7cqw;top:1cqw;width:7cqw;height:17cqw;transform-origin:70% 0}
+.ix-mithai .mt-ta2{left:0;top:1cqw;width:7cqw;height:17cqw;transform-origin:30% 0}
+.ix-mithai .mt-knot{position:absolute;left:-5cqw;top:-5cqw;width:10cqw;height:10cqw;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Rozha One",var(--ft);font-size:3.4cqw;color:var(--ink);
+ background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--acc) 30%,#fff),var(--acc) 60%,color-mix(in srgb,var(--acc) 65%,#000));box-shadow:0 .6cqw 1cqw rgba(0,0,0,.4),inset 0 0 0 .6cqw color-mix(in srgb,var(--acc) 80%,#fff)}
+/* sparkle puff */
+.ix-mithai .mt-spk{position:absolute;left:50%;top:30cqw;width:0;height:0}
+.ix-mithai .mt-spk i{position:absolute;left:-.9cqw;top:-.9cqw;width:1.8cqw;height:1.8cqw;border-radius:50%;opacity:0;background:radial-gradient(circle,#fff 0 20%,color-mix(in srgb,var(--acc) 50%,#fff) 40%,transparent 70%);box-shadow:0 0 2cqw var(--acc)}
+.ix-mithai .mt-spk::before{content:"";position:absolute;left:-30cqw;top:-30cqw;width:60cqw;height:60cqw;border-radius:50%;opacity:0;background:radial-gradient(circle,color-mix(in srgb,var(--acc) 45%,#fff) 0%,color-mix(in srgb,var(--acc) 40%,transparent) 30%,transparent 65%)}
+
+/* ---------- timeline ---------- */
+.play.s-mithai .mt-root{animation:mithai-on .1s linear var(--o) both,mithai-zoom 1.2s cubic-bezier(.55,0,.8,.4) calc(var(--o) + 9.8s) forwards}
+.play.s-mithai .mt-top{animation:mithai-drop 1s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 0s) both}
+.play.s-mithai .mt-box{animation:mithai-settle 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 0s) both}
+.play.s-mithai .mt-lo1{animation:mithai-lo1 1.2s cubic-bezier(.5,0,.3,1) calc(var(--o) + 1.4s) both}
+.play.s-mithai .mt-lo2{animation:mithai-lo2 1.2s cubic-bezier(.5,0,.3,1) calc(var(--o) + 1.45s) both}
+.play.s-mithai .mt-ta1{animation:mithai-ta1 1s cubic-bezier(.5,0,.6,1) calc(var(--o) + 1.7s) both}
+.play.s-mithai .mt-ta2{animation:mithai-ta2 1s cubic-bezier(.5,0,.6,1) calc(var(--o) + 1.75s) both}
+.play.s-mithai .mt-knot{animation:mithai-knot .8s ease-in calc(var(--o) + 1.6s) both}
+.play.s-mithai .mt-rib{animation:mithai-rib .8s cubic-bezier(.5,0,.7,1) calc(var(--o) + 2.1s) both}
+.play.s-mithai .mt-lid{animation:mithai-lid 1.5s cubic-bezier(.45,0,.2,1) calc(var(--o) + 2.8s) both}
+.play.s-mithai .mt-lidw{animation:mithai-off .5s ease-in calc(var(--o) + 3.9s) both}
+.play.s-mithai .mt-spk i{animation:mithai-spk 1.4s cubic-bezier(.15,.85,.3,1) calc(var(--o) + 3.3s) both}
+.play.s-mithai .mt-spk::before{animation:mithai-glow 1.2s ease-out calc(var(--o) + 3.3s) both}
+.play.s-mithai .mt-warq{animation:mithai-peel 1.3s cubic-bezier(.5,0,.4,1) calc(var(--o) + 4.3s) both}
+.play.s-mithai .mt-curl{animation:mithai-curl 1.3s cubic-bezier(.5,0,.4,1) calc(var(--o) + 4.3s) both}
+.play.s-mithai .mt-jsvg path{animation:mithai-draw 1.5s cubic-bezier(.4,0,.3,1) calc(var(--o) + 5.3s) both}
+.play.s-mithai .mt-tm{animation:mithai-fade .7s ease-out calc(var(--o) + 6.6s) both}
+.play.s-mithai .mt-ld .l1{animation:mithai-r1 1.1s cubic-bezier(.3,.7,.3,1) calc(var(--o) + 7.0s) both}
+.play.s-mithai .mt-ld .l2{animation:mithai-r2 1.1s cubic-bezier(.3,.7,.3,1) calc(var(--o) + 7.1s) both}
+.play.s-mithai .mt-ld .l3{animation:mithai-r3 1.1s cubic-bezier(.3,.7,.3,1) calc(var(--o) + 7.05s) both}
+.play.s-mithai .mt-ld .l4{animation:mithai-r4 1.1s cubic-bezier(.3,.7,.3,1) calc(var(--o) + 7.15s) both}
+.play.s-mithai .mt-vn{animation:mithai-in .7s ease-out calc(var(--o) + 7.6s) both}
+.play.s-mithai .mt-glint{animation:mithai-glint 1.1s ease-in-out calc(var(--o) + 8.0s) both}
+.play.s-mithai .mt-bot{animation:mithai-drop2 .9s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 8.2s) both}
+.play.s-mithai .card{animation:mithai-card 1.2s cubic-bezier(.2,.8,.2,1) calc(var(--o) + 9.8s) both}
+
+@keyframes mithai-on{from,to{opacity:1}}
+@keyframes mithai-zoom{0%{opacity:1;transform:none}100%{opacity:0;transform:scale(1.9)}}
+@keyframes mithai-drop{0%{transform:translateY(-3cqw) rotate(-4deg)}100%{transform:rotate(-1.5deg)}}
+@keyframes mithai-drop2{0%{opacity:0;transform:translateY(4cqw) rotate(4deg)}100%{opacity:1;transform:rotate(1.2deg)}}
+@keyframes mithai-settle{0%{transform:scale(1.05)}100%{transform:none}}
+@keyframes mithai-lo1{0%{transform:none;opacity:1}30%{transform:rotate(12deg)}80%{opacity:1}100%{transform:translate(-34cqw,-22cqw) rotate(-110deg) scale(.8);opacity:0}}
+@keyframes mithai-lo2{0%{transform:none;opacity:1}30%{transform:rotate(-12deg)}80%{opacity:1}100%{transform:translate(34cqw,-22cqw) rotate(110deg) scale(.8);opacity:0}}
+@keyframes mithai-ta1{0%{transform:none;opacity:1}100%{transform:translate(-8cqw,26cqw) rotate(35deg);opacity:0}}
+@keyframes mithai-ta2{0%{transform:none;opacity:1}100%{transform:translate(8cqw,26cqw) rotate(-35deg);opacity:0}}
+@keyframes mithai-knot{0%{transform:none;opacity:1}35%{transform:scale(1.2)}100%{transform:scale(.3) translateY(20cqw);opacity:0}}
+@keyframes mithai-rib{0%{transform:none;opacity:1}100%{transform:translateY(30cqw) scaleX(.9);opacity:0}}
+@keyframes mithai-lid{0%{transform:rotateX(0)}12%{transform:rotateX(-6deg)}100%{transform:rotateX(-112deg)}}
+@keyframes mithai-off{0%{opacity:1}100%{opacity:0}}
+@keyframes mithai-spk{0%{opacity:0;transform:rotate(var(--a)) translateY(0) scale(.3)}15%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateY(calc(-1 * var(--r))) scale(var(--z))}}
+@keyframes mithai-glow{0%{opacity:0;transform:scale(.3)}30%{opacity:.9}100%{opacity:0;transform:scale(1.4)}}
+@keyframes mithai-peel{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 100%)}}
+@keyframes mithai-curl{0%{left:-3.5cqw;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes mithai-draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes mithai-fade{0%{opacity:0;transform:translateY(2cqw)}100%{opacity:1;transform:none}}
+@keyframes mithai-in{0%{opacity:0;transform:translateY(calc(-50% + 2cqw))}100%{opacity:1;transform:translateY(-50%)}}
+@keyframes mithai-r1{0%{transform:none}100%{transform:translate(-9.5cqw,-6.5cqw) rotate(-300deg)}}
+@keyframes mithai-r2{0%{transform:none}100%{transform:translate(-21.5cqw,6.5cqw) rotate(-420deg)}}
+@keyframes mithai-r3{0%{transform:none}100%{transform:translate(24.5cqw,-6.5cqw) rotate(420deg)}}
+@keyframes mithai-r4{0%{transform:none}100%{transform:translate(12.5cqw,6.5cqw) rotate(300deg)}}
+@keyframes mithai-glint{0%{opacity:0;transform:translateX(-120%) skewX(-15deg)}20%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translateX(420%) skewX(-15deg)}}
+@keyframes mithai-card{0%{opacity:0;transform:scale(.55)}100%{opacity:1;transform:none}}
