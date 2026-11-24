@@ -70,18 +70,18 @@ def pearl_shade(hgt, tint, ao=None, shadow=None):
         lum = lum * (1 - ao)
     silver = np.array([176, 175, 188], np.float32); mauve = np.array([178, 151, 165], np.float32)
     alb = silver[None, None] * (1 - tint[..., None]) + mauve[None, None] * tint[..., None]
-    col = alb * lum[..., None] + np.array([255, 248, 255], np.float32) * (0.12 * spec * lit)[..., None]
+    col = alb * lum[..., None] + np.array([255, 248, 255], np.float32) * (0.045 * spec * lit)[..., None]
     return np.clip(col, 0, 255)
 
 def shade_sheet(hgt, tint):
     """full lighting of a composited height field: normals + cast shadows + ambient occlusion"""
-    hs = cv2.GaussianBlur(hgt, (0, 0), max(0.55, 0.9 * SS))
+    hs = cv2.GaussianBlur(hgt, (0, 0), max(0.7, 1.15 * SS))
     sh = cast_shadow(hs) * SHADOW_K
     ao = (AO_K[0] * np.clip((cv2.GaussianBlur(hs, (0, 0), 9 * SS) - hs) / 12.0, 0, 1)
           + AO_K[1] * np.clip((cv2.GaussianBlur(hs, (0, 0), 34 * SS) - hs) / 30.0, 0, 1))
     return pearl_shade(hs, tint, ao=ao, shadow=sh), sh
 
-GLOSS_K = 0.24                # strength of the painted sheen (before the tone match)
+GLOSS_K = 0.13                # strength of the painted sheen (before the tone match)
 SHADOW_K = 0.56               # depth of the cast shadows (soft, never an ink outline)
 AO_K = (0.05, 0.30)           # contact / broad ambient occlusion
 DROP_K = (0.46, 0.58, 0.30)         # tight / wide contact shadow under every overlapping leaf (the stacked look)
@@ -137,7 +137,7 @@ def leaf_fields(cx, cy, R=300, ang=-90, spread=55, seed=0, f0=0.15, flare=0.8, b
     s = tcl * sp * R                                                        # arc position along the margin
     ph = rr.random(8) * 6.283
     # margin: broad lobes, scallops, crinkles and little torn nicks
-    w1 = _wave(s, 125, rr); w2 = _wave(s, 50, rr); w3 = _wave(s, 20, rr)
+    w1 = _wave(s, 190, rr); w2 = _wave(s, 85, rr); w3 = _wave(s, 34, rr)
     edge = R * (1 - droop * np.abs(tcl) ** 2.5 + lobes * 0.065 * _wave(s, 0.8 * sp * R, rr, 2))
     if prof is not None:                                                     # the traced outline, lobe by lobe
         tt = np.linspace(-1.25, 1.25, 501)
@@ -145,9 +145,9 @@ def leaf_fields(cx, cy, R=300, ang=-90, spread=55, seed=0, f0=0.15, flare=0.8, b
         ks = max(1.0, 7.0 / (sp * R) * 200)                                  # round the corners over ~7 px of arc
         pr = cv2.GaussianBlur(pr.reshape(1, -1).astype(np.float32), (0, 0), ks, borderType=cv2.BORDER_REPLICATE).ravel()
         edge = R * np.interp(tcl, tt, pr).astype(np.float32)
-        edge = edge + ruffle * (3.0 * w1 + 2.2 * w2 + 0.4 * w3)              # soft ruffles on top of the traced lobes
+        edge = edge + ruffle * (5.5 * w1 + 2.4 * w2 + 0.5 * w3)              # soft ruffles on top of the traced lobes
     else:
-        edge = edge + ruffle * (9.0 * w1 + 2.6 * w2 + 0.4 * w3)
+        edge = edge + ruffle * (12.0 * w1 + 3.0 * w2 + 0.5 * w3)
         for _c in range(int(rr.integers(1, 3))):                             # one or two little tears
             tn = rr.uniform(-0.8, 0.8)
             edge = edge - ruffle * rr.uniform(0.03, 0.06) * R * np.exp(-((tcl - tn) / rr.uniform(0.02, 0.035)) ** 2)
@@ -167,7 +167,7 @@ def leaf_fields(cx, cy, R=300, ang=-90, spread=55, seed=0, f0=0.15, flare=0.8, b
     dm = cv2.distanceTransform((alpha > 0.5).astype(np.uint8), cv2.DIST_L2, 5).astype(np.float32) / SS
     dm = cv2.GaussianBlur(dm, (0, 0), max(0.6, 1.0 * SS))
     # ---- height (design px)
-    h = thick * (1 - (1 - np.clip(dm / 15.0, 0, 1)) ** 2)                                # thick, softly rounded edge
+    h = thick * (1 - (1 - np.clip(dm / 24.0, 0, 1)) ** 2)                                # thick, softly rounded edge
     lipv = 0.72 + 0.28 * np.sin(s / 31.0 + ph[2]) * np.sin(r / 47.0 + ph[3])
     wm = smooth01((rc - 0.72) / 0.16)                                                     # 1 on the outer margin, 0 on the two sides
     # the margin is finely fluted: a comb of short radial ridges that die out a little way in (as in the video)
@@ -175,49 +175,50 @@ def leaf_fields(cx, cy, R=300, ang=-90, spread=55, seed=0, f0=0.15, flare=0.8, b
     ctab = cv2.GaussianBlur(rr.random((1, ncomb)).astype(np.float32), (0, 0), 0.8, borderType=cv2.BORDER_REFLECT).ravel()
     ctab = np.clip((ctab - ctab.mean()) / (ctab.std() + 1e-6) * 0.5 + 0.45, 0, 1)
     comb = np.interp((np.clip(t, -1.25, 1.25) + 1.25) / 2.5 * (ncomb - 1), np.arange(ncomb), ctab).astype(np.float32)
-    band = np.exp(-((dm - 10.0) / 10.0) ** 2) * smooth01(dm / 2.5)
-    lip = np.exp(-((dm - 7.0) / 5.0) ** 2) * lipv                                         # the rolled lip just inside the edge
-    h = h + rim * ((1 - wm) * 3.6 * lip + wm * (1.8 * lip + 0.35 * band * comb))
+    band = np.exp(-((dm - 14.0) / 12.0) ** 2) * smooth01(dm / 4.0)
+    lip = np.exp(-((dm - 12.0) / 9.0) ** 2) * lipv                                         # the rolled lip just inside the edge
+    h = h + rim * ((1 - wm) * 1.4 * lip + wm * (1.7 * lip + 0.10 * band * comb))
     h = h + cup * 6.0 * np.sin(math.pi * rc ** 0.85) * (0.7 + 0.3 * np.cos(1.7 * tcl + ph[0])) * smooth01(rc / 0.2)
     h = h - fold * 4.0 * np.exp(-(tcl / 0.16) ** 2) * smooth01((rc - 0.05) / 0.4)        # shallow valley on the axis
     for _i in range(int(rr.integers(2, 4))):                                              # broad soft radial folds
-        tc = rr.uniform(-0.85, 0.85); wd = rr.uniform(0.10, 0.25); amp = rr.choice([-1, 1]) * rr.uniform(1.0, 2.6)
+        tc = rr.uniform(-0.85, 0.85); wd = rr.uniform(0.10, 0.25); amp = rr.choice([-1, 1]) * rr.uniform(0.4, 1.0)
         h = h + amp * np.exp(-((tcl - tc) / wd) ** 2) * smooth01((rc - 0.12) / 0.4)
     nearm = smooth01((rc - 0.70) / 0.30) ** 1.3
-    h = h + curl * (10.0 * smooth01((rc - 0.66) / 0.34) ** 2 + nearm * (3.2 * w1 + 1.5 * w2))   # margin curls up, fluted
-    h = h + curl * 7.0 * np.exp(-ds / 18.0) * smooth01((rc - 0.2) / 0.3) * (1 + 0.08 * sw)   # sides roll up
+    h = h + curl * (7.5 * smooth01((rc - 0.66) / 0.34) ** 2 + nearm * (5.0 * w1 + 2.2 * w2))   # margin curls up, fluted
+    h = h + curl * 3.5 * np.exp(-ds / 22.0) * smooth01((rc - 0.2) / 0.3) * (1 + 0.08 * sw)   # sides roll up
     # veins: fine ridges of constant t (so they bend with the flare); sparse, most of them faint
     arc = A * r
     vein = np.zeros_like(h)
-    vw = max(1.8, 1.0 / SS)
-    for f, amp in ((12, 1.0), (24, 0.9), (48, 0.8), (96, 0.7), (192, 0.6), (384, 0.5), (768, 0.4)):
+    vw = max(1.15, 0.8 / SS)
+    for f, amp in ((10, 1.0), (22, 0.9), (46, 0.8), (94, 0.75), (190, 0.7), (380, 0.6)):
         tj = t + (0.40 / f) * np.sin(t * f * 0.61 + ph[f % 7]) + (0.22 / f) * np.sin(t * f * 1.37 + ph[(f + 2) % 7])
         u = (tj + 1) * f * 0.5
         idx = np.round(u)
         dpx = np.abs(u - idx) / (f * 0.5) * arc
         rnd = (np.sin(idx * 12.9898 + f * 78.233 + seed) * 43758.5453) % 1.0
         rnd2 = (np.sin(idx * 39.3468 + f * 11.135 + seed) * 24634.6345) % 1.0
-        if f <= 24:                                                      # primary veins: long, strongest by the petiole
-            along = 0.15 + 0.85 * (1 - smooth01((rc - 0.2) / 0.55))
+        if f <= 22:                                                      # primary veins: long, strongest by the petiole
+            along = (0.15 + 0.85 * (1 - smooth01((rc - 0.2) / 0.55))) * smooth01((rnd - 0.25) / 0.3)
         else:                                                            # hair-fine streaks: short soft dashes
-            along = smooth01(1.6 * np.sin(rc * (9.0 + 16.0 * rnd2) + rnd * 6.283) - 0.35)
+            along = smooth01(1.6 * np.sin(rc * (7.0 + 16.0 * rnd2) + rnd * 6.283) - 0.55) * smooth01((rnd2 - 0.15) / 0.25) * (0.35 + 0.65 * smooth01((rc - 0.45) / 0.4))
         on = smooth01((arc * 2 / f - 3.2) / 3.5)
         vein += amp * rnd ** 1.25 * along * on * np.exp(-(dpx / vw) ** 2)
     vis = 0.50 + 0.50 * np.sin(2.3 * tcl + 3.1 * rc + ph[1]) ** 2
     vein = np.clip(veins * vis * vein * smooth01((rn - 0.02) / 0.10) * (1 - 0.7 * smooth01((rn - 0.9) / 0.1)), 0, 1.4)
-    h = h + 0.9 * vein
+    h = h + 0.80 * vein
     # hand-modelled surface: soft lumps and a fine tooth
     hh_, ww_ = h.shape
     h = h + lumps * 9.0 * (noise(hh_, ww_, max(2, int(150 * SS)), 2, seed + 7) - 0.5) * smooth01(rc / 0.3)
     # silky radial striation (like brushed plaster): random stripes of constant t, in bands that keep ~3-8 px spacing
     stri = np.zeros_like(h)
     um = ((np.clip(t, -1.3, 1.3) + 1.3) / 2.6).astype(np.float32); vm = np.clip(rc, 0, 1).astype(np.float32)
-    for nu in (80, 160, 320, 640):
+    for nu in (160, 320, 640, 1280):
         tex = rr.random((7, nu)).astype(np.float32) - 0.5                 # long silky streaks
         smp = cv2.remap(tex, um * (nu - 1), vm * 6, cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT)
         spc = 2.6 * arc / nu
-        stri += smp * smooth01((spc - 2.2) / 2.0) * (1 - smooth01((spc - 4.6) / 3.5))
-    h = h + 1.05 * veins * stri * (0.35 + 0.65 * vis) * smooth01((rn - 0.04) / 0.12)
+        stri += smp * smooth01((spc - 1.0) / 1.0) * (1 - smooth01((spc - 2.4) / 1.6))
+    stri = stri * (0.15 + 0.85 * smooth01((noise(hh_, ww_, max(2, int(70 * SS)), 2, seed + 9) - 0.42) / 0.2))   # patchy: smooth areas between the streaks
+    h = h + 0.14 * veins * stri * (0.35 + 0.65 * vis) * smooth01((rn - 0.04) / 0.12)
     # petiole: a round stalk behind the base, running on into the blade as a ridge
     ca, sa = math.cos(math.radians(ang)), math.sin(math.radians(ang))
     u = dx * ca + dy * sa; v = -dx * sa + dy * ca
@@ -230,10 +231,10 @@ def leaf_fields(cx, cy, R=300, ang=-90, spread=55, seed=0, f0=0.15, flare=0.8, b
         h = np.where(a_st > alpha, h_st, np.maximum(h, h_st * a_st))
         alpha = np.maximum(alpha, a_st)
     # painted sheen: the top of the rolled rim, the vein ridges and the silky streaks catch the light
-    roll = np.exp(-((dm - 5.5) / 4.0) ** 2)
-    rimg = rim * ((1 - wm) * 1.35 * roll * (0.5 + 0.5 * lipv) + wm * (0.45 * roll + 1.4 * band * comb))
+    roll = np.exp(-((dm - 10.0) / 8.0) ** 2)
+    rimg = rim * ((1 - wm) * 0.20 * roll * (0.5 + 0.5 * lipv) + wm * (0.30 * roll * (0.6 + 0.4 * lipv) + 0.25 * band * comb))
     strk = np.clip(stri, -0.3, 1.0) * (0.35 + 0.65 * vis) * smooth01((rn - 0.04) / 0.12)                     # signed: light and dark streaks
-    gloss = rimg + veins * (0.85 * np.clip(vein, 0, 1) + 0.75 * strk)
+    gloss = rimg + veins * (1.50 * np.clip(vein, 0, 1) + 0.38 * strk)
     return x0, y0, alpha.astype(np.float32), (h * HSCALE).astype(np.float32), vein.astype(np.float32), gloss.astype(np.float32)
 
 def stem_fields(pts, width, bbox=None):
@@ -267,7 +268,7 @@ class Canvas:
         self.dark = np.zeros((h, w), np.float32)
         self.drop = np.zeros((h, w), np.float32)      # contact shadows each leaf drops on the layers beneath it
 
-    def layer(self, f, clip=None, tint=0.0, lift=0.0, tone=1.0, drop=1.0):
+    def layer(self, f, clip=None, tint=0.0, lift=0.0, tone=1.0, drop=1.0, soft=4.5):
         """drape a leaf over what is already there"""
         if f is None: return
         x0, y0, a, hgt = f[:4]
@@ -275,7 +276,11 @@ class Canvas:
         if clip is not None: a = a * clip[y0:y0 + hh, x0:x0 + ww]
         reg = self.hg[y0:y0 + hh, x0:x0 + ww]
         base = cv2.GaussianBlur(reg, (0, 0), 38 * SS)
-        reg[:] = reg * (1 - a) + (base + hgt + lift + LAYER_LIFT * HSCALE) * a
+        top = base + hgt + lift + LAYER_LIFT * HSCALE
+        if soft:
+            ah = smooth01((cv2.GaussianBlur(a, (0, 0), soft * SS) - 0.42) / 0.5)
+            top = reg * (1 - ah) + top * ah
+        reg[:] = reg * (1 - a) + top * a
         if drop:                                       # the leaf lies ON what is there: a tight contact shadow + a wide soft one
             ap = cv2.copyMakeBorder(a, 0, 0, 0, 0, cv2.BORDER_CONSTANT)
             s1 = cv2.GaussianBlur(cv2.warpAffine(ap, np.float32([[1, 0, 2 * SS], [0, 1, 6 * SS]]), (ww, hh)), (0, 0), 5.0 * SS)
@@ -343,8 +348,8 @@ SIDE_LEAVES = [                               # on the two side flaps (the botto
               (870, 1150), (840, 1200)]),                                                               # R0 soft, right of the seal
 ]
 BOT_LEAVES = [                                # on the bottom flap
-    dict(cx=478, cy=1905, R=720, ang=-170, spread=40, seed=130, ruffle=0.3, curl=0.3, tone=0.97, veins=0.25, rim=0.3,
-         thick=4.0, lumps=0.5),                                                                         # B6 faint folds, lower left
+    dict(cx=478, cy=1905, R=720, ang=-170, spread=40, seed=130, ruffle=0.3, curl=0.12, tone=0.99, veins=0.08, rim=0.15,
+         thick=2.0, lumps=0.25, cup=0.15, fold=0.2, drop=0.4),                                                                         # B6 faint folds, lower left
     dict(cx=300, cy=2210, seed=131, tone=0.96, ruffle=0.4, curl=0.6, veins=0.4, lumps=0.5,
          pts=[(110, 1975), (200, 1922), (260, 1898), (330, 1890), (400, 1897), (450, 1925), (490, 1975)]),   # B5 very bottom
     dict(cx=495, cy=1925, R=430, ang=-30, spread=44, seed=132, tint=0.10, tone=0.92, veins=0.5, ruffle=0.5, thick=2.5, rim=0.35, curl=0.4),   # B4 lower right
@@ -367,9 +372,9 @@ FLAP_LEAVES = [
     dict(cx=450, cy=1010, seed=204, f0=0.85, ruffle=0.5, curl=0.15, rim=0.5, tone=1.06, veins=0.15, lumps=0.5,
          pts=[(150, 770), (175, 712), (240, 722), (330, 700), (350, 712), (410, 740), (450, 765), (500, 762), (560, 800),
               (600, 860), (625, 920)]),                                                   # F4 smooth, over the tip
-    dict(cx=470, cy=712, seed=203, f0=0.13, flare=0.85, fexp=1.6, stem=42, stem_bend=0.1, veins=1.35, ruffle=0.8,
+    dict(cx=470, cy=712, seed=203, f0=0.13, flare=0.85, fexp=1.6, stem=42, stem_bend=0.1, veins=1.2, ruffle=1.3,
          pts=[(15, 340), (-30, 220), (-10, 120), (60, 85), (120, 68), (190, 48), (260, 40), (320, 20), (380, -30),
-              (470, -50), (560, 5), (610, 50), (632, 62), (646, 96), (662, 72), (720, 88), (790, 125), (850, 150),
+              (470, -50), (560, 5), (606, 40), (628, 80), (641, 175), (656, 90), (675, 62), (720, 72), (790, 125), (850, 150),
               (890, 200), (930, 330), (910, 440), (875, 485), (903, 546)]),               # F1 the big fan
 ]
 
@@ -405,23 +410,23 @@ def build_body():
     hem_h = paper_s + HSCALE * HEM_T * (1 - (1 - np.clip(np.minimum(dmo, HEM - dmo) / 3.0, 0, 1)) ** 2)
     cs.hg = cs.hg * (1 - hem) + hem_h * hem
     cs.alb = cs.alb * (1 - hem) + 1.045 * hem
-    cs.gl = cs.gl * (1 - hem) + 0.55 * np.exp(-((dmo - (HEM - 2.4)) / 1.8) ** 2) + 0.5 * np.exp(-((dmo - 2.2) / 1.8) ** 2)
+    cs.gl = cs.gl * (1 - hem) + 0.3 * np.exp(-((dmo - (HEM - 2.4)) / 1.8) ** 2) + 0.3 * np.exp(-((dmo - 2.2) / 1.8) ** 2)
     cs.dark = 0.20 * np.exp(-np.clip(dmo - HEM, 0, None) / 9.0) * (dmo > HEM)
-    cs.gl += 0.4 * np.exp(-((xx - W / 2 + 1.5) / 1.6) ** 2)                      # the centre seam between the side flaps
+    cs.gl += 0.2 * np.exp(-((xx - W / 2 + 1.5) / 2.2) ** 2)                      # the centre seam between the side flaps
     cs.dark = np.maximum(cs.dark, 0.16 * np.exp(-np.clip(xx - W / 2, 0, None) / 7.0) * (xx > W / 2))
     # ---- layer 2: the bottom flap, a lighter sheet of its own lying over the side flaps
     paper_b = flat_paper(TH, TW, 12) * 0.6
     cb = Canvas(TW, TH, tint, paper_b)
     _lay(cb, BOT_LEAVES, None, bb)
-    cb.layer(stem_fields(BODY_CREASE, 4.5, bb))
-    cb.layer(stem_fields(BODY_TWIG, 8.5, bb))
+    _f = stem_fields(BODY_CREASE, 3.5, bb); cb.layer(_f[:3] + (_f[3] * 0.4,), drop=0.2, soft=0)
+    _f = stem_fields(BODY_TWIG, 6.0, bb); cb.layer(_f[:3] + (_f[3] * 0.45,), drop=0.25, soft=0)
     m = smooth01(dbf * SS / 1.5 + 0.5)
-    bevel = BOT_T * (1 - (1 - np.clip(dbf / 4.0, 0, 1)) ** 2)                   # rounded cut edge of the paper
+    bevel = BOT_T * (1 - (1 - np.clip(dbf / 9.0, 0, 1)) ** 2)                   # rounded cut edge of the paper
     cv = Canvas(TW, TH, tint, paper_s)
     cv.hg = cs.hg * (1 - m) + (cb.hg + HSCALE * bevel) * m
     cv.alb = cs.alb * 0.95 * (1 - m) + cb.alb * 1.05 * m
     seam_hi = np.exp(-((dbf - 2.4) / 1.9) ** 2)                                # lit edge of the flap, the same on both sides
-    cv.gl = cs.gl * (1 - m) + (cb.gl * (1 - seam_hi) + 1.5 * seam_hi) * m
+    cv.gl = cs.gl * (1 - m) + (cb.gl * (1 - 0.6 * seam_hi) + 0.6 * seam_hi) * m
     cv.dark = np.maximum(cs.dark * (1 - m), (0.36 + 0.34 * (xx > W / 2)) * np.exp(-np.clip(-dbf, 0, None) / (11.0 + 5.0 * (xx > W / 2))) * (1 - m))   # its soft shadow on the side flaps
     cv.tint = np.clip(cv.tint - 0.05 * m, 0, 1)
     cv.drop = cs.drop * (1 - m) + cb.drop * m
@@ -441,7 +446,7 @@ def build_flap():
     rgb = cv.render()
     # the folded edge of the flap catches a little light
     edge = np.exp(-(np.clip(dist, 0, None) / 2.6) ** 2) * mask
-    rgb = np.clip(rgb * (1 + 0.08 * (1 - smooth01(dist / 22.0)) * mask)[..., None] + 40 * edge[..., None], 0, 255)
+    rgb = np.clip(rgb * (1 + 0.08 * (1 - smooth01(dist / 22.0)) * mask)[..., None] + 16 * edge[..., None], 0, 255)
     return rgb, mask
 
 # ------------------------------------------------------------------ wax seal (oval, thick irregular rim, A & L)
