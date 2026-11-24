@@ -443,14 +443,14 @@ def organza_rgba():
         return ((0.109 + 0.782 * uf) * W, (0.134 + 0.732 * vf) * H)
     def _corner(cx, cy, rx, ry, sx, sy, n=28):       # a corner folded over along a curve that sweeps from one edge round to the
         a0 = (cx + sx * rx, cy); a1 = (cx, cy + sy * ry)   # other, sagging in toward the corner like a draped swag (not a bulge)
-        c = (cx + sx * rx * 0.30, cy + sy * ry * 0.30)
+        c = (cx + sx * rx * 0.22, cy + sy * ry * 0.22)
         arc = [((1 - u) ** 2 * a0[0] + 2 * u * (1 - u) * c[0] + u * u * a1[0], (1 - u) ** 2 * a0[1] + 2 * u * (1 - u) * c[1] + u * u * a1[1]) for u in np.linspace(0, 1, n)]
         return [(cx - sx * 200, cy - sy * 300), (cx + sx * rx, cy - sy * 300)] + arc + [(cx - sx * 200, cy + sy * ry)]
     FOLDS = [   # (polygon in reference px 780x1580, how dense the doubled cloth is)
-        (_corner(-15, -15, 290, 400, 1, 1), 1.0),          # top-left: curve from the top edge round to the left side
-        (_corner(795, -15, 290, 400, -1, 1), 1.0),         # top-right
-        (_corner(-15, 1595, 310, 360, 1, -1), 0.9),        # bottom-left
-        (_corner(795, 1595, 290, 330, -1, -1), 0.85),      # bottom-right
+        (_corner(-15, -15, 305, 225, 1, 1), 1.0),          # top-left: curve from the top edge round to the left side
+        (_corner(795, -15, 305, 225, -1, 1), 1.0),         # top-right
+        (_corner(-15, 1595, 300, 205, 1, -1), 0.9),        # bottom-left
+        (_corner(795, 1595, 290, 190, -1, -1), 0.85),      # bottom-right
     ]
     fold_layer = np.zeros((H, W), np.float32); fold_edge = np.zeros((H, W), np.float32); fold_shadow = np.zeros((H, W), np.float32)
     for k, (poly, dens) in enumerate(FOLDS):
