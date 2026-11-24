@@ -441,12 +441,7 @@ def organza_rgba():
     def _to_sheet(px, py):                       # reference-frame px -> sheet px (frame is at ~0.9 zoom; sheet is 1.28x the card)
         uf = 0.5 + (px / 780 - 0.5) * 0.97; vf = 0.47 + (py / 1580 - 0.47) * 0.97
         return ((0.109 + 0.782 * uf) * W, (0.134 + 0.732 * vf) * H)
-    FOLDS = [   # (polygon in reference px, how much denser the doubled cloth is)
-        ([(-150, -300), (-150, 95), (0, 82), (150, 55), (280, 12), (360, 0), (420, 30), (470, 22), (520, 12), (600, 60), (680, 140), (745, 235), (950, 470), (950, -300)], 0.9),
-        ([(-150, 1230), (0, 1250), (180, 1370), (330, 1490), (430, 1548), (560, 1800), (-150, 1800)], 1.0),
-        ([(420, 1438), (720, 1352), (950, 1296), (950, 1800), (300, 1800)], 0.8),
-        ([(-150, 250), (40, 120), (60, 70), (-150, 60)], 0.6),
-    ]
+    FOLDS = []   # folded borders removed at the client's request (the sheet is plain and smooth to its edges)
     fold_layer = np.zeros((H, W), np.float32); fold_edge = np.zeros((H, W), np.float32); fold_shadow = np.zeros((H, W), np.float32)
     for k, (poly, dens) in enumerate(FOLDS):
         pts = np.array([_to_sheet(x, y) for x, y in poly], np.float32)
