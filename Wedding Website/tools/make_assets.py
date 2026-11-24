@@ -462,7 +462,7 @@ def organza_rgba():
         inside = smooth01(d_in / 3.0) * m
         fold_layer = np.maximum(fold_layer, dens * inside * (0.30 + (1 - 0.30) * np.exp(-d_in / 80.0)))   # thin: the doubled cloth shows mostly near its edge
         fold_edge = np.maximum(fold_edge, np.exp(-((d_in - 3.0) / 3.2) ** 2) * m)                      # the rolled hem catches the light
-        for q, (dc, wc, sc) in enumerate(((16, 4.0, 0.60), (36, 5.0, 0.50), (62, 6.0, 0.40))):
+        for q, (dc, wc, sc) in enumerate(((14, 3.6, 0.78), (30, 4.4, 0.66), (50, 5.2, 0.56), (74, 6.0, 0.46), (102, 7.0, 0.36), (134, 8.5, 0.26))):
             fold_edge = np.maximum(fold_edge, sc * np.exp(-((d_in - dc - 44 * (_onoise(H, W, 170, 2, 90 + 7 * k + q) - 0.5)) / wc) ** 2) * m * np.clip(2.2 * _onoise(H, W, 130, 2, 80 + 5 * k + q) - 0.6, 0, 1))  # one soft crease just inside
         fold_shadow = np.maximum(fold_shadow, np.exp(-d_out / 20.0) * (1 - m))                         # and it shades the sheet beneath
     nrm = np.dstack([-gx, -gy, np.ones_like(h)]); nrm /= np.linalg.norm(nrm, axis=2, keepdims=True)
@@ -473,12 +473,12 @@ def organza_rgba():
     glow = np.clip((nh - lo) / (mid - lo), 0, 1) ** 1.6
     glint = np.clip((nh - mid) / (hi - mid), 0, 1) ** 1.5
     weave = 0.5 + 0.5 * np.sin((xx * 0.86 + yy * 0.5) * 2 * math.pi / 3.1) * np.sin((xx * -0.5 + yy * 0.86) * 2 * math.pi / 3.1)   # fine organza weave
-    hl = np.clip(0.40 * glow + 0.52 * glint + 0.25 * fold_layer + 0.34 * fold_edge, 0, 1) * (0.90 + 0.10 * weave)
+    hl = np.clip(0.40 * glow + 0.52 * glint + 0.31 * fold_layer + 0.44 * fold_edge, 0, 1) * (0.90 + 0.10 * weave)
     tint = _onoise(H, W, 200, 2, 8)[..., None]
     c_hl = np.array([250, 240, 248], np.float32) * (1 - tint) + np.array([236, 236, 255], np.float32) * tint
     c_veil = np.array([150, 122, 140], np.float32)                 # the film itself: a thin rosy-mauve veil
     shade = np.clip(1.0 - diff * 1.2, 0, 1)
-    a_veil = np.clip(0.12 + 0.42 * shade + 0.30 * fold_layer + 0.30 * fold_shadow, 0, 0.72)
+    a_veil = np.clip(0.12 + 0.42 * shade + 0.36 * fold_layer + 0.38 * fold_shadow, 0, 0.72)
     a_hl = np.clip(0.86 * hl, 0, 0.86)
     a = a_veil + a_hl * (1 - a_veil)
     rgb = (c_veil * (a_veil * (1 - a_hl))[..., None] + c_hl * a_hl[..., None]) / np.maximum(a[..., None], 1e-4)
