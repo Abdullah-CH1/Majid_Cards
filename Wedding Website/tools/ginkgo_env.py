@@ -175,7 +175,7 @@ def leaf_fields(cx, cy, R=300, ang=-90, spread=55, seed=0, f0=0.15, flare=0.8, b
     comb = np.interp((np.clip(t, -1.25, 1.25) + 1.25) / 2.5 * (ncomb - 1), np.arange(ncomb), ctab).astype(np.float32)
     band = np.exp(-((dm - 10.0) / 10.0) ** 2) * smooth01(dm / 2.5)
     lip = np.exp(-((dm - 7.0) / 5.0) ** 2) * lipv                                         # the rolled lip just inside the edge
-    h = h + rim * ((1 - wm) * 3.6 * lip + wm * (1.8 * lip + 0.6 * band * comb))
+    h = h + rim * ((1 - wm) * 3.6 * lip + wm * (1.8 * lip + 0.35 * band * comb))
     h = h + cup * 6.0 * np.sin(math.pi * rc ** 0.85) * (0.7 + 0.3 * np.cos(1.7 * tcl + ph[0])) * smooth01(rc / 0.2)
     h = h - fold * 4.0 * np.exp(-(tcl / 0.16) ** 2) * smooth01((rc - 0.05) / 0.4)        # shallow valley on the axis
     for _i in range(int(rr.integers(2, 4))):                                              # broad soft radial folds
@@ -312,20 +312,21 @@ FLAP_SIDE_Y, FLAP_TIP_Y = 0.335, 0.535        # top flap: sides -> tip (hidden u
 POCKET_SIDE_Y, POCKET_TIP_Y = 0.300, 0.478    # top edge of the side flaps (the envelope mouth)
 BOT_SIDE_Y, BOT_TIP_Y = 0.700, 0.505          # bottom flap: sides -> apex (under the seal)
 
-SEAL_W = 0.40                                 # seal width / screen width (the CSS .seal rule)
+SEAL_W, SEAL_ASPECT = 0.378, 720 / 600      # seal width / screen width and height / width (the CSS .seal rule)
+#                                # seal width / screen width (the CSS .seal rule)
 BOT_FLAT = 62                                 # half-width of the blunt top of the bottom flap (a pentagon, as in the video)
 HEM = 50                                      # folded hem along the mouth of the side flaps (hidden while the top flap is shut)
 BOT_T, HEM_T = 8.0, 3.5                       # paper thickness of the bottom flap / the hem (design px)
 
 # leaves, bottom layer first (design px). `pts` = the leaf margin traced from the rectified reference video, lobe by lobe.
 SIDE_LEAVES = [                               # on the two side flaps (the bottom flap lies over their lower ends)
-    dict(cx=-20, cy=630, seed=100, tone=0.92, ruffle=0.8, f0=0.6, veins=1.1,
-         pts=[(420, 930), (370, 1000), (335, 1080), (285, 1160), (150, 1225), (-10, 1260)]),                 # L1 streaky, fills the left flap
-    dict(cx=905, cy=885, seed=113, tint=0.10, ruffle=1.2, veins=0.5, f0=0.3,
+    dict(cx=-20, cy=630, seed=100, tone=0.92, ruffle=0.8, f0=0.6, veins=0.55, bend=14, lumps=1.1, cup=0.7,
+         pts=[(420, 930), (370, 1000), (335, 1080), (285, 1160), (150, 1225), (-10, 1270), (-90, 1270)]),                 # L1 streaky, fills the left flap
+    dict(cx=930, cy=960, seed=113, tint=0.10, ruffle=1.2, veins=0.2, f0=0.5, cup=0.3, fold=0.2, lumps=0.9,
          pts=[(700, 845), (690, 800), (705, 762), (780, 748), (835, 772), (890, 790)]),                 # R1 small, upper right
     dict(cx=190, cy=1440, seed=102, tone=0.94, f0=0.2,
          pts=[(-25, 1200), (10, 1140), (60, 1080), (130, 1035), (230, 1030), (290, 1085), (335, 1160)]),   # L2 rising on the left
-    dict(cx=575, cy=1180, seed=112, tint=0.14, ruffle=1.3, veins=0.18, f0=0.3, curl=0.9, lumps=0.9, cup=0.3, fold=0.2,
+    dict(cx=520, cy=1330, seed=112, tint=0.14, ruffle=1.3, veins=0.18, f0=0.5, curl=0.9, lumps=0.9, cup=0.3, fold=0.2,
          pts=[(530, 960), (545, 895), (610, 868), (700, 872), (745, 905), (785, 955), (850, 1020), (878, 1080),
               (870, 1150), (840, 1200)]),                                                               # R0 soft, right of the seal
 ]
@@ -334,8 +335,8 @@ BOT_LEAVES = [                                # on the bottom flap
          thick=4.0, lumps=0.5),                                                                         # B6 faint folds, lower left
     dict(cx=300, cy=2210, seed=131, tone=0.96, ruffle=0.4, curl=0.6, veins=0.4, lumps=0.5,
          pts=[(110, 1975), (200, 1922), (260, 1898), (330, 1890), (400, 1897), (450, 1925), (490, 1975)]),   # B5 very bottom
-    dict(cx=495, cy=1925, R=430, ang=-30, spread=44, seed=132, tint=0.10, tone=0.92, veins=0.6, ruffle=0.5, thick=2.5, rim=0.5, curl=0.4),   # B4 lower right
-    dict(cx=870, cy=1690, seed=136, tint=0.12, veins=0.5, f0=0.3, tone=0.97, thick=2.5, rim=0.6, curl=0.4,
+    dict(cx=495, cy=1925, R=430, ang=-30, spread=44, seed=132, tint=0.10, tone=0.92, veins=0.5, ruffle=0.5, thick=2.5, rim=0.35, curl=0.4),   # B4 lower right
+    dict(cx=870, cy=1690, seed=136, tint=0.12, veins=0.5, f0=0.3, tone=0.98, thick=2.5, rim=0.4, curl=0.4,
          pts=[(640, 1700), (600, 1790), (615, 1840), (650, 1870), (700, 1888), (750, 1872), (800, 1880), (815, 1915)]),   # B4b
     dict(cx=490, cy=1885, seed=133, f0=0.3, flare=0.6, bend=-45, veins=0.65, ruffle=1.5,
          pts=[(100, 1592), (55, 1562), (5, 1520), (-30, 1440), (-10, 1370), (60, 1310), (150, 1255), (260, 1215)]),                                                               # B2 big left
@@ -351,7 +352,7 @@ FLAP_LEAVES = [
     dict(cx=462, cy=735, R=680, ang=-134, spread=60, seed=202, ruffle=0.7, tone=0.93, f0=0.45),    # F2 lower left
     dict(cx=486, cy=748, R=520, ang=-46, spread=48, seed=206, tint=0.06, f0=0.6, tone=0.74, rim=0.0, veins=0.5, thick=2.0),   # in the shade under F1
     dict(cx=492, cy=745, R=560, ang=-34, spread=42, seed=201, tint=0.06, f0=0.45),                 # F3 lower right
-    dict(cx=450, cy=1010, seed=204, f0=0.85, ruffle=0.5, curl=0.7, rim=0.3, tone=1.06, veins=0.35, lumps=0.5,
+    dict(cx=450, cy=1010, seed=204, f0=0.85, ruffle=0.5, curl=0.15, rim=0.5, tone=1.06, veins=0.15, lumps=0.5,
          pts=[(150, 770), (175, 712), (240, 722), (330, 700), (350, 712), (410, 740), (450, 765), (500, 762), (560, 800),
               (600, 860), (625, 920)]),                                                   # F4 smooth, over the tip
     dict(cx=470, cy=712, seed=203, f0=0.13, flare=0.85, fexp=1.6, stem=42, stem_bend=0.1, veins=1.35, ruffle=0.8,
@@ -516,7 +517,7 @@ def preview(out):
     comp *= ((1 - 0.38 * fs1) * (1 - 0.62 * fs))[..., None]      # = the CSS drop-shadows of the flap
     comp[:FH] = comp[:FH] * (1 - fa[..., None]) + frgb * fa[..., None]
     srgb, sa = build_seal()
-    sw = int(TW * SEAL_W); sh = int(sw * 660 / 600)
+    sw = int(TW * SEAL_W); sh = int(sw * SEAL_ASPECT)
     srgb = cv2.resize(srgb, (sw, sh), interpolation=cv2.INTER_AREA); sa = cv2.resize(sa, (sw, sh), interpolation=cv2.INTER_AREA)
     x0 = TW // 2 - sw // 2; y0 = int(TH * 0.513) - sh // 2
     sh_m = np.zeros((TH, TW), np.float32); sh_m[y0:y0 + sh, x0:x0 + sw] = sa

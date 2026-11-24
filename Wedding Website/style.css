@@ -173,7 +173,7 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
   background: url(assets/envelope-flap-shadow.webp) center / 100% 100% no-repeat; }
 .flap-face.back { background-image: url(assets/envelope-flap-back.webp); transform: rotateX(180deg); }
 .seal {
-  position: absolute; left: 50%; top: 51.3%; width: 40%; aspect-ratio: 600 / 660; transform: translate(-50%, -50%); z-index: 6;
+  position: absolute; left: 50%; top: 51.3%; width: 37.8%; aspect-ratio: 600 / 720; transform: translate(-50%, -50%); z-index: 6;
   background: url(assets/seal.webp) center / 100% 100% no-repeat; border: 0; border-radius: 46%; padding: 0; cursor: pointer;
   filter: drop-shadow(0 6px 7px rgba(38,22,34,.55)); transition: transform .25s ease;
   -webkit-tap-highlight-color: transparent; animation: sealGlow 2.8s ease-in-out infinite; transform-origin: 50% 50%;
