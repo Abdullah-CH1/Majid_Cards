@@ -14,22 +14,21 @@
   // ---------- card: glossy "mirror" centre panel (same arch as the embossed frame in assets/card.jpg) ----------
   (function cardSheen() {
     const host = $(".card-sheen"); if (!host) return;
-    const cx = 450, ytop = 243, ybot = 1580, hw = 352, ky = 360 / 0.98;          // keep in step with card_relief() in tools/make_assets.py
-    const segs = [[[0, 0], [-0.05, 0.08], [-0.10, 0.17], [-0.18, 0.20]], [[-0.18, 0.20], [-0.26, 0.22], [-0.36, 0.22], [-0.43, 0.25]],
-      [[-0.43, 0.25], [-0.53, 0.27], [-0.585, 0.37], [-0.585, 0.50]], [[-0.585, 0.50], [-0.60, 0.555], [-0.65, 0.585], [-0.71, 0.585]],
-      [[-0.71, 0.585], [-0.90, 0.595], [-1.0, 0.76], [-1.0, 0.98]]];
-    const P = (x, y, sx, top) => [cx + sx * x * hw, top ? ytop + y * ky : ybot - y * ky];
+    const cx = 450, ytop = 238, ybot = 1666;                                      // keep in step with ARCH / ARCH_SEGS in tools/make_assets.py
+    const segs = [[[0, 0], [-4, 22], [-18, 44], [-46, 54]], [[-46, 54], [-80, 66], [-125, 60], [-152, 79]], [[-152, 79], [-166, 88], [-172, 100], [-172, 115]],
+      [[-172, 115], [-200, 114], [-222, 138], [-224, 176]], [[-224, 176], [-262, 176], [-290, 215], [-294, 303]], [[-294, 303], [-318, 306], [-338, 335], [-338, 378]]];
+    const P = (x, y, sx, top) => [cx + sx * x, top ? ytop + y : ybot - y];
     const f = p => p[0].toFixed(1) + " " + p[1].toFixed(1);
-    let d = "M " + f(P(-1, 0.98, 1, true));
+    let d = "M " + f(P(-338, 378, 1, true));
     for (let i = segs.length - 1; i >= 0; i--) { const [a, b, c, e] = segs[i]; d += ` C ${f(P(...c, 1, true))} ${f(P(...b, 1, true))} ${f(P(...a, 1, true))}`; }
     for (const [a, b, c, e] of segs) d += ` C ${f(P(...b, -1, true))} ${f(P(...c, -1, true))} ${f(P(...e, -1, true))}`;
-    d += " L " + f(P(-1, 0.98, -1, false));
+    d += " L " + f(P(-338, 378, -1, false));
     for (let i = segs.length - 1; i >= 0; i--) { const [a, b, c, e] = segs[i]; d += ` C ${f(P(...c, -1, false))} ${f(P(...b, -1, false))} ${f(P(...a, -1, false))}`; }
     for (const [a, b, c, e] of segs) d += ` C ${f(P(...b, 1, false))} ${f(P(...c, 1, false))} ${f(P(...e, 1, false))}`;
     d += " Z";
     host.innerHTML = `<svg viewBox="0 0 900 1950" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        <mask id="panelMask"><path d="${d}" fill="#fff" stroke="#000" stroke-width="54"/></mask>
+        <mask id="panelMask"><path d="${d}" fill="#fff" stroke="#000" stroke-width="50"/></mask>
         <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0.3">
           <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".22" stop-color="#fff" stop-opacity="0"/>
           <stop offset=".36" stop-color="#fdf6ff" stop-opacity=".045"/><stop offset=".5" stop-color="#fdf6ff" stop-opacity=".10"/>

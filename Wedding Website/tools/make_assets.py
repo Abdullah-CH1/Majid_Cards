@@ -512,7 +512,7 @@ def _rose_relief(name, size, rot=0, flip=False, detail=1.0):
         hgt = cv2.warpAffine(pad, cv2.getRotationMatrix2D((d / 2, d / 2), rot, 1), (d, d))
     return hgt
 
-# ---------------------------------------------------------------- embossed card v3 (procedural engraving relief)
+# ---------------------------------------------------------------- embossed card v4 (sculpted relief traced from the reference)
 class Relief:
     def __init__(self, w, h, s=2):
         self.s = s; self.W, self.H = w * s, h * s
@@ -538,112 +538,175 @@ def _tube(d, r):
     return np.sqrt(np.clip(1 - (d / r) ** 2, 0, 1))
 
 
-def rose_head(R_, cx, cy, R, rot=0.0, squash=0.9, seed=0, lift=1.0):
-    """front-facing cabbage rose, sculpted: big puffy outer petals, rows of small cupped petals,
-    and a large stippled heart of stamens (as in the reference emboss)"""
-    p = R_.patch(cx, cy, R * 1.08)
+def _curve(pts, n=10):
+    """smooth (Catmull-Rom) polyline through the given points"""
+    P = np.asarray(pts, np.float32)
+    if len(P) < 3:
+        return np.array([P[0] + (P[-1] - P[0]) * t for t in np.linspace(0, 1, n + 1)], np.float32)
+    Q = np.vstack([2 * P[0] - P[1], P, 2 * P[-1] - P[-2]])
+    out = []
+    for i in range(len(P) - 1):
+        p0, p1, p2, p3 = Q[i:i + 4]
+        for t in np.linspace(0, 1, n, endpoint=False):
+            out.append(0.5 * (2 * p1 + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t + (-p0 + 3 * p1 - 3 * p2 + p3) * t ** 3))
+    out.append(P[-1])
+    return np.array(out, np.float32)
+
+
+def _along(P, t):
+    seg = np.r_[0, np.cumsum(np.hypot(*np.diff(P, axis=0).T))]
+    d = t * seg[-1]; k = int(np.clip(np.searchsorted(seg, d) - 1, 0, len(P) - 2))
+    f = (d - seg[k]) / max(seg[k + 1] - seg[k], 1e-3)
+    x, y = P[k] + (P[k + 1] - P[k]) * f
+    return float(x), float(y), math.degrees(math.atan2(P[k + 1, 1] - P[k, 1], P[k + 1, 0] - P[k, 0]))
+
+
+# petal kinds: outline pointedness, scalloped edge, beaded rim, radial flutes, rolled rim, puffiness
+_PK = {"frill": dict(point=5.0, frill=0.075, nfr=6, bead=0.22, fl=4, fla=0.024, rim=0.085, puff=0.0),
+       "cup": dict(point=4.5, frill=0.03, nfr=3, bead=0.0, fl=2, fla=0.02, rim=0.09, puff=0.0),
+       "puff": dict(point=3.2, frill=0.04, nfr=2, bead=0.0, fl=1, fla=0.045, rim=0.035, puff=0.30),
+       "flute": dict(point=2.4, frill=0.04, nfr=2, bead=0.0, fl=2, fla=0.085, rim=0.04, puff=0.13)}
+
+
+def _petal(out, X, Y, R, th, dth, ri, ro, base, amp, kind, ph0=0.0):
+    """one cupped petal in polar form about (0,0) of X,Y: centre angle th, half-width dth, from radius ri out to ro.
+    painted into `out` (later petals lie on top)"""
+    k = _PK[kind]
+    r = np.hypot(X, Y); phi = np.arctan2(Y, X)
+    d = (phi - th + math.pi) % (2 * math.pi) - math.pi
+    u = d / dth; au = np.abs(u)
+    prof = np.power(np.clip(1 - au ** k["point"], 0, 1), 0.5)
+    e = ri + (ro - ri) * prof
+    if k["nfr"]:
+        e = e * (1 - k["frill"] * (1 - np.power(np.abs(np.cos(u * k["nfr"] * math.pi / 2 + ph0)), 0.6)) * prof)   # ruffled edge: round lobes, small notches
+    ds = (1 - au) * np.maximum(r, 1) * dth
+    dd = np.minimum(e - r, ds)                                         # ~distance to the petal's edge
+    m = (au < 1) & (dd > 0) & (r > ri * 0.8)
+    if not m.any():
+        return
+    t = np.clip((r - ri) / np.maximum(e - ri, 1), 0, 1)
+    edge = smooth01(dd / (0.03 * R + 0.5))
+    h = amp * t ** 1.3                                                 # cupped: rises to the rim
+    if k["rim"]:
+        rim = k["rim"] * np.exp(-((dd - 0.036 * R) / (0.021 * R)) ** 2)
+        if k["bead"]:
+            rim = rim * (1 + k["bead"] * np.cos(d * r * (2 * math.pi / (0.075 * R)) + ph0))
+        h = h + rim
+    if k["fl"]:
+        fph = 0.0 if kind in ("flute", "puff") else ph0
+        h = h - k["fla"] * (0.5 + 0.5 * np.cos(u * k["fl"] * 2 * math.pi + fph)) ** 5 * np.sqrt(t)
+    if k["puff"]:
+        h = h + k["puff"] * np.power(np.clip(1 - au ** 2, 0, 1), 0.5) * np.power(np.clip(np.sin(np.pi * np.clip(0.12 + 0.82 * t, 0, 1)), 0, 1), 0.6)
+    hp = base + h * edge
+    out[m] = hp[m]
+
+
+def rose_head(R_, cx, cy, R, rot=0.0, seed=0, style="peony", guards=(), lift=1.0):
+    """a full garden rose seen from the front, sculpted petal by petal (outer first, inner on top).
+    style 'peony': frilled petal rings round a heart of tiny bead-like petals (top corners of the reference)
+    style 'rose' : wrapped, cupped petals spiralling into a tight swirl (bottom corners)
+    guards: the big outer petals [(angle deg, half-width deg, r_in, r_out, kind)] in units of R"""
+    p = R_.patch(cx, cy, R * 1.5)
     if p is None:
         return
     sl, dx, dy = p
     rng = np.random.default_rng(seed)
-    a = math.radians(rot)
-    xr = dx * math.cos(a) + dy * math.sin(a); yr = (-dx * math.sin(a) + dy * math.cos(a)) / squash
-    r = np.hypot(xr, yr); phi = np.arctan2(yr, xr)
-    out = np.full(r.shape, -1.0, np.float32)
-    # (outer radius, inner radius, petals, base height, puff amplitude, angular overlap)
-    rings = [(1.00, 0.58, 8, 0.10, 0.50, 1.45), (0.86, 0.50, 9, 0.23, 0.40, 1.42), (0.73, 0.45, 11, 0.36, 0.30, 1.40),
-             (0.62, 0.41, 13, 0.47, 0.21, 1.36), (0.53, 0.38, 15, 0.56, 0.15, 1.32), (0.46, 0.36, 17, 0.63, 0.10, 1.30)]
-    for k, (fo, fi, n, base, amp, ov) in enumerate(rings):
-        Ro, Ri = R * fo, R * fi
-        ph0 = rng.random() * 6.283
-        order = list(range(0, n, 2)) + list(range(1, n, 2))
-        for jj, j in enumerate(order):
-            th = ph0 + j * 2 * math.pi / n + rng.normal(0, 0.06)
-            d = (phi - th + math.pi) % (2 * math.pi) - math.pi
-            u = d / (math.pi / n * ov)
-            inside = np.abs(u) < 1
-            if not inside.any():
-                continue
-            wob = 1 + 0.03 * np.cos(u * 3 * math.pi + j * 1.7) + rng.normal(0, 0.02)
-            e = Ri + (Ro * wob - Ri) * np.power(np.clip(1 - np.abs(u) ** 2.6, 0, 1), 0.5)
-            t = np.clip((r - Ri * 0.7) / np.maximum(e - Ri * 0.7, 1), 0, 1)
-            m = (r < e) & inside
-            puff = amp * np.power(np.clip(1 - u * u, 0, 1), 0.35) * np.power(np.clip(np.sin(np.pi * np.clip(0.18 + 0.82 * t, 0, 1)), 0, 1), 0.55)
-            de = np.minimum(e - r, (1 - np.abs(u)) * np.maximum(r, 1) * (math.pi / n * ov))
-            edge = smooth01(de / (0.07 * R))                                       # rounded-off petal edge
-            vein = 0.03 * np.cos(u * math.pi * 5) * t
-            lipr = 0.055 * np.exp(-((de - 0.045 * R) / (0.016 * R)) ** 2)            # rolled rim just inside the edge
-            hp = base + 0.035 * (j % 2) - 0.07 + (puff + 0.07 + vein + lipr) * edge
-            out = np.where(m, hp, out)                                             # painter: later petals lie on top
-    # stippled heart
-    rc = R * 0.37
-    cmask = r < rc
-    heart = 0.68 + 0.14 * np.sqrt(np.clip(1 - (r / rc) ** 2, 0, 1))
-    cen = np.zeros(r.shape, np.float32)
-    nd = int(64 * (R / 110) ** 2)
-    for i in range(nd):
-        rr_ = rc * 0.96 * math.sqrt((i + 0.5) / nd); th = i * 2.39996 + rng.normal(0, 0.02)
-        px, py = rr_ * math.cos(th), rr_ * math.sin(th)
-        br = R * 0.052 * (1.15 - 0.3 * rr_ / rc)
-        x0, x1 = px - br, px + br
-        dd = np.hypot(xr - px, yr - py)
-        cen = np.maximum(cen, 0.17 * _tube(dd, br))
-    ring_groove = -0.05 * np.exp(-((r - rc) / (0.02 * R)) ** 2)
-    out = np.where(cmask, heart + cen, out) + ring_groove * (out > -0.5)
-    dome = 0.18 * np.sqrt(np.clip(1 - (r / (R * 1.02)) ** 2, 0, 1))
-    m = (out > -0.5).astype(np.float32)
-    m = cv2.GaussianBlur(m, (0, 0), 0.7 * R_.s)
-    hgt = (np.maximum(out, 0) + dome) * 0.85 * lift + 0.1
-    R_.put(sl, hgt, m)
+    out = np.full(dx.shape, -1.0, np.float32)
+    r = np.hypot(dx, dy)
+    c = (math.cos(math.radians(rot)), math.sin(math.radians(rot)))
+
+    def ring(n, ro, ri, base, amp, kind, jit=0.14, ov=1.3, ecc=0.0, rj=0.06):
+        ph = rng.random() * 6.283
+        for j in list(range(0, n, 2)) + list(range(1, n, 2)):
+            th = ph + j * 2 * math.pi / n + rng.normal(0, jit * 2 * math.pi / n)
+            _petal(out, dx - ecc * c[0] * R, dy - ecc * c[1] * R, R, th, math.pi / n * ov * (1 + rng.normal(0, 0.10)), ri * R,
+                   ro * R * (1 + rng.normal(0, rj)), base + 0.035 * (j % 2), amp, kind, ph0=rng.random() * 6.283)
+
+    for (ang, hwd, ri, ro, kind) in guards:
+        _petal(out, dx, dy, R, math.radians(ang), math.radians(hwd), ri * R, ro * R, 0.05, 0.15, kind, ph0=rng.random() * 6.283)
+    if style == "peony":
+        ring(5, 0.90, 0.50, 0.14, 0.15, "frill", ov=1.28, rj=0.07)
+        ring(5, 0.77, 0.46, 0.25, 0.14, "frill", ov=1.3, rj=0.06)
+        ring(6, 0.64, 0.40, 0.35, 0.13, "frill", ov=1.3, rj=0.05)
+        ring(6, 0.52, 0.34, 0.44, 0.12, "frill", ov=1.3, rj=0.05)
+        ring(7, 0.42, 0.26, 0.52, 0.10, "cup", ov=1.25, rj=0.05)
+        out[r < 0.33 * R] = 0.57                                       # heart: rings of tiny bead-like petals
+        for kk, (rr, n) in enumerate([(0.30, 21), (0.225, 15), (0.15, 10), (0.075, 6), (0.0, 1)]):
+            ph = rng.random() * 6.283
+            for j in range(n):
+                th = ph + j * 6.2832 / n + rng.normal(0, 0.05)
+                rb = rr * R * (1 + rng.normal(0, 0.05)); br = 0.046 * R * (1 + rng.normal(0, 0.10))
+                dd = np.hypot(dx - rb * math.cos(th), dy - rb * math.sin(th))
+                hb = 0.57 + 0.02 * kk + 0.17 * _tube(dd, br)
+                out[:] = np.where(dd < br, np.maximum(out, hb), out)
+    else:
+        if not guards:
+            ring(6, 1.0, 0.56, 0.08, 0.17, "frill", ov=1.3)
+        ring(5, 0.88, 0.50, 0.17, 0.16, "frill", ov=1.3, ecc=0.02)
+        ring(5, 0.76, 0.44, 0.26, 0.15, "frill", ov=1.3, ecc=0.04)
+        ring(5, 0.64, 0.36, 0.34, 0.14, "cup", ov=1.3, ecc=0.06)
+        ring(4, 0.53, 0.28, 0.42, 0.13, "frill", ov=1.35, ecc=0.08)
+        ring(4, 0.43, 0.20, 0.49, 0.12, "cup", ov=1.35, ecc=0.09)
+        ring(3, 0.33, 0.13, 0.55, 0.11, "cup", ov=1.4, ecc=0.10, rj=0.03)
+        ring(3, 0.24, 0.07, 0.61, 0.10, "cup", ov=1.4, ecc=0.108, rj=0.03)
+        ring(2, 0.16, 0.02, 0.66, 0.09, "cup", ov=1.5, ecc=0.114, rj=0.02)
+        ring(2, 0.09, 0.0, 0.70, 0.08, "cup", ov=1.5, ecc=0.118, rj=0.02)
+    dome = 0.14 * np.sqrt(np.clip(1 - (r / (R * 1.45)) ** 2, 0, 1))
+    m = cv2.GaussianBlur((out > -0.5).astype(np.float32), (0, 0), 0.55 * R_.s)
+    R_.put(sl, (np.maximum(out, 0) + dome) * 0.9 * lift + 0.07, m)
 
 
-def leaf(R_, bx, by, L, Wd, ang, seed=0, fold=1, lift=1.0, serr=True):
-    """serrated rose leaf from its base point (bx,by), pointing at ang degrees; midrib + chevron veins"""
+def blossom(R_, x, y, r, rot=0.0, n=6, seed=0, lift=0.9):
+    """small open flower of the side vines: n notched, cupped petals round a beaded eye"""
+    p = R_.patch(x, y, r * 1.2 + 2)
+    if p is None:
+        return
+    sl, dx, dy = p
+    rng = np.random.default_rng(seed)
+    out = np.full(dx.shape, -1.0, np.float32)
+    RR = r * 1.7
+    for j in list(range(0, n, 2)) + list(range(1, n, 2)):
+        th = math.radians(rot) + j * 2 * math.pi / n + rng.normal(0, 0.06)
+        _petal(out, dx, dy, RR, th, math.pi / n * 1.12, 0.2 * r, r * (1 + rng.normal(0, 0.05)), 0.10 + 0.03 * (j % 2), 0.12, "frill",
+               ph0=math.pi)
+    rr = np.hypot(dx, dy)
+    out[rr < 0.3 * r] = 0.30
+    for j in range(7):
+        bx_, by_ = (0.19 * r * math.cos(j * 1.047 + 0.3), 0.19 * r * math.sin(j * 1.047 + 0.3)) if j < 6 else (0.0, 0.0)
+        dd = np.hypot(dx - bx_, dy - by_)
+        out[:] = np.where(dd < 0.11 * r, np.maximum(out, 0.30 + 0.16 * _tube(dd, 0.11 * r)), out)
+    m = cv2.GaussianBlur((out > -0.5).astype(np.float32), (0, 0), 0.5 * R_.s)
+    R_.put(sl, np.maximum(out, 0) * lift + 0.10, m)
+
+
+def leaf(R_, bx, by, L, ang, Wd=None, nv=4, lift=1.0, bend=0.0):
+    """engraved leaf from its base (bx,by) pointing at ang degrees: pointed, saw-toothed, with a carved midrib and
+    nv plump vein segments a side (nv=0: a plain smooth leaflet)"""
+    Wd = L * 0.54 if Wd is None else Wd
     a = math.radians(ang)
     cx, cy = bx + math.cos(a) * L / 2, by + math.sin(a) * L / 2
-    p = R_.patch(cx, cy, L * 0.55 + 4)
+    p = R_.patch(cx, cy, L * 0.62 + 4)
     if p is None:
         return
     sl, dx, dy = p
     ux = dx * math.cos(a) + dy * math.sin(a); vy = -dx * math.sin(a) + dy * math.cos(a)
     u = ux / L + 0.5
-    rng = np.random.default_rng(seed)
     uc = np.clip(u, 0, 1)
-    hw = Wd / 2 * np.power(np.clip(np.sin(math.pi * np.power(uc, 0.85)), 0, 1), 0.75)
-    if serr:
-        tooth = (u * L / max(6.0, L / 9)) % 1.0
-        hw = hw * (1 + 0.075 * (tooth - 0.5) * 2 * (uc > 0.12))
+    if bend:
+        vy = vy - bend * L * uc * (1 - uc)
+    hw = Wd / 2 * np.power(uc, 0.55) * np.power(1 - uc, 0.85) / 0.391
+    if nv:
+        ph = uc * nv * 1.12 + 0.2 - np.abs(vy) / (Wd / 2) * 0.62
+        tooth = ph % 1.0
+        hw = hw * (1 + 0.30 * (tooth - 0.62) * (uc > 0.08) * (uc < 0.93))
     vv = vy / np.maximum(hw, 0.5)
-    m = smooth01((hw - np.abs(vy)) / 1.0) * (u > 0) * (u < 1)
-    dome = 0.36 * np.power(np.clip(1 - vv ** 2, 0, 1), 0.6)
-    tilt = 0.10 * fold * np.clip(vv, -1, 1)                                  # folded along the midrib
-    midrib = 0.10 * np.exp(-(vy / 1.6) ** 2) - 0.06 * np.exp(-((np.abs(vy) - 3.2) / 1.4) ** 2)
-    ph = uc * L / max(7.0, L / 7) - np.abs(vv) * 1.1
-    veins = -0.06 * np.maximum(0, np.cos(2 * math.pi * ph)) ** 8 * (np.abs(vv) > 0.12) * (np.abs(vv) < 0.9)
-    rim = 0.02 * np.exp(-((hw - np.abs(vy)) / 1.3) ** 2)
-    hgt = (0.18 + dome + tilt + midrib + veins + rim) * lift
-    R_.put(sl, hgt, m * (u > 0.0))
-
-
-def compound_leaf(R_, x, y, ang, L, seed=0, lift=1.0, pairs=2):
-    """rose leaf: a petiole with a terminal leaflet and pairs of side leaflets"""
-    a = math.radians(ang)
-    ex, ey = x + math.cos(a) * L * 0.62, y + math.sin(a) * L * 0.62
-    stem(R_, [(x, y), (ex, ey)], 1.8, 1.3, lift=0.7 * lift)
-    rng = np.random.default_rng(seed)
-    for q in range(pairs):
-        t = 0.30 + q * 0.32 if pairs > 1 else 0.5
-        px, py = x + math.cos(a) * L * 0.62 * t, y + math.sin(a) * L * 0.62 * t
-        ll = L * (0.40 + 0.06 * q)
-        for sgn in (-1, 1):
-            leaf(R_, px, py, ll * (0.9 + 0.2 * rng.random()), ll * 0.52, ang + sgn * (52 - 6 * q) + rng.normal(0, 5),
-                 seed=seed + q * 2 + (sgn > 0), fold=sgn, lift=lift)
-    leaf(R_, ex - math.cos(a) * 2, ey - math.sin(a) * 2, L * 0.50, L * 0.27, ang + rng.normal(0, 6), seed=seed + 9, fold=1, lift=lift)
-
-
-def leaflet_pair(R_, x, y, ang, L, Wd, seed=0, lift=0.9):
-    leaf(R_, x, y, L, Wd, ang - 38, seed=seed, fold=1, lift=lift)
-    leaf(R_, x, y, L, Wd, ang + 38, seed=seed + 1, fold=-1, lift=lift)
+    m = smooth01((hw - np.abs(vy)) / 0.9) * (u > 0) * (u < 1)
+    dome = 0.24 * np.power(np.clip(1 - vv ** 2, 0, 1), 0.5)
+    hgt = 0.15 + dome - 0.11 * np.exp(-(vy / max(1.0, Wd * 0.035)) ** 2)        # carved midrib
+    if nv:
+        off = 1 - np.exp(-(vy / (Wd * 0.09 + 0.8)) ** 2)
+        hgt = hgt + (0.17 * np.power(np.clip(np.sin(np.pi * tooth), 0, 1), 0.7) - 0.07) * off * np.clip(np.abs(vv) * 3, 0, 1)
+    R_.put(sl, hgt * lift, m)
 
 
 def stem(R_, pts, w0, w1=None, lift=0.6):
@@ -660,113 +723,74 @@ def stem(R_, pts, w0, w1=None, lift=0.6):
     n = len(pts)
     for i in range(n - 1):
         w = (w0 + (w1 - w0) * i / max(1, n - 2)) * s
-        layer = np.zeros_like(hgt)
         p0 = (int((pts[i, 0] * s - x0) * 4), int((pts[i, 1] * s - y0) * 4))
         p1 = (int((pts[i + 1, 0] * s - x0) * 4), int((pts[i + 1, 1] * s - y0) * 4))
-        cv2.line(layer, p0, p1, 1.0, max(1, int(round(w * 2))), cv2.LINE_AA, shift=2)
-        hgt = np.maximum(hgt, layer)
+        cv2.line(hgt, p0, p1, 1.0, max(1, int(round(w * 2))), cv2.LINE_AA, shift=2)
     dt = cv2.distanceTransform((hgt > 0.5).astype(np.uint8), cv2.DIST_L2, 5) / max(1.0, w0 * s)
     prof = np.sqrt(np.clip(dt * (2 - dt), 0, 1))
     m = cv2.GaussianBlur(hgt, (0, 0), 0.5)
     reg = R_.h[y0:y1, x0:x1]
-    reg[:] = reg * (1 - m) + np.maximum(reg, 0.15 + prof * 0.35 * lift) * m
+    reg[:] = reg * (1 - m) + np.maximum(reg, 0.13 + prof * 0.32 * lift) * m
 
 
 def berry(R_, x, y, r, lift=1.0):
+    """little ring-shaped bud (a bead with a dimple), as on the reference's sprays"""
     p = R_.patch(x, y, r + 2)
     if p is None:
         return
     sl, dx, dy = p
     d = np.hypot(dx, dy)
-    R_.put(sl, (0.2 + 0.45 * _tube(d, r)) * lift, smooth01((r - d) / 0.8))
+    R_.put(sl, (0.16 + 0.44 * _tube(d - 0.50 * r, 0.52 * r)) * lift, smooth01((r - d) / 0.8))
 
 
-def sprig(R_, x, y, ang, L, nb=4, r=4.2, seed=0):
-    """thin stalk ending in a little cluster of round buds (the '4 dots' sprays of the reference)"""
-    rng = np.random.default_rng(seed)
+def drop(R_, x, y, L, ang, lift=0.9):
+    """tear-drop bud: plump, pointed, with a dimple"""
+    leaf(R_, x, y, L, ang, Wd=L * 0.62, nv=0, lift=lift)
     a = math.radians(ang)
-    ex, ey = x + math.cos(a) * L, y + math.sin(a) * L
-    bend = rng.normal(0, 0.18)
-    pts = _bez((x, y), (x + math.cos(a + bend) * L * .4, y + math.sin(a + bend) * L * .4),
-               (ex - math.cos(a - bend) * L * .3, ey - math.sin(a - bend) * L * .3), (ex, ey), 16)
-    stem(R_, pts, 1.6, 1.1, lift=0.7)
-    for k in range(nb):
-        b = a + (k - (nb - 1) / 2) * 0.95 + rng.normal(0, 0.1)
-        ll = r * (2.4 + rng.random() * 0.8)
-        bx, by = ex + math.cos(b) * ll, ey + math.sin(b) * ll
-        stem(R_, [(ex, ey), (bx, by)], 1.0, lift=0.6)
-        berry(R_, bx, by, r * (0.85 + 0.3 * rng.random()))
-    berry(R_, ex, ey, r * 0.8)
+    p = R_.patch(x + math.cos(a) * L * 0.42, y + math.sin(a) * L * 0.42, L * 0.2 + 2)
+    if p is not None:
+        sl, dx, dy = p
+        d = np.hypot(dx, dy)
+        R_.h[sl] -= 0.16 * np.exp(-(d / (L * 0.09)) ** 2)
 
 
-def blossom(R_, x, y, r, rot=0, n=5, lift=0.9):
-    p = R_.patch(x, y, r * 1.1 + 2)
-    if p is None:
-        return
-    sl, dx, dy = p
-    rr = np.hypot(dx, dy); ph = np.arctan2(dy, dx) - math.radians(rot)
-    lob = np.cos((ph * n) / 2) ** 2
-    e = r * (0.55 + 0.45 * np.abs(np.cos(ph * n / 2)) ** 0.6)
-    m = smooth01((e - rr) / 1.0)
-    cup = 0.22 * (rr / np.maximum(e, 1)) ** 2 + 0.10 * np.exp(-((e - rr) / 1.6) ** 2)
-    groove = -0.08 * np.exp(-((np.abs(np.sin(ph * n / 2))) / 0.08) ** 2) * (rr > r * 0.25)
-    cen = np.where(rr < r * 0.28, 0.25 + 0.15 * _tube(rr, r * 0.28), 0)
-    R_.put(sl, (0.25 + cup + groove + cen) * lift, m)
-
-
-def bud(R_, x, y, L, ang, lift=0.9):
-    """closed rose bud: teardrop with wrapped petals + two sepals"""
-    a = math.radians(ang)
-    cx, cy = x + math.cos(a) * L * 0.5, y + math.sin(a) * L * 0.5
-    p = R_.patch(cx, cy, L * 0.6 + 3)
-    if p is None:
-        return
-    sl, dx, dy = p
-    ux = dx * math.cos(a) + dy * math.sin(a); vy = -dx * math.sin(a) + dy * math.cos(a)
-    u = ux / L + 0.5
-    uc = np.clip(u, 0, 1)
-    hw = L * 0.36 * np.sqrt(np.clip(np.sin(math.pi * uc ** 0.7), 0, 1))
-    m = smooth01((hw - np.abs(vy)) / 0.9) * (u > 0) * (u < 1)
-    vv = vy / np.maximum(hw, 0.5)
-    wrap = 0.06 * np.maximum(0, np.cos((vv * 1.2 + uc * 1.5) * math.pi * 1.3)) ** 4
-    hgt = (0.28 + 0.36 * np.sqrt(np.clip(1 - vv ** 2, 0, 1)) - wrap) * lift
-    R_.put(sl, hgt, m)
-    leaf(R_, x, y, L * 0.75, L * 0.18, ang - 28, serr=False, lift=0.8)
-    leaf(R_, x, y, L * 0.75, L * 0.18, ang + 28, serr=False, lift=0.8)
-
-
-def spray(R_, pts, leaves, w0=2.6, w1=1.4, seed=0, lift=1.0, side0=1, leaf_ang=42, tip=None):
-    """a stem (bezier points) with leaves along it; leaves=[(t, L, W)] t in 0..1 along the stem"""
-    pts = np.asarray(pts, np.float32)
-    seg = np.r_[0, np.cumsum(np.hypot(*np.diff(pts, axis=0).T))]
-    stem(R_, pts, w0, w1, lift=lift * 0.8)
-    side = side0
-    for i, (t, L, Wd) in enumerate(leaves):
-        d = t * seg[-1]; k = int(np.clip(np.searchsorted(seg, d) - 1, 0, len(pts) - 2))
-        f = (d - seg[k]) / max(seg[k + 1] - seg[k], 1e-3)
-        x, y = pts[k] + (pts[k + 1] - pts[k]) * f
-        tang = math.degrees(math.atan2(pts[k + 1, 1] - pts[k, 1], pts[k + 1, 0] - pts[k, 0]))
-        if Wd < 0:                                                        # paired leaflets
-            leaflet_pair(R_, x, y, tang, L, -Wd, seed=seed + i)
-        else:
-            leaf(R_, x, y, L, Wd, tang + side * leaf_ang, seed=seed + i, fold=side, lift=lift)
-        side = -side
-    return pts
+def spray(R_, pts, leaves=(), berries=(), w0=2.0, w1=1.2, L=28, lift=0.9):
+    """a curling stem through pts with small leaflets [(t along stem, side +1/-1, length[, angle off the stem])]
+    and ring buds [(x, y[, r])] on little stalks"""
+    P = _curve(pts)
+    stem(R_, P, w0, w1, lift=0.75)
+    for b in berries:
+        bx, by = b[0], b[1]; br = b[2] if len(b) > 2 else 6.6
+        k = int(np.argmin(np.hypot(P[:, 0] - bx, P[:, 1] - by)))
+        k = max(0, k - 3)
+        mx, my = (P[k, 0] + bx) / 2, (P[k, 1] + by) / 2
+        stem(R_, _curve([(P[k, 0], P[k, 1]), (mx + (by - P[k, 1]) * 0.12, my - (bx - P[k, 0]) * 0.12), (bx, by)], 6), 1.2, 0.9, lift=0.6)
+        berry(R_, bx, by, br)
+    for lf in leaves:
+        t, side, ll = lf[0], lf[1], (lf[2] if len(lf) > 2 else L)
+        da = lf[3] if len(lf) > 3 else 42
+        x, y, tg = _along(P, t)
+        leaf(R_, x, y, ll * 1.15, tg + side * da, Wd=ll * 0.58, nv=2 if ll < 40 else 3, lift=lift)
+    return P
 
 
 # ---------------------------------------------------------------- the cusped Mughal-arch frame
-def arch_path(cx, ytop, ybot, hw, oh):
-    """closed outline: ogee peak, two lobes split by a cusp, straight sides; mirrored at the bottom.
-    hw = half width, oh = height of the ornamental top (and bottom) in px"""
-    ky = oh / 0.98
-    segs = [((0, 0), (-0.05, 0.08), (-0.10, 0.17), (-0.18, 0.20)),
-            ((-0.18, 0.20), (-0.26, 0.22), (-0.36, 0.22), (-0.43, 0.25)),
-            ((-0.43, 0.25), (-0.53, 0.27), (-0.585, 0.37), (-0.585, 0.50)),
-            ((-0.585, 0.50), (-0.60, 0.555), (-0.65, 0.585), (-0.71, 0.585)),
-            ((-0.71, 0.585), (-0.90, 0.595), (-1.0, 0.76), (-1.0, 0.98))]
+ARCH = dict(cx=450, ytop=238, ybot=1666, hw=338)
+ARCH_SEGS = [((0, 0), (-4, 22), (-18, 44), (-46, 54)), ((-46, 54), (-80, 66), (-125, 60), (-152, 79)),      # ogee peak
+             ((-152, 79), (-166, 88), (-172, 100), (-172, 115)),                                            # down to cusp 1
+             ((-172, 115), (-200, 114), (-222, 138), (-224, 176)),                                          # lobe -> cusp 2
+             ((-224, 176), (-262, 176), (-290, 215), (-294, 303)),                                          # lobe -> cusp 3
+             ((-294, 303), (-318, 306), (-338, 335), (-338, 378))]                                          # shoulder -> straight side
+
+
+def arch_path(cx=None, ytop=None, ybot=None):
+    """closed outline (centre line of the outer moulding), traced from the reference: ogee peak, three cusps a side,
+    straight sides; mirrored at the bottom. ARCH_SEGS are cubic beziers in px offsets from the peak (left half).
+    (app.js draws the panel sheen with the same numbers)"""
+    cx = ARCH["cx"] if cx is None else cx; ytop = ARCH["ytop"] if ytop is None else ytop; ybot = ARCH["ybot"] if ybot is None else ybot
     half = []
-    for (p0, c1, c2, p3) in segs:
-        pts = _bez(*[(cx + x * hw, ytop + y * ky) for x, y in (p0, c1, c2, p3)], 40)
+    for (p0, c1, c2, p3) in ARCH_SEGS:
+        pts = _bez(*[(cx + x, ytop + y) for x, y in (p0, c1, c2, p3)], 40)
         half += pts if not half else pts[1:]
     top = half[::-1] + [(2 * cx - x, y) for x, y in half][1:]         # left side -> peak -> right side
     bot = [(x, ytop + ybot - y) for x, y in reversed(top)]
@@ -777,24 +801,22 @@ def card_relief(W=900, H=1950, s=2):
     R_ = Relief(W, H, s)
     S = s
     # ---------- frame (built from a signed distance field so every offset line follows the cusps) ----------
-    cx, ytop, ybot, hw, oh = 450, 243, 1580, 352, 360
-    outl = arch_path(cx, ytop, ybot, hw, oh)
+    outl = arch_path()
     pm = np.zeros((R_.H, R_.W), np.uint8)
     cv2.fillPoly(pm, [np.round(outl * S * 16).astype(np.int32)], 1, cv2.LINE_AA, shift=4)
     din = cv2.distanceTransform(pm, cv2.DIST_L2, 5) / S
     dout = cv2.distanceTransform(1 - pm, cv2.DIST_L2, 5) / S
     sd = din - dout                                                    # >0 inside
     fr = np.zeros_like(sd)
-    fr = np.maximum(fr, 0.60 * _tube(sd - 0.0, 5.0))                   # outer rounded moulding
-    fr = np.maximum(fr, 0.40 * _tube(sd - 9.8, 2.4))                   # second, finer line
+    fr = np.maximum(fr, 0.56 * _tube(sd - 0.0, 5.2))                   # outer rounded moulding
+    fr = np.maximum(fr, 0.34 * _tube(sd - 9.6, 2.3))                   # second, finer line
     # bead row
-    cm = (sd >= 19.5).astype(np.uint8)
+    cm = (sd >= 17.5).astype(np.uint8)
     cs, _ = cv2.findContours(cm, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     c = max(cs, key=len)[:, 0, :].astype(np.float32) / S
     seg = np.r_[0, np.cumsum(np.hypot(*np.diff(np.vstack([c, c[:1]]), axis=0).T))]
     beads = np.zeros_like(sd)
-    step = 12.0
-    nb = int(seg[-1] / step)
+    nb = int(seg[-1] / 10.6)
     yy, xx = np.mgrid[0:R_.H, 0:R_.W].astype(np.float32)
     for i in range(nb):
         d = i * seg[-1] / nb
@@ -802,99 +824,143 @@ def card_relief(W=900, H=1950, s=2):
         bx, by = c[k]
         x0, x1 = int((bx - 6) * S), int((bx + 6) * S) + 1; y0, y1 = int((by - 6) * S), int((by + 6) * S) + 1
         dd = np.hypot(xx[y0:y1, x0:x1] / S - bx, yy[y0:y1, x0:x1] / S - by)
-        beads[y0:y1, x0:x1] = np.maximum(beads[y0:y1, x0:x1], 0.46 * _tube(dd, 3.9))
+        beads[y0:y1, x0:x1] = np.maximum(beads[y0:y1, x0:x1], 0.44 * _tube(dd, 3.7))
     fr = np.maximum(fr, beads)
     R_.h += fr
-    panel = smooth01((sd - 24) / 3)                                   # the smooth glossy centre
-    outside = smooth01((-sd - 4) / 6)                                  # where ornaments may go
+    panel = smooth01((sd - 22) / 3)                                   # the smooth glossy centre
 
-    # ---------- florals ----------
+    # ---------- florals (every position traced from the rectified reference video) ----------
     F = Relief(W, H, s)
-    rng = np.random.default_rng(5)
+    lf = lambda x, y, ang, L, Wd=None, nv=4, **kw: leaf(F, x, y, L, ang, Wd=Wd, nv=nv, **kw)
 
-    def along(P, t):
-        seg_ = np.r_[0, np.cumsum(np.hypot(*np.diff(P, axis=0).T))]
-        d = t * seg_[-1]; k = int(np.clip(np.searchsorted(seg_, d) - 1, 0, len(P) - 2))
-        f = (d - seg_[k]) / max(seg_[k + 1] - seg_[k], 1e-3)
-        x, y = P[k] + (P[k + 1] - P[k]) * f
-        return x, y, math.degrees(math.atan2(P[k + 1, 1] - P[k, 1], P[k + 1, 0] - P[k, 0]))
+    def cluster(hub, pts, r=6.6):
+        for (bx, by) in pts:
+            stem(F, _curve([hub, ((hub[0] + bx) / 2 + (by - hub[1]) * 0.1, (hub[1] + by) / 2 - (bx - hub[0]) * 0.1), (bx, by)], 6), 1.2, 0.9, lift=0.6)
+            berry(F, bx, by, r)
 
-    def vine(pts, n, seed, L=92, flowers=(), sprigs=(), w=2.8):
-        P = np.asarray(pts, np.float32)
-        stem(F, P, w, w * 0.7, lift=0.8)
-        side = 1
-        for i, t in enumerate(np.linspace(0.03, 0.97, n)):
-            x, y, tg = along(P, t)
-            compound_leaf(F, x, y, tg + side * (55 + rng.normal(0, 8)), L * (0.85 + 0.3 * rng.random()), seed=seed + i * 11,
-                          pairs=1 if i % 3 == 2 else 2)
-            side = -side
-        for (x, y, r_) in flowers:
-            for q in range(5):
-                a_ = q * 1.2566 + rng.random()
-                leaf(F, x + math.cos(a_) * r_ * 0.7, y + math.sin(a_) * r_ * 0.7, r_ * 1.3, r_ * 0.62, math.degrees(a_) + 18,
-                     seed=seed + q, lift=0.75)
-            blossom(F, x, y, r_, rot=x + y)
-        for (x, y, a_) in sprigs:
-            sprig(F, x, y, a_, 22, nb=4, r=3.9, seed=int(x * 7 + y))
-        return P
-
-    def bspray(pts, nleaf, seed, tips=(), L=62):
-        P = np.asarray(pts, np.float32)
+    def vine(pts, leaves, flowers=(), buds=(), shoots=(), tip=40):
+        """side vine growing upwards through pts (bottom -> top): leaves [(y, side, L)], blossoms [(x, y, r)], ring buds,
+        and curling side shoots [(y, side, length)] carrying small leaflets and a bud"""
+        P = _curve(pts, 14)
         stem(F, P, 2.2, 1.3, lift=0.75)
-        side = 1
-        for i, t in enumerate(np.linspace(0.25, 0.8, nleaf)):
-            x, y, tg = along(P, t)
-            leaf(F, x, y, L * (0.9 - 0.25 * t), L * 0.42 * (0.9 - 0.25 * t), tg + side * 50, seed=seed + i, fold=side)
-            side = -side
-        x, y, tg = along(P, 1.0)
-        sprig(F, x, y, tg, 22, nb=4, r=4.0, seed=seed + 50)
-        for (t, da) in tips:
-            x, y, tg = along(P, t)
-            sprig(F, x, y, tg + da, 22, nb=4, r=3.8, seed=seed + int(t * 100))
 
-    # ---- top-left
-    vine(_bez((52, 300), (70, 640), (18, 980), (48, 1390), 80), 22, 300, L=84,
-         flowers=[(70, 560, 17), (28, 850, 18), (50, 1120, 17)], sprigs=[(105, 700, -30), (12, 990, 210), (100, 1250, -20)])
-    compound_leaf(F, 90, 250, 112, 160, seed=101)
-    compound_leaf(F, 60, 190, 165, 140, seed=102)
-    compound_leaf(F, 190, 245, 48, 135, seed=103)
-    compound_leaf(F, 85, 120, -115, 120, seed=104)
-    compound_leaf(F, 150, 280, 88, 120, seed=105, pairs=1)
-    bspray(_bez((190, 120), (235, 95), (280, 80), (330, 70), 20), 3, 110, tips=[(0.55, -70), (0.3, -110)])
-    bspray(_bez((222, 185), (262, 195), (305, 196), (350, 188), 20), 2, 120, tips=[(0.6, 70), (0.75, -60)])
-    rose_head(F, 128, 182, 136, rot=10, squash=0.94, seed=1)
-    # ---- top-right
-    vine(_bez((800, 350), (815, 470), (840, 600), (858, 720), 30), 5, 220, L=90, flowers=[(842, 590, 16)])
-    vine(_bez((862, 700), (836, 900), (888, 1100), (852, 1460), 70), 18, 400, L=84,
-         flowers=[(840, 830, 17), (874, 1060, 18), (846, 1300, 17)], sprigs=[(805, 950, 210), (800, 1190, 200)])
-    compound_leaf(F, 700, 320, 140, 150, seed=201)
-    compound_leaf(F, 770, 360, 95, 150, seed=202)
-    compound_leaf(F, 850, 320, 40, 140, seed=203)
-    compound_leaf(F, 690, 220, 200, 130, seed=204)
-    compound_leaf(F, 800, 150, -60, 120, seed=205)
-    bspray(_bez((660, 190), (615, 168), (570, 152), (520, 142), 20), 3, 210, tips=[(0.5, -80), (0.75, 70)])
-    bspray(_bez((650, 268), (612, 274), (578, 266), (540, 256), 16), 2, 220, tips=[(0.6, 80)])
-    rose_head(F, 762, 262, 145, rot=-15, squash=0.91, seed=2)
-    # ---- bottom-left
-    compound_leaf(F, 110, 1390, -100, 140, seed=501)
-    compound_leaf(F, 60, 1420, -150, 130, seed=502)
-    compound_leaf(F, 200, 1530, 30, 150, seed=503)
-    compound_leaf(F, 90, 1560, 110, 140, seed=504)
-    compound_leaf(F, 175, 1420, -45, 120, seed=505, pairs=1)
-    bspray(_bez((210, 1525), (260, 1560), (310, 1605), (362, 1652), 24), 4, 510, tips=[(0.55, -70)], L=70)
-    bspray(_bez((180, 1575), (205, 1645), (230, 1702), (258, 1752), 16), 2, 520, tips=[(0.7, -60)])
-    rose_head(F, 112, 1476, 136, rot=25, squash=0.94, seed=3)
-    # ---- bottom-right
-    compound_leaf(F, 760, 1560, -95, 150, seed=601)
-    compound_leaf(F, 690, 1590, -150, 140, seed=602)
-    compound_leaf(F, 840, 1570, -40, 140, seed=603)
-    compound_leaf(F, 690, 1700, 160, 140, seed=604)
-    compound_leaf(F, 780, 1760, 95, 130, seed=605)
-    compound_leaf(F, 870, 1740, 40, 120, seed=606, pairs=1)
-    bspray(_bez((665, 1632), (615, 1642), (562, 1642), (508, 1632), 20), 3, 610, tips=[(0.55, 80), (0.75, -75)], L=68)
-    bspray(_bez((690, 1735), (645, 1772), (602, 1796), (556, 1806), 20), 2, 620, tips=[(0.6, 75)])
-    rose_head(F, 772, 1660, 145, rot=-30, squash=0.91, seed=4)
-    floral = F.h * (1 - smooth01((sd + 30) / 14))                     # keep a clear margin round the frame
+        def at(y):
+            k = min(int(np.argmin(np.abs(P[:, 1] - y))), len(P) - 2)
+            return P[k, 0], P[k, 1], math.degrees(math.atan2(P[k + 1, 1] - P[k, 1], P[k + 1, 0] - P[k, 0]))
+        for (y, side, L) in shoots:
+            x0, y0, tg = at(y)
+            a0 = math.radians(tg + side * 38); a1 = math.radians(tg + side * (62 + 10 * math.sin(y)))
+            p1 = (x0 + math.cos(a0) * L * 0.55, y0 + math.sin(a0) * L * 0.55)
+            p2 = (p1[0] + math.cos(a1) * L * 0.5, p1[1] + math.sin(a1) * L * 0.5)
+            spray(F, [(x0, y0), p1, p2], leaves=[(0.38, side, L * 0.42, 48), (0.62, -side, L * 0.40, 44), (0.86, side, L * 0.34, 40)], w0=1.5, w1=1.0)
+            berry(F, p2[0] + math.cos(a1) * 5, p2[1] + math.sin(a1) * 5, 5.8)
+        for (y, side, L) in leaves:
+            x0, y0, tg = at(y)
+            leaf(F, x0, y0, L * 1.25, tg + side * (46 + 6 * math.sin(y)), Wd=L * 0.56, nv=3 if L >= 40 else 2, lift=0.95)
+        x, y, tg = _along(P, 1.0)
+        leaf(F, x, y + 4, tip, tg, Wd=tip * 0.42, nv=2)
+        for (bx, by) in buds:
+            k = int(np.argmin(np.hypot(P[:, 0] - bx, P[:, 1] - by - 14)))
+            stem(F, [(P[k, 0], P[k, 1]), (bx, by)], 1.2, 0.9, lift=0.6); berry(F, bx, by, 6.8)
+        for i, (x, y, r_) in enumerate(flowers):
+            for q in range(3):                                         # little leaves peeping out from behind the flower
+                leaf(F, x, y, r_ * 1.5, 30 + q * 120 + x, Wd=r_ * 0.7, nv=2, lift=0.85)
+            blossom(F, x, y, r_, rot=x + y, n=7, seed=int(x + y))
+
+    # ---- top-left: peony cut by the card edge, crown of leaves, two bud sprays, leaves trailing down the side
+    for (x, y, a_, L) in [(45, 104, -106, 62), (92, 110, -94, 52), (150, 104, -96, 52), (174, 96, -78, 58), (210, 100, -84, 58), (24, 142, -152, 46)]:
+        lf(x, y, a_, L, nv=3)
+    spray(F, [(188, 120), (225, 93), (266, 78), (310, 70), (352, 72)], leaves=[(0.38, 1, 34, 50), (0.56, 1, 32, 55), (0.22, -1, 30, 60), (0.48, -1, 24, 70)],
+          berries=[(268, 42), (300, 49), (323, 52), (343, 52), (360, 70), (348, 96), (322, 93), (298, 84)])
+    spray(F, [(230, 201), (262, 186), (300, 170), (338, 160)], leaves=[(0.25, -1, 28, 55), (0.5, -1, 26, 60), (0.38, 1, 24, 50)],
+          berries=[(320, 141), (347, 158), (328, 183), (297, 193), (300, 148)])
+    lf(222, 243, 27, 80, 38, nv=5); lf(232, 222, 6, 46, nv=3)
+    stem(F, _curve([(62, 368), (54, 430), (41, 500), (38, 570), (42, 628)]), 2.2, 1.3, lift=0.75)
+    for (x, y, a_, L, w_) in [(60, 398, 36, 70, 34), (51, 452, 38, 72, 34), (40, 532, 52, 70, 32), (52, 420, 142, 56, 26), (43, 490, 146, 56, 26),
+                              (38, 560, 140, 50, 24), (40, 592, 75, 40, 18)]:
+        lf(x, y, a_, L, w_)
+    cluster((42, 622), [(15, 632), (38, 654), (58, 640)])
+    for (x, y, a_) in [(160, 352, 62), (128, 372, 100), (210, 326, 45)]:
+        drop(F, x, y, 17, a_)
+    rose_head(F, 115, 215, 122, seed=11, style="peony",
+              guards=[(-128, 24, 0.5, 1.12, "puff"), (-92, 21, 0.5, 1.12, "puff"), (-58, 21, 0.5, 1.12, "puff"), (-22, 22, 0.5, 0.98, "frill"),
+                      (8, 20, 0.5, 1.0, "frill"), (22, 14, 0.5, 1.14, "flute"), (40, 14, 0.5, 1.26, "flute"), (58, 14, 0.5, 1.2, "flute"),
+                      (150, 22, 0.55, 1.12, "puff"), (120, 19, 0.55, 1.22, "puff"), (92, 18, 0.55, 1.2, "puff"), (180, 24, 0.5, 1.10, "puff"),
+                      (215, 24, 0.5, 1.10, "puff")])
+    # ---- left side vine
+    vine([(50, 1425), (42, 1300), (36, 1200), (38, 1100), (45, 1000), (42, 900), (50, 820), (48, 752)],
+         leaves=[(1385, 1, 44), (1372, -1, 40), (1335, 1, 46), (1330, -1, 42), (1180, -1, 40), (1150, 1, 42), (1100, -1, 40), (1065, 1, 50),
+                 (1060, -1, 42), (1035, 1, 44), (850, 1, 38), (835, -1, 34), (805, -1, 32), (772, -1, 30)],
+         flowers=[(42, 945, 35), (45, 1240, 35)], buds=[(68, 746), (72, 791)], shoots=[(1395, 1, 52), (1300, -1, 46), (1140, 1, 50), (1085, -1, 44), (880, 1, 50), (810, -1, 40), (790, 1, 40)], tip=38)
+    # ---- top-right: the largest peony with its fan of fluted petals, crown, sprays and the leaves hanging below
+    for (x, y, a_, L) in [(718, 104, -98, 64), (746, 98, -80, 42), (796, 104, -92, 50), (840, 108, -100, 60), (862, 102, -72, 56), (884, 132, -50, 46)]:
+        lf(x, y, a_, L, nv=3)
+    spray(F, [(704, 106), (665, 88), (622, 74), (578, 68), (540, 74)], leaves=[(0.2, 1, 36, 60), (0.46, 1, 30, 62), (0.68, 1, 26, 65), (0.4, -1, 28, 50), (0.58, -1, 26, 55)],
+          berries=[(527, 76), (545, 98), (580, 103), (548, 50), (568, 42), (513, 96)])
+    spray(F, [(668, 201), (630, 181), (590, 163), (555, 156)], leaves=[(0.3, 1, 30, 55), (0.6, 1, 26, 60), (0.45, -1, 22, 50)],
+          berries=[(550, 157), (565, 184), (595, 195), (543, 181)])
+    lf(655, 243, 150, 64, 40, nv=4)
+    stem(F, _curve([(836, 368), (857, 440), (867, 520), (870, 600), (868, 652)]), 2.2, 1.3, lift=0.75)
+    for (x, y, a_, L, w_) in [(842, 405, 160, 80, 40), (850, 468, 150, 70, 36), (863, 555, 125, 64, 34), (850, 398, 30, 56, 26), (861, 468, 40, 50, 24),
+                              (867, 538, 46, 46, 22), (870, 598, 62, 40, 18)]:
+        lf(x, y, a_, L, w_)
+    cluster((868, 640), [(845, 641), (877, 648), (860, 669)])
+    cluster((856, 520), [(831, 512)], r=5)
+    for (x, y, a_) in [(716, 356, 115), (748, 384, 105), (656, 300, 140), (664, 332, 120)]:
+        drop(F, x, y, 17, a_)
+    rose_head(F, 765, 215, 126, seed=22, style="peony",
+              guards=[(-128, 22, 0.5, 1.12, "puff"), (-95, 20, 0.5, 1.12, "puff"), (-62, 20, 0.5, 1.12, "puff"), (-28, 22, 0.5, 1.10, "puff"),
+                      (5, 22, 0.5, 1.10, "puff"), (36, 20, 0.5, 1.05, "frill"), (205, 22, 0.5, 0.94, "frill"), (170, 22, 0.5, 0.94, "frill"),
+                      (142, 16, 0.5, 1.05, "frill"), (122, 15, 0.5, 1.14, "flute"), (101, 15, 0.5, 1.27, "flute"), (80, 16, 0.5, 1.32, "flute"),
+                      (59, 15, 0.5, 1.18, "flute")])
+    # ---- right side vine (taller and leafier than the left one)
+    stem(F, _curve([(850, 1185), (836, 1110), (814, 1052), (802, 1004)]), 1.8, 1.2, lift=0.7)
+    for (x, y, a_, L) in [(838, 1115, -150, 44), (822, 1070, -40, 34), (812, 1050, -140, 46), (802, 1008, -100, 44)]:
+        lf(x, y, a_, L, L * 0.4, nv=3)
+    vine([(860, 1445), (852, 1300), (848, 1150), (846, 1000), (850, 860), (848, 752)],
+         leaves=[(1410, -1, 44), (1395, 1, 40), (1345, -1, 56), (1330, 1, 46), (1165, -1, 60), (1120, 1, 44), (1010, 1, 46), (955, -1, 62),
+                 (890, 1, 44), (855, -1, 54), (800, -1, 44), (790, 1, 34)],
+         flowers=[(836, 1250, 37)], buds=[(873, 760), (818, 764)], shoots=[(1420, -1, 50), (1310, 1, 44), (1200, -1, 56), (1075, 1, 46), (985, -1, 52), (915, 1, 44), (825, -1, 46), (800, 1, 40)], tip=42)
+    # ---- bottom-left: wrapped rose, compound leaf above, fern spray, big leaves and a bud cluster below
+    stem(F, _curve([(75, 1555), (80, 1500), (92, 1440), (100, 1408)]), 2.2, 1.3, lift=0.75)
+    for (x, y, a_, L, w_) in [(92, 1452, -78, 52, 22), (80, 1500, -135, 64, 28), (82, 1498, -42, 62, 28), (76, 1536, -160, 60, 28),
+                              (78, 1538, -14, 68, 32), (88, 1468, -122, 50, 22), (90, 1466, -50, 50, 22)]:
+        lf(x, y, a_, L, w_)
+    cluster((172, 1592), [(186, 1565), (213, 1590)], r=6)
+    stem(F, _curve([(205, 1748), (222, 1702), (236, 1652)]), 1.8, 1.2, lift=0.7)
+    lf(233, 1684, -86, 64, 26); lf(216, 1724, -112, 42, 18, nv=3)
+    spray(F, [(210, 1744), (250, 1719), (292, 1714), (330, 1738), (354, 1770)],
+          leaves=[(0.16, -1, 30), (0.22, 1, 28), (0.36, -1, 32), (0.42, 1, 30), (0.56, -1, 32), (0.62, 1, 30), (0.76, -1, 28), (0.82, 1, 28), (0.93, -1, 24),
+                  (0.95, 1, 24), (1.0, 0, 26)])
+    lf(186, 1772, 12, 98, 54, nv=5)
+    stem(F, _curve([(150, 1768), (172, 1830), (200, 1878), (228, 1906)]), 2.2, 1.4, lift=0.75)
+    for (x, y, a_, L, w_) in [(140, 1758, 104, 100, 44), (212, 1812, 94, 86, 24), (84, 1742, 120, 92, 42), (40, 1732, 150, 72, 36), (60, 1800, 96, 80, 36)]:
+        lf(x, y, a_, L, w_)
+    stem(F, [(303, 1904), (304, 1846)], 1.4, 1.0, lift=0.6); lf(305, 1850, -90, 28, 12, nv=2)
+    cluster((304, 1870), [(289, 1862), (322, 1859), (285, 1886), (313, 1891), (328, 1880)])
+    rose_head(F, 120, 1645, 106, rot=200, seed=33, style="rose")
+    # ---- bottom-right: the second large rose, leaves rising above it, fern spray and leaves below
+    stem(F, _curve([(808, 1574), (790, 1520), (768, 1462), (752, 1424)]), 2.2, 1.3, lift=0.75)
+    for (x, y, a_, L, w_) in [(772, 1474, -112, 62, 26), (790, 1520, -155, 82, 34), (792, 1518, -60, 56, 26), (800, 1552, -170, 76, 32),
+                              (780, 1492, -135, 56, 24), (782, 1490, -75, 46, 20)]:
+        lf(x, y, a_, L, w_)
+    stem(F, _curve([(842, 1572), (862, 1500), (878, 1424)]), 2.0, 1.2, lift=0.75)
+    for (x, y, a_, L) in [(848, 1548, -125, 48), (856, 1516, -30, 44), (862, 1492, -128, 46), (868, 1464, -32, 40), (874, 1440, -120, 40), (878, 1426, -78, 40)]:
+        lf(x, y, a_, L, L * 0.42, nv=3)
+    stem(F, [(714, 1614), (690, 1598)], 1.3, 1.0, lift=0.6); stem(F, [(714, 1614), (703, 1574)], 1.3, 1.0, lift=0.6)
+    drop(F, 694, 1601, 18, 205); drop(F, 704, 1580, 18, 255)
+    lf(657, 1706, -97, 76, 26)
+    spray(F, [(700, 1794), (662, 1743), (605, 1720), (560, 1716), (522, 1741)],
+          leaves=[(0.28, 1, 30), (0.34, -1, 28), (0.46, 1, 32), (0.52, -1, 30), (0.64, 1, 30), (0.70, -1, 30), (0.82, 1, 28), (0.86, -1, 26), (0.95, 1, 24),
+                  (1.0, 0, 26)],
+          berries=[(527, 1791), (549, 1796), (507, 1766)])
+    lf(702, 1790, 176, 96, 54, nv=5)
+    for (x, y, a_, L, w_) in [(700, 1782, 112, 108, 44), (748, 1776, 93, 104, 40), (800, 1770, 62, 96, 44), (848, 1748, 32, 76, 36), (838, 1832, 80, 66, 30)]:
+        lf(x, y, a_, L, w_)
+    cluster((806, 1848), [(800, 1867), (818, 1861)])
+    cluster((584, 1864), [(575, 1836), (555, 1851), (568, 1874), (593, 1883), (566, 1898), (615, 1860)])
+    rose_head(F, 765, 1655, 118, rot=170, seed=44, style="rose")
+    floral = F.h * (1 - smooth01((sd + 20) / 8))                      # keep a clear margin round the frame
     R_.h = np.maximum(R_.h, floral)
     return R_, sd, panel
 
@@ -910,25 +976,25 @@ def render_card(W=900, H=1950, s=2):
     k = np.zeros((15, 15), np.float32); np.fill_diagonal(k, 1); k /= k.sum()
     brushed = cv2.filter2D(g, -1, k) - 0.5
     grain = brushed * 0.010 * (1 - 0.6 * panel) + (noise(HH, WW, 3, 2, 92) - 0.5) * 0.003
-    hgt = cv2.GaussianBlur(hm, (0, 0), 1.1 * s) + grain
+    hgt = cv2.GaussianBlur(hm, (0, 0), 0.75 * s) + grain
     # paper: matte satin; panel: smoother, glossier (the "mirror")
     sheen = 0.97 + 0.05 * np.sin((xx * 0.5 + yy * 0.3) / (420 * s)) + 0.03 * (noise(HH, WW, 500, 2, 22) - 0.5)
     col = hexrgb("#aea6b2") * sheen[..., None]
-    rgb_p = shade(hgt, col, light=(-0.5, -0.7, 0.6), depth=34 * s / 2, amb=0.66, kd=0.42, ks=0.24, shin=12,
+    rgb_p = shade(hgt, col, light=(-0.5, -0.7, 0.6), depth=36 * s / 2, amb=0.66, kd=0.42, ks=0.24, shin=12,
                   spec_rgb=(255, 248, 255))
     # ambient occlusion: crevices between petals/leaves go darker -> crisp engraved read
-    blur = cv2.GaussianBlur(hm, (0, 0), 5 * s)
-    occl = np.clip((blur - hm) * 2.4, 0, 1)
-    rgb_p *= (1 - 0.32 * occl)[..., None]
+    blur = cv2.GaussianBlur(hm, (0, 0), 3.5 * s)
+    occl = np.clip((blur - hm) * 3.0, 0, 1)
+    rgb_p *= (1 - 0.40 * occl)[..., None]
     lift_l = np.clip(hm, 0, 1.2)
-    rgb_p = rgb_p * (1 + 0.13 * lift_l)[..., None]
+    rgb_p = rgb_p * (1 + 0.17 * lift_l)[..., None]
     # glossy panel: broad soft reflection, faint pearl tint
     u = (xx / WW); v = (yy / HH)
     refl = 0.5 + 0.5 * np.cos(((u - 0.35) * 1.6 + (v - 0.33) * 2.4) * math.pi)
     refl = np.clip(refl, 0, 1) ** 2
     tint = np.dstack([1 + 0.02 * np.sin(v * 9 + 1), 1 - 0.01 * np.sin(v * 7), 1 + 0.025 * np.sin(v * 8 + 2.5)])
     pcol = hexrgb("#c1b6bf") * tint * (0.98 + 0.07 * refl)[..., None]
-    rgb_g = shade(hgt, pcol, light=(-0.5, -0.7, 0.6), depth=34 * s / 2, amb=0.70, kd=0.36, ks=0.30, shin=40,
+    rgb_g = shade(hgt, pcol, light=(-0.5, -0.7, 0.6), depth=36 * s / 2, amb=0.70, kd=0.36, ks=0.30, shin=40,
                   spec_rgb=(255, 250, 255))
     rgb = rgb_p * (1 - panel[..., None]) + rgb_g * panel[..., None]
     light = 1.035 - 0.06 * v - 0.03 * u + 0.025 * np.exp(-(((u - 0.45) / 0.35) ** 2 + ((v - 0.35) / 0.3) ** 2))   # soft room light
@@ -939,9 +1005,10 @@ def render_card(W=900, H=1950, s=2):
 
 
 def card():
-    """the embossed card: sculpted cabbage roses + leaves in the corners, rose vines down both sides,
-    the cusped arch frame with its beaded line, and the smooth glossy centre panel"""
-    print("card (v3) ...")
+    """the embossed card, traced element by element from the reference video: garden roses in the four corners (frilled
+    peonies above, wrapped roses below) with their leaves, bud sprays and fern sprays, flowering vines down both sides,
+    the three-cusped arch frame with its fine line and beaded row, and the smooth glossy centre panel"""
+    print("card (v4) ...")
     rgb, pm = render_card(W, H, 2)
     save_rgb("card.jpg", rgb, 92)          # the glossy sheen over the centre panel is drawn by app.js (same arch)
 
