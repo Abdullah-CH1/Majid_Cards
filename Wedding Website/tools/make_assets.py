@@ -441,11 +441,16 @@ def organza_rgba():
     def _to_sheet(px, py):                       # reference-frame px -> sheet px (frame is at ~0.9 zoom; sheet is 1.28x the card)
         uf = 0.5 + (px / 780 - 0.5) * 0.97; vf = 0.47 + (py / 1580 - 0.47) * 0.97
         return ((0.109 + 0.782 * uf) * W, (0.134 + 0.732 * vf) * H)
-    FOLDS = [   # (polygon in reference px 780x1580, how dense the doubled cloth is). The top corners fold over as "/" and "\\"
-        ([(-150, -300), (260, -300), (215, -20), (120, 80), (40, 180), (-20, 255), (-150, 300)], 0.9),        # top-left corner, edge runs like "/"
-        ([(520, -300), (950, -300), (950, 300), (800, 255), (740, 180), (660, 80), (565, -20)], 0.9),          # top-right corner, edge runs like "\\"
-        ([(-150, 1310), (0, 1326), (140, 1418), (250, 1505), (310, 1565), (360, 1800), (-150, 1800)], 0.75),   # bottom-left layer
-        ([(530, 1508), (720, 1420), (950, 1362), (950, 1800), (470, 1800), (480, 1575)], 0.7),               # bottom-right layer
+    def _corner(cx, cy, rx, ry, sx, sy, n=28):       # a corner folded over along a curve that sweeps from one edge round to the
+        a0 = (cx + sx * rx, cy); a1 = (cx, cy + sy * ry)   # other, sagging in toward the corner like a draped swag (not a bulge)
+        c = (cx + sx * rx * 0.30, cy + sy * ry * 0.30)
+        arc = [((1 - u) ** 2 * a0[0] + 2 * u * (1 - u) * c[0] + u * u * a1[0], (1 - u) ** 2 * a0[1] + 2 * u * (1 - u) * c[1] + u * u * a1[1]) for u in np.linspace(0, 1, n)]
+        return [(cx - sx * 200, cy - sy * 300), (cx + sx * rx, cy - sy * 300)] + arc + [(cx - sx * 200, cy + sy * ry)]
+    FOLDS = [   # (polygon in reference px 780x1580, how dense the doubled cloth is)
+        (_corner(-15, -15, 290, 400, 1, 1), 1.0),          # top-left: curve from the top edge round to the left side
+        (_corner(795, -15, 290, 400, -1, 1), 1.0),         # top-right
+        (_corner(-15, 1595, 310, 360, 1, -1), 0.9),        # bottom-left
+        (_corner(795, 1595, 290, 330, -1, -1), 0.85),      # bottom-right
     ]
     fold_layer = np.zeros((H, W), np.float32); fold_edge = np.zeros((H, W), np.float32); fold_shadow = np.zeros((H, W), np.float32)
     for k, (poly, dens) in enumerate(FOLDS):
@@ -457,8 +462,9 @@ def organza_rgba():
         inside = smooth01(d_in / 3.0) * m
         fold_layer = np.maximum(fold_layer, dens * inside * (0.30 + (1 - 0.30) * np.exp(-d_in / 80.0)))   # thin: the doubled cloth shows mostly near its edge
         fold_edge = np.maximum(fold_edge, np.exp(-((d_in - 3.0) / 3.2) ** 2) * m)                      # the rolled hem catches the light
-        fold_edge = np.maximum(fold_edge, 0.25 * np.exp(-((d_in - 34) / 7.0) ** 2) * m * (0.5 + 0.5 * _onoise(H, W, 160, 2, 80 + k)))  # one soft crease just inside
-        fold_shadow = np.maximum(fold_shadow, np.exp(-d_out / 12.0) * (1 - m))                         # and it shades the sheet beneath
+        for q, (dc, wc, sc) in enumerate(((16, 4.0, 0.60), (36, 5.0, 0.50), (62, 6.0, 0.40))):
+            fold_edge = np.maximum(fold_edge, sc * np.exp(-((d_in - dc - 44 * (_onoise(H, W, 170, 2, 90 + 7 * k + q) - 0.5)) / wc) ** 2) * m * np.clip(2.2 * _onoise(H, W, 130, 2, 80 + 5 * k + q) - 0.6, 0, 1))  # one soft crease just inside
+        fold_shadow = np.maximum(fold_shadow, np.exp(-d_out / 20.0) * (1 - m))                         # and it shades the sheet beneath
     nrm = np.dstack([-gx, -gy, np.ones_like(h)]); nrm /= np.linalg.norm(nrm, axis=2, keepdims=True)
     l = np.array([-0.34, -0.60, 0.72]); l /= np.linalg.norm(l); hv = l + [0, 0, 1]; hv /= np.linalg.norm(hv)
     nh = np.clip((nrm * hv).sum(2), 0, 1); diff = np.clip((nrm * l).sum(2), 0, 1)
@@ -472,7 +478,7 @@ def organza_rgba():
     c_hl = np.array([250, 240, 248], np.float32) * (1 - tint) + np.array([236, 236, 255], np.float32) * tint
     c_veil = np.array([150, 122, 140], np.float32)                 # the film itself: a thin rosy-mauve veil
     shade = np.clip(1.0 - diff * 1.2, 0, 1)
-    a_veil = np.clip(0.12 + 0.42 * shade + 0.28 * fold_layer + 0.20 * fold_shadow, 0, 0.72)
+    a_veil = np.clip(0.12 + 0.42 * shade + 0.30 * fold_layer + 0.30 * fold_shadow, 0, 0.72)
     a_hl = np.clip(0.86 * hl, 0, 0.86)
     a = a_veil + a_hl * (1 - a_veil)
     rgb = (c_veil * (a_veil * (1 - a_hl))[..., None] + c_hl * a_hl[..., None]) / np.maximum(a[..., None], 1e-4)
