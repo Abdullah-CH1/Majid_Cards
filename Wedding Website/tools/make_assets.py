@@ -394,6 +394,8 @@ def _onoise(h, w, scale, octaves=4, seed=0):
         out += amp * cv2.resize(g, (w, h), interpolation=cv2.INTER_CUBIC); tot += amp; amp *= 0.5
     return out / tot
 
+WRINKLE = 0.035
+
 def organza_rgba():
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     def aniso(scale, ang, stretch, seed, octaves=2):
@@ -410,6 +412,22 @@ def organza_rgba():
     h += 0.40 * aniso(120, 62, 1.6, 2, 2)
     h += 0.9 * _onoise(H, W, 620, 2, 5)
     h = cv2.GaussianBlur(h, (0, 0), 7)
+    # wrinkles where the sheet is gathered and tucked round the card: folds fanning out of each corner, and
+    # long wavy creases along the very top and bottom (the sheet is 1.28x the card, so the card's corners sit ~11-14% in)
+    wr = np.zeros((H, W), np.float32)
+    wob = _onoise(H, W, 260, 2, 61) - 0.5
+    for k, (cx, cy) in enumerate(((0.06, 0.09), (0.94, 0.09), (0.06, 0.91), (0.94, 0.91))):
+        px, py = cx * W, cy * H
+        r = np.hypot(xx - px, (yy - py) * 0.62)
+        th = np.arctan2(yy - py, xx - px)
+        fan = np.sin(th * 34 + 11 * wob + k * 1.7) + 0.6 * np.sin(th * 71 - 8 * wob + k) + 0.5 * np.sin(th * 17 + 5 * wob)
+        wr += 2.0 * fan * np.exp(-(r / (0.36 * W)) ** 2) * np.clip(r / (0.05 * W), 0, 1)
+    for k, cy in enumerate((0.115, 0.885)):
+        band = np.exp(-(((yy / H) - cy) / 0.075) ** 2)
+        wave = np.sin((yy + 0.22 * (xx - W / 2) * (1 if k == 0 else -1)) / 15.0 + 10 * wob) + 0.6 * np.sin((yy - 0.1 * xx) / 7.5 + 7 * wob)
+        wr += 0.8 * wave * band
+    wr = cv2.GaussianBlur(wr, (0, 0), 2.2)
+    h = h + WRINKLE * wr
     gy, gx = np.gradient(h * 380)
     # straight folds where the sheet is wrapped round the card: a thin bright crease, the doubled layer slightly denser on one side
     layer = np.zeros((H, W), np.float32); crease = np.zeros((H, W), np.float32)
