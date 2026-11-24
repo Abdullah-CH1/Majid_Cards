@@ -1,6 +1,9 @@
 /* ============ base ============ */
 :root {
-  --u: min(1vw, 4.8px);                 /* 1% of the invitation width (phone width, max 480px) */
+  /* width of the invitation column: never wider than the screen or 480px, and narrow enough that the
+     whole card (900:1950) fits the window height; on phones it stays at least 86% of the width */
+  --col: min(100vw, 480px, calc(100svh * 900 / 1950));
+  --u: calc(var(--col) / 100);                 /* 1% of the invitation width (phone width, max 480px) */
   --ink: #4a3b47;
   --ink-soft: #6c5c69;
   --mauve: #b9a3b1;
@@ -25,7 +28,7 @@ body::before { content: ""; position: fixed; left: 50%; top: 50%; width: 34px; h
   border: 1.5px solid rgba(255,255,255,.22); border-top-color: rgba(255,255,255,.85); animation: spin 1s linear infinite; opacity: 1; transition: opacity .4s; pointer-events: none; }
 body.ready::before { opacity: 0; animation: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
-#app { position: relative; width: 100%; max-width: 480px; margin: 0 auto; background: var(--page); box-shadow: 0 0 60px rgba(0,0,0,.35); overflow: hidden; }
+#app { position: relative; width: 100%; max-width: var(--col); margin: 0 auto; background: var(--page); box-shadow: 0 0 60px rgba(0,0,0,.35); overflow: hidden; }
 img { display: block; max-width: 100%; }
 
 /* ============ 1. card ============ */
@@ -130,7 +133,7 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 .reveal.in { opacity: 1; transform: none; }
 
 /* ============ opening sequence ============ */
-#opening { touch-action: none; position: fixed; top: 0; left: 50%; width: 100%; max-width: 480px; height: 100svh; transform: translateX(-50%); overflow: hidden; z-index: 10; perspective: 1600px; }
+#opening { touch-action: none; position: fixed; top: 0; left: 50%; width: 100%; max-width: var(--col); height: 100svh; transform: translateX(-50%); overflow: hidden; z-index: 10; perspective: 1600px; }
 #opening.gone { display: none; }
 .cover-box { position: absolute; left: 50%; top: 50%; width: max(100%, calc(100svh * 900 / 1950)); aspect-ratio: 900 / 1950; transform: translate(-50%, -50%); }
 
@@ -181,7 +184,7 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 .seal:active { transform: translate(-50%, -50%) scale(.96); }
 @keyframes sealGlow { 0%,100% { filter: drop-shadow(0 6px 7px rgba(38,22,34,.55)); } 50% { filter: drop-shadow(0 6px 7px rgba(38,22,34,.55)) drop-shadow(0 0 12px rgba(255,240,250,.55)); } }
 /* the hint: a small frosted pill just under the seal (legible on any part of the leaves) */
-.tap-hint { position: absolute; left: 50%; top: calc(51.3% + min(22vw, 105.6px) + 16px); transform: translateX(-50%); z-index: 4; white-space: nowrap;
+.tap-hint { position: absolute; left: 50%; top: calc(51.3% + calc(var(--u) * 22) + 16px); transform: translateX(-50%); z-index: 4; white-space: nowrap;
   padding: .62em 1.35em .6em 1.5em; border-radius: 99px; background: rgba(66,50,63,.58); border: 1px solid rgba(255,246,252,.42);
   box-shadow: 0 3px 10px rgba(30,18,28,.28), inset 0 1px 0 rgba(255,255,255,.12);
   font-weight: 600; font-size: clamp(11px, calc(var(--u) * 2.95), 14px); letter-spacing: .24em; text-transform: uppercase; color: #fff8fc;
@@ -193,7 +196,7 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 #opening.drop .env-shadow { opacity: 0 !important; }
 
 /* ============ music button ============ */
-.music { position: fixed; z-index: 20; bottom: calc(16px + env(safe-area-inset-bottom)); right: max(16px, calc(50% - 240px + 16px));
+.music { position: fixed; z-index: 20; bottom: calc(16px + env(safe-area-inset-bottom)); right: max(16px, calc(50% - var(--col) / 2 + 16px));
   width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,.75); background: rgba(110,95,110,.35);
   color: #fff; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: grid; place-items: center; cursor: pointer; }
 .music[hidden] { display: none; }
@@ -205,3 +208,6 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 @media (prefers-reduced-motion: reduce) {
   .c-line, .reveal { transition-duration: .01s !important; transition-delay: 0s !important; }
 }
+
+/* phones: keep the invitation at least 86% of the screen width even on short screens */
+@media (max-width: 520px) { :root { --col: min(100vw, max(calc(100svh * 900 / 1950), 86vw)); } }
