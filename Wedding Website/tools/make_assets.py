@@ -97,7 +97,7 @@ def envelope():
     save_rgba("envelope-flap-shadow.webp", np.broadcast_to(np.array([25, 14, 22], np.float32), (fh + pad, W, 3)), sa, 86)
     # back of the flap (only seen edge-on while it lifts): plain paper of the same tone
     fh = frgb.shape[0]
-    brgb = shade((noise(fh, W, 3, 2, 8) - 0.5) * 0.05, hexrgb("#8e7b88"), depth=10, amb=0.74, kd=0.28, ks=0.03)
+    brgb = shade((noise(fh, W, 3, 2, 8) - 0.5) * 0.05, hexrgb("#a8959f"), depth=10, amb=0.74, kd=0.28, ks=0.03)
     save_rgba("envelope-flap-back.webp", brgb, fa, 86)
 
 # ---------------------------------------------------------------- wax seal
@@ -386,79 +386,64 @@ def photo():
     im.save(OUT / "photo.jpg", quality=90); print("wrote photo.jpg")
 
 # ================================================================ v2: sheer organza, 3D bow, rose card
-def organza():
-    """sheer, glossy, crinkled organza film lying over the card (RGBA): it darkens and warms the card a little (the veil),
-    streaky angular highlights where the wrinkles and crumple facets catch the light, a few long straight folds of the sheet"""
-    print("organza ...")
-    r = np.random.default_rng(11)
+def _onoise(h, w, scale, octaves=4, seed=0):
+    r = np.random.default_rng(seed); out = np.zeros((h, w), np.float32); amp = 1.0; tot = 0
+    for o in range(octaves):
+        s = max(2, int(scale / (2 ** o)))
+        g = r.random((h // s + 3, w // s + 3)).astype(np.float32)
+        out += amp * cv2.resize(g, (w, h), interpolation=cv2.INTER_CUBIC); tot += amp; amp *= 0.5
+    return out / tot
+
+def organza_rgba():
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     def aniso(scale, ang, stretch, seed, octaves=2):
-        """noise stretched `stretch` times along direction ang (degrees, image coords)"""
         S = int(max(W, H) * 1.5)
-        n = noise(int(S / stretch) + 4, S, scale, octaves, seed)           # rows are compressed -> after resize, stretched vertically
-        n = cv2.resize(n, (S, S), interpolation=cv2.INTER_CUBIC)            # features long along y
+        n = _onoise(int(S / stretch) + 4, S, scale, octaves, seed)
+        n = cv2.resize(n, (S, S), interpolation=cv2.INTER_CUBIC)
         M = cv2.getRotationMatrix2D((S / 2, S / 2), ang - 90, 1.0)
         n = cv2.warpAffine(n, M, (S, S), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
         y0, x0 = (S - H) // 2, (S - W) // 2
         return n[y0:y0 + H, x0:x0 + W]
-    def ridge(n, p=1.0):
-        n = (n - n.min()) / (n.max() - n.min() + 1e-6)
-        return (1 - np.abs(2 * n - 1)) ** p
-    h = np.zeros((H, W), np.float32)
-    # long soft drape wrinkles running steeply down-right, a weaker set crossing them
-    h += 1.00 * ridge(aniso(190, 120, 2.4, 1), 1.5)
-    h += 0.55 * ridge(aniso(100, 127, 2.8, 2), 1.4)
-    h += 0.45 * ridge(aniso(140, 52, 2.4, 3), 1.6)
-    h += 0.16 * ridge(aniso(36, 116, 4.0, 4), 1.2)
-    h += 0.9 * noise(H, W, 380, 2, 5)
-    # crumple facets: stretched voronoi cells, each tilted its own way (angular cellophane glints)
-    S = 1400; nseed = 520
-    seeds = np.ones((S, S), np.uint8); pts = r.integers(0, S, (nseed, 2)); seeds[pts[:, 1] // 3 * 3 % S, pts[:, 0]] = 0
-    _, lab = cv2.distanceTransformWithLabels(seeds, cv2.DIST_L2, 5, labelType=cv2.DIST_LABEL_PIXEL)
-    tx = r.normal(0, 1, lab.max() + 1).astype(np.float32); ty = r.normal(0, 1, lab.max() + 1).astype(np.float32)
-    def facet_map(v):
-        m = v[lab]
-        m = cv2.resize(m, (S, int(S * 2.6)), interpolation=cv2.INTER_NEAREST)                   # stretch cells
-        Sy = m.shape[0]
-        M = cv2.getRotationMatrix2D((S / 2, Sy / 2), 60 - 90, 1.0)
-        m = cv2.warpAffine(m, M, (S, Sy), flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_REFLECT)
-        y0, x0 = (Sy - H) // 2, (S - W) // 2
-        return m[y0:y0 + H, x0:x0 + W]
-    fx, fy = facet_map(tx), facet_map(ty)
-    edge = (np.abs(cv2.Laplacian(fx, cv2.CV_32F)) > 1e-3).astype(np.float32)
-    edge = cv2.GaussianBlur(edge, (0, 0), 1.2)
-    fx = cv2.GaussianBlur(fx, (0, 0), 2.2); fy = cv2.GaussianBlur(fy, (0, 0), 2.2)
-    # big straight folds of the sheet (it is wrapped round the card): crease line + a second layer on one side
+    # the sheet is drawn taut over the card but puckers everywhere: soft dimples a few cm wide, a little longer along the
+    # drape (down-right), and two broad swells of the whole sheet
+    h = 1.00 * aniso(230, 118, 2.0, 1, 2)
+    h += 0.40 * aniso(120, 62, 1.6, 2, 2)
+    h += 0.9 * _onoise(H, W, 620, 2, 5)
+    h = cv2.GaussianBlur(h, (0, 0), 7)
+    gy, gx = np.gradient(h * 380)
+    # straight folds where the sheet is wrapped round the card: a thin bright crease, the doubled layer slightly denser on one side
     layer = np.zeros((H, W), np.float32); crease = np.zeros((H, W), np.float32)
-    for (x0, y0, ang, side, la) in ((0, 250, -38, -1, .55), (0, 1330, 24, 1, .5), (900, 1560, 150, -1, .45), (520, 0, 58, -1, .35), (0, 1650, -30, 1, .4)):
+    for (x0, y0, ang, side, la) in ((0, 330, -40, -1, .5), (0, 1180, 27, 1, .55), (900, 1500, 152, -1, .45), (560, 0, 60, -1, .3)):
         dx, dy = math.cos(math.radians(ang)), math.sin(math.radians(ang))
-        d = (xx - x0) * (-dy) + (yy - y0) * dx                      # signed distance to the line
-        d += 14 * (noise(H, W, 300, 2, int(abs(ang)) + 20) - 0.5)
-        layer += la * np.clip(side * d / 2.0, 0, 1)
-        crease += np.exp(-np.abs(d) / 2.2) * 0.9 + np.exp(-np.clip(side * d, 0, None) / 16) * (side * d > 0) * 0.25
-    gy, gx = np.gradient(cv2.GaussianBlur(h, (0, 0), 3.5) * 46)
-    gx += 0.11 * fx; gy += 0.11 * fy
-    grain = noise(H, W, 5, 2, 9) - 0.5
-    gx += 0.10 * grain; gy += 0.10 * np.roll(grain, 7, 0)
+        d = (xx - x0) * (-dy) + (yy - y0) * dx
+        d += 10 * (_onoise(H, W, 340, 2, int(abs(ang)) + 20) - 0.5)
+        layer += la * np.clip(side * d / 3.0, 0, 1)
+        crease += (np.exp(-(d / 2.6) ** 2) + 0.3 * np.exp(-np.clip(side * d, 0, None) / 22) * (side * d > 0)) * (0.55 + 0.45 * _onoise(H, W, 90, 2, int(abs(ang)) + 40))
     nrm = np.dstack([-gx, -gy, np.ones_like(h)]); nrm /= np.linalg.norm(nrm, axis=2, keepdims=True)
-    l = np.array([-0.30, -0.62, 0.72]); l /= np.linalg.norm(l); hv = l + [0, 0, 1]; hv /= np.linalg.norm(hv)
+    l = np.array([-0.34, -0.60, 0.72]); l /= np.linalg.norm(l); hv = l + [0, 0, 1]; hv /= np.linalg.norm(hv)
     nh = np.clip((nrm * hv).sum(2), 0, 1); diff = np.clip((nrm * l).sum(2), 0, 1)
-    sheen = nh ** 5
-    nq = nh * (0.90 + 0.2 * noise(H, W, 420, 2, 6))               # patchy: some areas quieter
-    lo, mid, hi = np.percentile(nq, [60, 88, 99.5])
-    hl = 0.45 * np.clip((nq - lo) / (mid - lo), 0, 1) ** 1.5 + 0.55 * np.clip((nq - mid) / (hi - mid), 0, 1) ** 1.3
-    hl = np.clip(hl * (1 + 0.5 * grain) + 0.5 * crease * (0.5 + hl) + 0.05 * edge * hl, 0, 1)
-    tint = noise(H, W, 160, 2, 8)[..., None]                       # faint pearly colour shift in the shine
-    c_hl = np.array([246, 236, 248], np.float32) * (1 - tint) + np.array([226, 230, 255], np.float32) * tint
-    c_veil = np.array([124, 100, 117], np.float32)                  # the film itself darkens and warms what is under it
-    shade = np.clip(1.0 - diff * 1.15, 0, 1)                       # troughs / sides turned from the light
-    a_veil = np.clip(0.20 + 0.20 * shade + 0.10 * sheen * 0 + 0.16 * layer, 0, 0.6)
-    a_hl = np.clip(0.80 * hl, 0, 0.82)
-    c_mid = np.array([214, 196, 212], np.float32)
-    # composite: veil first, shine over it
+    # shine: a soft satin glow on every slope turned to the light + a small bright glint at its crest
+    lo, mid, hi = np.percentile(nh, [40, 93, 99.7])
+    glow = np.clip((nh - lo) / (mid - lo), 0, 1) ** 1.6
+    glint = np.clip((nh - mid) / (hi - mid), 0, 1) ** 1.5
+    weave = 0.5 + 0.5 * np.sin((xx * 0.86 + yy * 0.5) * 2 * math.pi / 3.1) * np.sin((xx * -0.5 + yy * 0.86) * 2 * math.pi / 3.1)   # fine organza weave
+    hl = np.clip(0.40 * glow + 0.52 * glint + 0.70 * crease + 0.17 * np.clip(layer, 0, 1), 0, 1) * (0.90 + 0.10 * weave)
+    tint = _onoise(H, W, 200, 2, 8)[..., None]
+    c_hl = np.array([250, 240, 248], np.float32) * (1 - tint) + np.array([236, 236, 255], np.float32) * tint
+    c_veil = np.array([150, 122, 140], np.float32)                 # the film itself: a thin rosy-mauve veil
+    shade = np.clip(1.0 - diff * 1.2, 0, 1)
+    a_veil = np.clip(0.12 + 0.42 * shade + 0.06 * np.clip(layer, 0, 1), 0, 0.55)
+    a_hl = np.clip(0.86 * hl, 0, 0.86)
     a = a_veil + a_hl * (1 - a_veil)
-    rgb = (c_veil * (a_veil * (1 - a_hl))[..., None] + (c_hl * hl[..., None] + c_mid * (1 - hl[..., None])) * a_hl[..., None]) / np.maximum(a[..., None], 1e-4)
-    save_rgba("organza.webp", np.clip(rgb, 0, 255), np.clip(a, 0, 0.94), 80)
+    rgb = (c_veil * (a_veil * (1 - a_hl))[..., None] + c_hl * a_hl[..., None]) / np.maximum(a[..., None], 1e-4)
+    return np.clip(rgb, 0, 255), np.clip(a, 0, 0.94)
+
+def organza():
+    """sheer organza sheet lying over the card (RGBA): a thin rosy veil with the soft satin shine of a puckered, taut sheet
+    (broad dimples, a small glint on each crest) and a few straight folds where it is wrapped round the card"""
+    print("organza ...")
+    rgb, a = organza_rgba()
+    save_rgba("organza.webp", rgb, a, 80)
     _fold_strip()
 
 def _fold_strip():
@@ -505,7 +490,7 @@ def bow_frames(n=34):
             save_rgba("bow/bow-00.webp", rgb, a, 88)
         else:                                                   # frames in motion: 80 % size keeps the download small
             sz = (R.BW * 4 // 5, R.BH * 4 // 5)
-            save_rgba(f"bow/bow-{i:02d}.webp", cv2.resize(rgb, sz, interpolation=cv2.INTER_AREA), cv2.resize(a, sz, interpolation=cv2.INTER_AREA), 74)
+            save_rgba(f"bow/bow-{i:02d}.webp", cv2.resize(rgb, sz, interpolation=cv2.INTER_AREA), cv2.resize(a, sz, interpolation=cv2.INTER_AREA), 68)
     print("band ...")
     y0, y1 = R.CY - R.BAND_HALF, R.CY + R.BAND_HALF
     save_rgba("ribbon.webp", rgb[y0:y1], a[y0:y1], 88)

@@ -30,15 +30,15 @@
     host.innerHTML = `<svg viewBox="0 0 900 1950" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <mask id="panelMask"><path d="${d}" fill="#fff" stroke="#000" stroke-width="54"/></mask>
-        <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0.42">
-          <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/>
-          <stop offset=".5" stop-color="#fff8ff" stop-opacity=".34"/><stop offset=".55" stop-color="#fff" stop-opacity=".1"/>
-          <stop offset=".62" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
-          <animateTransform attributeName="gradientTransform" type="translate" values="-1.1 0; 1.1 0; 1.1 0" keyTimes="0; .6; 1" dur="9s" repeatCount="indefinite"/>
+        <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0.3">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".22" stop-color="#fff" stop-opacity="0"/>
+          <stop offset=".36" stop-color="#fdf6ff" stop-opacity=".045"/><stop offset=".5" stop-color="#fdf6ff" stop-opacity=".10"/>
+          <stop offset=".64" stop-color="#fdf6ff" stop-opacity=".045"/><stop offset=".78" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
         </linearGradient>
-        <radialGradient id="glow" cx=".42" cy=".34" r=".55"><stop offset="0" stop-color="#fffaff" stop-opacity=".26"/><stop offset="1" stop-color="#fffaff" stop-opacity="0"/></radialGradient>
+        <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaff" stop-opacity=".05"/><stop offset=".45" stop-color="#fffaff" stop-opacity=".10"/><stop offset="1" stop-color="#fffaff" stop-opacity=".16"/></linearGradient>
       </defs>
-      <g mask="url(#panelMask)"><rect width="900" height="1950" fill="url(#glow)"/><rect width="900" height="1950" fill="url(#sweep)"/></g></svg>`;
+      <g mask="url(#panelMask)"><rect width="900" height="1950" fill="url(#glow)"/><rect class="sheen-band" x="-450" width="1800" height="1950" fill="url(#sweep)"/></g></svg>`;
   })();
 
   // ---------- countdown ticket shape (ivory label with scrolled ends and a small crest, as in the reference) ----------
@@ -104,7 +104,8 @@
   }
   const bandL = $(".band-half.left"), bandR = $(".band-half.right");
   // the four rolled fabric edges of the diamond: upper-left, lower-left, upper-right, lower-right
-  const foldEdges = [0, 1, 2, 3].map(() => { const d = document.createElement("div"); d.className = "fold-edge"; wrapBox.insertBefore(d, bandL); return d; });
+  const foldClips = ["left", "right"].map(side => { const c = document.createElement("div"); c.className = "fold-clip " + side; wrapBox.insertBefore(c, bandL); return c; });
+  const foldEdges = [0, 1, 2, 3].map(i => { const d = document.createElement("div"); d.className = "fold-edge"; foldClips[i >> 1].appendChild(d); return d; });
   function keyCurve(xs, ys) {                  // smooth curve through measured keys (cubic Hermite, finite-difference tangents)
     const n = xs.length, m = xs.map((_, i) => i === 0 ? (ys[1] - ys[0]) / (xs[1] - xs[0]) : i === n - 1 ? (ys[i] - ys[i - 1]) / (xs[i] - xs[i - 1]) : (ys[i + 1] - ys[i - 1]) / (xs[i + 1] - xs[i - 1]));
     return x => {
@@ -172,7 +173,7 @@
   const SEAL_SQUASH = [[0, 1], [40, .95], [62, .77], [70, .56], [76, .4], [84, .27], [90, .16], [100, .06]];   // the seal reads thicker than the flat flap
   const SEAL_LIGHT = [[0, 1], [30, 1.3], [55, 1.5], [70, 1.3], [82, 1.0], [95, .85]];                        // catches the light as it tilts up
   const FLAP_DIM = [[0, 0], [45, 0], [65, .12], [80, .34], [95, .6]];                                         // flap turns away from the light
-  const POCKET = [[0, 0], [.2, 1], [1.05, 1], [1.4, .58], [1.7, .22], [1.98, 0]];                           // shadow inside the envelope
+  const POCKET = [[0, 0], [.2, 1]];                                                                                                 // shadow inside the envelope
   function flapAngle(r, L, P) {               // solve  cos(a) * P / (P - L sin a) = r   (perspective rotation about the top edge)
     let lo = 0, hi = 1.95;
     for (let k = 0; k < 28; k++) {
@@ -181,6 +182,7 @@
     }
     return (lo + hi) / 2;
   }
+  let pocketOut = 1;                          // the flap's shadow clears from the card as the envelope slips away
   function liftFlap() {
     const Hs = op.clientHeight, P = 3.55 * Hs;                     // = the CSS perspective (355svh)
     const Lf = 0.535 * Hs, Ls = 0.513 * Hs;                         // flap tip / seal centre below the top edge
@@ -197,9 +199,17 @@
       seal.style.filter = `brightness(${lerpTab(SEAL_LIGHT, deg).toFixed(3)}) drop-shadow(0 ${(6 + deg / 9).toFixed(1)}px ${(7 + deg / 12).toFixed(1)}px rgba(38,22,34,.5))`;
       seal.style.opacity = String(1 - clamp01((deg - 92) / 6));
       flap.style.opacity = deg > 94 ? "0" : "1";              // past vertical it would only show as a sliver
-      pocket.style.opacity = lerpTab(POCKET, T).toFixed(3);
+      pocket.style.opacity = (lerpTab(POCKET, T) * pocketOut).toFixed(3);
     });
   }
+  document.documentElement.classList.add("locked");
+  (function firstPaint() {
+    const urls = ["assets/envelope-body.webp", "assets/envelope-flap.webp", "assets/seal.webp"];
+    const done = () => body.classList.add("ready");
+    Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = u; }))).then(done);
+    setTimeout(done, 3000);
+  })();
+  op.addEventListener("touchmove", e => e.preventDefault(), { passive: false });   // no rubber-band scrolling under the envelope (iOS)
   let started = false;
   async function openInvitation() {
     if (started) return; started = true;
@@ -207,12 +217,20 @@
     op.classList.add("open");
     await wait(220);                           // (in the video the flap starts a beat after the tap)
     const lift = liftFlap().then(() => { flap.style.visibility = seal.style.visibility = "hidden"; });
-    await wait(1930);                          // flap reaches the top edge ...
-    op.classList.add("drop");                  // ... and the lower envelope slides down off the screen (quick start, soft end)
-    const envBox = $("#envBox"), slide = smoothCurve([[0, 0], [.1, .085], [.25, .29], [.5, .61], [.75, .86], [1, 1]]);
-    await animate(480, t => { envBox.style.transform = `translateY(${(slide(t) * 104).toFixed(2)}%)`; });
+    await wait(930);                           // while the flap is still folding back, the lower envelope starts to slip down:
+    // slowly at first, then faster, until it is off the screen (measured from the video, frames 91-140; seconds -> screen heights)
+    const envBody = $(".env-body"), SLIDE_S = 1.72;
+    const slide = smoothCurve([[0, 0], [.13, .03], [.27, .065], [.4, .10], [.53, .135], [.67, .175], [.8, .22], [.93, .275],
+      [1.07, .34], [1.2, .43], [1.33, .54], [1.47, .67], [1.6, .82], [1.72, 1]]);
+    await animate(SLIDE_S * 1000, t => {
+      envBody.style.transform = flapShadow.style.transform = `translateY(${(slide(t * SLIDE_S) * 104).toFixed(2)}%)`;
+      pocketOut = lerpTab([[0, 1], [.55, 1], [.95, .5], [1.3, 0]], t * SLIDE_S);
+      pocket.style.opacity = Math.min(+pocket.style.opacity, pocketOut).toFixed(3);
+    });
     await lift;
-    await wait(500);                           // the wrapped card rests a moment (video: frames 135-150)
+    op.classList.add("drop");
+    $("#envBox").style.visibility = "hidden";
+    await wait(260);                           // the wrapped card rests a moment (video: frames 140-150)
     await animate(1600, t => {                 // the bow is pulled undone (frames follow the video): loops slip into the knot,
       const src = bowSrc(Math.round(t * (BOW_FRAMES - 1)));   // the band is drawn tight, the last tail slides out, the knot lets go
       if (!bowImg.src.endsWith(src)) bowImg.src = src;
@@ -221,7 +239,7 @@
     bowImg.style.opacity = "0";
     setTimeout(() => body.classList.add("revealed"), 1650);   // wording fades in once the card is clear
     await animate(1450, setDiamond);
-    body.classList.remove("locked");
+    body.classList.remove("locked"); document.documentElement.classList.remove("locked");
     window.scrollTo(0, 0);
     op.classList.add("gone");
   }

@@ -14,7 +14,9 @@ SS = float(os.environ.get("GENV_SS", "1"))   # texture px per design px
 TW, TH = int(round(W * SS)), int(round(H * SS))
 HSCALE = 1.5
 # luminance percentiles of the reference envelope (seal excluded): the textures are tone-matched to these
-REF_P = ([1, 5, 10, 25, 50, 75, 90, 95, 99, 99.7], [69, 91, 101.5, 111, 125, 141, 160, 172, 195, 209])
+# (the raw video frames are under-exposed by the camera: the white page of the same video reads 184/180/194, so the
+#  measured percentiles 69..209 are lifted by ~1.22 with a soft shoulder -> a lighter, pearly silver-mauve)
+REF_P = ([1, 5, 10, 25, 50, 75, 90, 95, 99, 99.7], [84, 111, 124, 135, 152, 172, 193, 205, 224, 234])
 
 def smooth01(x):
     x = np.clip(x, 0, 1); return x * x * (3 - 2 * x)
@@ -387,7 +389,12 @@ def build_envelope():
     comp *= ((1 - 0.38 * fs1) * (1 - 0.62 * fs))[..., None]      # = the CSS drop-shadows of the flap                      # (the site draws this shadow with CSS)
     comp[:FH] = comp[:FH] * (1 - fa[..., None]) + frgb * fa[..., None]
     tm = tone_curve(comp)
-    return tone_apply(rgb, tm), a, tone_apply(frgb, tm), fa
+    def grade(c, y0=0):                                          # warm the silver a touch; rosier toward the lower right, as in the video
+        hh, ww = c.shape[:2]
+        yy, xx = np.mgrid[0:hh, 0:ww].astype(np.float32)
+        t = np.clip(0.75 * (xx / ww) + 0.55 * ((yy + y0) / TH) - 0.45, 0, 1)[..., None]
+        return np.clip(c * (np.array([1.02, 0.995, 1.0], np.float32) * (1 - t) + np.array([1.04, 0.985, 0.985], np.float32) * t), 0, 255)
+    return grade(tone_apply(rgb, tm)), a, grade(tone_apply(frgb, tm)), fa
 
 def preview(out):
     rgb, a, frgb, fa = build_envelope()
