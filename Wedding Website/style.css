@@ -2,7 +2,8 @@
 :root {
   /* width of the invitation column: never wider than the screen or 480px, and narrow enough that the
      whole card (900:1950) fits the window height; on phones it stays at least 86% of the width */
-  --col: min(100vw, 760px, calc(100svh * 900 / 1950));
+  /* the video's screen is 390:790, a little wider than the artwork: the column takes that shape (close-up) */
+  --col: min(100vw, 800px, calc(100svh * 390 / 790));
   --u: calc(var(--col) / 100);
   /* the artwork (envelope, fabric, card) is always drawn at its true 900:1950 proportions and never stretched:
      wide enough to fill the column, and tall enough to fill the window (the screen shows a centred close-up) */
@@ -36,11 +37,12 @@ body.ready::before { opacity: 0; animation: none; }
 img { display: block; max-width: 100%; }
 
 /* ============ 1. card ============ */
-.card-sec { position: relative; width: 100%; height: 100svh; overflow: hidden; background: #b4a8b2; }
+.card-sec { position: relative; width: 100%; height: 100svh; overflow: hidden; background: #3d2f3a; }
 .card-art { position: absolute; left: 50%; top: 50%; width: var(--aw); aspect-ratio: 900 / 1950; translate: -50% -50%;
   --u: calc(var(--aw) / 100); background: url(assets/card.jpg) center / 100% 100% no-repeat; }
 /* as the envelope opens, the wrapped card starts a little further back and comes forward */
-.card-art, #wrapBox { scale: .915; transition: scale 2.5s cubic-bezier(.22,.61,.2,1) .35s; will-change: scale; }
+/* measured from the video: about 0.64 of full size when it first shows under the lifting flap, full size ~2.6 s after the tap */
+.card-art, #wrapBox { scale: .64; transform-origin: 50% 47%; transition: scale 1.75s cubic-bezier(.33,.0,.25,1) .95s; will-change: scale; }
 body.opened .card-art, body.opened #wrapBox { scale: 1; }
 /* the glossy, mirror-like centre panel: a soft reflection drifts slowly across it (svg built in app.js) */
 .card-sheen { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
