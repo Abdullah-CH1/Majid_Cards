@@ -2,7 +2,7 @@
 :root {
   /* width of the invitation column: never wider than the screen or 480px, and narrow enough that the
      whole card (900:1950) fits the window height; on phones it stays at least 86% of the width */
-  --col: min(100vw, 480px, calc(100svh * 900 / 1950));
+  --col: min(100vw, 760px, calc(100svh * 900 / 1950));
   --u: calc(var(--col) / 100);                 /* 1% of the invitation width (phone width, max 480px) */
   --ink: #4a3b47;
   --ink-soft: #6c5c69;
@@ -209,5 +209,6 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
   .c-line, .reveal { transition-duration: .01s !important; transition-delay: 0s !important; }
 }
 
-/* phones: keep the invitation at least 86% of the screen width even on short screens */
-@media (max-width: 520px) { :root { --col: min(100vw, max(calc(100svh * 900 / 1950), 86vw)); } }
+/* phone held sideways (very short window): fitting the card to the height would make it tiny,
+   so use a readable column and let the page scroll instead */
+@media (orientation: landscape) and (max-height: 520px) { :root { --col: min(100vw, 400px); } }
