@@ -3,7 +3,11 @@
   /* width of the invitation column: never wider than the screen or 480px, and narrow enough that the
      whole card (900:1950) fits the window height; on phones it stays at least 86% of the width */
   --col: min(100vw, 760px, calc(100svh * 900 / 1950));
-  --u: calc(var(--col) / 100);                 /* 1% of the invitation width (phone width, max 480px) */
+  --u: calc(var(--col) / 100);
+  /* the artwork (envelope, fabric, card) is always drawn at its true 900:1950 proportions and never stretched:
+     wide enough to fill the column, and tall enough to fill the window (the screen shows a centred close-up) */
+  --aw: max(var(--col), calc(100svh * 900 / 1950));
+  --ah: calc(var(--aw) * 1950 / 900);                 /* 1% of the invitation width (phone width, max 480px) */
   --ink: #4a3b47;
   --ink-soft: #6c5c69;
   --mauve: #b9a3b1;
@@ -32,10 +36,12 @@ body.ready::before { opacity: 0; animation: none; }
 img { display: block; max-width: 100%; }
 
 /* ============ 1. card ============ */
-.card-sec {
-  position: relative; width: 100%; aspect-ratio: 900 / 1950; min-height: 100svh;
-  background: #b4a8b2 url(assets/card.jpg) center / 100% 100% no-repeat;
-}
+.card-sec { position: relative; width: 100%; height: 100svh; overflow: hidden; background: #b4a8b2; }
+.card-art { position: absolute; left: 50%; top: 50%; width: var(--aw); aspect-ratio: 900 / 1950; translate: -50% -50%;
+  --u: calc(var(--aw) / 100); background: url(assets/card.jpg) center / 100% 100% no-repeat; }
+/* as the envelope opens, the wrapped card starts a little further back and comes forward */
+.card-art, #wrapBox { scale: .915; transition: scale 2.5s cubic-bezier(.22,.61,.2,1) .35s; will-change: scale; }
+body.opened .card-art, body.opened #wrapBox { scale: 1; }
 /* the glossy, mirror-like centre panel: a soft reflection drifts slowly across it (svg built in app.js) */
 .card-sheen { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
 .card-sheen svg { display: block; width: 100%; height: 100%; }
@@ -135,13 +141,12 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 /* ============ opening sequence ============ */
 #opening { touch-action: none; position: fixed; top: 0; left: 50%; width: 100%; max-width: var(--col); height: 100svh; transform: translateX(-50%); overflow: hidden; z-index: 10; perspective: 1600px; }
 #opening.gone { display: none; }
-.cover-box { position: absolute; left: 50%; top: 50%; width: max(100%, calc(100svh * 900 / 1950)); aspect-ratio: 900 / 1950; transform: translate(-50%, -50%); }
+.cover-box { position: absolute; left: 50%; top: 50%; width: var(--aw); aspect-ratio: 900 / 1950; translate: -50% -50%; }
 
 /* sheer organza wrap: opens from the centre as a diamond, pinched at both sides by the ribbon */
 .wrap { position: absolute; inset: 0; will-change: clip-path, opacity; }
 .wrap .org { position: absolute; inset: 0; background: url(assets/organza.webp) center / 100% 100% no-repeat; }
-.wrap.left { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
-.wrap.right { clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
+/* one seamless sheet; the diamond is cut out of it (even-odd clip), so there is no centre join */
 .folds { display: none; }
 /* the rolled, gathered edge of the fabric along each side of the diamond (four strips, laid along the edges by app.js; transform only) */
 .fold-clip { position: absolute; inset: 0; pointer-events: none; }
@@ -160,7 +165,8 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 /* envelope: fills the screen. The top flap runs from the sides (33.5% down) to its tip under the seal (53.5%);
    it lifts toward the viewer around its top edge (JS drives the angle frame by frame, measured from the video),
    then the lower envelope slides down off the screen. */
-#opening { perspective: 355vh; perspective: 355svh; perspective-origin: 50% 0; }
+#opening { perspective: none; }
+#envStage { perspective: calc(var(--ah) * 3.55); perspective-origin: 50% 0; }
 .env-box { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-style: preserve-3d; }
 .env-body { position: absolute; inset: 0; will-change: transform; background: url(assets/envelope-body.webp) center / 100% 100% no-repeat; }
 /* inside of the envelope: the wrapped card seen through the mouth, in the shadow of the lifting flap */
@@ -211,4 +217,6 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 
 /* phone held sideways (very short window): fitting the card to the height would make it tiny,
    so use a readable column and let the page scroll instead */
-@media (orientation: landscape) and (max-height: 520px) { :root { --col: min(100vw, 400px); } }
+@media (orientation: landscape) and (max-height: 520px) { :root { --col: min(100vw, 400px); } .card-sec { height: var(--ah); } }
+/* phones: the invitation always fills the full width (close-up, like the video) */
+@media (max-width: 520px) and (orientation: portrait) { :root { --col: 100vw; } }

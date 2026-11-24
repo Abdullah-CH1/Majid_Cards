@@ -90,7 +90,7 @@
   const bowSrc = i => `assets/bow/bow-${String(i).padStart(2, "0")}.webp`;
   const bowCache = [];
   for (let i = 0; i < BOW_FRAMES; i++) { const im = new Image(); im.src = bowSrc(i); bowCache.push(im); }   // preload while the envelope is shown
-  const halfL = $(".wrap.half.left"), halfR = $(".wrap.half.right"), wrapBox = $("#wrapBox");
+  const halfL = $(".wrap.half.left"), wrapBox = $("#wrapBox"), envStage = $("#envStage");
   const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;    // easeInOutCubic
   const clamp01 = t => Math.max(0, Math.min(1, t));
   const wait = ms => new Promise(r => setTimeout(r, ms));
@@ -124,8 +124,7 @@
   function setDiamond(p) {                     // the knot lets go: the fabric opens from the centre as a diamond,
     const t = p * DIA_FRAMES;                  // pinched left and right where the ribbon gathers pull it aside
     const B = Math.max(0, diaB(t)), A = Math.max(0, diaA(t));
-    halfL.style.clipPath = `polygon(0 0, 50% 0, 50% ${50 - A}%, ${50 - B}% 50%, 50% ${50 + A}%, 50% 100%, 0 100%)`;
-    halfR.style.clipPath = `polygon(100% 0, 50% 0, 50% ${50 - A}%, ${50 + B}% 50%, 50% ${50 + A}%, 50% 100%, 100% 100%)`;
+    halfL.style.clipPath = t <= 0 ? "none" : `polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% ${50 - A}%, ${50 + B}% 50%, 50% ${50 + A}%, ${50 - B}% 50%, 50% ${50 - A}%)`;
     // rolled edges: each strip runs from its pinch point to the diamond's tip, the bunched fabric on the outside
     const bw = wrapBox.clientWidth, bh = wrapBox.clientHeight;
     const px = B / 100 * bw, py = A / 100 * bh, len = Math.hypot(px, py), ang = Math.atan2(py, px);
@@ -141,7 +140,7 @@
     const k = Math.max(0.02, (50 - Math.max(B, 2.22)) / 47.78), ky = 0.3 + 0.7 * Math.pow(k, 0.6);
     bandL.style.transform = bandR.style.transform = `scale(${k.toFixed(4)}, ${ky.toFixed(4)})`;
     bandL.style.opacity = bandR.style.opacity = clamp01(k * 5).toFixed(3);
-    halfL.style.opacity = halfR.style.opacity = (1 - clamp01((t - 40) / 3.5)).toFixed(3);
+    halfL.style.opacity = (1 - clamp01((t - 40) / 3.5)).toFixed(3);
   }
   // ---- the envelope opening, timed frame by frame against the reference video (30 fps) ----
   const flap = $("#flap"), flapDim = $("#flapDim"), flapShadow = $("#flapShadow"), seal = $("#seal"), pocket = $(".env-shadow");
@@ -183,7 +182,7 @@
   }
   let pocketOut = 1;                          // the flap's shadow clears from the card as the envelope slips away
   function liftFlap() {
-    const Hs = op.clientHeight, P = 3.55 * Hs;                     // = the CSS perspective (355svh)
+    const Hs = envStage.clientHeight, P = 3.55 * Hs;               // = the CSS perspective (3.55 x the artwork height)
     const Lf = 0.535 * Hs, Ls = 0.513 * Hs;                         // flap tip / seal centre below the top edge
     const DUR = 2.05;
     return animate(DUR * 1000, t => {
@@ -213,7 +212,7 @@
   async function openInvitation() {
     if (started) return; started = true;
     if (audio.src) audio.play().then(() => setMuted(false)).catch(() => {});
-    op.classList.add("open");
+    op.classList.add("open"); body.classList.add("opened");
     await wait(220);                           // (in the video the flap starts a beat after the tap)
     const lift = liftFlap().then(() => { flap.style.visibility = seal.style.visibility = "hidden"; });
     await wait(930);                           // while the flap is still folding back, the lower envelope starts to slip down:

@@ -20,6 +20,7 @@
   <main id="page">
     <!-- 1. the card -->
     <section id="card" class="card-sec">
+      <div class="card-art">
       <div class="card-sheen" aria-hidden="true"></div>
       <div class="card-text">
         <p class="c-line c-together" data-k="together"></p>
@@ -30,6 +31,7 @@
         <p class="c-line c-event" data-k="eventLine"></p>
         <p class="c-line c-venue" data-k="venue"></p>
         <p class="c-line c-place" data-k="place"></p>
+      </div>
       </div>
       <div class="scroll-hint" aria-hidden="true"><span></span></div>
     </section>
@@ -71,13 +73,13 @@
   <div id="opening">
     <!-- sheer organza wrap with the ribbon band and the bow (the embossed card shows through it) -->
     <div class="cover-box" id="wrapBox">
-      <div class="wrap half left"><div class="org"></div><div class="folds"></div></div>
-      <div class="wrap half right"><div class="org"></div><div class="folds"></div></div>
+      <div class="wrap half left"><div class="org"></div></div>
       <div class="band-half left"></div>
       <div class="band-half right"></div>
       <img class="bow" id="bowImg" src="assets/bow/bow-00.webp" alt="" draggable="false">
     </div>
-    <!-- envelope -->
+    <!-- envelope (drawn at its true proportions; the screen shows a centred close-up of it) -->
+    <div class="cover-box" id="envStage">
     <div class="env-box" id="envBox">
       <div class="env-shadow"></div>
       <div class="env-body"></div>
@@ -91,6 +93,7 @@
     </div>
     <!-- the wax seal rides on the flap tip (kept outside the 3D box so it always stays on top) -->
     <button class="seal" id="seal" aria-label="Open the invitation"></button>
+    </div>
   </div>
 
   <button class="music" id="musicBtn" aria-label="Music on or off" hidden>

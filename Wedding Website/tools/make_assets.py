@@ -427,7 +427,7 @@ def organza_rgba():
     glow = np.clip((nh - lo) / (mid - lo), 0, 1) ** 1.6
     glint = np.clip((nh - mid) / (hi - mid), 0, 1) ** 1.5
     weave = 0.5 + 0.5 * np.sin((xx * 0.86 + yy * 0.5) * 2 * math.pi / 3.1) * np.sin((xx * -0.5 + yy * 0.86) * 2 * math.pi / 3.1)   # fine organza weave
-    hl = np.clip(0.40 * glow + 0.52 * glint + 0.70 * crease + 0.17 * np.clip(layer, 0, 1), 0, 1) * (0.90 + 0.10 * weave)
+    hl = np.clip(0.40 * glow + 0.52 * glint + 0.16 * crease + 0.17 * np.clip(layer, 0, 1), 0, 1) * (0.90 + 0.10 * weave)
     tint = _onoise(H, W, 200, 2, 8)[..., None]
     c_hl = np.array([250, 240, 248], np.float32) * (1 - tint) + np.array([236, 236, 255], np.float32) * tint
     c_veil = np.array([150, 122, 140], np.float32)                 # the film itself: a thin rosy-mauve veil
