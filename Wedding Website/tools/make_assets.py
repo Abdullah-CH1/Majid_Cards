@@ -447,10 +447,10 @@ def organza_rgba():
         arc = [((1 - u) ** 2 * a0[0] + 2 * u * (1 - u) * c[0] + u * u * a1[0], (1 - u) ** 2 * a0[1] + 2 * u * (1 - u) * c[1] + u * u * a1[1]) for u in np.linspace(0, 1, n)]
         return [(cx - sx * 200, cy - sy * 300), (cx + sx * rx, cy - sy * 300)] + arc + [(cx - sx * 200, cy + sy * ry)]
     FOLDS = [   # (polygon in reference px 780x1580, how dense the doubled cloth is)
-        (_corner(-15, -15, 305, 225, 1, 1), 1.0),          # top-left: curve from the top edge round to the left side
-        (_corner(795, -15, 305, 225, -1, 1), 1.0),         # top-right
-        (_corner(-15, 1595, 300, 205, 1, -1), 0.9),        # bottom-left
-        (_corner(795, 1595, 290, 190, -1, -1), 0.85),      # bottom-right
+        (_corner(-15, -15, 408, 225, 1, 1), 1.0),          # top-left: curve from the top edge round to the left side
+        (_corner(795, -15, 408, 225, -1, 1), 1.0),         # top-right
+        (_corner(-15, 1595, 408, 205, 1, -1), 0.9),        # bottom-left
+        (_corner(795, 1595, 408, 195, -1, -1), 0.85),      # bottom-right
     ]
     fold_layer = np.zeros((H, W), np.float32); fold_edge = np.zeros((H, W), np.float32); fold_shadow = np.zeros((H, W), np.float32)
     for k, (poly, dens) in enumerate(FOLDS):
