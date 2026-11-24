@@ -37,22 +37,24 @@ body.ready::before { opacity: 0; animation: none; }
 img { display: block; max-width: 100%; }
 
 /* ============ 1. card ============ */
-.card-sec { position: relative; width: 100%; height: 100svh; overflow: hidden; background: #b3a3b0 url(assets/satin.jpg) center / cover; }
+.card-sec { position: relative; width: 100%; height: 100svh; overflow: hidden; background: #b3a8b3; }
 .card-art { position: absolute; left: 50%; top: 50%; width: var(--aw); aspect-ratio: 900 / 1950; translate: -50% -50%;
   --u: calc(var(--aw) / 100); background: url(assets/card.jpg) center / 100% 100% no-repeat; }
 /* as the envelope opens, the wrapped card starts a little further back and comes forward */
 /* measured from the video: the card shows at about 0.8 of full size under the lifting flap, then drifts
    forward slowly and smoothly, reaching full size only as the bow comes undone (about 5 s after the tap) */
-.card-art, #wrapBox { scale: .8; transform-origin: 50% 47%; transition: scale 4.4s cubic-bezier(.18,.55,.35,1) .9s; will-change: scale; }
+.card-art, #wrapBox { scale: .8; transform-origin: 50% 47%; transition: scale 3.1s cubic-bezier(.2,.6,.3,1) .9s; will-change: scale; }
 body.opened .card-art, body.opened #wrapBox { scale: 1; }
 /* the glossy, mirror-like centre panel: a soft reflection drifts slowly across it (svg built in app.js) */
 .card-sheen { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
+/* the card design is drawn at 0.905 of the canvas about (50%, 46.7%): the sheen and the wording follow it */
+.card-sheen { scale: .905; transform-origin: 50% 46.7%; }
 .card-sheen svg { display: block; width: 100%; height: 100%; }
 /* a wide, faint band of light drifting across the panel now and then (transform only) */
 .sheen-band { transform: translateX(-120%); }
 body.revealed .sheen-band { animation: sheen 12s ease-in-out 2.5s infinite; }
 @keyframes sheen { 0% { transform: translateX(-120%); } 45%, 100% { transform: translateX(120%); } }
-.card-text {
+.card-text { scale: .905; transform-origin: 50% calc(var(--ah) * .145);
   position: absolute; left: 19%; right: 19%; top: 32.2%;
   display: flex; flex-direction: column; align-items: center; text-align: center;
   color: #2b2530;

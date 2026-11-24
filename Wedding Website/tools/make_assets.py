@@ -965,9 +965,16 @@ def card_relief(W=900, H=1950, s=2):
     return R_, sd, panel
 
 
+CARD_K, CARD_CY = 0.905, 0.467
+
 def render_card(W=900, H=1950, s=2):
     R_, sd, panel = card_relief(W, H, s)
     hm = R_.h
+    # the whole design sits at CARD_K of the canvas, about a point a little above the middle, with plain paper
+    # around it: measured on the reference video, where the arch spans ~68% of the screen width (12% .. 82% down)
+    _M = np.float32([[CARD_K, 0, (1 - CARD_K) * hm.shape[1] / 2], [0, CARD_K, (1 - CARD_K) * hm.shape[0] * CARD_CY]])
+    _wp = lambda a_, mode=cv2.BORDER_CONSTANT: cv2.warpAffine(np.ascontiguousarray(a_, np.float32), _M, (hm.shape[1], hm.shape[0]), flags=cv2.INTER_AREA, borderMode=mode, borderValue=0)
+    hm = _wp(hm, cv2.BORDER_REFLECT_101); panel = _wp(panel); sd = _wp(sd, cv2.BORDER_REPLICATE)   # mirrored relief completes the roses cut by the old edge
     HH, WW = hm.shape
     yy, xx = np.mgrid[0:HH, 0:WW].astype(np.float32)
     # fine brushed / linen grain on the paper (diagonal, like the reference)

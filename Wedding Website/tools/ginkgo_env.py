@@ -410,7 +410,7 @@ def build_body():
     cv.alb = cs.alb * 0.95 * (1 - m) + cb.alb * 1.05 * m
     seam_hi = np.exp(-((dbf - 2.4) / 1.9) ** 2)                                # lit edge of the flap, the same on both sides
     cv.gl = cs.gl * (1 - m) + (cb.gl * (1 - seam_hi) + 1.5 * seam_hi) * m
-    cv.dark = np.maximum(cs.dark * (1 - m), 0.36 * np.exp(-np.clip(-dbf, 0, None) / 11.0) * (1 - m))   # its soft shadow on the side flaps
+    cv.dark = np.maximum(cs.dark * (1 - m), (0.36 + 0.34 * (xx > W / 2)) * np.exp(-np.clip(-dbf, 0, None) / (11.0 + 5.0 * (xx > W / 2))) * (1 - m))   # its soft shadow on the side flaps
     cv.tint = np.clip(cv.tint - 0.05 * m, 0, 1)
     rgb = cv.render()
     return rgb, sides
