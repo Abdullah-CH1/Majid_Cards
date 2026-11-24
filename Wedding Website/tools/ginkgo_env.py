@@ -84,6 +84,8 @@ def shade_sheet(hgt, tint):
 GLOSS_K = 0.24                # strength of the painted sheen (before the tone match)
 SHADOW_K = 0.56               # depth of the cast shadows (soft, never an ink outline)
 AO_K = (0.05, 0.30)           # contact / broad ambient occlusion
+DROP_K = (0.46, 0.58, 0.30)         # tight / wide contact shadow under every overlapping leaf (the stacked look)
+LAYER_LIFT = 2.0              # extra height of each leaf above what it lies on (design px)
 GLOSS = np.array([250, 246, 255], np.float32)     # silvery sheen painted on rolled rims, veins and paper edges
 
 # ------------------------------------------------------------------ ginkgo leaf
@@ -263,8 +265,9 @@ class Canvas:
         self.alb = np.ones((h, w), np.float32)
         self.gl = np.zeros((h, w), np.float32)
         self.dark = np.zeros((h, w), np.float32)
+        self.drop = np.zeros((h, w), np.float32)      # contact shadows each leaf drops on the layers beneath it
 
-    def layer(self, f, clip=None, tint=0.0, lift=0.0, tone=1.0):
+    def layer(self, f, clip=None, tint=0.0, lift=0.0, tone=1.0, drop=1.0):
         """drape a leaf over what is already there"""
         if f is None: return
         x0, y0, a, hgt = f[:4]
@@ -272,7 +275,14 @@ class Canvas:
         if clip is not None: a = a * clip[y0:y0 + hh, x0:x0 + ww]
         reg = self.hg[y0:y0 + hh, x0:x0 + ww]
         base = cv2.GaussianBlur(reg, (0, 0), 38 * SS)
-        reg[:] = reg * (1 - a) + (base + hgt + lift) * a
+        reg[:] = reg * (1 - a) + (base + hgt + lift + LAYER_LIFT * HSCALE) * a
+        if drop:                                       # the leaf lies ON what is there: a tight contact shadow + a wide soft one
+            ap = cv2.copyMakeBorder(a, 0, 0, 0, 0, cv2.BORDER_CONSTANT)
+            s1 = cv2.GaussianBlur(cv2.warpAffine(ap, np.float32([[1, 0, 2 * SS], [0, 1, 6 * SS]]), (ww, hh)), (0, 0), 5.0 * SS)
+            s2 = cv2.GaussianBlur(cv2.warpAffine(ap, np.float32([[1, 0, 7 * SS], [0, 1, 24 * SS]]), (ww, hh)), (0, 0), 22 * SS)
+            dr = self.drop[y0:y0 + hh, x0:x0 + ww]
+            s3 = cv2.GaussianBlur(cv2.warpAffine(ap, np.float32([[1, 0, 10 * SS], [0, 1, 40 * SS]]), (ww, hh)), (0, 0), 48 * SS)
+            dr[:] = (1 - (1 - dr) * (1 - drop * DROP_K[0] * s1) * (1 - drop * DROP_K[1] * s2) * (1 - drop * DROP_K[2] * s3)) * (1 - a)
         if tint:
             tr = self.tint[y0:y0 + hh, x0:x0 + ww]; tr[:] = np.clip(tr + tint * a, 0, 1)
         ar = self.alb[y0:y0 + hh, x0:x0 + ww]; ar[:] = ar * (1 - a) + tone * a
@@ -280,8 +290,8 @@ class Canvas:
 
     def render(self):
         rgb, sh = shade_sheet(self.hg, self.tint)
-        rgb = rgb * (self.alb * (1 - self.dark))[..., None]
-        g = cv2.GaussianBlur(self.gl, (0, 0), max(0.5, 0.8 * SS)) * (0.40 + 0.60 * (1 - sh)) * (1 - self.dark)
+        rgb = rgb * (self.alb * (1 - self.dark) * (1 - self.drop))[..., None]
+        g = cv2.GaussianBlur(self.gl, (0, 0), max(0.5, 0.8 * SS)) * (0.40 + 0.60 * (1 - sh)) * (1 - self.dark) * (1 - self.drop)
         return np.clip(rgb + GLOSS_K * g[..., None] * GLOSS[None, None], 0, 255)
 
 def luma(rgb):
@@ -322,6 +332,8 @@ BOT_T, HEM_T = 8.0, 3.5                       # paper thickness of the bottom fl
 SIDE_LEAVES = [                               # on the two side flaps (the bottom flap lies over their lower ends)
     dict(cx=-20, cy=630, seed=100, tone=0.92, ruffle=0.8, f0=0.6, veins=0.55, bend=14, lumps=1.1, cup=0.7,
          pts=[(420, 930), (370, 1000), (335, 1080), (285, 1160), (150, 1225), (-10, 1270), (-90, 1270)]),                 # L1 streaky, fills the left flap
+    dict(cx=1010, cy=1520, R=540, ang=-124, spread=36, seed=115, tint=0.10, tone=0.95, veins=0.3, ruffle=0.9, f0=0.4, lumps=0.8),   # R2 under R0, fills the lower right
+    dict(cx=350, cy=1500, R=440, ang=-84, spread=36, seed=104, tone=0.96, veins=0.45, ruffle=1.0, f0=0.3),   # L3 lies over the foot of L1, left of the seal
     dict(cx=930, cy=960, seed=113, tint=0.10, ruffle=1.2, veins=0.2, f0=0.5, cup=0.3, fold=0.2, lumps=0.9,
          pts=[(700, 845), (690, 800), (705, 762), (780, 748), (835, 772), (890, 790)]),                 # R1 small, upper right
     dict(cx=190, cy=1440, seed=102, tone=0.94, f0=0.2,
@@ -349,9 +361,9 @@ BODY_CREASE = [(452, 990), (454, 1250), (455, 1500)]                            
 BODY_TWIG = [(455, 1490), (457, 1650), (472, 1790), (486, 1900), (493, 1965)]
 FLAP_LEAVES = [
     dict(cx=-150, cy=250, R=340, ang=-50, spread=45, seed=205),                           # top-left corner
-    dict(cx=462, cy=735, R=680, ang=-134, spread=60, seed=202, ruffle=0.7, tone=0.93, f0=0.45),    # F2 lower left
+    dict(cx=462, cy=735, R=700, ang=-138, spread=66, seed=202, ruffle=0.7, tone=0.93, f0=0.45),    # F2 lower left
     dict(cx=486, cy=748, R=520, ang=-46, spread=48, seed=206, tint=0.06, f0=0.6, tone=0.74, rim=0.0, veins=0.5, thick=2.0),   # in the shade under F1
-    dict(cx=492, cy=745, R=560, ang=-34, spread=42, seed=201, tint=0.06, f0=0.45),                 # F3 lower right
+    dict(cx=492, cy=745, R=600, ang=-30, spread=52, seed=201, tint=0.06, f0=0.45),                 # F3 lower right
     dict(cx=450, cy=1010, seed=204, f0=0.85, ruffle=0.5, curl=0.15, rim=0.5, tone=1.06, veins=0.15, lumps=0.5,
          pts=[(150, 770), (175, 712), (240, 722), (330, 700), (350, 712), (410, 740), (450, 765), (500, 762), (560, 800),
               (600, 860), (625, 920)]),                                                   # F4 smooth, over the tip
@@ -363,8 +375,8 @@ FLAP_LEAVES = [
 
 def _lay(cv, specs, clip, bb):
     for p in specs:
-        p = dict(p); tint = p.pop("tint", 0.0); tone = p.pop("tone", 1.0)
-        cv.layer(leaf_fields(**p, bbox=bb), clip, tint=tint, tone=tone)
+        p = dict(p); tint = p.pop("tint", 0.0); tone = p.pop("tone", 1.0); drop = p.pop("drop", 1.0)
+        cv.layer(leaf_fields(**p, bbox=bb), clip, tint=tint, tone=tone, drop=drop)
 
 def body_geometry(yy, xx):
     """-> (px inside the side flaps measured from the mouth edge, px inside the bottom flap measured from its edge)"""
@@ -412,6 +424,7 @@ def build_body():
     cv.gl = cs.gl * (1 - m) + (cb.gl * (1 - seam_hi) + 1.5 * seam_hi) * m
     cv.dark = np.maximum(cs.dark * (1 - m), (0.36 + 0.34 * (xx > W / 2)) * np.exp(-np.clip(-dbf, 0, None) / (11.0 + 5.0 * (xx > W / 2))) * (1 - m))   # its soft shadow on the side flaps
     cv.tint = np.clip(cv.tint - 0.05 * m, 0, 1)
+    cv.drop = cs.drop * (1 - m) + cb.drop * m
     rgb = cv.render()
     return rgb, sides
 
@@ -446,7 +459,6 @@ def build_seal(mono=("A", "L")):
     yy, xx = np.mgrid[0:SH, 0:SW].astype(np.float32)
     cx, cy = SW / 2, SH / 2
     ang = np.arctan2(yy - cy, xx - cx)
-    rr = np.random.default_rng(5)
     # irregular outer wax outline (an ellipse with soft lumps and one flattened side)
     wob = (0.014 * np.sin(ang * 3 + 0.7) + 0.010 * np.sin(ang * 5 + 2.1) + 0.012 * np.sin(ang * 6 + 0.3)
            + 0.004 * np.sin(ang * 13 + 1.9) + 0.030 * np.exp(-((ang - 0.25) / 0.22) ** 2) + 0.018 * np.exp(-((ang + 2.6) / 0.3) ** 2))
@@ -459,33 +471,47 @@ def build_seal(mono=("A", "L")):
     rs = np.sqrt(((xx - cx) / sa) ** 2 + ((yy - cy) / sb) ** 2)
     dist_s = (1 - rs) * 200                                          # ~px inside the stamp edge
     u = np.clip(np.clip(d_o, 0, None) / (np.clip(d_o, 0, None) + np.clip(-dist_s, 0, None) + 1e-3), 0, 1)
-    rim = np.where(u < 0.5, 36 * np.sin(np.clip(u, 0, 0.5) * math.pi) ** 0.55, 20 + 16 * np.cos((u - 0.5) * math.pi))   # rounded roll of wax
-    press = smooth01((dist_s + 3) / 12.0)
-    h = rim * (1 - press) + 12.0 * press                             # steep inner wall, flat pressed field
-    h += 3.0 * (noise(SH, SW, 90, 3, 41) - 0.5) * (1 - press) + 0.25 * (noise(SH, SW, 25, 2, 42) - 0.5)
-    # double oval border inside the stamp
-    def ring(off, w, amp):
+    RIM, WELL = 58.0, 13.0                                           # a thick roll of wax standing well proud; deep pressed field
+    rim = np.where(u < 0.5, RIM * np.sin(np.clip(u, 0, 0.5) * math.pi) ** 0.5, 0.6 * RIM + 0.4 * RIM * np.cos((u - 0.5) * math.pi))
+    press = smooth01((dist_s + 4) / 13.0)
+    h = rim * (1 - press) + WELL * press                             # steep inner wall, flat pressed field
+    h += 4.5 * (noise(SH, SW, 90, 3, 41) - 0.5) * (1 - press) + 0.3 * (noise(SH, SW, 25, 2, 42) - 0.5)
+    def ring(off, w, amp):                                           # double oval border inside the stamp
         return amp * np.exp(-((dist_s - off) / w) ** 2)
-    h += ring(9, 3.0, 4.0) + ring(22, 2.2, 3.0)
-    # monogram: A (upper left) & L (lower right), raised
+    h -= 9.0 * np.clip(1 - rs ** 2, 0, 1) * press                    # the pressed field is slightly dished
+    h += ring(10, 3.4, 7.0) + ring(24, 2.4, 4.5)
+    # monogram: A (upper left) & L (lower right), raised with a rounded top
     cw, ch = SW, SH
     m = np.maximum(np.maximum(_txt(mono[0], 268, cw, ch, (-26, -86)), _txt(mono[1], 268, cw, ch, (28, 92))),
                    _txt("&", 126, cw, ch, (4, 6)))
     m = cv2.dilate(m, np.ones((5, 5), np.uint8))
-    mh = cv2.GaussianBlur(m, (0, 0), 1.6)
-    h += 6.0 * mh * press
-    # little air pits on the rim and a lump on the right
+    mh = np.clip(cv2.GaussianBlur(m, (0, 0), 2.2) * 1.5 - 0.1, 0, 1) ** 0.8
+    mh = cv2.GaussianBlur(mh, (0, 0), 0.9)
+    h += 11.0 * mh * press
     for (px, py, pr) in [(92, 250, 4.5), (88, 285, 4), (94, 322, 3.5), (100, 352, 3), (505, 410, 8)]:
         d2 = ((xx - px) ** 2 + (yy - py) ** 2) / pr ** 2
-        h += (-4.0 if pr < 6 else 5.0) * np.exp(-d2)
+        h += (-5.0 if pr < 6 else 6.0) * np.exp(-d2)
     h = cv2.GaussianBlur(h, (0, 0), 0.8)
     gy, gx = np.gradient(h)
     n = np.dstack([-gx, -gy, np.ones_like(h)]); n /= np.linalg.norm(n, axis=2, keepdims=True)
     nl = (n * LIGHT).sum(2); nh = np.clip((n * HALF).sum(2), 0, 1)
     diff = np.clip(nl, 0, 1); wrap = np.clip((nl + 0.4) / 1.4, 0, 1)
-    base = np.array([102, 90, 96], np.float32) * (0.96 + 0.08 * noise(SH, SW, 120, 3, 43))[..., None]
-    lum = 0.20 + 0.42 * wrap + 0.36 * diff
-    col = base * lum[..., None] + np.array([230, 222, 228], np.float32) * (0.55 * nh ** 22 + 0.14 * nh ** 5)[..., None]
+    # self-shadow: march the height field toward the light (the rim shades the well, letters shade the field)
+    lxy = LIGHT[:2] / np.linalg.norm(LIGHT[:2]); tan_e = float(LIGHT[2] / np.linalg.norm(LIGHT[:2])) * 0.8
+    hp = np.where(blob > 0.02, h, 0)
+    occ = np.zeros_like(h)
+    for s in (2, 4, 6, 9, 12, 16, 21, 27, 34, 42, 52, 64):
+        M = np.float32([[1, 0, -lxy[0] * s], [0, 1, -lxy[1] * s]])
+        occ = np.maximum(occ, cv2.warpAffine(hp, M, (SW, SH), borderMode=cv2.BORDER_REPLICATE) - hp - s * tan_e)
+    shad = cv2.GaussianBlur(smooth01(occ / 7.0), (0, 0), 2.2)
+    # ambient occlusion: creases (foot of the inner wall, around letters and border lines) go dark
+    ao = np.clip((cv2.GaussianBlur(hp, (0, 0), 9) - hp) / 14.0, 0, 1) * 0.6 + np.clip((cv2.GaussianBlur(hp, (0, 0), 3) - hp) / 4.0, 0, 1) * 0.4
+    base = np.array([104, 90, 97], np.float32) * (0.96 + 0.08 * noise(SH, SW, 120, 3, 43))[..., None]
+    lit = 1 - 0.62 * shad
+    fill = np.clip((n * np.array([0.48, 0.62, 0.62], np.float32)).sum(2), 0, 1)      # light bounced back off the paper
+    lum = (0.19 + 0.36 * wrap + 0.62 * diff * lit + 0.13 * fill ** 2) * (1 - 0.55 * ao) * (1 - 0.13 * press)
+    spec = (0.85 * nh ** 30 + 0.30 * nh ** 7 + 0.16 * nh ** 2.5 * (1 - press)) * lit * (1 - 0.5 * ao)
+    col = base * lum[..., None] + np.array([238, 228, 234], np.float32) * spec[..., None]
     return np.clip(col, 0, 255), blob
 
 def build_envelope():

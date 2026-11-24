@@ -195,7 +195,7 @@
       const Z = Ls * Math.sin(a), m = P / (P - Z), dy = Ls * Math.cos(a) * m - Ls;
       const sq = lerpTab(SEAL_SQUASH, deg);
       seal.style.transform = `translate(-50%, -50%) translateY(${dy.toFixed(2)}px) scale(${m.toFixed(4)}, ${(m * sq).toFixed(4)})`;
-      seal.style.filter = `brightness(${lerpTab(SEAL_LIGHT, deg).toFixed(3)}) drop-shadow(0 ${(6 + deg / 9).toFixed(1)}px ${(7 + deg / 12).toFixed(1)}px rgba(38,22,34,.5))`;
+      seal.style.filter = `brightness(${lerpTab(SEAL_LIGHT, deg).toFixed(3)}) drop-shadow(0 1px 1.5px rgba(30,16,26,.5)) drop-shadow(3px ${(7 + deg / 14).toFixed(1)}px 8px rgba(34,18,30,.62)) drop-shadow(6px ${(14 + deg / 7).toFixed(1)}px ${(18 + deg / 9).toFixed(1)}px rgba(34,18,30,.44))`;
       seal.style.opacity = String(1 - clamp01((deg - 92) / 6));
       flap.style.opacity = deg > 94 ? "0" : "1";              // past vertical it would only show as a sliver
       pocket.style.opacity = (lerpTab(POCKET, T) * pocketOut).toFixed(3);
