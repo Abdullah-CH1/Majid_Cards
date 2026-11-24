@@ -37,12 +37,13 @@ body.ready::before { opacity: 0; animation: none; }
 img { display: block; max-width: 100%; }
 
 /* ============ 1. card ============ */
-.card-sec { position: relative; width: 100%; height: 100svh; overflow: hidden; background: #3d2f3a; }
+.card-sec { position: relative; width: 100%; height: 100svh; overflow: hidden; background: #b3a3b0 url(assets/satin.jpg) center / cover; }
 .card-art { position: absolute; left: 50%; top: 50%; width: var(--aw); aspect-ratio: 900 / 1950; translate: -50% -50%;
   --u: calc(var(--aw) / 100); background: url(assets/card.jpg) center / 100% 100% no-repeat; }
 /* as the envelope opens, the wrapped card starts a little further back and comes forward */
-/* measured from the video: about 0.64 of full size when it first shows under the lifting flap, full size ~2.6 s after the tap */
-.card-art, #wrapBox { scale: .64; transform-origin: 50% 47%; transition: scale 1.75s cubic-bezier(.33,.0,.25,1) .95s; will-change: scale; }
+/* measured from the video: the card shows at about 0.8 of full size under the lifting flap, then drifts
+   forward slowly and smoothly, reaching full size only as the bow comes undone (about 5 s after the tap) */
+.card-art, #wrapBox { scale: .8; transform-origin: 50% 47%; transition: scale 4.4s cubic-bezier(.18,.55,.35,1) .9s; will-change: scale; }
 body.opened .card-art, body.opened #wrapBox { scale: 1; }
 /* the glossy, mirror-like centre panel: a soft reflection drifts slowly across it (svg built in app.js) */
 .card-sheen { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
@@ -146,7 +147,8 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 .cover-box { position: absolute; left: 50%; top: 50%; width: var(--aw); aspect-ratio: 900 / 1950; translate: -50% -50%; }
 
 /* sheer organza wrap: opens from the centre as a diamond, pinched at both sides by the ribbon */
-.wrap { position: absolute; inset: 0; will-change: clip-path, opacity; }
+/* the sheer sheet is larger than the card, so it still fills the corners while the card is set back */
+.wrap { position: absolute; inset: -14%; will-change: clip-path, opacity; }
 .wrap .org { position: absolute; inset: 0; background: url(assets/organza.webp) center / 100% 100% no-repeat; }
 /* one seamless sheet; the diamond is cut out of it (even-odd clip), so there is no centre join */
 .folds { display: none; }

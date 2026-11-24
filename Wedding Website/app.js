@@ -124,7 +124,8 @@
   function setDiamond(p) {                     // the knot lets go: the fabric opens from the centre as a diamond,
     const t = p * DIA_FRAMES;                  // pinched left and right where the ribbon gathers pull it aside
     const B = Math.max(0, diaB(t)), A = Math.max(0, diaA(t));
-    halfL.style.clipPath = t <= 0 ? "none" : `polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% ${50 - A}%, ${50 + B}% 50%, 50% ${50 + A}%, ${50 - B}% 50%, 50% ${50 - A}%)`;
+    const a2 = A / 1.28, b2 = B / 1.28;         // the sheet is 1.28x the card (inset -14%), the diamond is measured on the card
+    halfL.style.clipPath = t <= 0 ? "none" : `polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% ${50 - a2}%, ${50 + b2}% 50%, 50% ${50 + a2}%, ${50 - b2}% 50%, 50% ${50 - a2}%)`;
     // rolled edges: each strip runs from its pinch point to the diamond's tip, the bunched fabric on the outside
     const bw = wrapBox.clientWidth, bh = wrapBox.clientHeight;
     const px = B / 100 * bw, py = A / 100 * bh, len = Math.hypot(px, py), ang = Math.atan2(py, px);
