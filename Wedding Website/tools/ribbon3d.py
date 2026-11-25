@@ -240,12 +240,12 @@ def tail_piece(sgn, ln, ang, wf, seed):
     perp = np.stack([-g[:, 1], g[:, 0], np.zeros(n)], 1) * sgn
     tw = 0.40 * np.sin(d / 120 + (0.4 if sgn > 0 else 1.9)) * min(1.0, ln * 1.5) + 0.20
     Bv = perp * np.cos(tw)[:, None] + np.array([0, 0, 1.0]) * np.sin(tw)[:, None]
-    wv = (36 + (246 * wf - 36) * _sm(d / 210) ** 0.8)
+    wv = (36 + (168 * wf - 36) * _sm(d / 210) ** 0.8) * (1 - 0.30 * t_ ** 2.2)          # slimmer tails that narrow gently toward the end
     s = _svals(ns)
     amp = 8.0 * np.exp(-d / 90.0) + 0.5
     disp = amp[:, None] * _pleats(s, 20 + seed, 3.0)[None, :] + 6 * np.sin(d / 90 + 2 * seed)[:, None] * s[None, :] \
         + 15 * np.sin(s[None, :] * 2.3 + seed + d[:, None] / 230) * _sm(d / 150)[:, None]      # one long soft fold down the tail
-    cut = 1 - (0.5 + 0.5 * s) * min(0.99, 150 / max(Lt, 1.0))         # slanted cut end
+    cut = 1 - (0.5 + 0.5 * s) ** 1.6 * min(0.99, 95 / max(Lt, 1.0))  # a softer, shallower slant at the end (no sharp corner)
     return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, tcut=cut, micro=1.6, fan=np.exp(-d / 110.0), gloss=0.85, run=2.2, crk=0.8, shine=1.0, opa=-0.03)
 
 def knot_pieces(ks):
