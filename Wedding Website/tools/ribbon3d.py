@@ -92,10 +92,11 @@ def sheet(P, w, B, ns=44, disp=None, seed=0, opa=0.0, micro=1.0, tcut=None, lum=
     if shine:                                               # broad mirror-like bands of light running along the ribbon, crisp at one side
         g3 = cv2.resize(rr.standard_normal((max(3, N // 70 + 2), 6)).astype(np.float32), (ns, N), interpolation=cv2.INTER_CUBIC)
         nhh = n @ HALF
-        g3 = 0.8 * g3 + 0.55 * np.clip((nhh - float(nhh.mean())) / 0.09, -1.6, 1.6) + 0.25 * g1
-        band = _sm((g3 - 0.70) / 0.40) * (0.80 + 0.20 * thin)
-        hl = np.clip(hl * (1 - 0.35 * min(shine, 1.0)) + shine * 0.92 * band * (0.30 + 0.70 * _sm((nl - 0.15) / 0.5)), 0, 1)
-        shade = np.clip(shade + 0.8 * shine * _sm((-g3 - 0.1) / 0.9), 0, 1.6)
+        g3 = 0.75 * g3 + 0.80 * np.tanh((nhh - float(np.median(nhh))) / max(float(nhh.std()), 0.03)) + 0.15 * g1
+        g3 = cv2.GaussianBlur(g3, (0, 0), 1.2); g3 = g3 - float(np.percentile(g3, 80))           # about a fifth of the cloth mirrors the light
+        band = _sm(g3 / 0.22 + 0.15) * (0.88 + 0.12 * thin)       # crisp-edged mirror patches
+        hl = np.clip(hl * (1 - 0.55 * min(shine, 1.0)) + shine * 1.0 * band * (0.30 + 0.70 * _sm((nl - 0.15) / 0.5)), 0, 1)
+        shade = np.clip(shade + 0.8 * shine * _sm((-g3 - 0.9) / 0.9), 0, 1.6)
     dark = np.clip(-g1 - 0.9 + 0.7 * fn[:, None], 0, 1) * 0.7       # shadow lines between pleats
     body = BASE[None, None, :] * ((0.70 + 0.36 * diff - 0.20 * dark - 0.13 * shade) * lum)[..., None] + 14 * fres[..., None]
     if rnd:                                                 # a plump strand: its flanks fall into shadow
@@ -190,22 +191,22 @@ def loop_piece(sgn, k, tilt, seed):
     n = 190; ns = 46
     phi = np.linspace(0.0, 2 * math.pi, n)
     rs = np.random.default_rng(40 + seed)
-    big, flat, fat = (1.04, 1.0, 1.0) if sgn < 0 else (0.95, 0.80, 0.92)   # no two loops of a hand-tied bow are alike
-    L = 14 + 318 * k * big; Rz = 4 + 58 * k * flat
+    big, flat, fat = (1.10, 1.0, 1.0) if sgn < 0 else (0.98, 0.85, 0.92)   # no two loops of a hand-tied bow are alike
+    L = 14 + 335 * k ** 0.8 * big; Rz = 3 + 84 * k ** 1.5 * flat          # untying: it flattens first, then slides through the knot
     hs = np.sin(phi / 2)
     a = 18 + ((L - 18) / 2) * (1 - np.cos(phi))                            # distance out from the knot
     back = _sm((phi - 0.85 * math.pi) / (0.3 * math.pi))                    # 0 upper layer ... 1 under layer
     sp = np.sin(phi); h = Rz * np.sign(sp) * np.abs(sp) ** 0.62 * (1 - 0.30 * back)     # height of the layer over the loop's mid plane
     h = h + 7 * k * _smooth_rand(rs, n, 36) * hs ** 2
-    al0 = 0.62 if sgn < 0 else 0.52                                         # how far the band is turned towards the eye
+    al0 = 0.86 if sgn < 0 else 0.76                                         # how far the band is turned towards the eye
     th = math.radians(tilt)
     ax = np.array([sgn * math.cos(th), -math.sin(th), 0.0]); pp = np.array([sgn * math.sin(th), math.cos(th), 0.0])   # axis / lateral (down)
     up = -pp * math.sin(al0) + np.array([0, 0, math.cos(al0)])              # thickness direction of the loop
     Bd = pp * math.cos(al0) + np.array([0, 0, math.sin(al0)])
-    lat = 26 * k * (a / max(L, 1)) ** 2 + 5 * k * _smooth_rand(rs, n, 40) * hs ** 2    # the loop droops a little under its own weight
+    lat = 44 * k * (a / max(L, 1)) ** 2 + 5 * k * _smooth_rand(rs, n, 40) * hs ** 2    # the loop droops a little under its own weight
     P = np.array([CX, CY, 16.0])[None, :] + a[:, None] * ax[None, :] + h[:, None] * up[None, :] + lat[:, None] * pp[None, :]
-    kk = k ** 0.75
-    Wf = 40 + kk * 200 * fat
+    kk = k ** 0.4                                                           # the cloth keeps its width while the loop is pulled out
+    Wf = 40 + kk * 195 * fat
     wv = (40 + (Wf - 40) * np.clip((a - 18) / (0.74 * max(L - 18, 1)), 0, 1) ** 0.85) * (1 + 0.04 * k * _smooth_rand(rs, n, 30))
     wv = wv * (1 - 0.10 * back * hs ** 2)
     Bv = np.repeat(Bd[None, :], n, 0)
@@ -217,7 +218,7 @@ def loop_piece(sgn, k, tilt, seed):
     rnd_ = 40 * k * hs ** 12                                                # the fold is soft and round, not a straight crease
     off = -(rnd_[:, None] * (np.abs(s[None, :]) ** 2.4 - 0.12 * s[None, :]))[..., None] * ax[None, None, :]
     lum = 1 - (0.26 * back + 0.10 * np.exp(-((phi - math.pi) / 0.5) ** 2)) * hs ** 2
-    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, fan=np.exp(-(a - 18) / 45.0), gloss=0.95, micro=0.5, opa=-0.05, lum=lum, crk=0.7 * k ** 0.5, off=off, shine=0.8, run=1.8)
+    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, fan=(0.3 + 0.7 * k) * np.exp(-(a - 18) / 45.0), gloss=0.6, micro=0.5, opa=-0.10, lum=lum, crk=0.7 * k ** 0.5, off=off, shine=1.0, run=1.8)
 
 TAIL_L = 585
 
@@ -242,7 +243,7 @@ def tail_piece(sgn, ln, ang, wf, seed):
     disp = amp[:, None] * _pleats(s, 20 + seed, 3.0)[None, :] + 6 * np.sin(d / 90 + 2 * seed)[:, None] * s[None, :] \
         + 15 * np.sin(s[None, :] * 2.3 + seed + d[:, None] / 230) * _sm(d / 150)[:, None]      # one long soft fold down the tail
     cut = 1 - (0.5 + 0.5 * s) * min(0.99, 150 / max(Lt, 1.0))         # slanted cut end
-    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, tcut=cut, micro=1.6, fan=np.exp(-d / 110.0), gloss=1.2, run=2.2, crk=0.8, shine=1.0, opa=-0.03)
+    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, tcut=cut, micro=1.6, fan=np.exp(-d / 110.0), gloss=0.85, run=2.2, crk=0.8, shine=1.0, opa=-0.03)
 
 def knot_pieces(ks):
     """the small tight knot: a plump bead of gathered ribbon, three strands twisting across it like a rope"""
@@ -250,20 +251,22 @@ def knot_pieces(ks):
     n = 30; ns = 14
     s = _svals(ns, 0.04)
     phi = np.linspace(-math.pi * 0.58, math.pi * 0.58, n)
-    r = 41 * ks                                                              # the bead under the strands
+    r = 45 * ks                                                              # the bead under the strands
     P = np.stack([CX - 2 + 5 * ks * np.sin(phi), CY + 3 + r * np.sin(phi), 20 * ks + 8 + r * 0.6 * np.cos(phi)], 1)
     Bv = np.stack([np.ones(n), np.zeros(n), np.zeros(n)], 1)
-    wv = 66.0 * ks * (0.34 + 0.66 * np.clip(np.cos(phi / 1.16), 0, 1) ** 0.7)
+    wv = 72.0 * ks * (0.34 + 0.66 * np.clip(np.cos(phi / 1.16), 0, 1) ** 0.7)
     disp = (16 * ks * (1 - s ** 2))[None, :] * np.cos(phi / 1.2)[:, None]
+    sh = np.array([5.0, 9.0, -14.0], np.float32) * ks                         # its shadow on the loops
+    out.append(sheet(P + sh, wv * 1.22, Bv, ns=ns, seed=96, opa=-0.05, micro=0.0, hem=0.0, gloss=0.0, crk=0.0, lum=0.36, rnd=0.5))
     out.append(sheet(P, wv, Bv, ns=ns, disp=disp, seed=95, opa=0.55, micro=0.3, hem=0.0, fan=np.full(n, 0.3), gloss=0.9, rnd=0.30, crk=0.5))
     ns = 10; s = _svals(ns, 0.05)
-    for k, (off, rr_, zz, sl, wd, lean) in enumerate(((-22, 33, 0, -0.52, 19, 7), (17, 41, 1, 0.10, 30, 16), (-4, 47, 5, -0.30, 21, 12), (9, 30, 8, -0.75, 13, -9))):
+    for k, (off, rr_, zz, sl, wd, lean) in enumerate(((-25, 36, 0, -0.62, 20, 10), (19, 45, 1, 0.24, 31, 19), (-3, 51, 5, -0.38, 19, 14), (12, 33, 8, -0.95, 14, -13), (-14, 27, 10, 0.50, 10, 7))):
         r = rr_ * ks
         P = np.stack([CX - 2 + off * ks + lean * ks * np.sin(phi + 0.25 * k), CY + 3 + 0.2 * off * ks + r * np.sin(phi), (30 + zz) * ks + 10 + r * 0.6 * np.cos(phi)], 1)
         Bv = np.stack([np.ones(n), sl * np.ones(n), np.zeros(n)], 1)
         wv = wd * ks * (0.5 + 0.5 * np.cos(phi / 1.2 + 0.12 * (k - 1)))
         disp = (8 * ks * (1 - s ** 2))[None, :] * np.cos(phi / 1.2)[:, None]
-        out.append(sheet(P, wv, Bv, ns=ns, disp=disp, seed=90 + k, opa=0.30, micro=0.3, lum=1.04, hem=0.0, fan=np.full(n, 0.3), gloss=1.3, rnd=0.22, crk=0.6))
+        out.append(sheet(P, wv, Bv, ns=ns, disp=disp, seed=90 + k, opa=0.30, micro=0.3, lum=1.04, hem=0.0, fan=np.full(n, 0.3), gloss=1.6, rnd=0.36, crk=0.6))
     return out
 
 def band_piece(sgn, g, gap, seed):
