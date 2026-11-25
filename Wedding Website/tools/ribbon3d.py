@@ -106,6 +106,7 @@ def sheet(P, w, B, ns=44, disp=None, seed=0, opa=0.0, micro=1.0, tcut=None, lum=
     a = np.clip(a, 0, 0.93)
     cq = (col[:-1, :-1] + col[1:, :-1] + col[:-1, 1:] + col[1:, 1:]) / 4
     aq = (a[:-1, :-1] + a[1:, :-1] + a[:-1, 1:] + a[1:, 1:]) / 4
+    hem = hem * HEM_K
     if hem > 0:                                             # woven hems: a bright thread right at the edge, a darker stitch line inside it
         lit = (0.80 + 0.22 * (diff[:-1] + diff[1:]) / 2) * (lum if lum.ndim < 2 else lum[:-1])
         hv = 0.72 + 0.28 * np.clip(1 + 0.8 * _smooth_rand(rr, N - 1, 14), 0, 2) / 2          # the hem catches the light unevenly
@@ -175,6 +176,8 @@ def rasterize(groups, W, H, ss=2):
     return np.clip(rgb, 0, 255), np.clip(A, 0, 1)
 
 # ------------------------------------------------------------------ bow geometry
+HEM_K = 0.28          # how strong the woven hem line is (1 = bright outline; the reference shows almost none)
+BOW_K = 0.84          # size of the bow (loops, tails, knot) about the knot; the band is not scaled
 BW, BH, CX, CY = 900, 720, 450, 235            # canvas of every bow frame and of the band; the knot sits at (CX, CY)
 BAND_W = 236; BAND_HALF = 130
 
@@ -314,6 +317,8 @@ def bow_quads(u=0.0, band=True, bow=True):
         if S["kL"] > 0.03: q.append(loop_piece(-1, S["kL"], S["tL"], 5))
         if S["kR"] > 0.03: q.append(loop_piece(1, S["kR"], S["tR"], 6))
         if S["ks"] > 0.05: q += knot_pieces(S["ks"])
+        c = np.float32([CX, CY]); nb = 2 if band else 0
+        q = q[:nb] + [[(z, c + (pts - c) * BOW_K, col, a) for (z, pts, col, a) in piece] for piece in q[nb:]]
     return q
 
 def render(u, band=True, bow=True):
@@ -324,6 +329,9 @@ def render(u, band=True, bow=True):
     gr = gr / gr.std()
     lum = rgb.mean(2, keepdims=True) / 255.0
     rgb = np.clip(rgb * (1 + 0.024 * gr[..., None]) + 9 * np.clip(gr[..., None] - 1.2, 0, 2) * lum, 0, 255)
+    knee = 196.0; rgb = np.where(rgb > knee, knee + (rgb - knee) * 0.45, rgb)          # compress the highlights
+    rgb = rgb * 0.90 + np.array([176, 158, 170], np.float32) * 0.10                   # a little of the fabric's own tone
+    rgb = cv2.GaussianBlur(rgb, (0, 0), 0.8); a = cv2.GaussianBlur(a, (0, 0), 0.9)      # soft cloth edges, not cut-outs
     s1 = np.roll(np.roll(cv2.GaussianBlur(a, (0, 0), 4), 5, 0), 2, 1); s1[:5] = 0; s1[:, :2] = 0      # (no wrap-around from the roll)
     s2 = np.roll(np.roll(cv2.GaussianBlur(a, (0, 0), 13), 12, 0), 5, 1); s2[:12] = 0; s2[:, :5] = 0
     sh = np.clip(0.24 * s1 + 0.20 * s2, 0, 0.5)
