@@ -16,7 +16,7 @@ HSCALE = 1.5
 # luminance percentiles of the reference envelope (seal excluded): the textures are tone-matched to these
 # (the raw video frames are under-exposed by the camera: the white page of the same video reads 184/180/194, so the
 #  measured percentiles 69..209 are lifted by ~1.22 with a soft shoulder -> a lighter, pearly silver-mauve)
-REF_P = ([1, 5, 10, 25, 50, 75, 90, 95, 99, 99.7], [84, 111, 124, 135, 152, 172, 193, 205, 224, 234])
+REF_P = ([1, 5, 10, 25, 50, 75, 90, 95, 99, 99.7], [72, 101, 119, 136, 155, 176, 200, 215, 236, 246])
 
 def smooth01(x):
     x = np.clip(x, 0, 1); return x * x * (3 - 2 * x)
@@ -65,30 +65,37 @@ def pearl_shade(hgt, tint, ao=None, shadow=None):
     wrap = np.clip((nl + 0.35) / 1.35, 0, 1)
     broad = nh ** 5; spec = nh ** 24
     lit = 1.0 if shadow is None else 1 - shadow
-    lum = 0.20 + 0.50 * wrap * (0.42 + 0.58 * lit) + 0.38 * diff * lit          # matte plaster: no sheen
+    lum = 0.15 + 0.46 * wrap * (0.40 + 0.60 * lit) + 0.36 * diff * lit
+    # velvet / satin paper: a broad soft sheen that follows the forms, a little specular on ridges and rims, and the
+    # soft glow of the nap on slopes that turn away from the eye
+    flat0 = float(EHALF[2])
+    sheen = VELVET_K[0] * np.clip(nh ** 6 - 0.55 * flat0 ** 6, 0, None) + VELVET_K[1] * spec + VELVET_K[2] * np.clip(1 - n[..., 2], 0, 1) ** 1.5
+    sheen = sheen * (0.30 + 0.70 * lit)
     if ao is not None:
-        lum = lum * (1 - ao)
-    silver = np.array([176, 175, 188], np.float32); mauve = np.array([178, 151, 165], np.float32)
+        lum = lum * (1 - ao); sheen = sheen * (1 - ao)
+    silver = np.array([177, 174, 189], np.float32); mauve = np.array([188, 150, 164], np.float32)
     alb = silver[None, None] * (1 - tint[..., None]) + mauve[None, None] * tint[..., None]
-    col = alb * lum[..., None] + np.array([255, 248, 255], np.float32) * (0.0 * spec * lit)[..., None]
+    col = alb * lum[..., None] + np.array([255, 246, 255], np.float32) * sheen[..., None]
     return np.clip(col, 0, 255)
 
 def shade_sheet(hgt, tint):
     """full lighting of a composited height field: normals + cast shadows + ambient occlusion"""
     hs = cv2.GaussianBlur(hgt, (0, 0), max(0.7, 1.15 * SS))
     hh_, ww_ = hs.shape                                             # fine plaster tooth
-    hs = hs + 0.22 * (noise(hh_, ww_, max(2, int(9 * SS)), 2, 71) - 0.5) + 0.07 * cv2.GaussianBlur(
+    hs = hs + 0.12 * (noise(hh_, ww_, max(2, int(9 * SS)), 2, 71) - 0.5) + 0.05 * cv2.GaussianBlur(
         np.random.default_rng(72).standard_normal((hh_, ww_)).astype(np.float32), (0, 0), max(0.6, 1.3 * SS)) * max(1.0, 1.3 * SS)
     sh = cast_shadow(hs) * SHADOW_K
     ao = (AO_K[0] * np.clip((cv2.GaussianBlur(hs, (0, 0), 9 * SS) - hs) / 12.0, 0, 1)
           + AO_K[1] * np.clip((cv2.GaussianBlur(hs, (0, 0), 34 * SS) - hs) / 30.0, 0, 1))
     return pearl_shade(hs, tint, ao=ao, shadow=sh), sh
 
-GLOSS_K = 0.085                # strength of the painted sheen (before the tone match)
-SHADOW_K = 0.56               # depth of the cast shadows (soft, never an ink outline)
+VELVET_K = (0.30, 0.08, 0.24)   # broad sheen / tight specular / grazing nap glow of the velvety paper
+GLOSS_K = 0.13                # strength of the painted sheen (before the tone match)
+SHADOW_K = 0.62               # depth of the cast shadows (soft, never an ink outline)
 AO_K = (0.05, 0.30)           # contact / broad ambient occlusion
-DROP_K = (0.46, 0.58, 0.30)         # tight / wide contact shadow under every overlapping leaf (the stacked look)
+DROP_K = (0.52, 0.62, 0.34)         # tight / wide contact shadow under every overlapping leaf (the stacked look)
 LAYER_LIFT = 2.0              # extra height of each leaf above what it lies on (design px)
+FLAP_EDGE = 30.0              # brightness of the crisp cut edge of the top flap
 GLOSS = np.array([250, 246, 255], np.float32)     # silvery sheen painted on rolled rims, veins and paper edges
 
 # ------------------------------------------------------------------ ginkgo leaf
@@ -313,6 +320,10 @@ class Canvas:
         g = cv2.GaussianBlur(self.gl, (0, 0), max(0.5, 0.8 * SS)) * (0.40 + 0.60 * (1 - sh)) * (1 - self.dark) * (1 - self.drop)
         return np.clip(rgb + GLOSS_K * g[..., None] * GLOSS[None, None], 0, 255)
 
+GRADE_L, GRADE_R = (0.995, 0.985, 1.005), (1.065, 0.950, 0.955)   # silvery lilac upper left -> rosy pink lower right
+GRADE_SH, GRADE_HI = (1.045, 0.955, 0.98), (0.995, 0.997, 1.012)
+SAT_K, FALLOFF = 1.12, 0.16
+
 def luma(rgb):
     return rgb[..., 0] * 0.30 + rgb[..., 1] * 0.59 + rgb[..., 2] * 0.11
 
@@ -440,11 +451,15 @@ def build_body():
     bevel = BOT_T * (1 - (1 - np.clip(dbf / 9.0, 0, 1)) ** 2)                   # rounded cut edge of the paper
     cv = Canvas(TW, TH, tint, paper_s)
     cv.hg = cs.hg * (1 - m) + (cb.hg + HSCALE * bevel) * m
-    cv.alb = cs.alb * 0.95 * (1 - m) + cb.alb * 1.05 * m
+    cv.alb = cs.alb * 0.93 * (1 - m) + cb.alb * 1.09 * m
     seam_hi = np.exp(-((dbf - 2.4) / 1.9) ** 2)                                # lit edge of the flap, the same on both sides
-    cv.gl = cs.gl * (1 - m) + (cb.gl * (1 - 0.6 * seam_hi) + 0.22 * seam_hi) * m
-    cv.dark = np.maximum(cs.dark * (1 - m), (0.36 + 0.34 * (xx > W / 2)) * np.exp(-np.clip(-dbf, 0, None) / (11.0 + 5.0 * (xx > W / 2))) * (1 - m))   # its soft shadow on the side flaps
+    cv.gl = cs.gl * (1 - m) + (cb.gl * (1 - 0.6 * seam_hi) + 0.50 * seam_hi + 0.10 * np.exp(-np.clip(dbf, 0, None) / 16.0)) * m
+    cv.dark = np.maximum(cs.dark * (1 - m), np.clip((0.50 + 0.12 * (xx > W / 2)) * np.exp(-np.clip(-dbf, 0, None) / 15.0) + 0.22 * np.exp(-np.clip(-dbf, 0, None) / 4.0), 0, 0.8) * (1 - m))   # its soft shadow on the side flaps
     cv.tint = np.clip(cv.tint - 0.05 * m, 0, 1)
+    cr = smooth01((yy - 0.515 * H) / 30.0) * smooth01((1500 - yy) / 120.0) * m     # the centre crease of the bottom flap
+    cxl = 452 + 3 * (yy - 990) / 510
+    cv.gl = cv.gl + 0.42 * cr * np.exp(-((xx - cxl + 1.6) / 1.5) ** 2)
+    cv.dark = np.maximum(cv.dark, 0.20 * cr * np.exp(-((xx - cxl - 2.2) / 2.4) ** 2) + 0.07 * cr * np.exp(-np.clip(xx - cxl, 0, None) / 14.0) * (xx > cxl))
     cv.drop = cs.drop * (1 - m) + cb.drop * m
     rgb = cv.render()
     return rgb, sides
@@ -456,13 +471,13 @@ def build_flap():
     lim = H * (FLAP_TIP_Y - (FLAP_TIP_Y - FLAP_SIDE_Y) * ax)
     dist = lim - yy
     mask = smooth01((dist * SS + 0.6) / 1.6)
-    paper = flat_paper(FH, TW, 31) + 3.5 * (1 - smooth01(dist / 9.0))      # rounded bevel along the flap edge
+    paper = flat_paper(FH, TW, 31) + 5.0 * (1 - smooth01(dist / 10.0))      # rounded bevel along the flap edge
     cv = Canvas(TW, FH, tint_map(TH, TW, 5)[:FH], paper)
     _lay(cv, FLAP_LEAVES, None, (W, FH / SS))
     rgb = cv.render()
     # the folded edge of the flap catches a little light
-    edge = np.exp(-(np.clip(dist, 0, None) / 2.6) ** 2) * mask
-    rgb = np.clip(rgb * (1 + 0.08 * (1 - smooth01(dist / 22.0)) * mask)[..., None] + 16 * edge[..., None], 0, 255)
+    edge = np.exp(-(np.clip(dist - 1.2, 0, None) / 2.2) ** 2) * mask
+    rgb = np.clip(rgb * (1 + 0.13 * (1 - smooth01(dist / 30.0)) * mask)[..., None] + FLAP_EDGE * edge[..., None], 0, 255)
     return rgb, mask
 
 # ------------------------------------------------------------------ wax seal (oval, thick irregular rim, A & L)
@@ -550,8 +565,15 @@ def build_envelope():
     def grade(c, y0=0):                                          # warm the silver a touch; rosier toward the lower right, as in the video
         hh, ww = c.shape[:2]
         yy, xx = np.mgrid[0:hh, 0:ww].astype(np.float32)
-        t = np.clip(0.75 * (xx / ww) + 0.55 * ((yy + y0) / TH) - 0.45, 0, 1)[..., None]
-        return np.clip(c * (np.array([1.005, 0.982, 0.987], np.float32) * (1 - t) + np.array([1.058, 0.958, 0.962], np.float32) * t), 0, 255)
+        t = smooth01(0.80 * (xx / ww) + 0.60 * ((yy + y0) / TH) - 0.42)[..., None]
+        c = c * (np.array(GRADE_L, np.float32) * (1 - t) + np.array(GRADE_R, np.float32) * t)
+        g = luma(c)[..., None]
+        sd = smooth01((158 - g) / 80.0); hl = smooth01((g - 172) / 55.0)        # pearly: warm plum shadows, silvery lights
+        c = c * (1 + sd * (np.array(GRADE_SH, np.float32) - 1)) * (1 + hl * (np.array(GRADE_HI, np.float32) - 1))
+        g = luma(c)[..., None]
+        c = g + (c - g) * SAT_K
+        fall = 1 - FALLOFF * smooth01(((yy + y0) / TH - 0.45) / 0.6)[..., None]  # the light falls off toward the bottom
+        return np.clip(c * fall, 0, 255)
     return grade(tone_apply(rgb, tm)), a, grade(tone_apply(frgb, tm)), fa
 
 def preview(out):

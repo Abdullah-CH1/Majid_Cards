@@ -529,9 +529,11 @@ def bow_frames(n=34):
     fdir = OUT / "bow"; fdir.mkdir(exist_ok=True)
     for f in fdir.glob("bow-*.webp"):
         f.unlink()
-    for i in range(n):
-        u = i / (n - 1)
-        rgb, a = R.render(u)
+    from concurrent.futures import ProcessPoolExecutor         # the frames are independent: render them side by side
+    with ProcessPoolExecutor(max_workers=6) as ex:
+        frames = ex.map(R.render, [i / (n - 1) for i in range(n)])
+        frames = list(frames)
+    for i, (rgb, a) in enumerate(frames):
         if i == 0:                                              # the tied bow rests on screen: full size
             save_rgba("bow/bow-00.webp", rgb, a, 88)
         else:                                                   # frames in motion: 80 % size keeps the download small
