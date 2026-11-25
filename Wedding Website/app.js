@@ -87,7 +87,7 @@
   const op = $("#opening");
   const BOW_FRAMES = 34;
   const bowImg = $("#bowImg");
-  const bowSrc = i => `assets/bow/bow-${String(i).padStart(2, "0")}.webp?v=20261126c`;
+  const bowSrc = i => `assets/bow/bow-${String(i).padStart(2, "0")}.webp?v=20261126d`;
   const bowCache = [];
   for (let i = 0; i < BOW_FRAMES; i++) { const im = new Image(); im.src = bowSrc(i); bowCache.push(im); }   // preload while the envelope is shown
   const halfL = $(".wrap.half.left"), wrapBox = $("#wrapBox"), envStage = $("#envStage");
@@ -203,7 +203,7 @@
   }
   document.documentElement.classList.add("locked");
   (function firstPaint() {
-    const urls = ["assets/envelope-body.webp?v=20261126c", "assets/envelope-flap.webp?v=20261126c", "assets/seal.webp?v=20261126c"];
+    const urls = ["assets/envelope-body.webp?v=20261126d", "assets/envelope-flap.webp?v=20261126d", "assets/seal.webp?v=20261126d"];
     const done = () => body.classList.add("ready");
     Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = u; }))).then(done);
     setTimeout(done, 3000);
