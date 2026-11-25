@@ -39,7 +39,7 @@ img { display: block; max-width: 100%; }
 /* ============ 1. card ============ */
 .card-sec { position: relative; width: 100%; height: 100svh; overflow: hidden; background: #b3a8b3; }
 .card-art { position: absolute; left: 50%; top: 50%; width: var(--aw); aspect-ratio: 900 / 1950; translate: -50% -50%;
-  --u: calc(var(--aw) / 100); background: url(assets/card.jpg) center / 100% 100% no-repeat; }
+  --u: calc(var(--aw) / 100); background: url(assets/card.jpg?v=20261126b) center / 100% 100% no-repeat; }
 /* as the envelope opens, the wrapped card starts a little further back and comes forward */
 /* measured from the video: the card shows at about 0.8 of full size under the lifting flap, then drifts
    forward slowly and smoothly, reaching full size only as the bow comes undone (about 5 s after the tap) */
@@ -90,7 +90,7 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
   box-shadow: inset 0 9px 14px -10px rgba(25,22,40,.65), inset 0 -6px 10px -8px rgba(25,22,40,.45);
   border-top: 1px solid rgba(235,228,240,.55);
 }
-.cd-sec::before { content: ""; position: absolute; inset: 0; background: url(assets/satin.jpg) center / cover; mix-blend-mode: soft-light; opacity: .45; pointer-events: none; }
+.cd-sec::before { content: ""; position: absolute; inset: 0; background: url(assets/satin.jpg?v=20261126b) center / cover; mix-blend-mode: soft-light; opacity: .45; pointer-events: none; }
 .cd-title { position: relative; font-weight: 400; font-size: calc(var(--u) * 6.8); line-height: 1.1; letter-spacing: .015em; color: #e2dee6; margin-bottom: calc(var(--u) * 2.6); text-shadow: 0 1px 2px rgba(20,18,35,.35); }
 .ticket {
   position: relative; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center;
@@ -104,7 +104,7 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 .cd-soon { position: relative; font-family: "Monsieur La Doulaise", "Pinyon Script", cursive; font-size: calc(var(--u) * 7.9); line-height: 1.15; margin-top: calc(var(--u) * 1.8); color: #ece8f0; -webkit-text-stroke: calc(var(--u) * .05) currentColor; text-shadow: 0 1px 1px rgba(25,20,40,.45); }
 
 /* ============ 3. pearl + scratch ============ */
-.pearl-sec { position: relative; width: 100%; aspect-ratio: 1 / 1; background: #988d99 url(assets/pearl.jpg) center / cover; overflow: hidden;
+.pearl-sec { position: relative; width: 100%; aspect-ratio: 1 / 1; background: #988d99 url(assets/pearl.jpg?v=20261126b) center / cover; overflow: hidden;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 9px 12px -10px rgba(20,15,30,.55), inset 0 -1px 0 rgba(60,45,60,.25); }
 .pearl-frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .cameo {
@@ -151,7 +151,7 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 /* sheer organza wrap: opens from the centre as a diamond, pinched at both sides by the ribbon */
 /* the sheer sheet is larger than the card, so it still fills the corners while the card is set back */
 .wrap { position: absolute; inset: -14%; will-change: clip-path, opacity; }
-.wrap .org { position: absolute; inset: 0; background: url(assets/organza.webp) center / 100% 100% no-repeat; }
+.wrap .org { position: absolute; inset: 0; background: url(assets/organza.webp?v=20261126b) center / 100% 100% no-repeat; }
 /* one seamless sheet; the diamond is cut out of it (even-odd clip), so there is no centre join */
 .folds { display: none; }
 /* the rolled, gathered edge of the fabric along each side of the diamond (four strips, laid along the edges by app.js; transform only) */
@@ -159,11 +159,11 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 .fold-clip.left { clip-path: inset(0 50% 0 0); }
 .fold-clip.right { clip-path: inset(0 0 0 50%); }
 .fold-edge { position: absolute; left: 0; top: 0; width: 100px; height: 11.5%; transform-origin: 0 0; opacity: 0; pointer-events: none;
-  background: url(assets/fold.webp) center / 100% 100% no-repeat; will-change: transform, opacity; }
+  background: url(assets/fold.webp?v=20261126b) center / 100% 100% no-repeat; will-change: transform, opacity; }
 /* the bow on its band: numbered frames of the untie (the knot sits at the centre of the card) */
 .bow { position: absolute; left: 0; width: 100%; top: 37.949%; aspect-ratio: 900 / 720; pointer-events: none; user-select: none; will-change: opacity; }
 /* once the knot lets go: the two gathered band halves, each drawn aside with its pinch point */
-.band-half { position: absolute; top: 43.333%; height: 13.334%; width: 50%; background: url(assets/ribbon.webp) no-repeat; background-size: 200% 100%;
+.band-half { position: absolute; top: 43.333%; height: 13.334%; width: 50%; background: url(assets/ribbon.webp?v=20261126b) no-repeat; background-size: 200% 100%;
   opacity: 0; pointer-events: none; will-change: transform, opacity; }
 .band-half.left { left: 0; background-position: left center; transform-origin: 0% 50%; }
 .band-half.right { right: 0; background-position: right center; transform-origin: 100% 50%; }
@@ -174,22 +174,22 @@ body.revealed .c-line:nth-child(8) { transition-delay: .24s; }
 #opening { perspective: none; }
 #envStage { perspective: calc(var(--ah) * 3.55); perspective-origin: 50% 0; }
 .env-box { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-style: preserve-3d; }
-.env-body { position: absolute; inset: 0; will-change: transform; background: url(assets/envelope-body.webp) center / 100% 100% no-repeat; }
+.env-body { position: absolute; inset: 0; will-change: transform; background: url(assets/envelope-body.webp?v=20261126b) center / 100% 100% no-repeat; }
 /* inside of the envelope: the wrapped card seen through the mouth, in the shadow of the lifting flap */
 .env-shadow { position: absolute; left: 0; right: 0; top: 0; height: 100%; opacity: 0; pointer-events: none;
   background: linear-gradient(180deg, rgba(30,19,28,.92), rgba(32,21,30,.80) 23%, rgba(36,24,34,.62) 42%, rgba(36,24,34,.5) 52%, rgba(36,24,34,.22) 66%, rgba(36,24,34,0) 82%); }
 .flap { position: absolute; left: 0; top: 0; width: 100%; height: 56%; transform-origin: 50% 0; transform-style: preserve-3d; z-index: 3; }
 .flap-face { position: absolute; inset: 0; background: center / 100% 100% no-repeat; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.flap-face.front { background-image: url(assets/envelope-flap.webp); }
+.flap-face.front { background-image: url(assets/envelope-flap.webp?v=20261126b); }
 /* the same flap, darkened: cross-fades in as the flap turns away from the light (opacity driven by JS) */
-.flap-face.dim { background-image: url(assets/envelope-flap-dim.webp); opacity: 0; }
+.flap-face.dim { background-image: url(assets/envelope-flap-dim.webp?v=20261126b); opacity: 0; }
 /* soft shadow the closed flap casts on the envelope (lies on the envelope, fades as the flap lifts) */
 .flap-shadow { position: absolute; left: 0; top: 0; width: 100%; height: 59.08%; pointer-events: none;
-  background: url(assets/envelope-flap-shadow.webp) center / 100% 100% no-repeat; }
-.flap-face.back { background-image: url(assets/envelope-flap-back.webp); transform: rotateX(180deg); }
+  background: url(assets/envelope-flap-shadow.webp?v=20261126b) center / 100% 100% no-repeat; }
+.flap-face.back { background-image: url(assets/envelope-flap-back.webp?v=20261126b); transform: rotateX(180deg); }
 .seal {
   position: absolute; left: 50%; top: 51.3%; width: 37.8%; aspect-ratio: 600 / 720; transform: translate(-50%, -50%); z-index: 6;
-  background: url(assets/seal.webp) center / 100% 100% no-repeat; border: 0; border-radius: 46%; padding: 0; cursor: pointer;
+  background: url(assets/seal.webp?v=20261126b) center / 100% 100% no-repeat; border: 0; border-radius: 46%; padding: 0; cursor: pointer;
   filter: drop-shadow(0 1px 1.5px rgba(30,16,26,.5)) drop-shadow(3px 7px 8px rgba(34,18,30,.62)) drop-shadow(6px 14px 18px rgba(34,18,30,.44)); transition: transform .25s ease;
   -webkit-tap-highlight-color: transparent; animation: sealGlow 2.8s ease-in-out infinite; transform-origin: 50% 50%;
 }
