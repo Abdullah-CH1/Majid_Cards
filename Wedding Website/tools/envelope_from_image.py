@@ -22,8 +22,11 @@ def save(name, bgr, alpha, q=90):
     cv2.imwrite(str(OUT / name), bgra, [cv2.IMWRITE_WEBP_QUALITY, q]); print("wrote", name, bgra.shape[1], "x", bgra.shape[0])
 
 def main(src):
+    global OUT
+    if len(sys.argv) > 2:
+        OUT = HERE.parent / sys.argv[2]; OUT.mkdir(parents=True, exist_ok=True)
     bak = OUT / "_envelope_generated"
-    if not bak.exists():
+    if len(sys.argv) <= 2 and not bak.exists():
         bak.mkdir()
         for n in NAMES: shutil.copy(OUT / n, bak / n)
     im = cv2.imread(src)
