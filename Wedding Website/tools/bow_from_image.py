@@ -1,12 +1,20 @@
 """Turn a cut-out picture of a real bow into the untie frames the page plays.
     python tools/bow_from_image.py                 (reads tools/src/gemini_bow_cut.png, writes assets/gemini/bow/bow-NN.webp)
+    python tools/bow_from_image.py --src tools/src/other.png --knot 370,180 --loops 500 --out assets/bow2 --frames 78
+        --knot   where the knot centre is in the source picture (pixels)
+        --knot-size  half width,height of the knot in source pixels (default 87,122)
+        --loops  how wide the two loops are together in the source picture (pixels); they are drawn SPAN wide on the card
 
-The movement follows the reference video frame by frame (its frames 162 to 198, 30 per second):
-  162-171  the left loop is drawn into the knot
-  166-177  the right loop and the right tail are pulled away to the right along the band (fast, blurred)
-  162-176  the flat band is drawn tight: it gathers into the knot from both sides
-  177-191  the left tail, the last piece, slips up through the knot
-  189-198  the knot lets go; what is left is exactly the two gathered band halves (assets/ribbon.webp)
+The movement follows the reference video frame by frame (its frames 162 to 198, 30 per second;
+our frame i stands for video frame V0 + (V1 - V0) * i / (N - 1)):
+  163-172  the left loop is pulled into the knot: it slides in, flattening, and disappears behind the knot (no fade)
+  166-178  the right loop and the right tail are whisked off up and to the right together, accelerating,
+           stretched and motion-blurred along their path, until they leave the card
+  163-178  the flat band is drawn tight: it gathers into the knot from both sides
+  178-182  the left tail hangs on its own at full length
+  181-196  the left tail swings up towards the band and slips up through the knot, getting shorter
+  190-198  the knot shrinks and lets go; what is left is exactly the two gathered band halves (assets/ribbon.webp)
+Nothing moves more than about 25 px from one frame to the next unless it is blurred along its motion.
 """
 from pathlib import Path
 import numpy as np, cv2
@@ -19,7 +27,19 @@ BW, BH, CX, CY = 900, 720, 450, 235          # frame canvas and where the knot s
 BAND_Y, BAND_H = 105, 260                    # rows of the canvas the band picture covers (the page puts the band halves exactly there)
 KX, KY, LOOPS = 880, 730, 1360               # knot and loop span in the source picture
 SPAN = 520                                   # loop span on the canvas (the card is 900 wide)
-N = 40                                       # frames; the page plays them in 1.3 s
+N = 78                                       # frames; the page plays them in 1.3 s (60 per second)
+import argparse as _ap
+_a = _ap.ArgumentParser(); _a.add_argument("--src"); _a.add_argument("--knot"); _a.add_argument("--loops", type=float)
+_a.add_argument("--span", type=float); _a.add_argument("--out"); _a.add_argument("--frames", type=int)
+_a.add_argument("--knot-size", dest="ksize")   # half width,height of the knot in source pixels
+_o, _ = _a.parse_known_args()
+if _o.src: SRC = Path(_o.src).resolve()
+if _o.knot: KX, KY = (float(v) for v in _o.knot.split(","))
+if _o.loops: LOOPS = _o.loops
+if _o.span: SPAN = _o.span
+if _o.out: OUT = (HERE.parent / _o.out).resolve()
+if _o.frames: N = _o.frames
+KRX, KRY = (float(v) for v in _o.ksize.split(",")) if _o.ksize else (87.0, 122.0)
 V0, V1 = 162.0, 198.0                        # the video frames the sequence covers
 
 def sm(x):
@@ -45,9 +65,14 @@ def over(dst, src, op=1.0):                  # premultiplied "over"
     a = src[..., 3:4] * op
     dst[..., :3] = src[..., :3] * op + dst[..., :3] * (1 - a); dst[..., 3:4] = a + dst[..., 3:4] * (1 - a)
 
-def smear(layer, px):                        # motion blur along the band for a piece that is whisked away
-    px = int(px)
-    return layer if px < 3 else cv2.blur(layer, (px, max(1, px // 6)))
+def mblur(layer, vx, vy):                    # motion blur along (vx, vy): the distance the piece travels in one frame
+    n = float(np.hypot(vx, vy))
+    if n < 3: return layer
+    s = int(np.ceil(n)) | 1; c = s // 2; k = np.zeros((s * 4, s * 4), np.float32)
+    ux, uy = vx / n * n / 2 * 4, vy / n * n / 2 * 4
+    cv2.line(k, (int(c * 4 + 2 - ux), int(c * 4 + 2 - uy)), (int(c * 4 + 2 + ux), int(c * 4 + 2 + uy)), 1.0, 4)
+    k = cv2.resize(k, (s, s), interpolation=cv2.INTER_AREA); k /= k.sum()
+    return cv2.filter2D(layer, -1, k, borderType=cv2.BORDER_CONSTANT)
 
 def with_shadow(pm):                         # the bow's soft contact shadow (premultiplied in, premultiplied out)
     a = pm[..., 3]
@@ -97,7 +122,7 @@ def main():
     pm = np.dstack([rgb * a[..., None], a]).astype(np.float32)                # premultiplied
     yy, xx = np.mgrid[0:BH, 0:BW].astype(np.float32); dx, dy = xx - CX, yy - CY
     ang = np.degrees(np.arctan2(dy, np.abs(dx) + 1e-3))                        # 0 = along the band, 90 = straight down
-    tail = sm((ang - 26) / 10); r = np.hypot(dx / (87 * k), dy / (122 * k))
+    tail = sm((ang - 26) / 10); r = np.hypot(dx / (KRX * k), dy / (KRY * k))
     knot = 1 - sm((r - 0.9) / 0.25); left = sm((-dx + 4) / 8); right = 1 - left
     L = {n: pm * m[..., None] for n, m in {"tl": tail * left * (1 - knot), "tr": tail * right * (1 - knot),
                                               "ll": (1 - tail) * left * (1 - knot), "lr": (1 - tail) * right * (1 - knot), "k": knot}.items()}
@@ -109,36 +134,54 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for f in OUT.glob("bow-*.webp"): f.unlink()
 
-    def through_knot(name, p, sway, blur=0):                                   # a tail drawn back through the knot along itself, gathering as it nears it
-        ux, uy, ln = dirs[name]
+    def through_knot(name, p, sway):                                           # a tail drawn back through the knot along itself, gathering as it nears it
+        ux0, uy0, ln = dirs[name]; ca, sa = np.cos(np.radians(sway)), np.sin(np.radians(sway))
+        ux, uy = ca * ux0 - sa * uy0, sa * ux0 + ca * uy0                          # its direction once swung by `sway` about the knot
         lay = warp(L[name], shift(-ux * (ln + 24) * p, -uy * (ln + 24) * p) @ about(rot(sway)))
         proj = dx * ux + dy * uy; perp = -dx * uy + dy * ux
-        f = 1 - min(1.0, p * 5) * (1 - (0.20 + 0.80 * sm(proj / 150)))
+        f = 1 - sm(p * 2.5) * (1 - (0.25 + 0.75 * sm(proj / 150)))               # it narrows where it goes into the knot
         lay = cv2.remap(lay, (CX + proj * ux - perp / f * uy).astype(np.float32), (CY + proj * uy + perp / f * ux).astype(np.float32),
                         cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
-        return smear(lay * sm((proj - 2) / 10)[..., None], blur)
+        return lay * sm((proj - 2) / 10)[..., None]                            # what has gone through is behind the knot
 
+    def centroid(name):
+        w = L[name][..., 3]; return np.array([(w * xx).sum() / w.sum(), (w * yy).sum() / w.sum(), 1.0])
+    c_lr, c_tr, HS = centroid("lr"), centroid("tr"), SPAN / 2
+    D = BW - CX + 0.25 * HS                                                    # far enough that the right side has left the card
+
+    def pose(v):                                                               # every piece's state at video frame v
+        pv = lambda a_, b_: float(np.clip((v - a_) / (b_ - a_), 0, 1))
+        P = {}
+        P["ll"] = ss(pv(163, 172.5))                                           # left loop pulled into the knot
+        q = pv(166, 178.5) ** 1.6                                              # right loop + tail whisked off up-right (accelerating)
+        P["q"] = q
+        P["Mr"] = shift(D * q, -0.30 * D * q) @ about(rot(-8 * q) @ scl(1 + 0.45 * q, 1 - 0.2 * q))
+        P["Mtr"] = P["Mr"] @ about(rot(-30 * sm(q * 1.4)))                     # the tail swings up towards the band as it goes
+        P["tl"] = sm(pv(181, 196))                                             # left tail, last, slips up through the knot
+        P["sway"] = -3.5 * np.sin(np.pi * pv(165, 178)) + 24 * sm(pv(182, 193))  # tugged, then swings up towards the band
+        P["k"] = pv(190, 198)
+        P["g"] = 0.22 + 0.78 * sm(pv(163, 178))                                # band drawn tight
+        return P
+
+    dv = (V1 - V0) / (N - 1)
     for i in range(N):
         v = V0 + (V1 - V0) * i / (N - 1)                                       # the video frame this picture stands for
-        pv = lambda a_, b_: np.clip((v - a_) / (b_ - a_), 0, 1)
-        p_ll = ss(pv(162, 171.5))                                              # left loop into the knot
-        p_lr = pv(166, 177) ** 1.8                                             # right loop whisked off to the right (it accelerates away)
-        p_tr = pv(168, 176.5) ** 1.5                                           # right tail follows it through the knot
-        p_tl = ss(pv(177, 191.5))                                              # left tail, last, slips up through the knot
-        p_k = sm(pv(189, 197.5))
-        g = 0.22 + 0.78 * sm(pv(162, 177))                                     # band drawn tight
+        P, Pp = pose(v), pose(v - dv)
+        g = P["g"]
         bow = np.zeros((BH, BW, 4), np.float32)
-        # tails (under the loops)
-        over(bow, through_knot("tr", p_tr, 6 * np.sin(np.pi * p_tr), blur=70 * np.sin(np.pi * min(1, p_tr * 1.15))), 1 - sm((p_tr - 0.75) / 0.25))
-        tug = np.sin(np.pi * pv(164, 177))                                     # while the right side is pulled the left tail is tugged, then it goes
-        over(bow, through_knot("tl", p_tl, -3.5 * tug - 14 * sm(p_tl / 0.6) * (1 - 0.3 * p_tl)))
-        # loops
-        over(bow, warp(L["ll"], about(rot(7 * np.sin(np.pi * p_ll)) @ scl(1 - 0.97 * p_ll, 1 - 0.90 * p_ll ** 1.25))), 1 - sm((p_ll - 0.93) / 0.07))
-        lr = warp(L["lr"], shift(300 * p_lr, 0) @ about(rot(-10 * sm(p_lr * 2)) @ scl(1 + 0.55 * p_lr, 1 - 0.72 * sm(p_lr * 1.3))))
-        over(bow, smear(lr, 90 * np.sin(np.pi * min(1, p_lr * 1.1))), 1 - sm((p_lr - 0.45) / 0.5))
-        # knot
-        kk = 1 - 0.78 * p_k
-        over(bow, warp(L["k"], about(scl(kk, kk))), 1 - sm((p_k - 0.55) / 0.45))
+        # right tail and right loop: whisked away together, blurred by how far they went since the last frame
+        for nm, M, Mp, c in (("tr", P["Mtr"], Pp["Mtr"], c_tr), ("lr", P["Mr"], Pp["Mr"], c_lr)):
+            d = (M @ c - Mp @ c)[:2]; d = d * min(1.0, 70 / max(1e-3, float(np.hypot(*d)) * 1.3))
+            over(bow, mblur(warp(L[nm], M), d[0] * 1.3, d[1] * 1.3), 1 - 0.8 * sm((P["q"] - 0.55) / 0.45))
+        # left tail
+        over(bow, through_knot("tl", P["tl"], P["sway"]))
+        # left loop: slides into the knot, flattening, and is hidden where it has gone in
+        p = P["ll"]
+        ll = warp(L["ll"], shift(0.55 * HS * p, 0) @ about(rot(6 * np.sin(np.pi * p)) @ scl(1 - 0.5 * p, 1 - 0.6 * p)))
+        over(bow, ll * (1 - sm(p * 6) * sm((dx + 0.12 * HS) / 16))[..., None])
+        # knot: shrinks and lets go
+        p_k = P["k"]; kk = 1 - 0.7 * sm(p_k)
+        over(bow, warp(L["k"], about(scl(kk, kk))), 1 - sm((p_k - 0.3) / 0.7))
         fr = band(g); over(fr, with_shadow(bow))
         al = fr[..., 3]; out = np.dstack([np.clip(fr[..., :3] / np.maximum(al[..., None], 1e-4), 0, 255), al * 255]).astype(np.uint8)
         cv2.imwrite(str(OUT / ("bow-%02d.webp" % i)), out, [cv2.IMWRITE_WEBP_QUALITY, 90])

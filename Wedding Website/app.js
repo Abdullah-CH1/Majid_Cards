@@ -88,10 +88,56 @@
   const BOW_FRAMES = window.BOW_FRAMES || 34;
   const bowImg = $("#bowImg");
   const BOW_DIR = window.BOW_DIR || "assets/bow";     // another set of bow frames can be named before this script (see "index - gemini.html")
-  const bowSrc = i => `${BOW_DIR}/bow-${String(i).padStart(2, "0")}.webp?v=20261126i`;
+  const bowSrc = i => `${BOW_DIR}/bow-${String(i).padStart(2, "0")}.webp?v=20261126k`;
   if (window.BOW_DIR) bowImg.src = bowSrc(0);
-  const bowCache = [];
-  for (let i = 0; i < BOW_FRAMES; i++) { const im = new Image(); im.src = bowSrc(i); bowCache.push(im); }   // preload while the envelope is shown
+  // the untie is played on a canvas laid exactly over the <img>: every frame is decoded up front (while the envelope is
+  // still showing), and each screen refresh draws the two neighbouring frames cross-faded, so the motion stays continuous
+  // at 60/120 Hz whatever the number of frames (no src swaps, no decode stalls mid-animation)
+  const bowCv = document.createElement("canvas");
+  bowCv.className = "bow bow-cv"; bowCv.setAttribute("aria-hidden", "true");
+  bowImg.after(bowCv);
+  const bowCtx = bowCv.getContext("2d");
+  let bowFrames = null, bowW = 0, bowH = 0;
+  bowCv.style.visibility = "hidden";
+  function bowSize() {                         // canvas pixels = the box on screen x devicePixelRatio (no more than the frames hold)
+    const w = bowImg.clientWidth || wrapBoxW(), dpr = Math.min(2, window.devicePixelRatio || 1);   // 2x is sharp enough for soft satin and keeps memory low on older phones
+    const W = Math.max(1, Math.min(900, Math.round(w * dpr))), H = Math.round(W * 720 / 900);
+    return [W, H];
+  }
+  function wrapBoxW() { const b = document.getElementById("wrapBox"); return b ? b.clientWidth : 390; }
+  let bowLoading = null;
+  function loadBow() {                         // fetch + fully decode every frame (ImageBitmaps at the drawn size where supported)
+    if (bowLoading) return bowLoading;
+    [bowW, bowH] = bowSize();
+    bowCv.width = bowW; bowCv.height = bowH;
+    bowLoading = Promise.all(Array.from({ length: BOW_FRAMES }, (_, i) => {
+      const im = new Image(); im.decoding = "async"; im.src = bowSrc(i);
+      const dec = im.decode ? im.decode() : new Promise((r, j) => { im.onload = r; im.onerror = j; });
+      return dec.then(() => window.createImageBitmap
+        ? createImageBitmap(im, { resizeWidth: bowW, resizeHeight: bowH, resizeQuality: "high" }).catch(() => im)
+        : im).catch(() => null);
+    })).then(fr => {
+      for (let i = 0; i < fr.length; i++) if (!fr[i]) fr[i] = fr[i - 1] || fr.find(Boolean);   // a frame that failed: hold its neighbour
+      bowFrames = fr;
+      return new Promise(res => {              // warm-up: draw each frame once onto the (still hidden) canvas, a few per refresh,
+        let i = 0;                             // so the GPU already holds them when the untie starts
+        const step = () => { for (let k = 0; k < 4 && i < fr.length; k++, i++) drawBow(i); if (i < fr.length) return requestAnimationFrame(step);
+          drawBow(0); bowCv.style.visibility = "visible"; bowImg.style.visibility = "hidden"; res();   // same pixels: the canvas takes over now
+        };
+        requestAnimationFrame(step);
+      });
+    });
+    return bowLoading;
+  }
+  function drawBow(pos) {                      // pos in frames (0 .. N-1): frame f at 1-w, frame f+1 at w
+    const n = bowFrames.length, p = Math.max(0, Math.min(n - 1, pos)), f = Math.floor(p), w = p - f;
+    const blend = w > 0.002 && f + 1 < n;
+    bowCtx.globalCompositeOperation = "copy"; bowCtx.globalAlpha = blend ? 1 - w : 1;
+    bowCtx.drawImage(bowFrames[f], 0, 0, bowW, bowH);
+    if (blend) {                               // "lighter" adds premultiplied colour: (1-w)A + wB, so opaque stays opaque mid-blend
+      bowCtx.globalAlpha = w; bowCtx.globalCompositeOperation = "lighter"; bowCtx.drawImage(bowFrames[f + 1], 0, 0, bowW, bowH);
+    }
+  }
   const halfL = $(".wrap.half.left"), wrapBox = $("#wrapBox"), envStage = $("#envStage");
   const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;    // easeInOutCubic
   const clamp01 = t => Math.max(0, Math.min(1, t));
@@ -205,8 +251,8 @@
   }
   document.documentElement.classList.add("locked");
   (function firstPaint() {
-    const urls = ["assets/envelope-body.webp?v=20261126i", "assets/envelope-flap.webp?v=20261126i", "assets/seal.webp?v=20261126i"];
-    const done = () => body.classList.add("ready");
+    const urls = ["assets/envelope-body.webp?v=20261126k", "assets/envelope-flap.webp?v=20261126k", "assets/seal.webp?v=20261126k"];
+    const done = () => { body.classList.add("ready"); setTimeout(loadBow, 60); };   // then decode the bow frames in the background
     Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = u; }))).then(done);
     setTimeout(done, 3000);
   })();
@@ -231,13 +277,12 @@
     await lift;
     op.classList.add("drop");
     $("#envBox").style.visibility = "hidden";
-    await wait(260);                           // the wrapped card rests a moment (video: frames 140-150)
-    await animate(window.BOW_MS || 1600, t => {            // the bow is pulled undone (frames follow the video): loops slip into the knot,
-      const src = bowSrc(Math.round(t * (BOW_FRAMES - 1)));   // the band is drawn tight, the last tail slides out, the knot lets go
-      if (!bowImg.src.endsWith(src)) bowImg.src = src;
-    });
+    await Promise.all([wait(260), loadBow()]);   // the wrapped card rests a moment (video: frames 140-150); the frames are long decoded by now
+    await animate(window.BOW_MS || 1600, t => drawBow(t * (bowFrames.length - 1)));   // the bow is pulled undone (frames follow the video):
+    // loops slip into the knot, the band is drawn tight, the last tail slides out, the knot lets go
     bandL.style.opacity = bandR.style.opacity = "1";   // the last frame is exactly the two gathered band halves: swap to them
-    bowImg.style.opacity = "0";
+    bowCv.style.opacity = "0";
+    setTimeout(() => { bowCv.width = bowCv.height = 1; bowFrames.forEach(b => b && b.close && b.close()); }, 100);   // free the decoded frames
     setTimeout(() => body.classList.add("revealed"), 1650);   // wording fades in once the card is clear
     await animate(1450, setDiamond);
     body.classList.remove("locked"); document.documentElement.classList.remove("locked");
