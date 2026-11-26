@@ -1,6 +1,6 @@
-"""Turn a cut-out picture of a real bow into the 34 untie frames the page plays.
+"""Turn a cut-out picture of a real bow into the untie frames the page plays.
     python tools/bow_from_image.py                 (reads tools/src/gemini_bow_cut.png, writes assets/gemini/bow/bow-NN.webp)
-The loops are drawn into the knot, the tails swing out along the band and slip away, the knot lets go.
+One loop after the other is drawn into the knot, then each tail slips up through it, and the knot lets go.
 """
 import sys
 from pathlib import Path
@@ -12,7 +12,7 @@ OUT = HERE.parent / "assets" / "gemini" / "bow"
 BW, BH, CX, CY = 900, 720, 450, 235          # frame canvas and where the knot sits (same as the rendered bow)
 KX, KY, LOOPS = 880, 730, 1360               # knot and loop span in the source picture
 SPAN = 470                                   # loop span on the canvas (the card is 900 wide)
-N = 34
+N = 48
 
 def sm(x):
     x = np.clip(x, 0, 1); return x * x * (3 - 2 * x)
@@ -56,20 +56,37 @@ def main():
     L = {n: pm * m[..., None] for n, m in {"tl": tail * left * (1 - knot), "tr": tail * right * (1 - knot),
                                               "ll": (1 - tail) * left * (1 - knot), "lr": (1 - tail) * right * (1 - knot), "k": knot}.items()}
     OUT.mkdir(parents=True, exist_ok=True)
+    for f in OUT.glob("bow-*.webp"): f.unlink()
+    # each tail's own direction (from the knot to the middle of the tail), so it can be drawn back through the knot along itself
+    dirs = {}
+    for name in ("tl", "tr"):
+        w = L[name][..., 3] * (np.hypot(dx, dy) > 60); mx, my = (w * dx).sum() / w.sum(), (w * dy).sum() / w.sum()
+        n = np.hypot(mx, my); dirs[name] = (mx / n, my / n, float(((dx * mx + dy * my) / n)[w > 0.5].max()))
+    # the pull happens one piece after another, as it does by hand: right loop, left loop, then each tail slips up through the knot
+    seq = {"lr": (0.00, 0.40), "ll": (0.14, 0.56), "tr": (0.30, 0.74), "tl": (0.44, 0.90), "k": (0.84, 1.00)}
+    def prog(name, t):
+        a, b = seq[name]; x = np.clip((t - a) / (b - a), 0, 1); return x * x * x * (x * (6 * x - 15) + 10)      # slow start, slow settle
     for i in range(N):
         t = i / (N - 1)
-        p1 = sm(t / 0.62)                       # loops slip into the knot
-        p2 = sm((t - 0.12) / 0.66)              # tails swing up to the band
-        p3 = sm((t - 0.58) / 0.42)              # tails slide out, knot lets go
         fr = np.zeros((BH, BW, 4), np.float32)
         for name, sgn in (("tl", -1), ("tr", 1)):
-            phi = 58 * sgn                       # tail direction, degrees from straight down
-            M = shift(sgn * 330 * p3, -6 * p2) @ about(rot(-sgn * 55 * p2) @ rot(-phi) @ scl(1 - 0.30 * p2 - 0.25 * p3, 1 + 0.30 * p1) @ rot(phi))
-            over(fr, warp(L[name], M), 1 - p3 ** 1.6)
+            ux, uy, ln = dirs[name]; p = prog(name, t)
+            lead = prog("lr" if name == "tr" else "ll", t)                     # while its loop is drawn in, the tail is tugged and sways a little
+            sway = sgn * (3.0 * np.sin(np.pi * lead) - 5.0 * np.sin(np.pi * p) * (1 - p))
+            M = shift(-ux * (ln + 24) * p, -uy * (ln + 24) * p) @ about(rot(sway))
+            lay = warp(L[name], M)
+            proj = dx * ux + dy * uy; perp = -dx * uy + dy * ux                # the ribbon gathers as it nears the knot, so it funnels into it
+            f = 1 - min(1.0, p * 5) * (1 - (0.20 + 0.80 * sm(proj / 150)))
+            lay = cv2.remap(lay, (CX + proj * ux - perp / f * uy).astype(np.float32), (CY + proj * uy + perp / f * ux).astype(np.float32),
+                            cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+            lay = lay * sm((proj - 2) / 10)[..., None]                         # whatever has passed the knot is gone
+            over(fr, lay)
         for name, sgn in (("ll", -1), ("lr", 1)):
-            M = about(rot(sgn * 10 * p1) @ scl(1 - 0.90 * p1, 1 - 0.82 * p1))
-            over(fr, warp(L[name], M), 1 - sm((t - 0.50) / 0.14))
-        over(fr, warp(L["k"], about(scl(1 - 0.45 * p3, 1 - 0.55 * p3))), 1 - sm((t - 0.52) / 0.18))
+            p = prog(name, t)
+            M = about(rot(-sgn * 7 * np.sin(np.pi * p)) @ scl(1 - 0.97 * p, 1 - 0.90 * p ** 1.25))
+            over(fr, warp(L[name], M), 1 - sm((p - 0.93) / 0.07))
+        pk = prog("k", t); tug = 1 + 0.05 * np.sin(np.pi * prog("tl", t))
+        over(fr, warp(L["k"], about(scl((1 - 0.75 * pk) * (2 - tug), (1 - 0.75 * pk) * tug))), 1 - sm((pk - 0.45) / 0.55))
         cv2.imwrite(str(OUT / ("bow-%02d.webp" % i)), finish(fr), [cv2.IMWRITE_WEBP_QUALITY, 90])
     print("wrote", N, "frames to", OUT)
 

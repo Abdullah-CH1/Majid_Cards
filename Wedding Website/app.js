@@ -85,10 +85,10 @@
 
   // ---------- opening sequence ----------
   const op = $("#opening");
-  const BOW_FRAMES = 34;
+  const BOW_FRAMES = window.BOW_FRAMES || 34;
   const bowImg = $("#bowImg");
   const BOW_DIR = window.BOW_DIR || "assets/bow";     // another set of bow frames can be named before this script (see "index - gemini.html")
-  const bowSrc = i => `${BOW_DIR}/bow-${String(i).padStart(2, "0")}.webp?v=20261126f`;
+  const bowSrc = i => `${BOW_DIR}/bow-${String(i).padStart(2, "0")}.webp?v=20261126g`;
   if (window.BOW_DIR) bowImg.src = bowSrc(0);
   const bowCache = [];
   for (let i = 0; i < BOW_FRAMES; i++) { const im = new Image(); im.src = bowSrc(i); bowCache.push(im); }   // preload while the envelope is shown
@@ -205,7 +205,7 @@
   }
   document.documentElement.classList.add("locked");
   (function firstPaint() {
-    const urls = ["assets/envelope-body.webp?v=20261126f", "assets/envelope-flap.webp?v=20261126f", "assets/seal.webp?v=20261126f"];
+    const urls = ["assets/envelope-body.webp?v=20261126g", "assets/envelope-flap.webp?v=20261126g", "assets/seal.webp?v=20261126g"];
     const done = () => body.classList.add("ready");
     Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = u; }))).then(done);
     setTimeout(done, 3000);
