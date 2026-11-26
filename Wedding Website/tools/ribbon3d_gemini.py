@@ -290,7 +290,7 @@ def rasterize(groups, W, H, ss=2):
 # ------------------------------------------------------------------ bow geometry
 HEM_K = 0.28          # how strong the woven hem line is (1 = bright outline; the reference shows almost none)
 BOW_K = 0.84          # size of the bow (loops, tails, knot) about the knot; the band is not scaled
-BW, BH, CX, CY = 900, 720, 450, 235            # canvas of every bow frame and of the band; the knot sits at (CX, CY)
+BW, BH, CX, CY = 900, 820, 450, 235            # canvas of every bow frame and of the band; the knot sits at (CX, CY)
 BAND_W = 236; BAND_HALF = 130
 
 def _sm(x):
@@ -335,7 +335,7 @@ def loop_piece(sgn, k, tilt, seed):
     lum = 1 - (0.26 * back + 0.10 * np.exp(-((phi - math.pi) / 0.5) ** 2)) * hs ** 2
     return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, fan=(0.3 + 0.7 * k) * np.exp(-(a - 18) / 45.0), gloss=0.6, micro=0.5, opa=-0.10, lum=lum, crk=0.7 * k ** 0.5, off=off, shine=1.0, run=1.8, look=True)
 
-TAIL_L = 585
+TAIL_L = 730                                    # longer tails, like the client's Gemini bow (motion keys are fractions, so the untie is the same)
 
 def tail_piece(sgn, ln, ang, wf, seed):
     """a tail hanging from the knot. ln: length 1..0 (it slides up into the knot), ang: degrees below horizontal"""
@@ -402,7 +402,7 @@ def band_piece(sgn, g, gap, seed):
     amp = (9 - 3 * g) * np.exp(-d / (110 + 90 * g)) + 0.15 + 0.30 * g
     disp = amp[:, None] * (0.55 * np.cos(s[None, :] * math.pi * 4.5 + seed + 1.6 * np.sin(s[None, :] * 3 + seed)) + 0.6 * _pleats(s, 50 + seed, 4.0)[None, :])
     fan = np.clip((0.55 + 0.45 * g) * np.exp(-d / (190 + 260 * g)) + 0.25 * g, 0, 1)
-    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, opa=0.17, lum=0.97, micro=0.6, fan=fan, gloss=1.0, run=2.6, crk=0.45)
+    return sheet(P, wv, Bv, ns=ns, disp=disp, seed=seed, opa=-0.20, lum=0.97, micro=0.6, fan=fan, gloss=0.8, run=2.6, crk=0.45, look=True, hem=0.6)   # same silver satin as the bow, a little sheer
 
 def bow_state(u):
     """what every piece is doing at untie progress u (0 tied ... 1 the knot has let go); keyed on the reference video, frames 150-198"""
@@ -440,24 +440,22 @@ def render(u, band=True, bow=True):
     r = np.random.default_rng(5)                            # fine crinkle shimmer of the weave
     gr = cv2.GaussianBlur(r.standard_normal((BH, BW)).astype(np.float32), (0, 0), 0.9)
     gr = gr / gr.std()
-    # the band: exactly the original look (ribbon.webp shows it after the untie)
-    rgb, a = rasterize(q[:nb], BW, BH) if nb else (np.zeros((BH, BW, 3), np.float32), np.zeros((BH, BW), np.float32))
-    lum = rgb.mean(2, keepdims=True) / 255.0
-    rgb = np.clip(rgb * (1 + 0.024 * gr[..., None]) + 9 * np.clip(gr[..., None] - 1.2, 0, 2) * lum, 0, 255)
-    knee = 196.0; rgb = np.where(rgb > knee, knee + (rgb - knee) * 0.45, rgb)          # compress the highlights
-    rgb = rgb * 0.90 + np.array([176, 158, 170], np.float32) * 0.10                   # a little of the fabric's own tone
-    rgb = cv2.GaussianBlur(rgb, (0, 0), 0.8); a = cv2.GaussianBlur(a, (0, 0), 0.9)      # soft cloth edges, not cut-outs
-    if len(q) > nb:                                         # the bow (always in front of the band): the Gemini silver satin
-        brgb, ba = rasterize(q[nb:], BW, BH)
+    def finish(brgb, ba):                                   # the Gemini silver satin finish (bow and band alike, so the fabric matches)
         r2 = np.random.default_rng(11)
         sp = cv2.GaussianBlur(r2.standard_normal((BH, BW)).astype(np.float32), (0, 0), 0.6); sp = sp / sp.std()
         bl = brgb.mean(2, keepdims=True) / 255.0
-        brgb = np.clip(brgb * (1 + G_GRAIN * gr[..., None]) + G_SPARK * np.clip(sp[..., None] - 1.6, 0, 2) * bl ** 2, 0, 255)   # metallic glitter
+        brgb = np.clip(brgb * (1 + G_GRAIN * gr[..., None]) + G_SPARK * np.clip(sp[..., None] - 1.6, 0, 2) * bl ** 2, 0, 255)
         kn = G_KNEE; brgb = np.where(brgb > kn, kn + (brgb - kn) * 0.6, brgb)
-        tt = G_TONE * (1 - _sm((brgb.mean(2, keepdims=True) - 150) / 90))          # rose-grey into the shadows, highlights stay white
+        tt = G_TONE * (1 - _sm((brgb.mean(2, keepdims=True) - 150) / 90))
         brgb = brgb * (1 - tt) + np.array([176, 158, 170], np.float32) * tt
-        bb = cv2.GaussianBlur(brgb, (0, 0), 2.2); brgb = np.clip(brgb + 0.35 * (brgb - bb), 0, 255)   # crisp like the photo
-        brgb = cv2.GaussianBlur(brgb, (0, 0), G_BLUR); ba = cv2.GaussianBlur(ba, (0, 0), 0.7)
+        bb = cv2.GaussianBlur(brgb, (0, 0), 2.2); brgb = np.clip(brgb + 0.35 * (brgb - bb), 0, 255)
+        return cv2.GaussianBlur(brgb, (0, 0), G_BLUR), cv2.GaussianBlur(ba, (0, 0), 0.7)
+    if nb:
+        rgb, a = finish(*rasterize(q[:nb], BW, BH))
+    else:
+        rgb, a = np.zeros((BH, BW, 3), np.float32), np.zeros((BH, BW), np.float32)
+    if len(q) > nb:                                         # the bow, always in front of the band
+        brgb, ba = finish(*rasterize(q[nb:], BW, BH))
         A2 = ba + a * (1 - ba)
         rgb = (brgb * ba[..., None] + rgb * (a * (1 - ba))[..., None]) / np.maximum(A2[..., None], 1e-4)
         a = A2

@@ -1,6 +1,6 @@
 """Gemini-look 3D bow: the same untie as tools/ribbon3d.py (bow_state untouched), restyled as the client's silvery
 crushed-satin bow (tools/ribbon3d_gemini.py). Writes assets/bow-gemini3d/bow-NN.webp exactly like make_assets.bow_frames()
-(frame 0 full size q88, the rest 80 % size q68). Does NOT write ribbon.webp (the band look is unchanged)."""
+(frame 0 full size q88, the rest 80 % size q68). Also writes its own ribbon.webp (the band is the same silver satin)."""
 import sys
 from pathlib import Path
 import numpy as np, cv2
@@ -28,7 +28,10 @@ def main(n=34):
         else:
             sz = (R.BW * 4 // 5, R.BH * 4 // 5)
             save_rgba(OUT / f"bow-{i:02d}.webp", cv2.resize(rgb, sz, interpolation=cv2.INTER_AREA), cv2.resize(a, sz, interpolation=cv2.INTER_AREA), 68)
-    print("wrote", n, "frames to", OUT)
+    rgb, a = frames[-1]                                     # the two gathered band halves the page shows after the untie
+    y0, y1 = R.CY - R.BAND_HALF, R.CY + R.BAND_HALF
+    save_rgba(OUT / "ribbon.webp", rgb[y0:y1], a[y0:y1], 88)
+    print("wrote", n, "frames + ribbon.webp to", OUT)
 
 if __name__ == "__main__":
     main()
