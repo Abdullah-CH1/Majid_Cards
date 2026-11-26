@@ -88,7 +88,7 @@
   const BOW_FRAMES = window.BOW_FRAMES || 34;
   const bowImg = $("#bowImg");
   const BOW_DIR = window.BOW_DIR || "assets/bow";     // another set of bow frames can be named before this script (see "index - gemini.html")
-  const bowSrc = i => `${BOW_DIR}/bow-${String(i).padStart(2, "0")}.webp?v=20261126l`;
+  const bowSrc = i => `${BOW_DIR}/bow-${String(i).padStart(2, "0")}.webp?v=20261126m`;
   if (window.BOW_DIR) bowImg.src = bowSrc(0);
   // the untie is played on a canvas laid exactly over the <img>: every frame is decoded up front (while the envelope is
   // still showing), and each screen refresh draws the two neighbouring frames cross-faded, so the motion stays continuous
@@ -251,7 +251,7 @@
   }
   document.documentElement.classList.add("locked");
   (function firstPaint() {
-    const urls = ["assets/envelope-body.webp?v=20261126l", "assets/envelope-flap.webp?v=20261126l", "assets/seal.webp?v=20261126l"];
+    const urls = ["assets/envelope-body.webp?v=20261126m", "assets/envelope-flap.webp?v=20261126m", "assets/seal.webp?v=20261126m"];
     const done = () => { body.classList.add("ready"); setTimeout(loadBow, 60); };   // then decode the bow frames in the background
     Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = u; }))).then(done);
     setTimeout(done, 3000);
