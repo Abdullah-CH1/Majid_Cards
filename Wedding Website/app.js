@@ -88,7 +88,7 @@
   const BOW_FRAMES = window.BOW_FRAMES || 34;
   const bowImg = $("#bowImg");
   const BOW_DIR = window.BOW_DIR || "assets/bow";     // another set of bow frames can be named before this script (see "index - gemini.html")
-  const bowSrc = i => `${BOW_DIR}/bow-${String(i).padStart(2, "0")}.webp?v=20261126g`;
+  const bowSrc = i => `${BOW_DIR}/bow-${String(i).padStart(2, "0")}.webp?v=20261126i`;
   if (window.BOW_DIR) bowImg.src = bowSrc(0);
   const bowCache = [];
   for (let i = 0; i < BOW_FRAMES; i++) { const im = new Image(); im.src = bowSrc(i); bowCache.push(im); }   // preload while the envelope is shown
@@ -205,7 +205,7 @@
   }
   document.documentElement.classList.add("locked");
   (function firstPaint() {
-    const urls = ["assets/envelope-body.webp?v=20261126g", "assets/envelope-flap.webp?v=20261126g", "assets/seal.webp?v=20261126g"];
+    const urls = ["assets/envelope-body.webp?v=20261126i", "assets/envelope-flap.webp?v=20261126i", "assets/seal.webp?v=20261126i"];
     const done = () => body.classList.add("ready");
     Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = u; }))).then(done);
     setTimeout(done, 3000);
@@ -232,7 +232,7 @@
     op.classList.add("drop");
     $("#envBox").style.visibility = "hidden";
     await wait(260);                           // the wrapped card rests a moment (video: frames 140-150)
-    await animate(1600, t => {            // the bow is pulled undone (frames follow the video): loops slip into the knot,
+    await animate(window.BOW_MS || 1600, t => {            // the bow is pulled undone (frames follow the video): loops slip into the knot,
       const src = bowSrc(Math.round(t * (BOW_FRAMES - 1)));   // the band is drawn tight, the last tail slides out, the knot lets go
       if (!bowImg.src.endsWith(src)) bowImg.src = src;
     });
