@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#8f7f8c">
+<title>Abdul Aleem & Laiba — Baraat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Monsieur+La+Doulaise&family=Pinyon+Script&family=Jost:wght@300;400&display=swap">
+<link rel="preload" as="image" href="assets/envelope-body.webp?v=20261126k">
+<link rel="preload" as="image" href="assets/envelope-flap.webp?v=20261126k">
+<link rel="preload" as="image" href="assets/seal.webp?v=20261126k">
+<link rel="stylesheet" href="style.css?v=20261126k">
+<style>/* version "gemini": cover and bow from the client's own generated pictures */
+.env-body { background-image: url(assets/gemini/envelope-body.webp?v=1); }
+.flap-face.front { background-image: url(assets/gemini/envelope-flap.webp?v=1); }
+.flap-face.dim { background-image: url(assets/gemini/envelope-flap-dim.webp?v=1); }
+.flap-face.back { background-image: url(assets/gemini/envelope-flap-back.webp?v=1); }
+.flap-shadow { background-image: url(assets/gemini/envelope-flap-shadow.webp?v=1); }
+</style>
+</head>
+<body class="locked">
+<div id="app">
+
+  <!-- ================= scrolling page ================= -->
+  <main id="page">
+    <!-- 1. the card -->
+    <section id="card" class="card-sec">
+      <div class="card-art">
+      <div class="card-sheen" aria-hidden="true"></div>
+      <div class="card-text">
+        <p class="c-line c-together" data-k="together"></p>
+        <p class="c-line c-name" data-k="name1"></p>
+        <p class="c-line c-amp" data-k="joiner"></p>
+        <p class="c-line c-name" data-k="name2"></p>
+        <p class="c-line c-date" data-k="dateText"></p>
+        <p class="c-line c-event" data-k="eventLine"></p>
+        <p class="c-line c-venue" data-k="venue"></p>
+        <p class="c-line c-place" data-k="place"></p>
+      </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- 2. countdown -->
+    <section id="countdown" class="cd-sec reveal">
+      <h2 class="cd-title" data-k="countdownTitle"></h2>
+      <div class="ticket">
+        <div class="cd-cell"><b id="cd-d">0</b><i>Days</i></div>
+        <div class="cd-cell"><b id="cd-h">0</b><i>Hours</i></div>
+        <div class="cd-cell"><b id="cd-m">0</b><i>Minutes</i></div>
+        <div class="cd-cell"><b id="cd-s">0</b><i>Seconds</i></div>
+      </div>
+      <p class="cd-soon" data-k="seeYouSoon"></p>
+    </section>
+
+    <!-- 3. scratch to reveal -->
+    <section id="pearl" class="pearl-sec">
+      <svg class="pearl-frame" id="pearlFrame" aria-hidden="true"></svg>
+      <div class="cameo reveal">
+        <img id="photo" alt="The couple">
+        <canvas id="scratch"></canvas>
+      </div>
+    </section>
+
+    <!-- 4. location -->
+    <section id="location" class="loc-sec">
+      <h2 class="loc-title reveal" data-k="locationTitle"></h2>
+      <p class="loc-venue reveal" data-k="venue"></p>
+      <p class="loc-place reveal" data-k="place"></p>
+      <div class="loc-text reveal" id="locText"></div>
+      <img class="loc-sketch reveal" src="assets/venue-sketch.webp?v=20261126k" alt="Sketch of the venue">
+      <a class="btn-dir reveal" id="dirBtn" target="_blank" rel="noopener"></a>
+      <p class="foot reveal" data-k="footer"></p>
+    </section>
+  </main>
+
+  <!-- ================= opening sequence (on top until it finishes) ================= -->
+  <div id="opening">
+    <!-- sheer organza wrap with the ribbon band and the bow (the embossed card shows through it) -->
+    <div class="cover-box" id="wrapBox">
+      <div class="wrap half left"><div class="org"></div></div>
+      <div class="band-half left"></div>
+      <div class="band-half right"></div>
+      <img class="bow" id="bowImg" src="assets/bow-tex3d/bow-00.webp?v=20261126k" alt="" draggable="false">
+    </div>
+    <!-- envelope (drawn at its true proportions; the screen shows a centred close-up of it) -->
+    <div class="cover-box" id="envStage">
+    <div class="env-box" id="envBox">
+      <div class="env-shadow"></div>
+      <div class="env-body"></div>
+      <div class="flap-shadow" id="flapShadow"></div>
+      <div class="flap" id="flap">
+        <div class="flap-face front"></div>
+        <div class="flap-face dim" id="flapDim"></div>
+        <div class="flap-face back"></div>
+      </div>
+      <p class="tap-hint" id="tapHint">Tap the seal to open</p>
+    </div>
+    <!-- the wax seal rides on the flap tip (kept outside the 3D box so it always stays on top) -->
+    <button class="seal" id="seal" aria-label="Open the invitation"></button>
+    </div>
+  </div>
+
+  <button class="music" id="musicBtn" aria-label="Music on or off" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="mute" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+  <audio id="music" loop preload="auto"></audio>
+</div>
+<script>window.BOW_DIR = "assets/bow-tex3d";</script>
+<script src="config.js?v=20261126k"></script>
+<script>/* our own bow (the original untie) on the gemini cover */</script>
+<script src="app.js?v=20261126k"></script>
+</body>
+</html>
